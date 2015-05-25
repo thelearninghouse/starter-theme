@@ -655,278 +655,15 @@ BOX SIZING
 /* @include box-sizing(border-box); */
 /* NOTE: value of "padding-box" is only supported in Gecko. So
 probably best not to use it. I mean, were you going to anyway? */
-/******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Grid Stylesheet
-
-I've seperated the grid so you can swap it out easily. It's
-called at the top the style.scss stylesheet.
-
-There are a ton of grid solutions out there. You should definitely
-experiment with your own. Here are some recommendations:
-
-http://gridsetapp.com - Love this site. Responsive Grids made easy.
-http://susy.oddbird.net/ - Grids using Compass. Very elegant.
-http://gridpak.com/ - Create your own responsive grid.
-https://github.com/dope/lemonade - Neat lightweight grid.
-
-
-The grid below is a custom built thingy I modeled a bit after
-Gridset. It's VERY basic and probably shouldn't be used on
-your client projects. The idea is you learn how to roll your
-own grids. It's better in the long run and allows you full control
-over your project's layout.
-
-******************************************************************/
-.last-col {
-  float: right;
-  padding-right: 0 !important;
+/* ==========================================================================
+   Media Queries
+   - Mobile
+   - Tablets
+   ========================================================================== */
+body {
+  width: 100%;
 }
 
-/*
-Mobile Grid Styles
-These are the widths for the mobile grid.
-There are four types, but you can add or customize
-them however you see fit.
-*/
-@media (max-width: 767px) {
-  .m-all {
-    float: left;
-    padding-right: 0.75em;
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .m-1of2 {
-    float: left;
-    padding-right: 0.75em;
-    width: 50%;
-  }
-
-  .m-1of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 33.33%;
-  }
-
-  .m-2of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 66.66%;
-  }
-
-  .m-1of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 25%;
-  }
-
-  .m-3of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 75%;
-  }
-}
-/* Portrait tablet to landscape */
-@media (min-width: 768px) and (max-width: 1029px) {
-  .t-all {
-    float: left;
-    padding-right: 0.75em;
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .t-1of2 {
-    float: left;
-    padding-right: 0.75em;
-    width: 50%;
-  }
-
-  .t-1of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 33.33%;
-  }
-
-  .t-2of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 66.66%;
-  }
-
-  .t-1of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 25%;
-  }
-
-  .t-3of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 75%;
-  }
-
-  .t-1of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 20%;
-  }
-
-  .t-2of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 40%;
-  }
-
-  .t-3of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 60%;
-  }
-
-  .t-4of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 80%;
-  }
-}
-/* Landscape to small desktop */
-@media (min-width: 1030px) {
-  .d-all {
-    float: left;
-    padding-right: 0.75em;
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .d-1of2 {
-    float: left;
-    padding-right: 0.75em;
-    width: 50%;
-  }
-
-  .d-1of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 33.33%;
-  }
-
-  .d-2of3 {
-    float: left;
-    padding-right: 0.75em;
-    width: 66.66%;
-  }
-
-  .d-1of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 25%;
-  }
-
-  .d-3of4 {
-    float: left;
-    padding-right: 0.75em;
-    width: 75%;
-  }
-
-  .d-1of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 20%;
-  }
-
-  .d-2of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 40%;
-  }
-
-  .d-3of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 60%;
-  }
-
-  .d-4of5 {
-    float: left;
-    padding-right: 0.75em;
-    width: 80%;
-  }
-
-  .d-1of6 {
-    float: left;
-    padding-right: 0.75em;
-    width: 16.6666666667%;
-  }
-
-  .d-1of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 14.2857142857%;
-  }
-
-  .d-2of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 28.5714286%;
-  }
-
-  .d-3of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 42.8571429%;
-  }
-
-  .d-4of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 57.1428572%;
-  }
-
-  .d-5of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 71.4285715%;
-  }
-
-  .d-6of7 {
-    float: left;
-    padding-right: 0.75em;
-    width: 85.7142857%;
-  }
-
-  .d-1of8 {
-    float: left;
-    padding-right: 0.75em;
-    width: 12.5%;
-  }
-
-  .d-1of9 {
-    float: left;
-    padding-right: 0.75em;
-    width: 11.1111111111%;
-  }
-
-  .d-1of10 {
-    float: left;
-    padding-right: 0.75em;
-    width: 10%;
-  }
-
-  .d-1of11 {
-    float: left;
-    padding-right: 0.75em;
-    width: 9.09090909091%;
-  }
-
-  .d-1of12 {
-    float: left;
-    padding-right: 0.75em;
-    width: 8.33%;
-  }
-}
 /*********************
 IMPORTING MODULES
 Modules are reusable blocks or elements we use throughout the project.
@@ -1350,11 +1087,11 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 body {
-  font-family: "Georgia", Cambria, Times New Roman, Times, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5;
   color: #5c6b80;
-  background-color: #eaedf2;
+  background-color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1364,6 +1101,7 @@ LAYOUT & GRID STYLES
 *********************/
 .wrap {
   width: 96%;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -1371,13 +1109,13 @@ LAYOUT & GRID STYLES
 LINK STYLES
 *********************/
 a, a:visited {
-  color: #f01d4f;
+  color: #2980b9;
   /* on hover */
   /* on click */
   /* mobile tap color */
 }
 a:hover, a:focus, a:visited:hover, a:visited:focus {
-  color: #d10e3c;
+  color: #1b557a;
 }
 a:link, a:visited:link {
   /*
@@ -1497,18 +1235,14 @@ POSTS & CONTENT STYLES
 }
 
 .hentry {
-  background-color: #fff;
-  border-radius: 3px;
   margin-bottom: 1.5em;
-  border: 1px solid #ccc;
+  background: #fff;
 }
 .hentry header {
-  border-bottom: 1px solid #f8f9fa;
   padding: 1.5em;
 }
 .hentry footer {
   padding: 1.5em;
-  border-top: 1px solid #f8f9fa;
 }
 .hentry footer p {
   margin: 0;
@@ -2015,8 +1749,18 @@ you can add resource intensive styles.
   /*********************
   LAYOUT & GRID STYLES
   *********************/
-  .wrap {
-    width: 760px;
+  #main {
+    display: inline;
+    float: left;
+    width: 67%;
+    margin: 0 1.5%;
+  }
+
+  .sidebar {
+    display: inline;
+    float: left;
+    width: 27%;
+    margin: 0 1.5%;
   }
 
   /*********************
@@ -2166,9 +1910,6 @@ you can add resource intensive styles.
   be seen on the Desktop.
   
   ******************************************************************/
-  .wrap {
-    width: 1040px;
-  }
 }
 /*********************
 LARGE VIEWING SIZE

@@ -31,14 +31,11 @@ $text-color:        #5c6b80;
 $meta-gray:         #9fa6b4;
 
 $tan:               #eceee5;
-
 $green:             #7dd667;
-
-$bones-pink:        #f01d4f;
 $blue:              #2980b9;
 
-$link-color:        $bones-pink;
-$link-hover:        darken($link-color, 9%);
+$link-color:        $blue;
+$link-hover:        darken($link-color, 15%);
 
 $border-color:      #ccc;
 $disabled-gray:     #cfcfcf;

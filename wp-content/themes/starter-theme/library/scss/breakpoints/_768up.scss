@@ -23,8 +23,12 @@ body {}
 LAYOUT & GRID STYLES
 *********************/
 
-.wrap {
-	width: 760px; 
+#main {
+	@include column(7);
+}
+
+.sidebar {
+	@include column(3);
 }
 
 /*********************

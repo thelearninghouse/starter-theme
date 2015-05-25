@@ -1,253 +1,64 @@
-/******************************************************************
-Site Name:
-Author:
+/* ==========================================================================
+   Media Queries
+   - Mobile
+   - Tablets
+   ========================================================================== */
 
-Stylesheet: Grid Stylesheet
+/////////////////
+// Semantic.gs // for SCSS: http://sass-lang.com/
+/////////////////
 
-I've seperated the grid so you can swap it out easily. It's
-called at the top the style.scss stylesheet.
+// Defaults which you can freely override
+$column-width: 7%;
+$gutter-width: 3%;
+$columns: 10; 
 
-There are a ton of grid solutions out there. You should definitely
-experiment with your own. Here are some recommendations:
-
-http://gridsetapp.com - Love this site. Responsive Grids made easy.
-http://susy.oddbird.net/ - Grids using Compass. Very elegant.
-http://gridpak.com/ - Create your own responsive grid.
-https://github.com/dope/lemonade - Neat lightweight grid.
+$total-width: 100%;
 
 
-The grid below is a custom built thingy I modeled a bit after
-Gridset. It's VERY basic and probably shouldn't be used on
-your client projects. The idea is you learn how to roll your
-own grids. It's better in the long run and allows you full control
-over your project's layout.
+// Utility function - you should never need to modify this
+@function gridsystem-width($columns:$columns) {
+  @return ($column-width * $columns) + ($gutter-width * $columns);
+}
 
-******************************************************************/
+// Set $total-width to 100% for a fluid layout
+$total-width: gridsystem-width($columns);
 
-// using a mixin since we can't use placeholder selectors
-@mixin grid-col {
+// Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+// $min-width: 999999;
+// $correction: 0.5 / $min-width * 100;
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+
+
+//////////
+// GRID //
+//////////
+
+body {
+  width: 100%; 
+}
+
+@mixin row($columns:$columns) {
+  display: block;
+  width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
+  margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
+  // *width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
+  // *margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
+  @include clearfix;
+}
+
+@mixin column($x,$columns:$columns) {
+  display: inline;
   float: left;
-  padding-right: 0.75em;
-
+  width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
+  margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+  // *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
+  // *margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
 }
-
-// the last column
-.last-col {
-  float: right;
-  padding-right: 0 !important;
+@mixin push($offset:1) {
+  margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
-
-
-/*
-Mobile Grid Styles
-These are the widths for the mobile grid.
-There are four types, but you can add or customize
-them however you see fit.
-*/
-@media (max-width: 767px) {
-
-  .m-all {
-    @include grid-col;
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .m-1of2 {
-    @include grid-col;
-    width: 50%;
-  }
-
-  .m-1of3 {
-    @include grid-col;
-    width: 33.33%;
-  }
-
-  .m-2of3 {
-    @include grid-col;
-    width: 66.66%;
-  }
-
-  .m-1of4 {
-    @include grid-col;
-    width: 25%;
-  }
-
-  .m-3of4 {
-    @include grid-col;
-    width: 75%;
-  }
-
-} // end mobile styles
-
-
-/* Portrait tablet to landscape */
-@media (min-width: 768px) and (max-width: 1029px) {
-
-  .t-all {
-    @include grid-col;
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .t-1of2 {
-    @include grid-col;
-    width: 50%;
-  }
-
-  .t-1of3 {
-    @include grid-col;
-    width: 33.33%;
-  }
-
-  .t-2of3 {
-    @include grid-col;
-    width: 66.66%;
-  }
-
-  .t-1of4 {
-    @include grid-col;
-    width: 25%;
-  }
-
-  .t-3of4 {
-    @include grid-col;
-    width: 75%;
-  }
-
-  .t-1of5 {
-    @include grid-col;
-    width: 20%;
-  }
-
-  .t-2of5 {
-    @include grid-col;
-    width: 40%;
-  }
-
-  .t-3of5 {
-    @include grid-col;
-    width: 60%;
-  }
-
-  .t-4of5 {
-    @include grid-col;
-    width: 80%;
-  }
-
-} // end tablet
-
-/* Landscape to small desktop */
-@media (min-width: 1030px) {
-
-  .d-all  {
-    @include grid-col;
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .d-1of2 {
-    @include grid-col;
-    width: 50%;
-  }
-
-  .d-1of3 {
-    @include grid-col;
-    width: 33.33%;
-  }
-
-  .d-2of3 {
-    @include grid-col;
-    width: 66.66%;
-  }
-
-  .d-1of4 {
-    @include grid-col;
-    width: 25%;
-  }
-
-  .d-3of4 {
-    @include grid-col;
-    width: 75%;
-  }
-
-  .d-1of5 {
-    @include grid-col;
-    width: 20%;
-  }
-
-  .d-2of5 {
-    @include grid-col;
-    width: 40%;
-  }
-
-  .d-3of5 {
-    @include grid-col;
-    width: 60%;
-  }
-
-  .d-4of5 {
-    @include grid-col;
-    width: 80%;
-  }
-
-  .d-1of6 {
-    @include grid-col;
-    width: 16.6666666667%;
-  }
-
-  .d-1of7 {
-    @include grid-col;
-    width: 14.2857142857%;
-  }
-
-  .d-2of7 {
-    @include grid-col;
-    width: 28.5714286%;
-  }
-
-  .d-3of7 {
-    @include grid-col;
-    width: 42.8571429%;
-  }
-
-  .d-4of7 {
-    @include grid-col;
-    width: 57.1428572%;
-  }
-
-  .d-5of7 {
-    @include grid-col;
-    width: 71.4285715%;
-  }
-
-  .d-6of7 {
-    @include grid-col;
-    width: 85.7142857%;
-  }
-
-  .d-1of8 {
-    @include grid-col;
-    width: 12.5%;
-  }
-
-  .d-1of9 {
-    @include grid-col;
-    width: 11.1111111111%;
-  }
-
-  .d-1of10 {
-    @include grid-col;
-    width: 10%;
-  }
-
-  .d-1of11 {
-    @include grid-col;
-    width: 9.09090909091%;
-  }
-
-  .d-1of12 {
-    @include grid-col;
-    width: 8.33%;
-  }
-
-} // end desktop styles
+@mixin pull($offset:1) {
+  margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
