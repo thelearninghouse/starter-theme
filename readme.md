@@ -8,6 +8,8 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 Install grunt by navigation to the theme's `library` folder and type `npm install --save-dev`
 
+To start watching files use `grunt watch` from the `library` folder
+
 ### Grid Usage
 
 This theme uses [semantic.gs](https://github.com/tylertate/semantic.gs)

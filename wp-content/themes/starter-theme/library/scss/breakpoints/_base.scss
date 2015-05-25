@@ -48,11 +48,6 @@ a, a:visited {
 		color: $link-hover;
 	}
 
-	/* on click */
-	&:active { 
-
-	}
-
 	/* mobile tap color */
 	&:link {
 		/*
@@ -71,10 +66,6 @@ H1, H2, H3, H4, H5 STYLES
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	text-rendering: optimizelegibility; 
 	font-weight: 500; 
-	/*
-	if you're going to use webfonts, be sure to check your weights
-	http://css-tricks.com/watch-your-font-weight/
-	*/
 
 	/* removing text decoration from all headline links */
 	a {
@@ -160,10 +151,6 @@ and more scalable.
 			}
 		}
 
-		&:first-child {}
-
-		&:last-child {}
-
 		/*
 		so you really have to rethink your dropdowns for mobile.
 		you don't want to have it expand too much because the
@@ -178,32 +165,13 @@ and more scalable.
 
 				a {
 					padding-left: 30px;
-
-					&:hover,
-					&:focus {}
-
-					&:link {}
-
 				}
-
-				&:first-child {}
-
-				&:last-child {}
 
 			}
 
 		}
 
 	} /* end .menu li */
-
-	/* highlight current page */
-	li.current-menu-item,
-	li.current_page_item,
-	li.current_page_ancestor {
-
-		a {}
-
-	}  /* end current highlighters */
 
 } /* end .nav */
 
@@ -216,47 +184,11 @@ POSTS & CONTENT STYLES
 	margin-top: 1.5em;
 }
 
-		.hentry {
-			margin-bottom: 1.5em;
-			background: $white;
-
-			header {
-				padding: 1.5em;
-			}
-
-			footer {
-				padding: 1.5em;
-
-				p {
-					margin: 0;
-				}
-			}
-
-		} /* end .hentry */
-
 		.single-title,
 		.page-title,
 		.entry-title {
 			margin: 0;
 		}
-
-		.single-title {}
-
-		.page-title {}
-
-		.entry-title {}
-
-		.archive-title {}
-
-		/* want to style individual post classes? Booya! */
-		.post-id {}         /* post by id (i.e. post-3) */
-		.post {}            /* general post style */
-		.page {}            /* general article on a page style */
-		.attachment {}      /* general style on an attatchment */
-		.sticky {}          /* sticky post style */
-		.hentry {}          /* hentry class */
-		.category-slug {}   /* style by category (i.e. category-videos) */
-		.tag-slug {}        /* style by tag (i.e. tag-news) */
 
 		/* post meta */
 		.byline {
@@ -273,27 +205,6 @@ POSTS & CONTENT STYLES
 
 			p {
 				margin: 0 0 1.5em;
-			}
-
-
-			ul, ol, table, dl {}
-
-			ul, ol {
-
-				li {}
-
-			}
-
-			ul {
-
-				li {}
-
-			}
-
-			ol {
-
-				li {}
-
 			}
 
 			table {
@@ -348,10 +259,6 @@ POSTS & CONTENT STYLES
 
 			}
 
-			dl {}
-
-			dt {}
-
 			dd {
 				margin-left: 0;
 				font-size: 0.9em;
@@ -364,16 +271,6 @@ POSTS & CONTENT STYLES
 				max-width: 100%;
 				height: auto;
 			}
-
-			/*
-			image alignment on a screen this size may be
-			a bit difficult. It's set to start aligning
-			and floating images at the next breakpoint,
-			but it's up to you. Feel free to change it up.
-			*/
-			.alignleft, img.alignleft {}
-			.alignright, img.alignright {}
-			.aligncenter, img.aligncenter {}
 
 			.size-auto,
 			.size-full,
@@ -414,31 +311,6 @@ POSTS & CONTENT STYLES
 			}
 
 		} /* end .wp-caption */
-
-		/* image gallery styles */
-		.gallery {
-
-			dl {
-
-				a {}
-
-				img {}
-
-			}
-
-			dt {}
-
-			dd {}
-
-		} /* end .gallery */
-
-		/* gallery caption styles */
-		.gallery-caption {}
-
-		.size-full {}
-		.size-large {}
-		.size-medium {}
-		.size-thumbnail {}
 
 	// the tag output
 	.tags {
@@ -507,8 +379,6 @@ PAGE NAVI STYLES
 	/* fallback previous & next links */
 	.wp-prev-next {
 
-		ul {}
-
 		.prev-link {
 			float: left;
 		}
@@ -528,21 +398,7 @@ COMMENT STYLES
 	padding: 0.75em;
 	margin: 0;
 	border-top: 1px solid $light-gray;
-
-	/* number of comments span */
-	span {}
-
 }
-
-.comment-nav {
-
-	ul {
-
-		li {}
-
-	}
-}
-
 
 .commentlist {
 	margin: 0;
@@ -568,9 +424,6 @@ COMMENT STYLES
 		cite.fn {
 			font-weight: 700;
 			font-style: normal;
-
-			a.url {}
-
 		}
 
 		time {
@@ -590,8 +443,6 @@ COMMENT STYLES
 
 		}
 
-		.photo {}
-
 		.avatar {
 			position: absolute;
 			left: 16px;
@@ -606,19 +457,6 @@ COMMENT STYLES
 
 	.children {
 		margin: 0;
-
-		li {}
-
-			/* variations */
-			.comment {}
-			.alt {}
-			.odd {}
-			.even {}
-			.depth-1 {}           /* change number for different depth */
-			.byuser {}
-			.bypostauthor {}
-			.comment-author-admin {}
-
 	} /* end children */
 
 
@@ -637,11 +475,6 @@ COMMENT STYLES
 		padding: 7px;
 	}
 
-	&.depth-2 {}
-	&.depth-3 {}
-	&.depth-4 {}
-	&.depth-5 {}
-
 	/* general comment classes */
 	&.alt {}
 	&.odd {
@@ -650,33 +483,7 @@ COMMENT STYLES
 	&.even {
 		background: $light-gray;
 	}
-	&.parent {}
-	&.comment {}
-	&.children {}
-	&.pingback {}
-	&.bypostauthor {}
-	&.comment-author {}
-	&.comment-author-admin {}
-	&.thread-alt {}
-	&.thread-odd {}
-	&.thread-even {}
 }
-
-
-
-
-	/* comment meta */
-	.comment-meta {
-
-		a {}
-
-	}
-
-	.commentmetadata {
-
-		a {}
-
-	}
 
 	/* comment content */
 	.comment_content {
@@ -757,14 +564,6 @@ COMMENT FORM STYLES
 		margin: 0 0 1.1em;
 	}
 
-	/* cancel comment reply link */
-	#cancel-comment-reply {
-		a {}
-	}
-
-	/* logged in comments */
-	.comments-logged-in-as {}
-
 	/* allowed tags */
 	#allowed_tags {
 		margin: 1.5em 10px 0.7335em 0;
@@ -779,39 +578,14 @@ COMMENT FORM STYLES
 SIDEBARS & ASIDES
 *********************/
 
-.sidebar {}
-
-	.widgettitle {}
-
-	.widget {
-
-		ul {
-
-			li {
-
-				&:first-child {}
-
-				&:last-child {}
-
-				a {}
-
-				/* deep nesting */
-				ul {}
-
-			}
-
-		}
-
-	}
-
-	.no-widgets {
-		background-color: $white;
-		padding: 1.5em;
-		text-align: center;
-		border: 1px solid $border-color;
-		border-radius: 2px;
-		margin-bottom: 1.5em;
-	}
+.no-widgets {
+	background-color: $white;
+	padding: 1.5em;
+	text-align: center;
+	border: 1px solid $border-color;
+	border-radius: 2px;
+	margin-bottom: 1.5em;
+}
 
 /*********************
 FOOTER STYLES
@@ -822,25 +596,3 @@ FOOTER STYLES
 	background-color: $black;
 	color: $light-gray;
 }
-
-	/*
-	if you checked out the link above:
-	http://www.alistapart.com/articles/organizing-mobile/
-	you'll want to style the footer nav
-	a bit more in-depth. Remember to keep
-	it simple because you'll have to
-	override these styles for the desktop
-	view.
-	*/
-	.footer-links {
-
-		ul {
-
-			li {}
-
-		}
-
-	} /* end .footer-links */
-
-
-	.copyright {}
