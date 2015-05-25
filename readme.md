@@ -14,8 +14,8 @@ This theme uses [semantic.gs](https://github.com/tylertate/semantic.gs)
 
 Out of the box this is a 10 column grid on screen sizes 768px and up.
 
-To include the column mixin use '@include column(10);'
+To include the column mixin use `@include column(10);`
 
-To push use '@include push(2);'
+To push use `@include push(2);`
 
-To pull use '@include pull(2);'
+To pull use `@include pull(2);`
