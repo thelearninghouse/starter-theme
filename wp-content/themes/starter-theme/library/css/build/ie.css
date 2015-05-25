@@ -82,10 +82,6 @@ https://github.com/devinhunt/typebase.css
 I've edited it a bit, but it's a nice starting point.
 */
 /*
- i imported this one in the functions file so bones would look sweet.
- don't forget to remove it for your site.
-*/
-/*
 some nice typographical defaults
 more here: http://www.newnet-soft.com/blog/csstypography
 */
@@ -148,20 +144,15 @@ BOX SIZING
 /* @include box-sizing(border-box); */
 /* NOTE: value of "padding-box" is only supported in Gecko. So
 probably best not to use it. I mean, were you going to anyway? */
-/******************************************************************
-Site Name:
-Author:
+/* ==========================================================================
+   Media Queries
+   - Mobile
+   - Tablets
+   ========================================================================== */
+body {
+  width: 100%;
+}
 
-Stylesheet: IE Grid Styles
-
-Since the example grid is based on media queries, so rather than
-setup some js library that would make IE8 and below understand
-media queries, let's just add some styles that serves a fixed grid.
-
-Again, if you want to roll your own, just remove this junk and put
-whatever you use in here.
-
-******************************************************************/
 /******************************************************************
 Site Name:
 Author:
@@ -261,8 +252,18 @@ GENERAL STYLES
 /*********************
 LAYOUT & GRID STYLES
 *********************/
-.wrap {
-  width: 760px;
+#main {
+  display: inline;
+  float: left;
+  width: 67%;
+  margin: 0 1.5%;
+}
+
+.sidebar {
+  display: inline;
+  float: left;
+  width: 27%;
+  margin: 0 1.5%;
 }
 
 /*********************
@@ -404,10 +405,6 @@ This is the desktop size. It's larger than an iPad so it will only
 be seen on the Desktop.
 
 ******************************************************************/
-.wrap {
-  width: 1040px;
-}
-
 /*
 you can call the larger styles if you want, but there's really no need
 */
@@ -428,7 +425,7 @@ the html element. These can sometimes change, so take a look inside the
 header.php file to see what they are:
 
 
-.lt-ie8 .class { ... }
+.lt-ie8 .class { ... } 
 
 */
 
