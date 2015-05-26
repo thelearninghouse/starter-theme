@@ -29,7 +29,7 @@ This core wordpress install comes equipped with a couple handy plugins that we s
 
 ### Advanced Custom Fields Pro
 
-There isn't much this plugin can't do. Documentation can be found [here](http://www.advancedcustomfields.com/pro/)
+There isn't much this plugin can't do including but not limited to: repeater fields, flexible content and global theme options. Documentation can be found [here](http://www.advancedcustomfields.com/pro/)
 
 ### Widget Context
 
