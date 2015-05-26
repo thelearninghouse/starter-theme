@@ -501,11 +501,6 @@ COLORS
 Need help w/ choosing your colors? Try this site out:
 http://0to255.com/
 *********************/
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
 /******************************************************************
 Site Name:
 Author:
@@ -731,44 +726,30 @@ Here's a quick video to show how it works:
 http://www.youtube.com/watch?v=hwdVpKiJzac
 
 *********************/
-.blue-btn, .comment-reply-link, #submit {
+.button {
   display: inline-block;
   position: relative;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-decoration: none;
-  color: #fff;
-  font-size: 0.9em;
-  font-size: 34px;
+  color: #fff !important;
+  font-size: 1em;
   line-height: 34px;
   font-weight: normal;
-  padding: 0 24px;
+  padding: .5em 1em;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   transition: background-color 0.14s ease-in-out;
+  background: tomato;
 }
-.blue-btn:hover, .comment-reply-link:hover, #submit:hover, .blue-btn:focus, .comment-reply-link:focus, #submit:focus {
+.button:hover, .button:focus {
   color: #fff;
   text-decoration: none;
   outline: none;
+  background: #f92600;
 }
-.blue-btn:active, .comment-reply-link:active, #submit:active {
+.button:active {
   top: 1px;
-}
-
-/*
-An example button.
-You can use this example if you want. Just replace all the variables
-and it will create a button dependant on those variables.
-*/
-.blue-btn, .comment-reply-link, #submit {
-  background-color: #2980b9;
-}
-.blue-btn:hover, .comment-reply-link:hover, #submit:hover, .blue-btn:focus, .comment-reply-link:focus, #submit:focus {
-  background-color: #2574a8;
-}
-.blue-btn:active, .comment-reply-link:active, #submit:active {
-  background-color: #2472a4;
 }
 
 /******************************************************************
@@ -811,7 +792,6 @@ textarea,
   display: block;
   height: 40px;
   line-height: 1em;
-  padding: 0 12px;
   margin-bottom: 14px;
   font-size: 1em;
   color: #5c6b80;
@@ -820,7 +800,6 @@ textarea,
   box-shadow: none;
   border: 0;
   width: 100%;
-  max-width: 400px;
   background-color: #eaedf2;
   transition: background-color 0.24s ease-in-out;
 }
@@ -1100,7 +1079,7 @@ body {
 LAYOUT & GRID STYLES
 *********************/
 .wrap {
-  width: 96%;
+  width: 90%;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -1109,12 +1088,12 @@ LAYOUT & GRID STYLES
 LINK STYLES
 *********************/
 a, a:visited {
-  color: #2980b9;
+  color: tomato;
   /* on hover */
   /* mobile tap color */
 }
 a:hover, a:focus, a:visited:hover, a:visited:focus {
-  color: #1b557a;
+  color: #f92600;
 }
 a:link, a:visited:link {
   /*
@@ -1168,7 +1147,7 @@ h5, .h5 {
 HEADER STYLES
 *********************/
 .header {
-  background-color: #666;
+  background-color: #404040;
 }
 
 #logo {
@@ -1242,7 +1221,7 @@ POSTS & CONTENT STYLES
 
 /* entry content */
 .entry-content {
-  padding: 1.5em 1.5em 0;
+  padding: 1.5em 0;
 }
 .entry-content p {
   margin: 0 0 1.5em;
@@ -1283,7 +1262,7 @@ POSTS & CONTENT STYLES
 .entry-content blockquote {
   margin: 0 0 1.5em 0.75em;
   padding: 0 0 0 0.75em;
-  border-left: 3px solid #2980b9;
+  border-left: 3px solid tomato;
   font-style: italic;
   color: #9fa6b4;
 }
@@ -1307,7 +1286,7 @@ POSTS & CONTENT STYLES
   height: auto;
 }
 .entry-content pre {
-  background: #666;
+  background: #404040;
   color: #f8f9fa;
   font-size: 0.9em;
   padding: 1.5em;
@@ -1375,10 +1354,10 @@ PAGE NAVI STYLES
   padding: 0.75em;
   min-width: 1em;
   display: block;
-  color: #2980b9;
+  color: tomato;
 }
 .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
-  background-color: #2980b9;
+  background-color: tomato;
   color: #fff;
 }
 .pagination .current {
@@ -1489,8 +1468,31 @@ COMMENT STYLES
 /* end .commentlist .comment_content */
 /* comment reply link */
 .comment-reply-link {
+  display: inline-block;
+  position: relative;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  color: #fff !important;
+  font-size: 1em;
+  line-height: 34px;
+  font-weight: normal;
+  padding: .5em 1em;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.14s ease-in-out;
+  background: tomato;
   font-size: 0.9em;
   float: right;
+}
+.comment-reply-link:hover, .comment-reply-link:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  background: #f92600;
+}
+.comment-reply-link:active {
+  top: 1px;
 }
 
 /* end .commentlist .comment-reply-link */
@@ -1535,8 +1537,31 @@ COMMENT FORM STYLES
 
 /* comment submit button */
 #submit {
+  display: inline-block;
+  position: relative;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  color: #fff !important;
+  font-size: 1em;
+  line-height: 34px;
+  font-weight: normal;
+  padding: .5em 1em;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.14s ease-in-out;
+  background: tomato;
   float: right;
   font-size: 1em;
+}
+#submit:hover, #submit:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  background: #f92600;
+}
+#submit:active {
+  top: 1px;
 }
 
 /* comment form title */
@@ -1571,7 +1596,7 @@ FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-  background-color: #666;
+  background-color: #404040;
   color: #f8f9fa;
 }
 
@@ -1684,9 +1709,6 @@ you can add resource intensive styles.
   
   ******************************************************************/
   /*********************
-  GENERAL STYLES
-  *********************/
-  /*********************
   LAYOUT & GRID STYLES
   *********************/
   #main {
@@ -1704,19 +1726,14 @@ you can add resource intensive styles.
   }
 
   /*********************
-  HEADER STYLES
-  *********************/
-  /*********************
   NAVIGATION STYLES
   *********************/
   .nav {
     border: 0;
     /* end .menu ul li */
-    /* highlight current page */
-    /* end current highlighters */
   }
   .nav ul {
-    background: #666;
+    background: #404040;
     margin-top: 0;
   }
   .nav li {
@@ -1746,7 +1763,6 @@ you can add resource intensive styles.
     position: absolute;
     visibility: hidden;
     z-index: 8999;
-    /* highlight sub-menu current page */
   }
   .nav li ul.sub-menu li,
   .nav li ul.children li {
@@ -1782,10 +1798,6 @@ you can add resource intensive styles.
   /*********************
   SIDEBARS & ASIDES
   *********************/
-  .sidebar {
-    margin-top: 2.2em;
-  }
-
   .widgettitle {
     border-bottom: 2px solid #444;
     margin-bottom: 0.75em;
@@ -1795,6 +1807,9 @@ you can add resource intensive styles.
     padding: 0 10px;
     margin: 2.2em 0;
   }
+  .widget:first-of-type {
+    margin-top: 0;
+  }
   .widget ul li {
     margin-bottom: 0.75em;
     /* deep nesting */
@@ -1803,35 +1818,6 @@ you can add resource intensive styles.
     margin-top: 0.75em;
     padding-left: 1em;
   }
-
-  /* links widget */
-  /* meta widget */
-  /* pages widget */
-  /* recent-posts widget */
-  /* archives widget */
-  /* tag-cloud widget */
-  /* calendar widget */
-  /* category widget */
-  /* recent-comments widget */
-  /* search widget */
-  /* text widget */
-  /*********************
-  FOOTER STYLES
-  *********************/
-  /*
-  you'll probably need to do quite a bit
-  of overriding here if you styled them for
-  mobile. Make sure to double check these!
-  */
-  .footer-links ul li {
-    /*
-    be careful with the depth of your menus.
-    it's very rare to have multi-depth menus in
-    the footer.
-    */
-  }
-
-  /* end .footer-links */
 }
 /*********************
 DESKTOP

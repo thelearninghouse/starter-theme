@@ -22,7 +22,7 @@ $alert-red:         #fbe3e4;
 $alert-green:       #e6efc2;
 $alert-blue:        #d5edf8;
 
-$black:             #666;
+$black:             lighten(black, 25%);
 $white:             #fff;
 
 $light-gray:        #f8f9fa;
@@ -30,19 +30,8 @@ $gray:              #eaedf2;
 $text-color:        #5c6b80;
 $meta-gray:         #9fa6b4;
 
-$tan:               #eceee5;
-$green:             #7dd667;
-$blue:              #2980b9;
-
-$link-color:        $blue;
+$link-color:        tomato;
 $link-hover:        darken($link-color, 15%);
 
 $border-color:      #ccc;
 $disabled-gray:     #cfcfcf;
-
-
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/

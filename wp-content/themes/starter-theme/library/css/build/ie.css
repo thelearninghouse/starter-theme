@@ -34,11 +34,6 @@ COLORS
 Need help w/ choosing your colors? Try this site out:
 http://0to255.com/
 *********************/
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
 /******************************************************************
 Site Name:
 Author:
@@ -247,9 +242,6 @@ come into play. Have fun!
 
 ******************************************************************/
 /*********************
-GENERAL STYLES
-*********************/
-/*********************
 LAYOUT & GRID STYLES
 *********************/
 #main {
@@ -267,19 +259,14 @@ LAYOUT & GRID STYLES
 }
 
 /*********************
-HEADER STYLES
-*********************/
-/*********************
 NAVIGATION STYLES
 *********************/
 .nav {
   border: 0;
   /* end .menu ul li */
-  /* highlight current page */
-  /* end current highlighters */
 }
 .nav ul {
-  background: #666;
+  background: #404040;
   margin-top: 0;
 }
 .nav li {
@@ -309,7 +296,6 @@ NAVIGATION STYLES
   position: absolute;
   visibility: hidden;
   z-index: 8999;
-  /* highlight sub-menu current page */
 }
 .nav li ul.sub-menu li,
 .nav li ul.children li {
@@ -345,10 +331,6 @@ NAVIGATION STYLES
 /*********************
 SIDEBARS & ASIDES
 *********************/
-.sidebar {
-  margin-top: 2.2em;
-}
-
 .widgettitle {
   border-bottom: 2px solid #444;
   margin-bottom: 0.75em;
@@ -357,6 +339,9 @@ SIDEBARS & ASIDES
 .widget {
   padding: 0 10px;
   margin: 2.2em 0;
+}
+.widget:first-of-type {
+  margin-top: 0;
 }
 .widget ul li {
   margin-bottom: 0.75em;
@@ -367,34 +352,6 @@ SIDEBARS & ASIDES
   padding-left: 1em;
 }
 
-/* links widget */
-/* meta widget */
-/* pages widget */
-/* recent-posts widget */
-/* archives widget */
-/* tag-cloud widget */
-/* calendar widget */
-/* category widget */
-/* recent-comments widget */
-/* search widget */
-/* text widget */
-/*********************
-FOOTER STYLES
-*********************/
-/*
-you'll probably need to do quite a bit
-of overriding here if you styled them for
-mobile. Make sure to double check these!
-*/
-.footer-links ul li {
-  /*
-  be careful with the depth of your menus.
-  it's very rare to have multi-depth menus in
-  the footer.
-  */
-}
-
-/* end .footer-links */
 /******************************************************************
 Site Name:
 Author:

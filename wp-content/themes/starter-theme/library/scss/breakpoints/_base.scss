@@ -31,7 +31,7 @@ LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	width: 96%;
+	width: 90%;
 	max-width: 1440px;  
 	margin: 0 auto;
 }
@@ -201,7 +201,7 @@ POSTS & CONTENT STYLES
 
 		/* entry content */
 		.entry-content {
-			padding: 1.5em 1.5em 0;
+			padding: 1.5em 0; 
 
 			p {
 				margin: 0 0 1.5em;
@@ -251,9 +251,9 @@ POSTS & CONTENT STYLES
 			blockquote {
 				margin: 0 0 1.5em 0.75em;
 				padding: 0 0 0 0.75em;
-				border-left: 3px solid $blue;
+				border-left: 3px solid tomato;
 				font-style: italic;
-				color: $meta-gray;
+				color: $meta-gray; 
 
 				&:before {}
 
@@ -356,10 +356,10 @@ PAGE NAVI STYLES
       padding: 0.75em;
       min-width: 1em;
       display: block;
-      color: $blue;
+      color: $link-color;
 
       &:hover, &:focus {
-      	background-color: $blue;
+      	background-color: $link-color;
       	color: $white;
       }
     }
@@ -498,10 +498,10 @@ COMMENT STYLES
 
 	/* comment reply link */
 	.comment-reply-link {
-		@extend .blue-btn;
+		@include button($link-color);
 		font-size: 0.9em;
 		float: right;
-
+ 
 		&:hover,
 		&:focus {
 		}
@@ -554,14 +554,14 @@ COMMENT FORM STYLES
 
 	/* comment submit button */
 	#submit {
-		@extend .blue-btn;
+		@include button($link-color);
 		float: right;
 		font-size: 1em;
 	}
 
 	/* comment form title */
 	#comment-form-title {
-		margin: 0 0 1.1em;
+		margin: 0 0 1.1em; 
 	}
 
 	/* allowed tags */
