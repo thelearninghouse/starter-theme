@@ -6,7 +6,7 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 ### Install Grunt
 
-Install grunt by navigation to the theme's `library` folder and type `npm install --save-dev`
+Install grunt by navigating to the theme's `library` folder and type `npm install --save-dev`
 
 To start watching files use `grunt watch` from the `library` folder
 
