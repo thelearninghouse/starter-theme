@@ -21,3 +21,17 @@ To include the column mixin use `@include column(10);`
 To push use `@include push(2);`
 
 To pull use `@include pull(2);`
+
+
+## Plugins
+
+This core wordpress install comes equipped with a couple handy plugins that we seem to use very often
+
+### Advanced Custom Fields Pro
+
+There isn't much this plugin can't do. Documentation can be found [here](http://www.advancedcustomfields.com/pro/)
+
+### Widget Context
+
+A super handy plugin that allows you to specify where widgets get displayed. Instead of multiple sidebars this makes it easy to show different content on different pages.
+
