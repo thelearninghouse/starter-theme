@@ -1,4 +1,4 @@
-# Learning House Wordpress Starter theme
+# Learning House Wordpress Starter Theme
 
 The core of this theme is based on [Bones theme](https://github.com/eddiemachado/bones)
 
