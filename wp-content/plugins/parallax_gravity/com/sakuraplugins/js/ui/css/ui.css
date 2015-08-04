@@ -1,0 +1,14 @@
+.btnUI{
+	width: 20px;
+	height: 20px;
+	position: relative;
+	cursor: pointer;				
+}
+.btnImg{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.butonUiFloat{
+	float: left;
+}

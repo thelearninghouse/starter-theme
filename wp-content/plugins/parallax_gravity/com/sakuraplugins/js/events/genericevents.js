@@ -1,0 +1,15 @@
+
+function Event(evType, data){
+	this.eventType = evType;
+	this.data = data;
+}
+
+Event.GROUP_ADDED = "GROUP_ADDED";
+Event.REMOVE_GROUP = "REMOVE_GROUP";
+Event.GROUP_CHANGE = "GROUP_CHANGE";
+Event.ADD_NEW_GROUP = "ADD_NEW_GROUP";
+Event.GALLERY_DATA_CHANGE = "GALLERY_DATA_CHANGE";
+Event.REORDER_GALLERY_GROUPS = "REORDER_GALLERY_GROUPS";
+
+Event.ADD_NEW_IMAGE = "ADD_NEW_IMAGE";
+

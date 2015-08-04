@@ -1,12 +1,9 @@
 <?php
-/* Welcome to Bones :)
-This is the core Bones file where most of the
+/*
+This is where most of the
 main functions & features reside. If you have
 any custom functions, it's best to put them
 in the functions.php file.
-
-Developed by: Eddie Machado
-URL: http://themble.com/bones/
 
   - head cleanup (remove rsd, uri links, junk css, ect)
   - enqueueing scripts & styles
@@ -134,7 +131,7 @@ function bones_scripts_and_styles() {
 		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
     // comment reply script for threaded comments
-    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) { 
+    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
 		  wp_enqueue_script( 'comment-reply' );
     }
 

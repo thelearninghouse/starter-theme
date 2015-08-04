@@ -15,13 +15,8 @@ http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
 
 /*********************
 BUTTON DEFAULTS
-We're gonna use a placeholder selector here
-so we can use common styles. We then use this
-to load up the defaults in all our buttons.
 
-Here's a quick video to show how it works:
-http://www.youtube.com/watch?v=hwdVpKiJzac
-
+to use: @include button($red);
 *********************/
 
 @mixin button($btn-color) {
@@ -35,7 +30,7 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
   font-weight: normal;
   padding: .5em 1em;
   border-radius: 4px;
-  border: 0; 
+  border: 0;
   cursor: pointer;
   transition: background-color 0.14s ease-in-out;
   background: $btn-color;
@@ -57,5 +52,5 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
 
 
 .button {
-  @include button($link-color);  
+  @include button($link-color);
 }
