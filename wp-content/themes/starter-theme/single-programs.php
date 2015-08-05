@@ -35,7 +35,6 @@
 								</header>
 
 								<section class="entry-content cf">
-									kashjdflkajsdh
 									<?php
 										// the content (pretty self explanatory huh)
 										the_content();

@@ -151,7 +151,6 @@ function bones_comments( $comment, $args, $depth ) {
 <?php
 } // don't remove this bracket!
 
-
 /*
 Fix for jQuery conflict
 */
