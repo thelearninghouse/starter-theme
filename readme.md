@@ -35,3 +35,10 @@ There isn't much this plugin can't do including but not limited to: repeater fie
 
 A super handy plugin that allows you to specify where widgets get displayed. Instead of multiple sidebars this makes it easy to show different content on different pages.
 
+### Parallax Gravity
+
+This is the plugin that we use to create our landing pages. We use this because it has a great builder feature and also uses repeatable modules to make creating new pages super easy. Check out the documentation for more information [here](http://sakuraplugins.com/docs/gravity_documentation/)
+
+### RICG Responsive Images
+
+This is new to the starter theme as of August 2015. We are implementing this to take advantage of responsive images. 
