@@ -10,7 +10,7 @@
 
 							<header class="article-header">
 
-								<h1><?php _e( 'Epic 404 - Article Not Found', 'bonestheme' ); ?></h1>
+								<h1><?php _e( '404 - Article Not Found', 'bonestheme' ); ?></h1>
 
 							</header>
 

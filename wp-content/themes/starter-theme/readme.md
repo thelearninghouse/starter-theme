@@ -33,5 +33,3 @@ doing with my life, follow me on twitter: @eddiemachado
 Yeoman generator to quickly install Bones Wordpress starter theme into your Wordpress theme folder
 by 0dp
 https://github.com/0dp/generator-wp-bones
-
-

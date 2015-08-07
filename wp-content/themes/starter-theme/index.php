@@ -25,7 +25,7 @@
 								</header>
 
 								<section class="entry-content cf">
-									<?php the_content(); ?>
+									<?php the_excerpt(); ?>
 								</section>
 
 								<?php /* <footer class="article-footer cf">

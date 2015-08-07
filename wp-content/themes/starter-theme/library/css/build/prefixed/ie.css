@@ -257,6 +257,14 @@ LAYOUT & GRID STYLES
   margin: 0 1.5%;
 }
 
+.error404 #main {
+  display: inline;
+  float: left;
+  width: 77%;
+  margin: 0 1.5%;
+  margin-left: 11.5%;
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/
@@ -290,8 +298,6 @@ NAVIGATION STYLES
 .nav li ul.sub-menu,
 .nav li ul.children {
   margin-top: 0;
-  border: 1px solid #ccc;
-  border-top: 0;
   position: absolute;
   visibility: hidden;
   z-index: 8999;
@@ -310,11 +316,6 @@ NAVIGATION STYLES
   border-right: 0;
   display: block;
   width: 180px;
-  border-bottom: 1px solid #ccc;
-}
-.nav li ul.sub-menu li:last-child a,
-.nav li ul.children li:last-child a {
-  border-bottom: 0;
 }
 .nav li ul.sub-menu li ul,
 .nav li ul.children li ul {

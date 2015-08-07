@@ -1097,7 +1097,7 @@ possible. This is called at the top of the main stylsheet
 and will be used across all viewports.
 
 ******************************************************************/
-/********************* 
+/*********************
 GENERAL STYLES
 *********************/
 body {
@@ -1238,7 +1238,7 @@ and more scalable.
 POSTS & CONTENT STYLES
 *********************/
 #content {
-  margin-top: 1.5em;
+  margin: 1.5em 0;
 }
 
 .single-title,
@@ -1760,6 +1760,14 @@ you can add resource intensive styles.
     margin: 0 1.5%;
   }
 
+  .error404 #main {
+    display: inline;
+    float: left;
+    width: 77%;
+    margin: 0 1.5%;
+    margin-left: 11.5%;
+  }
+
   /*********************
   NAVIGATION STYLES
   *********************/
@@ -1793,8 +1801,6 @@ you can add resource intensive styles.
   .nav li ul.sub-menu,
   .nav li ul.children {
     margin-top: 0;
-    border: 1px solid #ccc;
-    border-top: 0;
     position: absolute;
     visibility: hidden;
     z-index: 8999;
@@ -1813,11 +1819,6 @@ you can add resource intensive styles.
     border-right: 0;
     display: block;
     width: 180px;
-    border-bottom: 1px solid #ccc;
-  }
-  .nav li ul.sub-menu li:last-child a,
-  .nav li ul.children li:last-child a {
-    border-bottom: 0;
   }
   .nav li ul.sub-menu li ul,
   .nav li ul.children li ul {
