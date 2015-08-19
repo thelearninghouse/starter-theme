@@ -36,13 +36,10 @@ the whole project.
 @import "partials/functions";
 
 // import mixins
-@import "partials/mixins";
+@import "partials/mixins"; 
 
 // the grid
 @import "partials/grid";
-
-// import SUSY
-@import "modules/_susy.scss";  
 
 /*********************
 IMPORTING MODULES
