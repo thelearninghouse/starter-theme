@@ -130,7 +130,7 @@ function bones_comments( $comment, $args, $depth ) {
 /*
 Fix for jQuery conflict
 */
-function enqueue_scripts() {
+function enqueue_scripts() { 
   wp_deregister_script( 'jquery' );
   wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, false, false );
   wp_enqueue_script( 'jquery' );
