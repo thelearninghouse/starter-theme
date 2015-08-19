@@ -746,7 +746,7 @@ to use: @include button($red);
   color: #fff;
   text-decoration: none;
   outline: none;
-  background: #f92600;
+  background: #fa2600;
 }
 .button:active {
   top: 1px;
@@ -795,7 +795,7 @@ textarea,
   margin-bottom: 14px;
   font-size: 1em;
   color: #5c6b80;
-  border-color: #cad2df;
+  border-color: #cbd2df;
   border-width: 2px;
   border-style: solid;
   border-spacing: inherit;
@@ -1061,7 +1061,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
   color: #fff;
   text-decoration: none;
   outline: none;
-  background: #f92600;
+  background: #fa2600;
 }
 input[type="submit"]:active {
   top: 1px;
@@ -1134,7 +1134,7 @@ a, a:visited {
   /* mobile tap color */
 }
 a:hover, a:focus, a:visited:hover, a:visited:focus {
-  color: #f92600;
+  color: #fa2600;
 }
 a:link, a:visited:link {
   /*
@@ -1530,7 +1530,7 @@ COMMENT STYLES
   color: #fff;
   text-decoration: none;
   outline: none;
-  background: #f92600;
+  background: #fa2600;
 }
 .comment-reply-link:active {
   top: 1px;
@@ -1599,7 +1599,7 @@ COMMENT FORM STYLES
   color: #fff;
   text-decoration: none;
   outline: none;
-  background: #f92600;
+  background: #fa2600;
 }
 #submit:active {
   top: 1px;
@@ -1771,7 +1771,7 @@ you can add resource intensive styles.
     float: left;
     width: 77%;
     margin: 0 1.5%;
-    margin-left: 11.5%;
+    margin-left: 26.31579%;
   }
 
   /*********************
