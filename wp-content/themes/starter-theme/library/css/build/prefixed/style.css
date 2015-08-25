@@ -1749,23 +1749,23 @@ you can add resource intensive styles.
   #main {
     display: inline;
     float: left;
-    width: 67%;
-    margin: 0 1.5%;
+    width: 64.33333%;
+    margin: 0 1.16667%;
   }
 
   .sidebar {
     display: inline;
     float: left;
-    width: 27%;
-    margin: 0 1.5%;
+    width: 31.0%;
+    margin: 0 1.16667%;
   }
 
   .error404 #main {
     display: inline;
     float: left;
-    width: 77%;
-    margin: 0 1.5%;
-    margin-left: 11.5%;
+    width: 64.33333%;
+    margin: 0 1.16667%;
+    margin-left: 17.83333%;
   }
 
   /*********************
