@@ -130,11 +130,33 @@ function bones_comments( $comment, $args, $depth ) {
 /*
 Fix for jQuery conflict
 */
-function enqueue_scripts() { 
+function enqueue_scripts() {
   wp_deregister_script( 'jquery' );
   wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, false, false );
   wp_enqueue_script( 'jquery' );
 }
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
+
+
+/*
+Add options page for global custom fields
+*/
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title'     => 'Site-Wide Modules',
+        'menu_title'    => 'Site Modules',
+        'menu_slug'     => 'site-modules',
+        'capability'    => 'edit_posts',
+        'redirect'        => false
+    ));
+
+  acf_add_options_sub_page(array(
+    'page_title'     => 'Tracking Snippets',
+    'menu_title'    => 'Tracking',
+    'parent_slug'    => 'theme-general-settings',
+  ));
+
+}
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>
