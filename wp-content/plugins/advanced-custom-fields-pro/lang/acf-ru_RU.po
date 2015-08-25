@@ -5,20 +5,20 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2014-12-11 14:45+1000\n"
-"PO-Revision-Date: 2015-01-23 13:48+0200\n"
-"Last-Translator: Toniyevych Andriy <toniyevych@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2015-03-05 11:27+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.7.4\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language-Team: \n"
 
 #: acf.php:63
 msgid "Advanced Custom Fields"
-msgstr "Расширенные произвольные поля"
+msgstr "Advanced Custom Fields"
 
 #: acf.php:247
 msgid "Field&nbsp;Groups"
@@ -300,7 +300,7 @@ msgstr "Зарегистрированный"
 
 #: admin/field-group.php:1012
 msgid "Move Complete."
-msgstr "Пермещение выполнено."
+msgstr "Перемещение выполнено."
 
 #: admin/field-group.php:1013
 #, php-format
@@ -313,7 +313,7 @@ msgstr "Закрыть окно"
 
 #: admin/field-group.php:1050
 msgid "Please select the destination for this field"
-msgstr "Пожалуйства выберите местоположение для этого поля"
+msgstr "Пожалуйста выберите местоположение для этого поля"
 
 #: admin/field-group.php:1057
 msgid "Move Field"
@@ -586,7 +586,7 @@ msgstr "Обязательное поле"
 
 #: admin/views/field-group-field.php:150
 msgid "Wrapper Attributes"
-msgstr "Аттрибуты "
+msgstr "Атрибуты"
 
 #: admin/views/field-group-field.php:162
 msgid "width"
@@ -630,7 +630,7 @@ msgstr ""
 
 #: admin/views/field-group-fields.php:51
 msgid "Drag and drop to reorder"
-msgstr "Drag-and-drop для переноса"
+msgstr "Перетащите поле для смены очередности"
 
 #: admin/views/field-group-fields.php:54
 msgid "+ Add Field"
@@ -852,7 +852,7 @@ msgstr "Формат"
 
 #: admin/views/field-group-options.php:100
 msgid "Page Attributes"
-msgstr "Аттрибуты страниц"
+msgstr "Атрибуты страницы"
 
 #: admin/views/field-group-options.php:101 fields/relationship.php:792
 msgid "Featured Image"
@@ -948,7 +948,7 @@ msgstr "Импорт"
 
 #: admin/views/settings-info.php:9
 msgid "Welcome to Advanced Custom Fields"
-msgstr "Добро пожаловать на \"Advanced Custom Fields\""
+msgstr "Добро пожаловать в Advanced Custom Fields"
 
 #: admin/views/settings-info.php:10
 #, php-format
@@ -956,14 +956,16 @@ msgid ""
 "Thank you for updating! ACF %s is bigger and better than ever before. We "
 "hope you like it."
 msgstr ""
+"Спасибо за обновление! ACF %s стал больше и лучше. Надеемся, что вам "
+"понравится."
 
 #: admin/views/settings-info.php:25
 msgid "A smoother custom field experience"
-msgstr ""
+msgstr "Максимум удобства и возможностей"
 
 #: admin/views/settings-info.php:30
 msgid "Improved Usability"
-msgstr ""
+msgstr "Больше комфорта"
 
 #: admin/views/settings-info.php:31
 msgid ""
@@ -971,10 +973,13 @@ msgid ""
 "across a number of field types including post object, page link, taxonomy "
 "and select."
 msgstr ""
+"Благодаря популярной библиотеке Select2 мы повысили удобство и скорость "
+"работы многих типов полей, таких как Объект записи, Ссылка на страницу, "
+"Таксономия и Выбор."
 
 #: admin/views/settings-info.php:35
 msgid "Improved Design"
-msgstr ""
+msgstr "Больше дизайна"
 
 #: admin/views/settings-info.php:36
 msgid ""
@@ -982,10 +987,13 @@ msgid ""
 "ever! Noticeable changes are seen on the gallery, relationship and oEmbed "
 "(new) fields!"
 msgstr ""
+"Многие поля поменяли свой внешний вид, чтобы сделать ACF действительно "
+"красивым. Значительные изменения коснулись полей Галерея, Взаимоотношение и "
+"oEmbed (новое поле)!"
 
 #: admin/views/settings-info.php:40
 msgid "Improved Data"
-msgstr ""
+msgstr "Больше данных"
 
 #: admin/views/settings-info.php:41
 msgid ""
@@ -993,19 +1001,21 @@ msgid ""
 "independently from their parents. This allows you to drag and drop fields in "
 "and out of parent fields!"
 msgstr ""
+"Новая архитектура позволяет вложенным полям существовать независимо от "
+"родительских. Просто перетаскивайте их из одного родительского поля в другое."
 
 #: admin/views/settings-info.php:47
 msgid "Goodbye Add-ons. Hello PRO"
-msgstr ""
+msgstr "Забудьте про дополнения. Встречайте PRO"
 
 #: admin/views/settings-info.php:52
 msgid "Introducing ACF PRO"
-msgstr ""
+msgstr "Знакомство с ACF PRO"
 
 #: admin/views/settings-info.php:53
 msgid ""
 "We're changing the way premium functionality is delivered in an exiting way!"
-msgstr ""
+msgstr "Мы поменяли способ представления возможностей Premium!"
 
 #: admin/views/settings-info.php:54
 #, php-format
@@ -1014,10 +1024,13 @@ msgid ""
 "version of ACF</a>. With both personal and developer licenses available, "
 "premium functionality is more affordable and accessible than ever before!"
 msgstr ""
+"Все 4 дополнения Premium включены в новой <a href=\"%s\">Pro-версии ACF</a> "
+"и в лицензии разработчика, и в персональной лицензии. Еще никогда функционал "
+"Premium не был так доступен!"
 
 #: admin/views/settings-info.php:58
 msgid "Powerful Features"
-msgstr ""
+msgstr "Впечатляющий функционал"
 
 #: admin/views/settings-info.php:59
 msgid ""
@@ -1025,15 +1038,18 @@ msgid ""
 "layouts, a beautiful gallery field and the ability to create extra admin "
 "options pages!"
 msgstr ""
+"ACF PRO содержит ряд мощных инструментов, таких как Повторяющиеся данные, "
+"Гибкое содержание и Галерея. Также есть возможность создавать дополнительные "
+"страницы настроек в панели администратора."
 
 #: admin/views/settings-info.php:60
 #, php-format
 msgid "Read more about <a href=\"%s\">ACF PRO features</a>."
-msgstr ""
+msgstr "Узнайте больше о <a href=\"%s\">возможностях ACF PRO</a>."
 
 #: admin/views/settings-info.php:64
 msgid "Easy Upgrading"
-msgstr ""
+msgstr "Простое обновление"
 
 #: admin/views/settings-info.php:65
 #, php-format
@@ -1041,6 +1057,8 @@ msgid ""
 "To help make upgrading easy, <a href=\"%s\">login to your store account</a> "
 "and claim a free copy of ACF PRO!"
 msgstr ""
+"Для перехода на ACF PRO просто <a href=\"%s\">авторизуйтесь личном кабинете</"
+"a> и получите бесплатную лицензию!"
 
 #: admin/views/settings-info.php:66
 #, php-format
@@ -1049,117 +1067,131 @@ msgid ""
 "but if you do have one, please contact our support team via the <a href=\"%s"
 "\">help desk</a>"
 msgstr ""
+"Мы также подготовили <a href=\"%s\">руководство по переходу</a>, чтобы "
+"ответить на все ваши вопросы. Но если все же они появятся, свяжитесь с нашей "
+"командой поддержки через <a href=\"%s\">систему помощи</a>."
 
 #: admin/views/settings-info.php:74
 msgid "Under the Hood"
-msgstr ""
+msgstr "Что под капотом"
 
 #: admin/views/settings-info.php:79
 msgid "Smarter field settings"
-msgstr ""
+msgstr "Умные настройки полей"
 
 #: admin/views/settings-info.php:80
 msgid "ACF now saves its field settings as individual post objects"
-msgstr ""
+msgstr "ACF теперь сохраняет настройки поля как отдельный объект записи"
 
 #: admin/views/settings-info.php:84
 msgid "More AJAX"
-msgstr ""
+msgstr "Больше AJAX"
 
 #: admin/views/settings-info.php:85
 msgid "More fields use AJAX powered search to speed up page loading"
-msgstr ""
+msgstr "Поиск на AJAX в полях значительно ускоряет загрузку страниц"
 
 #: admin/views/settings-info.php:89
 msgid "Local JSON"
-msgstr ""
+msgstr "Локальный JSON"
 
 #: admin/views/settings-info.php:90
 msgid "New auto export to JSON feature improves speed"
-msgstr ""
+msgstr "Новый автоматический экспорт в JSON повышает скорость работы"
 
 #: admin/views/settings-info.php:94
 msgid "Better version control"
-msgstr ""
+msgstr "Контроль версий"
 
 #: admin/views/settings-info.php:95
 msgid ""
 "New auto export to JSON feature allows field settings to be version "
 "controlled"
 msgstr ""
+"Новый автоматический экспорт в JSON позволяет контролировать версию настроек "
+"полей"
 
 #: admin/views/settings-info.php:99
 msgid "Swapped XML for JSON"
-msgstr ""
+msgstr "Swapped XML для JSON"
 
 #: admin/views/settings-info.php:100
 msgid "Import / Export now uses JSON in favour of XML"
-msgstr ""
+msgstr "Импорт / Экспорт теперь использует JSON вместо XML"
 
 #: admin/views/settings-info.php:104
 msgid "New Forms"
-msgstr ""
+msgstr "Новые формы"
 
 #: admin/views/settings-info.php:105
 msgid "Fields can now be mapped to comments, widgets and all user forms!"
 msgstr ""
+"Поля теперь могут быть отображены в комментариях, виджетах и "
+"пользовательских формах!"
 
 #: admin/views/settings-info.php:110
 msgid "A new field for embedding content has been added"
-msgstr ""
+msgstr "Добавлено новое поле для встраиваемого контента"
 
 #: admin/views/settings-info.php:114
 msgid "New Gallery"
-msgstr ""
+msgstr "Новая галерея"
 
 #: admin/views/settings-info.php:115
 msgid "The gallery field has undergone a much needed facelift"
-msgstr ""
+msgstr "Поле галереи претерпело столь необходимое визуальное преображение"
 
 #: admin/views/settings-info.php:119
 msgid "New Settings"
-msgstr ""
+msgstr "Новые настройки"
 
 #: admin/views/settings-info.php:120
 msgid ""
 "Field group settings have been added for label placement and instruction "
 "placement"
 msgstr ""
+"В настройках группы полей теперь можно изменять расположение меток и "
+"подсказок"
 
 #: admin/views/settings-info.php:124
 msgid "Better Front End Forms"
-msgstr ""
+msgstr "Улучшенные формы"
 
 #: admin/views/settings-info.php:125
 msgid "acf_form() can now create a new post on submission"
-msgstr ""
+msgstr "acf_form() теперь может создавать новую запись о представлении"
 
 #: admin/views/settings-info.php:129
 msgid "Better Validation"
-msgstr ""
+msgstr "Улучшенное подтверждение"
 
 #: admin/views/settings-info.php:130
 msgid "Form validation is now done via PHP + AJAX in favour of only JS"
 msgstr ""
+"Подтверждение форм теперь происходит через PHP + AJAX вместо простого JS"
 
 #: admin/views/settings-info.php:134
 msgid "Relationship Field"
-msgstr ""
+msgstr "Взаимоотношение"
 
 #: admin/views/settings-info.php:135
 msgid ""
 "New Relationship field setting for 'Filters' (Search, Post Type, Taxonomy)"
 msgstr ""
+"Новая настройка поля Взаимоотношения для Фильтров (Поиск, Тип записи, "
+"Таксономия)"
 
 #: admin/views/settings-info.php:139
 msgid "Moving Fields"
-msgstr ""
+msgstr "Перемещение полей"
 
 #: admin/views/settings-info.php:140
 msgid ""
 "New field group functionality allows you to move a field between groups & "
 "parents"
 msgstr ""
+"Новый функционал групп полей позволяет перемещать поля между группами и "
+"родительскими полями"
 
 #: admin/views/settings-info.php:144 fields/page_link.php:36
 msgid "Page Link"
@@ -1167,31 +1199,33 @@ msgstr "Ссылка на страницу"
 
 #: admin/views/settings-info.php:145
 msgid "New archives group in page_link field selection"
-msgstr ""
+msgstr "Новая группа архивов в выборе поля page_link"
 
 #: admin/views/settings-info.php:149
 msgid "Better Options Pages"
-msgstr ""
+msgstr "Страницы настроек"
 
 #: admin/views/settings-info.php:150
 msgid ""
 "New functions for options page allow creation of both parent and child menu "
 "pages"
 msgstr ""
+"Новые функции для страницы настроек позволяют создавать и родительские, и "
+"дочерние меню"
 
 #: admin/views/settings-info.php:158
 #, php-format
 msgid "We think you'll love the changes in %s."
-msgstr ""
+msgstr "Думаем, вам понравятся изменения в %s."
 
 #: admin/views/update-notice.php:22
 msgid "ACF PRO Required"
-msgstr ""
+msgstr "Необходим ACF PRO"
 
 #: admin/views/update-notice.php:24 admin/views/update-notice.php:36
 #, php-format
 msgid "Thank you for updating to %s v%s!"
-msgstr ""
+msgstr "Благодарим вас за обновление до %s v%s!"
 
 #: admin/views/update-notice.php:26
 #, php-format
@@ -1199,66 +1233,74 @@ msgid ""
 "We have detected an issue which requires your attention: This website makes "
 "use of premium add-ons (%s) which are no longer compatible with ACF."
 msgstr ""
+"Мы обнаружили ситуацию, требующую вашего внимания: Этот сайт использует "
+"дополнения Premium (%s), которые больше не поддерживаются ACF."
 
 #: admin/views/update-notice.php:28
 msgid ""
 "Don't panic, you can simply roll back the plugin and continue using ACF as "
 "you know it!"
 msgstr ""
+"Не волнуйтесь, вы можете просто откатить плагин и продолжить использовать "
+"знакомый вам ACF."
 
 #: admin/views/update-notice.php:30
 #, php-format
 msgid "Roll back to ACF v%s"
-msgstr ""
+msgstr "Вернуться к ACF  v%s"
 
 #: admin/views/update-notice.php:30
 msgid "Learn why ACF PRO is required for my site"
-msgstr ""
+msgstr "Узнать, почему ACF PRO необходим моему сайту"
 
 #: admin/views/update-notice.php:34
 msgid "Database Upgrade Required"
-msgstr ""
+msgstr "Необходимо обновление базы данных"
 
 #: admin/views/update-notice.php:36
 msgid ""
 "Before you start using the new awesome features, please update your database "
 "to the newest version."
 msgstr ""
+"Прежде чем вы начнете использовать классные новые функции, обновите "
+"пожалуйста базу данных до последней версии."
 
 #: admin/views/update-notice.php:38
 msgid "Update Database"
-msgstr ""
+msgstr "Обновление базы данных"
 
 #: admin/views/update-notice.php:45
 msgid ""
 "It is strongly recommended that you backup your database before proceeding. "
 "Are you sure you wish to run the updater now?"
 msgstr ""
+"Мы настоятельно рекомендуем сделать резервную копию базы данных перед "
+"началом работы. Вы уверены, что хотите запустить обновление сейчас?"
 
 #: admin/views/update.php:9
 msgid "Data Upgrade"
-msgstr ""
+msgstr "Обновление данных"
 
 #: admin/views/update.php:13
 msgid "Reading upgrade tasks..."
-msgstr ""
+msgstr "Чтения задач обновления..."
 
 #: admin/views/update.php:19
 #, php-format
 msgid "Upgrading data to version %s"
-msgstr ""
+msgstr "Обновление данных до версии %s"
 
 #: admin/views/update.php:25
 msgid "Data upgraded successfully."
-msgstr ""
+msgstr "Данные успешно обновлены."
 
 #: admin/views/update.php:27
 msgid "See what's new"
-msgstr ""
+msgstr "Посмотрите, что изменилось"
 
 #: admin/views/update.php:31
 msgid "Data is at the latest version."
-msgstr ""
+msgstr "Версия данных является последней."
 
 #: api/api-helpers.php:1165
 msgid "Thumbnail"
@@ -1703,7 +1745,7 @@ msgstr "Фильтрация по таксономии"
 #: fields/page_link.php:543 fields/post_object.php:481
 #: fields/relationship.php:767
 msgid "No taxonomy filter"
-msgstr "Фильтрация по таксономии отсуствует"
+msgstr "Фильтрация по таксономии отсутствует"
 
 #: fields/page_link.php:549 fields/post_object.php:487 fields/select.php:391
 #: fields/taxonomy.php:727 fields/user.php:372
@@ -1750,7 +1792,7 @@ msgstr "Сохранить значения"
 
 #: fields/radio.php:216
 msgid "Save 'other' values to the field's choices"
-msgstr "Сохранить настраиваеміе значения для поля вібора"
+msgstr "Сохранить настраиваемые значения для поля выбора"
 
 #: fields/relationship.php:36
 msgid "Relationship"
@@ -1766,7 +1808,7 @@ msgstr "Загрузка"
 
 #: fields/relationship.php:49
 msgid "No matches found"
-msgstr "Совпадения не найдені"
+msgstr "Совпадения не найдены"
 
 #: fields/relationship.php:637
 msgid "Search..."
@@ -1806,7 +1848,7 @@ msgstr "Выбор"
 
 #: fields/select.php:419
 msgid "Stylised UI"
-msgstr "Стилизированный интерфейс"
+msgstr "Стилизованный интерфейс"
 
 #: fields/select.php:433
 msgid "Use AJAX to lazy load choices?"
@@ -2273,7 +2315,7 @@ msgstr[2] "%s требует как минимум %s выбранных зна�
 
 #: pro/fields/repeater.php:36
 msgid "Repeater"
-msgstr "Порторитель"
+msgstr "Повторитель"
 
 #: pro/fields/repeater.php:46
 msgid "Minimum rows reached ({min} rows)"
