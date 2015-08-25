@@ -154,7 +154,7 @@ if( function_exists('acf_add_options_page') ) {
   acf_add_options_sub_page(array(
     'page_title'     => 'Tracking Snippets',
     'menu_title'    => 'Tracking',
-    'parent_slug'    => 'theme-general-settings',
+    'parent_slug'    => 'site-modules',
   ));
 
 }
