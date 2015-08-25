@@ -6,7 +6,7 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 ### Install Grunt
 
-Install grunt by navigating to the theme's `library` folder and type `npm install --save-dev`
+Install grunt by navigating to the theme's `library` folder and running `npm install`
 
 To start watching files use `grunt watch` from the `library` folder
 
@@ -41,4 +41,4 @@ This is the plugin that we use to create our landing pages. We use this because 
 
 ### RICG Responsive Images
 
-This is new to the starter theme as of August 2015. We are implementing this to take advantage of responsive images. 
+This is new to the starter theme as of August 2015. We are implementing this to take advantage of responsive images.
