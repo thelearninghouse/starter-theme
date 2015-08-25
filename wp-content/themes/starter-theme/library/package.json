@@ -1,5 +1,10 @@
 {
   "name": "starter",
+  "description": "A starter theme for OLC sites",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thelearninghouse/starter-theme.git"
+  },
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.1",
