@@ -1,3 +1,4 @@
 .DS_Store
 /wp-content/themes/starter-theme/library/scss/.sass-cache
 /wp-content/themes/starter-theme/library/node_modules
+wp-config.php
