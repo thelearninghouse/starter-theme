@@ -156,6 +156,31 @@ if( function_exists('acf_add_options_page') ) {
     'menu_title'    => 'Tracking',
     'parent_slug'    => 'site-modules',
   ));
+}
+
+
+/***************************
+ Maintentance Notifications
+***************************/
+
+if ( get_field( 'activate_maintenance_mode', 'options' ) ) {
+
+  function wps_wp_admin_area_notice() {
+     echo ' <div class="error" style="background:red; color:white; padding:10px 5px;">'. get_field( 'maintenance_message', 'options' ) .'</div>';
+  }
+  add_action( 'admin_notices', 'wps_wp_admin_area_notice' );
+
+  //* Add custom message to WordPress login page
+
+  function smallenvelop_login_message( $message ) {
+      if ( empty($message) ){
+          return "<p class='login-error' style='color:red;'><strong>". get_field( 'maintenance_message', 'options' ) ."</strong></p>";
+      } else {
+          return $message;
+      }
+  }
+
+  add_filter( 'login_message', 'smallenvelop_login_message' );
 
 }
 
