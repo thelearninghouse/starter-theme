@@ -7,7 +7,7 @@ module.exports = {
         authKey: 'staging'
       },
       cache: 'sftpCache.json',
-      src: '/Users/user/Sites/starter-theme/wp-content/themes/starter-theme',
+      src: '/Applications/MAMP/htdocs/starter/wp-content/themes/starter-theme',
       dest: 'wp-content/themes/starter-theme',
       exclusions: [
         '.ftppass',
