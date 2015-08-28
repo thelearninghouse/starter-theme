@@ -161,7 +161,7 @@ if( function_exists('acf_add_options_page') ) {
 
 /***************************
  Maintentance Notifications
-***************************/
+
 
 if ( get_field( 'activate_maintenance_mode', 'options' ) ) {
 
@@ -183,5 +183,5 @@ if ( get_field( 'activate_maintenance_mode', 'options' ) ) {
   add_filter( 'login_message', 'smallenvelop_login_message' );
 
 }
-
+***************************/
 /* DON'T DELETE THIS CLOSING TAG */ ?>
