@@ -20,7 +20,7 @@ class GF_Field_SingleShipping extends GF_Field {
 	}
 
 	public function get_field_input( $form, $value = '', $entry = null ) {
-		$form_id         = $form['id'];
+		$form_id         = absint( $form['id'] );
 		$is_entry_detail = $this->is_entry_detail();
 		$is_form_editor  = $this->is_form_editor();
 
@@ -33,6 +33,8 @@ class GF_Field_SingleShipping extends GF_Field {
 		if ( empty( $price ) ) {
 			$price = 0;
 		}
+
+		$price = esc_attr( $price );
 
 		return "<div class='ginput_container'>
 					<input type='hidden' name='input_{$id}' value='{$price}' class='gform_hidden'/>

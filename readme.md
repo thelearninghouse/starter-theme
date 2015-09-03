@@ -31,10 +31,6 @@ This core wordpress install comes equipped with a couple handy plugins that we s
 
 There isn't much this plugin can't do including but not limited to: repeater fields, flexible content and global theme options. Documentation can be found [here](http://www.advancedcustomfields.com/pro/)
 
-### Widget Context
-
-A super handy plugin that allows you to specify where widgets get displayed. Instead of multiple sidebars this makes it easy to show different content on different pages.
-
 ### Parallax Gravity
 
 This is the plugin that we use to create our landing pages. We use this because it has a great builder feature and also uses repeatable modules to make creating new pages super easy. Check out the documentation for more information [here](http://sakuraplugins.com/docs/gravity_documentation/)

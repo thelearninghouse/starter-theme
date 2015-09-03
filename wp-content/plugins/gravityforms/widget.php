@@ -17,17 +17,18 @@ if ( ! class_exists( 'GFWidget' ) ) {
 
 		function __construct() {
 
-			// Initializing translations. Translation files in the WP_LANG_DIR folder have a higher priority.
-			$locale = apply_filters( 'plugin_locale', get_locale(), 'gravityforms' );
-			load_textdomain( 'gravityforms', WP_LANG_DIR . '/gravityforms/gravityforms-' . $locale . '.mo' );
-			load_plugin_textdomain( 'gravityforms', false, '/gravityforms/languages' );
+			//load text domains
+			GFCommon::load_gf_text_domain( 'gravityforms' );
 
 			$description = esc_html__( 'Gravity Forms Widget', 'gravityforms' );
-			$this->WP_Widget(
-				'gform_widget', __( 'Form', 'gravityforms' ),
+
+			WP_Widget::__construct( 
+				'gform_widget',
+				__( 'Form', 'gravityforms' ),
 				array( 'classname' => 'gform_widget', 'description' => $description ),
 				array( 'width' => 200, 'height' => 250, 'id_base' => 'gform_widget' )
 			);
+
 		}
 
 		function widget( $args, $instance ) {

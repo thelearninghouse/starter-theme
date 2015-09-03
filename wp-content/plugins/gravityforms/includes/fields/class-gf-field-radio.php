@@ -10,7 +10,7 @@ class GF_Field_Radio extends GF_Field {
 	public $type = 'radio';
 
 	public function get_form_editor_field_title() {
-		return __( 'Radio Buttons', 'gravityforms' );
+		return esc_attr__( 'Radio Buttons', 'gravityforms' );
 	}
 
 	function get_form_editor_field_settings() {
@@ -42,7 +42,7 @@ class GF_Field_Radio extends GF_Field {
 
 		if ( $this->isRequired && $this->enableOtherChoice && $value == GFCommon::get_other_choice_value() ) {
 			$this->failed_validation  = true;
-			$this->validation_message = empty( $this->errorMessage ) ? __( 'This field is required.', 'gravityforms' ) : $this->errorMessage;
+			$this->validation_message = empty( $this->errorMessage ) ? esc_html__( 'This field is required.', 'gravityforms' ) : $this->errorMessage;
 		}
 	}
 
@@ -112,7 +112,7 @@ class GF_Field_Radio extends GF_Field {
 				// handle 'other' choice
 				if ( rgar( $choice, 'isOtherChoice' ) ) {
 
-					$onfocus = ! $is_admin ? 'jQuery(this).prev("input").attr("checked", true); if(jQuery(this).val() == "' . $other_default_value . '") { jQuery(this).val(""); }' : '';
+					$onfocus = ! $is_admin ? 'jQuery(this).prev("input")[0].click(); if(jQuery(this).val() == "' . $other_default_value . '") { jQuery(this).val(""); }' : '';
 					$onblur  = ! $is_admin ? 'if(jQuery(this).val().replace(" ", "") == "") { jQuery(this).val("' . $other_default_value . '"); }' : '';
 					$onkeyup = $this->get_conditional_logic_event( 'keyup' );
 
@@ -128,12 +128,16 @@ class GF_Field_Radio extends GF_Field {
 					} else {
 						$other_value = $other_default_value;
 					}
-					$label = "<input id='input_{$this->formId}_{$this->id}_other' name='input_{$this->id}_other' type='text' value='" . esc_attr( $other_value ) . "' onfocus='$onfocus' onblur='$onblur' $tabindex $onkeyup $disabled_text />";
+
+					$label = "<input id='input_{$this->formId}_{$this->id}_other' name='input_{$this->id}_other' type='text' value='" . esc_attr( $other_value ) . "' aria-label='" . esc_attr__( 'Other', 'gravityforms' ) . "' onfocus='$onfocus' onblur='$onblur' $tabindex $onkeyup $disabled_text />";
 				}
 
 				$choice_markup = sprintf( "<li class='gchoice_$id'><input name='input_%d' type='radio' value='%s' %s id='choice_%s' $tabindex %s $logic_event %s />%s</li>", $this->id, esc_attr( $field_value ), $checked, $id, $disabled_text, $input_focus, $label );
 
-				$choices .= apply_filters( 'gform_field_choice_markup_pre_render_' . $this->formId, apply_filters( 'gform_field_choice_markup_pre_render', $choice_markup, $choice, $this, $value ), $choice, $this, $value );
+				$choices .= gf_apply_filters( 'gform_field_choice_markup_pre_render', array(
+					$this->formId,
+					$this->id
+				), $choice_markup, $choice, $this, $value );
 
 				if ( $is_form_editor && $count >= 5 ) {
 					break;
@@ -144,11 +148,11 @@ class GF_Field_Radio extends GF_Field {
 
 			$total = sizeof( $this->choices );
 			if ( $count < $total ) {
-				$choices .= "<li class='gchoice_total'>" . sprintf( __( '%d of %d items shown. Edit field to view all', 'gravityforms' ), $count, $total ) . '</li>';
+				$choices .= "<li class='gchoice_total'>" . sprintf( esc_html__( '%d of %d items shown. Edit field to view all', 'gravityforms' ), $count, $total ) . '</li>';
 			}
 		}
 
-		return apply_filters( 'gform_field_choices_' . $this->formId, apply_filters( 'gform_field_choices', $choices, $this ), $this );
+		return gf_apply_filters( 'gform_field_choices', $this->formId, $choices, $this );
 	}
 
 	public function get_value_default() {
@@ -226,6 +230,16 @@ class GF_Field_Radio extends GF_Field {
 
 	public function allow_html() {
 		return true;
+	}
+
+	public function get_value_export( $entry, $input_id = '', $use_text = false, $is_csv = false ) {
+		if ( empty( $input_id ) ) {
+			$input_id = $this->id;
+		}
+
+		$value = rgar( $entry, $input_id );
+
+		return $is_csv ? $value : GFCommon::selection_display( $value, $this, rgar( $entry, 'currency' ), $use_text );
 	}
 }
 

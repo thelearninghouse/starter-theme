@@ -39,7 +39,7 @@ Class GFNotification {
 
 		$form = RGFormsModel::get_form_meta( $form_id );
 
-		$form = apply_filters( "gform_form_notification_page_{$form_id}", apply_filters( 'gform_form_notification_page', $form, $notification_id ), $notification_id );
+		$form = gf_apply_filters( 'gform_form_notification_page', $form_id, $form, $notification_id );
 
 		$notification = ! $notification_id ? array() : self::get_notification( $form, $notification_id );
 
@@ -56,7 +56,6 @@ Class GFNotification {
 			//clear out notification because it could have legacy data populated
 			$notification = array( 'isActive' => isset( $notification['isActive'] ) ? rgar( $notification, 'isActive' ) : true );
 
-
 			$is_update = true;
 
 			if ( $is_new_notification ) {
@@ -66,24 +65,43 @@ Class GFNotification {
 				$notification['id'] = $notification_id;
 			}
 
-			$notification['name']              = rgpost( 'gform_notification_name' );
-			$notification['event']             = rgpost( 'gform_notification_event' );
+			$notification['name']              = sanitize_text_field( rgpost( 'gform_notification_name' ) );
+			$notification['event']             = sanitize_text_field( rgpost( 'gform_notification_event' ) );
 			$notification['to']                = rgpost( 'gform_notification_to_type' ) == 'field' ? rgpost( 'gform_notification_to_field' ) : rgpost( 'gform_notification_to_email' );
-			$notification['toType']            = rgpost( 'gform_notification_to_type' );
+			$to_type = rgpost( 'gform_notification_to_type' );
+			if ( ! in_array( $to_type, array( 'email', 'field', 'routing', 'hidden' ) ) ) {
+				$to_type = 'email';
+			}
+			$notification['toType']            = $to_type;
+
 			$notification['bcc']               = rgpost( 'gform_notification_bcc' );
-			$notification['subject']           = rgpost( 'gform_notification_subject' );
+			$notification['subject']           = sanitize_text_field( rgpost( 'gform_notification_subject' ) );
+
 			$notification['message']           = rgpost( 'gform_notification_message' );
-			$notification['from']              = rgpost( 'gform_notification_from' );
-			$notification['fromName']          = rgpost( 'gform_notification_from_name' );
+
+			$notification['from']              = sanitize_text_field( rgpost( 'gform_notification_from' ) );
+			$notification['fromName']          = sanitize_text_field( rgpost( 'gform_notification_from_name' ) );
+
 			$notification['replyTo']           = rgpost( 'gform_notification_reply_to' );
-			$notification['routing']           = ! rgempty( 'gform_routing_meta' ) ? GFCommon::json_decode( rgpost( 'gform_routing_meta' ), true ) : null;
-			$notification['conditionalLogic']  = ! rgempty( 'gform_conditional_logic_meta' ) ? GFCommon::json_decode( rgpost( 'gform_conditional_logic_meta' ), true ) : null;
-			$notification['disableAutoformat'] = rgpost( 'gform_notification_disable_autoformat' );
+			$routing          = ! rgempty( 'gform_routing_meta' ) ? GFCommon::json_decode( rgpost( 'gform_routing_meta' ), true ) : null;
+			if ( ! empty ( $routing ) ) {
+				$routing_logic = array( 'rules' => $routing );
+				$routing_logic = GFFormsModel::sanitize_conditional_logic( $routing_logic );
+				$notification['routing'] = $routing_logic['rules'];
+			}
+
+			$notification['routing'] = $routing;
+
+			$conditional_logic  = ! rgempty( 'gform_conditional_logic_meta' ) ? GFCommon::json_decode( rgpost( 'gform_conditional_logic_meta' ), true ) : null;
+
+			$notification['conditionalLogic'] = GFFormsModel::sanitize_conditional_logic( $conditional_logic );
+
+			$notification['disableAutoformat'] = (bool) rgpost( 'gform_notification_disable_autoformat' );
 
 			if ( rgpost( 'gform_is_default' ) ) {
 				$notification['isDefault'] = true;
 			}
-			$notification = apply_filters( 'gform_pre_notification_save', apply_filters( "gform_pre_notification_save{$form['id']}", $notification, $form, $is_new_notification ), $form, $is_new_notification );
+			$notification = gf_apply_filters( 'gform_pre_notification_save', $form_id, $notification, $form, $is_new_notification );
 
 			//validating input...
 			$is_valid = self::validate_notification();
@@ -534,7 +552,7 @@ Class GFNotification {
 		$ui_settings = array();
 		$form_id     = rgget( 'id' );
 		$form        = RGFormsModel::get_form_meta( $form_id );
-		$form        = apply_filters( 'gform_admin_pre_render_' . $form_id, apply_filters( 'gform_admin_pre_render', $form ) );
+		$form        = gf_apply_filters( 'gform_admin_pre_render', $form_id, $form );
 		$is_valid    = empty( GFCommon::$errors );
 
 		ob_start(); ?>
@@ -646,7 +664,7 @@ Class GFNotification {
 		<?php $ui_settings['notification_to_email'] = ob_get_contents();
 		ob_clean(); ?>
 
-		<?php $email_fields = apply_filters( "gform_email_fields_notification_admin_{$form['id']}", apply_filters( 'gform_email_fields_notification_admin', GFCommon::get_email_fields( $form ), $form ), $form ); ?>
+		<?php $email_fields = gf_apply_filters( 'gform_email_fields_notification_admin', $form['id'], GFCommon::get_email_fields( $form ), $form ); ?>
 		<tr id="gform_notification_to_field_container" class="notification_to_container <?php echo esc_attr( $send_to_class ) ?>" <?php echo $notification_to_type != 'field' ? "style='display:none';" : '' ?>>
 			<?php echo $subsetting_open; ?>
 			<th scope="row"><?php esc_html_e( 'Send to Field', 'gravityforms' ) ?></th>
@@ -777,12 +795,16 @@ Class GFNotification {
 		<tr valign="top">
 			<th scope="row">
 				<label for="gform_notification_reply_to">
+					<?php
+					$is_invalid_reply_to = ! $is_valid && ! self::is_valid_notification_email( rgar( $notification, 'replyTo' ) );
+					$class           = $is_invalid_reply_to ? ' gfield_error' : '';
+					?>
 					<?php esc_html_e( 'Reply To', 'gravityforms' ); ?>
 					<?php gform_tooltip( 'notification_reply_to' ) ?>
 				</label>
 			</th>
 			<td>
-				<input type="text" name="gform_notification_reply_to" id="gform_notification_reply_to" class="merge-tag-support mt-hide_all_fields" value="<?php echo esc_attr( rgget( 'replyTo', $notification ) ) ?>" class="fieldwidth-2" />
+				<input type="text" name="gform_notification_reply_to" id="gform_notification_reply_to" class="merge-tag-support mt-hide_all_fields fieldwidth-2<?php echo $class ?>" value="<?php echo esc_attr( rgget( 'replyTo', $notification ) ) ?>" />
 			</td>
 		</tr> <!-- / reply to -->
 		<?php $ui_settings['notification_reply_to'] = ob_get_contents();
@@ -796,7 +818,11 @@ Class GFNotification {
 				</label>
 			</th>
 			<td>
-				<input type="text" name="gform_notification_bcc" id="gform_notification_bcc" value="<?php echo esc_attr( rgget( 'bcc', $notification ) ) ?>" class="fieldwidth-1" />
+				<?php
+				$is_invalid_bcc = ! $is_valid && ! self::is_valid_notification_email( rgar( $notification, 'bcc' ) );
+				$class           = $is_invalid_bcc ? ' gfield_error' : '';
+				?>
+				<input type="text" name="gform_notification_bcc" id="gform_notification_bcc" value="<?php echo esc_attr( rgget( 'bcc', $notification ) ) ?>" class="merge-tag-support mt-hide_all_fields fieldwidth-2<?php echo $class ?>" />
 			</td>
 		</tr> <!-- / bcc -->
 		<?php $ui_settings['notification_bcc'] = ob_get_contents();
@@ -902,13 +928,25 @@ Class GFNotification {
 
 		<?php
 		ob_end_clean();
-		$ui_settings = apply_filters( "gform_notification_ui_settings_{$form_id}", apply_filters( 'gform_notification_ui_settings', $ui_settings, $notification, $form ), $notification, $form );
+		$ui_settings = gf_apply_filters( 'gform_notification_ui_settings', $form_id, $ui_settings, $notification, $form );
 
 		return $ui_settings;
 	}
 
 	private static function validate_notification() {
 		$is_valid = self::is_valid_notification_to() && ! rgempty( 'gform_notification_subject' ) && ! rgempty( 'gform_notification_message' );
+
+		$bcc = rgpost( 'gform_notification_bcc' );
+		if ( ! empty( $bcc ) && ! self::is_valid_notification_email( $bcc ) ) {
+			$is_valid = false;
+			GFCommon::add_error_message( esc_html__( 'Please enter a valid email address or merge tag in the BCC field.', 'gravityforms' ) );
+		}
+
+		$reply_to = rgpost( 'gform_notification_reply_to' );
+		if ( ! empty( $reply_to ) && ! self::is_valid_notification_email( $reply_to ) ) {
+			$is_valid = false;
+			GFCommon::add_error_message( esc_html__( 'Please enter a valid email address or merge tag in the Reply To field.', 'gravityforms' ) );
+		}
 
 		return $is_valid;
 	}
@@ -1132,6 +1170,7 @@ class GFNotificationTable extends WP_List_Table {
 			),
 			array(),
 			array(),
+			'name',
 		);
 
 		parent::__construct();
@@ -1177,6 +1216,10 @@ class GFNotificationTable extends WP_List_Table {
 		echo '<tr id="notification-' . esc_attr( $item['id'] ) . '" ' . $row_class . '>';
 		echo $this->single_row_columns( $item );
 		echo '</tr>';
+	}
+	
+	function get_columns() {
+		return $this->_column_headers[0];
 	}
 
 	function column_default( $item, $column ) {
