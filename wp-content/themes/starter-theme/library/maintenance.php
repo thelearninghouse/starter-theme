@@ -3,23 +3,44 @@
 This is where we include the custom theme setting for Maintenance Alerts
 *****************************************************************************/
 
+// Add Settins Page
 add_action( 'admin_menu', 'mnt_add_admin_menu' );
+
+// Add Admin Settings
 add_action( 'admin_init', 'mnt_settings_init' );
 
+// Add Link to Menu
 function mnt_add_admin_menu(  ) {
 	add_menu_page( 'Maintenance', 'Maintenance', 'manage_options', 'maintenance', 'mnt_options_page' );
 }
 
+// Content of the Setting Page
+function mnt_options_page(  ) { ?>
+
+	<form action='options.php' method='post'>
+		<h2>Maintenance</h2>
+		<?php
+			settings_fields( 'pluginPage' );
+			do_settings_sections( 'pluginPage' );
+			submit_button();
+		?>
+	</form>
+
+	<?php }
+
 function mnt_settings_init(  ) {
 	register_setting( 'pluginPage', 'mnt_settings' );
 
+	// Add Section
 	add_settings_section(
 		'mnt_pluginPage_section',
-		__( 'This will turn on a maintenance option for all wordpress users on the dashboard and login page.', 'wordpress' ),
+		__( 'Maintenance Alert', 'wordpress' ),
 		'mnt_settings_section_callback',
 		'pluginPage'
 	);
 
+
+  // Add Checkbox
 	add_settings_field(
 		'mnt_checkbox_field_0',
 		__( 'Turn Maintenance Message On', 'wordpress' ),
@@ -29,6 +50,12 @@ function mnt_settings_init(  ) {
 	);
 }
 
+// Section text
+function mnt_settings_section_callback(  ) {
+	echo '<p>This will turn on a maintenance option for all wordpress users on the dashboard and login page.</p>';
+}
+
+// The Checkbox Field
 function mnt_checkbox_field_0_render(  ) {
 
   $options = get_option( 'mnt_settings' );
@@ -38,6 +65,7 @@ function mnt_checkbox_field_0_render(  ) {
 
 }
 
+// Turn on Notification when the box is checked and saved
 $options = get_option( 'mnt_settings' );
 if( $options['mnt_checkbox_field_0'] == '1' ) {
     // Add custom message to WordPress dashboard
@@ -57,20 +85,4 @@ if( $options['mnt_checkbox_field_0'] == '1' ) {
     }
   }
 
-function mnt_settings_section_callback(  ) {}
-
-function mnt_options_page(  ) { ?>
-
-	<form action='options.php' method='post'>
-
-		<h2>Maintenance</h2>
-
-		<?php
-			settings_fields( 'pluginPage' );
-			do_settings_sections( 'pluginPage' );
-			submit_button();
-		?>
-
-	</form>
-
-	<?php } ?>
+?>
