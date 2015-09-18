@@ -18,7 +18,6 @@ function mnt_add_admin_menu(  ) {
 function mnt_options_page(  ) { ?>
 
 	<form action='options.php' method='post'>
-		<h2>Maintenance</h2>
 		<?php
 			settings_fields( 'pluginPage' );
 			do_settings_sections( 'pluginPage' );
