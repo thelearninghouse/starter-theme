@@ -60,14 +60,14 @@ function mnt_checkbox_field_0_render(  ) {
 
   $options = get_option( 'mnt_settings' );
   ?>
-  <input type='checkbox' name='mnt_settings[mnt_checkbox_field_0]' <?php checked( $options['mnt_checkbox_field_0'], 1 ); ?> value='1'>
+  <input type='checkbox' name='mnt_settings[mnt_checkbox_field_0]' <?php checked( (is_array($options) && $options['mnt_checkbox_field_0'] == '1'), 1 ); ?> value='1'>
   <?php
 
 }
 
 // Turn on Notification when the box is checked and saved
 $options = get_option( 'mnt_settings' );
-if( $options['mnt_checkbox_field_0'] == '1' ) {
+if (is_array($options) && $options['mnt_checkbox_field_0'] == '1') {
     // Add custom message to WordPress dashboard
     add_action( 'admin_notices', 'wps_wp_admin_area_notice' );
     function wps_wp_admin_area_notice() {
