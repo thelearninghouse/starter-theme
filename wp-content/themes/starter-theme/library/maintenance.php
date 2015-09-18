@@ -29,7 +29,6 @@ function mnt_settings_init(  ) {
 	);
 }
 
-
 function mnt_checkbox_field_0_render(  ) {
 
   $options = get_option( 'mnt_settings' );
@@ -39,44 +38,39 @@ function mnt_checkbox_field_0_render(  ) {
 
 }
 
-  $options = get_option( 'mnt_settings' );
-  if( $options['mnt_checkbox_field_0'] == '1' ) {
-      // Add custom message to WordPress dashboard
-      add_action( 'admin_notices', 'wps_wp_admin_area_notice' );
-      function wps_wp_admin_area_notice() {
-         echo ' <div class="error" style="background:red; color:white; padding:10px 5px; margin-left:0; margin-top: 20px;">This website is currently under development. Please DO NOT make any content changes unless approved by web development.</div>';
-      }
-
-      // Add custom message to WordPress login page
-      add_filter( 'login_message', 'smallenvelop_login_message' );
-      function smallenvelop_login_message() {
-        if ( empty($message) ){
-            return "<p class='login-error' style='background:red; color:white; padding:10px 5px;'><strong>This website is currently under development. Please DO NOT make any content changes unless approved by web development.</strong></p>";
-        } else {
-            return $message;
-        }
-      }
+$options = get_option( 'mnt_settings' );
+if( $options['mnt_checkbox_field_0'] == '1' ) {
+    // Add custom message to WordPress dashboard
+    add_action( 'admin_notices', 'wps_wp_admin_area_notice' );
+    function wps_wp_admin_area_notice() {
+       echo ' <div class="error" style="background:red; color:white; padding:10px 5px; margin-left:0; margin-top: 20px;">This website is currently under development. Please DO NOT make any content changes unless approved by web development.</div>';
     }
 
+    // Add custom message to WordPress login page
+    add_filter( 'login_message', 'smallenvelop_login_message' );
+    function smallenvelop_login_message() {
+      if ( empty($message) ){
+          return "<p class='login-error' style='background:red; color:white; padding:10px 5px;'><strong>This website is currently under development. Please DO NOT make any content changes unless approved by web development.</strong></p>";
+      } else {
+          return $message;
+      }
+    }
+  }
 
 function mnt_settings_section_callback(  ) {}
 
-function mnt_options_page(  ) {
+function mnt_options_page(  ) { ?>
 
-	?>
 	<form action='options.php' method='post'>
 
 		<h2>Maintenance</h2>
 
 		<?php
-		settings_fields( 'pluginPage' );
-		do_settings_sections( 'pluginPage' );
-		submit_button();
+			settings_fields( 'pluginPage' );
+			do_settings_sections( 'pluginPage' );
+			submit_button();
 		?>
 
 	</form>
-	<?php
 
-}
-
-?>
+	<?php } ?>
