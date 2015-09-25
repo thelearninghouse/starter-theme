@@ -501,6 +501,9 @@ COLORS
 Need help w/ choosing your colors? Try this site out:
 http://0to255.com/
 *********************/
+/*********************
+OTHER VARIABLES
+*********************/
 /******************************************************************
 Site Name:
 Author:
@@ -784,6 +787,12 @@ BOX SIZING
 /* @include box-sizing(border-box); */
 /* NOTE: value of "padding-box" is only supported in Gecko. So
 probably best not to use it. I mean, were you going to anyway? */
+/*********************
+RESPONSIVE IMAGE MIXIN
+*********************/
+/*********************
+HIDE AN ELEMENT
+*********************/
 /* ==========================================================================
    Media Queries
    - Mobile

@@ -70,4 +70,30 @@ probably best not to use it. I mean, were you going to anyway? */
 	box-sizing:         $type;
 }
 
+/*********************
+RESPONSIVE IMAGE MIXIN
+*********************/
 
+@mixin img-replace($img, $w, $h, $display: block) {
+    background-image: url('#{$path--rel}/#{$img}');
+    background-repeat: no-repeat;
+    width: $w;
+    height: $h;
+    display: $display;
+};
+
+
+/*********************
+HIDE AN ELEMENT
+*********************/
+
+%visuallyhidden {
+      margin: -1px;
+        padding: 0;
+          width: 1px;
+            height: 1px;
+              overflow: hidden;
+                clip: rect(0 0 0 0);
+                  clip: rect(0, 0, 0, 0);
+                    position: absolute;
+                }
