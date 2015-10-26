@@ -586,26 +586,6 @@ https://github.com/devinhunt/typebase.css
 I've edited it a bit, but it's a nice starting point.
 */
 /*
-some nice typographical defaults
-more here: http://www.newnet-soft.com/blog/csstypography
-*/
-p {
-  -ms-word-wrap: break-word;
-  word-break: break-word;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-      hyphens: auto;
-  -webkit-hyphenate-before: 2;
-  -webkit-hyphenate-after: 3;
-  hyphenate-lines: 3;
-  -webkit-font-feature-settings: "liga", "dlig";
-  -ms-font-feature-settings: "liga", "dlig";
-  font-feature-settings: "liga", "dlig";
-}
-
-/*
 A More Modern Type Scale from Typecast
 http://typecast.com/blog/a-more-modern-scale-for-web-typography
 */
@@ -704,51 +684,6 @@ blockquote {
 Site Name:
 Author:
 
-Stylesheet: Sass Functions
-
-You can do a lot of really cool things in Sass. Functions help you
-make repeated actions a lot easier. They are really similar to mixins,
-but can be used for so much more.
-
-Anyway, keep them all in here so it's easier to find when you're
-looking for one.
-
-For more info on functions, go here:
-http://sass-lang.com/documentation/Sass/Script/Functions.html
-
-******************************************************************/
-/*********************
-COLOR FUNCTIONS
-These are helpful when you're working
-with shadows and such things. It's essentially
-a quicker way to write RGBA.
-
-Example:
-box-shadow: 0 0 4px black(0.3);
-compiles to:
-box-shadow: 0 0 4px rgba(0,0,0,0.3);
-*********************/
-/*********************
-RESPONSIVE HELPER FUNCTION
-If you're creating a responsive site, then
-you've probably already read
-Responsive Web Design: http://www.abookapart.com/products/responsive-web-design
-
-Here's a nice little helper function for calculating
-target / context
-as mentioned in that book.
-
-Example:
-width: cp(650px, 1000px);
-or
-width: calc-percent(650px, 1000px);
-both compile to:
-width: 65%;
-*********************/
-/******************************************************************
-Site Name:
-Author:
-
 Stylesheet: Mixins Stylesheet
 
 This is where you can take advantage of Sass' great features: Mixins.
@@ -766,27 +701,6 @@ http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
 http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
 
 ******************************************************************/
-/*********************
-TRANSITION
-*********************/
-/*
-I totally rewrote this to be cleaner and easier to use.
-You'll need to be using Sass 3.2+ for these to work.
-Thanks to @anthonyshort for the inspiration on these.
-USAGE: @include transition(all 0.2s ease-in-out);
-*/
-/*********************
-CSS3 GRADIENTS
-Be careful with these since they can
-really slow down your CSS. Don't overdo it.
-*********************/
-/* @include css-gradient(#dfdfdf,#f8f8f8); */
-/*********************
-BOX SIZING
-*********************/
-/* @include box-sizing(border-box); */
-/* NOTE: value of "padding-box" is only supported in Gecko. So
-probably best not to use it. I mean, were you going to anyway? */
 /*********************
 RESPONSIVE IMAGE MIXIN
 *********************/

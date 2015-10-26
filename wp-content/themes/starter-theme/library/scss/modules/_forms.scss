@@ -53,7 +53,7 @@ textarea,
   box-shadow: none;
   width: 100%;
   background-color: $gray;
-  @include transition(background-color 0.24s ease-in-out);
+  transition: background-color 0.24s ease-in-out;
 
   // a focused input (or hovered on)
   &:focus,
