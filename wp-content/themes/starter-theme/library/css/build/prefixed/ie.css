@@ -21,26 +21,6 @@ import the mixins file so SASS can understand the variables.
 Site Name:
 Author:
 
-Stylesheet: Variables
-
-Here is where we declare all our variables like colors, fonts,
-base values, and defaults. We want to make sure this file ONLY
-contains variables that way our files don't get all messy.
-No one likes a mess.
-
-******************************************************************/
-/*********************
-COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/
-*********************/
-/*********************
-OTHER VARIABLES
-*********************/
-/******************************************************************
-Site Name:
-Author:
-
 Stylesheet: Typography
 
 Need to import a font or set of icons for your site? Drop them in
@@ -234,12 +214,6 @@ http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
 http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
 
 ******************************************************************/
-/*********************
-RESPONSIVE IMAGE MIXIN
-*********************/
-/*********************
-HIDE AN ELEMENT
-*********************/
 /* ==========================================================================
    Media Queries
    - Mobile

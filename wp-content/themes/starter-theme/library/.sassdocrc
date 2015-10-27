@@ -1,0 +1,5 @@
+dest: "../../../../sassdoc"
+package: "package.json"
+groups:
+  undefined: "General"
+  colors: "Color Palette"

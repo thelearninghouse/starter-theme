@@ -1,43 +1,38 @@
-/******************************************************************
-Site Name:
-Author:
+/// This is a color variable
+/// @group colors
 
-Stylesheet: Variables
-
-Here is where we declare all our variables like colors, fonts,
-base values, and defaults. We want to make sure this file ONLY
-contains variables that way our files don't get all messy.
-No one likes a mess.
-
-******************************************************************/
-
-/*********************
-COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/
-*********************/
-
+/// Alert Yellow
 $alert-yellow:      #ebe16f;
+/// Alert Red
 $alert-red:         #fbe3e4;
+/// Alert Green
 $alert-green:       #e6efc2;
+/// Alert Blue
 $alert-blue:        #d5edf8;
 
+/// Black
 $black:             lighten(black, 25%);
+/// White
 $white:             #fff;
 
+/// Light Gray
 $light-gray:        #f8f9fa;
+/// Gray
 $gray:              #eaedf2;
+/// Text Color
 $text-color:        #5c6b80;
+/// Meta Gray
 $meta-gray:         #9fa6b4;
 
+/// Link Color
 $link-color:        tomato;
+///Link Hover
 $link-hover:        darken($link-color, 15%);
 
+/// Border Color
 $border-color:      #ccc;
+///Disabled Gray
 $disabled-gray:     #cfcfcf;
 
-/*********************
-OTHER VARIABLES
-*********************/
-
+/// Relative Path Variable
 $path-rel:         "/wp-content/themes/starter-theme/library/images";
