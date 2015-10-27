@@ -1,5 +1,24 @@
+basePath: "/wp-content/themes/starter-theme/library/scss"
+
+display:
+    access: ["public"]
+    alias: false
+    watermark: false
+
 dest: "../../../../sassdoc"
+
 package: "package.json"
+
 groups:
-  undefined: "General"
-  colors: "Color Palette"
+    undefined: "General"
+    colors: "Color Palette"
+
+exclude:
+  - _grid.scss
+  - _ie_grid.scss
+  - ie.scss
+  - login.scss
+  - style.scss
+  - _normalize.scss
+  - _print.scss
+  - _variables.scss
