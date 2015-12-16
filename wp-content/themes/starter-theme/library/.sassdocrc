@@ -3,7 +3,9 @@ basePath: "/wp-content/themes/"
 display:
     access: ["public"]
     alias: false
-    watermark: false
+    watermark: true 
+
+shortcutIcon: "..//favicon.png"
 
 dest: "../../../../sassdoc"
 
@@ -12,5 +14,5 @@ package: "package.json"
 groups:
     colors: "Color Palette"
     fonts: "Fonts"
+    grid: "Grid"
     undefined: "General"
-

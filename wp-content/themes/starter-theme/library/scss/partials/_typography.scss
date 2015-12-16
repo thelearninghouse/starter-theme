@@ -57,10 +57,11 @@ h5, .h5 {
 }
 
 
-// font stacks
 /// Sans Serif
+/// @group Fonts
 $sans-serif:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 /// Serif
+/// @group Fonts
 $serif:             "Georgia", Cambria, Times New Roman, Times, serif;
 
 
