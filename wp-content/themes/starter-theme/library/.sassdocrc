@@ -1,4 +1,4 @@
-basePath: "/wp-content/themes/starter-theme/library/scss"
+basePath: "/wp-content/themes/"
 
 display:
     access: ["public"]
@@ -10,15 +10,7 @@ dest: "../../../../sassdoc"
 package: "package.json"
 
 groups:
-    undefined: "General"
     colors: "Color Palette"
+    fonts: "Fonts"
+    undefined: "General"
 
-exclude:
-  - _grid.scss
-  - _ie_grid.scss
-  - ie.scss
-  - login.scss
-  - style.scss
-  - _normalize.scss
-  - _print.scss
-  - _variables.scss

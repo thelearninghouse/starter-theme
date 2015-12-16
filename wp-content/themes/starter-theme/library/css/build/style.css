@@ -543,32 +543,6 @@ h5, .h5 {
   letter-spacing: 2px;
 }
 
-/*********************
-FONT FACE (IN YOUR FACE)
-*********************/
-/*  To embed your own fonts, use this syntax
-  and place your fonts inside the
-  library/fonts folder. For more information
-  on embedding fonts, go to:
-  http://www.fontsquirrel.com/
-  Be sure to remove the comment brackets.
-*/
-/*  @font-face {
-      font-family: 'Font Name';
-      src: url('library/fonts/font-name.eot');
-      src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
-             url('library/fonts/font-name.woff') format('woff'),
-             url('library/fonts/font-name.ttf') format('truetype'),
-             url('library/fonts/font-name.svg#font-name') format('svg');
-      font-weight: normal;
-      font-style: normal;
-  }
-*/
-/*
-The following is based of Typebase:
-https://github.com/devinhunt/typebase.css
-I've edited it a bit, but it's a nice starting point.
-*/
 /*
 A More Modern Type Scale from Typecast
 http://typecast.com/blog/a-more-modern-scale-for-web-typography
@@ -751,11 +725,6 @@ Helpful Links:
 http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
 
 ******************************************************************/
-/*********************
-BUTTON DEFAULTS
-
-to use: @include button($red);
-*********************/
 .button {
   display: inline-block;
   position: relative;
@@ -1112,50 +1081,6 @@ legend, width,
 .formError,
 .formValid {
   display: none;
-}
-
-/*
-* Gravity Form Styling
-*
-* Styling that applies only to the Gravity Forms
-*/
-.gform_widget .gform_wrapper .top_label .gfield_label {
-  margin-bottom: 0;
-}
-
-body .gform_widget .gform_wrapper label.gfield_label + div.ginput_container {
-  margin-top: 0;
-}
-
-.gform_widget .field, .gform_widget input[type=search],
-.gform_widget input[type=text],
-.gform_widget input[type=password],
-.gform_widget input[type=datetime],
-.gform_widget input[type=datetime-local],
-.gform_widget input[type=date],
-.gform_widget input[type=month],
-.gform_widget input[type=time],
-.gform_widget input[type=week],
-.gform_widget input[type=number],
-.gform_widget input[type=email],
-.gform_widget input[type=url],
-.gform_widget input[type=tel],
-.gform_widget input[type=color],
-.gform_widget select,
-.gform_widget textarea,
-.gform_widget .gform_wrapper .gfield_date_day label,
-.gform_widget .gform_wrapper .gfield_date_month label,
-.gform_widget .gform_wrapper .gfield_date_year label,
-.gform_widget .gform_wrapper .gfield_time_ampm label,
-.gform_widget .gform_wrapper .gfield_time_hour label,
-.gform_widget .gform_wrapper .gfield_time_minute label,
-.gform_widget .gform_wrapper .ginput_complex label,
-.gform_widget .gform_wrapper .instruction {
-  margin-bottom: 0;
-}
-
-.gform_widget .gform_wrapper ul li {
-  margin-bottom: 0;
 }
 
 /*********************
@@ -1698,37 +1623,6 @@ tweeners.
   upon your base.scss styles.
   
   ******************************************************************/
-  /*
-  IMPORTANT NOTE ABOUT SASS 3.3 & UP
-  You can't use @extend within media queries
-  anymore, so just be aware that if you drop
-  them in here, they won't work.
-  */
-  /*********************
-  NAVIGATION STYLES
-  *********************/
-  /* .menu is clearfixed inside mixins.scss */
-  .menu {
-    /* end .menu ul */
-  }
-  .menu ul {
-    /* end .menu ul li */
-    /* highlight current page */
-    /* end current highlighters */
-  }
-  .menu ul li {
-    /*
-    plan your menus and drop-downs wisely.
-    */
-  }
-  .menu ul li a {
-    /*
-    you can use hover styles here even though this size
-    has the possibility of being a mobile device.
-    */
-  }
-
-  /* end .menu */
   /*********************
   POSTS & CONTENT STYLES
   *********************/
@@ -1754,14 +1648,6 @@ tweeners.
   }
 
   /* end .entry-content */
-  /*********************
-  FOOTER STYLES
-  *********************/
-  /*
-  check your menus here. do they look good?
-  do they need tweaking?
-  */
-  /* end .footer-links */
 }
 /*********************
 TABLET & SMALLER LAPTOPS
@@ -1894,40 +1780,6 @@ you can add resource intensive styles.
     margin-top: 0.75em;
     padding-left: 1em;
   }
-}
-/*********************
-DESKTOP
-This is the average viewing window. So Desktops, Laptops, and
-in general anyone not viewing on a mobile device. Here's where
-you can add resource intensive styles.
-*********************/
-@media only screen and (min-width: 1030px) {
-  /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: Desktop Stylsheet
-  
-  This is the desktop size. It's larger than an iPad so it will only
-  be seen on the Desktop.
-  
-  ******************************************************************/
-}
-/*********************
-LARGE VIEWING SIZE
-This is for the larger monitors and possibly full screen viewers.
-*********************/
-@media only screen and (min-width: 1240px) {
-  /******************************************************************
-  Site Name: 
-  Author: 
-  
-  Stylesheet: Super Large Monitor Stylesheet
-  
-  You can add some advanced styles here if you like. This kicks in
-  on larger screens.
-  
-  ******************************************************************/
 }
 /*********************
 RETINA (2x RESOLUTION DEVICES)

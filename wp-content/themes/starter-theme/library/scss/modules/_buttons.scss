@@ -13,13 +13,12 @@ http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
 
 ******************************************************************/
 
-/*********************
-BUTTON DEFAULTS
+/// BASE BUTTON
+/// @example
+///     @include buton($color);
+/// @param {variable} $btn-color [$link-color] - Background Button Color
 
-to use: @include button($red);
-*********************/
-
-@mixin button($btn-color) {
+@mixin button($btn-color: $link-color) {
   display: inline-block;
   position: relative;
   font-family: $sans-serif;

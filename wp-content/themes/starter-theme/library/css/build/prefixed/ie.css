@@ -72,32 +72,6 @@ h5, .h5 {
   letter-spacing: 2px;
 }
 
-/*********************
-FONT FACE (IN YOUR FACE)
-*********************/
-/*  To embed your own fonts, use this syntax
-  and place your fonts inside the
-  library/fonts folder. For more information
-  on embedding fonts, go to:
-  http://www.fontsquirrel.com/
-  Be sure to remove the comment brackets.
-*/
-/*  @font-face {
-      font-family: 'Font Name';
-      src: url('library/fonts/font-name.eot');
-      src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
-             url('library/fonts/font-name.woff') format('woff'),
-             url('library/fonts/font-name.ttf') format('truetype'),
-             url('library/fonts/font-name.svg#font-name') format('svg');
-      font-weight: normal;
-      font-style: normal;
-  }
-*/
-/*
-The following is based of Typebase:
-https://github.com/devinhunt/typebase.css
-I've edited it a bit, but it's a nice starting point.
-*/
 /*
 A More Modern Type Scale from Typecast
 http://typecast.com/blog/a-more-modern-scale-for-web-typography
@@ -239,37 +213,6 @@ so you still want to keep it pretty light and simply expand
 upon your base.scss styles.
 
 ******************************************************************/
-/*
-IMPORTANT NOTE ABOUT SASS 3.3 & UP
-You can't use @extend within media queries
-anymore, so just be aware that if you drop
-them in here, they won't work.
-*/
-/*********************
-NAVIGATION STYLES
-*********************/
-/* .menu is clearfixed inside mixins.scss */
-.menu {
-  /* end .menu ul */
-}
-.menu ul {
-  /* end .menu ul li */
-  /* highlight current page */
-  /* end current highlighters */
-}
-.menu ul li {
-  /*
-  plan your menus and drop-downs wisely.
-  */
-}
-.menu ul li a {
-  /*
-  you can use hover styles here even though this size
-  has the possibility of being a mobile device.
-  */
-}
-
-/* end .menu */
 /*********************
 POSTS & CONTENT STYLES
 *********************/
@@ -295,14 +238,6 @@ POSTS & CONTENT STYLES
 }
 
 /* end .entry-content */
-/*********************
-FOOTER STYLES
-*********************/
-/*
-check your menus here. do they look good?
-do they need tweaking?
-*/
-/* end .footer-links */
 /******************************************************************
 Site Name:
 Author:
@@ -428,16 +363,6 @@ SIDEBARS & ASIDES
   padding-left: 1em;
 }
 
-/******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Desktop Stylsheet
-
-This is the desktop size. It's larger than an iPad so it will only
-be seen on the Desktop.
-
-******************************************************************/
 /*
 you can call the larger styles if you want, but there's really no need
 */

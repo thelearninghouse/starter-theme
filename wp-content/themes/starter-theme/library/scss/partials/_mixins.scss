@@ -20,20 +20,10 @@ http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
 
 ******************************************************************/
 
-///RESPONSIVE IMAGE MIXIN
-
-@mixin img-replace($img, $w, $h, $display: block) {
-    background-image: url('#{$path-rel}/#{$img}');
-    background-repeat: no-repeat;
-    width: $w;
-    height: $h;
-    display: $display;
-};
-
-
-///HIDE AN ELEMENT
-///Extend this to hide an element
-///USAGE: @extend %visuallyhidden;
+/// HIDE AN ELEMENT
+/// Extend this to hide an element
+/// @example
+///     @extend %visuallyhidden;
 
 %visuallyhidden {
   margin: -1px;

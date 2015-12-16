@@ -1,5 +1,11 @@
+/// Relative Path Variable
+/// This is used for image paths.
+$path-rel: "/wp-content/themes/starter-theme/library/images";
+
+////
 /// This is a color variable
-/// @group colors
+/// @group Color Palette 
+////
 
 /// Alert Yellow
 $alert-yellow:      #ebe16f;
@@ -34,5 +40,5 @@ $border-color:      #ccc;
 ///Disabled Gray
 $disabled-gray:     #cfcfcf;
 
-/// Relative Path Variable
-$path-rel:         "/wp-content/themes/starter-theme/library/images";
+
+      
