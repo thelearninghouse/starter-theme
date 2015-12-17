@@ -262,8 +262,8 @@ menu {
   padding: 0 0 0 40px;
 }
 
-ol,
-ul {
+ol.noList,
+ul.noList {
   padding: 0;
   list-style-type: none;
 }
