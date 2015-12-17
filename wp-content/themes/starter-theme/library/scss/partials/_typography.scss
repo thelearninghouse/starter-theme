@@ -42,11 +42,13 @@ h2, .h2 {
 
 h3, .h3 {
 	font-size: 1.125em;
+    font-weight: 700;
 }
 
 h4, .h4 {
 	font-size: 1.1em;
 	font-weight: 700;
+    color: $link-color;
 }
 
 h5, .h5 {
@@ -54,6 +56,11 @@ h5, .h5 {
 	line-height: 2.09em;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+    color: $link-color;
+}
+
+h6, .h6 {
+    color: $link-color;
 }
 
 

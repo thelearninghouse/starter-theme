@@ -37,6 +37,31 @@ LAYOUT & GRID STYLES
 }
 
 /*********************
+ACCORDION STYLES
+*********************/
+
+.accord-header { 
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: .5em 2em .5em .5em;
+    background: $light-gray;
+    border: 1px solid darken($light-gray, 5%);
+    position: relative;
+
+    &:before {
+        content: "+";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 1em;
+    }
+}
+.accord-content { 
+    display: none; 
+    padding: .5em;
+}
+
+/*********************
 LINK STYLES
 *********************/
 

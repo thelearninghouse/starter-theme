@@ -525,11 +525,13 @@ h2, .h2 {
 
 h3, .h3 {
   font-size: 1.125em;
+  font-weight: 700;
 }
 
 h4, .h4 {
   font-size: 1.1em;
   font-weight: 700;
+  color: tomato;
 }
 
 h5, .h5 {
@@ -537,6 +539,11 @@ h5, .h5 {
   line-height: 2.09em;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: tomato;
+}
+
+h6, .h6 {
+  color: tomato;
 }
 
 /*
@@ -676,7 +683,7 @@ If you want to use these alerts in your design, you can. If not,
 you can just remove this stylesheet.
 
 ******************************************************************/
-.alert-help, .alert-info, .alert-error, .alert-success {
+.alert-help, .alert-info, .alert-error, .alert-success, .cta {
   margin: 10px;
   padding: 5px 18px;
   border: 1px solid;
@@ -700,6 +707,16 @@ you can just remove this stylesheet.
 .alert-success {
   border-color: #deeaae;
   background: #e6efc2;
+}
+
+.cta {
+  border-color: #e9ecef;
+  background: #f8f9fa;
+  padding: 1.5em;
+  text-align: center;
+}
+.cta h1, .cta h2, .cta h3, .cta h4, .cta h5, .cta h6 {
+  margin-top: 0;
 }
 
 /******************************************************************
@@ -1112,6 +1129,31 @@ LAYOUT & GRID STYLES
   width: 90%;
   max-width: 1440px;
   margin: 0 auto;
+}
+
+/*********************
+ACCORDION STYLES
+*********************/
+.accord-header {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: .5em 2em .5em .5em;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  position: relative;
+}
+.accord-header:before {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 1em;
+}
+
+.accord-content {
+  display: none;
+  padding: .5em;
 }
 
 /*********************
@@ -1683,6 +1725,27 @@ you can add resource intensive styles.
     width: 64.33333%;
     margin: 0 1.16667%;
     margin-left: 17.83333%;
+  }
+
+  .half {
+    display: inline;
+    float: left;
+    width: 47.66667%;
+    margin: 0 1.16667%;
+  }
+
+  .quarter {
+    display: inline;
+    float: left;
+    width: 22.66667%;
+    margin: 0 1.16667%;
+  }
+
+  .third {
+    display: inline;
+    float: left;
+    width: 31.0%;
+    margin: 0 1.16667%;
   }
 
   /*********************

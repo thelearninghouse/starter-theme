@@ -31,6 +31,18 @@ LAYOUT & GRID STYLES
 	}
 }
 
+.half {
+    @include column(6);
+}
+
+.quarter {
+    @include column(3);
+}
+
+.third {
+    @include column(4);
+}
+
 
 
 /*********************
