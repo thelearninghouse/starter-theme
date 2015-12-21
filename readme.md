@@ -10,7 +10,7 @@ Install grunt by navigating to the theme's `library` folder and running `npm ins
 
 ### Watch Files
 
-To start watching files use `grunt dev` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browsers will inject the proper files automatically.
+To start watching files use `grunt dev` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
 ### Grid Usage
 
