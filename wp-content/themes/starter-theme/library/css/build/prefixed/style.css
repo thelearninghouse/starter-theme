@@ -1299,6 +1299,7 @@ and more scalable.
 .nav {
   border-bottom: 0;
   margin: 0;
+  padding: 0;
   /* end .menu li */
 }
 .nav li {
