@@ -822,6 +822,7 @@ textarea,
   width: 100%;
   background-color: #eaedf2;
   transition: background-color 0.24s ease-in-out;
+  padding: .5em;
 }
 input[type="text"]:focus, input[type="text"]:active,
 input[type="password"]:focus,
@@ -1322,6 +1323,10 @@ and more scalable.
   the style.scss file where it's relevant. We want to
   keep this file as small as possible!
   */
+}
+.nav li ul.sub-menu,
+.nav li ul.children {
+  padding: 0;
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {

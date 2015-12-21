@@ -54,6 +54,7 @@ textarea,
   width: 100%;
   background-color: $gray;
   transition: background-color 0.24s ease-in-out;
+  padding: .5em;
 
   // a focused input (or hovered on)
   &:focus,
@@ -138,8 +139,6 @@ legend,width,
 .formValid {
   display: none;
 }
-
-
 
 .requestinfo ol {
     list-style: none;
