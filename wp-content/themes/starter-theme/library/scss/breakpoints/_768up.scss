@@ -20,7 +20,8 @@ LAYOUT & GRID STYLES
 	@include column(8);
 }
 
-.sidebar {
+.sidebar,
+.third {
 	@include column(4);
 }
 
@@ -38,12 +39,6 @@ LAYOUT & GRID STYLES
 .quarter {
     @include column(3);
 }
-
-.third {
-    @include column(4);
-}
-
-
 
 /*********************
 NAVIGATION STYLES

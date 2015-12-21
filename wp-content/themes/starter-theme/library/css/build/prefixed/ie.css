@@ -164,6 +164,8 @@ blockquote {
   /* 20px / 16px */
   line-height: 1.25;
   /* 25px / 20px */
+  border-left: 4px solid #9fa6b4;
+  padding-left: 1em;
 }
 
 @media (min-width: 43.75em) {
@@ -174,6 +176,14 @@ blockquote {
     /* 35px / 24px */
   }
 }
+figure, figcaption {
+  display: block;
+  font-style: italic;
+  font-size: .9em;
+  color: #9fa6b4;
+  text-align: center;
+}
+
 /******************************************************************
 Site Name:
 Author:
@@ -263,7 +273,8 @@ LAYOUT & GRID STYLES
   margin: 0 1.16667%;
 }
 
-.sidebar {
+.sidebar,
+.third {
   display: inline;
   float: left;
   width: 31.0%;
@@ -289,13 +300,6 @@ LAYOUT & GRID STYLES
   display: inline;
   float: left;
   width: 22.66667%;
-  margin: 0 1.16667%;
-}
-
-.third {
-  display: inline;
-  float: left;
-  width: 31.0%;
   margin: 0 1.16667%;
 }
 

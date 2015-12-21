@@ -17,14 +17,13 @@
 */
 jQuery(document).ready(function($) {
 
-    // Accordion
-    $(".accordion .accord-header").click(function() {
-        if($(this).next("div").is(":visible")){
-            $(this).next("div").slideUp("slow");
-        } else {
-            $(".accordion .accord-content").slideUp("slow");
-            $(this).next("div").slideToggle("slow");
+    $('.accordion .accord').on("click", function(){
+        if($(this).hasClass('active')){
+           $(this).removeClass('active');
+        }else{
+            $('.accordion .accord').removeClass('active');
+            $(this).addClass("active");
         }
-    });
+});
 
 }); /* end of as page load scripts */

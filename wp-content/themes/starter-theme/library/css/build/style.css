@@ -635,6 +635,8 @@ blockquote {
   /* 20px / 16px */
   line-height: 1.25;
   /* 25px / 20px */
+  border-left: 4px solid #9fa6b4;
+  padding-left: 1em;
 }
 
 @media (min-width: 43.75em) {
@@ -645,6 +647,14 @@ blockquote {
     /* 35px / 24px */
   }
 }
+figure, figcaption {
+  display: block;
+  font-style: italic;
+  font-size: .9em;
+  color: #9fa6b4;
+  text-align: center;
+}
+
 /******************************************************************
 Site Name:
 Author:
@@ -1095,6 +1105,46 @@ legend, width,
   display: none;
 }
 
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Table Styles
+
+******************************************************************/
+/*********************
+BASIC STYLING
+*********************/
+table {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: 10px 20px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+table th {
+  border-width: 2px;
+}
+
+table td {
+  color: #666;
+}
+
+table tr:last-child th,
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr:nth-child(even) {
+  background: #eee;
+}
+
 /*********************
 BASE (MOBILE) SIZE
 This are the mobile styles. It's what people see on their phones. If
@@ -1126,7 +1176,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/*********************
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.border {
+  border: 2px solid tomato;
+  padding: .5em;
+}
+
+/********************
 LAYOUT & GRID STYLES
 *********************/
 .wrap {
@@ -1138,6 +1208,25 @@ LAYOUT & GRID STYLES
 /*********************
 ACCORDION STYLES
 *********************/
+.accord.active .accord-header:before {
+  transform: translateY(-50%) rotate(45deg);
+}
+.accord.active .accord-content {
+  visibility: visible;
+  transform: scale(1);
+  height: auto;
+  opacity: 1;
+}
+.accord .accord-content {
+  visibility: hidden;
+  padding: .5em;
+  transform: scale(0);
+  transform-origin: 50% 0;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  height: 0;
+}
+
 .accord-header {
   font-size: 1.2em;
   cursor: pointer;
@@ -1152,11 +1241,8 @@ ACCORDION STYLES
   top: 50%;
   transform: translateY(-50%);
   right: 1em;
-}
-
-.accord-content {
-  display: none;
-  padding: .5em;
+  transition: .2s all ease-in-out;
+  transform-origin: 50% 50%;
 }
 
 /*********************
@@ -1715,7 +1801,8 @@ you can add resource intensive styles.
     margin: 0 1.16667%;
   }
 
-  .sidebar {
+  .sidebar,
+  .third {
     display: inline;
     float: left;
     width: 31.0%;
@@ -1741,13 +1828,6 @@ you can add resource intensive styles.
     display: inline;
     float: left;
     width: 22.66667%;
-    margin: 0 1.16667%;
-  }
-
-  .third {
-    display: inline;
-    float: left;
-    width: 31.0%;
     margin: 0 1.16667%;
   }
 

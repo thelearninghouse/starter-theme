@@ -165,6 +165,8 @@ blockquote {
   /* 20px / 16px */
   line-height: 1.25;
   /* 25px / 20px */
+  border-left: 4px solid $meta-gray;
+  padding-left: 1em;
 }
 
 @media (min-width: 43.75em) {
@@ -174,4 +176,12 @@ blockquote {
     line-height: 1.45833333;
     /* 35px / 24px */
   }
+}
+
+figure, figcaption {
+    display: block;
+    font-style: italic;
+    font-size: .9em;
+    color: $meta-gray;
+    text-align: center;
 }
