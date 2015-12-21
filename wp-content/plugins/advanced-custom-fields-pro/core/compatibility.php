@@ -54,12 +54,13 @@ class acf_compatibility {
 	
 	function init() {
 		
+		// ACF_LITE
 		if( defined('ACF_LITE') && ACF_LITE ) {
 			
 			acf_update_setting('show_admin', false);
 			
 		}
-			
+		
 	}
 	
 	
@@ -128,20 +129,6 @@ class acf_compatibility {
 				
 			}
 		 	
-		}
-		
-		
-		// wrap classes have changed (5.2.7)
-		if( acf_get_compatibility('field_wrapper_class') ) {
-			
-			$field['wrapper']['class'] .= " field_type-{$field['type']}";
-			
-			if( $field['key'] ) {
-				
-				$field['wrapper']['class'] .= " field_key-{$field['key']}";
-				
-			}
-			
 		}
 		
 		
