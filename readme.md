@@ -53,3 +53,10 @@ This was requested by the inbound team to get the title field back on links.
 
 Yoast is required on all of our sites for SEO optimization.
 
+## Resources
+
+### Style Guide
+/style-guide
+
+### Sassdoc
+/sassdoc
