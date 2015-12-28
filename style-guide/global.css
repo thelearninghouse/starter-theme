@@ -1,0 +1,66 @@
+header {
+	background-color: #666;
+	overflow: hidden;
+	text-align: center;
+    border-bottom: 2px solid white;
+}
+header h1 {
+	color: white;
+	margin: 4rem auto .5em;
+	padding: 0;
+	text-align: center;
+}
+header p {
+    text-align: center;
+    max-width: 800px;
+    color: white;
+    margin: 0 auto 4rem;
+}
+.pattern {
+    clear: both;
+    overflow: hidden;
+    display: flex;
+    border-bottom: 2px solid lightgray;
+}
+.pattern .display {
+    width: 50%;
+    float: left;
+    padding: 3em;
+}
+.pattern .source {
+    width: 50%;
+    float: right;
+    background: #efefef;
+    padding: 3em;
+}
+.pattern .source textarea {
+    width: 90%;
+    margin: 1em auto;
+}
+
+.color-palette {
+    height: 150px;
+    display: flex;
+}
+.color-palette span {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+@media (max-width: 800px) {
+
+    .pattern {
+        flex-direction: column;
+    }
+    .pattern .display,
+    .pattern .source {
+        width :100%;
+    }
+}
