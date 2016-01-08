@@ -185,3 +185,22 @@ figure, figcaption {
     color: $meta-gray;
     text-align: center;
 }
+
+.quote {
+   padding: 1.5em;
+   background: $gray;
+   position: relative;
+   border-radius: .5em;
+    
+    &:before {
+        position: absolute;
+        top: 99.8%;
+        right: 2em;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 30px 30px 0;
+        border-color: transparent $gray transparent transparent;
+    }
+}

@@ -651,6 +651,24 @@ figure, figcaption {
   text-align: center;
 }
 
+.quote {
+  padding: 1.5em;
+  background: #eaedf2;
+  position: relative;
+  border-radius: .5em;
+}
+.quote:before {
+  position: absolute;
+  top: 99.8%;
+  right: 2em;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 30px 30px 0;
+  border-color: transparent #eaedf2 transparent transparent;
+}
+
 /******************************************************************
 Site Name:
 Author:
@@ -1182,7 +1200,6 @@ body {
   position: relative;
   padding-bottom: 56.25%;
   /* 16:9 */
-  padding-top: 25px;
   height: 0;
 }
 .videoWrapper iframe {
@@ -1195,7 +1212,7 @@ body {
 
 .border {
   border: 2px solid tomato;
-  padding: .5em;
+  padding: .5em 1em;
 }
 
 /********************

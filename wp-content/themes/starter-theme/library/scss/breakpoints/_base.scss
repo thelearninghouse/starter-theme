@@ -28,7 +28,6 @@ body {
 .videoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 25px;
     height: 0;
 
     iframe {
@@ -42,7 +41,7 @@ body {
 
 .border {
     border: 2px solid $link-color;
-    padding: .5em;
+    padding: .5em 1em;
 }
 
 /********************
@@ -104,7 +103,6 @@ ACCORDION STYLES
         transform-origin: 50% 50%;
     }
 }
-
 
 /*********************
 LINK STYLES
