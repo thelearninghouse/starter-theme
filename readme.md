@@ -14,11 +14,11 @@ To start watching files use `grunt` from the `library` folder. This will run bro
 
 ### Grid Usage
 
-This theme uses [semantic.gs](https://github.com/tylertate/semantic.gs)
+This theme uses [susy](http://susy.oddbird.net/)
 
-Out of the box this is a 10 column grid on screen sizes 768px and up.
+Out of the box this is a 12 column grid on screen sizes 768px and up.
 
-To include the column mixin use `@include column(10);`
+To include the column mixin use `@include span(10);`
 
 To push use `@include push(2);`
 

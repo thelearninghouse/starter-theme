@@ -35,6 +35,9 @@ the whole project.
 // import mixins
 @import "partials/mixins";
 
+// susy 
+@import "../bower_components/susy/sass/susy";
+
 // the grid
 @import "partials/grid";
 

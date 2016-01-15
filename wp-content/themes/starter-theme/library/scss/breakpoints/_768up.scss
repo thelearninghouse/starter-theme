@@ -17,27 +17,27 @@ LAYOUT & GRID STYLES
 *********************/
 
 #main {
-	@include column(8);
+    @include span(8);	
 }
 
 .sidebar,
 .third {
-	@include column(4);
+	@include span(4);
 }
 
 .error404 {
 	#main {
-		@include column(8);
-		@include push(2);
+		@include span(8);
+        @include push(2 );
 	}
 }
 
 .half {
-    @include column(6);
+    @include span(6);
 }
 
 .quarter {
-    @include column(3);
+    @include span(3);
 }
 
 /*********************

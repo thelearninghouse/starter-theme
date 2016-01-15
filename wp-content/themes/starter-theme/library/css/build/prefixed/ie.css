@@ -223,8 +223,15 @@ http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
 http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
 
 ******************************************************************/
-body {
-  width: 100%;
+.wrap {
+  max-width: 80em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wrap:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 
 /******************************************************************
@@ -285,40 +292,45 @@ come into play. Have fun!
 LAYOUT & GRID STYLES
 *********************/
 #main {
-  display: inline;
+  box-sizing: border-box;
+  width: 66.66667%;
   float: left;
-  width: 64.33333%;
-  margin: 0 1.16667%;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
 }
 
 .sidebar,
 .third {
-  display: inline;
+  box-sizing: border-box;
+  width: 33.33333%;
   float: left;
-  width: 31.0%;
-  margin: 0 1.16667%;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
 }
 
 .error404 #main {
-  display: inline;
+  box-sizing: border-box;
+  width: 66.66667%;
   float: left;
-  width: 64.33333%;
-  margin: 0 1.16667%;
-  margin-left: 17.83333%;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  margin-left: 16.66667%;
 }
 
 .half {
-  display: inline;
+  box-sizing: border-box;
+  width: 50%;
   float: left;
-  width: 47.66667%;
-  margin: 0 1.16667%;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
 }
 
 .quarter {
-  display: inline;
+  box-sizing: border-box;
+  width: 25%;
   float: left;
-  width: 22.66667%;
-  margin: 0 1.16667%;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
 }
 
 /*********************
