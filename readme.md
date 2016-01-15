@@ -8,6 +8,10 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 Install grunt by navigating to the theme's `library` folder and running `npm install`
 
+### Install Bower
+
+Install bower by navigating to the theme's `library` folder and running `bower install`
+
 ### Watch Files
 
 To start watching files use `grunt` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
