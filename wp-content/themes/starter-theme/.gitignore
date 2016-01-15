@@ -57,6 +57,6 @@ temp/
 *.codekit
 *.scssc
 
-/.sass-cache
-/node_modules
-/bower_components
+/library/.sass-cache
+/library/node_modules
+/library/bower_components
