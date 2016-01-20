@@ -342,6 +342,7 @@ class ewwwngg {
 				'operation_interrupted' => __( 'Operation Interrupted', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 				'temporary_failure' => __( 'Temporary failure, seconds left to retry:', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 				'remove_failed' => __( 'Could not remove image from table.', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
+				'optimized' => __( 'Optimized', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 			)
 		);
 	}
@@ -365,14 +366,14 @@ class ewwwngg {
 			wp_die( __( 'Access token has expired, please reload the page.', EWWW_IMAGE_OPTIMIZER_DOMAIN ) );
                 }
 		// need this file to work with metadata
-		require_once(WP_CONTENT_DIR . '/plugins/nextgen-gallery/lib/meta.php');
+		ewww_image_optimizer_require( WP_CONTENT_DIR . '/plugins/nextgen-gallery/lib/meta.php' );
 		$id = $_POST['ewww_attachment'];
 		// get the meta for the image
-		$meta = new nggMeta($id);
-		$loading_image = plugins_url('/wpspin.gif', __FILE__);
+		$meta = new nggMeta( $id );
+		$loading_image = plugins_url( '/wpspin.gif', __FILE__ );
 		// get the filename for the image, and output our current status
-		$file_name = esc_html($meta->image->filename);
-		echo "<p>" . __('Optimizing', EWWW_IMAGE_OPTIMIZER_DOMAIN) . " <b>" . $file_name . "</b>&nbsp;<img src='$loading_image' alt='loading'/></p>";
+		$file_name = esc_html( $meta->image->filename );
+		echo "<p>" . __( 'Optimizing', EWWW_IMAGE_OPTIMIZER_DOMAIN ) . " <b>" . $file_name . "</b>&nbsp;<img src='$loading_image' alt='loading'/></p>";
 		die();
 	}
 
@@ -382,16 +383,16 @@ class ewwwngg {
 			wp_die( __( 'Access token has expired, please reload the page.', EWWW_IMAGE_OPTIMIZER_DOMAIN ) );
                 }
 		// need this file to work with metadata
-		require_once(WP_CONTENT_DIR . '/plugins/nextgen-gallery/lib/meta.php');
+		ewww_image_optimizer_require( WP_CONTENT_DIR . '/plugins/nextgen-gallery/lib/meta.php' );
 		// find out what time we started, in microseconds
-		$started = microtime(true);
+		$started = microtime( true );
 		$id = $_POST['ewww_attachment'];
 		// get the metadata
-		$meta = new nggMeta($id);
+		$meta = new nggMeta( $id );
 		// retrieve the filepath
 		$file_path = $meta->image->imagePath;
 		// run the optimizer on the current image
-		$fres = ewww_image_optimizer($file_path, 2, false, false, true);
+		$fres = ewww_image_optimizer( $file_path, 2, false, false, true );
 		global $ewww_exceed;
 		if ( ! empty ( $ewww_exceed ) ) {
 			echo '-9exceeded';

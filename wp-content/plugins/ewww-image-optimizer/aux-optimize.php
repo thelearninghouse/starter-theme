@@ -102,7 +102,7 @@ function ewww_image_optimizer_import_init() {
 	$import_todo += $wpdb->get_var( "SELECT COUNT(posts.ID) FROM $wpdb->postmeta metas INNER JOIN $wpdb->posts posts ON posts.ID = metas.post_id WHERE posts.post_mime_type LIKE '%image%' AND metas.meta_key = '_wp_attachment_metadata' AND metas.meta_value LIKE '%ewww_image_optimizer%'" );
 	if ( ! function_exists( 'is_plugin_active' ) ) {
 		// need to include the plugin library for the is_plugin_active function
-		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		ewww_image_optimizer_require( ABSPATH . 'wp-admin/includes/plugin.php' );
 	}
 	if ( is_plugin_active( 'nextgen-gallery/nggallery.php' ) || is_plugin_active_for_network( 'nextgen-gallery/nggallery.php' ) ) {
 		$nextgen_data = ewww_image_optimizer_get_plugin_version( trailingslashit( WP_PLUGIN_DIR ) . 'nextgen-gallery/nggallery.php' );
@@ -146,7 +146,7 @@ function ewww_image_optimizer_import_loop() {
 	}
 	$already_optimized = array();
 	ewwwio_debug_message( "importing " . count( $attachments ) . " attachments" );
-	$insert_query = "INSERT INTO $wpdb->ewwwio_images (path, image_size, orig_size, results, temp) VALUES ";
+	$insert_query = "INSERT INTO $wpdb->ewwwio_images (path, image_size, orig_size, results, temp) VALUES";
 	$rows = array();
 	foreach ( $attachments as $attachment ) {
 		$record = array();
@@ -456,15 +456,18 @@ function ewww_image_optimizer_image_scan( $dir ) {
 		$skip_optimized = false;
 		if ( $file->isFile() ) {
 			$path = $file->getPathname();
-			if ( preg_match( '/\.(conf|crt|css|docx|eot|exe|git|gitignore|gitmodules|gz|hgignore|hgsub|hgsubstate|hgtags|htaccess|htm|html|ico|ini|js|json|key|less|lock|log|map|md|mo|mp3|mp4|otf|pdf|pem|php|po|pot|scss|sh|svg|svnignore|swf|template|tiff|tmp|tpl|ttf|txt|vcl|woff|woff2|webp|xap|xml|yml|zip)$/', $path ) ) {
-				ewwwio_debug_message( "not a usable extension: $path" );
+			if ( preg_match( '/(\/|\\\\)\./', $path ) && apply_filters( 'ewww_image_optimizer_ignore_hidden_files', true ) ) {
+	//			ewwwio_debug_message( "skipping hidden file: $path" );
 				continue;
 			}
-/*			$mimetype = ewww_image_optimizer_mimetype( $path, 'i' );
-			if ( empty( $mimetype ) || ! preg_match( '/^image\/(jpeg|png|gif)/', $mimetype ) ) {
-				ewwwio_debug_message( "not a usable mimetype: $path" );
+			if ( preg_match( '/\.(conf|crt|css|docx|eot|exe|git|gitignore|gitmodules|gz|hgignore|hgsub|hgsubstate|hgtags|htaccess|htm|html|ico|ini|js|json|key|less|lock|log|map|md|mo|mp3|mp4|otf|pdf|pem|php|po|pot|sample|scss|sh|svg|svnignore|swf|template|tiff|tmp|tpl|ttf|txt|vcl|woff|woff2|webp|xap|xml|yml|zip)$/', $path ) ) {
+	//			ewwwio_debug_message( "not a usable extension: $path" );
 				continue;
-			}*/
+			}
+			if ( ! preg_match( '/\./', $path ) ) {
+	//			ewwwio_debug_message( "no extension: $path" );
+				continue;
+			}
 			if ( isset( $optimized_list[$path] ) ) {
 				$image_size = $file->getSize();
 				if ( $optimized_list[ $path ] == $image_size ) {
@@ -474,23 +477,8 @@ function ewww_image_optimizer_image_scan( $dir ) {
 					ewwwio_debug_message( "mismatch found for $path, db says " . $optimized_list[ $path ] . " vs. current $image_size" );
 				}
 			}
-			/*foreach( $already_optimized as $optimized ) {
-				if ( $optimized['path'] === $path ) {
-					//$image_size = filesize( $path );
-					$image_size = $file->getSize();
-					if ( $optimized['image_size'] == $image_size ) {
-						ewwwio_debug_message( "match found for $path" );
-						$skip_optimized = true;
-						break;
-					} else {
-						ewwwio_debug_message( "mismatch found for $path, db says " . $optimized['image_size'] . " vs. current $image_size" );
-					}
-				}
-			}*/
 			if ( empty( $skip_optimized ) || ! empty( $_REQUEST['ewww_force'] ) ) {
-			//	if ( ! preg_match( '/\.(png|jpg|gif|jpeg)$/', $path ) ) {
 				ewwwio_debug_message( "queued $path" );
-			//	}
 				$images[] = $path;
 			}
 		}
@@ -565,7 +553,7 @@ function ewww_image_optimizer_aux_images_script( $hook ) {
 		}
 		if ( ! function_exists( 'is_plugin_active' ) ) {
 			// need to include the plugin library for the is_plugin_active function
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			ewww_image_optimizer_require( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 		// collect a list of images for buddypress
 		if ( is_plugin_active( 'buddypress/bp-loader.php' ) || is_plugin_active_for_network( 'buddypress/bp-loader.php' ) ) {
@@ -620,7 +608,10 @@ function ewww_image_optimizer_aux_images_script( $hook ) {
 						foreach ( $backup_sizes as $backup_size => $meta ) {
 							if ( preg_match( '/resized-/', $backup_size ) ) {
 								$path = $meta['path'];
-								$image_size = filesize( $path );
+								$image_size = ewww_image_optimizer_filesize( $path );
+								if ( ! $image_size ) {
+									continue;
+								}
 								$query = $wpdb->prepare( "SELECT id FROM $wpdb->ewwwio_images WHERE path LIKE %s AND image_size LIKE '$image_size'", $path );
 								$optimized_query = $wpdb->get_results( $query, ARRAY_A );
 								if ( ! empty( $optimized_query ) ) {
@@ -756,7 +747,6 @@ add_action( 'wp_ajax_bulk_aux_images_scan', 'ewww_image_optimizer_aux_images_scr
 add_action( 'wp_ajax_bulk_aux_images_table', 'ewww_image_optimizer_aux_images_table' );
 add_action( 'wp_ajax_bulk_aux_images_table_count', 'ewww_image_optimizer_aux_images_table_count' );
 add_action( 'wp_ajax_bulk_aux_images_remove', 'ewww_image_optimizer_aux_images_remove' );
-add_action( 'wp_ajax_bulk_aux_images_loading', 'ewww_image_optimizer_aux_images_loading' );
 add_action( 'wp_ajax_bulk_aux_images_init', 'ewww_image_optimizer_aux_images_initialize' );
 add_action( 'wp_ajax_bulk_aux_images_filename', 'ewww_image_optimizer_aux_images_filename' );
 add_action( 'wp_ajax_bulk_aux_images_loop', 'ewww_image_optimizer_aux_images_loop' );

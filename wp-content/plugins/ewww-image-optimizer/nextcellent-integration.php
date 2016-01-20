@@ -394,6 +394,7 @@ class ewwwngg {
 				'operation_interrupted' => __( 'Operation Interrupted', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 				'temporary_failure' => __( 'Temporary failure, seconds left to retry:', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 				'remove_failed' => __( 'Could not remove image from table.', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
+				'optimized' => __( 'Optimized', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 			)
 		);
 	}
@@ -419,7 +420,7 @@ class ewwwngg {
 			wp_die( __( 'Access token has expired, please reload the page.', EWWW_IMAGE_OPTIMIZER_DOMAIN ) );
                 }
 		// need this file to work with metadata
-		require_once(WP_CONTENT_DIR . '/plugins/nextcellent-gallery-nextgen-legacy/lib/meta.php');
+		ewww_image_optimizer_require( WP_CONTENT_DIR . '/plugins/nextcellent-gallery-nextgen-legacy/lib/meta.php' );
 		$id = $_POST['attachment'];
 		// get the meta for the image
 		$meta = new nggMeta($id);
@@ -439,9 +440,9 @@ class ewwwngg {
 			wp_die( __( 'Access token has expired, please reload the page.', EWWW_IMAGE_OPTIMIZER_DOMAIN ) );
                 }
 		// need this file to work with metadata
-		require_once(WP_CONTENT_DIR . '/plugins/nextcellent-gallery-nextgen-legacy/lib/meta.php');
+		ewww_image_optimizer_require( WP_CONTENT_DIR . '/plugins/nextcellent-gallery-nextgen-legacy/lib/meta.php' );
 		// find out what time we started, in microseconds
-		$started = microtime(true);
+		$started = microtime( true );
 		$id = $_POST['ewww_attachment'];
 		list( $fres, $tres ) = $this->ewww_ngg_optimize( $id );
 /*		// get the metadata

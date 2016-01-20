@@ -14,7 +14,7 @@ function ewww_image_optimizer_bulk_preview() {
 	if ( empty( $resume ) ) {
 		$button_text = __( 'Start optimizing', EWWW_IMAGE_OPTIMIZER_DOMAIN );
 	} else {
-		$button_text = __( 'Resume previous bulk operation', EWWW_IMAGE_OPTIMIZER_DOMAIN );
+		$button_text = __( 'Resume previous optimization', EWWW_IMAGE_OPTIMIZER_DOMAIN );
 	}
 	$loading_image = plugins_url( '/wpspin.gif', __FILE__ );
 	// create the html for the bulk optimize form and status divs

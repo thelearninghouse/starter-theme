@@ -114,7 +114,7 @@ class ewwwflag {
 	}
 
 	// prepares the bulk operation and includes the necessary javascript files
-	function ewww_flag_bulk_script($hook) {
+	function ewww_flag_bulk_script( $hook ) {
 		// make sure we are being hooked from a valid location
 		if ($hook != 'flagallery_page_flag-bulk-optimize' && $hook != 'flagallery_page_flag-manage-gallery')
 			return;
@@ -188,6 +188,7 @@ class ewwwflag {
 				'operation_interrupted' => __( 'Operation Interrupted', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 				'temporary_failure' => __( 'Temporary failure, seconds left to retry:', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 				'remove_failed' => __( 'Could not remove image from table.', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
+				'optimized' => __( 'Optimized', EWWW_IMAGE_OPTIMIZER_DOMAIN ),
 			)
 		);
 	}
@@ -285,7 +286,7 @@ class ewwwflag {
 			wp_die( __( 'Access token has expired, please reload the page.', EWWW_IMAGE_OPTIMIZER_DOMAIN ) );
 		}
 		// need this file to work with flag meta
-		require_once(WP_CONTENT_DIR . '/plugins/flash-album-gallery/lib/meta.php');
+		ewww_image_optimizer_require( WP_CONTENT_DIR . '/plugins/flash-album-gallery/lib/meta.php' );
 		$id = $_POST['ewww_attachment'];
 		// retrieve the meta for the current ID
 		$meta = new flagMeta($id);
@@ -309,7 +310,7 @@ class ewwwflag {
 			sleep($_REQUEST['ewww_sleep']);
 		}
 		// need this file to work with flag meta
-		require_once(WP_CONTENT_DIR . '/plugins/flash-album-gallery/lib/meta.php');
+		ewww_image_optimizer_require( WP_CONTENT_DIR . '/plugins/flash-album-gallery/lib/meta.php' );
 		// record the starting time for the current image (in microseconds)
 		$started = microtime(true);
 		$id = $_POST['ewww_attachment'];
