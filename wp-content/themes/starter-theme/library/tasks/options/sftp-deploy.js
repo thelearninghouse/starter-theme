@@ -1,7 +1,7 @@
 module.exports = {
   'sftp-deploy': {
     auth: {
-      host: '45.33.56.39',
+      host: 'pod-31050.wpengine.com',
       port: 2222,
       authKey: 'staging'
     },
