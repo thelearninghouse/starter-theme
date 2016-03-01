@@ -16,28 +16,15 @@ come into play. Have fun!
 LAYOUT & GRID STYLES
 *********************/
 
-#main {
-    @include span(8);	
-}
+#inner-content {
+    display: flex;
 
-.sidebar,
-.third {
-	@include span(4);
-}
-
-.error404 {
-	#main {
-		@include span(8);
-        @include push(2 );
-	}
-}
-
-.half {
-    @include span(6);
-}
-
-.quarter {
-    @include span(3);
+    #main {
+        flex: 1 1 35%;
+    }
+    .sidebar {
+        flex: 1;
+    }
 }
 
 /*********************
