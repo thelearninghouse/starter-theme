@@ -18,22 +18,6 @@ understand (what's inside the media queries). We also need to
 import the mixins file so SASS can understand the variables.
 ******************************************************************/
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Typography
-
-Need to import a font or set of icons for your site? Drop them in
-here or just use this to establish your typographical grid. Or not.
-Do whatever you want to...GOSH!
-
-Helpful Articles:
-http://trentwalton.com/2012/06/19/fluid-type/
-http://ia.net/blog/responsive-typography-the-basics/
-http://alistapart.com/column/responsive-typography-is-a-physical-discipline
-
-******************************************************************/
-/******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
@@ -164,7 +148,7 @@ blockquote {
   /* 20px / 16px */
   line-height: 1.25;
   /* 25px / 20px */
-  border-left: 4px solid #9fa6b4;
+  border-left: 4px solid gray;
   padding-left: 1em;
 }
 
@@ -180,13 +164,13 @@ figure, figcaption {
   display: block;
   font-style: italic;
   font-size: .9em;
-  color: #9fa6b4;
+  color: gray;
   text-align: center;
 }
 
 .quote {
   padding: 1.5em;
-  background: #eaedf2;
+  background: gray;
   position: relative;
   border-radius: .5em;
 }
@@ -199,7 +183,7 @@ figure, figcaption {
   height: 0;
   border-style: solid;
   border-width: 0 30px 30px 0;
-  border-color: transparent #eaedf2 transparent transparent;
+  border-color: transparent gray transparent transparent;
 }
 
 /******************************************************************
@@ -223,17 +207,6 @@ http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
 http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
 
 ******************************************************************/
-.wrap {
-  max-width: 80em;
-  margin-left: auto;
-  margin-right: auto;
-}
-.wrap:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
 /******************************************************************
 Site Name:
 Author:
@@ -296,6 +269,7 @@ LAYOUT & GRID STYLES
 }
 #inner-content #main {
   flex: 1 1 35%;
+  padding-right: 2em;
 }
 #inner-content .sidebar {
   flex: 1;
@@ -309,7 +283,7 @@ NAVIGATION STYLES
   /* end .menu ul li */
 }
 .nav ul {
-  background: #404040;
+  background: black;
   margin-top: 0;
 }
 .nav li {
@@ -328,7 +302,7 @@ NAVIGATION STYLES
   */
 }
 .nav li a:hover, .nav li a:focus {
-  color: #fff;
+  color: hite;
   text-decoration: underline;
 }
 .nav li ul.sub-menu,
@@ -388,9 +362,6 @@ SIDEBARS & ASIDES
   padding-left: 1em;
 }
 
-/*
-you can call the larger styles if you want, but there's really no need
-*/
 /******************************************************************
 ADDITIONAL IE FIXES
 These fixes are now ONLY seen by IE, so you don't have to worry

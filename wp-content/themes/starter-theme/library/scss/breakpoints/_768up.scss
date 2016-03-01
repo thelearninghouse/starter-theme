@@ -21,6 +21,7 @@ LAYOUT & GRID STYLES
 
     #main {
         flex: 1 1 35%;
+        padding-right: 2em;
     }
     .sidebar {
         flex: 1;
@@ -34,7 +35,7 @@ NAVIGATION STYLES
 .nav {
 	border: 0;
 	ul {
-		background:$black;
+		background:black;
 		margin-top:0;
 	}
 	li {
@@ -49,7 +50,7 @@ NAVIGATION STYLES
 			has the possibility of being a mobile device.
 			*/
 			&:hover, &:focus {
-				color: $white;
+				color: hite;
 				text-decoration: underline;
 			}
 		}

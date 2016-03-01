@@ -89,8 +89,8 @@ ACCORDION STYLES
     font-size: 1.2em;
     cursor: pointer;
     padding: .5em 2em .5em .5em;
-    background: $light-gray;
-    border: 1px solid darken($light-gray, 5%);
+    background: lightgray;
+    border: 1px solid darken(lightgray, 5%);
     position: relative;
 
     &:before {
@@ -131,17 +131,9 @@ a, a:visited {
 HEADER STYLES
 *********************/
 
-.header {
-	background-color: $black;
+#logo {
+    margin: 0.75em 0;
 }
-
-	#logo {
-		margin: 0.75em 0;
-
-		a {
-			color: $white;
-		}
-	}
 
 /*********************
 NAVIGATION STYLES
@@ -164,7 +156,6 @@ and more scalable.
 
 		a {
 			display: block;
-			color: $white;
 			text-decoration: none;
 			padding: 0.75em;
 
@@ -221,7 +212,7 @@ POSTS & CONTENT STYLES
 
 		/* post meta */
 		.byline {
-			color: $meta-gray;
+			color: gray;
 			font-style: italic;
 			margin: 0;
 		}
@@ -236,29 +227,29 @@ POSTS & CONTENT STYLES
 
 			table {
 				width: 100%;
-				border: 1px solid $gray;
+				border: 1px solid gray;
 				margin-bottom: 1.5em;
 
 				caption {
 					margin: 0 0 7px;
 					font-size: 0.75em;
-					color: $meta-gray;
+					color: gray;
 					text-transform: uppercase;
 					letter-spacing: 1px;
 				}
 			}
 
 			tr {
-				border-bottom: 1px solid $gray;
+				border-bottom: 1px solid gray;
 
 				&:nth-child(even) {
-					background-color: $light-gray;
+					background-color: lightgray;
 				}
 			}
 
 			td {
 				padding: 7px;
-				border-right: 1px solid $gray;
+				border-right: 1px solid gray;
 
 				&:last-child {
 					border-right: 0;
@@ -266,9 +257,9 @@ POSTS & CONTENT STYLES
 			}
 
 			th {
-				background-color: $light-gray;
-				border-bottom: 1px solid $gray;
-				border-right: 1px solid $gray;
+				background-color: lightgray;
+				border-bottom: 1px solid gray;
+				border-right: 1px solid gray;
 
 				&:last-child {
 					border-right: 0;
@@ -280,7 +271,7 @@ POSTS & CONTENT STYLES
 				padding: 0 0 0 0.75em;
 				border-left: 3px solid tomato;
 				font-style: italic;
-				color: $meta-gray;
+				color: gray;
 
 				&:before {}
 
@@ -309,8 +300,8 @@ POSTS & CONTENT STYLES
 			}
 
 			pre {
-				background: $black;
-				color: $light-gray;
+				background: black;
+				color: lightgray;
 				font-size: 0.9em;
 				padding: 1.5em;
 				margin: 0 0 1.5em;
@@ -357,7 +348,7 @@ PAGE NAVI STYLES
 
     ul {
       display: inline-block;
-      background-color: $white;
+      background-color: white;
       white-space: nowrap;
       padding: 0;
       clear: both;
@@ -370,7 +361,7 @@ PAGE NAVI STYLES
       float: left;
       display: inline;
       overflow: hidden;
-      border-right: 1px solid $gray;
+      border-right: 1px solid gray;
     }
 
     a, span {
@@ -387,7 +378,7 @@ PAGE NAVI STYLES
 
       &:hover, &:focus {
       	background-color: $link-color;
-      	color: $white;
+      	color: white;
       }
     }
 
@@ -396,7 +387,7 @@ PAGE NAVI STYLES
     	color: $text-color;
 
     	&:hover, &:focus {
-    		background-color: $white;
+    		background-color: white;
     		color: $text-color;
     	}
     }
@@ -424,7 +415,7 @@ COMMENT STYLES
 #comments-title {
 	padding: 0.75em;
 	margin: 0;
-	border-top: 1px solid $light-gray;
+	border-top: 1px solid lightgray;
 }
 
 .commentlist {
@@ -437,7 +428,7 @@ COMMENT STYLES
 	clear: both;
 	overflow: hidden;
 	padding: 1.5em;
-	border-bottom: 1px solid $light-gray;
+	border-bottom: 1px solid lightgray;
 
 	.comment-author {
 		padding: 7px;
@@ -459,7 +450,7 @@ COMMENT STYLES
 			font-style: italic;
 
 			a {
-				color: $meta-gray;
+				color: gray;
 				text-decoration: none;
 
 				&:hover {
@@ -505,10 +496,10 @@ COMMENT STYLES
 	/* general comment classes */
 	&.alt {}
 	&.odd {
-		background-color: $white;
+		background-color: white;
 	}
 	&.even {
-		background: $light-gray;
+		background: lightgray;
 	}
 }
 
@@ -552,7 +543,7 @@ COMMENT FORM STYLES
 .comment-respond {
 	@extend .cf;
 	padding: 1.5em;
-	border-top: 1px solid $light-gray;
+	border-top: 1px solid lightgray;
 }
 
 	#reply-title {
@@ -560,7 +551,7 @@ COMMENT FORM STYLES
 	}
 
 	.logged-in-as {
-		color: $meta-gray;
+		color: gray;
 		font-style: italic;
 		margin: 0;
 
@@ -575,7 +566,7 @@ COMMENT FORM STYLES
 
 	.form-allowed-tags {
 		padding: 1.5em;
-		background-color: $light-gray;
+		background-color: lightgray;
 		font-size: 0.9em;
 	}
 
@@ -606,10 +597,10 @@ SIDEBARS & ASIDES
 *********************/
 
 .no-widgets {
-	background-color: $white;
+	background-color: white;
 	padding: 1.5em;
 	text-align: center;
-	border: 1px solid $border-color;
+	border: 1px solid gray;
 	border-radius: 2px;
 	margin-bottom: 1.5em;
 }
@@ -620,6 +611,4 @@ FOOTER STYLES
 
 .footer {
 	clear: both;
-	background-color: $black;
-	color: $light-gray;
 }

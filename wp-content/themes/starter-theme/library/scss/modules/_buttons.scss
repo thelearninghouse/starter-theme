@@ -23,7 +23,7 @@ http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
   position: relative;
   font-family: $sans-serif;
   text-decoration: none;
-  color: $white !important;
+  color: white !important;
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
@@ -36,7 +36,7 @@ http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
 
   // hovering on the btn
   &:hover, &:focus {
-    color: $white;
+    color: white;
     text-decoration: none;
     outline: none;
     background: darken($btn-color, 15%);

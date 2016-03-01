@@ -1,21 +1,4 @@
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Typography
-
-Need to import a font or set of icons for your site? Drop them in
-here or just use this to establish your typographical grid. Or not.
-Do whatever you want to...GOSH!
-
-Helpful Articles:
-http://trentwalton.com/2012/06/19/fluid-type/
-http://ia.net/blog/responsive-typography-the-basics/
-http://alistapart.com/column/responsive-typography-is-a-physical-discipline
-
-******************************************************************/
-
-/******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
@@ -165,7 +148,7 @@ blockquote {
   /* 20px / 16px */
   line-height: 1.25;
   /* 25px / 20px */
-  border-left: 4px solid $meta-gray;
+  border-left: 4px solid gray;
   padding-left: 1em;
 }
 
@@ -182,13 +165,13 @@ figure, figcaption {
     display: block;
     font-style: italic;
     font-size: .9em;
-    color: $meta-gray;
+    color: gray;
     text-align: center;
 }
 
 .quote {
    padding: 1.5em;
-   background: $gray;
+   background: gray;
    position: relative;
    border-radius: .5em;
     
@@ -201,6 +184,6 @@ figure, figcaption {
         height: 0;
         border-style: solid;
         border-width: 0 30px 30px 0;
-        border-color: transparent $gray transparent transparent;
+        border-color: transparent gray transparent transparent;
     }
 }

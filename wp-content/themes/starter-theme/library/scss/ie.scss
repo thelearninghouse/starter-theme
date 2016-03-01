@@ -23,17 +23,10 @@ import the mixins file so SASS can understand the variables.
 @import "partials/variables"; // import variables
 @import "partials/typography"; // import typography
 @import "partials/mixins"; // import mixins 
-@import "../bower_components/susy/sass/susy";
-@import "partials/grid"; // import grid    
 
 // import everything inside media queries
 @import "breakpoints/481up"; 
 @import "breakpoints/768up"; 
-
-/*
-you can call the larger styles if you want, but there's really no need
-*/
-
 
 /******************************************************************
 ADDITIONAL IE FIXES

@@ -1,19 +1,3 @@
-/*! Made with Bones: http://themble.com/bones :) */
-/******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Main Stylesheet
-
-Here's where the magic happens. Here, you'll see we are calling in
-the separate media queries. The base mobile goes outside any query
-and is called at the beginning, after that we call the rest
-of the styles inside media queries.
-
-Helpful articles on Sass file organization:
-http://thesassway.com/advanced/modular-css-naming-conventions
-
-******************************************************************/
 /*********************
 IMPORTING PARTIALS
 These files are needed at the beginning so that we establish all
@@ -489,22 +473,6 @@ span.amp {
 }
 
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Typography
-
-Need to import a font or set of icons for your site? Drop them in
-here or just use this to establish your typographical grid. Or not.
-Do whatever you want to...GOSH!
-
-Helpful Articles:
-http://trentwalton.com/2012/06/19/fluid-type/
-http://ia.net/blog/responsive-typography-the-basics/
-http://alistapart.com/column/responsive-typography-is-a-physical-discipline
-
-******************************************************************/
-/******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
@@ -635,7 +603,7 @@ blockquote {
   /* 20px / 16px */
   line-height: 1.25;
   /* 25px / 20px */
-  border-left: 4px solid #9fa6b4;
+  border-left: 4px solid gray;
   padding-left: 1em;
 }
 
@@ -651,13 +619,13 @@ figure, figcaption {
   display: block;
   font-style: italic;
   font-size: .9em;
-  color: #9fa6b4;
+  color: gray;
   text-align: center;
 }
 
 .quote {
   padding: 1.5em;
-  background: #eaedf2;
+  background: gray;
   position: relative;
   border-radius: .5em;
 }
@@ -670,7 +638,7 @@ figure, figcaption {
   height: 0;
   border-style: solid;
   border-width: 0 30px 30px 0;
-  border-color: transparent #eaedf2 transparent transparent;
+  border-color: transparent gray transparent transparent;
 }
 
 /******************************************************************
@@ -694,17 +662,6 @@ http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
 http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
 
 ******************************************************************/
-.wrap {
-  max-width: 80em;
-  margin-left: auto;
-  margin-right: auto;
-}
-.wrap:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
 /*********************
 IMPORTING MODULES
 Modules are reusable blocks or elements we use throughout the project.
@@ -712,52 +669,6 @@ We can break them up as much as we want or just keep them all in one.
 I mean, you can do whatever you want. The world is your oyster. Unless
 you hate oysters, then the world is your peanut butter & jelly sandwich.
 *********************/
-/******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Alert Styles
-
-If you want to use these alerts in your design, you can. If not,
-you can just remove this stylesheet.
-
-******************************************************************/
-.alert-help, .alert-info, .alert-error, .alert-success, .cta {
-  margin: 10px;
-  padding: 5px 18px;
-  border: 1px solid;
-}
-
-.alert-help {
-  border-color: #e8dc59;
-  background: #ebe16f;
-}
-
-.alert-info {
-  border-color: #bfe4f4;
-  background: #d5edf8;
-}
-
-.alert-error {
-  border-color: #f8cdce;
-  background: #fbe3e4;
-}
-
-.alert-success {
-  border-color: #deeaae;
-  background: #e6efc2;
-}
-
-.cta {
-  border-color: #e9ecef;
-  background: #f8f9fa;
-  padding: 1.5em;
-  text-align: center;
-}
-.cta h1, .cta h2, .cta h3, .cta h4, .cta h5, .cta h6 {
-  margin-top: 0;
-}
-
 /******************************************************************
 Site Name:
 Author:
@@ -777,7 +688,7 @@ http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
   position: relative;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-decoration: none;
-  color: #fff !important;
+  color: white !important;
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
@@ -789,7 +700,7 @@ http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
   background: tomato;
 }
 .button:hover, .button:focus {
-  color: #fff;
+  color: white;
   text-decoration: none;
   outline: none;
   background: #fa2600;
@@ -841,7 +752,7 @@ textarea,
   margin-bottom: 14px;
   font-size: 1em;
   color: #5c6b80;
-  border-color: #cbd2df;
+  border-color: #676767;
   border-width: 2px;
   border-style: solid;
   border-spacing: inherit;
@@ -849,7 +760,7 @@ textarea,
   vertical-align: middle;
   box-shadow: none;
   width: 100%;
-  background-color: #eaedf2;
+  background-color: gray;
   transition: background-color 0.24s ease-in-out;
   padding: .5em;
 }
@@ -886,7 +797,7 @@ textarea:focus,
 textarea:active,
 .field:focus,
 .field:active {
-  background-color: #f7f8fa;
+  background-color: #8a8a8a;
   outline: none;
 }
 input[type="text"].error, input[type="text"].is-invalid,
@@ -924,7 +835,7 @@ textarea.is-invalid,
 .field.is-invalid {
   color: tomato;
   border-color: tomato;
-  background-color: #fff;
+  background-color: white;
   background-position: 99% center;
   background-repeat: no-repeat;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDREQkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDREQ0YwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ3ODRGRkE2RjA0QTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERBRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U8iT5wAAAedJREFUeNqk1U9I02Ecx/HtV3aIFAc1hcRDUoGXRAq0oNLA2CrsEFmHbikZu0iQYIFGYAiegkCpLipBxPpDEBMUzB0EhSG2LhG7hMR2GviPgUTvB57Bw8P3+U23B16HPX8+e/b8nt93wezZSMCnhXETF3AcB5BDCnH8Dq98ExcGHcFn8Ah3cdDni+fxnPDv9oAnTB7CKu6VCFXtChZy56LxUjt+jfuB8toSOth9wd7xWAWhqrUjYR/FRTwWJm+iIPT/w7bQf5ljiZnBg45dtKFX6H+LU8gIY8OEV6vgTkStwXWE8BPTGDHGPqNPz2mCfSOOYkA99TvCt1bhGPL68zMcwmncMuape10jrI+q4BbHi/FLn31S9z2x5tRhTc+1W506ipM+T3oRD4X+8+qtc4SqFvL0z/Fr14S+Szjis8bz9Lvvaq8cwS/wwGfdlqfPSWqTiFlX77o13u9Ym1PBs8JAytpRoy44X9Ft9E/gvbA+rYKn8NcaaMVc8UHgBw4b9/iqUQZ6hOAJFbyDcUflmsEX4a6+wTtHGfhAIUqa1U29Zc2BytouThD8x6xuN5CtMPi2CrXLZkZf/HyZoRFCP7n+QVR4PV7uI/AjGghN7OU/r1ilnqILtfpNC+o6vIFljBKYlhb/F2AAgaBsWR5wRiIAAAAASUVORK5CYII=);
@@ -963,13 +874,13 @@ textarea.success,
 textarea.is-valid,
 .field.success,
 .field.is-valid {
-  color: #e6efc2;
-  border-color: #e6efc2;
-  background-color: #fff;
+  color: green;
+  border-color: green;
+  background-color: white;
   background-position: 99% center;
   background-repeat: no-repeat;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDRERkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDRFMEYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MzQ0NERERjA0QjExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERFRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7olkTQAAAfhJREFUeNqklU9oE0EUhzdroWjw0tBeWlDxkEaIp55TsCU9VKIgCrHBelA8CQ1Kr1WPbZrQ3gqtQqvGqxpQc2jBk6BIIaAGD4qNCKURpDSKiPi98gLDsJt//uBjsztvfnk7895sIPAw6/joGMThFJyAXn2+A+9gA57/TaY/eU0OeBgfhGm4DiGnsb7DAszxBz/NAdcKjMJLuNWCqagHbsscN5+L+hmH4QkMOe1L5jzFfNA2PgT34ajTuY7AGuZB0/hmh5m+gS0r8xv1zRvg+gGCHZiOwnF4DP3iB3sQkYxPd2C6CWfhB9Xwlus5+K1j4jXuaq3a+gM1H9OPcAa+7q9lPidZJqHbiIm7Wg22rsEI7FrPSzAMX/T+ADyAKSsu7Fr1KplehLvwCs5DvfBf65p+MypqRbO1FXK9utH4/QKuaqYTsG3E3INJv00Q46px3+XxanJ/Ute2/vqP4FKDza2KcdljIKdnhS0xXYULTaqmLMZFn8FFSFtvt6x70ExFCS5oUXspq2ssa7oEl1swFa+CGFdgtkHgPDyDKy02zyxNU6lXRUZb1EuHYayNNs+Yh5B0WQo+/8fpJnNTZFuzz2OpjoQ2QruSOQlMy35fEGmEGMxY9e1brxobw7TkWA1h6xfckUPb+JhGoE/Hpfvew7qUld/H9J8AAwDpw3WYrxcZ3QAAAABJRU5ErkJggg==);
-  outline-color: #e6efc2;
+  outline-color: green;
 }
 input[type="text"][disabled], input[type="text"].is-disabled,
 input[type="password"][disabled],
@@ -1005,7 +916,7 @@ textarea.is-disabled,
 .field[disabled],
 .field.is-disabled {
   cursor: not-allowed;
-  border-color: #cfcfcf;
+  border-color: lightgray;
   opacity: 0.6;
 }
 input[type="text"][disabled]:focus, input[type="text"][disabled]:active, input[type="text"].is-disabled:focus, input[type="text"].is-disabled:active,
@@ -1073,7 +984,7 @@ textarea.is-disabled:active,
 .field[disabled]:active,
 .field.is-disabled:focus,
 .field.is-disabled:active {
-  background-color: #d5edf8;
+  background-color: blue;
 }
 
 input[type="password"] {
@@ -1091,7 +1002,7 @@ input[type="submit"] {
   position: relative;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-decoration: none;
-  color: #fff !important;
+  color: white !important;
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
@@ -1104,7 +1015,7 @@ input[type="submit"] {
   width: 100%;
 }
 input[type="submit"]:hover, input[type="submit"]:focus {
-  color: #fff;
+  color: white;
   text-decoration: none;
   outline: none;
   background: #fa2600;
@@ -1261,8 +1172,8 @@ ACCORDION STYLES
   font-size: 1.2em;
   cursor: pointer;
   padding: .5em 2em .5em .5em;
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
+  background: lightgray;
+  border: 1px solid #c6c6c6;
   position: relative;
 }
 .accord-header:before {
@@ -1298,15 +1209,8 @@ a:link, a:visited:link {
 /*********************
 HEADER STYLES
 *********************/
-.header {
-  background-color: #404040;
-}
-
 #logo {
   margin: 0.75em 0;
-}
-#logo a {
-  color: #fff;
 }
 
 /*********************
@@ -1336,7 +1240,6 @@ and more scalable.
 }
 .nav li a {
   display: block;
-  color: #fff;
   text-decoration: none;
   padding: 0.75em;
   /*
@@ -1371,7 +1274,7 @@ POSTS & CONTENT STYLES
 
 /* post meta */
 .byline {
-  color: #9fa6b4;
+  color: gray;
   font-style: italic;
   margin: 0;
 }
@@ -1385,33 +1288,33 @@ POSTS & CONTENT STYLES
 }
 .entry-content table {
   width: 100%;
-  border: 1px solid #eaedf2;
+  border: 1px solid gray;
   margin-bottom: 1.5em;
 }
 .entry-content table caption {
   margin: 0 0 7px;
   font-size: 0.75em;
-  color: #9fa6b4;
+  color: gray;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 .entry-content tr {
-  border-bottom: 1px solid #eaedf2;
+  border-bottom: 1px solid gray;
 }
 .entry-content tr:nth-child(even) {
-  background-color: #f8f9fa;
+  background-color: lightgray;
 }
 .entry-content td {
   padding: 7px;
-  border-right: 1px solid #eaedf2;
+  border-right: 1px solid gray;
 }
 .entry-content td:last-child {
   border-right: 0;
 }
 .entry-content th {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #eaedf2;
-  border-right: 1px solid #eaedf2;
+  background-color: lightgray;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
 }
 .entry-content th:last-child {
   border-right: 0;
@@ -1421,7 +1324,7 @@ POSTS & CONTENT STYLES
   padding: 0 0 0 0.75em;
   border-left: 3px solid tomato;
   font-style: italic;
-  color: #9fa6b4;
+  color: gray;
 }
 .entry-content dd {
   margin-left: 0;
@@ -1443,8 +1346,8 @@ POSTS & CONTENT STYLES
   height: auto;
 }
 .entry-content pre {
-  background: #404040;
-  color: #f8f9fa;
+  background: black;
+  color: lightgray;
   font-size: 0.9em;
   padding: 1.5em;
   margin: 0 0 1.5em;
@@ -1487,7 +1390,7 @@ PAGE NAVI STYLES
 }
 .pagination ul {
   display: inline-block;
-  background-color: #fff;
+  background-color: white;
   white-space: nowrap;
   padding: 0;
   clear: both;
@@ -1499,7 +1402,7 @@ PAGE NAVI STYLES
   float: left;
   display: inline;
   overflow: hidden;
-  border-right: 1px solid #eaedf2;
+  border-right: 1px solid gray;
 }
 .pagination a, .pagination span {
   margin: 0;
@@ -1515,14 +1418,14 @@ PAGE NAVI STYLES
 }
 .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
   background-color: tomato;
-  color: #fff;
+  color: white;
 }
 .pagination .current {
   cursor: default;
   color: #5c6b80;
 }
 .pagination .current:hover, .pagination .current:focus {
-  background-color: #fff;
+  background-color: white;
   color: #5c6b80;
 }
 
@@ -1543,7 +1446,7 @@ COMMENT STYLES
 #comments-title {
   padding: 0.75em;
   margin: 0;
-  border-top: 1px solid #f8f9fa;
+  border-top: 1px solid lightgray;
 }
 
 .commentlist {
@@ -1556,7 +1459,7 @@ COMMENT STYLES
   clear: both;
   overflow: hidden;
   padding: 1.5em;
-  border-bottom: 1px solid #f8f9fa;
+  border-bottom: 1px solid lightgray;
   /* vcard */
   /* end .commentlist .vcard */
   /* end children */
@@ -1579,7 +1482,7 @@ COMMENT STYLES
   font-style: italic;
 }
 .comment .vcard time a {
-  color: #9fa6b4;
+  color: gray;
   text-decoration: none;
 }
 .comment .vcard time a:hover {
@@ -1609,10 +1512,10 @@ COMMENT STYLES
   padding: 7px;
 }
 .comment.odd {
-  background-color: #fff;
+  background-color: white;
 }
 .comment.even {
-  background: #f8f9fa;
+  background: lightgray;
 }
 
 /* comment content */
@@ -1629,7 +1532,7 @@ COMMENT STYLES
   position: relative;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-decoration: none;
-  color: #fff !important;
+  color: white !important;
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
@@ -1643,7 +1546,7 @@ COMMENT STYLES
   float: right;
 }
 .comment-reply-link:hover, .comment-reply-link:focus {
-  color: #fff;
+  color: white;
   text-decoration: none;
   outline: none;
   background: #fa2600;
@@ -1666,7 +1569,7 @@ COMMENT FORM STYLES
 ******************************************************************/
 .comment-respond {
   padding: 1.5em;
-  border-top: 1px solid #f8f9fa;
+  border-top: 1px solid lightgray;
 }
 
 #reply-title {
@@ -1674,7 +1577,7 @@ COMMENT FORM STYLES
 }
 
 .logged-in-as {
-  color: #9fa6b4;
+  color: gray;
   font-style: italic;
   margin: 0;
 }
@@ -1688,7 +1591,7 @@ COMMENT FORM STYLES
 
 .form-allowed-tags {
   padding: 1.5em;
-  background-color: #f8f9fa;
+  background-color: lightgray;
   font-size: 0.9em;
 }
 
@@ -1698,7 +1601,7 @@ COMMENT FORM STYLES
   position: relative;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-decoration: none;
-  color: #fff !important;
+  color: white !important;
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
@@ -1712,7 +1615,7 @@ COMMENT FORM STYLES
   font-size: 1em;
 }
 #submit:hover, #submit:focus {
-  color: #fff;
+  color: white;
   text-decoration: none;
   outline: none;
   background: #fa2600;
@@ -1740,10 +1643,10 @@ COMMENT FORM STYLES
 SIDEBARS & ASIDES
 *********************/
 .no-widgets {
-  background-color: #fff;
+  background-color: white;
   padding: 1.5em;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid gray;
   border-radius: 2px;
   margin-bottom: 1.5em;
 }
@@ -1753,8 +1656,6 @@ FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-  background-color: #404040;
-  color: #f8f9fa;
 }
 
 /*********************
@@ -1834,6 +1735,7 @@ you can add resource intensive styles.
   }
   #inner-content #main {
     flex: 1 1 35%;
+    padding-right: 2em;
   }
   #inner-content .sidebar {
     flex: 1;
@@ -1847,7 +1749,7 @@ you can add resource intensive styles.
     /* end .menu ul li */
   }
   .nav ul {
-    background: #404040;
+    background: black;
     margin-top: 0;
   }
   .nav li {
@@ -1866,7 +1768,7 @@ you can add resource intensive styles.
     */
   }
   .nav li a:hover, .nav li a:focus {
-    color: #fff;
+    color: hite;
     text-decoration: underline;
   }
   .nav li ul.sub-menu,
@@ -1925,54 +1827,6 @@ you can add resource intensive styles.
     margin-top: 0.75em;
     padding-left: 1em;
   }
-}
-/*********************
-RETINA (2x RESOLUTION DEVICES)
-This applies to the retina iPhone (4s) and iPad (2,3) along with
-other displays with a 2x resolution. You can also create a media
-query for retina AND a certain size if you want. Go Nuts.
-*********************/
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  /******************************************************************
-  Site Name: 
-  Author: 
-  
-  Stylesheet: Retina Screens & Devices Stylesheet
-  
-  When handling retina screens you need to make adjustments, especially
-  if you're not using font icons. Here you can add them in one neat
-  place.
-  
-  ******************************************************************/
-  /* 
-  
-  EXAMPLE 
-  Let's say you have an image and you need to make sure it looks ok
-  on retina screens. Let's say we have an icon which dimension are
-  24px x 24px. In your regular stylesheets, it would look something
-  like this:
-  
-  .icon {
-  	width: 24px;
-  	height: 24px;
-  	background: url(img/test.png) no-repeat;
-  }
-  
-  For retina screens, we have to make some adjustments, so that image
-  doesn't look blurry. So, taking into account the image above and the
-  dimensions, this is what we would put in our retina stylesheet:
-  
-  .icon {
-  	background: url(img/test@2x.png) no-repeat;
-  	background-size: 24px 24px;
-  }
-  
-  So, you would create the same icon, but at double the resolution, meaning 
-  it would be 48px x 48px. You'd name it the same, but with a @2x at the end
-  (this is pretty standard practice). Set the background image so it matches
-  the original dimensions and you are good to go. 
-  
-  */
 }
 /*********************
 PRINT STYLESHEET
