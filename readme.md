@@ -8,26 +8,13 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 Install grunt by navigating to the theme's `library` folder and running `npm install`
 
-### Install Bower
-
-Install bower by navigating to the theme's `library` folder and running `bower install`
-
 ### Watch Files
 
 To start watching files use `grunt` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
 ### Grid Usage
 
-This theme uses [susy](http://susy.oddbird.net/)
-
-Out of the box this is a 12 column grid on screen sizes 768px and up.
-
-To include the column mixin use `@include span(10);`
-
-To push use `@include push(2);`
-
-To pull use `@include pull(2);`
-
+This theme uses flexbox. Get hip.
 
 ## Plugins
 
