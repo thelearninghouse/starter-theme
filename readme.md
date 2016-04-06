@@ -4,15 +4,15 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 ## Basic Usage
 
-### Install Grunt
+#### Install Grunt
 
 Install grunt by navigating to the theme's `library` folder and running `npm install`
 
-### Watch Files
+#### Watch Files
 
 To start watching files use `grunt` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
-### Grid Usage
+#### Grid Usage
 
 This theme uses flexbox. Get hip. If you want to use a grid then please use SUSY and install it via [Bower](http://bower.io).
 
@@ -46,8 +46,8 @@ Yoast is required on all of our sites for SEO optimization.
 
 ## Resources
 
-### Style Guide
+#### Style Guide
 /style-guide
 
-### Sassdoc
+#### Sassdoc
 /sassdoc
