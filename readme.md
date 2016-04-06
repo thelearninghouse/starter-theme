@@ -47,7 +47,10 @@ Yoast is required on all of our sites for SEO optimization.
 ## Resources
 
 #### Style Guide
-/style-guide
+
+For common patterns and styles please use this resource. This was mostly created for the inbound when they create blog post. [View Style Guide](http://tlhstarter.wpengine.com/style-guide)
 
 #### Sassdoc
-/sassdoc
+
+This documentation is for the front-end team for easy access to variable, mixins, functions, etc. [View SassDoc](http://tlhstarter.wpengine.com/sassdoc)
+
