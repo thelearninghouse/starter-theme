@@ -1,84 +1,33 @@
+/******************************************************************
+Main Stylesheet
+******************************************************************/
+
 /*********************
 IMPORTING PARTIALS
-These files are needed at the beginning so that we establish all
-our mixins, functions, and variables that we'll be using across
-the whole project.
 *********************/
 
-// normalize: http://necolas.github.io/normalize.css/
 @import "partials/normalize";
-
-// Sass variables
 @import "partials/variables";
-
-// typography
 @import "partials/typography";
-
-// import mixins
 @import "partials/mixins";
 
 /*********************
 IMPORTING MODULES
-Modules are reusable blocks or elements we use throughout the project.
-We can break them up as much as we want or just keep them all in one.
-I mean, you can do whatever you want. The world is your oyster. Unless
-you hate oysters, then the world is your peanut butter & jelly sandwich.
 *********************/
 
-// buttons
 @import "modules/buttons";
-
-// forms (inputs & labels)
 @import "modules/forms";
-
-// tables
 @import "modules/tables";
 
 /*********************
 BASE (MOBILE) SIZE
-This are the mobile styles. It's what people see on their phones. If
-you set a great foundation, you won't need to add too many styles in
-the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
 
-// styles in base.scss
 @import "breakpoints/base";
 
 /*********************
-LARGER MOBILE DEVICES
-This is for devices like the Galaxy Note or something that's
-larger than an iPhone but smaller than a tablet. Let's call them
-tweeners.
+MEDIA QUERIES
 *********************/
-@media only screen and (min-width: 481px) {
-
-	// styles in 481up.scss
-	@import "breakpoints/481up";
-
-} // end of media query
-
-/*********************
-TABLET & SMALLER LAPTOPS
-This is the average viewing window. So Desktops, Laptops, and
-in general anyone not viewing on a mobile device. Here's where
-you can add resource intensive styles.
-*********************/
-@media only screen and (min-width: 768px) {
-
-	// styles in 768up.scss
-	@import "breakpoints/768up";
-
-} // end of media query
-
-/*********************
-PRINT STYLESHEET
-Feel free to customize this. Remember to add things that won't make
-sense to print at the bottom. Things like nav, ads, and forms should
-be set to display none.
-*********************/
-@media print {
-
-	// styles in print.scss
-	@import "partials/print";
-
-}
+@media only screen and (min-width: 481px) { @import "breakpoints/481up"; } 
+@media only screen and (min-width: 768px) { @import "breakpoints/768up"; } 
+@media print { @import "partials/print"; }

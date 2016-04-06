@@ -1,66 +1,14 @@
+/******************************************************************
+Main Stylesheet
+******************************************************************/
 /*********************
 IMPORTING PARTIALS
-These files are needed at the beginning so that we establish all
-our mixins, functions, and variables that we'll be using across
-the whole project.
 *********************/
-/* normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css */
-/* ==========================================================================
-   HTML5 display definitions
-   ========================================================================== */
+/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
- * Correct `block` display not defined in IE 8/9.
- */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-  display: block;
-}
-
-/**
- * Correct `inline-block` display not defined in IE 8/9.
- */
-audio,
-canvas,
-video {
-  display: inline-block;
-}
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/**
- * Address `[hidden]` styling not present in IE 8/9.
- * Hide the `template` element in IE, Safari, and Firefox < 22.
- */
-[hidden],
-template {
-  display: none;
-}
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
-/**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
+ * 1. Change the default font family in all browsers (opinionated).
+  * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+   */
 html {
   font-family: sans-serif;
   /* 1 */
@@ -71,141 +19,153 @@ html {
 }
 
 /**
- * Remove default margin.
- */
+ * Remove the margin in all browsers (opinionated).
+  */
 body {
   margin: 0;
 }
 
-/* ==========================================================================
-   Links
+/* HTML5 display definitions
    ========================================================================== */
 /**
- * Remove the gray background color from active links in IE 10.
- */
+ * Add the correct display in IE 9-.
+  * 1. Add the correct display in Edge, IE, and Firefox.
+   * 2. Add the correct display in IE.
+    */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+  */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+  */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+  */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+  * 1. Add the correct display in IE.
+   */
+template,
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+  */
 a {
-  background: transparent;
+  background-color: transparent;
 }
 
 /**
- * Address `outline` inconsistency between Chrome and other browsers.
- */
-a:focus {
-  outline: thin dotted;
-}
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
+ * Remove the outline on focused links when they are also active or hovered
+  * in all browsers (opinionated).
+   */
 a:active,
 a:hover {
-  outline: 0;
+  outline-width: 0;
 }
 
-/* ==========================================================================
-   Typography
+/* Text-level semantics
    ========================================================================== */
 /**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari 5, and Chrome.
- */
+ * 1. Remove the bottom border in Firefox 39-.
+  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+  */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+  */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+  */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+  * `article` contexts in Chrome, Firefox, and Safari.
+   */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
 /**
- * Address styling not present in IE 8/9, Safari 5, and Chrome.
- */
-abbr[title] {
-  border-bottom: 1px dotted;
+ * Add the correct background and color in IE 9-.
+  */
+mark {
+  background-color: #ff0;
+  color: #000;
 }
 
 /**
- * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
- */
-b,
-strong,
-.strong {
-  font-weight: bold;
+ * Add the correct font size in all browsers.
+  */
+small {
+  font-size: 80%;
 }
 
 /**
- * Address styling not present in Safari 5 and Chrome.
- */
-dfn,
-em,
-.em {
-  font-style: italic;
-}
-
-/**
- * Address differences between Firefox and other browsers.
- */
-hr {
-  box-sizing: content-box;
-  height: 0;
-}
-
-/*
- * proper formatting (http://blog.fontdeck.com/post/9037028497/hyphens)
-*/
-p {
-  -webkit-hyphens: auto;
-  -epub-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-      hyphens: auto;
-}
-
-/*
- * Addresses margins set differently in IE6/7.
- */
-pre {
-  margin: 0;
-}
-
-/**
- * Correct font family set oddly in Safari 5 and Chrome.
- */
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, serif;
-  font-size: 1em;
-}
-
-/**
- * Improve readability of pre-formatted text in all browsers.
- */
-pre {
-  white-space: pre-wrap;
-}
-
-/**
- * Set consistent quote types.
- */
-q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
-}
-
-/**
- * Address inconsistent and variable font size in all browsers.
- */
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-small, .small {
-  font-size: 75%;
-}
-
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
+ * Prevent `sub` and `sup` elements from affecting the line height in
+  * all browsers.
+   */
 sub,
 sup {
   font-size: 75%;
@@ -214,201 +174,152 @@ sup {
   vertical-align: baseline;
 }
 
-sup {
-  top: -0.5em;
-}
-
 sub {
   bottom: -0.25em;
 }
 
-/* ==========================================================================
-  Lists
-========================================================================== */
-/*
- * Addresses margins set differently in IE6/7.
- */
-dl,
-menu,
-ol,
-ul {
-  margin: 1em 0;
+sup {
+  top: -0.5em;
 }
 
-dd {
-  margin: 0;
-}
-
-/*
- * Addresses paddings set differently in IE6/7.
- */
-menu {
-  padding: 0 0 0 40px;
-}
-
-ol.noList,
-ul.noList {
-  padding: 0;
-  list-style-type: none;
-}
-
-/*
- * Corrects list images handled incorrectly in IE7.
- */
-nav ul,
-nav ol {
-  list-style: none;
-  list-style-image: none;
-}
-
-/* ==========================================================================
-  Embedded content
-========================================================================== */
+/* Embedded content
+   ========================================================================== */
 /**
- * Remove border when inside `a` element in IE 8/9.
- */
+ * Remove the border on images inside links in IE 10-.
+  */
 img {
-  border: 0;
+  border-style: none;
 }
 
 /**
- * Correct overflow displayed oddly in IE 9.
- */
+ * Hide the overflow in IE.
+  */
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* ==========================================================================
-   Figures
+/* Grouping content
    ========================================================================== */
 /**
- * Address margin not present in IE 8/9 and Safari 5.
- */
-figure {
-  margin: 0;
-}
-
-/* ==========================================================================
-   Forms
-   ========================================================================== */
-/**
- * Define consistent border, margin, and padding.
- */
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
-}
-
-/**
- * 1. Correct `color` not being inherited in IE 8/9.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- */
-legend {
-  border: 0;
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+  * 2. Correct the odd `em` font sizing in all browsers.
+   */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
   /* 1 */
-  padding: 0;
+  font-size: 1em;
   /* 2 */
 }
 
 /**
- * 1. Correct font family not being inherited in all browsers.
- * 2. Correct font size not being inherited in all browsers.
- * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
- */
+ * Add the correct margin in IE 8.
+  */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+  * 2. Show the overflow in Edge and IE.
+   */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Change font properties to `inherit` in all browsers (opinionated).
+  */
 button,
 input,
 select,
 textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 2 */
-  margin: 0;
-  /* 3 */
+  font: inherit;
 }
 
 /**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
+ * Restore the font weight unset by the previous rule.
+  */
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+  * 1. Show the overflow in Edge.
+   * 2. Show the overflow in Edge, Firefox, and IE.
+    */
 button,
-input {
-  line-height: normal;
+input,
+select {
+  /* 2 */
+  overflow: visible;
 }
 
 /**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
- */
+ * Remove the margin in Safari.
+  * 1. Remove the margin in Firefox and Safari.
+   */
+button,
+input,
+select,
+textarea {
+  /* 1 */
+  margin: 0;
+}
+
+/**
+ * Remove the inheritence of text transform in Edge, Firefox, and IE.
+  * 1. Remove the inheritence of text transform in Firefox.
+   */
 button,
 select {
+  /* 1 */
   text-transform: none;
 }
 
 /**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
- */
+ * Change the cursor in all browsers (opinionated).
+  */
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  /* 2 */
+[type="button"],
+[type="reset"],
+[type="submit"] {
   cursor: pointer;
-  /* 3 */
 }
 
 /**
- * Re-set default cursor for disabled elements.
- */
-button[disabled],
-html input[disabled] {
+ * Restore the default cursor to disabled elements unset by the previous rule.
+  */
+[disabled] {
   cursor: default;
 }
 
 /**
- * 1. Address box sizing set to `content-box` in IE 8/9/10.
- * 2. Remove excess padding in IE 8/9/10.
- */
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+  *    controls in Android 4.
+   * 2. Correct the inability to style clickable types in iOS.
+    */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
   /* 2 */
 }
 
 /**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-input[type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  /* 2 */
-  box-sizing: content-box;
-}
-
-/**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
- */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * Remove inner padding and border in Firefox 4+.
- */
+ * Remove the inner border and padding in Firefox.
+  */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -416,58 +327,92 @@ input::-moz-focus-inner {
 }
 
 /**
- * 1. Remove default vertical scrollbar in IE 8/9.
- * 2. Improve readability and alignment in all browsers.
- */
+ * Restore the focus styles unset by the previous rule.
+  */
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+  */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+  * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+    *    `fieldset` elements in all browsers.
+     */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+  */
 textarea {
   overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+  * 2. Remove the padding in IE 10-.
+   */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
   /* 1 */
-  vertical-align: top;
+  padding: 0;
   /* 2 */
 }
 
-/* ==========================================================================
-   Tables
-   ========================================================================== */
 /**
- * Remove most spacing between table cells.
- */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+  */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
 }
 
-* {
-  box-sizing: border-box;
+/**
+ * Correct the odd appearance of search inputs in Chrome and Safari.
+  */
+[type="search"] {
+  -webkit-appearance: textfield;
 }
 
-.image-replacement,
-.ir {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+/**
+ * Remove the inner padding and cancel buttons in Chrome on OS X and
+  * Safari on OS X.
+   */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
 }
 
-.clearfix, .cf, .comment-respond {
-  zoom: 1;
-}
-.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
-  content: "";
-  display: table;
-}
-.clearfix:after, .cf:after, .comment-respond:after {
-  clear: both;
-}
-
-/*
-use the best ampersand
-http://simplebits.com/notebook/2008/08/14/ampersands-2/
-*/
-span.amp {
-  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
-  font-style: italic;
-}
-
+/******************************************************************
+Variables
+******************************************************************/
+/******************************************************************
+Typography Styles
+******************************************************************/
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
@@ -638,46 +583,13 @@ figure, figcaption {
 }
 
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Mixins Stylesheet
-
-This is where you can take advantage of Sass' great features: Mixins.
-I won't go in-depth on how they work exactly,
-there are a few articles below that will help do that. What I will
-tell you is that this will help speed up simple changes like
-changing a color or adding CSS3 techniques gradients.
-
-A WORD OF WARNING: It's very easy to overdo it here. Be careful and
-remember less is more.
-
-Helpful:
-http://sachagreif.com/useful-sass-mixins/
-http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
-http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
-
+Mixins Stylesheet
 ******************************************************************/
 /*********************
 IMPORTING MODULES
-Modules are reusable blocks or elements we use throughout the project.
-We can break them up as much as we want or just keep them all in one.
-I mean, you can do whatever you want. The world is your oyster. Unless
-you hate oysters, then the world is your peanut butter & jelly sandwich.
 *********************/
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Button Styles
-
-Buttons are a pretty important part of your site's style, so it's
-important to have a consistent baseline for them. Use this stylesheet
-to create all kinds of buttons.
-
-Helpful Links:
-http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
-
+Button Styles
 ******************************************************************/
 .button {
   display: inline-block;
@@ -706,21 +618,7 @@ http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
 }
 
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Form Styles
-
-We put all the form and button styles in here to setup a consistent
-look. If we need to customize them, we can do this in the main
-stylesheets and just override them. Easy Peasy.
-
-You're gonna see a few data-uri thingies down there. If you're not
-sure what they are, check this link out:
-http://css-tricks.com/data-uris/
-If you want to create your own, use this helpful link:
-http://websemantics.co.uk/online_tools/image_to_data_uri_convertor/
-
+Form Styles
 ******************************************************************/
 /*********************
 INPUTS
@@ -1044,11 +942,7 @@ legend, width,
 }
 
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Table Styles
-
+Table Styles
 ******************************************************************/
 /*********************
 BASIC STYLING
@@ -1085,21 +979,9 @@ table tr:nth-child(even) {
 
 /*********************
 BASE (MOBILE) SIZE
-This are the mobile styles. It's what people see on their phones. If
-you set a great foundation, you won't need to add too many styles in
-the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Base Mobile Stylesheet
-
-Be light and don't over style since everything here will be
-loaded by mobile devices. You want to keep it as minimal as
-possible. This is called at the top of the main stylsheet
-and will be used across all viewports.
-
+Base Mobile Stylesheet
 ******************************************************************/
 /*********************
 GENERAL STYLES
@@ -1131,6 +1013,19 @@ body {
 .border {
   border: 2px solid tomato;
   padding: .5em 1em;
+}
+
+.clearfix, .cf, .comment-respond, .comment-respond {
+  zoom: 1;
+}
+
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .comment-respond:before, .cf:after, .comment-respond:after, .comment-respond:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after, .cf:after, .comment-respond:after, .comment-respond:after {
+  clear: both;
 }
 
 /********************
@@ -1218,38 +1113,17 @@ HEADER STYLES
 /*********************
 NAVIGATION STYLES
 *********************/
-/*
-all navs have a .nav class applied via
-the wp_menu function; this is so we can
-easily write one group of styles for
-the navs on the site so our css is cleaner
-and more scalable.
-*/
 .nav {
   border-bottom: 0;
   margin: 0;
   padding: 0;
+  list-style: none;
   /* end .menu li */
-}
-.nav li {
-  /*
-  so you really have to rethink your dropdowns for mobile.
-  you don't want to have it expand too much because the
-  screen is so small. How you manage your menu should
-  depend on the project. Here's some great info on it:
-  http://www.alistapart.com/articles/organizing-mobile/
-  */
 }
 .nav li a {
   display: block;
   text-decoration: none;
   padding: 0.75em;
-  /*
-  remember this is for mobile ONLY, so there's no need
-  to even declare hover styles here, you can do it in
-  the style.scss file where it's relevant. We want to
-  keep this file as small as possible!
-  */
 }
 .nav li ul.sub-menu,
 .nav li ul.children {
@@ -1661,27 +1535,11 @@ FOOTER STYLES
 }
 
 /*********************
-LARGER MOBILE DEVICES
-This is for devices like the Galaxy Note or something that's
-larger than an iPhone but smaller than a tablet. Let's call them
-tweeners.
+MEDIA QUERIES
 *********************/
 @media only screen and (min-width: 481px) {
   /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: 481px and Up Stylesheet
-  
-  This stylesheet is loaded for larger devices. It's set to
-  481px because at 480px it would load on a landscaped iPhone.
-  This isn't ideal because then you would be loading all those
-  extra styles on that same mobile connection.
-  
-  A word of warning. This size COULD be a larger mobile device,
-  so you still want to keep it pretty light and simply expand
-  upon your base.scss styles.
-  
+  481px and Up Stylesheet
   ******************************************************************/
   /*********************
   POSTS & CONTENT STYLES
@@ -1709,25 +1567,9 @@ tweeners.
 
   /* end .entry-content */
 }
-/*********************
-TABLET & SMALLER LAPTOPS
-This is the average viewing window. So Desktops, Laptops, and
-in general anyone not viewing on a mobile device. Here's where
-you can add resource intensive styles.
-*********************/
 @media only screen and (min-width: 768px) {
   /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: Tablet & Small Desktop Stylesheet
-  
-  Here's where you can start getting into the good stuff.
-  This size will work on iPads, other tablets, and desktops.
-  So you can start working with more styles, background images,
-  and other resources. You'll also notice the grid starts to
-  come into play. Have fun!
-  
+  Tablet & Small Desktop Stylesheet
   ******************************************************************/
   /*********************
   LAYOUT & GRID STYLES
@@ -1763,17 +1605,10 @@ you can add resource intensive styles.
   .nav li {
     float: left;
     position: relative;
-    /*
-    plan your menus and drop-downs wisely.
-    */
     /* showing sub-menus */
   }
   .nav li a {
     border-bottom: 0;
-    /*
-    you can use hover styles here even though this size
-    has the possibility of being a mobile device.
-    */
   }
   .nav li a:hover, .nav li a:focus {
     color: hite;
@@ -1785,14 +1620,6 @@ you can add resource intensive styles.
     position: absolute;
     visibility: hidden;
     z-index: 8999;
-  }
-  .nav li ul.sub-menu li,
-  .nav li ul.children li {
-    /*
-    if you need to go deeper, go nuts
-    just remember deeper menus suck
-    for usability. k, bai.
-    */
   }
   .nav li ul.sub-menu li a,
   .nav li ul.children li a {
@@ -1829,30 +1656,15 @@ you can add resource intensive styles.
   }
   .widget ul li {
     margin-bottom: 0.75em;
-    /* deep nesting */
   }
   .widget ul li ul {
     margin-top: 0.75em;
     padding-left: 1em;
   }
 }
-/*********************
-PRINT STYLESHEET
-Feel free to customize this. Remember to add things that won't make
-sense to print at the bottom. Things like nav, ads, and forms should
-be set to display none.
-*********************/
 @media print {
   /******************************************************************
-  Site Name:
-  Author:
-  
-  Stylesheet: Print Stylesheet
-  
-  This is the print stylesheet. There's probably not a lot
-  of reasons to edit this stylesheet. If you want to
-  though, go for it.
-  
+  Print Stylesheet
   ******************************************************************/
   * {
     background: transparent !important;

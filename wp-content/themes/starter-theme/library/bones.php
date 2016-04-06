@@ -18,10 +18,6 @@ in the functions.php file.
 
 /*********************
 WP_HEAD GOODNESS
-The default wordpress head is
-a mess. Let's clean it up by
-removing all the junk we don't
-need.
 *********************/
 
 function bones_head_cleanup() {
@@ -277,13 +273,6 @@ function bones_excerpt_more($more) {
 	// edit here if you like
 	return '...  <a class="excerpt-read-more" href="'. get_permalink( $post->ID ) . '" title="'. __( 'Read ', 'bonestheme' ) . esc_attr( get_the_title( $post->ID ) ).'">'. __( 'Read more &raquo;', 'bonestheme' ) .'</a>';
 }
-
-
-/*********************
-RESPONSIVE IMAGES
-*********************/
-
-
 
 
 ?>

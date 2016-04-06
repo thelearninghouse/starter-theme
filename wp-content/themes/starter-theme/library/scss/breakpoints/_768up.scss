@@ -1,15 +1,5 @@
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Tablet & Small Desktop Stylesheet
-
-Here's where you can start getting into the good stuff.
-This size will work on iPads, other tablets, and desktops.
-So you can start working with more styles, background images,
-and other resources. You'll also notice the grid starts to
-come into play. Have fun!
-
+Tablet & Small Desktop Stylesheet
 ******************************************************************/
 
 /*********************
@@ -45,19 +35,12 @@ NAVIGATION STYLES
 		a {
 			border-bottom: 0;
 
-			/*
-			you can use hover styles here even though this size
-			has the possibility of being a mobile device.
-			*/
 			&:hover, &:focus {
 				color: hite;
 				text-decoration: underline;
 			}
 		}
 
-		/*
-		plan your menus and drop-downs wisely.
-		*/
 		ul.sub-menu,
 		ul.children {
 			margin-top: 0;
@@ -74,11 +57,6 @@ NAVIGATION STYLES
 					width: 180px;
 				}
 
-				/*
-				if you need to go deeper, go nuts
-				just remember deeper menus suck
-				for usability. k, bai.
-				*/
 				ul {
 					top:0;
 					left:100%;
@@ -116,11 +94,6 @@ SIDEBARS & ASIDES
 	ul {
 		li {
 			margin-bottom: 0.75em;
-
-			&:first-child {}
-			&:last-child {}
-			a {}
-			/* deep nesting */
 
 			ul {
 				margin-top: 0.75em;

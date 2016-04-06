@@ -4,7 +4,7 @@
 
 				<div id="inner-content" class="wrap cf">
 
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php $loop = new WP_Query( array( 'post_type' => 'programs', 'posts_per_page' => -1 ) ); ?>
 							<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>

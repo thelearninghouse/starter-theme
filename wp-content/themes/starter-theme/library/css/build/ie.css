@@ -1,21 +1,14 @@
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: IE Stylesheet
-
-So instead of using the respond.js file to add media query support
-to IE, we're going to use SASS to create an easily readable css file.
-Here, we import all the styles the standard stylesheet gets, only
-without the media queries. No need to worry about editing anything!
-
+IE Stylesheet
 ******************************************************************/
 /******************************************************************
 IMPORTS & DEPENDENCIES
-Remember, all the BASE styles are called already since IE can
-read those. Below, we need to import only the stuff IE can't
-understand (what's inside the media queries). We also need to
-import the mixins file so SASS can understand the variables.
+******************************************************************/
+/******************************************************************
+Variables
+******************************************************************/
+/******************************************************************
+Typography Styles
 ******************************************************************/
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
@@ -187,41 +180,10 @@ figure, figcaption {
 }
 
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Mixins Stylesheet
-
-This is where you can take advantage of Sass' great features: Mixins.
-I won't go in-depth on how they work exactly,
-there are a few articles below that will help do that. What I will
-tell you is that this will help speed up simple changes like
-changing a color or adding CSS3 techniques gradients.
-
-A WORD OF WARNING: It's very easy to overdo it here. Be careful and
-remember less is more.
-
-Helpful:
-http://sachagreif.com/useful-sass-mixins/
-http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
-http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
-
+Mixins Stylesheet
 ******************************************************************/
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: 481px and Up Stylesheet
-
-This stylesheet is loaded for larger devices. It's set to
-481px because at 480px it would load on a landscaped iPhone.
-This isn't ideal because then you would be loading all those
-extra styles on that same mobile connection.
-
-A word of warning. This size COULD be a larger mobile device,
-so you still want to keep it pretty light and simply expand
-upon your base.scss styles.
-
+481px and Up Stylesheet
 ******************************************************************/
 /*********************
 POSTS & CONTENT STYLES
@@ -249,17 +211,7 @@ POSTS & CONTENT STYLES
 
 /* end .entry-content */
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Tablet & Small Desktop Stylesheet
-
-Here's where you can start getting into the good stuff.
-This size will work on iPads, other tablets, and desktops.
-So you can start working with more styles, background images,
-and other resources. You'll also notice the grid starts to
-come into play. Have fun!
-
+Tablet & Small Desktop Stylesheet
 ******************************************************************/
 /*********************
 LAYOUT & GRID STYLES
@@ -289,17 +241,10 @@ NAVIGATION STYLES
 .nav li {
   float: left;
   position: relative;
-  /*
-  plan your menus and drop-downs wisely.
-  */
   /* showing sub-menus */
 }
 .nav li a {
   border-bottom: 0;
-  /*
-  you can use hover styles here even though this size
-  has the possibility of being a mobile device.
-  */
 }
 .nav li a:hover, .nav li a:focus {
   color: hite;
@@ -311,14 +256,6 @@ NAVIGATION STYLES
   position: absolute;
   visibility: hidden;
   z-index: 8999;
-}
-.nav li ul.sub-menu li,
-.nav li ul.children li {
-  /*
-  if you need to go deeper, go nuts
-  just remember deeper menus suck
-  for usability. k, bai.
-  */
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
@@ -355,7 +292,6 @@ SIDEBARS & ASIDES
 }
 .widget ul li {
   margin-bottom: 0.75em;
-  /* deep nesting */
 }
 .widget ul li ul {
   margin-top: 0.75em;
@@ -364,23 +300,6 @@ SIDEBARS & ASIDES
 
 /******************************************************************
 ADDITIONAL IE FIXES
-These fixes are now ONLY seen by IE, so you don't have to worry
-about using prefixes, although it's best practice. For more info
-on using Modernizr classes, check out this link:
-http://www.modernizr.com/docs/
 ******************************************************************/
-/*
-For example, you can use something like:
-
-.no-textshadow .class { ... }
-
-You can also target specific versions by using the classes applied to
-the html element. These can sometimes change, so take a look inside the
-header.php file to see what they are:
-
-
-.lt-ie8 .class { ... } 
-
-*/
 
 /*# sourceMappingURL=ie.css.map */

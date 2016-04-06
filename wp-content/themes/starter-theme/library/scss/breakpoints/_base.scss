@@ -1,14 +1,5 @@
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Base Mobile Stylesheet
-
-Be light and don't over style since everything here will be
-loaded by mobile devices. You want to keep it as minimal as
-possible. This is called at the top of the main stylsheet
-and will be used across all viewports.
-
+Base Mobile Stylesheet
 ******************************************************************/
 
 /*********************
@@ -43,6 +34,17 @@ body {
     border: 2px solid $link-color;
     padding: .5em 1em;
 }
+
+.clearfix, .cf, .comment-respond {
+  zoom: 1; 
+}
+  .clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+    content: "";
+    display: table; 
+  }
+  .clearfix:after, .cf:after, .comment-respond:after {
+    clear: both; 
+  }
 
 /********************
 LAYOUT & GRID STYLES
@@ -139,18 +141,11 @@ HEADER STYLES
 NAVIGATION STYLES
 *********************/
 
-/*
-all navs have a .nav class applied via
-the wp_menu function; this is so we can
-easily write one group of styles for
-the navs on the site so our css is cleaner
-and more scalable.
-*/
-
 .nav {
 	border-bottom: 0;
 	margin: 0;
     padding: 0;
+    list-style: none;
 
 	li {
 
@@ -158,25 +153,8 @@ and more scalable.
 			display: block;
 			text-decoration: none;
 			padding: 0.75em;
-
-			/*
-			remember this is for mobile ONLY, so there's no need
-			to even declare hover styles here, you can do it in
-			the style.scss file where it's relevant. We want to
-			keep this file as small as possible!
-			*/
-			&:hover, &:focus {
-
-			}
 		}
 
-		/*
-		so you really have to rethink your dropdowns for mobile.
-		you don't want to have it expand too much because the
-		screen is so small. How you manage your menu should
-		depend on the project. Here's some great info on it:
-		http://www.alistapart.com/articles/organizing-mobile/
-		*/
 		ul.sub-menu,
 		ul.children {
             padding: 0;
