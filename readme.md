@@ -14,7 +14,7 @@ To start watching files use `grunt` from the `library` folder. This will run bro
 
 ### Grid Usage
 
-This theme uses flexbox. Get hip.
+This theme uses flexbox. Get hip. If you want to use a grid then please use SUSY and install it via [Bower](http://bower.io).
 
 ## Plugins
 
