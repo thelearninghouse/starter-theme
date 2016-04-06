@@ -1,13 +1,12 @@
 /******************************************************************
-Theme Name: OLC
+Theme Name: Starter Theme 
 Theme URI: tlhstarter.wpengine.com
 Description: Starter Theme for our On Line Schools
 Author: Learning House, Inc.
 Author URI: http://www.learninghouse.com
-Version: 1.2
-Tags: fluid-layout, responsive-layout, accessibility-ready, translation-ready, microformats, rtl-language-support
 */
 
 .sticky {}          /* DO NOT EDIT THIS */
 .gallery-caption {} /* THESE ARE USELESS */
 .bypostauthor {}    /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */
+.screen-reader-text {}

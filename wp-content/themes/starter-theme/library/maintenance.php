@@ -11,7 +11,7 @@ add_action( 'admin_init', 'mnt_settings_init' );
 
 // Add Link to Menu
 function mnt_add_admin_menu(  ) {
-	add_menu_page( 'Maintenance', 'Maintenance', 'manage_options', 'maintenance', 'mnt_options_page' );
+	add_theme_page( 'Maintenance', 'Maintenance', 'manage_options', 'maintenance', 'mnt_options_page' );
 }
 
 // Content of the Setting Page
