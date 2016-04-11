@@ -7,8 +7,8 @@ IMPORTS & DEPENDENCIES
 ******************************************************************/
 
 @import "partials/variables"; // import variables
-@import "partials/typography"; // import typography
 @import "partials/mixins"; // import mixins 
+@import "partials/typography"; // import typography
 
 // import everything inside media queries
 @import "breakpoints/481up"; 

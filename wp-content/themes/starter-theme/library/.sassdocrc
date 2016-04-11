@@ -11,6 +11,9 @@ dest: "../../../../sassdoc"
 
 package: "package.json"
 
+exclude:
+  /wp-content/themes//starter-theme/library/node_modules/grunt-sassdoc/node_modules/sassdoc/node_modules/scss-comment-parser/test/fixtures/groupByType.test.scss
+ 
 groups:
     colors: "Color Palette"
     fonts: "Fonts"

@@ -6,8 +6,19 @@ Variables
 /// This is used for image paths.
 $path-rel: "/wp-content/themes/starter-theme/library/images";
 
+/// Browser Context
+/// This is needed for the px to em's mixin
+$browser-context: 16; // Default
+
+/// Responsive Variables
+/// Breakpoint Small
+$bp-sm: 481px;
+/// Breakpoint Medium
+$bp-med: 768px;
+/// Breakpoint Large
+$bp-lg: 1040px;
+
 ////
-/// This is a color variable
 /// @group colors 
 ////
 
