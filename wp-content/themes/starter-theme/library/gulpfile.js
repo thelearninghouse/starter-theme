@@ -10,6 +10,18 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var browserSync = require('browser-sync').create();
 var gutil = require('gulp-util');
+var rename = require('gulp-rename');
+
+var paths = {
+  sass: {
+    src: ['scss/*.scss', 'scss/**/*.scss'],
+    dest: 'css/',
+  },
+  scripts: {
+    src: ['js/libs/*.js', 'js/scripts.js'],
+    dest: 'js/build/',
+  }
+};
 
 // BROWSERSYNC
 gulp.task('browser-sync', function() {
@@ -20,30 +32,26 @@ gulp.task('browser-sync', function() {
 
 // SASS
 gulp.task('sass', function() {
-  return gulp.src(['scss/**/*.scss', 'scss/*.scss'])
-    .pipe(sourcemaps.init()) // Initialize sourcemap plugin
+  return gulp.src(paths.sass.src)
     .pipe(sass()) // Using gulp-sass
     .on('error', onError)
     .pipe(autoprefixer())
-    .pipe(sourcemaps.write()) // Writing sourcemaps
-    .pipe(gulp.dest('css/'))
-    .pipe(browserSync.stream())
-});
-
-// MINIFY CSS AFTER COMPILING AND PREFIXING
-gulp.task('minify-css', function() {
-  return gulp.src('css/*.css')
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(gulp.dest('css/min/'))
+    .pipe(gulp.dest(paths.sass.dest))
+    .pipe(minifyCss({compatibility: 'ie9'}))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(paths.sass.dest))
+    .pipe(browserSync.stream());
 });
 
 // CONCAT JS FILES
 gulp.task('scripts', function() {
-  return gulp.src(['js/libs/*.js', 'js/scripts.js'])
+  return gulp.src(paths.scripts.src)
     .pipe(concat('production.js'))
+    .pipe(gulp.dest(paths.scripts.dest))
     .pipe(uglify())
-    .pipe(gulp.dest('js/build/'))
-    .pipe(browserSync.stream())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(browserSync.stream());
 });
 
 // IMAGEMIN
@@ -57,12 +65,18 @@ gulp.task('imagemin', function () {
         .pipe(gulp.dest('images/'));
 });
 
-// WATCH
-gulp.task('watch', ['browser-sync'], function(){
-  gulp.watch(['scss/**/*.scss', 'scss/*.scss'], ['sass', 'minify-css']);
-  gulp.watch(['js/libs/*.js', 'js/scripts.js'], ['scripts']);
-  gulp.watch('*.php').on('change', browserSync.reload);
+// WATCH STYLES
+ gulp.task('watch:styles', function () {
+   gulp.watch(paths.sass.src, gulp.series('sass'));
 });
+
+// WATCH SCRIPTS
+ gulp.task('watch:scripts', function () {
+   gulp.watch(paths.scripts.src, gulp.series('scripts'));
+});
+
+// WATCH
+gulp.task('watch', gulp.parallel('browser-sync', 'watch:styles', 'watch:scripts'));
 
 function onError(err) {
   console.log(err);
