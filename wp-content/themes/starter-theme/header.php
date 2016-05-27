@@ -33,7 +33,7 @@
 		<?php // end of wordpress head ?>
 
 		<?php // Form Script Tag ?>
-		<script type='text/javascript' src='http://requestforms.learninghouse.com/form/affiliate/221'></script>
+        <?php //<script type='text/javascript' src='http://requestforms.learninghouse.com/form/affiliate/221'></script> ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
