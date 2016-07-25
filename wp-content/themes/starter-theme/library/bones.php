@@ -261,4 +261,158 @@ function bones_excerpt_more($more) {
 }
 
 
+/*********************
+RANDOM HELPER FUNCTIONS
+*********************/
+
+// Pull Quote Shortcode
+function pullquote_func($atts, $content = null ) {
+    return '<span class="pullquote">' . do_shortcode($content) . '</span>';
+}
+add_shortcode( 'pullquote', 'pullquote_func' );
+
+
+// CTA Shortcode
+function cta_func($atts, $content = null ) {
+    extract(shortcode_atts(array(
+      'link' => '/online-programs/',
+      'text' => 'Learn More',
+    ), $atts));
+    return '<div class="cta">' . do_shortcode($content) . '<a class="button" href="' . $link . '">' . $text  . '</a></div>';
+}
+add_shortcode( 'cta', 'cta_func' );
+
+// TGM Plugin
+require_once( 'class-tgm-plugin-activation.php');
+add_action( 'tgmpa_register', 'wvsu_online_register_required_plugins' );
+
+function wvsu_online_register_required_plugins() {
+
+    /*
+     * Array of plugin arrays. Required keys are name and slug.
+     * If the source is NOT from the .org repo, then source is also required.
+     */
+    $plugins = array(
+
+        // This is an example of how to include a plugin bundled with a theme.
+        array(
+            'name'               => 'Advanced Custom Fields Pro', // The plugin name.
+            'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+            'source'             => get_template_directory() . '/library/plugins/advanced-custom-fields-pro.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+        ),
+
+        array(
+            'name'               => 'Wp Migrate DB Pro', // The plugin name.
+            'slug'               => 'wp-migrate-db-pro', // The plugin slug (typically the folder name).
+            'source'             => get_template_directory() . '/library/plugins/wp-migrate-db-pro.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+        ),
+
+        array(
+            'name'               => 'Wp Migrate DB Pro Media Files', // The plugin name.
+            'slug'               => 'wp-migrate-db-pro-media-files', // The plugin slug (typically the folder name).
+            'source'             => get_template_directory() . '/library/plugins/wp-migrate-db-pro-media-files.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+        ),
+
+        // This is an example of how to include a plugin from an arbitrary external source in your theme.
+        array(
+            'name'         => 'Title and Nofollow For Links', // The plugin name.
+            'slug'         => 'title-and-nofollow-for-links', // The plugin slug (typically the folder name).
+            'required'     => true, // If false, the plugin is only 'recommended' instead of required.
+        ),
+
+        array(
+            'name'      => 'RICG Responsive Images',
+            'slug'      => 'ricg-responsive-images',
+            'required'  => true,
+        ),
+
+        array(
+            'name'        => 'WordPress SEO by Yoast',
+            'slug'        => 'wordpress-seo',
+            'required'    => true,
+        ),
+
+        array(
+            'name'        => 'Redirection',
+            'slug'        => 'redirection',
+            'required'    => true,
+        ),
+
+        array(
+            'name'        => 'Duplicate Post',
+            'slug'        => 'duplicate-post',
+            'required'    => true,
+        ),
+    );
+
+    $config = array(
+        'id'           => 'wvsu-online',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+        'default_path' => '',                      // Default absolute path to bundled plugins.
+        'menu'         => 'tgmpa-install-plugins', // Menu slug.
+        'parent_slug'  => 'themes.php',            // Parent menu slug.
+        'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+        'has_notices'  => true,                    // Show admin notices or not.
+        'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+        'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+        'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+        'message'      => '',                      // Message to output right before the plugins table.
+    );
+
+    tgmpa( $plugins, $config );
+}
+
+/*
+Add Theme Options for ACF
+ */
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title'    => 'Theme General Settings',
+        'menu_title'    => 'Theme Settings',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Theme Header Settings',
+        'menu_title'    => 'Header',
+        'parent_slug'   => 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Theme Footer Settings',
+        'menu_title'    => 'Footer',
+        'parent_slug'   => 'theme-general-settings',
+    ));
+
+}
+
+/*
+Allow SVG uploads
+*/
+
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
+// Privacy Policy Shortcode
+function privacy_policy() {
+      $file = "http://www.learninghouse.com/privacy/privacy.txt";
+            $data = file_get_contents($file);
+            return $data;
+              }
+add_shortcode( 'privacy', 'privacy_policy' );
+
 ?>

@@ -1,0 +1,8 @@
+html{ font-family: sans-serif; }
+body{ margin: 0px; }
+ body{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+body{ color: rgb(102, 102, 102); }
+body{ font-size: 100%; line-height: 1.5; background-color: rgb(255, 255, 255); -webkit-font-smoothing: antialiased; }
+@media print{
+*{ color: rgb(0, 0, 0) !important; text-shadow: none !important; -webkit-filter: none !important; filter: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+}

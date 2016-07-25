@@ -167,6 +167,17 @@ POSTS & CONTENT STYLES
 }
 
 /* end .entry-content */
+/* Social Sharing */
+.social-sharing {
+  float: right;
+  margin-left: 1em;
+}
+
+.social-sharing-label {
+  display: inline;
+  margin-bottom: 0;
+}
+
 /******************************************************************
 Tablet & Small Desktop Stylesheet
 ******************************************************************/
@@ -253,6 +264,13 @@ SIDEBARS & ASIDES
 .widget ul li ul {
   margin-top: 0.75em;
   padding-left: 1em;
+}
+
+/***********************
+SOCIAL SHARING
+***********************/
+.social-sharing {
+  margin-bottom: 0;
 }
 
 /******************************************************************

@@ -1,3 +1,3 @@
 module.exports = function(grunt) {
-  grunt.registerTask('deploy', ['sftp-deploy']);
+  grunt.registerTask('deploy', ['sass', 'criticalcss', 'autoprefixer', 'cssmin', 'concat', 'uglify', 'imagemin', 'sassdoc']);
 };

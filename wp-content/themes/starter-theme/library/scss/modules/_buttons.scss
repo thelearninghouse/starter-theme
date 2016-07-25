@@ -42,3 +42,66 @@ Button Styles
 .button {
   @include button($link-color);
 }
+
+
+/*******************************
+SOCIAL SHARING BUTTONS
+*******************************/
+
+/* Social Sharing */
+
+.social-sharing {
+    margin-bottom: 1em;
+    background: darken(white, 5%);
+    padding: .8em;
+    text-align: center;
+}
+
+.social-sharing-label {
+    font-size: em(13);
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .5em;
+}
+
+.social-link {
+  color: #fff;
+  background-color: #55acee;
+  padding: .4em .6em;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: em(12);
+  font-weight: bold;
+  margin-left: em(10);
+  transition: .2s all ease-in-out;
+  
+  &:focus { color: white; }
+}
+.social-link-icon,
+.social-link-label {
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+}
+.social-link-icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: .2em;
+}
+.social-link-icon path { fill: #fff; }
+.social-link-label {
+  font-size: .9em;
+  font-weight: 500;
+}
+.social-link:hover { 
+    background-color:  darken(#55acee, 10%); 
+    color: white;
+}
+
+.social-facebook { background: #3b5998; }
+.social-facebook:hover { background: darken(#3b5998, 10%); }
+.social-linkedin { background: #007bb6; }
+.social-linkedin:hover { background: darken(#007bb6, 10%); }

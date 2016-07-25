@@ -46,6 +46,20 @@ class acf_field_select extends acf_field {
 			'disabled'		=> 0,
 			'readonly'		=> 0,
 		);
+		$this->l10n = array(
+			'matches_1'				=> _x('One result is available, press enter to select it.',	'Select2 JS matches_1',	'acf'),
+			'matches_n'				=> _x('%d results are available, use up and down arrow keys to navigate.',	'Select2 JS matches_n',	'acf'),
+			'matches_0'				=> _x('No matches found',	'Select2 JS matches_0',	'acf'),
+			'input_too_short_1'		=> _x('Please enter 1 or more characters', 'Select2 JS input_too_short_1', 'acf' ),
+			'input_too_short_n'		=> _x('Please enter %d or more characters', 'Select2 JS input_too_short_n', 'acf' ),
+			'input_too_long_1'		=> _x('Please delete 1 character', 'Select2 JS input_too_long_1', 'acf' ),
+			'input_too_long_n'		=> _x('Please delete %d characters', 'Select2 JS input_too_long_n', 'acf' ),
+			'selection_too_long_1'	=> _x('You can only select 1 item', 'Select2 JS selection_too_long_1', 'acf' ),
+			'selection_too_long_n'	=> _x('You can only select %d items', 'Select2 JS selection_too_long_n', 'acf' ),
+			'load_more'				=> _x('Loading more results&hellip;', 'Select2 JS load_more', 'acf' ),
+			'searching'				=> _x('Searching&hellip;', 'Select2 JS searching', 'acf' ),
+			'load_fail'           	=> _x('Loading failed', 'Select2 JS load_fail', 'acf' ),
+		);
 		
 		
 		// ajax
@@ -57,7 +71,46 @@ class acf_field_select extends acf_field {
     	parent::__construct();
     	
 	}
+	
+	
+	/*
+	*  input_admin_enqueue_scripts
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	16/12/2015
+	*  @since	5.3.2
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function input_admin_enqueue_scripts() {
+		
+		// globals
+		global $wp_scripts, $wp_styles;
+		
+		
+		// vars
+		$version = '3.5.2';
+		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		
+		
+		// script
+		wp_enqueue_script('select2', acf_get_dir("assets/inc/select2/select2{$min}.js"), array('jquery'), $version );
+		
+		
+		// style
+		wp_enqueue_style('select2', acf_get_dir('assets/inc/select2/select2.css'), '', $version );
 
+
+		// v4
+		//wp_enqueue_script('select2', acf_get_dir("assets/inc/select2/dist/js/select2.full.js"), array('jquery'), '4.0', true );
+		//wp_enqueue_style('select2', acf_get_dir("assets/inc/select2/dist/css/select2{$min}.css"), '', '4.0' );
+				
+	}
+	
 	
 	/*
 	*  query_posts
@@ -217,6 +270,14 @@ class acf_field_select extends acf_field {
 		}
 		
 		
+		// custom  ajax action
+		if( !empty($field['ajax_action']) ) {
+			
+			$atts['data-ajax_action'] = $field['ajax_action'];
+			
+		}
+		
+		
 		// hidden input
 		if( $field['ui'] ) {
 			
@@ -346,7 +407,7 @@ class acf_field_select extends acf_field {
 		
 		// encode choices (convert from array)
 		$field['choices'] = acf_encode_choices($field['choices']);
-		$field['default_value'] = acf_encode_choices($field['default_value']);
+		$field['default_value'] = acf_encode_choices($field['default_value'], false);
 		
 		
 		// choices
@@ -470,7 +531,7 @@ class acf_field_select extends acf_field {
 		
 		// decode choices (convert to array)
 		$field['choices'] = acf_decode_choices($field['choices']);
-		$field['default_value'] = acf_decode_choices($field['default_value']);
+		$field['default_value'] = acf_decode_choices($field['default_value'], true);
 		
 		
 		// return
@@ -519,83 +580,26 @@ class acf_field_select extends acf_field {
 	
 	
 	/*
-	*  enqueue_assets
+	*  translate_field
 	*
-	*  This function will enqueue the Select2 JS library
-	*  moved to the footer in an attempt to allow 3rd party to register Select2 paths
+	*  This function will translate field settings
 	*
 	*  @type	function
-	*  @date	16/12/2015
-	*  @since	5.3.3
+	*  @date	8/03/2016
+	*  @since	5.3.2
 	*
-	*  @param	n/a
-	*  @return	n/a
+	*  @param	$field (array)
+	*  @return	$field
 	*/
 	
-	function input_admin_enqueue_scripts() {
+	function translate_field( $field ) {
 		
-		$this->enqueue_assets();
-		
-	}
-	
-	
-	function field_group_admin_enqueue_scripts() {
-		
-		$this->enqueue_assets();
-		
-	}
-	
-	function enqueue_assets() {
-		
-		// vars
-		$version = '3.5.2';
-		$lang = get_locale();
-		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		// translate
+		$field['choices'] = acf_translate( $field['choices'] );
 		
 		
-		// v4
-/*
-		wp_enqueue_script('select2', acf_get_dir("assets/inc/select2/dist/js/select2.full.js"), array('jquery'), '4.0', true );
-		wp_enqueue_style('select2', acf_get_dir("assets/inc/select2/dist/css/select2{$min}.css"), '', '4.0' );
-		return;
-*/
-		
-		// scripts
-		wp_enqueue_script('select2', acf_get_dir("assets/inc/select2/select2{$min}.js"), array('jquery'), $version, true );
-		
-		
-		// styles
-		wp_enqueue_style('select2', acf_get_dir('assets/inc/select2/select2.css'), '', $version );
-		
-		
-		// bail early if no language
-		if( !$lang ) return;
-		
-		
-		// vars
-		$lang = str_replace('_', '-', $lang);
-		$lang_code = substr($lang, 0, 2);
-		$src = '';
-		
-		
-		// attempt 1
-		if( file_exists(acf_get_path("assets/inc/select2/select2_locale_{$lang_code}.js")) ) {
-			
-			$src = acf_get_dir("assets/inc/select2/select2_locale_{$lang_code}.js");
-			
-		} elseif( file_exists(acf_get_path("assets/inc/select2/select2_locale_{$lang}.js")) ) {
-			
-			$src = acf_get_dir("assets/inc/select2/select2_locale_{$lang}.js");
-			
-		}
-		
-		
-		// bail early if no language
-		if( !$src ) return;
-		
-		
-		// scripts
-		wp_enqueue_script('select2-l10n', $src, '', $version, true );
+		// return
+		return $field;
 		
 	}
 	

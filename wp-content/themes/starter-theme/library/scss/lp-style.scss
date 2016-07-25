@@ -1,0 +1,19 @@
+/******************************************************************
+Main Stylesheet
+******************************************************************/
+
+/*********************
+IMPORTING PARTIALS
+*********************/
+
+@import "partials/normalize";
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/typography";
+@import "modules/buttons";
+@import "modules/forms";
+@import "modules/tables";
+
+/*********************
+BASE STYLING
+*********************/

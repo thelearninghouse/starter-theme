@@ -34,9 +34,23 @@
 
 		<?php // Form Script Tag ?>
         <?php //<script type='text/javascript' src='http://requestforms.learninghouse.com/form/affiliate/221'></script> ?>
+
+        <?php // Critical CSS ?>
+        <?php if ( is_front_page() ) { ?>
+            <style><?php include 'library/css/build/minified/home-critical.css'; ?></style>
+        <?php } ?>
+
+        <?php if ( ! is_front_page() ) { ?>
+            <style><?php include 'library/css/build/minified/interior-critical.css'; ?></style>
+        <?php } ?>
+
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+
+        <?php if ( is_singular( 'post' ) ) { ?>
+           <progress value="0"></progress>
+        <?php } ?>
 
 		<div id="container">
 

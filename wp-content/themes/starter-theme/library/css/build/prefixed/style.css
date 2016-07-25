@@ -574,6 +574,85 @@ Button Styles
   top: 1px;
 }
 
+/*******************************
+SOCIAL SHARING BUTTONS
+*******************************/
+/* Social Sharing */
+.social-sharing {
+  margin-bottom: 1em;
+  background: #f2f2f2;
+  padding: .8em;
+  text-align: center;
+}
+
+.social-sharing-label {
+  font-size: 0.8125em;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .5em;
+}
+
+.social-link {
+  color: #fff;
+  background-color: #55acee;
+  padding: .4em .6em;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: bold;
+  margin-left: 0.625em;
+  transition: .2s all ease-in-out;
+}
+.social-link:focus {
+  color: white;
+}
+
+.social-link-icon,
+.social-link-label {
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+}
+
+.social-link-icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: .2em;
+}
+
+.social-link-icon path {
+  fill: #fff;
+}
+
+.social-link-label {
+  font-size: .9em;
+  font-weight: 500;
+}
+
+.social-link:hover {
+  background-color: #2795e9;
+  color: white;
+}
+
+.social-facebook {
+  background: #3b5998;
+}
+
+.social-facebook:hover {
+  background: #2d4373;
+}
+
+.social-linkedin {
+  background: #007bb6;
+}
+
+.social-linkedin:hover {
+  background: #005983;
+}
+
 /******************************************************************
 Form Styles
 ******************************************************************/
@@ -932,6 +1011,36 @@ table tr:last-child td {
 
 table tr:nth-child(even) {
   background: #eee;
+}
+
+/******************************************************************
+READING PROGRESS INDICATOR STYLES
+http://codepen.io/pankajparashar/pen/towxF
+******************************************************************/
+progress {
+  width: 100%;
+  position: fixed;
+  height: 8px;
+  top: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: tomato;
+  z-index: 999;
+}
+
+progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+progress::-webkit-progress-value {
+  background-color: tomato;
+}
+
+progress::-moz-progress-bar {
+  background-color: tomato;
 }
 
 /*********************
@@ -1523,6 +1632,16 @@ MEDIA QUERIES
   }
 
   /* end .entry-content */
+  /* Social Sharing */
+  .social-sharing {
+    float: right;
+    margin-left: 1em;
+  }
+
+  .social-sharing-label {
+    display: inline;
+    margin-bottom: 0;
+  }
 }
 @media only screen and (min-width: 768px) {
   /******************************************************************
@@ -1617,6 +1736,13 @@ MEDIA QUERIES
   .widget ul li ul {
     margin-top: 0.75em;
     padding-left: 1em;
+  }
+
+  /***********************
+  SOCIAL SHARING
+  ***********************/
+  .social-sharing {
+    margin-bottom: 0;
   }
 }
 @media print {
