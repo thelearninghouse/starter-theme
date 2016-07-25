@@ -107,7 +107,8 @@ function bones_comments( $comment, $args, $depth ) {
 <?php
 } // don't remove this bracket!
 
-// Social Sharing
+
+/************* SOCIAL SHARING *********************/
 
 function social_sharing_buttons($content) {
     if(is_singular( 'post' )){
@@ -142,9 +143,9 @@ function social_sharing_buttons($content) {
 add_filter( 'the_content', 'social_sharing_buttons');
 
 
-/*
-Fix for jQuery conflict
-*/
+
+/************* JQUERY CONFLICT FIX *********************/
+
 function enqueue_scripts() {
   wp_deregister_script( 'jquery' );
   wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, false, false );

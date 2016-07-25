@@ -2,11 +2,16 @@
 
 			<div id="content">
 
-                <h1 class="single-title custom-post-type-title"><?php the_title(); ?></h1>
-
 				<div id="inner-content" class="wrap cf">
 
 						<main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+
+
+                            <?php if ( function_exists('yoast_breadcrumb') ) {
+                                yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+                            } ?>
+
+                            <h1 class="single-title custom-post-type-title"><?php the_title(); ?></h1>
 
 						</main>
 
