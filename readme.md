@@ -6,7 +6,11 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 #### Install Grunt or Gulp (package-gulp.json provided)
 
-Install grunt by navigating to the theme's `library` folder and running `npm install`
+Install by navigating to the theme's `library` folder and running `npm install`
+
+## Critical CSS
+
+This theme utilizes inline styling in the head of the document for faster load times. If it seems like your changes are not working there is a chance that these inline styles are overwriting your changes. To update run `grunt deploy` and it will update the critical css files accordingly.
 
 #### Watch Files
 
@@ -15,6 +19,14 @@ To start watching files use `grunt` or `gulp` from the `library` folder. This wi
 #### Grid Usage
 
 This theme uses Susy Grid. Documentation can be found [here](http://susydocs.oddbird.net/en/latest/)
+
+## Menus
+
+There are three menus setup for this theme by default:
+
+1. MAIN MENU - Main Navigation
+2. SECONDARY MENU - Secondary navigation at the top of header with contact information
+3. FOOTER MENU - Footer Navigation
 
 ## Plugins
 
