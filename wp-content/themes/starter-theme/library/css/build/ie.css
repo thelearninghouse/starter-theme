@@ -77,7 +77,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  color: tomato;
+  color: crimson;
   font-size: 1.125em;
   line-height: 1.11111111;
 }
@@ -92,11 +92,11 @@ h5, .h5 {
   line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: tomato;
+  color: crimson;
 }
 
 h6, .h6 {
-  color: tomato;
+  color: crimson;
 }
 
 blockquote {
@@ -140,6 +140,50 @@ figure, figcaption {
 }
 
 /******************************************************************
+SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
+******************************************************************/
+.wrap {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wrap:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.half {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1.38889%;
+  padding-right: 1.38889%;
+}
+
+.quarter {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  padding-left: 1.38889%;
+  padding-right: 1.38889%;
+}
+
+.third {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  padding-left: 1.38889%;
+  padding-right: 1.38889%;
+}
+
+/******************************************************************
 481px and Up Stylesheet
 ******************************************************************/
 /*********************
@@ -167,7 +211,9 @@ POSTS & CONTENT STYLES
 }
 
 /* end .entry-content */
-/* Social Sharing */
+/*********************
+SOCIAL SHARING
+*********************/
 .social-sharing {
   float: right;
   margin-left: 1em;
@@ -184,15 +230,33 @@ Tablet & Small Desktop Stylesheet
 /*********************
 LAYOUT & GRID STYLES
 *********************/
-#inner-content {
-  display: flex;
-}
 #inner-content #main {
-  flex: 1 1 35%;
-  padding-right: 2em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66.66667%;
+  float: left;
+  padding-left: 1.38889%;
+  padding-right: 1.38889%;
 }
 #inner-content .sidebar {
-  flex: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  padding-left: 1.38889%;
+  padding-right: 1.38889%;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+.header #logo {
+  float: left;
+}
+.header .nav {
+  float: right;
 }
 
 /*********************
@@ -203,7 +267,6 @@ NAVIGATION STYLES
   /* end .menu ul li */
 }
 .nav ul {
-  background: black;
   margin-top: 0;
 }
 .nav li {
@@ -220,6 +283,7 @@ NAVIGATION STYLES
 }
 .nav li ul.sub-menu,
 .nav li ul.children {
+  background: crimson;
   margin-top: 0;
   position: absolute;
   visibility: hidden;
@@ -227,6 +291,7 @@ NAVIGATION STYLES
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
+  color: white;
   padding-left: 10px;
   border-right: 0;
   display: block;
@@ -237,7 +302,7 @@ NAVIGATION STYLES
   top: 0;
   left: 100%;
 }
-.nav li:hover > ul {
+.nav li:hover > ul.sub-menu {
   top: auto;
   visibility: visible;
 }

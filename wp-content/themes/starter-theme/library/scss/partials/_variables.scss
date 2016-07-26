@@ -2,10 +2,6 @@
 Variables
 ******************************************************************/
 
-/// Relative Path Variable
-/// This is used for image paths.
-$path-rel: "/wp-content/themes/starter-theme/library/images";
-
 /// Browser Context
 /// This is needed for the px to em's mixin
 $browser-context: 16; // Default
@@ -25,6 +21,6 @@ $bp-lg: 1040px;
 /// Text Color
 $text-color:        #666;
 /// Link Color
-$link-color:        tomato;
+$link-color:        crimson;
 ///Link Hover
 $link-hover:        darken($link-color, 15%);

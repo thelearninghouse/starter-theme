@@ -2,11 +2,11 @@
 
 			<div id="content">
 
-                <div class="page-banner">
-                    <h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
-                </div>
-
 				<div id="inner-content" class="wrap cf">
+
+                    <div class="page-banner">
+                        <h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
+                    </div>
 
 					<main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 

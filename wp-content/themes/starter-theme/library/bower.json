@@ -1,0 +1,20 @@
+{
+  "name": "starter",
+  "description": "A starter theme for OLC sites",
+  "main": "",
+  "authors": [
+    "Brian Maier Jr. <brimaidesigns@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/thelearninghouse/starter-theme",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "^2.2.12"
+  }
+}

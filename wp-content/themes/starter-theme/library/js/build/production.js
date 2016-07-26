@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
       windowPopup($(this).attr("href"), 500, 300);
     });
 
-    // Remover Select menu error classs on load
+    // Remove Select menu error classs on load
     $(window).load(function() {
         $('.requestinfo select').removeClass('error');
     });

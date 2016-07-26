@@ -16,6 +16,8 @@ body {
   	-moz-osx-font-smoothing: grayscale;
 }
 
+
+/* Responsive Videos */
 .videoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -38,13 +40,13 @@ body {
 .clearfix, .cf, .comment-respond {
   zoom: 1; 
 }
-  .clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
     content: "";
     display: table; 
-  }
-  .clearfix:after, .cf:after, .comment-respond:after {
+}
+.clearfix:after, .cf:after, .comment-respond:after {
     clear: both; 
-  }
+}
 
 /********************
 LAYOUT & GRID STYLES
@@ -120,11 +122,6 @@ a, a:visited {
 
 	/* mobile tap color */
 	&:link {
-		/*
-		this highlights links on iPhones/iPads.
-		so it basically works like the :hover selector
-		for mobile devices.
-		*/
 		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
 	}
 }
@@ -148,6 +145,7 @@ NAVIGATION STYLES
     list-style: none;
 
 	li {
+        list-style: none;
 
 		a {
 			display: block;
@@ -158,6 +156,7 @@ NAVIGATION STYLES
 		ul.sub-menu,
 		ul.children {
             padding: 0;
+            display: none; 
 
 			li {
 
@@ -168,6 +167,10 @@ NAVIGATION STYLES
 			}
 
 		}
+
+        &:hover {
+            .sub-menu { display: block; }
+        }
 
 	} /* end .menu li */
 
@@ -385,190 +388,6 @@ PAGE NAVI STYLES
 
 	} /* end .wp-prev-next */
 
-/******************************************************************
-COMMENT STYLES
-******************************************************************/
-
-/* h3 comment title */
-#comments-title {
-	padding: 0.75em;
-	margin: 0;
-	border-top: 1px solid lightgray;
-}
-
-.commentlist {
-	margin: 0;
-	list-style-type: none;
-}
-
-.comment {
-	position: relative;
-	clear: both;
-	overflow: hidden;
-	padding: 1.5em;
-	border-bottom: 1px solid lightgray;
-
-	.comment-author {
-		padding: 7px;
-		border: 0;
-	}
-
-	/* vcard */
-	.vcard {
-		margin-left: 50px;
-
-		cite.fn {
-			font-weight: 700;
-			font-style: normal;
-		}
-
-		time {
-			display: block;
-			font-size: 0.9em;
-			font-style: italic;
-
-			a {
-				color: gray;
-				text-decoration: none;
-
-				&:hover {
-					text-decoration: underline;
-				}
-
-			}
-
-		}
-
-		.avatar {
-			position: absolute;
-			left: 16px;
-			border-radius: 50%;
-		}
-
-	} /* end .commentlist .vcard */
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	.children {
-		margin: 0;
-	} /* end children */
-
-
-	&[class*=depth-] {
-		margin-top: 1.1em;
-	}
-
-	&.depth-1 {
-		margin-left: 0;
-		margin-top: 0;
-	}
-
-	&:not(.depth-1) {
-		margin-top: 0;
-		margin-left: 7px;
-		padding: 7px;
-	}
-
-	/* general comment classes */
-	&.alt {}
-	&.odd {
-		background-color: white;
-	}
-	&.even {
-		background: lightgray;
-	}
-}
-
-	/* comment content */
-	.comment_content {
-
-		p {
-			margin: 0.7335em 0 1.5em;
-			font-size: 1em;
-			line-height: 1.5em;
-		}
-
-	} /* end .commentlist .comment_content */
-
-	/* comment reply link */
-	.comment-reply-link {
-		@include button($link-color);
-		font-size: 0.9em;
-		float: right;
-
-		&:hover,
-		&:focus {
-		}
-
-	} /* end .commentlist .comment-reply-link */
-
-	/* edit comment link */
-	.comment-edit-link {
-		font-style: italic;
-		margin: 0 7px;
-		text-decoration: none;
-		font-size: 0.9em;
-	}
-
-
-
-/******************************************************************
-COMMENT FORM STYLES
-******************************************************************/
-
-.comment-respond {
-	@extend .cf;
-	padding: 1.5em;
-	border-top: 1px solid lightgray;
-}
-
-	#reply-title {
-		margin: 0;
-	}
-
-	.logged-in-as {
-		color: gray;
-		font-style: italic;
-		margin: 0;
-
-		a {
-			color: $text-color;
-		}
-	}
-
-	.comment-form-comment {
-		margin: 1.5em 0 0.75em;
-	}
-
-	.form-allowed-tags {
-		padding: 1.5em;
-		background-color: lightgray;
-		font-size: 0.9em;
-	}
-
-	/* comment submit button */
-	#submit {
-		@include button($link-color);
-		float: right;
-		font-size: 1em;
-	}
-
-	/* comment form title */
-	#comment-form-title {
-		margin: 0 0 1.1em;
-	}
-
-	/* allowed tags */
-	#allowed_tags {
-		margin: 1.5em 10px 0.7335em 0;
-	}
-
-	/* no comments */
-	.nocomments {
-		margin: 0 20px 1.1em;
-	}
 
 /*********************
 SIDEBARS & ASIDES

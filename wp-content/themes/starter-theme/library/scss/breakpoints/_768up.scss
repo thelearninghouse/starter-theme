@@ -7,14 +7,27 @@ LAYOUT & GRID STYLES
 *********************/
 
 #inner-content {
-    display: flex;
 
     #main {
-        flex: 1 1 35%;
-        padding-right: 2em;
+       @include span(8); 
     }
     .sidebar {
-        flex: 1;
+       @include span(4); 
+    }
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+.header {
+
+    #logo {
+        float: left;
+    }
+
+    .nav {
+        float: right;
     }
 }
 
@@ -25,7 +38,6 @@ NAVIGATION STYLES
 .nav {
 	border: 0;
 	ul {
-		background:black;
 		margin-top:0;
 	}
 	li {
@@ -43,6 +55,7 @@ NAVIGATION STYLES
 
 		ul.sub-menu,
 		ul.children {
+            background: $link-color;
 			margin-top: 0;
 			position: absolute;
 			visibility: hidden;
@@ -51,6 +64,7 @@ NAVIGATION STYLES
 			li {
 
 				a {
+                    color: white;
 					padding-left: 10px;
 					border-right: 0;
 					display: block;
@@ -65,7 +79,7 @@ NAVIGATION STYLES
 		}
 
 		/* showing sub-menus */
-		&:hover > ul {
+		&:hover > ul.sub-menu {
 			top: auto;
 			visibility:visible;
 		}

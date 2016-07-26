@@ -3,6 +3,7 @@ html{ font-family: sans-serif; }
 body{ margin: 0px; }
 article, footer, header, main, nav, section{ display: block; }
 a{ background-color: transparent; }
+b{ font-weight: bolder; }
 h1{ margin: 0.67em 0px; }
 button, input{ font-family: inherit; font-size: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; margin: 0px; }
 button{ text-transform: none; }
@@ -18,4 +19,4 @@ button{ text-transform: none; }
 @media screen and (min-width: 1040px){
 .h1, h1{ font-size: 3em; line-height: 1.05; }
 }
- input[type="search"]{ display: block; height: 40px; line-height: 1em; margin-bottom: 14px; font-size: 1em; color: rgb(102, 102, 102); border: 2px solid rgb(103, 103, 103); border-spacing: inherit; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; vertical-align: middle; box-shadow: none; width: 100%; background-color: gray; transition: background-color 0.24s ease-in-out; -webkit-transition: background-color 0.24s ease-in-out; padding: 0.5em; }
+ input[type="search"]{ display: block; line-height: 1em; margin-bottom: 14px; font-size: 1em; color: rgb(102, 102, 102); border: 2px solid rgb(103, 103, 103); border-spacing: inherit; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; vertical-align: middle; box-shadow: none; width: 100%; background-color: gray; transition: background-color 0.24s ease-in-out; -webkit-transition: background-color 0.24s ease-in-out; padding: 0.5em; box-sizing: border-box; }
