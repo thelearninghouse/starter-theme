@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "susy": "^2.2.12"
+    "susy": "^2.2.12",
+    "fontfaceobserver": "^2.0.1"
   }
 }

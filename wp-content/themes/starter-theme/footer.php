@@ -29,6 +29,15 @@
 		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
 
+        <script src="<?php echo get_stylesheet_directory_uri(); ?>/library/bower_components/fontfaceobserver/fontfaceobserver.js">
+        <script>
+        new w.FontFaceObserver( "Source Sans Pro" )
+            .check()
+                .then( function(){
+                        w.document.documentElement.className += " fonts-loaded";
+                            });
+        </script>
+
         <script type='text/javascript' id="__bs_script__">
             //<![CDATA[
             document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.10.1.js'><\/script>".replace("HOST", location.hostname));

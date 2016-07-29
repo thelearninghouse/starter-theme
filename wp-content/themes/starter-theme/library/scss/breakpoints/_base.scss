@@ -1,13 +1,9 @@
-/******************************************************************
-Base Mobile Stylesheet
-******************************************************************/
-
 /*********************
 GENERAL STYLES
 *********************/
 
 body {
-	font-family: $sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 100%;
 	line-height: 1.5;
 	color: $text-color;
@@ -16,6 +12,10 @@ body {
   	-moz-osx-font-smoothing: grayscale;
 }
 
+// Display fonts when ready
+.fonts-loaded body {
+    font-family: $sans-serif;
+}
 
 /* Responsive Videos */
 .videoWrapper {

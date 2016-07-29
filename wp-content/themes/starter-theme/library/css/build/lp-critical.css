@@ -19,4 +19,4 @@ button{ text-transform: none; }
 @media screen and (min-width: 1040px){
 .h1, h1{ font-size: 3em; line-height: 1.05; }
 }
- input[type="search"]{ display: block; line-height: 1em; margin-bottom: 14px; font-size: 1em; color: rgb(102, 102, 102); border: 2px solid rgb(103, 103, 103); border-spacing: inherit; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; vertical-align: middle; box-shadow: none; width: 100%; background-color: gray; transition: background-color 0.24s ease-in-out; -webkit-transition: background-color 0.24s ease-in-out; padding: 0.5em; box-sizing: border-box; }
+ input[type]{ display: block; line-height: 1em; margin-bottom: 14px; font-size: 1em; color: rgb(102, 102, 102); border: 2px solid rgb(103, 103, 103); border-spacing: inherit; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; vertical-align: middle; box-shadow: none; width: 100%; background-color: gray; transition: background-color 0.24s ease-in-out; -webkit-transition: background-color 0.24s ease-in-out; padding: 0.5em; box-sizing: border-box; }

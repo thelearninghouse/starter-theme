@@ -1,4 +1,8 @@
+<!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
+<html lang="en" class="fonts-loaded">
+<!--#else -->
 <!doctype html>
+<!--#endif -->
 
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -32,25 +36,16 @@
 		<?php wp_head(); ?>
 		<?php // end of wordpress head ?>
 
-		<?php // Form Script Tag ?>
-        <?php //<script type='text/javascript' src='http://requestforms.learninghouse.com/form/affiliate/221'></script> ?>
-
         <?php // Critical CSS ?>
-        <?php if ( is_front_page() ) { ?>
-            <style><?php include 'library/css/build/minified/home-critical.css'; ?></style>
-        <?php } ?>
-
-        <?php if ( ! is_front_page() ) { ?>
-            <style><?php include 'library/css/build/minified/interior-critical.css'; ?></style>
-        <?php } ?>
+        <?php if ( is_front_page() ) { ?> <style><?php include 'library/css/build/minified/home-critical.css'; ?></style><?php } ?>
+        <?php if ( ! is_front_page() ) { ?><style><?php include 'library/css/build/minified/interior-critical.css'; ?></style><?php } ?>
 
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 
-        <?php if ( is_singular( 'post' ) ) { ?>
-           <progress value="0"></progress>
-        <?php } ?>
+        <?php // If is blog page show the progress bar ?>
+        <?php if ( is_singular( 'post' ) ) { ?><progress value="0"></progress><?php } ?>
 
 		<div id="container">
 
@@ -67,12 +62,7 @@
     					         'menu' => __( 'Secondary Menu', 'bonestheme' ),  // nav name
     					         'menu_class' => 'nav secondary-nav cf',               // adding custom nav class
     					         'theme_location' => 'secondary',                 // where it's located in the theme
-    					         'before' => '',                                 // before the menu
-        			               'after' => '',                                  // after the menu
-        			               'link_before' => '',                            // before each link
-        			               'link_after' => '',                             // after each link
-        			               'depth' => 0,                                   // limit the depth of the nav
-    					         'fallback_cb' => ''                             // fallback function (if there is one)
+                                 'depth' => 0                                   // limit the depth of the nav
 						)); ?>
 						<?php wp_nav_menu(array(
     					         'container' => false,                           // remove nav container
@@ -80,12 +70,7 @@
     					         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
     					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
     					         'theme_location' => 'main-nav',                 // where it's located in the theme
-    					         'before' => '',                                 // before the menu
-        			               'after' => '',                                  // after the menu
-        			               'link_before' => '',                            // before each link
-        			               'link_after' => '',                             // after each link
-        			               'depth' => 0,                                   // limit the depth of the nav
-    					         'fallback_cb' => ''                             // fallback function (if there is one)
+        			             'depth' => 0                                   // limit the depth of the nav
 						)); ?>
 
 					</nav>

@@ -1,7 +1,3 @@
-/******************************************************************
-Mixins Stylesheet
-******************************************************************/
-
 /// HIDE AN ELEMENT
 /// Extend this to hide an element
 /// @example
@@ -25,7 +21,6 @@ Mixins Stylesheet
 @function em($pixels, $context: $browser-context) {
       @return #{$pixels/$context}em;
 }
-
 
 /// Responsive Mixin
 /// @example

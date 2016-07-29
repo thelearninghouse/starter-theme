@@ -9,6 +9,7 @@ IMPORTING PARTIALS
  * 1. Change the default font family in all browsers (opinionated).
   * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
    */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -408,12 +409,6 @@ textarea {
 }
 
 /******************************************************************
-Variables
-******************************************************************/
-/******************************************************************
-Mixins Stylesheet
-******************************************************************/
-/******************************************************************
 Typography Styles
 ******************************************************************/
 /******************************************************************
@@ -595,7 +590,7 @@ Button Styles
 .button {
   display: inline-block;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   text-decoration: none;
   color: white !important;
   font-size: 1em;
@@ -702,20 +697,7 @@ Form Styles
 /*********************
 INPUTS
 *********************/
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
+input[type],
 select,
 textarea,
 .field {
@@ -737,33 +719,7 @@ textarea,
   padding: .5em;
   box-sizing: border-box;
 }
-input[type="text"]:focus, input[type="text"]:active,
-input[type="password"]:focus,
-input[type="password"]:active,
-input[type="datetime"]:focus,
-input[type="datetime"]:active,
-input[type="datetime-local"]:focus,
-input[type="datetime-local"]:active,
-input[type="date"]:focus,
-input[type="date"]:active,
-input[type="month"]:focus,
-input[type="month"]:active,
-input[type="time"]:focus,
-input[type="time"]:active,
-input[type="week"]:focus,
-input[type="week"]:active,
-input[type="number"]:focus,
-input[type="number"]:active,
-input[type="email"]:focus,
-input[type="email"]:active,
-input[type="url"]:focus,
-input[type="url"]:active,
-input[type="search"]:focus,
-input[type="search"]:active,
-input[type="tel"]:focus,
-input[type="tel"]:active,
-input[type="color"]:focus,
-input[type="color"]:active,
+input[type]:focus, input[type]:active,
 select:focus,
 select:active,
 textarea:focus,
@@ -773,33 +729,7 @@ textarea:active,
   background-color: #8a8a8a;
   outline: none;
 }
-input[type="text"].error, input[type="text"].is-invalid,
-input[type="password"].error,
-input[type="password"].is-invalid,
-input[type="datetime"].error,
-input[type="datetime"].is-invalid,
-input[type="datetime-local"].error,
-input[type="datetime-local"].is-invalid,
-input[type="date"].error,
-input[type="date"].is-invalid,
-input[type="month"].error,
-input[type="month"].is-invalid,
-input[type="time"].error,
-input[type="time"].is-invalid,
-input[type="week"].error,
-input[type="week"].is-invalid,
-input[type="number"].error,
-input[type="number"].is-invalid,
-input[type="email"].error,
-input[type="email"].is-invalid,
-input[type="url"].error,
-input[type="url"].is-invalid,
-input[type="search"].error,
-input[type="search"].is-invalid,
-input[type="tel"].error,
-input[type="tel"].is-invalid,
-input[type="color"].error,
-input[type="color"].is-invalid,
+input[type].error, input[type].is-invalid,
 select.error,
 select.is-invalid,
 textarea.error,
@@ -814,33 +744,7 @@ textarea.is-invalid,
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDREQkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDREQ0YwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ3ODRGRkE2RjA0QTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERBRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U8iT5wAAAedJREFUeNqk1U9I02Ecx/HtV3aIFAc1hcRDUoGXRAq0oNLA2CrsEFmHbikZu0iQYIFGYAiegkCpLipBxPpDEBMUzB0EhSG2LhG7hMR2GviPgUTvB57Bw8P3+U23B16HPX8+e/b8nt93wezZSMCnhXETF3AcB5BDCnH8Dq98ExcGHcFn8Ah3cdDni+fxnPDv9oAnTB7CKu6VCFXtChZy56LxUjt+jfuB8toSOth9wd7xWAWhqrUjYR/FRTwWJm+iIPT/w7bQf5ljiZnBg45dtKFX6H+LU8gIY8OEV6vgTkStwXWE8BPTGDHGPqNPz2mCfSOOYkA99TvCt1bhGPL68zMcwmncMuape10jrI+q4BbHi/FLn31S9z2x5tRhTc+1W506ipM+T3oRD4X+8+qtc4SqFvL0z/Fr14S+Szjis8bz9Lvvaq8cwS/wwGfdlqfPSWqTiFlX77o13u9Ym1PBs8JAytpRoy44X9Ft9E/gvbA+rYKn8NcaaMVc8UHgBw4b9/iqUQZ6hOAJFbyDcUflmsEX4a6+wTtHGfhAIUqa1U29Zc2BytouThD8x6xuN5CtMPi2CrXLZkZf/HyZoRFCP7n+QVR4PV7uI/AjGghN7OU/r1ilnqILtfpNC+o6vIFljBKYlhb/F2AAgaBsWR5wRiIAAAAASUVORK5CYII=);
   outline-color: tomato;
 }
-input[type="text"].success, input[type="text"].is-valid,
-input[type="password"].success,
-input[type="password"].is-valid,
-input[type="datetime"].success,
-input[type="datetime"].is-valid,
-input[type="datetime-local"].success,
-input[type="datetime-local"].is-valid,
-input[type="date"].success,
-input[type="date"].is-valid,
-input[type="month"].success,
-input[type="month"].is-valid,
-input[type="time"].success,
-input[type="time"].is-valid,
-input[type="week"].success,
-input[type="week"].is-valid,
-input[type="number"].success,
-input[type="number"].is-valid,
-input[type="email"].success,
-input[type="email"].is-valid,
-input[type="url"].success,
-input[type="url"].is-valid,
-input[type="search"].success,
-input[type="search"].is-valid,
-input[type="tel"].success,
-input[type="tel"].is-valid,
-input[type="color"].success,
-input[type="color"].is-valid,
+input[type].success, input[type].is-valid,
 select.success,
 select.is-valid,
 textarea.success,
@@ -855,33 +759,7 @@ textarea.is-valid,
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDRERkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDRFMEYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MzQ0NERERjA0QjExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERFRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7olkTQAAAfhJREFUeNqklU9oE0EUhzdroWjw0tBeWlDxkEaIp55TsCU9VKIgCrHBelA8CQ1Kr1WPbZrQ3gqtQqvGqxpQc2jBk6BIIaAGD4qNCKURpDSKiPi98gLDsJt//uBjsztvfnk7895sIPAw6/joGMThFJyAXn2+A+9gA57/TaY/eU0OeBgfhGm4DiGnsb7DAszxBz/NAdcKjMJLuNWCqagHbsscN5+L+hmH4QkMOe1L5jzFfNA2PgT34ajTuY7AGuZB0/hmh5m+gS0r8xv1zRvg+gGCHZiOwnF4DP3iB3sQkYxPd2C6CWfhB9Xwlus5+K1j4jXuaq3a+gM1H9OPcAa+7q9lPidZJqHbiIm7Wg22rsEI7FrPSzAMX/T+ADyAKSsu7Fr1KplehLvwCs5DvfBf65p+MypqRbO1FXK9utH4/QKuaqYTsG3E3INJv00Q46px3+XxanJ/Ute2/vqP4FKDza2KcdljIKdnhS0xXYULTaqmLMZFn8FFSFtvt6x70ExFCS5oUXspq2ssa7oEl1swFa+CGFdgtkHgPDyDKy02zyxNU6lXRUZb1EuHYayNNs+Yh5B0WQo+/8fpJnNTZFuzz2OpjoQ2QruSOQlMy35fEGmEGMxY9e1brxobw7TkWA1h6xfckUPb+JhGoE/Hpfvew7qUld/H9J8AAwDpw3WYrxcZ3QAAAABJRU5ErkJggg==);
   outline-color: green;
 }
-input[type="text"][disabled], input[type="text"].is-disabled,
-input[type="password"][disabled],
-input[type="password"].is-disabled,
-input[type="datetime"][disabled],
-input[type="datetime"].is-disabled,
-input[type="datetime-local"][disabled],
-input[type="datetime-local"].is-disabled,
-input[type="date"][disabled],
-input[type="date"].is-disabled,
-input[type="month"][disabled],
-input[type="month"].is-disabled,
-input[type="time"][disabled],
-input[type="time"].is-disabled,
-input[type="week"][disabled],
-input[type="week"].is-disabled,
-input[type="number"][disabled],
-input[type="number"].is-disabled,
-input[type="email"][disabled],
-input[type="email"].is-disabled,
-input[type="url"][disabled],
-input[type="url"].is-disabled,
-input[type="search"][disabled],
-input[type="search"].is-disabled,
-input[type="tel"][disabled],
-input[type="tel"].is-disabled,
-input[type="color"][disabled],
-input[type="color"].is-disabled,
+input[type][disabled], input[type].is-disabled,
 select[disabled],
 select.is-disabled,
 textarea[disabled],
@@ -892,59 +770,7 @@ textarea.is-disabled,
   border-color: lightgray;
   opacity: 0.6;
 }
-input[type="text"][disabled]:focus, input[type="text"][disabled]:active, input[type="text"].is-disabled:focus, input[type="text"].is-disabled:active,
-input[type="password"][disabled]:focus,
-input[type="password"][disabled]:active,
-input[type="password"].is-disabled:focus,
-input[type="password"].is-disabled:active,
-input[type="datetime"][disabled]:focus,
-input[type="datetime"][disabled]:active,
-input[type="datetime"].is-disabled:focus,
-input[type="datetime"].is-disabled:active,
-input[type="datetime-local"][disabled]:focus,
-input[type="datetime-local"][disabled]:active,
-input[type="datetime-local"].is-disabled:focus,
-input[type="datetime-local"].is-disabled:active,
-input[type="date"][disabled]:focus,
-input[type="date"][disabled]:active,
-input[type="date"].is-disabled:focus,
-input[type="date"].is-disabled:active,
-input[type="month"][disabled]:focus,
-input[type="month"][disabled]:active,
-input[type="month"].is-disabled:focus,
-input[type="month"].is-disabled:active,
-input[type="time"][disabled]:focus,
-input[type="time"][disabled]:active,
-input[type="time"].is-disabled:focus,
-input[type="time"].is-disabled:active,
-input[type="week"][disabled]:focus,
-input[type="week"][disabled]:active,
-input[type="week"].is-disabled:focus,
-input[type="week"].is-disabled:active,
-input[type="number"][disabled]:focus,
-input[type="number"][disabled]:active,
-input[type="number"].is-disabled:focus,
-input[type="number"].is-disabled:active,
-input[type="email"][disabled]:focus,
-input[type="email"][disabled]:active,
-input[type="email"].is-disabled:focus,
-input[type="email"].is-disabled:active,
-input[type="url"][disabled]:focus,
-input[type="url"][disabled]:active,
-input[type="url"].is-disabled:focus,
-input[type="url"].is-disabled:active,
-input[type="search"][disabled]:focus,
-input[type="search"][disabled]:active,
-input[type="search"].is-disabled:focus,
-input[type="search"].is-disabled:active,
-input[type="tel"][disabled]:focus,
-input[type="tel"][disabled]:active,
-input[type="tel"].is-disabled:focus,
-input[type="tel"].is-disabled:active,
-input[type="color"][disabled]:focus,
-input[type="color"][disabled]:active,
-input[type="color"].is-disabled:focus,
-input[type="color"].is-disabled:active,
+input[type][disabled]:focus, input[type][disabled]:active, input[type].is-disabled:focus, input[type].is-disabled:active,
 select[disabled]:focus,
 select[disabled]:active,
 select.is-disabled:focus,
@@ -970,10 +796,10 @@ textarea {
   line-height: 1.5em;
 }
 
-input[type="submit"] {
+.requestinfo input[type="submit"] {
   display: inline-block;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   text-decoration: none;
   color: white !important;
   font-size: 1em;
@@ -987,13 +813,13 @@ input[type="submit"] {
   background: crimson;
   width: 100%;
 }
-input[type="submit"]:hover, input[type="submit"]:focus {
+.requestinfo input[type="submit"]:hover, .requestinfo input[type="submit"]:focus {
   color: white;
   text-decoration: none;
   outline: none;
   background: #960e29;
 }
-input[type="submit"]:active {
+.requestinfo input[type="submit"]:active {
   top: 1px;
 }
 
@@ -1094,20 +920,21 @@ progress::-moz-progress-bar {
 /*********************
 BASE (MOBILE) SIZE
 *********************/
-/******************************************************************
-Base Mobile Stylesheet
-******************************************************************/
 /*********************
 GENERAL STYLES
 *********************/
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5;
   color: #666;
   background-color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.fonts-loaded body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
 /* Responsive Videos */
