@@ -621,7 +621,6 @@ Button Styles
 /*******************************
 SOCIAL SHARING BUTTONS
 *******************************/
-/* Social Sharing */
 .social-sharing {
   margin-bottom: 1em;
   background: #f2f2f2;
@@ -1010,7 +1009,7 @@ fieldset {
   border: none;
 }
 
-legend, width,
+legend,
 .formError,
 .formValid {
   display: none;
@@ -1029,33 +1028,37 @@ legend, width,
 Table Styles
 ******************************************************************/
 table {
-  margin: 0;
-  padding: 0;
   width: 100%;
+  margin-bottom: 1.5em;
+}
+table caption {
+  margin: 0 0 7px;
+  font-size: 0.75em;
+  color: gray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-table th,
-table td {
+th,
+td {
   padding: 10px 20px;
   text-align: left;
-  border-bottom: 1px solid #ccc;
 }
 
-table th {
-  border-width: 2px;
+tr:nth-child(even) {
+  background: #eee;
 }
 
-table td {
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+td {
   color: #666;
 }
 
-table tr:last-child th,
-table tr:last-child td {
-  border-bottom: none;
-}
-
-table tr:nth-child(even) {
-  background: #eee;
+th {
+  background-color: lightgray;
 }
 
 /******************************************************************
@@ -1127,6 +1130,7 @@ body {
   padding: .5em 1em;
 }
 
+/* Clearfix */
 .clearfix, .cf, .comment-respond {
   zoom: 1;
 }
@@ -1269,39 +1273,6 @@ POSTS & CONTENT STYLES
 }
 .entry-content p {
   margin: 0 0 1.5em;
-}
-.entry-content table {
-  width: 100%;
-  border: 1px solid gray;
-  margin-bottom: 1.5em;
-}
-.entry-content table caption {
-  margin: 0 0 7px;
-  font-size: 0.75em;
-  color: gray;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.entry-content tr {
-  border-bottom: 1px solid gray;
-}
-.entry-content tr:nth-child(even) {
-  background-color: lightgray;
-}
-.entry-content td {
-  padding: 7px;
-  border-right: 1px solid gray;
-}
-.entry-content td:last-child {
-  border-right: 0;
-}
-.entry-content th {
-  background-color: lightgray;
-  border-bottom: 1px solid gray;
-  border-right: 1px solid gray;
-}
-.entry-content th:last-child {
-  border-right: 0;
 }
 .entry-content blockquote {
   margin: 0 0 1.5em 0.75em;

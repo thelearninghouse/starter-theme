@@ -9,10 +9,10 @@ LAYOUT & GRID STYLES
 #inner-content {
 
     #main {
-       @include span(8); 
+       @include span(8);
     }
     .sidebar {
-       @include span(4); 
+       @include span(4);
     }
 }
 
@@ -25,7 +25,6 @@ HEADER STYLES
     #logo {
         float: left;
     }
-
     .nav {
         float: right;
     }
@@ -43,7 +42,6 @@ NAVIGATION STYLES
 	li {
 		float: left;
 		position: relative;
-
 		a {
 			border-bottom: 0;
 
@@ -55,7 +53,7 @@ NAVIGATION STYLES
 
 		ul.sub-menu,
 		ul.children {
-            background: $link-color;
+      background: $link-color;
 			margin-top: 0;
 			position: absolute;
 			visibility: hidden;
@@ -64,7 +62,7 @@ NAVIGATION STYLES
 			li {
 
 				a {
-                    color: white;
+          color: white;
 					padding-left: 10px;
 					border-right: 0;
 					display: block;

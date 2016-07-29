@@ -37,15 +37,16 @@ body {
     padding: .5em 1em;
 }
 
+/* Clearfix */
 .clearfix, .cf, .comment-respond {
-  zoom: 1; 
+  zoom: 1;
 }
 .clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
     content: "";
-    display: table; 
+    display: table;
 }
 .clearfix:after, .cf:after, .comment-respond:after {
-    clear: both; 
+    clear: both;
 }
 
 /********************
@@ -67,7 +68,7 @@ ACCORDION STYLES
         .accord-header {
             &:before{
                 transform: translateY(-50%) rotate(45deg);
-            }            
+            }
         }
 
         .accord-content {
@@ -76,9 +77,9 @@ ACCORDION STYLES
             height: auto;
             opacity: 1;
         }
-    }   
+    }
 
-    .accord-content { 
+    .accord-content {
         visibility: hidden;
         padding: .5em;
         transform: scale(0);
@@ -89,7 +90,7 @@ ACCORDION STYLES
     }
 }
 
-.accord-header { 
+.accord-header {
     font-size: 1.2em;
     cursor: pointer;
     padding: .5em 2em .5em .5em;
@@ -156,7 +157,7 @@ NAVIGATION STYLES
 		ul.sub-menu,
 		ul.children {
             padding: 0;
-            display: none; 
+            display: none;
 
 			li {
 
@@ -204,47 +205,6 @@ POSTS & CONTENT STYLES
 
 			p {
 				margin: 0 0 1.5em;
-			}
-
-			table {
-				width: 100%;
-				border: 1px solid gray;
-				margin-bottom: 1.5em;
-
-				caption {
-					margin: 0 0 7px;
-					font-size: 0.75em;
-					color: gray;
-					text-transform: uppercase;
-					letter-spacing: 1px;
-				}
-			}
-
-			tr {
-				border-bottom: 1px solid gray;
-
-				&:nth-child(even) {
-					background-color: lightgray;
-				}
-			}
-
-			td {
-				padding: 7px;
-				border-right: 1px solid gray;
-
-				&:last-child {
-					border-right: 0;
-				}
-			}
-
-			th {
-				background-color: lightgray;
-				border-bottom: 1px solid gray;
-				border-right: 1px solid gray;
-
-				&:last-child {
-					border-right: 0;
-				}
 			}
 
 			blockquote {

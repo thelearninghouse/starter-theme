@@ -3,26 +3,39 @@ Table Styles
 ******************************************************************/
 
 table {
-    margin: 0;
-    padding: 0;
-    width: 100%
+	width: 100%;
+	margin-bottom: 1.5em;
+
+	caption {
+		margin: 0 0 7px;
+		font-size: 0.75em;
+		color: gray;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
 }
-table th,
-table td {
+
+th,
+td {
     padding: 10px 20px;
     text-align: left;
-    border-bottom: 1px solid #ccc;
 }
-table th {
-    border-width: 2px;
-}
-table td {
-    color: #666;
-}
-table tr:last-child th,
-table tr:last-child td {
-    border-bottom: none;
-}
-table tr:nth-child(even) {
+
+tr:nth-child(even) {
     background: #eee;
-}               
+}
+
+tr {
+
+	&:nth-child(even) {
+		background-color: lightgray;
+	}
+}
+
+td {
+	color: #666;
+}
+
+th {
+	background-color: lightgray;
+}

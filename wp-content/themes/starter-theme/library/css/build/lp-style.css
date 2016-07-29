@@ -574,7 +574,6 @@ Button Styles
 /*******************************
 SOCIAL SHARING BUTTONS
 *******************************/
-/* Social Sharing */
 .social-sharing {
   margin-bottom: 1em;
   background: #f2f2f2;
@@ -963,7 +962,7 @@ fieldset {
   border: none;
 }
 
-legend, width,
+legend,
 .formError,
 .formValid {
   display: none;
@@ -982,33 +981,37 @@ legend, width,
 Table Styles
 ******************************************************************/
 table {
-  margin: 0;
-  padding: 0;
   width: 100%;
+  margin-bottom: 1.5em;
+}
+table caption {
+  margin: 0 0 7px;
+  font-size: 0.75em;
+  color: gray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-table th,
-table td {
+th,
+td {
   padding: 10px 20px;
   text-align: left;
-  border-bottom: 1px solid #ccc;
 }
 
-table th {
-  border-width: 2px;
+tr:nth-child(even) {
+  background: #eee;
 }
 
-table td {
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+td {
   color: #666;
 }
 
-table tr:last-child th,
-table tr:last-child td {
-  border-bottom: none;
-}
-
-table tr:nth-child(even) {
-  background: #eee;
+th {
+  background-color: lightgray;
 }
 
 /*********************
