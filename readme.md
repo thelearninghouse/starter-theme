@@ -100,7 +100,7 @@ starter-theme/
 
 ### Style Guide
 
-For common patterns and styles please use this resource. This was mostly created for the inbound when they create blog post. [View Style Guide](http://tlhstarter.wpengine.com/style-guide)
+For common patterns and styles please use this resource. This was mostly created for the inbound when they create blog post. This style guide should be customized for each client according to their branding and OLC design. [View Style Guide](http://tlhstarter.wpengine.com/style-guide)
 
 ### Sassdoc
 
