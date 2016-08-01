@@ -3,10 +3,6 @@
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
 
-// MAINTENANCE MODE CUSTOM SETTING
-require_once( 'library/maintenance.php' );
-
-
 /*********************
 LAUNCH BONES
 Let's get everything up and running.

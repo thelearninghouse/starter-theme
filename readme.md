@@ -6,7 +6,7 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 ## Basic Usage
 
-### Install Grunt or Gulp (package-gulp.json provided)
+### Install Gulp
 
 Install by navigating to the theme's `library` folder and running `npm install`
 
@@ -16,7 +16,7 @@ This theme utilizes inline styling in the head of the document for faster load t
 
 ### Watch Files
 
-To start watching files use `grunt` or `gulp` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
+To start watching files use `gulp watch` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
 ### Grid Usage
 
@@ -40,13 +40,10 @@ starter-theme/
 |    |   ├── prefixed  // Contains style sheets that have been through Autoprefixer
 |    |   ├── home-critical.css // Critical CSS for homepage
 |    |   ├── ie.css  // IE Stylesheet
-|    |   ├── ie.css.map  // Source map for debugging
 |    |   ├── interior-critical.css  // Critical CSS for interior pages
 |    |   ├── lp-critical.css  // Critical CSS for Landing Pages
 |    |   ├── lp-style.css  // Main stylesheet for Landing Pages
-|    |   ├── lp-style.css.map	  // Source map for debugging
 |    |   ├── style.css  // Main Stylesheet
-|    |   └── style.css.map  // Source map for debugging
 |    ├── images  // Images relative to the theme
 |    ├── js  //
 |    |   ├── build // Production Files
@@ -56,39 +53,47 @@ starter-theme/
 |    |   └──  scripts.js // Main javascript file
 |    ├── plugins  // Zip files of plugins that are critical to the theme
 |    ├── scss
-|    |    ├── breakpoints 
+|    |    ├── breakpoints
+|    |    |    ├── _481up.scss // Applies to all screens above 480px wide
+|    |    |    ├── _768up.scss // Applies to all screens above 768px wide
+|    |    |    └── _base.scss // Base stylesheet for mobile and up
 |    |    ├── modules
+|    |    |    ├── _buttons.scss // Contains styling that applies to buttons
+|    |    |    ├── _forms.scss // Form styling
+|    |    |    ├── _progress.scss // Styling for the progress bar on blog posts
+|    |    |    └── _tables.scss // Table styling
 |    |    ├── partials
+|    |    |    ├── _grid.scss // Setting up SUSY and grid styling
+|    |    |    ├── _mixins.scss // All mixins
+|    |    |    ├── _normalize.scss // Normalize
+|    |    |    ├── _print.scss // Base print styles
+|    |    |    ├── _typography.scss // Typography styling
+|    |    |    └── _variables.scss // Variables (breakpoints, colors, etc.)
 |    |    ├── ie.scss // IE stylesheet
 |    |    ├── lp-style.scss // Landing Page stylesheet
-|    |    └── style.scss // Main stylesheet, this gets compiled into `style.css`
-|    ├── tasks  //
-|    ├── .sassdocrc //
-|    ├── Gruntfile.js  //
-|    ├── bones.php  //
-|    ├── bower.json  //
-|    ├── class-tgm-plugin-activation.php  //
-|    ├── custom-post-types.php  //
-|    ├── gulpfile.js  //
-|    ├── maintenance.php  //
-|    ├── package-gulp.json  //
-|    └── package.json  //
-├── 404.php  //
-├── archive-degrees.php  //
-├── archive.php  //
-├── comments.php  //
-├── favicon.png  //
-├── footer.php //
-├── front-page.php  //
-├── functions.php  //
-├── header.php  //
-├── index.php  //
-├── page.php	  //
-├── screenshot.png  //
-├── sidebar.php  //
-├── single-degrees.php  //
-├── single.php  //
-└── style.css  //
+|    |    └── style.scss // Main stylesheet, this gets compiled into ==> style.css
+|    ├── .sassdocrc // Settings for SassDoc
+|    ├── bones.php  // Functions and features for the theme
+|    ├── bower.json  // Bower setup and dependencies
+|    ├── class-tgm-plugin-activation.php  // Plugin that allows us to declare plugins the theme requires
+|    ├── custom-post-types.php  // Where we register our custom post types for Online Degrees and Landing Pages
+|    ├── Gruntfile.js  // Grunt setup file
+|    └── package.json  // Grunt details and dependencies
+├── 404.php  // Template for 404 page
+├── archive-degrees.php  // Archive template for Online Degrees
+├── archive.php  // Archive template for blog posts
+├── favicon.png  // Favicon
+├── footer.php // Footer template
+├── front-page.php  // Homepage template
+├── functions.php  // Controls features and functionality custom to the theme
+├── header.php  // Header template
+├── index.php  // Blog index template
+├── page.php	  // Page template
+├── screenshot.png  // Image used for the theme
+├── sidebar.php  // Sidebar template
+├── single-degrees.php  // Online Degree page template
+├── single.php  // Single blog post template
+└── style.css  // Stylesheet used for theme information
 ```
 
 ## Resources
