@@ -1,22 +1,24 @@
 # Learning House Wordpress Starter Theme
 
-The core of this theme is based on [Bones theme](https://github.com/eddiemachado/bones)
+This repo features the entire WordPress install including core files.
+
+The core of this theme is based on [Bones theme](https://github.com/eddiemachado/bones).
 
 ## Basic Usage
 
-#### Install Grunt or Gulp (package-gulp.json provided)
+### Install Grunt or Gulp (package-gulp.json provided)
 
 Install by navigating to the theme's `library` folder and running `npm install`
 
-## Critical CSS
+### Critical CSS
 
 This theme utilizes inline styling in the head of the document for faster load times. If it seems like your changes are not working there is a chance that these inline styles are overwriting your changes. To update run `grunt deploy` and it will update the critical css files accordingly.
 
-#### Watch Files
+### Watch Files
 
 To start watching files use `grunt` or `gulp` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
-#### Grid Usage
+### Grid Usage
 
 This theme uses Susy Grid. Documentation can be found [here](http://susydocs.oddbird.net/en/latest/)
 
@@ -28,32 +30,67 @@ There are three menus setup for this theme by default:
 2. SECONDARY MENU - Secondary navigation at the top of header with contact information
 3. FOOTER MENU - Footer Navigation
 
-## Plugins
+## Theme File Structure
 
-This core wordpress install comes equipped with a couple handy plugins that we seem to use very often
-
-#### Advanced Custom Fields Pro
-
-There isn't much this plugin can't do including but not limited to: repeater fields, flexible content and global theme options. Documentation can be found [here](http://www.advancedcustomfields.com/pro/)
-
-#### RICG Responsive Images
-
-This is new to the starter theme as of August 2015. We are implementing this to take advantage of responsive images.
-
-#### Title and Nofollow for links
-
-This was requested by the inbound team to get the title field back on links.
-
-#### Yoast SEO
-
-Yoast is required on all of our sites for SEO optimization.
+``` bash
+starter-theme/
+├── _library
+|    ├── css  //
+|       ├── minified  // Contains all minified versions of stylesheets
+|       ├── prefixed  // Contains style sheets that have been through Autoprefixer
+|       ├── home-critical.css // Critical CSS for homepage
+|       ├── ie.css  // IE Stylesheet
+|       ├── ie.css.map  // Source map for debugging
+|       ├── interior-critical.css  // Critical CSS for interior pages
+|       ├── lp-critical.css  // Critical CSS for Landing Pages
+|       ├── lp-style.css  // Main stylesheet for Landing Pages
+|       ├── lp-style.css.map	  // Source map for debugging
+|       ├── style.css  // Main Stylesheet
+|       └── style.css.map  // Source map for debugging
+|    ├── images  // Images relative to the theme
+|    ├── js  //
+         ├── libs // For javascript libraries
+        └── scripts.js // Main javascript file
+        └── scripts.js // Main javascript file
+|    ├── plugins  // Zip files of plugins that are critical to the theme
+|    ├── scss //
+|    ├── tasks  //
+|    ├── .sassdocrc
+|    ├── Gruntfile.js  //
+|    ├── bones.php  //
+|    ├── bower.json  //
+|    ├── class-tgm-plugin-activation.php  //
+|    ├── custom-post-types.php  //
+|    ├── gulpfile.js  //
+|    ├── maintenance.php  //
+|    ├── package-gulp.json  //
+|    └── package.json  //
+├── 404.php  //
+├── archive-degrees.php  //
+├── archive.php  //
+├── comments.php  //
+├── favicon.png  //
+├── footer.php //
+├── front-page.php  //
+├── functions.php  //
+├── header.php  //
+├── index.php  //
+├── page.php	  //
+├── screenshot.png  //
+├── sidebar.php  //
+├── single-degrees.php  //
+├── single.php  //
+└── style.css  //
+```
 
 ## Resources
 
-#### Style Guide
+### Style Guide
 
 For common patterns and styles please use this resource. This was mostly created for the inbound when they create blog post. [View Style Guide](http://tlhstarter.wpengine.com/style-guide)
 
-#### Sassdoc
+### Sassdoc
 
 This documentation is for the front-end team for easy access to variable, mixins, functions, etc. [View SassDoc](http://tlhstarter.wpengine.com/sassdoc)
+
+To update sassdoc run `grunt deploy` or `grunt sassdo`
