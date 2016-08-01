@@ -27,6 +27,8 @@ HEADER STYLES
     }
     .nav {
         float: right;
+        visibility: visible;
+        height: auto;
     }
 }
 
@@ -85,6 +87,10 @@ NAVIGATION STYLES
 	} /* end .menu ul li */
 
 } /* end .nav */
+
+.menu-trigger {
+    display: none;
+}
 
 /*********************
 SIDEBARS & ASIDES

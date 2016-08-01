@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
     });
 
     // Pullquote functionality so the content is not repeated
-    $(function() {
+   $(function() {
       $('span.pullquote').each(function() {
         var $parentParagraph = $(this).parent('p');
         $parentParagraph.css('position', 'relative');
@@ -45,6 +45,11 @@ jQuery(document).ready(function($) {
     // Remove Select menu error classs on load
     $(window).load(function() {
         $('.requestinfo select').removeClass('error');
+    });
+
+    // Mobile Nav Trigger
+    $('.menu-trigger').on('click', function() {
+        $('.header nav').toggleClass('visible');
     });
 
 

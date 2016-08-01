@@ -64,8 +64,7 @@
 
 			</div>
 
-           <?php // Progress Bar Script ?>
-           <script>
+            <script>
            // Load document before calculating window height
             $(document).on('ready', function() {
               var winHeight = $(window).height(),
@@ -77,12 +76,14 @@
               max = docHeight - winHeight;
               progressBar.attr('max', max);
 
+              console.log(docHeight);
+              console.log(winHeight);
+
               $(document).on('scroll', function(){
                  value = $(window).scrollTop();
                  progressBar.attr('value', value);
               });
             });
             </script>
-
 
 <?php get_footer(); ?>

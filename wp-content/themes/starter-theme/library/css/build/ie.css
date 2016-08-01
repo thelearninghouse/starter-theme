@@ -251,6 +251,8 @@ HEADER STYLES
 }
 .header .nav {
   float: right;
+  visibility: visible;
+  height: auto;
 }
 
 /*********************
@@ -302,6 +304,10 @@ NAVIGATION STYLES
 }
 
 /* end .nav */
+.menu-trigger {
+  display: none;
+}
+
 /*********************
 SIDEBARS & ASIDES
 *********************/

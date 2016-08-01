@@ -1,4 +1,5 @@
 <!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
+<!doctype html>
 <html lang="en" class="fonts-loaded">
 <!--#else -->
 <!doctype html>
@@ -54,6 +55,8 @@
 				<div id="inner-header" class="wrap cf">
 
 					<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+
+                    <a class="menu-trigger button" href="#">Menu</a>
 
 					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 						<?php wp_nav_menu(array(

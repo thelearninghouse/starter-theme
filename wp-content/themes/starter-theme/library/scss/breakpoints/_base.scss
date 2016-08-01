@@ -135,6 +135,16 @@ HEADER STYLES
     margin: 0.75em 0;
 }
 
+.header nav {
+    visibility: hidden;
+    height: 0;
+
+    &.visible {
+        visibility: visible;
+        height: auto;
+    }
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/

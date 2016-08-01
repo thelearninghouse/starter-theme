@@ -1041,6 +1041,15 @@ HEADER STYLES
   margin: 0.75em 0;
 }
 
+.header nav {
+  visibility: hidden;
+  height: 0;
+}
+.header nav.visible {
+  visibility: visible;
+  height: auto;
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/
@@ -1314,6 +1323,8 @@ MEDIA QUERIES
   }
   .header .nav {
     float: right;
+    visibility: visible;
+    height: auto;
   }
 
   /*********************
@@ -1365,6 +1376,10 @@ MEDIA QUERIES
   }
 
   /* end .nav */
+  .menu-trigger {
+    display: none;
+  }
+
   /*********************
   SIDEBARS & ASIDES
   *********************/
