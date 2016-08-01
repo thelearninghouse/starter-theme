@@ -34,28 +34,36 @@ There are three menus setup for this theme by default:
 
 ``` bash
 starter-theme/
-├── _library
+├── library
 |    ├── css  //
-|       ├── minified  // Contains all minified versions of stylesheets
-|       ├── prefixed  // Contains style sheets that have been through Autoprefixer
-|       ├── home-critical.css // Critical CSS for homepage
-|       ├── ie.css  // IE Stylesheet
-|       ├── ie.css.map  // Source map for debugging
-|       ├── interior-critical.css  // Critical CSS for interior pages
-|       ├── lp-critical.css  // Critical CSS for Landing Pages
-|       ├── lp-style.css  // Main stylesheet for Landing Pages
-|       ├── lp-style.css.map	  // Source map for debugging
-|       ├── style.css  // Main Stylesheet
-|       └── style.css.map  // Source map for debugging
+|    |   ├── minified  // Contains all minified versions of stylesheets
+|    |   ├── prefixed  // Contains style sheets that have been through Autoprefixer
+|    |   ├── home-critical.css // Critical CSS for homepage
+|    |   ├── ie.css  // IE Stylesheet
+|    |   ├── ie.css.map  // Source map for debugging
+|    |   ├── interior-critical.css  // Critical CSS for interior pages
+|    |   ├── lp-critical.css  // Critical CSS for Landing Pages
+|    |   ├── lp-style.css  // Main stylesheet for Landing Pages
+|    |   ├── lp-style.css.map	  // Source map for debugging
+|    |   ├── style.css  // Main Stylesheet
+|    |   └── style.css.map  // Source map for debugging
 |    ├── images  // Images relative to the theme
 |    ├── js  //
-         ├── libs // For javascript libraries
-        └── scripts.js // Main javascript file
-        └── scripts.js // Main javascript file
+|    |   ├── build // Production Files
+|    |   |   ├── production.js // Concatenated JavaScript file
+|    |   |   └── production.min.js
+|    |   ├── libs // For javascript libraries i.e. Modernizr
+|    |   └──  scripts.js // Main javascript file
 |    ├── plugins  // Zip files of plugins that are critical to the theme
-|    ├── scss //
+|    ├── scss
+|    |    ├── breakpoints 
+|    |    ├── modules
+|    |    ├── partials
+|    |    ├── ie.scss // IE stylesheet
+|    |    ├── lp-style.scss // Landing Page stylesheet
+|    |    └── style.scss // Main stylesheet, this gets compiled into `style.css`
 |    ├── tasks  //
-|    ├── .sassdocrc
+|    ├── .sassdocrc //
 |    ├── Gruntfile.js  //
 |    ├── bones.php  //
 |    ├── bower.json  //
