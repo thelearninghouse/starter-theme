@@ -26,9 +26,9 @@ This theme uses Susy Grid. Documentation can be found [here](http://susydocs.odd
 
 There are three menus setup for this theme by default:
 
-1. MAIN MENU - Main Navigation
-2. SECONDARY MENU - Secondary navigation at the top of header with contact information
-3. FOOTER MENU - Footer Navigation
+1. **MAIN MENU** - Main Navigation
+2. **SECONDARY MENU** - Secondary navigation at the top of header with contact information
+3. **FOOTER MENU** - Footer Navigation
 
 ## Theme File Structure
 
