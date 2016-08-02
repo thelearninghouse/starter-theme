@@ -22,6 +22,11 @@ To start watching files use `grunt` from the `library` folder. This will run bro
 
 This theme uses Susy Grid. Documentation can be found [here](http://susydocs.oddbird.net/en/latest/)
 
+**Basics**
+
+To include columns `@include span(4)`
+To include wrapper `@include container(1440px)`
+
 ## Menus
 
 There are three menus setup for this theme by default:
@@ -97,6 +102,10 @@ starter-theme/
 ```
 
 ## Resources
+
+### Editor config
+
+A `.editorconfig` file is included to maintain consistent coding styles between different editors and IDEs. To find a plugin for your editor please visit [Editor Config Plugins](http://editorconfig.org/#download) and install. We are using the standard config that is recommended by wordpress.
 
 ### Style Guide
 

@@ -1,0 +1,149 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+#tldr-post-summary-buttons .summary-tldr-btn {
+    background: #34b0d4;
+    border-radius: 7px;
+    padding: 3px;
+    width: 290px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+p.summary-tldr-btn.full-article {
+    display: none;
+}
+
+#tldr-post-summary {
+    display: none;
+}
+
+#tldr-post-content {
+    display: block;
+}
+
+#tldr-post-summary-buttons.position-2,
+#tldr-post-summary-buttons.position-3 {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+#tldr-post-summary-buttons.position-2 {
+    top: 0;
+}
+
+#tldr-post-summary-buttons.position-3 {
+    bottom: 0;
+}
+
+#tldr-post-summary-buttons .summary-tldr-btn.btn-position-2,
+#tldr-post-summary-buttons .summary-tldr-btn.btn-position-3 {
+    margin: 0 auto;
+}
+
+.tldr-summary-cta-box {
+    margin-top: 30px;
+    padding: 15px 25px 10px 25px;
+}
+
+.tldr-summary-cta-box {
+    overflow-y: hidden;
+}
+
+.tldr-summary-cta-box .cta-thumbnail {
+    float: left;
+    margin-right: 15px;
+}
+
+.tldr-summary-cta-box .cta-thumbnail img {
+    max-width: 100%;
+    max-height: 205px;
+    padding: 5px;
+}
+
+.tldr-summary-cta-box .cta-description {
+    text-align: justify;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.tldr-summary-cta-box .cta-description p.title {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tldr-summary-cta-box .cta-description .calltoaction a {
+    font-family: 'Champagne', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 26px;
+    background: #5094E5;
+    padding: 5px 25px 5px 25px;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-box-shadow: 2px 3px 3px #0f030f;
+    -moz-box-shadow: 2px 3px 3px #0f030f;
+    box-shadow: 2px 3px 3px #0f030f;
+}
+
+div.powerby {
+    display: none;
+    font-size: 10px;
+    margin-bottom: 20px;
+    float: right;
+    font-style: italic;
+}
+
+#tldr-post-summary-buttons .summary-tldr-btn.btn-position-1 {
+    padding: 10px;
+}
+
+.tldr-summary-cta-box .cta-description p.calltoaction {
+    text-align: center;
+}
+
+#tldr-post-summary-buttons .summary-tldr-btn:hover {
+    opacity: 0.8;
+}
+
+.cta-has-no-image p.short-desc {
+    text-align: center;
+}
+
+.tldr-summary-cta-box.cta-has-image .cta-description p.title {
+    text-align: left;
+}
+
+.tldr-summary-cta-box.cta-has-image .cta-description p.calltoaction {
+    text-align: left;
+}
+
+.tldr-summary-cta-box.cta-has-image .cta-description p.short-desc {
+    text-align: left;
+}
+
+.tldr-summary-cta-box.cta-has-no-image .cta-description p.short-desc {
+    text-align: center;
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 480px) {
+    /* Styles */
+    .tldr-summary-cta-box.cta-has-image .cta-thumbnail {
+        display: none;
+    }
+
+    .tldr-summary-cta-box.cta-has-image .cta-description p.title {
+        text-align: center;
+    }
+
+    .tldr-summary-cta-box.cta-has-image .cta-description p.calltoaction {
+        text-align: center;
+    }
+}

@@ -1,0 +1,101 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.summary-checkbox {
+    padding-bottom: 25px;
+    font-weight: bold;
+}
+
+.summary-cta-checkbox {
+    padding-bottom: 25px;
+}
+
+.summary-cta-checkbox .cta-input-row .cta-input-row-label {
+    width: 23%;
+    font-weight: bold;
+    float: left;
+}
+
+#side-sortables .summary-cta-checkbox .cta-input-row .cta-input-row-label {
+    width: 100%;
+}
+
+.summary-cta-checkbox .cta-input-row .cta-input-row-input input {
+    width: 60%;
+}
+
+.summary-cta-checkbox .cta-input-row .cta-input-row-input textarea {
+    width: 40%;
+}
+
+#side-sortables .summary-cta-checkbox .cta-input-row .cta-input-row-input input {
+    width: 100%;
+}
+
+#side-sortables .summary-cta-checkbox .cta-input-row .cta-input-row-input textarea {
+    width: 100%;
+}
+
+.summary-cta-checkbox .cta-input-row {
+    padding-top: 5px;
+}
+
+.summary-cta-checkbox .cta-input-row.upload-div {
+    padding-top: 30px;
+}
+
+.cta-input-row.upload-div .upload-input {
+    float: left;
+}
+
+.cta-input-row.upload-div .upload-hidden-input {
+    padding-top: 5px;
+}
+
+span#post_summary_uploaded_file_url_name {
+    font-weight: bold;
+    margin-left: 20px;
+
+}
+
+#side-sortables .cta-input-row.upload-div .upload-hidden-input {
+    padding-left: 0px;
+    clear: both;
+    padding-top: 15px;
+}
+
+#side-sortables span#post_summary_uploaded_file_url_name {
+    margin-left: 0px;
+}
+
+#tldr-post-summary-other-fonts {
+    display: none;
+}
+
+span.remove-this-image {
+    padding-left: 15px;
+}
+
+span.remove-this-image a {
+    color: red;
+    font-weight: normal;
+}
+
+#tldr-post-summary-cta-title-other-fonts{
+    display: none;
+}
+
+#tldr-post-summary-cta-desc-other-fonts{
+    display: none;
+}
+
+
+#tldr-post-summary-cta-button-other-fonts{
+    display: none;
+}
+
+tr.cta-box-border-options{
+    display: none;
+}
