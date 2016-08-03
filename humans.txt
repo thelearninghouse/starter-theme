@@ -1,0 +1,22 @@
+/* TEAM */
+	Web designer: Brian Maier Jr.
+	Twitter: @brianmaierjr
+	From: Louisville, Ky
+
+  Creative Director: Michael Leonardo
+  Twitter: @mleonardo
+  From: Louisville, Ky
+
+
+/* COMPANY */
+	Name: Learning House, Inc.
+	Twitter: @LearningHouse
+	From: Louisville, Ky
+  Website: http://www.learninghouse.com
+
+
+/* SITE */
+	Doctype:HTML5
+  Standards: HTML5, CSS3
+	IDE: Vim, Atom, Transmit, Photoshop
+  Components: Modernizr, jQuery, php
