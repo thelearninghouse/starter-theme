@@ -12,6 +12,11 @@
 
 								<header class="article-header">
 
+									<?php
+										if ( function_exists('yoast_breadcrumb') ) {
+											yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+										}
+									?>
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
 								</header> <?php // end article header ?>
@@ -19,8 +24,6 @@
 								<section class="entry-content cf" itemprop="articleBody">
 									<?php the_content(); ?>
 								</section> <?php // end article section ?>
-
-								<?php comments_template(); ?>
 
 							</article>
 
