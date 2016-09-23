@@ -8,7 +8,7 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 ### Install Dependencies
 
-Install by navigating to the theme's `library` folder and running `npm install` followed by 'bower install'
+Install by navigating to the theme's `library` folder and running `npm install` followed by `bower install`
 
 ### Critical CSS
 
@@ -16,7 +16,7 @@ This theme utilizes inline styling in the head of the document for faster load t
 
 ### Watch Files
 
-To start watching files use `u from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
+To start watching files use `grunt` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
 ### Grid Usage
 
