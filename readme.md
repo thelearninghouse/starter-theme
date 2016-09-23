@@ -6,9 +6,9 @@ The core of this theme is based on [Bones theme](https://github.com/eddiemachado
 
 ## Basic Usage
 
-### Install Grunt
+### Install Dependencies
 
-Install by navigating to the theme's `library` folder and running `npm install`
+Install by navigating to the theme's `library` folder and running `npm install` followed by 'bower install'
 
 ### Critical CSS
 
@@ -16,25 +16,19 @@ This theme utilizes inline styling in the head of the document for faster load t
 
 ### Watch Files
 
-To start watching files use `grunt` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
+To start watching files use `u from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
 ### Grid Usage
 
 This theme uses Susy Grid. Documentation can be found [here](http://susydocs.oddbird.net/en/latest/)
 
-**Basics**
-
-To include columns `@include span(4)`
-
-To include wrapper `@include container(1440px)`
-
 ## Menus
 
 There are three menus setup for this theme by default:
 
-1. **MAIN MENU** - Main Navigation
-2. **SECONDARY MENU** - Secondary navigation at the top of header with contact information
-3. **FOOTER MENU** - Footer Navigation
+1. MAIN MENU - Main Navigation
+2. SECONDARY MENU - Secondary navigation at the top of header with contact information
+3. FOOTER MENU - Footer Navigation
 
 ## Theme File Structure
 
@@ -90,9 +84,11 @@ starter-theme/
 ├── archive.php  // Archive template for blog posts
 ├── favicon.png  // Favicon
 ├── footer.php // Footer template
+├── footer-lp.php // Landing Page Footer template
 ├── front-page.php  // Homepage template
 ├── functions.php  // Controls features and functionality custom to the theme
 ├── header.php  // Header template
+├── header-lp.php  // Landing Page Header template
 ├── index.php  // Blog index template
 ├── page.php	  // Page template
 ├── screenshot.png  // Image used for the theme
@@ -104,13 +100,9 @@ starter-theme/
 
 ## Resources
 
-### Editor config
-
-A `.editorconfig` file is included to maintain consistent coding styles between different editors and IDEs. To find a plugin for your editor please visit [Editor Config Plugins](http://editorconfig.org/#download) and install. We are using the standard config that is recommended by wordpress.
-
 ### Style Guide
 
-For common patterns and styles please use this resource. This was mostly created for the inbound when they create blog post. This style guide should be customized for each client according to their branding and OLC design. [View Style Guide](http://tlhstarter.wpengine.com/style-guide)
+For common patterns and styles please use this resource. This was mostly created for the inbound when they create blog post. [View Style Guide](http://tlhstarter.wpengine.com/style-guide)
 
 ### Sassdoc
 

@@ -29,13 +29,14 @@
 		<?php // or, set /favicon.ico for IE10 win ?>
 		<meta name="msapplication-TileColor" content="#f01d4f">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
-        <meta name="theme-color" content="#121212">
+    <meta name="theme-color" content="#121212">
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-		<?php // wordpress head functions ?>
+		<?php // Landing Page Critical CSS ?>
+		<?php if ( is_single( 'landing-pages' ) ) { ?> <style><?php include 'library/css/build/minified/lp-critical.css'; ?></style><?php } ?>
+
 		<?php wp_head(); ?>
-		<?php // end of wordpress head ?>
 
 	</head>
 
