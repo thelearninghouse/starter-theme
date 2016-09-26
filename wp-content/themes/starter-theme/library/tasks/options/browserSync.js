@@ -2,13 +2,14 @@ module.exports = {
  dev : {
         bsFiles: {
             src: [
-                "css/build/minified/style.css",
+                "css/build/minified/*.css",
                 "scss/**/*.scss",
                 "scss/style.scss",
             ],
         },
         options: {
-            watchTask: true
+            watchTask: true,
+						proxy: "starter.loc"
         }
     }
 }

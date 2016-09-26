@@ -842,5 +842,8 @@ th {
 /*********************
 BASE STYLING
 *********************/
+body {
+  background: white;
+}
 
 /*# sourceMappingURL=lp-style.css.map */

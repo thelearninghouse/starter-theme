@@ -842,3 +842,6 @@ th {
 /*********************
 BASE STYLING
 *********************/
+body {
+  background: white;
+}

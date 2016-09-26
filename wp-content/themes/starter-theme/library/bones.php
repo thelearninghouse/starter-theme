@@ -131,12 +131,6 @@ function bones_scripts_and_styles() {
 		// form validation and tracking script
 		wp_register_script( 'form-script', 'http://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
 
-		// register main stylesheet
-		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/build/minified/style.css', array(), '', 'all' );
-
-		// register lp stylesheet
-		wp_register_style( 'lp-stylesheet', get_stylesheet_directory_uri() . '/library/css/build/minified/lp-style.css', array(), '', 'all' );
-
 		// ie-only style sheet
 		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
@@ -153,10 +147,7 @@ function bones_scripts_and_styles() {
 		wp_enqueue_script( 'form-script' );
 
 		if ( !is_singular( 'landing-pages') ) {
-			wp_enqueue_style( 'bones-stylesheet' );
 			wp_enqueue_style( 'bones-ie-only' );
-		} else {
-			wp_enqueue_style( 'lp-stylesheet' );
 		}
 
 		$wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
@@ -300,96 +291,6 @@ function cta_func($atts, $content = null ) {
 }
 add_shortcode( 'cta', 'cta_func' );
 
-/**********
-TGM Plugin
-**********/
-
-require_once( 'class-tgm-plugin-activation.php');
-add_action( 'tgmpa_register', 'wvsu_online_register_required_plugins' );
-
-function wvsu_online_register_required_plugins() {
-
-    /*
-     * Array of plugin arrays. Required keys are name and slug.
-     * If the source is NOT from the .org repo, then source is also required.
-     */
-    $plugins = array(
-
-        // This is an example of how to include a plugin bundled with a theme.
-        array(
-            'name'               => 'Advanced Custom Fields Pro', // The plugin name.
-            'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
-            'source'             => get_template_directory() . '/library/plugins/advanced-custom-fields-pro.zip', // The plugin source.
-            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-        ),
-
-        array(
-            'name'               => 'Wp Migrate DB Pro', // The plugin name.
-            'slug'               => 'wp-migrate-db-pro', // The plugin slug (typically the folder name).
-            'source'             => get_template_directory() . '/library/plugins/wp-migrate-db-pro.zip', // The plugin source.
-            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-        ),
-
-        array(
-            'name'               => 'Wp Migrate DB Pro Media Files', // The plugin name.
-            'slug'               => 'wp-migrate-db-pro-media-files', // The plugin slug (typically the folder name).
-            'source'             => get_template_directory() . '/library/plugins/wp-migrate-db-pro-media-files.zip', // The plugin source.
-            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-        ),
-
-        // This is an example of how to include a plugin from an arbitrary external source in your theme.
-        array(
-            'name'         => 'Title and Nofollow For Links', // The plugin name.
-            'slug'         => 'title-and-nofollow-for-links', // The plugin slug (typically the folder name).
-            'required'     => true, // If false, the plugin is only 'recommended' instead of required.
-        ),
-
-        array(
-            'name'      => 'RICG Responsive Images',
-            'slug'      => 'ricg-responsive-images',
-            'required'  => true,
-        ),
-
-        array(
-            'name'        => 'WordPress SEO by Yoast',
-            'slug'        => 'wordpress-seo',
-            'required'    => true,
-        ),
-
-        array(
-            'name'        => 'Redirection',
-            'slug'        => 'redirection',
-            'required'    => true,
-        ),
-
-        array(
-            'name'        => 'Duplicate Post',
-            'slug'        => 'duplicate-post',
-            'required'    => true,
-        ),
-    );
-
-    $config = array(
-        'id'           => 'wvsu-online',                 // Unique ID for hashing notices for multiple instances of TGMPA.
-        'default_path' => '',                      // Default absolute path to bundled plugins.
-        'menu'         => 'tgmpa-install-plugins', // Menu slug.
-        'parent_slug'  => 'themes.php',            // Parent menu slug.
-        'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-        'has_notices'  => true,                    // Show admin notices or not.
-        'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-        'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-        'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-        'message'      => '',                      // Message to output right before the plugins table.
-    );
-
-    tgmpa( $plugins, $config );
-}
 
 /*************************
 Add Theme Options for ACF
