@@ -48,7 +48,8 @@ jQuery(document).ready(function($) {
     });
 
     // Mobile Nav Trigger
-    $('.menu-trigger').on('click', function() {
+    $('.menu-trigger').on('click', function(e) {
+				e.preventDefault();
         $('.header nav').toggleClass('visible');
     });
 

@@ -1,6 +1,3 @@
-/******************************************************************
-Main Stylesheet
-******************************************************************/
 /*********************
 IMPORTING PARTIALS
 *********************/
@@ -840,8 +837,71 @@ th {
 }
 
 /*********************
+LINK STYLES
+*********************/
+a, a:visited {
+  color: crimson;
+  /* on hover */
+  /* mobile tap color */
+}
+a:hover, a:focus, a:visited:hover, a:visited:focus {
+  color: #960e29;
+}
+a:link, a:visited:link {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+}
+
+/********************
+LAYOUT & GRID STYLES
+*********************/
+.wrap {
+  width: 90%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/*********************
 BASE STYLING
 *********************/
 body {
-  background: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+  color: #666;
+  background-color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fonts-loaded body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Responsive Videos */
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Clearfix */
+.clearfix, .cf, .comment-respond {
+  zoom: 1;
+}
+
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after, .cf:after, .comment-respond:after {
+  clear: both;
 }
