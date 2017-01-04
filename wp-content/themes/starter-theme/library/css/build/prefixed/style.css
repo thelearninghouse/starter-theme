@@ -538,7 +538,7 @@ SOCIAL SHARING BUTTONS
   padding: .8em;
   text-align: center; }
 
-.social-sharing-label {
+.social-sharing__label {
   font-size: 0.8125em;
   font-weight: bold;
   text-transform: uppercase;
@@ -560,21 +560,21 @@ SOCIAL SHARING BUTTONS
   .social-link:focus {
     color: white; }
 
-.social-link-icon,
-.social-link-label {
+.social-link__icon,
+.social-link__label {
   display: inline-block;
   vertical-align: middle;
   color: white; }
 
-.social-link-icon {
+.social-link__icon {
   width: 1.5em;
   height: 1.5em;
   margin-right: .2em; }
 
-.social-link-icon path {
+.social-link__icon path {
   fill: #fff; }
 
-.social-link-label {
+.social-link__label {
   font-size: .9em;
   font-weight: 500; }
 
@@ -582,16 +582,16 @@ SOCIAL SHARING BUTTONS
   background-color: #2795e9;
   color: white; }
 
-.social-facebook {
+.social-link_facebook {
   background: #3b5998; }
 
-.social-facebook:hover {
+.social-link_facebook:hover {
   background: #2d4373; }
 
-.social-linkedin {
+.social-link_linkedin {
   background: #007bb6; }
 
-.social-linkedin:hover {
+.social-link_linkedin:hover {
   background: #005983; }
 
 /******************************************************************
@@ -818,8 +818,44 @@ progress::-moz-progress-bar {
     height: 100%; }
 
 /*********************
-BASE (MOBILE) SIZE
+LINK STYLES
 *********************/
+a, a:visited {
+  color: crimson;
+  /* on hover */
+  /* mobile tap color */ }
+  a:hover, a:focus, a:visited:hover, a:visited:focus {
+    color: #960e29; }
+  a:link, a:visited:link {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.no-widgets {
+  background-color: white;
+  padding: 1.5em;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 2px;
+  margin-bottom: 1.5em; }
+
+/*********************
+BASE (MOBILE UP)
+*********************/
+/*********************
+HEADER STYLES
+*********************/
+#logo {
+  margin: 0.75em 0; }
+
+.header__nav {
+  visibility: hidden;
+  height: 0; }
+  .header__nav.visible {
+    visibility: visible;
+    height: auto; }
+
 /*********************
 GENERAL STYLES
 *********************/
@@ -848,101 +884,50 @@ LAYOUT & GRID STYLES
   margin: 0 auto; }
 
 /*********************
-LINK STYLES
-*********************/
-a, a:visited {
-  color: crimson;
-  /* on hover */
-  /* mobile tap color */ }
-  a:hover, a:focus, a:visited:hover, a:visited:focus {
-    color: #960e29; }
-  a:link, a:visited:link {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
-
-/*********************
-HEADER STYLES
-*********************/
-#logo {
-  margin: 0.75em 0; }
-
-.header nav {
-  visibility: hidden;
-  height: 0; }
-  .header nav.visible {
-    visibility: visible;
-    height: auto; }
-
-/*********************
-NAVIGATION STYLES
-*********************/
-.nav {
-  border-bottom: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  /* end .menu li */ }
-  .nav li {
-    list-style: none; }
-    .nav li a {
-      display: block;
-      text-decoration: none;
-      padding: 0.75em; }
-    .nav li ul.sub-menu,
-    .nav li ul.children {
-      padding: 0;
-      display: none; }
-      .nav li ul.sub-menu li a,
-      .nav li ul.children li a {
-        padding-left: 30px; }
-    .nav li:hover .sub-menu {
-      display: block; }
-
-/* end .nav */
-/*********************
 POSTS & CONTENT STYLES
 *********************/
-#content {
+.content {
   margin: 1.5em 0; }
 
-.single-title,
-.page-title,
-.entry-title {
+.single-header__title,
+.page-header__title,
+.post-header__title {
   margin: 0; }
 
 /* post meta */
-.byline {
+.post-meta {
   color: gray;
   font-style: italic;
   margin: 0; }
 
 /* entry content */
-.entry-content {
+.post-content {
   padding: 1.5em 0; }
-  .entry-content p {
+  .post-content p {
     margin: 0 0 1.5em; }
-  .entry-content blockquote {
+  .post-content blockquote {
     margin: 0 0 1.5em 0.75em;
     padding: 0 0 0 0.75em;
     border-left: 3px solid tomato;
     font-style: italic;
     color: gray; }
-  .entry-content dd {
+  .post-content dd {
     margin-left: 0;
     font-size: 0.9em;
     color: #787878;
     margin-bottom: 1.5em; }
-  .entry-content img {
+  .post-content img {
     margin: 0 0 1.5em 0;
     max-width: 100%;
     height: auto; }
-  .entry-content .size-auto,
-  .entry-content .size-full,
-  .entry-content .size-large,
-  .entry-content .size-medium,
-  .entry-content .size-thumbnail {
+  .post-content .size-auto,
+  .post-content .size-full,
+  .post-content .size-large,
+  .post-content .size-medium,
+  .post-content .size-thumbnail {
     max-width: 100%;
     height: auto; }
-  .entry-content pre {
+  .post-content pre {
     background: black;
     color: lightgray;
     font-size: 0.9em;
@@ -968,76 +953,6 @@ POSTS & CONTENT STYLES
 /* end .wp-caption */
 .tags {
   margin: 0; }
-
-/******************************************************************
-PAGE NAVI STYLES
-******************************************************************/
-.pagination,
-.wp-prev-next {
-  margin: 1.5em 0; }
-
-.pagination {
-  text-align: center; }
-  .pagination ul {
-    display: inline-block;
-    background-color: white;
-    white-space: nowrap;
-    padding: 0;
-    clear: both;
-    border-radius: 3px; }
-  .pagination li {
-    padding: 0;
-    margin: 0;
-    float: left;
-    display: inline;
-    overflow: hidden;
-    border-right: 1px solid gray; }
-  .pagination a, .pagination span {
-    margin: 0;
-    text-decoration: none;
-    padding: 0;
-    line-height: 1em;
-    font-size: 1em;
-    font-weight: normal;
-    padding: 0.75em;
-    min-width: 1em;
-    display: block;
-    color: crimson; }
-    .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
-      background-color: crimson;
-      color: white; }
-  .pagination .current {
-    cursor: default;
-    color: #666; }
-    .pagination .current:hover, .pagination .current:focus {
-      background-color: white;
-      color: #666; }
-
-/* end .bones_page_navi */
-/* fallback previous & next links */
-.wp-prev-next .prev-link {
-  float: left; }
-
-.wp-prev-next .next-link {
-  float: right; }
-
-/* end .wp-prev-next */
-/*********************
-SIDEBARS & ASIDES
-*********************/
-.no-widgets {
-  background-color: white;
-  padding: 1.5em;
-  text-align: center;
-  border: 1px solid gray;
-  border-radius: 2px;
-  margin-bottom: 1.5em; }
-
-/*********************
-FOOTER STYLES
-*********************/
-.footer {
-  clear: both; }
 
 /*********************
 MEDIA QUERIES
@@ -1072,7 +987,7 @@ SOCIAL SHARING
   .social-sharing {
     float: right;
     margin-left: 1em; }
-  .social-sharing-label {
+  .social-sharing__label {
     display: inline;
     margin-bottom: 0; } }
 
@@ -1083,13 +998,13 @@ Tablet & Small Desktop Stylesheet
   /*********************
 LAYOUT & GRID STYLES
 *********************/
-  #inner-content #main {
+  .main-content {
     box-sizing: border-box;
     width: 66.6666666667%;
     float: left;
     padding-left: 1.3888888889%;
     padding-right: 1.3888888889%; }
-  #inner-content .sidebar {
+  .sidebar {
     box-sizing: border-box;
     width: 33.3333333333%;
     float: left;
@@ -1098,9 +1013,9 @@ LAYOUT & GRID STYLES
   /*********************
 HEADER STYLES
 *********************/
-  .header #logo {
+  .header__logo {
     float: left; }
-  .header .nav {
+  .header__nav .nav {
     float: right;
     visibility: visible;
     height: auto; }
@@ -1143,7 +1058,7 @@ NAVIGATION STYLES
         top: auto;
         visibility: visible; }
   /* end .nav */
-  .menu-trigger {
+  .js__menu-trigger {
     display: none; }
   /*********************
 SIDEBARS & ASIDES
@@ -1156,9 +1071,9 @@ SIDEBARS & ASIDES
     margin: 2.2em 0; }
     .widget:first-of-type {
       margin-top: 0; }
-    .widget ul li {
+    .widget li {
       margin-bottom: 0.75em; }
-      .widget ul li ul {
+      .widget li ul {
         margin-top: 0.75em;
         padding-left: 1em; }
   /***********************

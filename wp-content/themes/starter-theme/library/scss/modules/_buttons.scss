@@ -55,7 +55,7 @@ SOCIAL SHARING BUTTONS
     text-align: center;
 }
 
-.social-sharing-label {
+.social-sharing__label {
     font-size: em(13);
     font-weight: bold;
     text-transform: uppercase;
@@ -78,19 +78,19 @@ SOCIAL SHARING BUTTONS
 
   &:focus { color: white; }
 }
-.social-link-icon,
-.social-link-label {
+.social-link__icon,
+.social-link__label {
   display: inline-block;
   vertical-align: middle;
   color: white;
 }
-.social-link-icon {
+.social-link__icon {
   width: 1.5em;
   height: 1.5em;
   margin-right: .2em;
 }
-.social-link-icon path { fill: #fff; }
-.social-link-label {
+.social-link__icon path { fill: #fff; }
+.social-link__label {
   font-size: .9em;
   font-weight: 500;
 }
@@ -99,7 +99,7 @@ SOCIAL SHARING BUTTONS
     color: white;
 }
 
-.social-facebook { background: #3b5998; }
-.social-facebook:hover { background: darken(#3b5998, 10%); }
-.social-linkedin { background: #007bb6; }
-.social-linkedin:hover { background: darken(#007bb6, 10%); }
+.social-link_facebook { background: #3b5998; }
+.social-link_facebook:hover { background: darken(#3b5998, 10%); }
+.social-link_linkedin { background: #007bb6; }
+.social-link_linkedin:hover { background: darken(#007bb6, 10%); }

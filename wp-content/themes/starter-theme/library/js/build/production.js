@@ -48,9 +48,9 @@ jQuery(document).ready(function($) {
     });
 
     // Mobile Nav Trigger
-    $('.menu-trigger').on('click', function(e) {
+    $('.js__menu-trigger').on('click', function(e) {
 				e.preventDefault();
-        $('.header nav').toggleClass('visible');
+        $('.header__nav').toggleClass('visible');
     });
 
 

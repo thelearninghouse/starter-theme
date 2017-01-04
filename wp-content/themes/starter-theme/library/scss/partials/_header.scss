@@ -1,0 +1,17 @@
+/*********************
+HEADER STYLES
+*********************/
+
+#logo {
+    margin: 0.75em 0;
+}
+
+.header__nav {
+    visibility: hidden;
+    height: 0;
+
+    &.visible {
+        visibility: visible;
+        height: auto;
+    }
+}

@@ -52,20 +52,20 @@
 		<?php // If is blog page show the progress bar ?>
 		<?php if ( is_singular( 'post' ) ) { ?><progress value="0"></progress><?php } ?>
 
-		<div id="container">
+		<div id="container" class="container">
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-				<div id="inner-header" class="wrap cf">
+				<div class="wrap cf">
 
-					<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<p class="logo header__logo h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 
-                    <a class="menu-trigger button" href="#">Menu</a>
+          <a class="button header__button js__menu-trigger" href="#">Menu</a>
 
-					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+					<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 						<?php wp_nav_menu(array(
     					         'container' => false,														// remove nav container
-    					         'container_class' => 'menu menu-secondary cf',		// class of container (should you choose to use it)
+    					         'container_class' => 'header__menu header__menu-secondary cf',		// class of container (should you choose to use it)
     					         'menu' => __( 'Secondary Menu', 'bonestheme' ),  // nav name
     					         'menu_class' => 'nav secondary-nav cf',					// adding custom nav class
     					         'theme_location' => 'secondary',                 // where it's located in the theme
@@ -73,7 +73,7 @@
 						)); ?>
 						<?php wp_nav_menu(array(
     					         'container' => false,                           // remove nav container
-    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+    					         'container_class' => 'header__menu cf',                 // class of container (should you choose to use it)
     					         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
     					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
     					         'theme_location' => 'main-nav',                 // where it's located in the theme

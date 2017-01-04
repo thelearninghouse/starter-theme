@@ -6,15 +6,19 @@ IE Stylesheet
 IMPORTS & DEPENDENCIES
 ******************************************************************/
 
-@import "partials/variables"; // import variables
-@import "partials/mixins"; // import mixins 
-@import "partials/typography"; // import typography
-@import "partials/grid"; // import grid 
+@import "partials/normalize";
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/typography";
+@import "partials/grid";
+@import "modules/links";
 
 // import everything inside media queries
-@import "breakpoints/481up"; 
-@import "breakpoints/768up"; 
+@import "breakpoints/481up";
+@import "breakpoints/768up";
 
 /******************************************************************
 ADDITIONAL IE FIXES
 ******************************************************************/
+
+

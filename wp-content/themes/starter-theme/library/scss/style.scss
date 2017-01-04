@@ -22,11 +22,15 @@ IMPORTING MODULES
 @import "modules/progress";
 @import "modules/clearfix";
 @import "modules/media";
+@import "modules/links";
+@import "modules/sidebar";
 
 /*********************
-BASE (MOBILE) SIZE
+BASE (MOBILE UP)
 *********************/
 
+@import "partials/header";
+@import "partials/footer";
 @import "breakpoints/base";
 
 /*********************

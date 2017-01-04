@@ -6,14 +6,11 @@ Tablet & Small Desktop Stylesheet
 LAYOUT & GRID STYLES
 *********************/
 
-#inner-content {
-
-    #main {
-       @include span(8);
-    }
-    .sidebar {
-       @include span(4);
-    }
+.main-content {
+	 @include span(8);
+}
+.sidebar {
+	 @include span(4);
 }
 
 /*********************
@@ -22,10 +19,10 @@ HEADER STYLES
 
 .header {
 
-    #logo {
+    &__logo {
         float: left;
     }
-    .nav {
+    &__nav .nav {
         float: right;
         visibility: visible;
         height: auto;
@@ -88,7 +85,7 @@ NAVIGATION STYLES
 
 } /* end .nav */
 
-.menu-trigger {
+.js__menu-trigger {
     display: none;
 }
 
@@ -109,7 +106,6 @@ SIDEBARS & ASIDES
 		margin-top: 0;
 	}
 
-	ul {
 		li {
 			margin-bottom: 0.75em;
 
@@ -118,7 +114,6 @@ SIDEBARS & ASIDES
 				padding-left: 1em;
 			}
 		}
-	}
 }
 
 /***********************

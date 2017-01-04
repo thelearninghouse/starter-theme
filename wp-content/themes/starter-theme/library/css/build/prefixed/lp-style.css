@@ -499,7 +499,7 @@ SOCIAL SHARING BUTTONS
   padding: .8em;
   text-align: center; }
 
-.social-sharing-label {
+.social-sharing__label {
   font-size: 0.8125em;
   font-weight: bold;
   text-transform: uppercase;
@@ -521,21 +521,21 @@ SOCIAL SHARING BUTTONS
   .social-link:focus {
     color: white; }
 
-.social-link-icon,
-.social-link-label {
+.social-link__icon,
+.social-link__label {
   display: inline-block;
   vertical-align: middle;
   color: white; }
 
-.social-link-icon {
+.social-link__icon {
   width: 1.5em;
   height: 1.5em;
   margin-right: .2em; }
 
-.social-link-icon path {
+.social-link__icon path {
   fill: #fff; }
 
-.social-link-label {
+.social-link__label {
   font-size: .9em;
   font-weight: 500; }
 
@@ -543,16 +543,16 @@ SOCIAL SHARING BUTTONS
   background-color: #2795e9;
   color: white; }
 
-.social-facebook {
+.social-link_facebook {
   background: #3b5998; }
 
-.social-facebook:hover {
+.social-link_facebook:hover {
   background: #2d4373; }
 
-.social-linkedin {
+.social-link_linkedin {
   background: #007bb6; }
 
-.social-linkedin:hover {
+.social-link_linkedin:hover {
   background: #005983; }
 
 /******************************************************************
@@ -729,6 +729,73 @@ th {
   background-color: lightgray; }
 
 /*********************
+ACCORDION STYLES
+*********************/
+.accord.active .accord-header:before {
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg); }
+
+.accord.active .accord-content {
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  height: auto;
+  opacity: 1; }
+
+.accord .accord-content {
+  visibility: hidden;
+  padding: .5em;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  height: 0; }
+
+.accord-header {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: .5em 2em .5em .5em;
+  background: lightgray;
+  border: 1px solid #c6c6c6;
+  position: relative; }
+  .accord-header:before {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    right: 1em;
+    transition: .2s all ease-in-out;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%; }
+
+/* Clearfix */
+.clearfix, .cf, .comment-respond {
+  zoom: 1; }
+
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+  content: "";
+  display: table; }
+
+.clearfix:after, .cf:after, .comment-respond:after {
+  clear: both; }
+
+/* Responsive Videos */
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  height: 0; }
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+/*********************
 LINK STYLES
 *********************/
 a, a:visited {
@@ -739,6 +806,30 @@ a, a:visited {
     color: #960e29; }
   a:link, a:visited:link {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.no-widgets {
+  background-color: white;
+  padding: 1.5em;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 2px;
+  margin-bottom: 1.5em; }
+
+/*********************
+HEADER STYLES
+*********************/
+#logo {
+  margin: 0.75em 0; }
+
+.header__nav {
+  visibility: hidden;
+  height: 0; }
+  .header__nav.visible {
+    visibility: visible;
+    height: auto; }
 
 /********************
 LAYOUT & GRID STYLES
@@ -762,27 +853,3 @@ body {
 
 .fonts-loaded body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-
-/* Responsive Videos */
-.videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-  height: 0; }
-  .videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-
-/* Clearfix */
-.clearfix, .cf, .comment-respond {
-  zoom: 1; }
-
-.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
-  content: "";
-  display: table; }
-
-.clearfix:after, .cf:after, .comment-respond:after {
-  clear: both; }

@@ -1,28 +1,22 @@
 <?php get_header(); ?>
 
-			<div id="content">
+			<div class="content">
 
-				<div id="inner-content" class="wrap cf">
+				<div class="wrap cf">
 
-					<main id="main" class="cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+					<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-						<article id="post-not-found" class="hentry cf">
+						<article class="post-not-found hentry cf">
 
-							<header class="article-header">
+							<header class="post-header">
 
-								<h1><?php _e( '404 - Article Not Found', 'bonestheme' ); ?></h1>
+								<h1 class="post-header__title"><?php _e( '404 - Article Not Found', 'bonestheme' ); ?></h1>
 
 							</header>
 
-							<section class="entry-content">
+							<section class="post-content">
 
 								<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!'); ?></p>
-
-							</section>
-
-							<section class="search">
-
-									<p><?php get_search_form(); ?></p>
 
 							</section>
 
