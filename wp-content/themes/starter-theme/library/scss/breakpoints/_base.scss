@@ -9,7 +9,7 @@ body {
 	color: $text-color;
 	background-color: white;
 	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Display fonts when ready
@@ -17,36 +17,9 @@ body {
     font-family: $sans-serif;
 }
 
-/* Responsive Videos */
-.videoWrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-
-    iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
-
 .border {
     border: 2px solid $link-color;
     padding: .5em 1em;
-}
-
-/* Clearfix */
-.clearfix, .cf, .comment-respond {
-  zoom: 1;
-}
-.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
-    content: "";
-    display: table;
-}
-.clearfix:after, .cf:after, .comment-respond:after {
-    clear: both;
 }
 
 /********************
@@ -59,55 +32,6 @@ LAYOUT & GRID STYLES
 	margin: 0 auto;
 }
 
-/*********************
-ACCORDION STYLES
-*********************/
-
-.accord {
-    &.active {
-        .accord-header {
-            &:before{
-                transform: translateY(-50%) rotate(45deg);
-            }
-        }
-
-        .accord-content {
-            visibility: visible;
-            transform: scale(1);
-            height: auto;
-            opacity: 1;
-        }
-    }
-
-    .accord-content {
-        visibility: hidden;
-        padding: .5em;
-        transform: scale(0);
-        transform-origin: 50% 0;
-        transition: all .2s ease-in-out;
-        opacity: 0;
-        height: 0;
-    }
-}
-
-.accord-header {
-    font-size: 1.2em;
-    cursor: pointer;
-    padding: .5em 2em .5em .5em;
-    background: lightgray;
-    border: 1px solid darken(lightgray, 5%);
-    position: relative;
-
-    &:before {
-        content: "+";
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 1em;
-        transition: .2s all ease-in-out;
-        transform-origin: 50% 50%;
-    }
-}
 
 /*********************
 LINK STYLES

@@ -112,7 +112,7 @@ function social_sharing_buttons($content) {
         $socialTitle = str_replace( ' ', '%20', get_the_title());
 
         // Construct sharing URL without using any script
-        $twitterURL = 'https://twitter.com/intent/tweet?text='.$socialTitle.'&amp;url='.$socialURL.'&amp;via=wvsuonline';
+        $twitterURL = 'https://twitter.com/intent/tweet?text='.$socialTitle.'&amp;url='.$socialURL.'&amp;via=starter';
         $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$socialURL;
         $linkedInURL = 'https://www.linkedin.com/shareArticle?mini=true&url='.$socialURL.'&amp;title='.$socialTitle;
 

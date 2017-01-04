@@ -1,21 +1,4 @@
 <?php
-/*
-This is where most of the
-main functions & features reside. If you have
-any custom functions, it's best to put them
-in the functions.php file.
-
-  - head cleanup (remove rsd, uri links, junk css, ect)
-  - enqueueing scripts & styles
-  - theme support functions
-  - custom menu output & fallbacks
-  - related post function
-  - page-navi function
-  - removing <p> from around images
-  - customizing the post excerpt
-
-*/
-
 /*********************
 WP_HEAD GOODNESS
 *********************/
@@ -227,6 +210,7 @@ function bones_related_posts() {
 	echo '</ul>';
 } /* end bones related posts function */
 
+
 /*********************
 PAGE NAVI
 *********************/
@@ -252,6 +236,7 @@ function bones_page_navi() {
   echo '</nav>';
 } /* end page navi */
 
+
 /*********************
 RANDOM CLEANUP ITEMS
 *********************/
@@ -268,6 +253,7 @@ function bones_excerpt_more($more) {
 	return '...  <a class="excerpt-read-more" href="'. get_permalink( $post->ID ) . '" title="'. __( 'Read ' ) . esc_attr( get_the_title( $post->ID ) ).'">'. __( 'Read more &raquo;' ) .'</a>';
 }
 
+
 /**********************
 RANDOM HELPER FUNCTIONS
 **********************/
@@ -277,6 +263,7 @@ function pullquote_func($atts, $content = null ) {
     return '<span class="pullquote">' . do_shortcode($content) . '</span>';
 }
 add_shortcode( 'pullquote', 'pullquote_func' );
+
 
 /*************
 CTA Shortcode

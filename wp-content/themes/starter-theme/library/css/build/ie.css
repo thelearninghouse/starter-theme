@@ -12,126 +12,98 @@ H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   text-rendering: optimizelegibility;
-  font-weight: 500;
-}
-h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
-  text-decoration: none;
-}
+  font-weight: 500; }
+  h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
+    text-decoration: none; }
 
 h1, .h1 {
   font-size: 2em;
-  line-height: 1.25;
-}
-@media screen and (min-width: 768px) {
-  h1, .h1 {
-    font-size: 2.5em;
-    line-height: 1.125;
-  }
-}
-@media screen and (min-width: 1040px) {
-  h1, .h1 {
-    font-size: 3em;
-    line-height: 1.05;
-  }
-}
+  line-height: 1.25; }
+  @media screen and (min-width: 768px) {
+    h1, .h1 {
+      font-size: 2.5em;
+      line-height: 1.125; } }
+  @media screen and (min-width: 1040px) {
+    h1, .h1 {
+      font-size: 3em;
+      line-height: 1.05; } }
 
 h2, .h2 {
   font-size: 1.625em;
   line-height: 1.15384615;
-  margin-bottom: .375em;
-}
-@media screen and (min-width: 768px) {
-  h2, .h2 {
-    font-size: 2em;
-    line-height: 1.25;
-  }
-}
-@media screen and (min-width: 1040px) {
-  h2, .h2 {
-    font-size: 2.25em;
-    line-height: 1.25;
-  }
-}
+  margin-bottom: .375em; }
+  @media screen and (min-width: 768px) {
+    h2, .h2 {
+      font-size: 2em;
+      line-height: 1.25; } }
+  @media screen and (min-width: 1040px) {
+    h2, .h2 {
+      font-size: 2.25em;
+      line-height: 1.25; } }
 
 h3, .h3 {
   font-size: 1.375em;
-  line-height: 1.13636364;
-}
-@media screen and (min-width: 768px) {
-  h3, .h3 {
-    font-size: 1.5em;
-    line-height: 1.25;
-  }
-}
-@media screen and (min-width: 1040px) {
-  h3, .h3 {
-    font-size: 1.75em;
-    line-height: 1.25;
-  }
-}
+  line-height: 1.13636364; }
+  @media screen and (min-width: 768px) {
+    h3, .h3 {
+      font-size: 1.5em;
+      line-height: 1.25; } }
+  @media screen and (min-width: 1040px) {
+    h3, .h3 {
+      font-size: 1.75em;
+      line-height: 1.25; } }
 
 h4, .h4 {
   color: crimson;
   font-size: 1.125em;
-  line-height: 1.11111111;
-}
-@media screen and (min-width: 768px) {
-  h4, .h4 {
-    line-height: 1.222222222;
-  }
-}
+  line-height: 1.11111111; }
+  @media screen and (min-width: 768px) {
+    h4, .h4 {
+      line-height: 1.222222222; } }
 
 h5, .h5 {
   font-size: 0.84375em;
   line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: crimson;
-}
+  color: crimson; }
 
 h6, .h6 {
-  color: crimson;
-}
+  color: crimson; }
 
 blockquote {
   font-size: 1em;
   line-height: 1.25;
   /* 25px / 20px */
   border-left: 4px solid gray;
-  padding-left: 1em;
-}
-@media screen and (min-width: 768px) {
-  blockquote {
-    font-size: 1.5em;
-    line-height: 1.45833333;
-  }
-}
+  padding-left: 1em; }
+  @media screen and (min-width: 768px) {
+    blockquote {
+      font-size: 1.5em;
+      line-height: 1.45833333; } }
 
 figure, figcaption {
   display: block;
   font-style: italic;
   font-size: .9em;
   color: gray;
-  text-align: center;
-}
+  text-align: center; }
 
 .quote {
   padding: 1.5em;
   background: gray;
   position: relative;
-  border-radius: .5em;
-}
-.quote:before {
-  position: absolute;
-  top: 99.8%;
-  right: 2em;
-  content: "";
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 30px 30px 0;
-  border-color: transparent gray transparent transparent;
-}
+  border-radius: .5em; }
+  .quote:before {
+    position: absolute;
+    top: 99.8%;
+    right: 2em;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 0;
+    border-color: transparent gray transparent transparent; }
 
 /******************************************************************
 SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
@@ -139,13 +111,11 @@ SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
 .wrap {
   max-width: 1440px;
   margin-left: auto;
-  margin-right: auto;
-}
-.wrap:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
+  margin-right: auto; }
+  .wrap:after {
+    content: " ";
+    display: block;
+    clear: both; }
 
 .half {
   -moz-box-sizing: border-box;
@@ -153,9 +123,8 @@ SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
   box-sizing: border-box;
   width: 50%;
   float: left;
-  padding-left: 1.38889%;
-  padding-right: 1.38889%;
-}
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
 
 .quarter {
   -moz-box-sizing: border-box;
@@ -163,19 +132,17 @@ SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
   box-sizing: border-box;
   width: 25%;
   float: left;
-  padding-left: 1.38889%;
-  padding-right: 1.38889%;
-}
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
 
 .third {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 33.33333%;
+  width: 33.3333333333%;
   float: left;
-  padding-left: 1.38889%;
-  padding-right: 1.38889%;
-}
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
 
 /******************************************************************
 481px and Up Stylesheet
@@ -185,24 +152,20 @@ POSTS & CONTENT STYLES
 *********************/
 /* entry content */
 .entry-content {
-  /* at this larger size, we can start to align images */
-}
-.entry-content .alignleft, .entry-content img.alignleft {
-  margin-right: 1.5em;
-  display: inline;
-  float: left;
-}
-.entry-content .alignright, .entry-content img.alignright {
-  margin-left: 1.5em;
-  display: inline;
-  float: right;
-}
-.entry-content .aligncenter, .entry-content img.aligncenter {
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
-  clear: both;
-}
+  /* at this larger size, we can start to align images */ }
+  .entry-content .alignleft, .entry-content img.alignleft {
+    margin-right: 1.5em;
+    display: inline;
+    float: left; }
+  .entry-content .alignright, .entry-content img.alignright {
+    margin-left: 1.5em;
+    display: inline;
+    float: right; }
+  .entry-content .aligncenter, .entry-content img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both; }
 
 /* end .entry-content */
 /*********************
@@ -210,13 +173,11 @@ SOCIAL SHARING
 *********************/
 .social-sharing {
   float: right;
-  margin-left: 1em;
-}
+  margin-left: 1em; }
 
 .social-sharing-label {
   display: inline;
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 /******************************************************************
 Tablet & Small Desktop Stylesheet
@@ -228,118 +189,98 @@ LAYOUT & GRID STYLES
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 66.66667%;
+  width: 66.6666666667%;
   float: left;
-  padding-left: 1.38889%;
-  padding-right: 1.38889%;
-}
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
+
 #inner-content .sidebar {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 33.33333%;
+  width: 33.3333333333%;
   float: left;
-  padding-left: 1.38889%;
-  padding-right: 1.38889%;
-}
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
 
 /*********************
 HEADER STYLES
 *********************/
 .header #logo {
-  float: left;
-}
+  float: left; }
+
 .header .nav {
   float: right;
   visibility: visible;
-  height: auto;
-}
+  height: auto; }
 
 /*********************
 NAVIGATION STYLES
 *********************/
 .nav {
   border: 0;
-  /* end .menu ul li */
-}
-.nav ul {
-  margin-top: 0;
-}
-.nav li {
-  float: left;
-  position: relative;
-  /* showing sub-menus */
-}
-.nav li a {
-  border-bottom: 0;
-}
-.nav li a:hover, .nav li a:focus {
-  color: hite;
-  text-decoration: underline;
-}
-.nav li ul.sub-menu,
-.nav li ul.children {
-  background: crimson;
-  margin-top: 0;
-  position: absolute;
-  visibility: hidden;
-  z-index: 8999;
-}
-.nav li ul.sub-menu li a,
-.nav li ul.children li a {
-  color: white;
-  padding-left: 10px;
-  border-right: 0;
-  display: block;
-  width: 180px;
-}
-.nav li ul.sub-menu li ul,
-.nav li ul.children li ul {
-  top: 0;
-  left: 100%;
-}
-.nav li:hover > ul.sub-menu {
-  top: auto;
-  visibility: visible;
-}
+  /* end .menu ul li */ }
+  .nav ul {
+    margin-top: 0; }
+  .nav li {
+    float: left;
+    position: relative;
+    /* showing sub-menus */ }
+    .nav li a {
+      border-bottom: 0; }
+      .nav li a:hover, .nav li a:focus {
+        color: hite;
+        text-decoration: underline; }
+    .nav li ul.sub-menu,
+    .nav li ul.children {
+      background: crimson;
+      margin-top: 0;
+      position: absolute;
+      visibility: hidden;
+      z-index: 8999; }
+      .nav li ul.sub-menu li a,
+      .nav li ul.children li a {
+        color: white;
+        padding-left: 10px;
+        border-right: 0;
+        display: block;
+        width: 180px; }
+      .nav li ul.sub-menu li ul,
+      .nav li ul.children li ul {
+        top: 0;
+        left: 100%; }
+    .nav li:hover > ul.sub-menu {
+      top: auto;
+      visibility: visible; }
 
 /* end .nav */
 .menu-trigger {
-  display: none;
-}
+  display: none; }
 
 /*********************
 SIDEBARS & ASIDES
 *********************/
 .widgettitle {
   border-bottom: 2px solid #444;
-  margin-bottom: 0.75em;
-}
+  margin-bottom: 0.75em; }
 
 .widget {
   padding: 0 10px;
-  margin: 2.2em 0;
-}
-.widget:first-of-type {
-  margin-top: 0;
-}
-.widget ul li {
-  margin-bottom: 0.75em;
-}
-.widget ul li ul {
-  margin-top: 0.75em;
-  padding-left: 1em;
-}
+  margin: 2.2em 0; }
+  .widget:first-of-type {
+    margin-top: 0; }
+  .widget ul li {
+    margin-bottom: 0.75em; }
+    .widget ul li ul {
+      margin-top: 0.75em;
+      padding-left: 1em; }
 
 /***********************
 SOCIAL SHARING
 ***********************/
 .social-sharing {
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 /******************************************************************
 ADDITIONAL IE FIXES
 ******************************************************************/
-
-/*# sourceMappingURL=ie.css.map */

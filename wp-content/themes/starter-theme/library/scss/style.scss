@@ -20,6 +20,8 @@ IMPORTING MODULES
 @import "modules/forms";
 @import "modules/tables";
 @import "modules/progress";
+@import "modules/clearfix";
+@import "modules/media";
 
 /*********************
 BASE (MOBILE) SIZE
@@ -30,6 +32,6 @@ BASE (MOBILE) SIZE
 /*********************
 MEDIA QUERIES
 *********************/
-@media only screen and (min-width: 481px) { @import "breakpoints/481up"; } 
-@media only screen and (min-width: 768px) { @import "breakpoints/768up"; } 
+@media only screen and (min-width: 481px) { @import "breakpoints/481up"; }
+@media only screen and (min-width: 768px) { @import "breakpoints/768up"; }
 @media print { @import "partials/print"; }

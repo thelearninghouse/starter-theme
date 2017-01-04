@@ -1,0 +1,50 @@
+/*********************
+ACCORDION STYLES
+*********************/
+
+.accord {
+    &.active {
+        .accord-header {
+            &:before{
+                transform: translateY(-50%) rotate(45deg);
+            }
+        }
+
+        .accord-content {
+            visibility: visible;
+            transform: scale(1);
+            height: auto;
+            opacity: 1;
+        }
+    }
+
+    .accord-content {
+        visibility: hidden;
+        padding: .5em;
+        transform: scale(0);
+        transform-origin: 50% 0;
+        transition: all .2s ease-in-out;
+        opacity: 0;
+        height: 0;
+    }
+}
+
+.accord-header {
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: .5em 2em .5em .5em;
+    background: lightgray;
+    border: 1px solid darken(lightgray, 5%);
+    position: relative;
+
+    &:before {
+        content: "+";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 1em;
+        transition: .2s all ease-in-out;
+        transform-origin: 50% 50%;
+    }
+}
+

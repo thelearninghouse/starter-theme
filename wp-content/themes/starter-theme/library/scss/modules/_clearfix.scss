@@ -1,0 +1,14 @@
+/* Clearfix */
+
+.clearfix, .cf, .comment-respond {
+  zoom: 1;
+}
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+    content: "";
+    display: table;
+}
+.clearfix:after, .cf:after, .comment-respond:after {
+    clear: both;
+}
+
+
