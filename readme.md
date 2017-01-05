@@ -35,15 +35,17 @@ There are three menus setup for this theme by default:
 ``` bash
 starter-theme/
 ├── library
+|    ├── bower_components  // Where all our bower components are housed
 |    ├── css  //
-|    |   ├── minified  // Contains all minified versions of stylesheets
-|    |   ├── prefixed  // Contains style sheets that have been through Autoprefixer
-|    |   ├── home-critical.css // Critical CSS for homepage
-|    |   ├── ie.css  // IE Stylesheet
-|    |   ├── interior-critical.css  // Critical CSS for interior pages
-|    |   ├── lp-critical.css  // Critical CSS for Landing Pages
-|    |   ├── lp-style.css  // Main stylesheet for Landing Pages
-|    |   ├── style.css  // Main Stylesheet
+|    |   ├── build // Production Files 
+|    |   |   ├── minified  // Contains all minified versions of stylesheets
+|    |   |   ├── prefixed  // Contains style sheets that have been through Autoprefixer
+|    |   |   ├── home-critical.css // Critical CSS for homepage
+|    |   |   ├── ie.css  // IE Stylesheet
+|    |   |   ├── interior-critical.css  // Critical CSS for interior pages
+|    |   |   ├── lp-critical.css  // Critical CSS for Landing Pages
+|    |   |   ├── lp-style.css  // Main stylesheet for Landing Pages
+|    |   |   └── style.css  // Main Stylesheet
 |    ├── images  // Images relative to the theme
 |    ├── js  //
 |    |   ├── build // Production Files
@@ -53,29 +55,40 @@ starter-theme/
 |    |   └──  scripts.js // Main javascript file
 |    ├── plugins  // Zip files of plugins that are critical to the theme
 |    ├── scss
-|    |    ├── breakpoints
-|    |    |    ├── _481up.scss // Applies to all screens above 480px wide
-|    |    |    ├── _768up.scss // Applies to all screens above 768px wide
-|    |    |    └── _base.scss // Base stylesheet for mobile and up
+|    |    ├── base
+|    |    |    ├── _base.scss // Base stylesheet for mobile and up
+|    |    |    ├── _grid.scss // Setting up SUSY and grid styling
+|    |    |    ├── _mixins.scss // All mixins
+|    |    |    ├── _normalize.scss // Normalize
+|    |    |    ├── _typography.scss // Typography styling
+|    |    |    └── _variables.scss // Variables (breakpoints, colors, etc.)
 |    |    ├── modules
 |    |    |    ├── _buttons.scss // Contains styling that applies to buttons
 |    |    |    ├── _forms.scss // Form styling
 |    |    |    ├── _progress.scss // Styling for the progress bar on blog posts
+|    |    |    ├── _accordion.scss // Styling for accordions
+|    |    |    ├── _clearfix.scss // Clearfix class decleration
+|    |    |    ├── _links.scss // Link Styling
+|    |    |    ├── _media.scss // Styling for images, videos, etc.
+|    |    |    ├── _sidebar.scss // Sidebar Styling
+|    |    |    ├── _social.scss // Social Sharing Styling
 |    |    |    └── _tables.scss // Table styling
+|    |    ├── pages
+|    |    |    ├── _home.scss // Homepage Styling
+|    |    |    ├── _layout.scss // Layout Styling
+|    |    |    ├── _page.scss // Page Styling
+|    |    |    └── _post.scss // Blog Post Styling
 |    |    ├── partials
-|    |    |    ├── _grid.scss // Setting up SUSY and grid styling
-|    |    |    ├── _mixins.scss // All mixins
-|    |    |    ├── _normalize.scss // Normalize
-|    |    |    ├── _print.scss // Base print styles
-|    |    |    ├── _typography.scss // Typography styling
-|    |    |    └── _variables.scss // Variables (breakpoints, colors, etc.)
+|    |    |    ├── _footer.scss // Footer Styling
+|    |    |    ├── _header.scss // Header Styling
+|    |    |    ├── _nav.scss // Navigation Styling
+|    |    |    └── _print.scss // Print Styling
 |    |    ├── ie.scss // IE stylesheet
 |    |    ├── lp-style.scss // Landing Page stylesheet
 |    |    └── style.scss // Main stylesheet, this gets compiled into ==> style.css
 |    ├── .sassdocrc // Settings for SassDoc
 |    ├── bones.php  // Functions and features for the theme
 |    ├── bower.json  // Bower setup and dependencies
-|    ├── class-tgm-plugin-activation.php  // Plugin that allows us to declare plugins the theme requires
 |    ├── custom-post-types.php  // Where we register our custom post types for Online Degrees and Landing Pages
 |    ├── Gruntfile.js  // Grunt setup file
 |    └── package.json  // Grunt details and dependencies
@@ -83,12 +96,12 @@ starter-theme/
 ├── archive-degrees.php  // Archive template for Online Degrees
 ├── archive.php  // Archive template for blog posts
 ├── favicon.png  // Favicon
-├── footer.php // Footer template
 ├── footer-lp.php // Landing Page Footer template
+├── footer.php // Footer template
 ├── front-page.php  // Homepage template
 ├── functions.php  // Controls features and functionality custom to the theme
-├── header.php  // Header template
 ├── header-lp.php  // Landing Page Header template
+├── header.php  // Header template
 ├── index.php  // Blog index template
 ├── page.php	  // Page template
 ├── screenshot.png  // Image used for the theme
