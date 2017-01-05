@@ -2,16 +2,32 @@
 HEADER STYLES
 *********************/
 
-#logo {
-    margin: 0.75em 0;
-}
+.header {
 
-.header__nav {
+	&__logo {
+		margin: 0.75em 0;
+
+		@include mobilefirst($bp-med) {
+			float: left;
+		}
+	}
+
+	&__nav {
     visibility: hidden;
     height: 0;
+
+		@include mobilefirst($bp-med) {
+			.nav {
+				float: right;
+				visibility: visible;
+				height: auto;
+			}
+		}
 
     &.visible {
         visibility: visible;
         height: auto;
     }
+	}
+
 }

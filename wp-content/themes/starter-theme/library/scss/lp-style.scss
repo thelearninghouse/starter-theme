@@ -1,20 +1,21 @@
 /*********************
-IMPORTING PARTIALS
+IMPORTING
 *********************/
 
-@import "partials/normalize";
-@import "partials/variables";
-@import "partials/mixins";
-@import "partials/typography";
-@import "modules/buttons";
-@import "modules/forms";
-@import "modules/tables";
+@import "base/normalize";
+@import "base/variables";
+@import "base/mixins";
+@import "base/typography";
+@import "base/grid";
+@import "base/base";
 @import "modules/accordion";
+@import "modules/buttons";
 @import "modules/clearfix";
-@import "modules/media";
+@import "modules/forms";
 @import "modules/links";
-@import "modules/sidebar";
+@import "modules/media";
 @import "partials/header";
+@import "partials/nav";
 @import "partials/footer";
 
 /********************
@@ -26,25 +27,4 @@ LAYOUT & GRID STYLES
 	max-width: 1440px;
 	margin: 0 auto;
 }
-
-
-/*********************
-BASE STYLING
-*********************/
-
-body {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 100%;
-	line-height: 1.5;
-	color: $text-color;
-	background-color: white;
-	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-}
-
-// Display fonts when ready
-.fonts-loaded body {
-    font-family: $sans-serif;
-}
-
 

@@ -2,7 +2,7 @@
 Main Stylesheet
 ******************************************************************/
 /*********************
-IMPORTING PARTIALS
+IMPORTING BASE
 *********************/
 /*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -501,8 +501,73 @@ SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
   padding-right: 1.3888888889%; }
 
 /*********************
+GENERAL STYLES
+*********************/
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+  color: #666;
+  background-color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.fonts-loaded body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+
+.border {
+  border: 2px solid crimson;
+  padding: .5em 1em; }
+
+.content {
+  margin: 1.5em 0; }
+
+/*********************
 IMPORTING MODULES
 *********************/
+/*********************
+ACCORDION STYLES
+*********************/
+.accord.active .accord__header:before {
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg); }
+
+.accord.active .accord__content {
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  height: auto;
+  opacity: 1; }
+
+.accord .accord__content {
+  visibility: hidden;
+  padding: .5em;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  height: 0; }
+
+.accord__header {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: .5em 2em .5em .5em;
+  background: lightgray;
+  border: 1px solid #c6c6c6;
+  position: relative; }
+  .accord__header:before {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    right: 1em;
+    transition: .2s all ease-in-out;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%; }
+
 /******************************************************************
 Button Styles
 ******************************************************************/
@@ -529,70 +594,20 @@ Button Styles
   .button:active {
     top: 1px; }
 
-/*******************************
-SOCIAL SHARING BUTTONS
-*******************************/
-.social-sharing {
-  margin-bottom: 1em;
-  background: #f2f2f2;
-  padding: .8em;
-  text-align: center; }
-
-.social-sharing__label {
-  font-size: 0.8125em;
-  font-weight: bold;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: .5em; }
-
-.social-link {
-  color: #fff;
-  background-color: #55acee;
-  padding: .4em .6em;
-  border-radius: 3px;
-  display: inline-block;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 0.75em;
-  font-weight: bold;
-  margin-left: 0.625em;
-  transition: .2s all ease-in-out; }
-  .social-link:focus {
-    color: white; }
-
-.social-link__icon,
-.social-link__label {
-  display: inline-block;
-  vertical-align: middle;
-  color: white; }
-
-.social-link__icon {
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: .2em; }
-
-.social-link__icon path {
-  fill: #fff; }
-
-.social-link__label {
+.button_sm {
   font-size: .9em;
-  font-weight: 500; }
+  padding: .3em .8em; }
 
-.social-link:hover {
-  background-color: #2795e9;
-  color: white; }
+/* Clearfix */
+.clearfix, .cf, .comment-respond {
+  zoom: 1; }
 
-.social-link_facebook {
-  background: #3b5998; }
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+  content: "";
+  display: table; }
 
-.social-link_facebook:hover {
-  background: #2d4373; }
-
-.social-link_linkedin {
-  background: #007bb6; }
-
-.social-link_linkedin:hover {
-  background: #005983; }
+.clearfix:after, .cf:after, .comment-respond:after {
+  clear: both; }
 
 /******************************************************************
 Form Styles
@@ -737,6 +752,186 @@ legend,
 .elp_hidden {
   display: none; }
 
+/*********************
+LINK STYLES
+*********************/
+a, a:visited {
+  color: crimson;
+  /* on hover */
+  /* mobile tap color */ }
+  a:hover, a:focus, a:visited:hover, a:visited:focus {
+    color: #960e29; }
+  a:link, a:visited:link {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+
+/* Responsive Videos */
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  height: 0; }
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+img,
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto; }
+
+/**** 768 AND UP ****/
+@media screen and (min-width: 481px) {
+  /* at this larger size, we can start to align images */
+  .alignleft, img.alignleft {
+    margin-right: 1.5em;
+    display: inline;
+    float: left; }
+  .alignright, img.alignright {
+    margin-left: 1.5em;
+    display: inline;
+    float: right; }
+  .aligncenter, img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both; } }
+
+/******************************************************************
+READING PROGRESS INDICATOR STYLES
+http://codepen.io/pankajparashar/pen/towxF
+******************************************************************/
+progress {
+  width: 100%;
+  position: fixed;
+  height: 8px;
+  top: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: crimson;
+  z-index: 999; }
+
+progress::-webkit-progress-bar {
+  background-color: transparent; }
+
+progress::-webkit-progress-value {
+  background-color: crimson; }
+
+progress::-moz-progress-bar {
+  background-color: crimson; }
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.no-widgets {
+  background-color: white;
+  padding: 1.5em;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 2px;
+  margin-bottom: 1.5em; }
+
+/**** 768 UP ****/
+@media screen and (min-width: 768px) {
+  .widgettitle {
+    border-bottom: 2px solid #444;
+    margin-bottom: 0.75em; }
+  .widget {
+    padding: 0 10px;
+    margin: 2.2em 0; }
+    .widget:first-of-type {
+      margin-top: 0; }
+    .widget li {
+      margin-bottom: 0.75em; }
+      .widget li ul {
+        margin-top: 0.75em;
+        padding-left: 1em; } }
+
+/*******************************
+SOCIAL SHARING BUTTONS
+*******************************/
+.social-sharing {
+  margin-bottom: 1em;
+  background: #f2f2f2;
+  padding: .8em;
+  text-align: center; }
+  @media screen and (min-width: 481px) {
+    .social-sharing {
+      float: right;
+      margin-left: 1em; } }
+  @media screen and (min-width: 768px) {
+    .social-sharing {
+      margin-bottom: 0; } }
+
+.social-sharing__label {
+  font-size: 0.8125em;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .5em; }
+  @media screen and (min-width: 481px) {
+    .social-sharing__label {
+      display: inline;
+      margin-bottom: 0; } }
+
+.social-link {
+  color: #fff;
+  background-color: #55acee;
+  padding: .4em .6em;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: bold;
+  margin-left: 0.625em;
+  transition: .2s all ease-in-out; }
+  .social-link:focus {
+    color: white; }
+
+.social-link__icon,
+.social-link__label {
+  display: inline-block;
+  vertical-align: middle;
+  color: white; }
+
+.social-link__icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: .2em; }
+
+.social-link__icon path {
+  fill: #fff; }
+
+.social-link__label {
+  font-size: .9em;
+  font-weight: 500; }
+
+.social-link:hover {
+  background-color: #2795e9;
+  color: white; }
+
+.social-link_facebook {
+  background: #3b5998; }
+
+.social-link_facebook:hover {
+  background: #2d4373; }
+
+.social-link_linkedin {
+  background: #007bb6; }
+
+.social-link_linkedin:hover {
+  background: #005983; }
+
 /******************************************************************
 Table Styles
 ******************************************************************/
@@ -767,91 +962,26 @@ td {
 th {
   background-color: lightgray; }
 
-/******************************************************************
-READING PROGRESS INDICATOR STYLES
-http://codepen.io/pankajparashar/pen/towxF
-******************************************************************/
-progress {
-  width: 100%;
-  position: fixed;
-  height: 8px;
-  top: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  color: crimson;
-  z-index: 999; }
-
-progress::-webkit-progress-bar {
-  background-color: transparent; }
-
-progress::-webkit-progress-value {
-  background-color: crimson; }
-
-progress::-moz-progress-bar {
-  background-color: crimson; }
-
-/* Clearfix */
-.clearfix, .cf, .comment-respond {
-  zoom: 1; }
-
-.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
-  content: "";
-  display: table; }
-
-.clearfix:after, .cf:after, .comment-respond:after {
-  clear: both; }
-
-/* Responsive Videos */
-.videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-  height: 0; }
-  .videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-
 /*********************
-LINK STYLES
-*********************/
-a, a:visited {
-  color: crimson;
-  /* on hover */
-  /* mobile tap color */ }
-  a:hover, a:focus, a:visited:hover, a:visited:focus {
-    color: #960e29; }
-  a:link, a:visited:link {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
-
-/*********************
-SIDEBARS & ASIDES
-*********************/
-.no-widgets {
-  background-color: white;
-  padding: 1.5em;
-  text-align: center;
-  border: 1px solid gray;
-  border-radius: 2px;
-  margin-bottom: 1.5em; }
-
-/*********************
-BASE (MOBILE UP)
+IMPORTING PARTIALS
 *********************/
 /*********************
 HEADER STYLES
 *********************/
-#logo {
+.header__logo {
   margin: 0.75em 0; }
+  @media screen and (min-width: 768px) {
+    .header__logo {
+      float: left; } }
 
 .header__nav {
   visibility: hidden;
   height: 0; }
+  @media screen and (min-width: 768px) {
+    .header__nav .nav {
+      float: right;
+      visibility: visible;
+      height: auto; } }
   .header__nav.visible {
     visibility: visible;
     height: auto; }
@@ -865,23 +995,66 @@ NAVIGATION STYLES
   padding: 0;
   list-style: none;
   /* end .menu li */ }
+  @media screen and (min-width: 768px) {
+    .nav {
+      border: 0; }
+      .nav ul {
+        margin-top: 0; } }
   .nav li {
     list-style: none; }
+    @media screen and (min-width: 768px) {
+      .nav li {
+        float: left;
+        position: relative; }
+        .nav li:hover > ul.sub-menu {
+          top: auto;
+          visibility: visible; } }
     .nav li a {
       display: block;
       text-decoration: none;
       padding: 0.75em; }
+      @media screen and (min-width: 768px) {
+        .nav li a {
+          border-bottom: 0; }
+          .nav li a:hover, .nav li a:focus {
+            text-decoration: underline; } }
     .nav li ul.sub-menu,
     .nav li ul.children {
       padding: 0;
       display: none; }
+      @media screen and (min-width: 768px) {
+        .nav li ul.sub-menu,
+        .nav li ul.children {
+          background: crimson;
+          margin-top: 0;
+          position: absolute;
+          visibility: hidden;
+          z-index: 8999; } }
       .nav li ul.sub-menu li a,
       .nav li ul.children li a {
         padding-left: 30px; }
+        @media screen and (min-width: 768px) {
+          .nav li ul.sub-menu li a,
+          .nav li ul.children li a {
+            color: white;
+            padding-left: 10px;
+            border-right: 0;
+            display: block;
+            width: 180px; } }
+      @media screen and (min-width: 768px) {
+        .nav li ul.sub-menu li ul,
+        .nav li ul.children li ul {
+          top: 0;
+          left: 100%; } }
     .nav li:hover .sub-menu {
       display: block; }
 
 /* end .nav */
+/**** 768 UP ****/
+@media screen and (min-width: 768px) {
+  .js__menu-trigger {
+    display: none; } }
+
 /******************************************************************
 PAGE NAVI STYLES
 ******************************************************************/
@@ -936,24 +1109,8 @@ PAGE NAVI STYLES
 
 /* end .wp-prev-next */
 /*********************
-GENERAL STYLES
+IMPORTING PAGES
 *********************/
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 100%;
-  line-height: 1.5;
-  color: #666;
-  background-color: white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-.fonts-loaded body {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-
-.border {
-  border: 2px solid crimson;
-  padding: .5em 1em; }
-
 /********************
 LAYOUT & GRID STYLES
 *********************/
@@ -962,17 +1119,35 @@ LAYOUT & GRID STYLES
   max-width: 1440px;
   margin: 0 auto; }
 
-/*********************
-POSTS & CONTENT STYLES
-*********************/
-.content {
-  margin: 1.5em 0; }
+/**** 768px and Up ****/
+@media screen and (min-width: 768px) {
+  .main-content {
+    box-sizing: border-box;
+    width: 66.6666666667%;
+    float: left;
+    padding-left: 1.3888888889%;
+    padding-right: 1.3888888889%; }
+  .sidebar {
+    box-sizing: border-box;
+    width: 33.3333333333%;
+    float: left;
+    padding-left: 1.3888888889%;
+    padding-right: 1.3888888889%; } }
 
+/*************************
+HOMEPAGE SPECIFIC STYLES
+*************************/
+/*************************
+PAGE SPECIFIC STYLES
+*************************/
 .single-header__title,
 .page-header__title,
 .post-header__title {
   margin: 0; }
 
+/*********************
+POST STYLES
+*********************/
 /* post meta */
 .post-meta {
   color: gray;
@@ -999,13 +1174,6 @@ POSTS & CONTENT STYLES
     margin: 0 0 1.5em 0;
     max-width: 100%;
     height: auto; }
-  .post-content .size-auto,
-  .post-content .size-full,
-  .post-content .size-large,
-  .post-content .size-medium,
-  .post-content .size-thumbnail {
-    max-width: 100%;
-    height: auto; }
   .post-content pre {
     background: black;
     color: lightgray;
@@ -1015,152 +1183,12 @@ POSTS & CONTENT STYLES
     border-radius: 3px; }
 
 /* end .entry-content */
-.wp-caption {
-  max-width: 100%;
-  background: #eee;
-  padding: 5px;
-  /* images inside wp-caption */ }
-  .wp-caption img {
-    max-width: 100%;
-    margin-bottom: 0;
-    width: 100%; }
-  .wp-caption p.wp-caption-text {
-    font-size: 0.85em;
-    margin: 4px 0 7px;
-    text-align: center; }
-
-/* end .wp-caption */
 .tags {
   margin: 0; }
 
 /*********************
-MEDIA QUERIES
+PRINT
 *********************/
-@media only screen and (min-width: 481px) {
-  /******************************************************************
-481px and Up Stylesheet
-******************************************************************/
-  /*********************
-POSTS & CONTENT STYLES
-*********************/
-  /* entry content */
-  .entry-content {
-    /* at this larger size, we can start to align images */ }
-    .entry-content .alignleft, .entry-content img.alignleft {
-      margin-right: 1.5em;
-      display: inline;
-      float: left; }
-    .entry-content .alignright, .entry-content img.alignright {
-      margin-left: 1.5em;
-      display: inline;
-      float: right; }
-    .entry-content .aligncenter, .entry-content img.aligncenter {
-      margin-right: auto;
-      margin-left: auto;
-      display: block;
-      clear: both; }
-  /* end .entry-content */
-  /*********************
-SOCIAL SHARING
-*********************/
-  .social-sharing {
-    float: right;
-    margin-left: 1em; }
-  .social-sharing__label {
-    display: inline;
-    margin-bottom: 0; } }
-
-@media only screen and (min-width: 768px) {
-  /******************************************************************
-Tablet & Small Desktop Stylesheet
-******************************************************************/
-  /*********************
-LAYOUT & GRID STYLES
-*********************/
-  .main-content {
-    box-sizing: border-box;
-    width: 66.6666666667%;
-    float: left;
-    padding-left: 1.3888888889%;
-    padding-right: 1.3888888889%; }
-  .sidebar {
-    box-sizing: border-box;
-    width: 33.3333333333%;
-    float: left;
-    padding-left: 1.3888888889%;
-    padding-right: 1.3888888889%; }
-  /*********************
-HEADER STYLES
-*********************/
-  .header__logo {
-    float: left; }
-  .header__nav .nav {
-    float: right;
-    visibility: visible;
-    height: auto; }
-  /*********************
-NAVIGATION STYLES
-*********************/
-  .nav {
-    border: 0;
-    /* end .menu ul li */ }
-    .nav ul {
-      margin-top: 0; }
-    .nav li {
-      float: left;
-      position: relative;
-      /* showing sub-menus */ }
-      .nav li a {
-        border-bottom: 0; }
-        .nav li a:hover, .nav li a:focus {
-          color: hite;
-          text-decoration: underline; }
-      .nav li ul.sub-menu,
-      .nav li ul.children {
-        background: crimson;
-        margin-top: 0;
-        position: absolute;
-        visibility: hidden;
-        z-index: 8999; }
-        .nav li ul.sub-menu li a,
-        .nav li ul.children li a {
-          color: white;
-          padding-left: 10px;
-          border-right: 0;
-          display: block;
-          width: 180px; }
-        .nav li ul.sub-menu li ul,
-        .nav li ul.children li ul {
-          top: 0;
-          left: 100%; }
-      .nav li:hover > ul.sub-menu {
-        top: auto;
-        visibility: visible; }
-  /* end .nav */
-  .js__menu-trigger {
-    display: none; }
-  /*********************
-SIDEBARS & ASIDES
-*********************/
-  .widgettitle {
-    border-bottom: 2px solid #444;
-    margin-bottom: 0.75em; }
-  .widget {
-    padding: 0 10px;
-    margin: 2.2em 0; }
-    .widget:first-of-type {
-      margin-top: 0; }
-    .widget li {
-      margin-bottom: 0.75em; }
-      .widget li ul {
-        margin-top: 0.75em;
-        padding-left: 1em; }
-  /***********************
-SOCIAL SHARING
-***********************/
-  .social-sharing {
-    margin-bottom: 0; } }
-
 @media print {
   /******************************************************************
 Print Stylesheet

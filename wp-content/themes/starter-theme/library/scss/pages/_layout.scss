@@ -1,0 +1,23 @@
+/********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	width: 90%;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+
+/**** 768px and Up ****/
+
+@include mobilefirst($bp-med) {
+
+	.main-content {
+		 @include span(8);
+	}
+	.sidebar {
+		 @include span(4);
+	}
+
+}

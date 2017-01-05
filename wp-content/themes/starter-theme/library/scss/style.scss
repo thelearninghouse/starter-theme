@@ -3,40 +3,49 @@ Main Stylesheet
 ******************************************************************/
 
 /*********************
-IMPORTING PARTIALS
+IMPORTING BASE
 *********************/
 
-@import "partials/normalize";
-@import "partials/variables";
-@import "partials/mixins";
-@import "partials/typography";
-@import "partials/grid";
+@import "base/normalize";
+@import "base/variables";
+@import "base/mixins";
+@import "base/typography";
+@import "base/grid";
+@import "base/base";
 
 /*********************
 IMPORTING MODULES
 *********************/
 
+@import "modules/accordion";
 @import "modules/buttons";
-@import "modules/forms";
-@import "modules/tables";
-@import "modules/progress";
 @import "modules/clearfix";
-@import "modules/media";
+@import "modules/forms";
 @import "modules/links";
+@import "modules/media";
+@import "modules/progress";
 @import "modules/sidebar";
+@import "modules/social";
+@import "modules/tables";
 
 /*********************
-BASE (MOBILE UP)
+IMPORTING PARTIALS
 *********************/
 
 @import "partials/header";
 @import "partials/nav";
 @import "partials/footer";
-@import "breakpoints/base";
 
 /*********************
-MEDIA QUERIES
+IMPORTING PAGES
 *********************/
-@media only screen and (min-width: 481px) { @import "breakpoints/481up"; }
-@media only screen and (min-width: 768px) { @import "breakpoints/768up"; }
+
+@import "pages/layout";
+@import "pages/home";
+@import "pages/page";
+@import "pages/post";
+
+/*********************
+PRINT
+*********************/
 @media print { @import "partials/print"; }

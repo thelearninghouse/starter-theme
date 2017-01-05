@@ -1,5 +1,5 @@
 /*********************
-IMPORTING PARTIALS
+IMPORTING
 *********************/
 /*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -465,6 +465,104 @@ figure, figcaption {
     border-color: transparent gray transparent transparent; }
 
 /******************************************************************
+SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
+******************************************************************/
+.wrap {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto; }
+  .wrap:after {
+    content: " ";
+    display: block;
+    clear: both; }
+
+.half {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
+
+.quarter {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
+
+.third {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.3333333333%;
+  float: left;
+  padding-left: 1.3888888889%;
+  padding-right: 1.3888888889%; }
+
+/*********************
+GENERAL STYLES
+*********************/
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+  color: #666;
+  background-color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.fonts-loaded body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+
+.border {
+  border: 2px solid crimson;
+  padding: .5em 1em; }
+
+.content {
+  margin: 1.5em 0; }
+
+/*********************
+ACCORDION STYLES
+*********************/
+.accord.active .accord__header:before {
+  transform: translateY(-50%) rotate(45deg); }
+
+.accord.active .accord__content {
+  visibility: visible;
+  transform: scale(1);
+  height: auto;
+  opacity: 1; }
+
+.accord .accord__content {
+  visibility: hidden;
+  padding: .5em;
+  transform: scale(0);
+  transform-origin: 50% 0;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  height: 0; }
+
+.accord__header {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: .5em 2em .5em .5em;
+  background: lightgray;
+  border: 1px solid #c6c6c6;
+  position: relative; }
+  .accord__header:before {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1em;
+    transition: .2s all ease-in-out;
+    transform-origin: 50% 50%; }
+
+/******************************************************************
 Button Styles
 ******************************************************************/
 .button {
@@ -490,70 +588,20 @@ Button Styles
   .button:active {
     top: 1px; }
 
-/*******************************
-SOCIAL SHARING BUTTONS
-*******************************/
-.social-sharing {
-  margin-bottom: 1em;
-  background: #f2f2f2;
-  padding: .8em;
-  text-align: center; }
-
-.social-sharing__label {
-  font-size: 0.8125em;
-  font-weight: bold;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: .5em; }
-
-.social-link {
-  color: #fff;
-  background-color: #55acee;
-  padding: .4em .6em;
-  border-radius: 3px;
-  display: inline-block;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 0.75em;
-  font-weight: bold;
-  margin-left: 0.625em;
-  transition: .2s all ease-in-out; }
-  .social-link:focus {
-    color: white; }
-
-.social-link__icon,
-.social-link__label {
-  display: inline-block;
-  vertical-align: middle;
-  color: white; }
-
-.social-link__icon {
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: .2em; }
-
-.social-link__icon path {
-  fill: #fff; }
-
-.social-link__label {
+.button_sm {
   font-size: .9em;
-  font-weight: 500; }
+  padding: .3em .8em; }
 
-.social-link:hover {
-  background-color: #2795e9;
-  color: white; }
+/* Clearfix */
+.clearfix, .cf, .comment-respond {
+  zoom: 1; }
 
-.social-link_facebook {
-  background: #3b5998; }
+.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
+  content: "";
+  display: table; }
 
-.social-link_facebook:hover {
-  background: #2d4373; }
-
-.social-link_linkedin {
-  background: #007bb6; }
-
-.social-link_linkedin:hover {
-  background: #005983; }
+.clearfix:after, .cf:after, .comment-respond:after {
+  clear: both; }
 
 /******************************************************************
 Form Styles
@@ -698,83 +746,17 @@ legend,
 .elp_hidden {
   display: none; }
 
-/******************************************************************
-Table Styles
-******************************************************************/
-table {
-  width: 100%;
-  margin-bottom: 1.5em; }
-  table caption {
-    margin: 0 0 7px;
-    font-size: 0.75em;
-    color: gray;
-    text-transform: uppercase;
-    letter-spacing: 1px; }
-
-th,
-td {
-  padding: 10px 20px;
-  text-align: left; }
-
-tr:nth-child(even) {
-  background: #eee; }
-
-tr:nth-child(even) {
-  background-color: lightgray; }
-
-td {
-  color: #666; }
-
-th {
-  background-color: lightgray; }
-
 /*********************
-ACCORDION STYLES
+LINK STYLES
 *********************/
-.accord.active .accord-header:before {
-  transform: translateY(-50%) rotate(45deg); }
-
-.accord.active .accord-content {
-  visibility: visible;
-  transform: scale(1);
-  height: auto;
-  opacity: 1; }
-
-.accord .accord-content {
-  visibility: hidden;
-  padding: .5em;
-  transform: scale(0);
-  transform-origin: 50% 0;
-  transition: all .2s ease-in-out;
-  opacity: 0;
-  height: 0; }
-
-.accord-header {
-  font-size: 1.2em;
-  cursor: pointer;
-  padding: .5em 2em .5em .5em;
-  background: lightgray;
-  border: 1px solid #c6c6c6;
-  position: relative; }
-  .accord-header:before {
-    content: "+";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 1em;
-    transition: .2s all ease-in-out;
-    transform-origin: 50% 50%; }
-
-/* Clearfix */
-.clearfix, .cf, .comment-respond {
-  zoom: 1; }
-
-.clearfix:before, .clearfix:after, .cf:before, .comment-respond:before, .cf:after, .comment-respond:after {
-  content: "";
-  display: table; }
-
-.clearfix:after, .cf:after, .comment-respond:after {
-  clear: both; }
+a, a:visited {
+  color: crimson;
+  /* on hover */
+  /* mobile tap color */ }
+  a:hover, a:focus, a:visited:hover, a:visited:focus {
+    color: #960e29; }
+  a:link, a:visited:link {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
 
 /* Responsive Videos */
 .videoWrapper {
@@ -789,42 +771,175 @@ ACCORDION STYLES
     width: 100%;
     height: 100%; }
 
-/*********************
-LINK STYLES
-*********************/
-a, a:visited {
-  color: crimson;
-  /* on hover */
-  /* mobile tap color */ }
-  a:hover, a:focus, a:visited:hover, a:visited:focus {
-    color: #960e29; }
-  a:link, a:visited:link {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3); }
+img,
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto; }
 
-/*********************
-SIDEBARS & ASIDES
-*********************/
-.no-widgets {
-  background-color: white;
-  padding: 1.5em;
-  text-align: center;
-  border: 1px solid gray;
-  border-radius: 2px;
-  margin-bottom: 1.5em; }
+/**** 768 AND UP ****/
+@media screen and (min-width: 481px) {
+  /* at this larger size, we can start to align images */
+  .alignleft, img.alignleft {
+    margin-right: 1.5em;
+    display: inline;
+    float: left; }
+  .alignright, img.alignright {
+    margin-left: 1.5em;
+    display: inline;
+    float: right; }
+  .aligncenter, img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both; } }
 
 /*********************
 HEADER STYLES
 *********************/
-#logo {
+.header__logo {
   margin: 0.75em 0; }
+  @media screen and (min-width: 768px) {
+    .header__logo {
+      float: left; } }
 
 .header__nav {
   visibility: hidden;
   height: 0; }
+  @media screen and (min-width: 768px) {
+    .header__nav .nav {
+      float: right;
+      visibility: visible;
+      height: auto; } }
   .header__nav.visible {
     visibility: visible;
     height: auto; }
 
+/*********************
+NAVIGATION STYLES
+*********************/
+.nav {
+  border-bottom: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* end .menu li */ }
+  @media screen and (min-width: 768px) {
+    .nav {
+      border: 0; }
+      .nav ul {
+        margin-top: 0; } }
+  .nav li {
+    list-style: none; }
+    @media screen and (min-width: 768px) {
+      .nav li {
+        float: left;
+        position: relative; }
+        .nav li:hover > ul.sub-menu {
+          top: auto;
+          visibility: visible; } }
+    .nav li a {
+      display: block;
+      text-decoration: none;
+      padding: 0.75em; }
+      @media screen and (min-width: 768px) {
+        .nav li a {
+          border-bottom: 0; }
+          .nav li a:hover, .nav li a:focus {
+            text-decoration: underline; } }
+    .nav li ul.sub-menu,
+    .nav li ul.children {
+      padding: 0;
+      display: none; }
+      @media screen and (min-width: 768px) {
+        .nav li ul.sub-menu,
+        .nav li ul.children {
+          background: crimson;
+          margin-top: 0;
+          position: absolute;
+          visibility: hidden;
+          z-index: 8999; } }
+      .nav li ul.sub-menu li a,
+      .nav li ul.children li a {
+        padding-left: 30px; }
+        @media screen and (min-width: 768px) {
+          .nav li ul.sub-menu li a,
+          .nav li ul.children li a {
+            color: white;
+            padding-left: 10px;
+            border-right: 0;
+            display: block;
+            width: 180px; } }
+      @media screen and (min-width: 768px) {
+        .nav li ul.sub-menu li ul,
+        .nav li ul.children li ul {
+          top: 0;
+          left: 100%; } }
+    .nav li:hover .sub-menu {
+      display: block; }
+
+/* end .nav */
+/**** 768 UP ****/
+@media screen and (min-width: 768px) {
+  .js__menu-trigger {
+    display: none; } }
+
+/******************************************************************
+PAGE NAVI STYLES
+******************************************************************/
+.pagination,
+.wp-prev-next {
+  margin: 1.5em 0; }
+
+.pagination {
+  text-align: center; }
+  .pagination ul {
+    display: inline-block;
+    background-color: white;
+    white-space: nowrap;
+    padding: 0;
+    clear: both;
+    border-radius: 3px; }
+  .pagination li {
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    border-right: 1px solid gray; }
+  .pagination a, .pagination span {
+    margin: 0;
+    text-decoration: none;
+    padding: 0;
+    line-height: 1em;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0.75em;
+    min-width: 1em;
+    display: block;
+    color: crimson; }
+    .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
+      background-color: crimson;
+      color: white; }
+  .pagination .current {
+    cursor: default;
+    color: #666; }
+    .pagination .current:hover, .pagination .current:focus {
+      background-color: white;
+      color: #666; }
+
+/* end .bones_page_navi */
+/* fallback previous & next links */
+.wp-prev-next .prev-link {
+  float: left; }
+
+.wp-prev-next .next-link {
+  float: right; }
+
+/* end .wp-prev-next */
 /********************
 LAYOUT & GRID STYLES
 *********************/
@@ -832,18 +947,3 @@ LAYOUT & GRID STYLES
   width: 90%;
   max-width: 1440px;
   margin: 0 auto; }
-
-/*********************
-BASE STYLING
-*********************/
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 100%;
-  line-height: 1.5;
-  color: #666;
-  background-color: white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-.fonts-loaded body {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif; }

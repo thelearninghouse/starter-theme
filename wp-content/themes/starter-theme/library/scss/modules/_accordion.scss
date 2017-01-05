@@ -4,13 +4,13 @@ ACCORDION STYLES
 
 .accord {
     &.active {
-        .accord-header {
+        .accord__header {
             &:before{
                 transform: translateY(-50%) rotate(45deg);
             }
         }
 
-        .accord-content {
+        .accord__content {
             visibility: visible;
             transform: scale(1);
             height: auto;
@@ -18,7 +18,7 @@ ACCORDION STYLES
         }
     }
 
-    .accord-content {
+    .accord__content {
         visibility: hidden;
         padding: .5em;
         transform: scale(0);
@@ -29,7 +29,7 @@ ACCORDION STYLES
     }
 }
 
-.accord-header {
+.accord__header {
     font-size: 1.2em;
     cursor: pointer;
     padding: .5em 2em .5em .5em;

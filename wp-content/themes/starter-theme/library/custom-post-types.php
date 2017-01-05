@@ -66,7 +66,7 @@ function add_degrees() {
       $args = array (
         'labels' => $labels,
         'hierarchical' => true,
-        'rewrite' => array('slug' => 'online-degrees/degrees', 'with_front' => false )
+        'rewrite' => array('slug' => 'online-programs/degrees', 'with_front' => false )
       );
 
       register_taxonomy( 'degree_vertical', 'degrees', $args );
@@ -93,7 +93,7 @@ function add_degrees() {
       $args = array (
         'labels' => $labels,
         'hierarchical' => true,
-        'rewrite' => array('slug' => 'online-degrees/degree-level', 'with_front' => false )
+        'rewrite' => array('slug' => 'online-programs/degree-level', 'with_front' => false )
       );
 
       register_taxonomy( 'degree_level', 'degrees', $args );
