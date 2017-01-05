@@ -21,7 +21,7 @@ Prism.languages.scss=Prism.languages.extend("css",{comment:{pattern:/(^|[^\\])(?
 
 <header>
   <h1>Starter Theme Online Pattern Primer</h1>
-  <p>Basic Web Patters with Examples</p>
+  <p>Basic Web Patterns with Examples</p>
 </header>
 
 <!--<div class="color-palette">
