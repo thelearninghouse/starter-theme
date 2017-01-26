@@ -8,7 +8,9 @@
 		<div class="select-post-types-wrap select-wrap">
 			<div class="exclude-post-types-warning" style="display: none; opacity: 0;">
 				<p>
-					<?php _e( 'WARNING: All of the following post types will be absent in the destination posts table after migration:', 'wp-migrate-db' ); ?><br>
+					<span class="migrate-msg"><?php _e( 'WARNING: All of the following post types will be absent in the destination posts table after migration:', 'wp-migrate-db' ); ?></span>
+					<span class="find-replace-msg"><?php _e( 'WARNING: The following post types will not be included in the find &amp; replace:', 'wp-migrate-db' ); ?></span>
+					<br>
 					<span class="excluded-post-types">
 						<?php
 							if ( ! empty( $loaded_profile['select_post_types'] ) ) {

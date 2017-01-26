@@ -52,10 +52,20 @@ class WPSEO_Upgrade {
 			$this->upgrade_33();
 		}
 
+		if ( version_compare( $this->options['version'], '3.6', '<' ) ) {
+			$this->upgrade_36();
+		}
+
+		if ( version_compare( $this->options['version'], '4.0', '<' ) ) {
+			$this->upgrade_40();
+		}
+
+		// Since 3.7.
+		$upsell_notice = new WPSEO_Product_Upsell_Notice();
+		$upsell_notice->set_upgrade_notice();
+
 		/**
 		 * Filter: 'wpseo_run_upgrade' - Runs the upgrade hook which are dependent on Yoast SEO
-		 *
-		 * @deprecated Since 3.1
 		 *
 		 * @api        string - The current version of Yoast SEO
 		 */
@@ -180,6 +190,16 @@ class WPSEO_Upgrade {
 	}
 
 	/**
+	 * Performs upgrade functions to Yoast SEO 3.6
+	 */
+	private function upgrade_36() {
+		global $wpdb;
+
+		// Between 3.2 and 3.4 the sitemap options were saved with autoloading enabled.
+		$wpdb->query( 'DELETE FROM ' . $wpdb->options . ' WHERE option_name LIKE "wpseo_sitemap_%" AND autoload = "yes"' );
+	}
+
+	/**
 	 * Move the pinterest verification option from the wpseo option to the wpseo_social option
 	 */
 	private function move_pinterest_option() {
@@ -204,5 +224,17 @@ class WPSEO_Upgrade {
 		WPSEO_Sitemaps_Cache::clear();                                 // Flush the sitemap cache.
 
 		WPSEO_Options::ensure_options_exist();                              // Make sure all our options always exist - issue #1245.
+	}
+
+	/**
+	 * Removes the about notice when its still in the database.
+	 */
+	private function upgrade_40() {
+		$center       = Yoast_Notification_Center::get();
+		$notification = $center->get_notification_by_id( 'wpseo-dismiss-about' );
+
+		if ( $notification ) {
+			$center->remove_notification( $notification );
+		}
 	}
 }

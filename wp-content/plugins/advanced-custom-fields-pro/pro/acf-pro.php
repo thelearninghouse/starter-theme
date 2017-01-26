@@ -79,6 +79,7 @@ class acf_pro {
 		acf_include('pro/fields/repeater.php');
 		acf_include('pro/fields/flexible-content.php');
 		acf_include('pro/fields/gallery.php');
+		acf_include('pro/fields/clone.php');
 		
 	}
 	
@@ -135,8 +136,8 @@ class acf_pro {
 		
 		
 		// register scripts
-		wp_register_script( 'acf-pro-input', acf_get_dir( "pro/assets/js/acf-pro-input{$min}.js" ), false, acf_get_setting('version') );
-		wp_register_script( 'acf-pro-field-group', acf_get_dir( "pro/assets/js/acf-pro-field-group{$min}.js" ), false, acf_get_setting('version') );
+		wp_register_script( 'acf-pro-input', acf_get_dir( "pro/assets/js/acf-pro-input{$min}.js" ), array('acf-input'), acf_get_setting('version') );
+		wp_register_script( 'acf-pro-field-group', acf_get_dir( "pro/assets/js/acf-pro-field-group{$min}.js" ), array('acf-field-group'), acf_get_setting('version') );
 		
 		
 		// register styles

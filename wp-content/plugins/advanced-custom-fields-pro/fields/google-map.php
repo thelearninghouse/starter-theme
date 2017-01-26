@@ -81,7 +81,7 @@ class acf_field_google_map extends acf_field {
 		
 		
 		// value
-		$field['value'] = acf_parse_args($field['value'], array(
+		$field['value'] = wp_parse_args($field['value'], array(
 			'address'	=> '',
 			'lat'		=> '',
 			'lng'		=> ''
@@ -104,7 +104,6 @@ class acf_field_google_map extends acf_field {
 		$atts = array(
 			'id'			=> $field['id'],
 			'class'			=> "acf-google-map {$field['class']}",
-			'data-id'		=> $field['id'] . '-' . uniqid(), 
 			'data-lat'		=> $field['center_lat'],
 			'data-lng'		=> $field['center_lng'],
 			'data-zoom'		=> $field['zoom'],
@@ -182,9 +181,7 @@ class acf_field_google_map extends acf_field {
 			'name'			=> 'center_lng',
 			'prepend'		=> 'lng',
 			'placeholder'	=> $this->default_values['center_lng'],
-			'wrapper'		=> array(
-				'data-append' => 'center_lat'
-			)
+			'_append' 		=> 'center_lat'
 		));
 		
 		
@@ -292,11 +289,17 @@ class acf_field_google_map extends acf_field {
    	
    	function input_admin_footer() {
 	   	
+	   	// bail ealry if no qneueu
+	   	if( !acf_get_setting('enqueue_google_maps') ) return;
+	   	
+	   	
 	   	// vars
 	   	$api = array(
-			'libraries'		=> 'places',
-			'key'			=> acf_get_setting('google_api_key'),
-			'client'		=> acf_get_setting('google_api_client')
+			'key'		=> acf_get_setting('google_api_key'),
+			'client'	=> acf_get_setting('google_api_client'),
+			'libraries'	=> 'places',
+			'ver'		=> 3,
+			'callback'	=> ''
 	   	);
 	   	
 	   	
@@ -309,17 +312,23 @@ class acf_field_google_map extends acf_field {
 	   	if( empty($api['client']) ) unset($api['client']);
 	   	
 	   	
+	   	// construct url
+	   	$url = add_query_arg($api, 'https://maps.googleapis.com/maps/api/js');
+	   	
 ?>
 <script type="text/javascript">
-acf.fields.google_map.api = <?php echo json_encode($api); ?>;
+	if( acf ) acf.fields.google_map.url = '<?php echo $url; ?>';
 </script>
 <?php
 	
    	}
+   	
 }
 
-new acf_field_google_map();
 
-endif;
+// initialize
+acf_register_field_type( new acf_field_google_map() );
+
+endif; // class_exists check
 
 ?>

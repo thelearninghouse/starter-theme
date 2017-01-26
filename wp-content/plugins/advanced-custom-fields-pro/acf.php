@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields
-Version: 5.3.10
+Version: 5.5.3
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -58,7 +58,7 @@ class acf {
 			
 			// basic
 			'name'				=> __('Advanced Custom Fields', 'acf'),
-			'version'			=> '5.3.10',
+			'version'			=> '5.5.3',
 						
 			// urls
 			'basename'			=> plugin_basename( __FILE__ ),
@@ -81,7 +81,12 @@ class acf {
 			'l10n'				=> true,
 			'l10n_textdomain'	=> '',
 			'google_api_key'	=> '',
-			'google_api_client'	=> ''
+			'google_api_client'	=> '',
+			'enqueue_google_maps'	=> true,
+			'enqueue_select2'			=> true,
+			'enqueue_datepicker'		=> true,
+			'enqueue_datetimepicker'	=> true,
+			'select2_version'			=> 3
 		);
 		
 		
@@ -98,6 +103,8 @@ class acf {
 		
 		// core
 		acf_include('core/ajax.php');
+		acf_include('core/cache.php');
+		acf_include('core/fields.php');
 		acf_include('core/field.php');
 		acf_include('core/input.php');
 		acf_include('core/validation.php');
@@ -127,11 +134,17 @@ class acf {
 			acf_include('admin/admin.php');
 			acf_include('admin/field-group.php');
 			acf_include('admin/field-groups.php');
-			acf_include('admin/update.php');
-			acf_include('admin/update-network.php');
+			acf_include('admin/install.php');
 			acf_include('admin/settings-tools.php');
-			//acf_include('admin/settings-addons.php');
 			acf_include('admin/settings-info.php');
+			
+			
+			// network
+			if( is_network_admin() ) {
+				
+				acf_include('admin/install-network.php');
+				
+			}
 		}
 		
 		
@@ -190,7 +203,7 @@ class acf {
 		
 		
 		// set text domain
-		load_textdomain( 'acf', acf_get_path( 'lang/acf-' . get_locale() . '.mo' ) );
+		load_textdomain( 'acf', acf_get_path( 'lang/acf-' . acf_get_locale() . '.mo' ) );
 		
 		
 		// include wpml support
@@ -210,6 +223,7 @@ class acf {
 		acf_include('fields/password.php');
 		acf_include('fields/wysiwyg.php');
 		acf_include('fields/oembed.php');
+		//acf_include('fields/output.php');
 		acf_include('fields/image.php');
 		acf_include('fields/file.php');
 		acf_include('fields/select.php');
@@ -346,12 +360,12 @@ class acf {
 		
 		// acf-disabled
 		register_post_status('acf-disabled', array(
-			'label'                     => __( 'Disabled', 'acf' ),
+			'label'                     => __( 'Inactive', 'acf' ),
 			'public'                    => true,
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( 'Disabled <span class="count">(%s)</span>', 'Disabled <span class="count">(%s)</span>', 'acf' ),
+			'label_count'               => _n_noop( 'Inactive <span class="count">(%s)</span>', 'Inactive <span class="count">(%s)</span>', 'acf' ),
 		));
 		
 	}
@@ -441,11 +455,64 @@ class acf {
 	
 	
 	/*
-function posts_request( $thing ) {
+	*  get_setting
+	*
+	*  This function will return a value from the settings array found in the acf object
+	*
+	*  @type	function
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	$name (string) the setting name to return
+	*  @param	$value (mixed) default value
+	*  @return	$value
+	*/
+	
+	function get_setting( $name, $value = null ) {
 		
-		return $thing;
+		// check settings
+		if( isset($this->settings[ $name ]) ) {
+			
+			$value = $this->settings[ $name ];
+			
+		}
+		
+		
+		// filter for 3rd party customization
+		if( substr($name, 0, 1) !== '_' ) {
+			
+			$value = apply_filters( "acf/settings/{$name}", $value );
+			
+		}
+		
+		
+		// return
+		return $value;
+		
 	}
-*/
+	
+	
+	/*
+	*  update_setting
+	*
+	*  This function will update a value into the settings array found in the acf object
+	*
+	*  @type	function
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	$name (string)
+	*  @param	$value (mixed)
+	*  @return	n/a
+	*/
+	
+	function update_setting( $name, $value ) {
+		
+		$this->settings[ $name ] = $value;
+		
+		return true;
+		
+	}
 	
 }
 

@@ -762,14 +762,20 @@ class WPMDBPro_Media_Files_Base extends WPMDBPro_Addon {
 		}
 
 		$args  = array(
-			'limit'    => false,
 			'spam'     => 0,
 			'deleted'  => 0,
 			'archived' => 0,
+			'number' => false
 		);
-		$blogs = wp_get_sites( $args );
+
+		if ( version_compare( $GLOBALS['wp_version'], '4.6', '>=' ) ) {
+			$blogs = get_sites( $args );
+		} else {
+			$blogs = wp_get_sites( $args );
+		}
 
 		foreach ( $blogs as $blog ) {
+			$blog = (array) $blog;
 			if ( apply_filters( 'wpmdbmf_include_subsite', true, $blog['blog_id'], $this ) ) {
 				$blog_ids[] = $blog['blog_id'];
 			}

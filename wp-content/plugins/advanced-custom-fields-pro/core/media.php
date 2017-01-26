@@ -51,9 +51,9 @@ class acf_media {
 		
 		// append
 		$l10n['media'] = array(
-			'select'		=> __("Select",'acf'),
-			'edit'			=> __("Edit",'acf'),
-			'update'		=> __("Update",'acf'),
+			'select'		=> _x('Select', 'verb', 'acf'),
+			'edit'			=> _x('Edit', 'verb', 'acf'),
+			'update'		=> _x('Update', 'verb', 'acf'),
 			'uploadedTo'	=> __("Uploaded to this post",'acf'),
 			'default_icon'	=> wp_mime_type_icon()
 		);
@@ -169,7 +169,7 @@ class acf_media {
 		
 ?>
 <script type="text/javascript">
-acf.media.mime_types = <?php echo json_encode( get_allowed_mime_types() ); ?>;
+	if( acf ) acf.media.mime_types = <?php echo json_encode( get_allowed_mime_types() ); ?>;
 </script>
 <?php
 		

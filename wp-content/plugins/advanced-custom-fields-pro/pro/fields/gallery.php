@@ -36,7 +36,6 @@ class acf_field_gallery extends acf_field {
 		$this->label = __("Gallery",'acf');
 		$this->category = 'content';
 		$this->defaults = array(
-			'preview_size'	=> 'thumbnail',
 			'library'		=> 'all',
 			'min'			=> 0,
 			'max'			=> 0,
@@ -225,10 +224,10 @@ class acf_field_gallery extends acf_field {
 		$r = array();
 		$order = 'DESC';
    		$args = acf_parse_args( $_POST, array(
-			'ids'			=>	0,
-			'sort'			=>	'date',
-			'field_key'		=>	'',
-			'nonce'			=>	'',
+			'ids'			=> 0,
+			'sort'			=> 'date',
+			'field_key'		=> '',
+			'nonce'			=> '',
 		));
 		
 		
@@ -467,7 +466,6 @@ class acf_field_gallery extends acf_field {
 		$atts = array(
 			'id'				=> $field['id'],
 			'class'				=> "acf-gallery {$field['class']}",
-			'data-preview_size'	=> $field['preview_size'],
 			'data-library'		=> $field['library'],
 			'data-min'			=> $field['min'],
 			'data-max'			=> $field['max'],
@@ -516,10 +514,14 @@ class acf_field_gallery extends acf_field {
 					
 					
 					// thumbnail
-					$thumbnail = acf_get_post_thumbnail($a['ID'], $field['preview_size']);
+					$thumbnail = acf_get_post_thumbnail($a['ID'], 'medium');
 					
 					
-					// icon
+					// remove filename if is image
+					if( $a['type'] == 'image' ) $a['filename'] = '';
+					
+					
+					// class
 					$a['class'] .= ' -' . $a['type'];
 					
 					if( $thumbnail['type'] == 'icon' ) {
@@ -536,17 +538,17 @@ class acf_field_gallery extends acf_field {
 							<div class="thumbnail">
 								<img src="<?php echo $thumbnail['url']; ?>" alt="" title="<?php echo $a['title']; ?>"/>
 							</div>
-							<div class="filename"><?php echo acf_get_truncated($a['filename'], 30); ?></div>
+							<?php if( $a['filename'] ): ?>
+							<div class="filename"><?php echo acf_get_truncated($a['filename'], 30); ?></div>	
+							<?php endif; ?>
 						</div>
 						<div class="actions acf-soh-target">
 							<a class="acf-icon -cancel dark acf-gallery-remove" href="#" data-id="<?php echo $a['ID']; ?>" title="<?php _e('Remove', 'acf'); ?>"></a>
 						</div>
 					</div>
-					
 				<?php endforeach; ?>
 				
 			<?php endif; ?>
-			
 			
 		</div>
 		
@@ -650,16 +652,6 @@ class acf_field_gallery extends acf_field {
 		));
 		
 		
-		// preview_size
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Preview Size','acf'),
-			'instructions'	=> __('Shown when entering data','acf'),
-			'type'			=> 'select',
-			'name'			=> 'preview_size',
-			'choices'		=> acf_get_image_sizes()
-		));
-		
-		
 		// insert
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Insert','acf'),
@@ -703,9 +695,7 @@ class acf_field_gallery extends acf_field {
 			'name'			=> 'min_height',
 			'prepend'		=> __('Height', 'acf'),
 			'append'		=> 'px',
-			'wrapper'		=> array(
-				'data-append' => 'min_width'
-			)
+			'_append' 		=> 'min_width'
 		));
 		
 		acf_render_field_setting( $field, array(
@@ -714,9 +704,7 @@ class acf_field_gallery extends acf_field {
 			'name'			=> 'min_size',
 			'prepend'		=> __('File size', 'acf'),
 			'append'		=> 'MB',
-			'wrapper'		=> array(
-				'data-append' => 'min_width'
-			)
+			'_append' 		=> 'min_width'
 		));	
 		
 		
@@ -736,9 +724,7 @@ class acf_field_gallery extends acf_field {
 			'name'			=> 'max_height',
 			'prepend'		=> __('Height', 'acf'),
 			'append'		=> 'px',
-			'wrapper'		=> array(
-				'data-append' => 'max_width'
-			)
+			'_append' 		=> 'max_width'
 		));
 		
 		acf_render_field_setting( $field, array(
@@ -747,9 +733,7 @@ class acf_field_gallery extends acf_field {
 			'name'			=> 'max_size',
 			'prepend'		=> __('File size', 'acf'),
 			'append'		=> 'MB',
-			'wrapper'		=> array(
-				'data-append' => 'max_width'
-			)
+			'_append' 		=> 'max_width'
 		));	
 		
 		
@@ -913,8 +897,10 @@ class acf_field_gallery extends acf_field {
 	
 }
 
-new acf_field_gallery();
 
-endif;
+// initialize
+acf_register_field_type( new acf_field_gallery() );
+
+endif; // class_exists check
 
 ?>

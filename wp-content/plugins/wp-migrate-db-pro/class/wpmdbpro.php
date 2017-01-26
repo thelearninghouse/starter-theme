@@ -14,11 +14,9 @@ class WPMDBPro extends WPMDB {
 
 		// Internal AJAX handlers
 		add_action( 'wp_ajax_wpmdb_verify_connection_to_remote_site', array( $this, 'ajax_verify_connection_to_remote_site' ) );
-		add_action( 'wp_ajax_wpmdb_finalize_migration', array( $this, 'ajax_finalize_migration' ) );
 		add_action( 'wp_ajax_wpmdb_fire_migration_complete', array( $this, 'fire_migration_complete' ) );
-		add_action( 'wp_ajax_wpmdb_flush', array( $this, 'ajax_flush' ) );
+
 		// Required for Pull if user tables being updated.
-		add_action( 'wp_ajax_nopriv_wpmdb_flush', array( $this, 'ajax_nopriv_flush', ) );
 		add_action( 'wp_ajax_wpmdb_reset_api_key', array( $this, 'ajax_reset_api_key' ) );
 		add_action( 'wp_ajax_wpmdb_activate_licence', array( $this, 'ajax_activate_licence' ) );
 		add_action( 'wp_ajax_wpmdb_check_licence', array( $this, 'ajax_check_licence' ) );
@@ -600,16 +598,15 @@ class WPMDBPro extends WPMDB {
 			return $result;
 		}
 
-		$db_version = '';
 		if ( ! empty( $filtered_post['db_version'] ) ) {
-			$db_version = $filtered_post['db_version'];
+			$this->target_db_version = $filtered_post['db_version'];
 			add_filter( 'wpmdb_create_table_query', array( $this, 'mysql_compat_filter' ), 10, 5 );
 		}
 
 		$this->find_replace_pairs = WPMDB_Utils::unserialize( $filtered_post['find_replace_pairs'], __METHOD__ );
 
 		$this->maximum_chunk_size = $this->state_data['pull_limit'];
-		$this->export_table( $this->state_data['table'], $db_version );
+		$this->process_table( $this->state_data['table'] );
 		ob_start();
 		$this->display_errors();
 		$return = ob_get_clean();
@@ -1065,7 +1062,7 @@ class WPMDBPro extends WPMDB {
 			$this->db_backup_header();
 		}
 
-		$result = $this->export_table( $this->state_data['table'] );
+		$result = $this->process_table( $this->state_data['table'] );
 
 		if ( isset( $this->fp ) ) {
 			$this->close( $this->fp );
@@ -1269,346 +1266,6 @@ class WPMDBPro extends WPMDB {
 	}
 
 	/**
-	 * After table migration, delete old tables and rename new tables removing the temporarily prefix.
-	 *
-	 * @return mixed
-	 */
-	function ajax_finalize_migration() {
-		$this->check_ajax_referer( 'finalize-migration' );
-
-		$key_rules = array(
-			'action'             => 'key',
-			'migration_state_id' => 'key',
-			'prefix'             => 'string',
-			'tables'             => 'string',
-			'nonce'              => 'key',
-		);
-		$this->set_post_data( $key_rules );
-
-		$this->form_data = $this->parse_migration_form_data( $this->state_data['form_data'] );
-
-		global $wpdb;
-
-		if ( $this->state_data['intent'] == 'pull' ) {
-			$return = $this->finalize_migration();
-		} else {
-			do_action( 'wpmdb_migration_complete', 'push', $this->state_data['url'] );
-			$data = $this->filter_post_elements(
-				$this->state_data,
-				array(
-					'remote_state_id',
-					'url',
-					'form_data',
-					'tables',
-					'temp_prefix',
-				)
-			);
-
-			$data['action']   = 'wpmdb_remote_finalize_migration';
-			$data['intent']   = 'pull';
-			$data['prefix']   = $wpdb->base_prefix;
-			$data['type']     = 'push';
-			$data['location'] = home_url();
-			$data['sig']      = $this->create_signature( $data, $this->state_data['key'] );
-			$ajax_url         = $this->ajax_url();
-			$response         = $this->remote_post( $ajax_url, $data, __FUNCTION__ );
-			ob_start();
-			echo esc_html( $response );
-			$this->display_errors();
-			$return = ob_get_clean();
-		}
-
-		$result = $this->end_ajax( $return );
-
-		return $result;
-	}
-
-	/**
-	 * Internal function for finalizing a migration.
-	 *
-	 * @return bool|null
-	 */
-	function finalize_migration() {
-		$this->set_post_data();
-		$tables      = explode( ',', $this->state_data['tables'] );
-		$temp_prefix = $this->state_data['temp_prefix'];
-		$temp_tables = array();
-		$type        = ( isset( $this->state_data['type'] ) ) ? 'push' : 'pull';
-		$location    = ( isset( $this->state_data['location'] ) ) ? $this->state_data['location'] : $this->state_data['url'];
-
-		foreach ( $tables as $table ) {
-			$temp_tables[] = $temp_prefix . apply_filters(
-					'wpmdb_finalize_target_table_name',
-					$table,
-					$type,
-					$this->state_data['site_details']
-				);
-		}
-
-		$sql = "SET FOREIGN_KEY_CHECKS=0;\n";
-
-		$sql .= $this->get_preserved_options_queries( $temp_tables, $type );
-
-		foreach ( $temp_tables as $table ) {
-			$sql .= 'DROP TABLE IF EXISTS ' . $this->backquote( substr( $table, strlen( $temp_prefix ) ) ) . ';';
-			$sql .= "\n";
-			$sql .= 'RENAME TABLE ' . $this->backquote( $table ) . ' TO ' . $this->backquote( substr( $table, strlen( $temp_prefix ) ) ) . ';';
-			$sql .= "\n";
-		}
-
-		$alter_table_name = $this->get_alter_table_name();
-		$sql .= $this->get_alter_queries();
-		$sql .= 'DROP TABLE IF EXISTS ' . $this->backquote( $alter_table_name ) . ";\n";
-
-		$process_chunk_result = $this->process_chunk( $sql );
-		if ( true !== $process_chunk_result ) {
-			$result = $this->end_ajax( $process_chunk_result );
-
-			return $result;
-		}
-
-		if ( ! isset( $this->state_data['location'] ) ) {
-			$data           = array();
-			$data['action'] = 'wpmdb_fire_migration_complete';
-			$data['url']    = home_url();
-			$data['sig']    = $this->create_signature( $data, $this->state_data['key'] );
-			$ajax_url       = $this->ajax_url();
-			$response       = $this->remote_post( $ajax_url, $data, __FUNCTION__ );
-			ob_start();
-			echo esc_html( $response );
-			$this->display_errors();
-			$maybe_errors = trim( ob_get_clean() );
-			if ( false === empty( $maybe_errors ) && '1' !== $maybe_errors ) {
-				$maybe_errors = array( 'wpmdb_error' => 1, 'body' => $maybe_errors );
-				$result       = $this->end_ajax( json_encode( $maybe_errors ) );
-
-				return $result;
-			}
-		}
-
-		do_action( 'wpmdb_migration_complete', $type, $location );
-
-		return true;
-	}
-
-	/**
-	 * Handles the request to flush caches and cleanup migration when pushing or not migrating user tables.
-	 *
-	 * @return bool|null
-	 */
-	function ajax_flush() {
-		$this->check_ajax_referer( 'flush' );
-
-		return $this->ajax_nopriv_flush();
-	}
-
-	/**
-	 * Handles the request to flush caches and cleanup migration when pulling with user tables being migrated.
-	 *
-	 * @return bool|null
-	 */
-	function ajax_nopriv_flush() {
-		$key_rules = array(
-			'action'             => 'key',
-			'migration_state_id' => 'key',
-		);
-		$this->set_post_data( $key_rules );
-
-		if ( $this->state_data['intent'] == 'pull' ) {
-			$return = $this->flush();
-		} else {
-			$data           = array();
-			$data['action'] = 'wpmdb_remote_flush';
-			$data['sig']    = $this->create_signature( $data, $this->state_data['key'] );
-			$ajax_url       = $this->ajax_url();
-			$response       = $this->remote_post( $ajax_url, $data, __FUNCTION__ );
-			ob_start();
-			echo esc_html( $response );
-			$this->display_errors();
-			$return = ob_get_clean();
-		}
-
-		if ( ! $this->migration_state->delete() ) {
-			$this->log_error( 'Could not delete migration state.' );
-		}
-
-		$result = $this->end_ajax( $return );
-
-		return $result;
-	}
-
-	/**
-	 * Flushes the cache and rewrite rules.
-	 *
-	 * @return bool
-	 */
-	function flush() {
-		// flush rewrite rules to prevent 404s and other oddities
-		wp_cache_flush();
-		global $wp_rewrite;
-		$wp_rewrite->init();
-		flush_rewrite_rules( true ); // true = hard refresh, recreates the .htaccess file
-
-		return true;
-	}
-
-	/**
-	 * Returns SQL queries used to preserve options in the
-	 * wp_options or wp_sitemeta tables during a migration.
-	 *
-	 * @param array  $temp_tables
-	 * @param string $intent
-	 *
-	 * @return string DELETE and INSERT SQL queries separated by a newline character (\n).
-	 */
-	function get_preserved_options_queries( $temp_tables, $intent = '' ) {
-		$this->set_post_data();
-		global $wpdb;
-
-		$sql                 = '';
-		$sitemeta_table_name = '';
-		$options_table_names = array();
-
-		$temp_prefix  = $this->state_data['temp_prefix'];
-		$table_prefix = $this->state_data['prefix'];
-		$prefix       = esc_sql( $temp_prefix . $table_prefix );
-
-		foreach ( $temp_tables as $temp_table ) {
-			$table = $wpdb->base_prefix . str_replace( $prefix, '', $temp_table );
-
-			// Get sitemeta table
-			if ( is_multisite() && $this->table_is( 'sitemeta', $table ) ) {
-				$sitemeta_table_name = $temp_table;
-			}
-
-			// Get array of options tables
-			if ( $this->table_is( 'options', $table ) ) {
-				$options_table_names[] = $temp_table;
-			}
-		}
-
-		// Return if multisite but sitemeta and option tables not in migration scope
-		if ( is_multisite() && true === empty( $sitemeta_table_name ) && true === empty( $options_table_names ) ) {
-			return $sql;
-		}
-
-		// Return if options tables not in migration scope for non-multisite.
-		if ( ! is_multisite() && true === empty( $options_table_names ) ) {
-			return $sql;
-		}
-
-		$preserved_options = array(
-			'wpmdb_settings',
-			'wpmdb_error_log',
-			'wpmdb_schema_version',
-			'upload_path',
-			'upload_url_path',
-		);
-
-		$preserved_sitemeta_options = $preserved_options;
-
-		$this->form_data = $this->parse_migration_form_data( $this->state_data['form_data'] );
-
-		if ( false === empty( $this->form_data['keep_active_plugins'] ) ) {
-			$preserved_options[]          = 'active_plugins';
-			$preserved_sitemeta_options[] = 'active_sitewide_plugins';
-		}
-
-		if ( is_multisite() ) {
-			// Get preserved data in site meta table if being replaced.
-			if ( ! empty( $sitemeta_table_name ) ) {
-				$table = $wpdb->base_prefix . str_replace( $prefix, '', $sitemeta_table_name );
-
-				$preserved_migration_state_options = $wpdb->get_results(
-					"SELECT `meta_key` FROM `{$table}` WHERE `meta_key` LIKE '" . WPMDB_Migration_State::OPTION_PREFIX . "%'",
-					OBJECT_K
-				);
-
-				if ( ! empty( $preserved_migration_state_options ) ) {
-					$preserved_sitemeta_options = array_merge( $preserved_sitemeta_options, array_keys( $preserved_migration_state_options ) );
-				}
-
-				$preserved_sitemeta_options         = apply_filters( 'wpmdb_preserved_sitemeta_options', $preserved_sitemeta_options, $intent );
-				$preserved_sitemeta_options_escaped = esc_sql( $preserved_sitemeta_options );
-
-				$preserved_sitemeta_options_data = $wpdb->get_results(
-					sprintf(
-						"SELECT * FROM `{$table}` WHERE `meta_key` IN ('%s')",
-						implode( "','", $preserved_sitemeta_options_escaped )
-					),
-					ARRAY_A
-				);
-
-				$preserved_sitemeta_options_data = apply_filters( 'wpmdb_preserved_sitemeta_options_data', $preserved_sitemeta_options_data, $intent );
-
-				// Create preserved data queries for site meta table
-				foreach ( $preserved_sitemeta_options_data as $option ) {
-					$sql .= $wpdb->prepare( "DELETE FROM `{$sitemeta_table_name}` WHERE `meta_key` = %s;\n", $option['meta_key'] );
-					$sql .= $wpdb->prepare(
-						"INSERT INTO `{$sitemeta_table_name}` ( `meta_id`, `site_id`, `meta_key`, `meta_value` ) VALUES ( NULL , %s, %s, %s );\n",
-						$option['site_id'],
-						$option['meta_key'],
-						$option['meta_value']
-					);
-				}
-			}
-		} else {
-			$preserved_migration_state_options = $wpdb->get_results(
-				"SELECT `option_name` FROM `{$wpdb->options}` WHERE `option_name` LIKE '" . WPMDB_Migration_State::OPTION_PREFIX . "%'",
-				OBJECT_K
-			);
-
-			if ( ! empty( $preserved_migration_state_options ) ) {
-				$preserved_options = array_merge( $preserved_options, array_keys( $preserved_migration_state_options ) );
-			}
-		}
-
-		// Get preserved data in options tables if being replaced.
-		if ( ! empty( $options_table_names ) ) {
-			$preserved_options         = apply_filters( 'wpmdb_preserved_options', $preserved_options, $intent );
-			$preserved_options_escaped = esc_sql( $preserved_options );
-
-			$preserved_options_data = array();
-
-			// Get preserved data in options tables
-			foreach ( $options_table_names as $option_table ) {
-				$table = $wpdb->base_prefix . str_replace( $prefix, '', $option_table );
-
-				$preserved_options_data[ $option_table ] = $wpdb->get_results(
-					sprintf(
-						"SELECT * FROM `{$table}` WHERE `option_name` IN ('%s')",
-						implode( "','", $preserved_options_escaped )
-					),
-					ARRAY_A
-				);
-			}
-
-			$preserved_options_data = apply_filters( 'wpmdb_preserved_options_data', $preserved_options_data, $intent );
-
-			// Create preserved data queries for options tables
-			foreach ( $preserved_options_data as $key => $value ) {
-				if ( false === empty( $value ) ) {
-					foreach ( $value as $option ) {
-						$sql .= $wpdb->prepare(
-							"DELETE FROM `{$key}` WHERE `option_name` = %s;\n",
-							$option['option_name']
-						);
-
-						$sql .= $wpdb->prepare(
-							"INSERT INTO `{$key}` ( `option_id`, `option_name`, `option_value`, `autoload` ) VALUES ( NULL , %s, %s, %s );\n",
-							$option['option_name'],
-							$option['option_value'],
-							$option['autoload']
-						);
-					}
-				}
-			}
-		}
-
-		return $sql;
-	}
-
-	/**
 	 * Handler for the ajax request to process a chunk of data (e.g. SQL inserts).
 	 *
 	 * @return bool|null
@@ -1682,20 +1339,6 @@ class WPMDBPro extends WPMDB {
 		$result               = $this->end_ajax( $process_chunk_result );
 
 		return $result;
-	}
-
-	function delete_temporary_tables( $prefix ) {
-		$tables         = $this->get_tables();
-		$delete_queries = '';
-
-		foreach ( $tables as $table ) {
-			if ( 0 !== strpos( $table, $prefix ) ) {
-				continue;
-			}
-			$delete_queries .= sprintf( "DROP TABLE %s;\n", $this->backquote( $table ) );
-		}
-
-		$this->process_chunk( $delete_queries );
 	}
 
 	function get_sensible_pull_limit() {
