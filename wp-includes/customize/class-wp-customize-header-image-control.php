@@ -102,16 +102,16 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 
 			<# } else { #>
 
+			<# if (data.type === 'uploaded') { #>
+				<button type="button" class="dashicons dashicons-no close"><span class="screen-reader-text"><?php _e( 'Remove image' ); ?></span></button>
+			<# } #>
+
 			<button type="button" class="choice thumbnail"
 				data-customize-image-value="{{{data.header.url}}}"
 				data-customize-header-image-data="{{JSON.stringify(data.header)}}">
 				<span class="screen-reader-text"><?php _e( 'Set image' ); ?></span>
 				<img src="{{{data.header.thumbnail_url}}}" alt="{{{data.header.alt_text || data.header.description}}}">
 			</button>
-
-			<# if ( data.type === 'uploaded' ) { #>
-				<button type="button" class="dashicons dashicons-no close"><span class="screen-reader-text"><?php _e( 'Remove image' ); ?></span></button>
-			<# } #>
 
 			<# } #>
 		</script>
@@ -121,23 +121,30 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 				<# if (data.random) { #>
 
 			<div class="placeholder">
-				<span class="dashicons dashicons-randomize dice"></span>
-				<# if ( data.type === 'uploaded' ) { #>
-					<?php _e( 'Randomizing uploaded headers' ); ?>
-				<# } else if ( data.type === 'default' ) { #>
-					<?php _e( 'Randomizing suggested headers' ); ?>
-				<# } #>
+				<div class="inner">
+					<span><span class="dashicons dashicons-randomize dice"></span>
+					<# if ( data.type === 'uploaded' ) { #>
+						<?php _e( 'Randomizing uploaded headers' ); ?>
+					<# } else if ( data.type === 'default' ) { #>
+						<?php _e( 'Randomizing suggested headers' ); ?>
+					<# } #>
+					</span>
+				</div>
 			</div>
 
 				<# } else { #>
 
-			<img src="{{{data.header.thumbnail_url}}}" alt="{{{data.header.alt_text || data.header.description}}}" />
+			<img src="{{{data.header.thumbnail_url}}}" alt="{{{data.header.alt_text || data.header.description}}}" tabindex="0"/>
 
 				<# } #>
 			<# } else { #>
 
 			<div class="placeholder">
-				<?php _e( 'No image set' ); ?>
+				<div class="inner">
+					<span>
+						<?php _e( 'No image set' ); ?>
+					</span>
+				</div>
 			</div>
 
 			<# } #>
@@ -166,15 +173,9 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 		$height = absint( get_theme_support( 'custom-header', 'height' ) );
 		?>
 		<div class="customize-control-content">
-			<?php if ( current_theme_supports( 'custom-header', 'video' ) ) {
-				echo '<span class="customize-control-title">' . $this->label . '</span>';
-			} ?>
-			<div class="customize-control-notifications-container"></div>
-			<p class="customizer-section-intro customize-control-description">
+			<p class="customizer-section-intro">
 				<?php
-				if ( current_theme_supports( 'custom-header', 'video' ) ) {
-					_e( 'While you can crop images to your liking after clicking <strong>Add new image</strong>, we recommend matching the size of your video.' );
-				} elseif ( $width && $height ) {
+				if ( $width && $height ) {
 					/* translators: %s: header size in pixels */
 					printf( __( 'While you can crop images to your liking after clicking <strong>Add new image</strong>, your theme recommends a header size of %s pixels.' ),
 						sprintf( '<strong>%s &times; %s</strong>', $width, $height )

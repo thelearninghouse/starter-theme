@@ -49,19 +49,12 @@ class Walker_Page extends Walker {
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int    $depth  Optional. Depth of page. Used for padding. Default 0.
-	 * @param array  $args   Optional. Arguments for outputting the next level.
+	 * @param array  $args   Optional. Arguments for outputing the next level.
 	 *                       Default empty array.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
-		if ( 'preserve' === $args['item_spacing'] ) {
-			$t = "\t";
-			$n = "\n";
-		} else {
-			$t = '';
-			$n = '';
-		}
-		$indent = str_repeat( $t, $depth );
-		$output .= "{$n}{$indent}<ul class='children'>{$n}";
+		$indent = str_repeat("\t", $depth);
+		$output .= "\n$indent<ul class='children'>\n";
 	}
 
 	/**
@@ -78,15 +71,8 @@ class Walker_Page extends Walker {
 	 *                       Default empty array.
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
-		if ( 'preserve' === $args['item_spacing'] ) {
-			$t = "\t";
-			$n = "\n";
-		} else {
-			$t = '';
-			$n = '';
-		}
-		$indent = str_repeat( $t, $depth );
-		$output .= "{$indent}</ul>{$n}";
+		$indent = str_repeat("\t", $depth);
+		$output .= "$indent</ul>\n";
 	}
 
 	/**
@@ -103,15 +89,8 @@ class Walker_Page extends Walker {
 	 * @param int     $current_page Optional. Page ID. Default 0.
 	 */
 	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
-		if ( 'preserve' === $args['item_spacing'] ) {
-			$t = "\t";
-			$n = "\n";
-		} else {
-			$t = '';
-			$n = '';
-		}
 		if ( $depth ) {
-			$indent = str_repeat( $t, $depth );
+			$indent = str_repeat( "\t", $depth );
 		} else {
 			$indent = '';
 		}
@@ -137,7 +116,7 @@ class Walker_Page extends Walker {
 		}
 
 		/**
-		 * Filters the list of CSS classes to include with each page item in the list.
+		 * Filter the list of CSS classes to include with each page item in the list.
 		 *
 		 * @since 2.8.0
 		 *
@@ -196,14 +175,7 @@ class Walker_Page extends Walker {
 	 * @param array   $args   Optional. Array of arguments. Default empty array.
 	 */
 	public function end_el( &$output, $page, $depth = 0, $args = array() ) {
-		if ( 'preserve' === $args['item_spacing'] ) {
-			$t = "\t";
-			$n = "\n";
-		} else {
-			$t = '';
-			$n = '';
-		}
-		$output .= "</li>{$n}";
+		$output .= "</li>\n";
 	}
 
 }

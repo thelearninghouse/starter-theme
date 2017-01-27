@@ -26,7 +26,7 @@ class WP {
 	 * @access public
 	 * @var array
 	 */
-	public $private_query_vars = array( 'offset', 'posts_per_page', 'posts_per_archive_page', 'showposts', 'nopaging', 'post_type', 'post_status', 'category__in', 'category__not_in', 'category__and', 'tag__in', 'tag__not_in', 'tag__and', 'tag_slug__in', 'tag_slug__and', 'tag_id', 'post_mime_type', 'perm', 'comments_per_page', 'post__in', 'post__not_in', 'post_parent', 'post_parent__in', 'post_parent__not_in', 'title', 'fields' );
+	public $private_query_vars = array( 'offset', 'posts_per_page', 'posts_per_archive_page', 'showposts', 'nopaging', 'post_type', 'post_status', 'category__in', 'category__not_in', 'category__and', 'tag__in', 'tag__not_in', 'tag__and', 'tag_slug__in', 'tag_slug__and', 'tag_id', 'post_mime_type', 'perm', 'comments_per_page', 'post__in', 'post__not_in', 'post_parent', 'post_parent__in', 'post_parent__not_in', 'title' );
 
 	/**
 	 * Extra query variables set by the user.
@@ -56,7 +56,7 @@ class WP {
 	public $query_string;
 
 	/**
-	 * The request path, e.g. 2015/05/06.
+	 * Permalink or requested URI.
 	 *
 	 * @since 2.0.0
 	 * @access public
@@ -146,7 +146,7 @@ class WP {
 		global $wp_rewrite;
 
 		/**
-		 * Filters whether to parse the request.
+		 * Filter whether to parse the request.
 		 *
 		 * @since 3.5.0
 		 *
@@ -202,19 +202,18 @@ class WP {
 			// The requested permalink is in $pathinfo for path info requests and
 			//  $req_uri for other requests.
 			if ( ! empty($pathinfo) && !preg_match('|^.*' . $wp_rewrite->index . '$|', $pathinfo) ) {
-				$requested_path = $pathinfo;
+				$request = $pathinfo;
 			} else {
 				// If the request uri is the index, blank it out so that we don't try to match it against a rule.
 				if ( $req_uri == $wp_rewrite->index )
 					$req_uri = '';
-				$requested_path = $req_uri;
+				$request = $req_uri;
 			}
-			$requested_file = $req_uri;
 
-			$this->request = $requested_path;
+			$this->request = $request;
 
 			// Look for matches.
-			$request_match = $requested_path;
+			$request_match = $request;
 			if ( empty( $request_match ) ) {
 				// An empty request could only match against ^$ regex
 				if ( isset( $rewrite['$'] ) ) {
@@ -224,9 +223,9 @@ class WP {
 				}
 			} else {
 				foreach ( (array) $rewrite as $match => $query ) {
-					// If the requested file is the anchor of the match, prepend it to the path info.
-					if ( ! empty($requested_file) && strpos($match, $requested_file) === 0 && $requested_file != $requested_path )
-						$request_match = $requested_file . '/' . $requested_path;
+					// If the requesting file is the anchor of the match, prepend it to the path info.
+					if ( ! empty($req_uri) && strpos($match, $req_uri) === 0 && $req_uri != $request )
+						$request_match = $req_uri . '/' . $request;
 
 					if ( preg_match("#^$match#", $request_match, $matches) ||
 						preg_match("#^$match#", urldecode($request_match), $matches) ) {
@@ -270,7 +269,7 @@ class WP {
 			}
 
 			// If req_uri is empty or if it is a request for ourself, unset error.
-			if ( empty($requested_path) || $requested_file == $self || strpos($_SERVER['PHP_SELF'], 'wp-admin/') !== false ) {
+			if ( empty($request) || $req_uri == $self || strpos($_SERVER['PHP_SELF'], 'wp-admin/') !== false ) {
 				unset( $error, $_GET['error'] );
 
 				if ( isset($perma_query_vars) && strpos($_SERVER['PHP_SELF'], 'wp-admin/') !== false )
@@ -281,7 +280,7 @@ class WP {
 		}
 
 		/**
-		 * Filters the query variables whitelist before processing.
+		 * Filter the query variables whitelist before processing.
 		 *
 		 * Allows (publicly allowed) query vars to be added, removed, or changed prior
 		 * to executing the query. Needed to allow custom rewrite rules using your own arguments
@@ -368,7 +367,7 @@ class WP {
 			$this->query_vars['error'] = $error;
 
 		/**
-		 * Filters the array of parsed query variables.
+		 * Filter the array of parsed query variables.
 		 *
 		 * @since 2.1.0
 		 *
@@ -422,30 +421,22 @@ class WP {
 			}
 			$headers['Content-Type'] = feed_content_type( $type ) . '; charset=' . get_option( 'blog_charset' );
 
-			// We're showing a feed, so WP is indeed the only thing that last changed.
-			if ( ! empty( $this->query_vars['withcomments'] )
-			     || false !== strpos( $this->query_vars['feed'], 'comments-' )
-			     || ( empty( $this->query_vars['withoutcomments'] )
-			          && ( ! empty( $this->query_vars['p'] )
-			               || ! empty( $this->query_vars['name'] )
-			               || ! empty( $this->query_vars['page_id'] )
-			               || ! empty( $this->query_vars['pagename'] )
-			               || ! empty( $this->query_vars['attachment'] )
-			               || ! empty( $this->query_vars['attachment_id'] )
-			          )
-			     )
-			) {
-				$wp_last_modified = mysql2date( 'D, d M Y H:i:s', get_lastcommentmodified( 'GMT' ), false );
-			} else {
-				$wp_last_modified = mysql2date( 'D, d M Y H:i:s', get_lastpostmodified( 'GMT' ), false );
-			}
-
-			if ( ! $wp_last_modified ) {
-				$wp_last_modified = date( 'D, d M Y H:i:s' );
-			}
-
-			$wp_last_modified .= ' GMT';
-
+			// We're showing a feed, so WP is indeed the only thing that last changed
+			if ( !empty($this->query_vars['withcomments'])
+				|| false !== strpos( $this->query_vars['feed'], 'comments-' )
+				|| ( empty($this->query_vars['withoutcomments'])
+					&& ( !empty($this->query_vars['p'])
+						|| !empty($this->query_vars['name'])
+						|| !empty($this->query_vars['page_id'])
+						|| !empty($this->query_vars['pagename'])
+						|| !empty($this->query_vars['attachment'])
+						|| !empty($this->query_vars['attachment_id'])
+					)
+				)
+			)
+				$wp_last_modified = mysql2date('D, d M Y H:i:s', get_lastcommentmodified('GMT'), 0).' GMT';
+			else
+				$wp_last_modified = mysql2date('D, d M Y H:i:s', get_lastpostmodified('GMT'), 0).' GMT';
 			$wp_etag = '"' . md5($wp_last_modified) . '"';
 			$headers['Last-Modified'] = $wp_last_modified;
 			$headers['ETag'] = $wp_etag;
@@ -471,7 +462,7 @@ class WP {
 		}
 
 		/**
-		 * Filters the HTTP headers before they're sent to the browser.
+		 * Filter the HTTP headers before they're sent to the browser.
 		 *
 		 * @since 2.8.0
 		 *
@@ -521,8 +512,8 @@ class WP {
 	/**
 	 * Sets the query string property based off of the query variable property.
 	 *
-	 * The {@see 'query_string'} filter is deprecated, but still works. Plugins should
-	 * use the {@see 'request'} filter instead.
+	 * The 'query_string' filter is deprecated, but still works. Plugins should
+	 * use the 'request' filter instead.
 	 *
 	 * @since 2.0.0
 	 * @access public
@@ -540,7 +531,7 @@ class WP {
 
 		if ( has_filter( 'query_string' ) ) {  // Don't bother filtering and parsing if no plugins are hooked in.
 			/**
-			 * Filters the query string before parsing.
+			 * Filter the query string before parsing.
 			 *
 			 * @since 1.5.0
 			 * @deprecated 2.1.0 Use 'query_vars' or 'request' filters instead.
@@ -639,7 +630,7 @@ class WP {
 		global $wp_query;
 
 		/**
-		 * Filters whether to short-circuit default header status handling.
+		 * Filter whether to short-circuit default header status handling.
 		 *
 		 * Returning a non-false value from the filter will short-circuit the handling
 		 * and return early.
@@ -670,7 +661,7 @@ class WP {
 
 				// Only set X-Pingback for single posts that allow pings.
 				if ( $p && pings_open( $p ) ) {
-					@header( 'X-Pingback: ' . get_bloginfo( 'pingback_url', 'display' ) );
+					@header( 'X-Pingback: ' . get_bloginfo( 'pingback_url' ) );
 				}
 
 				// check for paged content that exceeds the max number of pages
@@ -719,14 +710,14 @@ class WP {
 	/**
 	 * Sets up all of the variables required by the WordPress environment.
 	 *
-	 * The action {@see 'wp'} has one parameter that references the WP object. It
+	 * The action 'wp' has one parameter that references the WP object. It
 	 * allows for accessing the properties and methods to further manipulate the
 	 * object.
 	 *
 	 * @since 2.0.0
 	 * @access public
 	 *
-	 * @param string|array $query_args Passed to parse_request().
+	 * @param string|array $query_args Passed to {@link parse_request()}
 	 */
 	public function main($query_args = '') {
 		$this->init();
@@ -744,5 +735,95 @@ class WP {
 		 * @param WP &$this Current WordPress environment instance (passed by reference).
 		 */
 		do_action_ref_array( 'wp', array( &$this ) );
+	}
+}
+
+/**
+ * Helper class to remove the need to use eval to replace $matches[] in query strings.
+ *
+ * @since 2.9.0
+ */
+class WP_MatchesMapRegex {
+	/**
+	 * store for matches
+	 *
+	 * @access private
+	 * @var array
+	 */
+	private $_matches;
+
+	/**
+	 * store for mapping result
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $output;
+
+	/**
+	 * subject to perform mapping on (query string containing $matches[] references
+	 *
+	 * @access private
+	 * @var string
+	 */
+	private $_subject;
+
+	/**
+	 * regexp pattern to match $matches[] references
+	 *
+	 * @var string
+	 */
+	public $_pattern = '(\$matches\[[1-9]+[0-9]*\])'; // magic number
+
+	/**
+	 * constructor
+	 *
+	 * @param string $subject subject if regex
+	 * @param array  $matches data to use in map
+	 */
+	public function __construct($subject, $matches) {
+		$this->_subject = $subject;
+		$this->_matches = $matches;
+		$this->output = $this->_map();
+	}
+
+	/**
+	 * Substitute substring matches in subject.
+	 *
+	 * static helper function to ease use
+	 *
+	 * @static
+	 * @access public
+	 *
+	 * @param string $subject subject
+	 * @param array  $matches data used for substitution
+	 * @return string
+	 */
+	public static function apply($subject, $matches) {
+		$oSelf = new WP_MatchesMapRegex($subject, $matches);
+		return $oSelf->output;
+	}
+
+	/**
+	 * do the actual mapping
+	 *
+	 * @access private
+	 * @return string
+	 */
+	private function _map() {
+		$callback = array($this, 'callback');
+		return preg_replace_callback($this->_pattern, $callback, $this->_subject);
+	}
+
+	/**
+	 * preg_replace_callback hook
+	 *
+	 * @access public
+	 * @param  array $matches preg_replace regexp matches
+	 * @return string
+	 */
+	public function callback($matches) {
+		$index = intval(substr($matches[0], 9, -1));
+		return ( isset( $this->_matches[$index] ) ? urlencode($this->_matches[$index]) : '' );
 	}
 }

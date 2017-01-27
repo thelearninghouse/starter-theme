@@ -55,7 +55,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	}
 
 	/**
-	 * Filters the locale requested for WordPress core translations.
+	 * Filter the locale requested for WordPress core translations.
 	 *
 	 * @since 2.8.0
 	 *
@@ -120,14 +120,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 
 	$response = wp_remote_post( $url, $options );
 	if ( $ssl && is_wp_error( $response ) ) {
-		trigger_error(
-			sprintf(
-				/* translators: %s: support forums URL */
-				__( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="%s">support forums</a>.' ),
-				__( 'https://wordpress.org/support/' )
-			) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ),
-			headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE
-		);
+		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>.' ) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ), headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
 		$response = wp_remote_post( $http_url, $options );
 	}
 
@@ -272,7 +265,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 	$locales = array_values( get_available_languages() );
 
 	/**
-	 * Filters the locales requested for plugin translations.
+	 * Filter the locales requested for plugin translations.
 	 *
 	 * @since 3.7.0
 	 * @since 4.5.0 The default value of the `$locales` parameter changed to include all locales.
@@ -310,14 +303,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 
 	$raw_response = wp_remote_post( $url, $options );
 	if ( $ssl && is_wp_error( $raw_response ) ) {
-		trigger_error(
-			sprintf(
-				/* translators: %s: support forums URL */
-				__( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="%s">support forums</a>.' ),
-				__( 'https://wordpress.org/support/' )
-			) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ),
-			headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE
-		);
+		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>.' ) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ), headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
 		$raw_response = wp_remote_post( $http_url, $options );
 	}
 
@@ -453,7 +439,7 @@ function wp_update_themes( $extra_stats = array() ) {
 	$locales = array_values( get_available_languages() );
 
 	/**
-	 * Filters the locales requested for theme translations.
+	 * Filter the locales requested for theme translations.
 	 *
 	 * @since 3.7.0
 	 * @since 4.5.0 The default value of the `$locales` parameter changed to include all locales.
@@ -490,14 +476,7 @@ function wp_update_themes( $extra_stats = array() ) {
 
 	$raw_response = wp_remote_post( $url, $options );
 	if ( $ssl && is_wp_error( $raw_response ) ) {
-		trigger_error(
-			sprintf(
-				/* translators: %s: support forums URL */
-				__( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="%s">support forums</a>.' ),
-				__( 'https://wordpress.org/support/' )
-			) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ),
-			headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE
-		);
+		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>.' ) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ), headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
 		$raw_response = wp_remote_post( $http_url, $options );
 	}
 
@@ -587,27 +566,20 @@ function wp_get_update_data() {
 
 	$counts['total'] = $counts['plugins'] + $counts['themes'] + $counts['wordpress'] + $counts['translations'];
 	$titles = array();
-	if ( $counts['wordpress'] ) {
-		/* translators: 1: Number of updates available to WordPress */
+	if ( $counts['wordpress'] )
 		$titles['wordpress'] = sprintf( __( '%d WordPress Update'), $counts['wordpress'] );
-	}
-	if ( $counts['plugins'] ) {
-		/* translators: 1: Number of updates available to plugins */
+	if ( $counts['plugins'] )
 		$titles['plugins'] = sprintf( _n( '%d Plugin Update', '%d Plugin Updates', $counts['plugins'] ), $counts['plugins'] );
-	}
-	if ( $counts['themes'] ) {
-		/* translators: 1: Number of updates available to themes */
+	if ( $counts['themes'] )
 		$titles['themes'] = sprintf( _n( '%d Theme Update', '%d Theme Updates', $counts['themes'] ), $counts['themes'] );
-	}
-	if ( $counts['translations'] ) {
+	if ( $counts['translations'] )
 		$titles['translations'] = __( 'Translation Updates' );
-	}
 
 	$update_title = $titles ? esc_attr( implode( ', ', $titles ) ) : '';
 
 	$update_data = array( 'counts' => $counts, 'title' => $update_title );
 	/**
-	 * Filters the returned array of update data for plugins, themes, and WordPress core.
+	 * Filter the returned array of update data for plugins, themes, and WordPress core.
 	 *
 	 * @since 3.5.0
 	 *
@@ -706,24 +678,27 @@ function wp_clean_update_cache() {
 	delete_site_transient( 'update_core' );
 }
 
-if ( ( ! is_main_site() && ! is_network_admin() ) || wp_doing_ajax() ) {
+if ( ( ! is_main_site() && ! is_network_admin() ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 	return;
 }
 
 add_action( 'admin_init', '_maybe_update_core' );
 add_action( 'wp_version_check', 'wp_version_check' );
+add_action( 'upgrader_process_complete', 'wp_version_check', 10, 0 );
 
 add_action( 'load-plugins.php', 'wp_update_plugins' );
 add_action( 'load-update.php', 'wp_update_plugins' );
 add_action( 'load-update-core.php', 'wp_update_plugins' );
 add_action( 'admin_init', '_maybe_update_plugins' );
 add_action( 'wp_update_plugins', 'wp_update_plugins' );
+add_action( 'upgrader_process_complete', 'wp_update_plugins', 10, 0 );
 
 add_action( 'load-themes.php', 'wp_update_themes' );
 add_action( 'load-update.php', 'wp_update_themes' );
 add_action( 'load-update-core.php', 'wp_update_themes' );
 add_action( 'admin_init', '_maybe_update_themes' );
 add_action( 'wp_update_themes', 'wp_update_themes' );
+add_action( 'upgrader_process_complete', 'wp_update_themes', 10, 0 );
 
 add_action( 'update_option_WPLANG', 'wp_clean_update_cache' , 10, 0 );
 

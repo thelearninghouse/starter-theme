@@ -114,7 +114,7 @@ class WP_REST_Server {
 	 */
 	public function check_authentication() {
 		/**
-		 * Filters REST authentication errors.
+		 * Pass an authentication error to the API
 		 *
 		 * This is used to pass a WP_Error from an authentication method back to
 		 * the API.
@@ -226,21 +226,15 @@ class WP_REST_Server {
 	public function serve_request( $path = null ) {
 		$content_type = isset( $_GET['_jsonp'] ) ? 'application/javascript' : 'application/json';
 		$this->send_header( 'Content-Type', $content_type . '; charset=' . get_option( 'blog_charset' ) );
-		$this->send_header( 'X-Robots-Tag', 'noindex' );
-
-		$api_root = get_rest_url();
-		if ( ! empty( $api_root ) ) {
-			$this->send_header( 'Link', '<' . esc_url_raw( $api_root ) . '>; rel="https://api.w.org/"' );
-		}
 
 		/*
 		 * Mitigate possible JSONP Flash attacks.
 		 *
-		 * https://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/
+		 * http://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/
 		 */
 		$this->send_header( 'X-Content-Type-Options', 'nosniff' );
 		$this->send_header( 'Access-Control-Expose-Headers', 'X-WP-Total, X-WP-TotalPages' );
-		$this->send_header( 'Access-Control-Allow-Headers', 'Authorization, Content-Type' );
+		$this->send_header( 'Access-Control-Allow-Headers', 'Authorization' );
 
 		/**
 		 * Send nocache headers on authenticated requests.
@@ -257,17 +251,16 @@ class WP_REST_Server {
 		}
 
 		/**
-		 * Filters whether the REST API is enabled.
+		 * Filter whether the REST API is enabled.
 		 *
 		 * @since 4.4.0
-		 * @deprecated 4.7.0 Use the rest_authentication_errors filter to restrict access to the API
 		 *
 		 * @param bool $rest_enabled Whether the REST API is enabled. Default true.
 		 */
-		apply_filters_deprecated( 'rest_enabled', array( true ), '4.7.0', 'rest_authentication_errors', __( 'The REST API can no longer be completely disabled, the rest_authentication_errors can be used to restrict access to the API, instead.' ) );
+		$enabled = apply_filters( 'rest_enabled', true );
 
 		/**
-		 * Filters whether jsonp is enabled.
+		 * Filter whether jsonp is enabled.
 		 *
 		 * @since 4.4.0
 		 *
@@ -277,15 +270,25 @@ class WP_REST_Server {
 
 		$jsonp_callback = null;
 
+		if ( ! $enabled ) {
+			echo $this->json_error( 'rest_disabled', __( 'The REST API is disabled on this site.' ), 404 );
+			return false;
+		}
 		if ( isset( $_GET['_jsonp'] ) ) {
 			if ( ! $jsonp_enabled ) {
 				echo $this->json_error( 'rest_callback_disabled', __( 'JSONP support is disabled on this site.' ), 400 );
 				return false;
 			}
 
-			$jsonp_callback = $_GET['_jsonp'];
-			if ( ! wp_check_jsonp_callback( $jsonp_callback ) ) {
-				echo $this->json_error( 'rest_callback_invalid', __( 'Invalid JSONP callback function.' ), 400 );
+			// Check for invalid characters (only alphanumeric allowed).
+			if ( is_string( $_GET['_jsonp'] ) ) {
+				$jsonp_callback = preg_replace( '/[^\w\.]/', '', wp_unslash( $_GET['_jsonp'] ), -1, $illegal_char_count );
+				if ( 0 !== $illegal_char_count ) {
+					$jsonp_callback = null;
+				}
+			}
+			if ( null === $jsonp_callback ) {
+				echo $this->json_error( 'rest_callback_invalid', __( 'The JSONP callback function is invalid.' ), 400 );
 				return false;
 			}
 		}
@@ -332,7 +335,7 @@ class WP_REST_Server {
 		}
 
 		/**
-		 * Filters the API response.
+		 * Filter the API response.
 		 *
 		 * Allows modification of the response before returning.
 		 *
@@ -358,7 +361,7 @@ class WP_REST_Server {
 		$this->set_status( $code );
 
 		/**
-		 * Filters whether the request has already been served.
+		 * Filter whether the request has already been served.
 		 *
 		 * Allow sending the request manually - by returning true, the API result
 		 * will not be sent to the client.
@@ -391,8 +394,8 @@ class WP_REST_Server {
 			}
 
 			if ( $jsonp_callback ) {
-				// Prepend '/**/' to mitigate possible JSONP Flash attacks.
-				// https://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/
+				// Prepend '/**/' to mitigate possible JSONP Flash attacks
+				// http://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/
 				echo '/**/' . $jsonp_callback . '(' . $result . ')';
 			} else {
 				echo $result;
@@ -502,7 +505,7 @@ class WP_REST_Server {
 					continue;
 				}
 
-				// Relation now changes from '$uri' to '$curie:$relation'.
+				// Relation now changes from '$uri' to '$curie:$relation'
 				$rel_regex = str_replace( '\{rel\}', '(.+)', preg_quote( $curie['href'], '!' ) );
 				preg_match( '!' . $rel_regex . '!', $rel, $matches );
 				if ( $matches ) {
@@ -582,7 +585,6 @@ class WP_REST_Server {
 
 			// Determine if any real links were found.
 			$has_links = count( array_filter( $embeds ) );
-
 			if ( $has_links ) {
 				$embedded[ $rel ] = $embeds;
 			}
@@ -617,7 +619,7 @@ class WP_REST_Server {
 		);
 
 		/**
-		 * Filters the enveloped form of a response.
+		 * Filter the enveloped form of a response.
 		 *
 		 * @since 4.4.0
 		 *
@@ -639,7 +641,7 @@ class WP_REST_Server {
 	 * @param string $namespace  Namespace.
 	 * @param string $route      The REST route.
 	 * @param array  $route_args Route arguments.
-	 * @param bool   $override   Optional. Whether the route should be overridden if it already exists.
+	 * @param bool   $override   Optional. Whether the route should be overriden if it already exists.
 	 *                           Default false.
 	 */
 	public function register_route( $namespace, $route, $route_args, $override = false ) {
@@ -697,7 +699,7 @@ class WP_REST_Server {
 	public function get_routes() {
 
 		/**
-		 * Filters the array of available endpoints.
+		 * Filter the array of available endpoints.
 		 *
 		 * @since 4.4.0
 		 *
@@ -742,7 +744,7 @@ class WP_REST_Server {
 				// Allow comma-separated HTTP methods.
 				if ( is_string( $handler['methods'] ) ) {
 					$methods = explode( ',', $handler['methods'] );
-				} elseif ( is_array( $handler['methods'] ) ) {
+				} else if ( is_array( $handler['methods'] ) ) {
 					$methods = $handler['methods'];
 				} else {
 					$methods = array();
@@ -756,7 +758,6 @@ class WP_REST_Server {
 				}
 			}
 		}
-
 		return $endpoints;
 	}
 
@@ -800,7 +801,7 @@ class WP_REST_Server {
 	 */
 	public function dispatch( $request ) {
 		/**
-		 * Filters the pre-calculated result of a REST dispatch request.
+		 * Filter the pre-calculated result of a REST dispatch request.
 		 *
 		 * Allow hijacking the request before dispatching by returning a non-empty. The returned value
 		 * will be used to serve the request instead.
@@ -852,6 +853,8 @@ class WP_REST_Server {
 					$request->set_url_params( $args );
 					$request->set_attributes( $handler );
 
+					$request->sanitize_params();
+
 					$defaults = array();
 
 					foreach ( $handler['args'] as $arg => $options ) {
@@ -865,31 +868,8 @@ class WP_REST_Server {
 					$check_required = $request->has_valid_params();
 					if ( is_wp_error( $check_required ) ) {
 						$response = $check_required;
-					} else {
-						$check_sanitized = $request->sanitize_params();
-						if ( is_wp_error( $check_sanitized ) ) {
-							$response = $check_sanitized;
-						}
 					}
 				}
-
-				/**
-				 * Filters the response before executing any REST API callbacks.
-				 *
-				 * Allows plugins to perform additional validation after a
-				 * request is initialized and matched to a registered route,
-				 * but before it is executed.
-				 *
-				 * Note that this filter will not be called for requests that
-				 * fail to authenticate or match to a registered route.
-				 *
-				 * @since 4.7.0
-				 *
-				 * @param WP_HTTP_Response $response Result to send to the client. Usually a WP_REST_Response.
-				 * @param WP_REST_Server   $handler  ResponseHandler instance (usually WP_REST_Server).
-				 * @param WP_REST_Request  $request  Request used to generate the response.
-				 */
-				$response = apply_filters( 'rest_request_before_callbacks', $response, $handler, $request );
 
 				if ( ! is_wp_error( $response ) ) {
 					// Check permission specified on the route.
@@ -898,15 +878,15 @@ class WP_REST_Server {
 
 						if ( is_wp_error( $permission ) ) {
 							$response = $permission;
-						} elseif ( false === $permission || null === $permission ) {
-							$response = new WP_Error( 'rest_forbidden', __( 'Sorry, you are not allowed to do that.' ), array( 'status' => 403 ) );
+						} else if ( false === $permission || null === $permission ) {
+							$response = new WP_Error( 'rest_forbidden', __( "You don't have permission to do this." ), array( 'status' => 403 ) );
 						}
 					}
 				}
 
 				if ( ! is_wp_error( $response ) ) {
 					/**
-					 * Filters the REST dispatch request result.
+					 * Filter the REST dispatch request result.
 					 *
 					 * Allow plugins to override dispatching the request.
 					 *
@@ -927,28 +907,6 @@ class WP_REST_Server {
 						$response = call_user_func( $callback, $request );
 					}
 				}
-
-				/**
-				 * Filters the response immediately after executing any REST API
-				 * callbacks.
-				 *
-				 * Allows plugins to perform any needed cleanup, for example,
-				 * to undo changes made during the {@see 'rest_request_before_callbacks'}
-				 * filter.
-				 *
-				 * Note that this filter will not be called for requests that
-				 * fail to authenticate or match to a registered route.
-				 *
-				 * Note that an endpoint's `permission_callback` can still be
-				 * called after this filter - see `rest_send_allow_header()`.
-				 *
-				 * @since 4.7.0
-				 *
-				 * @param WP_HTTP_Response $response Result to send to the client. Usually a WP_REST_Response.
-				 * @param WP_REST_Server   $handler  ResponseHandler instance (usually WP_REST_Server).
-				 * @param WP_REST_Request  $request  Request used to generate the response.
-				 */
-				$response = apply_filters( 'rest_request_after_callbacks', $response, $handler, $request );
 
 				if ( is_wp_error( $response ) ) {
 					$response = $this->error_to_response( $response );
@@ -1024,7 +982,7 @@ class WP_REST_Server {
 		$response->add_link( 'help', 'http://v2.wp-api.org/' );
 
 		/**
-		 * Filters the API root index data.
+		 * Filter the API root index data.
 		 *
 		 * This contains the data describing the API. This includes information
 		 * about supported authentication schemes, supported namespaces, routes
@@ -1067,7 +1025,7 @@ class WP_REST_Server {
 		$response->add_link( 'up', rest_url( '/' ) );
 
 		/**
-		 * Filters the namespace index data.
+		 * Filter the namespace index data.
 		 *
 		 * This typically is just the route data for the namespace, but you can
 		 * add any data you'd like here.
@@ -1101,7 +1059,7 @@ class WP_REST_Server {
 			}
 
 			/**
-			 * Filters the REST endpoint data.
+			 * Filter the REST endpoint data.
 			 *
 			 * @since 4.4.0
 			 *
@@ -1111,7 +1069,7 @@ class WP_REST_Server {
 		}
 
 		/**
-		 * Filters the publicly-visible data for routes.
+		 * Filter the publicly-visible data for routes.
 		 *
 		 * This data is exposed on indexes and can be used by clients or
 		 * developers to investigate the site and find out how to use it. It
@@ -1182,12 +1140,6 @@ class WP_REST_Server {
 					}
 					if ( isset( $opts['description'] ) ) {
 						$arg_data['description'] = $opts['description'];
-					}
-					if ( isset( $opts['type'] ) ) {
-						$arg_data['type'] = $opts['type'];
-					}
-					if ( isset( $opts['items'] ) ) {
-						$arg_data['items'] = $opts['items'];
 					}
 					$endpoint_data['args'][ $key ] = $arg_data;
 				}

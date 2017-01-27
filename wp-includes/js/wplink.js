@@ -2,8 +2,8 @@ var wpLink;
 
 ( function( $, wpLinkL10n, wp ) {
 	var editor, searchTimer, River, Query, correctedURL, linkNode,
-		emailRegexp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i,
-		urlRegexp = /^(https?|ftp):\/\/[A-Z0-9.-]+\.[A-Z]{2,63}[^ "]*$/i,
+		emailRegexp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+		urlRegexp = /^(https?|ftp):\/\/[A-Z0-9.-]+\.[A-Z]{2,4}[^ "]*$/i,
 		inputs = {},
 		rivers = {},
 		isTouch = ( 'ontouchend' in document );
@@ -19,7 +19,6 @@ var wpLink;
 		keySensitivity: 100,
 		lastSearch: '',
 		textarea: '',
-		modalOpen: false,
 
 		init: function() {
 			inputs.wrap = $('#wp-link-wrap');
@@ -98,7 +97,6 @@ var wpLink;
 				$body = $( document.body );
 
 			$body.addClass( 'modal-open' );
-			wpLink.modalOpen = true;
 			linkNode = node;
 
 			wpLink.range = null;
@@ -124,6 +122,10 @@ var wpLink;
 					editor = ed;
 				} else {
 					editor = null;
+				}
+
+				if ( editor && window.tinymce.isIE ) {
+					editor.windowManager.wplinkBookmark = editor.selection.getBookmark();
 				}
 			}
 
@@ -226,7 +228,7 @@ var wpLink;
 				onlyText = this.hasSelectedText( linkNode );
 
 			if ( linkNode ) {
-				linkText = linkNode.textContent || linkNode.innerText;
+				linkText = linkNode.innerText || linkNode.textContent;
 				href = editor.dom.getAttrib( linkNode, 'href' );
 
 				if ( ! $.trim( linkText ) ) {
@@ -272,7 +274,6 @@ var wpLink;
 
 		close: function( reset ) {
 			$( document.body ).removeClass( 'modal-open' );
-			wpLink.modalOpen = false;
 
 			if ( reset !== 'noReset' ) {
 				if ( ! wpLink.isMCE() ) {
@@ -304,7 +305,7 @@ var wpLink;
 
 			return {
 				href: $.trim( inputs.url.val() ),
-				target: inputs.openInNewTab.prop( 'checked' ) ? '_blank' : null
+				target: inputs.openInNewTab.prop( 'checked' ) ? '_blank' : ''
 			};
 		},
 
@@ -387,7 +388,12 @@ var wpLink;
 
 		mceUpdate: function() {
 			var attrs = wpLink.getAttrs(),
-				$link, text, hasText, $mceCaret;
+				link, text;
+
+			if ( window.tinymce.isIE && editor.windowManager.wplinkBookmark ) {
+				editor.selection.moveToBookmark( editor.windowManager.wplinkBookmark );
+				editor.windowManager.wplinkBookmark = null;
+			}
 
 			if ( ! attrs.href ) {
 				editor.execCommand( 'unlink' );
@@ -395,52 +401,34 @@ var wpLink;
 				return;
 			}
 
-			$link = editor.$( getLink() );
+			link = getLink();
 
-			editor.undoManager.transact( function() {
-				if ( ! $link.length ) {
-					editor.execCommand( 'mceInsertLink', false, { href: '_wp_link_placeholder', 'data-wp-temp-link': 1 } );
-					$link = editor.$( 'a[data-wp-temp-link="1"]' ).removeAttr( 'data-wp-temp-link' );
-					hasText = $.trim( $link.text() );
-				}
+			if ( inputs.wrap.hasClass( 'has-text-field' ) ) {
+				text = inputs.text.val() || attrs.href;
+			}
 
-				if ( ! $link.length ) {
-					editor.execCommand( 'unlink' );
-				} else {
-					if ( inputs.wrap.hasClass( 'has-text-field' ) ) {
-						text = inputs.text.val();
-
-						if ( text ) {
-							$link.text( text );
-						} else if ( ! hasText ) {
-							$link.text( attrs.href );
-						}
+			if ( link ) {
+				if ( text ) {
+					if ( 'innerText' in link ) {
+						link.innerText = text;
+					} else {
+						link.textContent = text;
 					}
-
-					attrs['data-wplink-edit'] = null;
-					attrs['data-mce-href'] = null; // attrs.href
-					$link.attr( attrs );
-				}
-			} );
-
-			wpLink.close( 'noReset' );
-			editor.focus();
-
-			if ( $link.length ) {
-				$mceCaret = $link.parent( '#_mce_caret' );
-
-				if ( $mceCaret.length ) {
-					$mceCaret.before( $link.removeAttr( 'data-mce-bogus' ) );
 				}
 
-				editor.selection.select( $link[0] );
-				editor.selection.collapse();
-
-				if ( editor.plugins.wplink ) {
-					editor.plugins.wplink.checkLink( $link[0] );
+				// Not editing any more
+				attrs['data-wplink-edit'] = null;
+				editor.dom.setAttribs( link, attrs );
+			} else {
+				if ( text ) {
+					editor.selection.setNode( editor.dom.create( 'a', attrs, editor.dom.encode( text ) ) );
+				} else {
+					editor.execCommand( 'mceInsertLink', false, attrs );
 				}
 			}
 
+			wpLink.close( 'noReset' );
+			editor.focus();
 			editor.nodeChanged();
 
 			// Audible confirmation message when a link has been inserted in the Editor.

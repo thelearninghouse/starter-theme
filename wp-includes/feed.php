@@ -7,7 +7,6 @@
  *
  * @package WordPress
  * @subpackage Feed
- * @since 2.1.0
  */
 
 /**
@@ -26,7 +25,7 @@
 function get_bloginfo_rss($show = '') {
 	$info = strip_tags(get_bloginfo($show));
 	/**
-	 * Filters the bloginfo for use in RSS feeds.
+	 * Filter the bloginfo for use in RSS feeds.
 	 *
 	 * @since 2.2.0
 	 *
@@ -53,7 +52,7 @@ function get_bloginfo_rss($show = '') {
  */
 function bloginfo_rss($show = '') {
 	/**
-	 * Filters the bloginfo for display in RSS feeds.
+	 * Filter the bloginfo for display in RSS feeds.
 	 *
 	 * @since 2.1.0
 	 *
@@ -69,7 +68,7 @@ function bloginfo_rss($show = '') {
  * Retrieve the default feed.
  *
  * The default feed is 'rss2', unless a plugin changes it through the
- * {@see 'default_feed'} filter.
+ * 'default_feed' filter.
  *
  * @since 2.5.0
  *
@@ -77,7 +76,7 @@ function bloginfo_rss($show = '') {
  */
 function get_default_feed() {
 	/**
-	 * Filters the default feed type.
+	 * Filter the default feed type.
 	 *
 	 * @since 2.5.0
 	 *
@@ -104,7 +103,7 @@ function get_wp_title_rss( $deprecated = '&#8211;' ) {
 	}
 
 	/**
-	 * Filters the blog title for use as the feed title.
+	 * Filter the blog title for use as the feed title.
 	 *
 	 * @since 2.2.0
 	 * @since 4.4.0 The `$sep` parameter was deprecated and renamed to `$deprecated`.
@@ -130,7 +129,7 @@ function wp_title_rss( $deprecated = '&#8211;' ) {
 	}
 
 	/**
-	 * Filters the blog title for display of the feed title.
+	 * Filter the blog title for display of the feed title.
 	 *
 	 * @since 2.2.0
 	 * @since 4.4.0 The `$sep` parameter was deprecated and renamed to `$deprecated`.
@@ -154,7 +153,7 @@ function get_the_title_rss() {
 	$title = get_the_title();
 
 	/**
-	 * Filters the post title for use in a feed.
+	 * Filter the post title for use in a feed.
 	 *
 	 * @since 1.2.0
 	 *
@@ -190,7 +189,7 @@ function get_the_content_feed($feed_type = null) {
 	$content = apply_filters( 'the_content', get_the_content() );
 	$content = str_replace(']]>', ']]&gt;', $content);
 	/**
-	 * Filters the post content for use in feeds.
+	 * Filter the post content for use in feeds.
 	 *
 	 * @since 2.9.0
 	 *
@@ -220,7 +219,7 @@ function the_content_feed($feed_type = null) {
 function the_excerpt_rss() {
 	$output = get_the_excerpt();
 	/**
-	 * Filters the post excerpt for a feed.
+	 * Filter the post excerpt for a feed.
 	 *
 	 * @since 1.2.0
 	 *
@@ -236,7 +235,7 @@ function the_excerpt_rss() {
  */
 function the_permalink_rss() {
 	/**
-	 * Filters the permalink to the post for use in feeds.
+	 * Filter the permalink to the post for use in feeds.
 	 *
 	 * @since 2.3.0
 	 *
@@ -253,7 +252,7 @@ function the_permalink_rss() {
  */
 function comments_link_feed() {
 	/**
-	 * Filters the comments permalink for the current post.
+	 * Filter the comments permalink for the current post.
 	 *
 	 * @since 3.6.0
 	 *
@@ -301,7 +300,7 @@ function get_comment_guid($comment_id = null) {
  */
 function comment_link( $comment = null ) {
 	/**
-	 * Filters the current comment's permalink.
+	 * Filter the current comment's permalink.
 	 *
 	 * @since 3.6.0
 	 *
@@ -321,7 +320,7 @@ function comment_link( $comment = null ) {
  */
 function get_comment_author_rss() {
 	/**
-	 * Filters the current comment author for use in a feed.
+	 * Filter the current comment author for use in a feed.
 	 *
 	 * @since 1.5.0
 	 *
@@ -349,7 +348,7 @@ function comment_author_rss() {
 function comment_text_rss() {
 	$comment_text = get_comment_text();
 	/**
-	 * Filters the current comment content for use in a feed.
+	 * Filter the current comment content for use in a feed.
 	 *
 	 * @since 1.5.0
 	 *
@@ -403,7 +402,7 @@ function get_the_category_rss($type = null) {
 	}
 
 	/**
-	 * Filters all of the post categories for display in a feed.
+	 * Filter all of the post categories for display in a feed.
 	 *
 	 * @since 1.2.0
 	 *
@@ -470,7 +469,7 @@ function rss_enclosure() {
 				$type = $t[0];
 
 				/**
-				 * Filters the RSS enclosure HTML link tag for the current post.
+				 * Filter the RSS enclosure HTML link tag for the current post.
 				 *
 				 * @since 2.2.0
 				 *
@@ -504,7 +503,7 @@ function atom_enclosure() {
 			foreach ( (array) $val as $enc ) {
 				$enclosure = explode("\n", $enc);
 				/**
-				 * Filters the atom enclosure HTML link tag for the current post.
+				 * Filter the atom enclosure HTML link tag for the current post.
 				 *
 				 * @since 2.2.0
 				 *
@@ -536,12 +535,6 @@ function atom_enclosure() {
 function prep_atom_text_construct($data) {
 	if (strpos($data, '<') === false && strpos($data, '&') === false) {
 		return array('text', $data);
-	}
-
-	if ( ! function_exists( 'xml_parser_create' ) ) {
-		trigger_error( __( "PHP's XML extension is not available. Please contact your hosting provider to enable PHP's XML extension." ) );
-
-		return array( 'html', "<![CDATA[$data]]>" );
 	}
 
 	$parser = xml_parser_create();
@@ -613,7 +606,7 @@ function rss2_site_icon() {
 function self_link() {
 	$host = @parse_url(home_url());
 	/**
-	 * Filters the current feed URL.
+	 * Filter the current feed URL.
 	 *
 	 * @since 3.6.0
 	 *
@@ -647,7 +640,7 @@ function feed_content_type( $type = '' ) {
 	$content_type = ( !empty($types[$type]) ) ? $types[$type] : 'application/octet-stream';
 
 	/**
-	 * Filters the content type for a specific feed type.
+	 * Filter the content type for a specific feed type.
 	 *
 	 * @since 2.8.0
 	 *
@@ -669,14 +662,7 @@ function feed_content_type( $type = '' ) {
  * @return WP_Error|SimplePie WP_Error object on failure or SimplePie object on success
  */
 function fetch_feed( $url ) {
-	if ( ! class_exists( 'SimplePie', false ) ) {
-		require_once( ABSPATH . WPINC . '/class-simplepie.php' );
-	}
-
-	require_once( ABSPATH . WPINC . '/class-wp-feed-cache.php' );
-	require_once( ABSPATH . WPINC . '/class-wp-feed-cache-transient.php' );
-	require_once( ABSPATH . WPINC . '/class-wp-simplepie-file.php' );
-	require_once( ABSPATH . WPINC . '/class-wp-simplepie-sanitize-kses.php' );
+	require_once( ABSPATH . WPINC . '/class-feed.php' );
 
 	$feed = new SimplePie();
 
@@ -689,7 +675,7 @@ function fetch_feed( $url ) {
 	$feed->set_file_class( 'WP_SimplePie_File' );
 
 	$feed->set_feed_url( $url );
-	/** This filter is documented in wp-includes/class-wp-feed-cache-transient.php */
+	/** This filter is documented in wp-includes/class-feed.php */
 	$feed->set_cache_duration( apply_filters( 'wp_feed_cache_transient_lifetime', 12 * HOUR_IN_SECONDS, $url ) );
 	/**
 	 * Fires just before processing the SimplePie feed object.
@@ -702,6 +688,7 @@ function fetch_feed( $url ) {
 	do_action_ref_array( 'wp_feed_options', array( &$feed, $url ) );
 	$feed->init();
 	$feed->set_output_encoding( get_option( 'blog_charset' ) );
+	$feed->handle_content_type();
 
 	if ( $feed->error() )
 		return new WP_Error( 'simplepie-error', $feed->error() );

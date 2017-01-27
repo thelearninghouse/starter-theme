@@ -42,16 +42,13 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
 	<link><?php bloginfo_rss('url') ?></link>
 	<description><?php bloginfo_rss("description") ?></description>
-	<lastBuildDate><?php
-		$date = get_lastpostmodified( 'GMT' );
-		echo $date ? mysql2date( 'D, d M Y H:i:s +0000', $date, false ) : date( 'D, d M Y H:i:s +0000' );
-	?></lastBuildDate>
+	<lastBuildDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></lastBuildDate>
 	<language><?php bloginfo_rss( 'language' ); ?></language>
 	<sy:updatePeriod><?php
 		$duration = 'hourly';
 
 		/**
-		 * Filters how often to update the RSS feed.
+		 * Filter how often to update the RSS feed.
 		 *
 		 * @since 2.1.0
 		 *
@@ -64,7 +61,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 		$frequency = '1';
 
 		/**
-		 * Filters the RSS update frequency.
+		 * Filter the RSS update frequency.
 		 *
 		 * @since 2.1.0
 		 *

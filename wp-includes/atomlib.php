@@ -121,11 +121,6 @@ class AtomParser {
 
         array_unshift($this->ns_contexts, array());
 
-        if ( ! function_exists( 'xml_parser_create_ns' ) ) {
-        	trigger_error( __( "PHP's XML extension is not available. Please contact your hosting provider to enable PHP's XML extension." ) );
-        	return false;
-        }
-
         $parser = xml_parser_create_ns();
         xml_set_object($parser, $this);
         xml_set_element_handler($parser, "start_element", "end_element");
@@ -164,7 +159,7 @@ class AtomParser {
 
     function start_element($parser, $name, $attrs) {
 
-        $tag = array_pop(explode(":", $name));
+        $tag = array_pop(split(":", $name));
 
         switch($name) {
             case $this->NS . ':feed':
@@ -243,7 +238,7 @@ class AtomParser {
 
     function end_element($parser, $name) {
 
-        $tag = array_pop(explode(":", $name));
+        $tag = array_pop(split(":", $name));
 
         $ccount = count($this->in_content);
 
@@ -318,7 +313,7 @@ class AtomParser {
 
     function ns_to_prefix($qname, $attr=false) {
         # split 'http://www.w3.org/1999/xhtml:div' into ('http','//www.w3.org/1999/xhtml','div')
-        $components = explode(":", $qname);
+        $components = split(":", $qname);
 
         # grab the last one (e.g 'div')
         $name = array_pop($components);

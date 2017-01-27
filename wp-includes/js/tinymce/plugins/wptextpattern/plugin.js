@@ -3,73 +3,27 @@
  *
  * @since 4.3.0
  *
- * This plugin can automatically format text patterns as you type. It includes several groups of patterns.
- *
- * Start of line patterns:
- *  As-you-type:
+ * This plugin can automatically format text patterns as you type. It includes two patterns:
  *  - Unordered list (`* ` and `- `).
  *  - Ordered list (`1. ` and `1) `).
  *
- *  On enter:
- *  - h2 (## ).
- *  - h3 (### ).
- *  - h4 (#### ).
- *  - h5 (##### ).
- *  - h6 (###### ).
- *  - blockquote (> ).
- *  - hr (---).
- *
- * Inline patterns:
- *  - <code> (`) (backtick).
- *
  * If the transformation in unwanted, the user can undo the change by pressing backspace,
  * using the undo shortcut, or the undo button in the toolbar.
- *
- * Setting for the patterns can be overridden by plugins by using the `tiny_mce_before_init` PHP filter.
- * The setting name is `wptextpattern` and the value is an object containing override arrays for each
- * patterns group. There are three groups: "space", "enter", and "inline". Example (PHP):
- *
- * add_filter( 'tiny_mce_before_init', 'my_mce_init_wptextpattern' );
- * function my_mce_init_wptextpattern( $init ) {
- *   $init['wptextpattern'] = wp_json_encode( array(
- *      'inline' => array(
- *        array( 'delimiter' => '**', 'format' => 'bold' ),
- *        array( 'delimiter' => '__', 'format' => 'italic' ),
- *      ),
- *   ) );
- *
- *   return $init;
- * }
- *
- * Note that setting this will override the default text patterns. You will need to include them
- * in your settings array if you want to keep them working.
  */
 ( function( tinymce, setTimeout ) {
 	if ( tinymce.Env.ie && tinymce.Env.ie < 9 ) {
 		return;
 	}
 
-	/**
-	 * Escapes characters for use in a Regular Expression.
-	 *
-	 * @param  {String} string Characters to escape
-	 *
-	 * @return {String}        Escaped characters
-	 */
-	function escapeRegExp( string ) {
-		return string.replace( /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&' );
-	}
-
 	tinymce.PluginManager.add( 'wptextpattern', function( editor ) {
 		var VK = tinymce.util.VK;
-		var settings = editor.settings.wptextpattern || {};
 
-		var spacePatterns = settings.space || [
+		var spacePatterns = [
 			{ regExp: /^[*-]\s/, cmd: 'InsertUnorderedList' },
 			{ regExp: /^1[.)]\s/, cmd: 'InsertOrderedList' }
 		];
 
-		var enterPatterns = settings.enter || [
+		var enterPatterns = [
 			{ start: '##', format: 'h2' },
 			{ start: '###', format: 'h3' },
 			{ start: '####', format: 'h4' },
@@ -79,11 +33,20 @@
 			{ regExp: /^(-){3,}$/, element: 'hr' }
 		];
 
-		var inlinePatterns = settings.inline || [
-			{ delimiter: '`', format: 'code' }
+		var inlinePatterns = [
+			{ start: '`', end: '`', format: 'code' }
 		];
 
 		var canUndo;
+		var chars = [];
+
+		tinymce.each( inlinePatterns, function( pattern ) {
+			tinymce.each( ( pattern.start + pattern.end ).split( '' ), function( c ) {
+				if ( tinymce.inArray( chars, c ) === -1 ) {
+					chars.push( c );
+				}
+			} );
+		} );
 
 		editor.on( 'selectionchange', function() {
 			canUndo = null;
@@ -96,19 +59,18 @@
 				event.stopImmediatePropagation();
 			}
 
-			if ( VK.metaKeyPressed( event ) ) {
-				return;
-			}
-
-			if ( event.keyCode === VK.ENTER ) {
+			if ( event.keyCode === VK.ENTER && ! VK.modifierPressed( event ) ) {
 				enter();
-			// Wait for the browser to insert the character.
-			} else if ( event.keyCode === VK.SPACEBAR ) {
-				setTimeout( space );
-			} else if ( event.keyCode > 47 && ! ( event.keyCode >= 91 && event.keyCode <= 93 ) ) {
-				setTimeout( inline );
 			}
 		}, true );
+
+		editor.on( 'keyup', function( event ) {
+			if ( event.keyCode === VK.SPACEBAR && ! event.ctrlKey && ! event.metaKey && ! event.altKey ) {
+				space();
+			} else if ( event.keyCode > 47 && ! ( event.keyCode >= 91 && event.keyCode <= 93 ) ) {
+				inline();
+			}
+		} );
 
 		function inline() {
 			var rng = editor.selection.getRng();
@@ -120,55 +82,40 @@
 			var format;
 			var zero;
 
-			// We need a non empty text node with an offset greater than zero.
 			if ( ! node || node.nodeType !== 3 || ! node.data.length || ! offset ) {
 				return;
 			}
 
-			var string = node.data.slice( 0, offset );
-			var lastChar = node.data.charAt( offset - 1 );
+			if ( tinymce.inArray( chars, node.data.charAt( offset - 1 ) ) === -1 ) {
+				return;
+			}
 
-			tinymce.each( inlinePatterns, function( p ) {
-				// Character before selection should be delimiter.
-				if ( lastChar !== p.delimiter.slice( -1 ) ) {
-					return;
-				}
+			function findStart( node ) {
+				var i = inlinePatterns.length;
+				var offset;
 
-				var escDelimiter = escapeRegExp( p.delimiter );
-				var delimiterFirstChar = p.delimiter.charAt( 0 );
-				var regExp = new RegExp( '(.*)' + escDelimiter + '.+' + escDelimiter + '$' );
-				var match = string.match( regExp );
+				while ( i-- ) {
+					pattern = inlinePatterns[ i ];
+					offset = node.data.indexOf( pattern.end );
 
-				if ( ! match ) {
-					return;
-				}
-
-				startOffset = match[1].length;
-				endOffset = offset - p.delimiter.length;
-
-				var before = string.charAt( startOffset - 1 );
-				var after = string.charAt( startOffset + p.delimiter.length );
-
-				// test*test* => format applied
-				// test *test* => applied
-				// test* test* => not applied
-				if ( startOffset && /\S/.test( before ) ) {
-					if ( /\s/.test( after ) || before === delimiterFirstChar ) {
-						return;
+					if ( offset !== -1 ) {
+						return offset;
 					}
 				}
+			}
 
-				// Do not replace when only whitespace and delimiter characters.
-				if ( ( new RegExp( '^[\\s' + escapeRegExp( delimiterFirstChar ) + ']+$' ) ).test( string.slice( startOffset, endOffset ) ) ) {
-					return;
-				}
+			startOffset = findStart( node );
+			endOffset = node.data.lastIndexOf( pattern.end );
 
-				pattern = p;
+			if ( startOffset === endOffset || endOffset === -1 ) {
+				return;
+			}
 
-				return false;
-			} );
+			if ( endOffset - startOffset <= pattern.start.length ) {
+				return;
+			}
 
-			if ( ! pattern ) {
+			if ( node.data.slice( startOffset + pattern.start.length, endOffset ).indexOf( pattern.start.slice( 0, 1 ) ) !== -1 ) {
 				return;
 			}
 
@@ -178,13 +125,13 @@
 				editor.undoManager.add();
 
 				editor.undoManager.transact( function() {
-					node.insertData( offset, '\uFEFF' );
+					node.insertData( offset, '\u200b' );
 
 					node = node.splitText( startOffset );
 					zero = node.splitText( offset - startOffset );
 
-					node.deleteData( 0, pattern.delimiter.length );
-					node.deleteData( node.data.length - pattern.delimiter.length, pattern.delimiter.length );
+					node.deleteData( 0, pattern.start.length );
+					node.deleteData( node.data.length - pattern.end.length, pattern.end.length );
 
 					editor.formatter.apply( pattern.format, {}, node );
 
@@ -199,7 +146,7 @@
 						var offset;
 
 						if ( zero ) {
-							offset = zero.data.indexOf( '\uFEFF' );
+							offset = zero.data.indexOf( '\u200b' );
 
 							if ( offset !== -1 ) {
 								zero.deleteData( offset, offset + 1 );
