@@ -19,7 +19,8 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-criticalcss": "^1.0.2",
     "grunt-sass": "^2.0.0",
-    "grunt-sassdoc": "^2.0.1"
+    "grunt-sassdoc": "^2.0.1",
+    "grunt-strip-code": "^1.0.4"
   },
   "dependencies": {
     "load-grunt-tasks": "~2.0.0"
