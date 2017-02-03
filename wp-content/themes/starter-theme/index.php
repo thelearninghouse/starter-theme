@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<h1>UDPATED TEST</h1>
+
 			<div class="content">
 
 				<div class="wrap cf">
