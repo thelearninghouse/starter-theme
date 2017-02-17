@@ -10,7 +10,9 @@ wp-content/*
 !sassdoc
 !style-guide
 !readme.md
- 
+!robots.txt
+!humans.txt
+
 *~
 .DS_Store
 .svn
