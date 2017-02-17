@@ -119,7 +119,7 @@ For common patterns and styles please use this resource. This was mostly created
 
 #### Setting up the Style Guide
 
-Make sure `index.php` is pointing to the main css stylesheet.
+Make sure `style-guide/index.php` is pointing to the main css stylesheet.
 
 Update patterns to include/exclude patterns found on the new site.
 
