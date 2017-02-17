@@ -1,9 +1,5 @@
 # Learning House Wordpress Starter Theme
 
-This repo features the entire WordPress install including core files.
-
-The core of this theme is based on [Bones theme](https://github.com/eddiemachado/bones).
-
 ## Basic Usage
 
 ### Install Dependencies
@@ -12,7 +8,11 @@ Install by navigating to the theme's `library` folder and running `npm install` 
 
 ### Critical CSS
 
-This theme utilizes inline styling in the head of the document for faster load times. If it seems like your changes are not working there is a chance that these inline styles are overwriting your changes. To update run `grunt deploy` and it will update the critical css files accordingly.
+This theme utilizes inline styling in the head of the document for faster load times. If it seems like your changes are not working there is a chance that these inline styles are overwriting your changes.
+
+Before running the crticalcss command you will need to update the settings in `crticalcss.js` file.
+
+To update run `grunt criticalcss` and it will update the critical css files accordingly.
 
 ### Watch Files
 
@@ -37,7 +37,7 @@ starter-theme/
 ├── library
 |    ├── bower_components  // Where all our bower components are housed
 |    ├── css  //
-|    |   ├── build // Production Files 
+|    |   ├── build // Production Files
 |    |   |   ├── minified  // Contains all minified versions of stylesheets
 |    |   |   ├── prefixed  // Contains style sheets that have been through Autoprefixer
 |    |   |   ├── home-critical.css // Critical CSS for homepage
@@ -121,4 +121,4 @@ For common patterns and styles please use this resource. This was mostly created
 
 This documentation is for the front-end team for easy access to variable, mixins, functions, etc. [View SassDoc](http://tlhstarter.wpengine.com/sassdoc)
 
-To update sassdoc run `grunt deploy` or `grunt sassdo`
+To update sassdoc run `grunt sassdoc`
