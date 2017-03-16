@@ -31,14 +31,7 @@
 		<?php wp_head(); ?>
 		<?php // end of wordpress head ?>
 
-    <?php // Critical CSS ?>
-    <?php if ( is_front_page() ) { ?> <style><?php include 'library/css/build/minified/home-critical.css'; ?></style><?php } ?>
-    <?php if ( ! is_front_page() ) { ?><style><?php include 'library/css/build/minified/interior-critical.css'; ?></style><?php } ?>
-
-		<script>!function(a){"use strict";var b=function(b,c,d){function j(a){return e.body?a():void setTimeout(function(){j(a)})}function l(){f.addEventListener&&f.removeEventListener("load",l),f.media=d||"all"}var g,e=a.document,f=e.createElement("link");if(c)g=c;else{var h=(e.body||e.getElementsByTagName("head")[0]).childNodes;g=h[h.length-1]}var i=e.styleSheets;f.rel="stylesheet",f.href=b,f.media="only x",j(function(){g.parentNode.insertBefore(f,c?g:g.nextSibling)});var k=function(a){for(var b=f.href,c=i.length;c--;)if(i[c].href===b)return a();setTimeout(function(){k(a)})};return f.addEventListener&&f.addEventListener("load",l),f.onloadcssdefined=k,k(l),f};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);</script>
-		<script>loadCSS( "/wp-content/themes/starter-theme/library/css/build/minified/style.css" );</script>
-		<noscript><link rel="stylesheet" href="/wp-content/themes/starter-theme/library/css/build/minified/style.css"></noscript>
-
+			<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/style.min.css">
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">

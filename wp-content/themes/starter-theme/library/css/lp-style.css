@@ -1,8 +1,5 @@
-/******************************************************************
-Main Stylesheet
-******************************************************************/
 /*********************
-IMPORTING BASE
+IMPORTING
 *********************/
 /*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -480,31 +477,25 @@ SUSY GRID // For any questions go to http://susydocs.oddbird.net/en/latest/
     clear: both; }
 
 .half {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 50%;
   float: left;
-  padding-left: 1.3888888889%;
-  padding-right: 1.3888888889%; }
+  padding-left: 1.38889%;
+  padding-right: 1.38889%; }
 
 .quarter {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 25%;
   float: left;
-  padding-left: 1.3888888889%;
-  padding-right: 1.3888888889%; }
+  padding-left: 1.38889%;
+  padding-right: 1.38889%; }
 
 .third {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 33.3333333333%;
+  width: 33.33333%;
   float: left;
-  padding-left: 1.3888888889%;
-  padding-right: 1.3888888889%; }
+  padding-left: 1.38889%;
+  padding-right: 1.38889%; }
 
 /*********************
 GENERAL STYLES
@@ -529,25 +520,27 @@ body {
   margin: 1.5em 0; }
 
 /*********************
-IMPORTING MODULES
-*********************/
-/*********************
 ACCORDION STYLES
 *********************/
 .accord.active .accord__header:before {
-  transform: translateY(-50%) rotate(45deg); }
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg); }
 
 .accord.active .accord__content {
   visibility: visible;
-  transform: scale(1);
+  -webkit-transform: scale(1);
+          transform: scale(1);
   height: auto;
   opacity: 1; }
 
 .accord .accord__content {
   visibility: hidden;
   padding: .5em;
-  transform: scale(0);
-  transform-origin: 50% 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
   opacity: 0;
   height: 0; }
@@ -563,10 +556,13 @@ ACCORDION STYLES
     content: "+";
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     right: 1em;
+    -webkit-transition: .2s all ease-in-out;
     transition: .2s all ease-in-out;
-    transform-origin: 50% 50%; }
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%; }
 
 /******************************************************************
 Button Styles
@@ -584,6 +580,7 @@ Button Styles
   border-radius: 4px;
   border: 0;
   cursor: pointer;
+  -webkit-transition: background-color 0.14s ease-in-out;
   transition: background-color 0.14s ease-in-out;
   background: crimson; }
   .button:hover, .button:focus {
@@ -624,7 +621,7 @@ textarea,
   margin-bottom: 14px;
   font-size: 1em;
   color: #666;
-  border-color: #676666;
+  border-color: #676767;
   border-width: 2px;
   border-style: solid;
   border-spacing: inherit;
@@ -633,6 +630,7 @@ textarea,
   box-shadow: none;
   width: 100%;
   background-color: gray;
+  -webkit-transition: background-color 0.24s ease-in-out;
   transition: background-color 0.24s ease-in-out;
   padding: .5em;
   box-sizing: border-box; }
@@ -719,6 +717,7 @@ textarea {
   border-radius: 4px;
   border: 0;
   cursor: pointer;
+  -webkit-transition: background-color 0.14s ease-in-out;
   transition: background-color 0.14s ease-in-out;
   background: crimson;
   width: 100%; }
@@ -803,168 +802,6 @@ img,
     display: block;
     clear: both; } }
 
-/******************************************************************
-READING PROGRESS INDICATOR STYLES
-http://codepen.io/pankajparashar/pen/towxF
-******************************************************************/
-progress {
-  width: 100%;
-  position: fixed;
-  height: 8px;
-  top: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  color: crimson;
-  z-index: 999; }
-
-progress::-webkit-progress-bar {
-  background-color: transparent; }
-
-progress::-webkit-progress-value {
-  background-color: crimson; }
-
-progress::-moz-progress-bar {
-  background-color: crimson; }
-
-/*********************
-SIDEBARS & ASIDES
-*********************/
-.no-widgets {
-  background-color: white;
-  padding: 1.5em;
-  text-align: center;
-  border: 1px solid gray;
-  border-radius: 2px;
-  margin-bottom: 1.5em; }
-
-/**** 768 UP ****/
-@media screen and (min-width: 768px) {
-  .widgettitle {
-    border-bottom: 2px solid #444;
-    margin-bottom: 0.75em; }
-  .widget {
-    padding: 0 10px;
-    margin: 2.2em 0; }
-    .widget:first-of-type {
-      margin-top: 0; }
-    .widget li {
-      margin-bottom: 0.75em; }
-      .widget li ul {
-        margin-top: 0.75em;
-        padding-left: 1em; } }
-
-/*******************************
-SOCIAL SHARING BUTTONS
-*******************************/
-.social-sharing {
-  margin-bottom: 1em;
-  background: #f2f2f2;
-  padding: .8em;
-  text-align: center; }
-  @media screen and (min-width: 481px) {
-    .social-sharing {
-      float: right;
-      margin-left: 1em; } }
-  @media screen and (min-width: 768px) {
-    .social-sharing {
-      margin-bottom: 0; } }
-
-.social-sharing__label {
-  font-size: 0.8125em;
-  font-weight: bold;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: .5em; }
-  @media screen and (min-width: 481px) {
-    .social-sharing__label {
-      display: inline;
-      margin-bottom: 0; } }
-
-.social-link {
-  color: #fff;
-  background-color: #55acee;
-  padding: .4em .6em;
-  border-radius: 3px;
-  display: inline-block;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 0.75em;
-  font-weight: bold;
-  margin-left: 0.625em;
-  transition: .2s all ease-in-out; }
-  .social-link:focus {
-    color: white; }
-
-.social-link__icon,
-.social-link__label {
-  display: inline-block;
-  vertical-align: middle;
-  color: white; }
-
-.social-link__icon {
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: .2em; }
-
-.social-link__icon path {
-  fill: #fff; }
-
-.social-link__label {
-  font-size: .9em;
-  font-weight: 500; }
-
-.social-link:hover {
-  background-color: #2795e9;
-  color: white; }
-
-.social-link_facebook {
-  background: #3b5998; }
-
-.social-link_facebook:hover {
-  background: #2d4373; }
-
-.social-link_linkedin {
-  background: #007bb6; }
-
-.social-link_linkedin:hover {
-  background: #005983; }
-
-/******************************************************************
-Table Styles
-******************************************************************/
-table {
-  width: 100%;
-  margin-bottom: 1.5em; }
-  table caption {
-    margin: 0 0 7px;
-    font-size: 0.75em;
-    color: gray;
-    text-transform: uppercase;
-    letter-spacing: 1px; }
-
-th,
-td {
-  padding: 10px 20px;
-  text-align: left; }
-
-tr:nth-child(even) {
-  background: #eee; }
-
-tr:nth-child(even) {
-  background-color: lightgray; }
-
-td {
-  color: #666; }
-
-th {
-  background-color: lightgray; }
-
-/*********************
-IMPORTING PARTIALS
-*********************/
 /*********************
 HEADER STYLES
 *********************/
@@ -1108,9 +945,6 @@ PAGE NAVI STYLES
   float: right; }
 
 /* end .wp-prev-next */
-/*********************
-IMPORTING PAGES
-*********************/
 /********************
 LAYOUT & GRID STYLES
 *********************/
@@ -1118,122 +952,3 @@ LAYOUT & GRID STYLES
   width: 90%;
   max-width: 1440px;
   margin: 0 auto; }
-
-/**** 768px and Up ****/
-@media screen and (min-width: 768px) {
-  .main-content {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 66.6666666667%;
-    float: left;
-    padding-left: 1.3888888889%;
-    padding-right: 1.3888888889%; }
-  .sidebar {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 33.3333333333%;
-    float: left;
-    padding-left: 1.3888888889%;
-    padding-right: 1.3888888889%; } }
-
-/*************************
-HOMEPAGE SPECIFIC STYLES
-*************************/
-/*************************
-PAGE SPECIFIC STYLES
-*************************/
-.single-header__title,
-.page-header__title,
-.post-header__title {
-  margin: 0; }
-
-/*********************
-POST STYLES
-*********************/
-/* post meta */
-.post-meta {
-  color: gray;
-  font-style: italic;
-  margin: 0; }
-
-/* entry content */
-.post-content {
-  padding: 1.5em 0; }
-  .post-content p {
-    margin: 0 0 1.5em; }
-  .post-content blockquote {
-    margin: 0 0 1.5em 0.75em;
-    padding: 0 0 0 0.75em;
-    border-left: 3px solid tomato;
-    font-style: italic;
-    color: gray; }
-  .post-content dd {
-    margin-left: 0;
-    font-size: 0.9em;
-    color: #787878;
-    margin-bottom: 1.5em; }
-  .post-content img {
-    margin: 0 0 1.5em 0;
-    max-width: 100%;
-    height: auto; }
-  .post-content pre {
-    background: black;
-    color: lightgray;
-    font-size: 0.9em;
-    padding: 1.5em;
-    margin: 0 0 1.5em;
-    border-radius: 3px; }
-
-/* end .entry-content */
-.tags {
-  margin: 0; }
-
-/*********************
-PRINT
-*********************/
-@media print {
-  /******************************************************************
-Print Stylesheet
-******************************************************************/
-  * {
-    background: transparent !important;
-    color: black !important;
-    text-shadow: none !important;
-    filter: none !important;
-    -ms-filter: none !important; }
-  a, a:visited {
-    color: #444 !important;
-    text-decoration: underline; }
-    a:after, a:visited:after {
-      content: " (" attr(href) ")"; }
-    a abbr[title]:after, a:visited abbr[title]:after {
-      content: " (" attr(title) ")"; }
-  .ir a:after,
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
-    content: ""; }
-  pre, blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid; }
-  thead {
-    display: table-header-group; }
-  tr, img {
-    page-break-inside: avoid; }
-  img {
-    max-width: 100% !important; }
-  @page {
-    margin: 0.5cm; }
-  p, h2, h3 {
-    orphans: 3;
-    widows: 3; }
-  h2,
-  h3 {
-    page-break-after: avoid; }
-  .sidebar,
-  .page-navigation,
-  .wp-prev-next,
-  .respond-form,
-  nav {
-    display: none; } }
