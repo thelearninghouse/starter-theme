@@ -82,6 +82,9 @@ gulp.task('imagemin', function () {
 // WATCH
 gulp.task('default', gulp.parallel('browser-sync', 'watch:styles', 'watch:scripts'));
 
+// DEPLOY
+gulp.task('deploy', gulp.parallel('sass', 'scripts', 'imagemin'));
+
 function onError(err) {
   console.log(err);
   this.emit('end');

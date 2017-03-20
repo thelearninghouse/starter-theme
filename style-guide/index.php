@@ -5,7 +5,7 @@
 <title>Starter Theme Pattern Primer</title>
 <link rel="stylesheet" href="global.css">
 <link rel="stylesheet" href="prism.css">
-<link rel="stylesheet" href="/wp-content/themes/starter-theme/library/css/build/style.css">
+<link rel="stylesheet" href="/wp-content/themes/starter-theme/library/css/style.min.css">
 
 <?php /* Prism.js */ ?>
 <script>/* http://prismjs.com/download.html?themes=prism-coy&languages=markup+css+clike+javascript+sass+scss */

@@ -126,6 +126,10 @@ PAGE NAVI STYLES
       display: inline;
       overflow: hidden;
       border-right: 1px solid gray;
+
+			&:last-child {
+				border-right: none;
+			}
     }
 
     a, span {

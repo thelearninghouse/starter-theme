@@ -915,6 +915,8 @@ PAGE NAVI STYLES
     display: inline;
     overflow: hidden;
     border-right: 1px solid gray; }
+    .pagination li:last-child {
+      border-right: none; }
   .pagination a, .pagination span {
     margin: 0;
     text-decoration: none;

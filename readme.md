@@ -10,13 +10,9 @@ Install by navigating to the theme's `library` folder and running `npm install` 
 
 This theme utilizes inline styling in the head of the document for faster load times. If it seems like your changes are not working there is a chance that these inline styles are overwriting your changes.
 
-Before running the crticalcss command you will need to update the settings in `crticalcss.js` file.
-
-To update run `grunt criticalcss` and it will update the critical css files accordingly.
-
 ### Watch Files
 
-To start watching files use `grunt` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
+To start watching files use `gulp` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
 
 ### Grid Usage
 
@@ -126,5 +122,3 @@ Update patterns to include/exclude patterns found on the new site.
 # Sassdoc
 
 This documentation is for the front-end team for easy access to variable, mixins, functions, etc. [View SassDoc](http://tlhstarter.wpengine.com/sassdoc)
-
-To update sassdoc run `grunt sassdoc`
