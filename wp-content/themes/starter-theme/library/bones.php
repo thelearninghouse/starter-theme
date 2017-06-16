@@ -305,6 +305,12 @@ if( function_exists('acf_add_options_page') ) {
         'parent_slug'   => 'theme-general-settings',
     ));
 
+		acf_add_options_sub_page(array(
+				'page_title'    => 'Launch LPs Settings',
+				'menu_title'    => 'Launch LPs',
+				'parent_slug'   => 'theme-general-settings',
+		));
+
 }
 
 /******************

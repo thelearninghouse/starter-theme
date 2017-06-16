@@ -8,6 +8,7 @@ module.exports = {
       'css/build/style.css': 'scss/style.scss',
       'css/build/ie.css': 'scss/ie.scss',
       'css/build/lp-style.css': 'scss/lp-style.scss',
+      'css/build/launch-lp-style.css': 'scss/launch-lp-style.scss',
     }
   }
 }

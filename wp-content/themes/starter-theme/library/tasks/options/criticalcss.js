@@ -31,5 +31,18 @@ module.exports = {
             buffer: 800*1024,
             ignoreConsole: false
         }
+    },
+
+    launch-lps: {
+        options: {
+            url: "http://starter.loc/lp",
+            width: 1200,
+            height: 900,
+            outputfile: "css/build/launch-lp-critical.css",
+            filename: "css/build/minified/launch-lp-style.css",
+            buffer: 800*1024,
+            ignoreConsole: false
+        },
+
     }
 }

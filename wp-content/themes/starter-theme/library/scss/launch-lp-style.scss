@@ -1,0 +1,452 @@
+/*********************
+IMPORTING
+*********************/
+
+@import "base/normalize";
+@import "base/grid";
+@import "modules/clearfix";
+
+/// Responsive Variables
+/// Breakpoint Small
+$bp-sm: 481px;
+/// Breakpoint Medium
+$bp-med: 768px;
+/// Breakpoint Large
+$bp-lg: 1040px;
+
+/// Responsive Mixin
+/// @example
+///     @include mobilefirst($bp-small) { content here }
+@mixin mobilefirst($res) {
+  @media screen and (min-width: $res) {
+    @content;
+  }
+}
+
+
+/********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	width: 90%;
+	max-width: 1130px;
+	margin: 0 auto;
+}
+
+section {
+	padding: 5rem 0;
+}
+
+/********************
+TYPOGRAPHY & ELEMENTS
+*********************/
+p {
+	color: #686868;
+	line-height: 1.8;
+	margin-bottom: 1.4rem;
+}
+
+h1 {
+	font-size: 2.6rem;
+	margin-bottom: 2.4rem;
+	display: block;
+}
+
+h2 {
+	font-size: 2.2rem;
+	margin-bottom: 1.8rem;
+	display: block;
+}
+
+h3 {
+	font-size: 2rem;
+	margin-bottom: 1.6rem;
+	display: block;
+}
+
+img {
+	width: 100%;
+}
+
+ul {
+	li {
+		margin-bottom: 1rem;
+		line-height: 1.8;
+	}
+}
+
+.button {
+	position: relative;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 1.2rem;
+	padding: 1.2rem 3.6rem;
+	text-decoration: none;
+	color: #FFFFFF;
+	transition: all .2s ease-in-out;
+
+	&.dark {
+		color: #000000;
+	}
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
+/********************
+HEADER
+*********************/
+
+#hero {
+	background-size: cover;
+	padding: 32px 0;
+	background-repeat: no-repeat;
+	height: 50vh;
+	background-position: center;
+}
+
+.header__logo, .phone-number {
+	@include span(6 of 12);
+}
+
+.logo img {
+	max-width: 200px;
+}
+
+.phone-number {
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.2rem;
+
+	svg {
+		position: relative;
+		top: .6rem;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	@include mobilefirst($bp-med) {
+		font-size: 1.8rem;
+
+		svg {
+			top: .3rem;
+		}
+	}
+}
+
+/********************
+MAIN CONTENT AREA
+*********************/
+.main-content {
+	position: absolute;
+	top: 250px;
+	left: 0;
+	right: 0;
+}
+
+#form {
+	background-color: rgba(0,0,0,.6);
+	border-radius: 10px;
+	padding: 32px;
+	margin: 16px auto;
+	color: #FFFFFF;
+
+	h2 {
+		color: #FFFFFF;
+		text-align: center;
+		margin: 1rem 0;
+	}
+
+	h2 + p {
+		font-size: .9rem;
+		color: #EBEBEB;
+		text-align: center;
+		margin: .5rem 0 1rem;
+	}
+
+	ol, ul {
+		list-style-type: none;
+		margin: 0 auto;
+		padding: 0;
+    overflow: hidden;
+	}
+
+	fieldset {
+		border: none;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+	}
+
+	label {
+		display: block;
+		font-size: .7rem;
+		margin-left: .7rem;
+	}
+
+	input, select {
+		display: block;
+		margin: .3rem 0 .75rem;
+		padding: 10px;
+		width: 100%;
+		border: #FFFFFF 3px solid;
+	}
+
+  input.error {
+    border-color: tomato;
+  }
+
+	select {
+		width: 98%;
+	}
+
+	input[type="submit"] {
+		margin: 1rem auto .5rem;
+		width: 300px;
+		font-weight: bold;
+		background: #FFFFFF;
+		color: #000000;
+		transition: all .2s ease-in-out;
+    cursor: pointer;
+    border: none;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	input[type="hidden"],
+	.elp_hidden,
+  .formError,
+	.formValid,
+	legend {
+		display: none;
+	}
+
+	.legal-text {
+		color: #EBEBEB;
+		width: 70%;
+		max-width: 700px;
+		margin: 1rem auto;
+		text-align: center;
+	}
+
+	@include mobilefirst($bp-med) {
+		ol, ul {
+			max-width: 800px;
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: rows;
+			justify-content: space-between;
+
+			li {
+				width: 50%;
+			}
+
+      input, select {
+        margin: .3rem .5rem .75rem;
+        width: 85%;
+      }
+		}
+	}
+}
+
+
+#program-information {
+	padding: 3rem 0 0;
+
+	@include mobilefirst($bp-med) {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+#content-area {
+	@include mobilefirst($bp-med) {
+		flex: 2;
+		padding: 0 1rem 0 0;
+		}
+}
+
+#programs-list {
+	background-color: #EBEBEB;
+	padding: 24px;
+
+	@include mobilefirst($bp-med) {
+		flex: 1;
+		}
+
+	h3 {
+		padding-bottom: 1.4rem;
+		margin-top: 0;
+		border-bottom: 1px solid #8A8D8F;
+		margin-bottom: 2rem;
+	}
+
+	ul {
+		list-style-type: none;
+		-webkit-margin-before: 0em;
+		-webkit-margin-after: 0em;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+		-webkit-padding-start: 0px;
+
+		li {
+			font-weight: bold;
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+#value-props {
+	padding: 1rem 0;
+
+	.value-props-container {
+		margin: 2rem 0;
+
+		@include mobilefirst($bp-med) {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			}
+
+		.value-prop {
+
+			@include mobilefirst($bp-med) {
+				width: 48%;
+				flex-grow: 1;
+        margin: 1%;
+			}
+
+			@include mobilefirst($bp-lg) {
+        width: auto;
+				flex: 1;
+			}
+
+			.value-prop__inner {
+				padding: 1rem;
+        margin: .5rem;
+				text-align: center;
+
+				h3 {
+					font-size: 1.3rem;
+					color: #FFFFFF;
+				}
+
+				p {
+				color: #BBBBBB;
+				font-size: .9rem;
+				}
+
+				&.dark {
+					h3 {
+						color: #000000;
+					}
+
+					p {
+						color: #555555;
+					}
+				}
+			}
+		}
+	}
+}
+
+#about {
+	color: #FFFFFF;
+
+	.wrap {
+		@include mobilefirst($bp-med) {
+			width: 70%;
+			max-width: 700px;
+			margin: 0 auto;
+		}
+	}
+
+	h2 {
+		color: #EAEAEA;
+		text-align: center;
+	}
+
+	p {
+		color: #EBEBEB;
+	}
+
+
+}
+
+#cta {
+	text-align: center;
+	padding: 6rem 0;
+
+	h4 {
+		font-size: 2rem;
+		font-weight: bold;
+		line-height: 1.4;
+		margin: 0 auto 2rem;
+		max-width: 900px;
+	}
+}
+
+#accreditation {
+
+	@include mobilefirst($bp-med) {
+		.wrap {
+			display: flex;
+		}
+
+		.copy {
+			flex: 2;
+			flex-grow: 1;
+
+			p {
+				padding: 0 1rem;
+			}
+		}
+
+		.accred_images {
+			flex: 1;
+		}
+
+	}
+
+	h3 {
+		padding-bottom: 1.2rem;
+		border-bottom: 1px solid #A8ABAC;
+	}
+
+	.accred_images {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+
+		img {
+			max-width: 280px;
+			padding: 1rem;
+		}
+	}
+}
+
+.footer {
+	background-color: #444444;
+	padding: .8rem 0;
+
+	p {
+		text-align: center;
+		font-size: .8rem;
+		line-height: 1.4;
+		margin: .4rem 0;
+		color: #AAAAAA;
+	}
+
+	a {
+		text-decoration: none;
+		color: #CCCCCC;
+	}
+}
