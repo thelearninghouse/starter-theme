@@ -138,7 +138,7 @@ add_filter( 'the_content', 'social_sharing_buttons');
 
 function enqueue_scripts() {
   wp_deregister_script( 'jquery' );
-  wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, false, false );
+  wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, false, false );
   wp_enqueue_script( 'jquery' );
 }
 add_action('wp_enqueue_scripts', 'enqueue_scripts');

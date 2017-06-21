@@ -13,7 +13,7 @@
 		<title><?php wp_title(''); ?></title>
 
 		<?php // mobile meta (hooray!) ?>
-		<meta name="HandheldFriendly" content="True">
+		<meta name="HandheedFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 

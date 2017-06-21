@@ -112,7 +112,7 @@ function bones_scripts_and_styles() {
 		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
 		// form validation and tracking script
-		wp_register_script( 'form-script', 'http://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
+		wp_register_script( 'form-script', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
 
 		// ie-only style sheet
 		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
