@@ -1,8 +1,6 @@
+<!doctype html>
 <!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
-<!doctype html>
 <html lang="en" class="fonts-loaded">
-<!--#else -->
-<!doctype html>
 <!--#endif -->
 
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
