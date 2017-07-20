@@ -64,7 +64,7 @@ $(function() {
 
 		// Make HTTP Request
 			$.ajax({
-					url: "http://api.zippopotam.us/us/" + zip_box.val(),
+					url: "https://api.zippopotam.us/us/" + zip_box.val(),
 					cache: false,
 					dataType: "json",
 					type: "GET",
