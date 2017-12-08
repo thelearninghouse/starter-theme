@@ -35,19 +35,41 @@
 
 		<?php wp_head(); ?>
 
-		<link rel="stylesheet" href="/wp-content/themes/tlhstarter-avila/library/css/launch-lp-style.min.css">
+		<?php // Get fonts from Google
+			$headings_font = get_field('headings_font', 'options');
+			$body_font = get_field('body_font', 'options');
 
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+			if ($headings_font['label'] === $body_font['label']) {
+				$font_url = 'https://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $headings_font['label']) . ':400,700';
+			}
+			else {
+				$font_url = 'https://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $headings_font['label']) . ':400,700|' . str_replace(' ', '+', $body_font['label']) . ':400,700';
+			}
+		?>
+		<link href="<?php echo $font_url ?>" rel="stylesheet">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/library/css/launch-lp-style.min.css">
 
 		<style>
 			h1, h2, h3, h4, h5, h6 {
-				font-family: <?php the_field('headings_font', 'options') ?>;
+				font-family: <?php echo $headings_font['value']; ?>;
 			}
 			p, ul, ol, li {
-				font-family: <?php the_field('body_font', 'options') ?>;
+				font-family: <?php echo $body_font['value']; ?>;
+			}
+			<?php // Get responsive hero background image
+			$hero_image = get_field('hero_image'); ?>
+			@media screen and (max-width: 767px) {
+				#hero {
+					background-image: url('<?php echo $hero_image['sizes']['medium_large']; ?>');
+				}
+			}
+			@media screen and (min-width: 768px) {
+				#hero {
+					background-image: url('<?php echo $hero_image['url']; ?>');
+				}
+			}
+			#form {
+				background-color: <?php get_field('form_bg') == '' ? the_field('color_1', 'options') : the_field('form_bg'); ?>;
 			}
 			#value-props .value-props-container .value-prop {
 				background-color: <?php the_field('vp_bgcolor'); ?>;
@@ -65,7 +87,7 @@
 		<div class="container">
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-				<section id="hero" style="background-image:url('<?php the_field('hero_image'); ?>');">
+				<section id="hero" class="overlay">
 					<div class="wrap">
 						<p class="logo header__logo" itemscope itemtype="http://schema.org/Organization">
 							<?php if (get_field('logo_version')) { ?>
@@ -97,7 +119,7 @@
 
 			<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 				<div class="wrap">
-					<section id="form" style="background-color: <?php the_field('form_bg'); ?>;">
+					<section id="form">
 						<h2><?php the_field('hero_text'); ?></h2>
 						<p>Required fields are marked by an asterisk.</p>
 						<?php the_field('form_code'); ?>
@@ -165,8 +187,8 @@
 								<?php while(the_repeater_field('accreditation_images', 'options')): ?>
 									<img src="<?php the_sub_field('accreditation_image_url', 'options'); ?>" alt="<?php the_sub_field('accreditation_image_alt', 'options'); ?>">
 								<?php endwhile; ?>
-							 <?php endif; ?>
-						 </div>
+							</div>
+						<?php endif; ?>
 					</div>
 				</section>
 

@@ -6,6 +6,15 @@ IMPORTING
 @import "base/grid";
 @import "modules/clearfix";
 
+body {
+	font-size: 100%;
+	line-height: 1.5;
+	color: #333;
+	background-color: white;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /// Responsive Variables
 /// Breakpoint Small
 $bp-sm: 481px;
@@ -29,13 +38,15 @@ LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	width: 90%;
 	max-width: 1130px;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 section {
-	padding: 5rem 0;
+	padding: 3rem 0;
 }
 
 /********************
@@ -49,7 +60,8 @@ p {
 
 h1 {
 	font-size: 2.6rem;
-	margin-bottom: 2.4rem;
+	margin-top: 0;
+	margin-bottom: 1.5rem;
 	display: block;
 }
 
@@ -100,11 +112,22 @@ HEADER
 *********************/
 
 #hero {
+	position: relative;
 	background-size: cover;
 	padding: 32px 0;
 	background-repeat: no-repeat;
 	height: 50vh;
 	background-position: center;
+}
+
+#hero.overlay::before {
+	content: " ";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-image: linear-gradient(51deg, rgba(29,108,255,0.20) 0%, rgba(34,237,142,0.20) 100%), linear-gradient(0deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.00) 67%, rgba(0,0,0,0.35) 100%);
 }
 
 .header__logo, .phone-number {
@@ -113,12 +136,14 @@ HEADER
 
 .logo img {
 	max-width: 200px;
+	filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.2));
 }
 
 .phone-number {
 	text-align: right;
 	font-weight: bold;
 	font-size: 1.2rem;
+	filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.2));
 
 	svg {
 		position: relative;
@@ -257,7 +282,6 @@ MAIN CONTENT AREA
 
 
 #program-information {
-	padding: 3rem 0 0;
 
 	@include mobilefirst($bp-med) {
 		display: flex;
@@ -268,13 +292,14 @@ MAIN CONTENT AREA
 #content-area {
 	@include mobilefirst($bp-med) {
 		flex: 2;
-		padding: 0 1rem 0 0;
+		padding-left: 1.5rem;
 		}
 }
 
 #programs-list {
 	background-color: #EBEBEB;
-	padding: 24px;
+	padding: 1.5rem;
+	margin-top: 3rem;
 
 	@include mobilefirst($bp-med) {
 		flex: 1;
