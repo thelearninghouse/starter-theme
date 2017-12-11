@@ -1,22 +1,19 @@
 <!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
 <!doctype html>
-<html lang="en" class="fonts-loaded">
+<html <?php language_attributes(); ?> class="fonts-loaded">
 <!--#else -->
 <!doctype html>
 <!--#endif -->
-
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
-
+<!--[if gt IE 8]><html <?php language_attributes(); ?> class="no-js"><![endif]-->
 	<head>
 		<meta charset="utf-8">
+		<title><?php the_field('school_name', 'options'); ?></title>
 
 		<?php // force Internet Explorer to use the latest rendering engine available ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-		<title><?php the_field('school_name', 'options'); ?></title>
 
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheldFriendly" content="True">
@@ -30,11 +27,8 @@
 		<meta name="msapplication-TileColor" content="<?php the_field('color_1', 'options'); ?>">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
     <meta name="theme-color" content="<?php the_field('color_1', 'options'); ?>">
-
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-
 		<?php wp_head(); ?>
-
 		<?php // Get fonts from Google
 			$headings_font = get_field('headings_font', 'options');
 			$body_font = get_field('body_font', 'options');
@@ -48,38 +42,12 @@
 		?>
 		<link href="<?php echo $font_url ?>" rel="stylesheet">
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/library/css/launch-lp-style.min.css">
-
-		<style>
-			h1, h2, h3, h4, h5, h6 {
-				font-family: <?php echo $headings_font['value']; ?>;
-			}
-			p, ul, ol, li {
-				font-family: <?php echo $body_font['value']; ?>;
-			}
-			<?php // Get responsive hero background image
-			$hero_image = get_field('hero_image'); ?>
-			@media screen and (max-width: 767px) {
-				#hero {
-					background-image: url('<?php echo $hero_image['sizes']['medium_large']; ?>');
-				}
-			}
-			@media screen and (min-width: 768px) {
-				#hero {
-					background-image: url('<?php echo $hero_image['url']; ?>');
-				}
-			}
-			#form {
-				background-color: <?php get_field('form_bg') == '' ? the_field('color_1', 'options') : the_field('form_bg'); ?>;
-			}
-			#value-props .value-props-container .value-prop {
-				background-color: <?php the_field('vp_bgcolor'); ?>;
-			}
-		</style>
-
-		<style>
-			<?php the_field('custom_css'); ?>
-		</style>
-
+		<?php include 'library/launch-lp-inline-css.php'; // Load custom CSS for this page ?>
+		<?php if (get_field('custom_css')) { ?>
+			<style>
+				<?php the_field('custom_css'); ?>
+			</style>
+		<?php } ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
