@@ -16,6 +16,7 @@ $type-1: $type0 / $interval;
 $type1: $type0 * $interval;
 $type2: $type1 * $interval;
 $type3: $type2 * $interval;
+$type4: $type3 * $interval;
 
 *,
 *:before,
@@ -56,20 +57,57 @@ $bp-lg: 1040px;
 	padding-right: 1rem;
 }
 
-section {
-	padding-top: 5rem;
-	padding-bottom: 5rem;
+// section {
+// 	padding-top: 3rem;
+// 	padding-bottom: 3rem;
+//
+// 	@include mobilefirst($bp-med) {
+// 		padding-top: 5rem;
+// 		padding-bottom: 5rem;
+// 	}
+// }
 
-	@include mobilefirst($bp-med) {
-		padding-top: 5rem;
-		padding-bottom: 5rem;
-	}
+// Utilities
+.text-dark {
+	color: #333333;
 }
 
-// Components
+.text-sm {
+	font-size: $type-1;
+}
+
+.text-md {
+	font-size: $type0;
+}
+
+.text-lg {
+	font-size: $type1;
+}
+
+.text-xl {
+	font-size: $type2;
+}
+
+.text-xxl {
+	font-size: $type3;
+}
+
+.text-xxxl {
+	font-size: $type4;
+}
+
+// Elements and Components
 p {
 	line-height: 1.8;
 	margin-bottom: 1.4rem;
+}
+
+h1 {
+	@extend .text-xxxl;
+}
+
+h2 {
+	@extend .text-xxl;
 }
 
 .button {
@@ -87,9 +125,37 @@ p {
 	}
 }
 
-.text-dark {
-	color: #333333;
+.icon {
+	display: flex;
+	fill: currentColor;
 }
+
+.icon.inline {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+  position: relative;
+  height: 1em;
+  width: 1em;
+}
+
+.icon.inline > svg {
+	height: 1em;
+  width: 1em;
+}
+
+.icon.inline > svg {
+	bottom: -0.05em;
+	position: absolute;
+}
+
+.icon.inline.lg,
+.icon.inline.lg > svg {
+	height: 2em;
+	width: 2em;
+}
+
 
 // Hero
 
@@ -112,31 +178,50 @@ p {
 	background-image: linear-gradient(51deg, rgba(29,108,255,0.20) 0%, rgba(34,237,142,0.20) 100%), linear-gradient(0deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.00) 67%, rgba(0,0,0,0.35) 100%);
 }
 
-.logo img {
-	max-width: 200px;
-	filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.2));
+.school-info {
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+	// filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.2));
+
+	@include mobilefirst($bp-med) {
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
 }
 
-.phone-number {
-	text-align: right;
-	font-weight: bold;
-	font-size: 1.2rem;
-	filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.2));
+.logo img {
+	max-width: 20rem;
+}
 
-	svg {
-		position: relative;
-		top: .6rem;
+
+.phone-number {
+	font-weight: bold;
+	font-size: 2rem;
+	margin-top: 2rem;
+
+	@include mobilefirst($bp-med) {
+		margin-top: 0;
 	}
 
 	a {
+		display: flex;
+		align-items: center;
+		color: white;
 		text-decoration: none;
-	}
+		background-color: rgba(0, 0, 0, 0.1);
+		border-radius: 0.5rem;
+		padding: 0.5rem 1rem;
 
-	@include mobilefirst($bp-med) {
-		font-size: 1.8rem;
-
-		svg {
-			top: .3rem;
+		.icon {
+			padding-right: 1rem;
 		}
 	}
 }
@@ -148,16 +233,16 @@ MAIN CONTENT AREA
 *********************/
 .main-content {
 	position: absolute;
-	top: 250px;
+	top: 230px;
 	left: 0;
 	right: 0;
 }
 
-#form {
+.form {
 	background-color: rgba(0,0,0,.6);
-	border-radius: 10px;
-	padding: 32px;
-	margin: 16px auto;
+	border-radius: 0.8rem;
+	padding: 2rem;
+	margin: 0 0 4rem;
 	color: #FFFFFF;
 
 	h2 {
@@ -241,6 +326,8 @@ MAIN CONTENT AREA
 	}
 
 	@include mobilefirst($bp-med) {
+		padding: 3rem;
+
 		ol, ul {
 			max-width: 800px;
 			display: flex;
@@ -261,29 +348,27 @@ MAIN CONTENT AREA
 }
 
 
-#program-information {
-
+.program-information {
 	@include mobilefirst($bp-med) {
 		display: flex;
-		justify-content: space-between;
 	}
 }
 
-#content-area {
+.program-content {
 	@include mobilefirst($bp-med) {
 		flex: 2;
-		padding-left: 1.5rem;
-		}
+	}
 }
 
-#programs-list {
+.program-sidebar {
 	background-color: #EBEBEB;
-	padding: 1.5rem;
+	padding: 3rem;
 	margin-top: 3rem;
 
 	@include mobilefirst($bp-med) {
 		flex: 1;
-		}
+		margin: 0 0 0 2rem;
+	}
 
 	h3 {
 		padding-bottom: 1.4rem;
@@ -307,7 +392,7 @@ MAIN CONTENT AREA
 	}
 }
 
-#value-props {
+.value-props {
 	padding: 1rem 0;
 
 	.value-props-container {
@@ -362,7 +447,7 @@ MAIN CONTENT AREA
 	}
 }
 
-#about {
+.about {
 	color: #FFFFFF;
 
 	.wrap {
@@ -385,7 +470,7 @@ MAIN CONTENT AREA
 
 }
 
-#cta {
+.cta {
 	text-align: center;
 	padding: 6rem 0;
 
@@ -398,7 +483,7 @@ MAIN CONTENT AREA
 	}
 }
 
-#accreditation {
+.accreditation {
 
 	@include mobilefirst($bp-med) {
 		.wrap {

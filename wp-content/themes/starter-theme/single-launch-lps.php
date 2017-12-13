@@ -96,16 +96,16 @@
 
 		<div class="container">
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-				<section class="hero overlay">
-					<div class="wrap">
+				<section class="hero<?php echo get_field('lp_hero_overlay') ? ' overlay' : ''; ?>">
+					<div class="school-info wrap">
 						<p class="logo" itemscope itemtype="http://schema.org/Organization">
 							<?php // Get correct logo
 								$school_logo = get_field('lp_logo_version') ? get_field('school_logo_alternative', 'options') : get_field('school_logo', 'options');
 							?>
-							<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
+							<img src="<?php echo $school_logo['url']; ?>" width="" alt="<?php echo $school_logo['alt']; ?>">
 						</p>
 						<p class="phone-number">
-							<a class="plain-link" href="tel:<?php the_field('school_phone', 'options'); ?>">
+							<a href="tel:<?php the_field('school_phone', 'options'); ?>">
 								<?php tlh_icon('phone'); ?>
 								<?php the_field('school_phone', 'options'); ?>
 							</a>
@@ -125,13 +125,13 @@
 				</div>
 
 				<div class="program-information wrap cf">
-					<section class="main-content">
+					<section class="program-content">
 						<h1><?php the_field('main_content_title'); ?></h1>
 						<p><?php the_field('main_content'); ?></p>
 					</section>
 
-					<section class="main-sidebar">
-						<h3><?php the_field('programs_title', 'options'); ?></h3>
+					<section class="program-sidebar">
+						<h2 class="text-xl"><?php the_field('programs_title', 'options'); ?></h2>
 						<ul class="programs">
 							<?php if(get_field('programs_list', 'options')): ?>
 									<?php while(the_repeater_field('programs_list', 'options')): ?>
@@ -177,7 +177,7 @@
 				<section class="accreditation" style="background-color: <?php the_field('color_3', 'options'); ?>">
 					<div class="wrap">
 						<div class="copy">
-							<h3><?php the_field('accreditation_title', 'options'); ?></h3>
+							<h2><?php the_field('accreditation_title', 'options'); ?></h2>
 							<p><?php the_field('accreditation_paragraph', 'options'); ?></p>
 						</div>
 						<?php if(get_field('accreditation_images', 'options')): ?>
