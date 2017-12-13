@@ -238,6 +238,25 @@
                 "mime_types": "jpg,jpeg,png,svg"
             },
             {
+                "key": "field_5a2ff03d9bdae",
+                "label": "Image Overlay",
+                "name": "lp_hero_overlay",
+                "type": "true_false",
+                "instructions": "If a light hero image is used, enable this to help the logo and phone number stand out",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "On",
+                "ui_off_text": "Off"
+            },
+            {
                 "key": "field_5930e1eb8afff",
                 "label": "Logo Version",
                 "name": "lp_logo_version",
@@ -313,7 +332,7 @@
                 "display": "group",
                 "layout": "block",
                 "prefix_label": 0,
-                "prefix_name": 0
+                "prefix_name": 1
             },
             {
                 "key": "field_593782de83e60",
@@ -544,7 +563,7 @@
                 "display": "group",
                 "layout": "block",
                 "prefix_label": 0,
-                "prefix_name": 0
+                "prefix_name": 1
             }
         ],
         "location": [

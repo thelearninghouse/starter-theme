@@ -18,6 +18,10 @@ To start watching files use `gulp` from the `library` folder. This will run brow
 
 This theme uses Susy Grid. Documentation can be found [here](http://susydocs.oddbird.net/en/latest/)
 
+### Custom Fields
+
+This theme relies on [Advanced Custom Fields](https://www.advancedcustomfields.com/) to help handle much of the content and settings on the site. To set up all the fields on a new install, navigate to the Tools section in the WP Admin and import the `acf-export-latest.json` from the theme's `library` folder.
+
 ## Menus
 
 There are three menus setup for this theme by default:

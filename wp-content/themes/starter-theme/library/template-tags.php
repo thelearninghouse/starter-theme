@@ -12,4 +12,10 @@
   echo '<link href="' . $font_url . '" rel="stylesheet">';
 }
 
+function tlh_icon ( $name, $class = NULL ) {
+  echo '<i class="icon' . ($class ? ' ' . $class : '') . '">';
+  include(get_stylesheet_directory() . '/library/images/icons/' . $name . '.svg');
+  echo '</i>';
+}
+
 ?>

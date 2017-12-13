@@ -2,17 +2,32 @@
 IMPORTING
 *********************/
 
-@import "base/normalize";
-@import "base/grid";
-@import "modules/clearfix";
+@import "base/reset";
+// @import "modules/clearfix";
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+$interval: 1.25;
+$type0: 1.8rem;
+$type-1: $type0 / $interval;
+$type1: $type0 * $interval;
+$type2: $type1 * $interval;
+$type3: $type2 * $interval;
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 body {
-	font-size: 100%;
+	font-size: $type0;
 	line-height: 1.5;
 	color: #333;
 	background-color: white;
-	-webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /// Responsive Variables
@@ -32,11 +47,7 @@ $bp-lg: 1040px;
   }
 }
 
-
-/********************
-LAYOUT & GRID STYLES
-*********************/
-
+// Layout
 .wrap {
 	max-width: 1130px;
 	margin-left: auto;
@@ -46,46 +57,19 @@ LAYOUT & GRID STYLES
 }
 
 section {
-	padding: 3rem 0;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+
+	@include mobilefirst($bp-med) {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
 }
 
-/********************
-TYPOGRAPHY & ELEMENTS
-*********************/
+// Components
 p {
-	color: #686868;
 	line-height: 1.8;
 	margin-bottom: 1.4rem;
-}
-
-h1 {
-	font-size: 2.6rem;
-	margin-top: 0;
-	margin-bottom: 1.5rem;
-	display: block;
-}
-
-h2 {
-	font-size: 2.2rem;
-	margin-bottom: 1.8rem;
-	display: block;
-}
-
-h3 {
-	font-size: 2rem;
-	margin-bottom: 1.6rem;
-	display: block;
-}
-
-img {
-	width: 100%;
-}
-
-ul {
-	li {
-		margin-bottom: 1rem;
-		line-height: 1.8;
-	}
 }
 
 .button {
@@ -98,20 +82,18 @@ ul {
 	color: #FFFFFF;
 	transition: all .2s ease-in-out;
 
-	&.dark {
-		color: #000000;
-	}
-
 	&:hover {
 		transform: scale(1.1);
 	}
 }
 
-/********************
-HEADER
-*********************/
+.text-dark {
+	color: #333333;
+}
 
-#hero {
+// Hero
+
+.hero {
 	position: relative;
 	background-size: cover;
 	padding: 32px 0;
@@ -120,7 +102,7 @@ HEADER
 	background-position: center;
 }
 
-#hero.overlay::before {
+.hero.overlay::before {
 	content: " ";
 	position: absolute;
 	top: 0;
@@ -128,10 +110,6 @@ HEADER
 	bottom: 0;
 	right: 0;
 	background-image: linear-gradient(51deg, rgba(29,108,255,0.20) 0%, rgba(34,237,142,0.20) 100%), linear-gradient(0deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.00) 67%, rgba(0,0,0,0.35) 100%);
-}
-
-.header__logo, .phone-number {
-	@include span(6 of 12);
 }
 
 .logo img {
@@ -162,6 +140,8 @@ HEADER
 		}
 	}
 }
+
+// Form
 
 /********************
 MAIN CONTENT AREA

@@ -42,7 +42,49 @@
 		?>
 		<link href="<?php echo $font_url ?>" rel="stylesheet">
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/library/css/launch-lp-style.min.css">
-		<?php include 'library/launch-lp-inline-css.php'; // Load custom CSS for this page ?>
+
+		<?php // Load custom CSS for this page
+			$color_1 = get_field('color_1', 'options'); // String: '#0000000'
+			$color_2 = get_field('color_2', 'options'); // String: '#000000'
+		  $hero_image = get_field('hero_image'); // Array: [url, alt, sizes[...]]
+			$form_style = get_field('lp_form_color'); // Array: [color, color_custom, text_dark]
+			$features_style = get_field('lp_features_color'); // Array: [color, color_custom, text_dark]
+			$about_style = get_field('lp_about_color'); // Array: [color, color_custom, text_dark]
+		?>
+		<style>
+		  body {
+		    font-family: <?php echo $body_font['value']; ?>;
+		  }
+
+		  h1, h2, h3, h4, h5, h6 {
+		    font-family: <?php echo $headings_font['value']; ?>;
+		  }
+
+		  @media screen and (max-width: 767px) {
+		    .hero {
+		      background-image: url('<?php echo $hero_image['sizes']['medium_large']; ?>');
+		    }
+		  }
+
+		  @media screen and (min-width: 768px) {
+		    .hero {
+		      background-image: url('<?php echo $hero_image['url']; ?>');
+		    }
+		  }
+
+		  .form {
+		    background-color: <?php echo $form_style['color'] === 'custom' ? $form_style['color_custom'] : $form_style['color'] === 'primary' ? $color_1 : $color_2 ?>;
+		  }
+
+		  .value-props .value-props-container .value-prop {
+		    background-color: <?php the_field('vp_bgcolor'); ?>;
+		  }
+
+			.about {
+				background-color: <?php echo $about_style['color'] === 'custom' ? $about_style['color_custom'] : $about_style['color'] === 'primary' ? $color_1 : $color_2 ?>;
+			}
+		</style>
+
 		<?php if (get_field('custom_css')) { ?>
 			<style>
 				<?php the_field('custom_css'); ?>
@@ -53,31 +95,19 @@
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 
 		<div class="container">
-
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-				<section id="hero" class="overlay">
+				<section class="hero overlay">
 					<div class="wrap">
-						<p class="logo header__logo" itemscope itemtype="http://schema.org/Organization">
-							<?php if (get_field('logo_version')) { ?>
-								<img src="<?php the_field('school_logo_light', 'option'); ?>" alt="<?php the_field('school_name', 'option'); ?> Logo">
-							<?php }
-							else { ?>
-									<img src="<?php the_field('school_logo_dark', 'option'); ?>" alt="<?php the_field('school_name', 'option'); ?> Logo">
-							<?php } ?>
+						<p class="logo" itemscope itemtype="http://schema.org/Organization">
+							<?php // Get correct logo
+								$school_logo = get_field('lp_logo_version') ? get_field('school_logo_alternative', 'options') : get_field('school_logo', 'options');
+							?>
+							<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
 						</p>
 						<p class="phone-number">
-							<a href="tel:<?php the_field('phone_number', 'options'); ?>" style="color: <?php the_field('color_1', 'options'); ?>;">
-								<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-									 width="35px" height="35px" viewBox="0 0 35 35" xml:space="preserve" fill="<?php the_field('color_1', 'options'); ?>">
-								<g>
-									<path d="M25.302,0H9.698c-1.3,0-2.364,1.063-2.364,2.364v30.271C7.334,33.936,8.398,35,9.698,35h15.604
-										c1.3,0,2.364-1.062,2.364-2.364V2.364C27.666,1.063,26.602,0,25.302,0z M15.004,1.704h4.992c0.158,0,0.286,0.128,0.286,0.287
-										c0,0.158-0.128,0.286-0.286,0.286h-4.992c-0.158,0-0.286-0.128-0.286-0.286C14.718,1.832,14.846,1.704,15.004,1.704z M17.5,33.818
-										c-0.653,0-1.182-0.529-1.182-1.183s0.529-1.182,1.182-1.182s1.182,0.528,1.182,1.182S18.153,33.818,17.5,33.818z M26.021,30.625
-										H8.979V3.749h17.042V30.625z"/>
-								</g>
-								</svg>
-								<?php the_field('phone_number', 'options'); ?>
+							<a class="plain-link" href="tel:<?php the_field('school_phone', 'options'); ?>">
+								<?php tlh_icon('phone'); ?>
+								<?php the_field('school_phone', 'options'); ?>
 							</a>
 						</p>
 					</div>
@@ -87,20 +117,20 @@
 
 			<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 				<div class="wrap">
-					<section id="form">
+					<section class="form<?php echo $form_style['text_dark'] ? ' text-dark' : ''; ?>">
 						<h2><?php the_field('hero_text'); ?></h2>
 						<p>Required fields are marked by an asterisk.</p>
 						<?php the_field('form_code'); ?>
 					</section>
 				</div>
 
-				<div id="program-information" class="wrap cf">
-					<section id="content-area">
+				<div class="program-information wrap cf">
+					<section class="main-content">
 						<h1><?php the_field('main_content_title'); ?></h1>
 						<p><?php the_field('main_content'); ?></p>
 					</section>
 
-					<section id="programs-list">
+					<section class="main-sidebar">
 						<h3><?php the_field('programs_title', 'options'); ?></h3>
 						<ul class="programs">
 							<?php if(get_field('programs_list', 'options')): ?>
@@ -112,7 +142,7 @@
 					</section>
 				</div>
 
-				<section id="value-props">
+				<section class="features">
 					<div class="wrap">
 						<h2><?php the_field('value_props_title'); ?></h2>
 						<div class="value-props-container">
@@ -130,21 +160,21 @@
 					</div>
 				</section>
 
-				<section id="about" style="background-color: <?php the_field('color_1', 'options'); ?>;">
+				<section class="about" style="background-color: <?php the_field('color_1', 'options'); ?>;">
 					<div class="wrap">
 						<h2><?php the_field('about_title', 'options'); ?></h2>
 						<p><?php the_field('about_paragraph', 'options'); ?></p>
 					</div>
 				</section>
 
-				<section id="cta">
+				<section class="cta">
 					<div class="wrap">
 						<h4><?php the_field('cta_text'); ?></h4>
 						<a class="button <?php if( get_field('cta_color') ) { echo 'dark'; } ?>" href="#form" style="background-color: <?php the_field('color_2', 'options'); ?>"><?php the_field('cta_button'); ?></a>
 					</div>
 				</section>
 
-				<section id="accreditation" style="background-color: <?php the_field('color_3', 'options'); ?>">
+				<section class="accreditation" style="background-color: <?php the_field('color_3', 'options'); ?>">
 					<div class="wrap">
 						<div class="copy">
 							<h3><?php the_field('accreditation_title', 'options'); ?></h3>
@@ -165,40 +195,37 @@
 						<p class="footer__copyright">&copy; <?php echo date('Y'); ?> <?php the_field('school_name', 'options'); ?> | <?php the_field('school_address', 'options'); ?> | <a href="tel:<?php the_field('phone_number', 'options'); ?>"><?php the_field('phone_number', 'options'); ?></a> | <a href="/privacy-policy/">Privacy Policy</a></p>
 					</div>
 				</footer>
-
 			</main>
-
 </div>
 
-<script type="text/javascript">
-	<?php the_field('custom_js'); ?>
-</script>
+<?php if (get_field('custom_js')) { ?>
+	<script type="text/javascript">
+		<?php the_field('custom_js'); ?>
+	</script>
+<?php } ?>
 
 <?php wp_footer(); ?>
 
-<script>
-	// Scroll to specific values
-	// scrollTo is the same
-	window.scroll({
-	  top: 2500,
-	  left: 0,
-	  behavior: 'smooth'
-	});
+		<script>
+			// Scroll to specific values
+			// scrollTo is the same
+			window.scroll({
+			  top: 2500,
+			  left: 0,
+			  behavior: 'smooth'
+			});
 
-	// Scroll certain amounts from current position
-	window.scrollBy({
-	  top: 100, // could be negative value
-	  left: 0,
-	  behavior: 'smooth'
-	});
+			// Scroll certain amounts from current position
+			window.scrollBy({
+			  top: 100, // could be negative value
+			  left: 0,
+			  behavior: 'smooth'
+			});
 
-	// Scroll to a certain element
-	document.querySelector('.hello').scrollIntoView({
-	  behavior: 'smooth'
-	});
-</script>
-
-
-</body>
-
+			// Scroll to a certain element
+			document.querySelector('.hello').scrollIntoView({
+			  behavior: 'smooth'
+			});
+		</script>
+	</body>
 </html> <!-- end of site. what a ride! -->
