@@ -2,34 +2,9 @@
 IMPORTING
 *********************/
 
-@import "base/reset";
-// @import "modules/clearfix";
-
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;
-}
-
-$interval: 1.25;
-$type0: 1.8rem;
-$type-1: $type0 / $interval;
-$type1: $type0 * $interval;
-$type2: $type1 * $interval;
-$type3: $type2 * $interval;
-$type4: $type3 * $interval;
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-body {
-	font-size: $type0;
-	line-height: 1.5;
-	color: #333;
-	background-color: white;
-}
+@import "base/normalize";
+@import "base/grid";
+@import "modules/clearfix";
 
 /// Responsive Variables
 /// Breakpoint Small
@@ -48,66 +23,57 @@ $bp-lg: 1040px;
   }
 }
 
-// Layout
+
+/********************
+LAYOUT & GRID STYLES
+*********************/
+
 .wrap {
+	width: 90%;
 	max-width: 1130px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	margin: 0 auto;
 }
 
-// section {
-// 	padding-top: 3rem;
-// 	padding-bottom: 3rem;
-//
-// 	@include mobilefirst($bp-med) {
-// 		padding-top: 5rem;
-// 		padding-bottom: 5rem;
-// 	}
-// }
-
-// Utilities
-.text-dark {
-	color: #333333;
+section {
+	padding: 5rem 0;
 }
 
-.text-sm {
-	font-size: $type-1;
-}
-
-.text-md {
-	font-size: $type0;
-}
-
-.text-lg {
-	font-size: $type1;
-}
-
-.text-xl {
-	font-size: $type2;
-}
-
-.text-xxl {
-	font-size: $type3;
-}
-
-.text-xxxl {
-	font-size: $type4;
-}
-
-// Elements and Components
+/********************
+TYPOGRAPHY & ELEMENTS
+*********************/
 p {
+	color: #686868;
 	line-height: 1.8;
 	margin-bottom: 1.4rem;
 }
 
 h1 {
-	@extend .text-xxxl;
+	font-size: 2.6rem;
+	margin-bottom: 2.4rem;
+	display: block;
 }
 
 h2 {
-	@extend .text-xxl;
+	font-size: 2.2rem;
+	margin-bottom: 1.8rem;
+	display: block;
+}
+
+h3 {
+	font-size: 2rem;
+	margin-bottom: 1.6rem;
+	display: block;
+}
+
+img {
+	width: 100%;
+}
+
+ul {
+	li {
+		margin-bottom: 1rem;
+		line-height: 1.8;
+	}
 }
 
 .button {
@@ -120,13 +86,18 @@ h2 {
 	color: #FFFFFF;
 	transition: all .2s ease-in-out;
 
+	&.dark {
+		color: #000000;
+	}
+
 	&:hover {
 		transform: scale(1.1);
 	}
 }
 
 .icon {
-	display: flex;
+  display: flex;
+  align-items: center;
 	fill: currentColor;
 }
 
@@ -156,11 +127,11 @@ h2 {
 	width: 2em;
 }
 
+/********************
+HEADER
+*********************/
 
-// Hero
-
-.hero {
-	position: relative;
+#hero {
 	background-size: cover;
 	padding: 32px 0;
 	background-repeat: no-repeat;
@@ -168,7 +139,7 @@ h2 {
 	background-position: center;
 }
 
-.hero.overlay::before {
+#hero.overlay::before {
 	content: " ";
 	position: absolute;
 	top: 0;
@@ -179,36 +150,39 @@ h2 {
 }
 
 .school-info {
-	position: relative;
+  position: relative;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
-	// filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.2));
 
-	@include mobilefirst($bp-med) {
+  @include mobilefirst($bp-med) {
 		flex-flow: row nowrap;
 		justify-content: space-between;
 	}
 
-	p {
+  p {
 		margin-bottom: 0;
 	}
 }
 
-.logo img {
-	max-width: 20rem;
+.logo {
+  margin-top: 0;
 }
 
+.logo img {
+	max-width: 200px;
+}
 
 .phone-number {
+	text-align: right;
 	font-weight: bold;
-	font-size: 2rem;
-	margin-top: 2rem;
+	font-size: 1.2rem;
 
-	@include mobilefirst($bp-med) {
+  @include mobilefirst($bp-med) {
 		margin-top: 0;
+    font-size: 1.8rem;
 	}
 
 	a {
@@ -216,7 +190,7 @@ h2 {
 		align-items: center;
 		color: white;
 		text-decoration: none;
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: rgba(0, 0, 0, 0.3);
 		border-radius: 0.5rem;
 		padding: 0.5rem 1rem;
 
@@ -226,36 +200,42 @@ h2 {
 	}
 }
 
-// Form
-
 /********************
 MAIN CONTENT AREA
 *********************/
 .main-content {
 	position: absolute;
-	top: 230px;
+	top: 250px;
 	left: 0;
 	right: 0;
 }
 
-.form {
+#form {
 	background-color: rgba(0,0,0,.6);
-	border-radius: 0.8rem;
-	padding: 2rem;
-	margin: 0 0 4rem;
+	border-radius: 10px;
+	padding: 32px;
+	margin: 16px auto;
 	color: #FFFFFF;
 
+  &.dark {
+    color: #333;
+  }
+
 	h2 {
-		color: #FFFFFF;
 		text-align: center;
 		margin: 1rem 0;
 	}
 
 	h2 + p {
 		font-size: .9rem;
-		color: #EBEBEB;
+		opacity: 0.9;
 		text-align: center;
 		margin: .5rem 0 1rem;
+    color: #fff;
+
+    &.dark {
+      color: #333;
+    }
 	}
 
 	ol, ul {
@@ -318,7 +298,8 @@ MAIN CONTENT AREA
 	}
 
 	.legal-text {
-		color: #EBEBEB;
+    color: inherit;
+		opacity: 0.9;
 		width: 70%;
 		max-width: 700px;
 		margin: 1rem auto;
@@ -326,8 +307,6 @@ MAIN CONTENT AREA
 	}
 
 	@include mobilefirst($bp-med) {
-		padding: 3rem;
-
 		ol, ul {
 			max-width: 800px;
 			display: flex;
@@ -348,27 +327,29 @@ MAIN CONTENT AREA
 }
 
 
-.program-information {
+#program-information {
+	padding: 3rem 0 0;
+
 	@include mobilefirst($bp-med) {
 		display: flex;
+		justify-content: space-between;
 	}
 }
 
-.program-content {
+#content-area {
 	@include mobilefirst($bp-med) {
 		flex: 2;
-	}
+		padding: 0 1rem 0 0;
+		}
 }
 
-.program-sidebar {
+#programs-list {
 	background-color: #EBEBEB;
-	padding: 3rem;
-	margin-top: 3rem;
+	padding: 24px;
 
 	@include mobilefirst($bp-med) {
 		flex: 1;
-		margin: 0 0 0 2rem;
-	}
+		}
 
 	h3 {
 		padding-bottom: 1.4rem;
@@ -392,7 +373,7 @@ MAIN CONTENT AREA
 	}
 }
 
-.value-props {
+#value-props {
 	padding: 1rem 0;
 
 	.value-props-container {
@@ -447,7 +428,7 @@ MAIN CONTENT AREA
 	}
 }
 
-.about {
+#about {
 	color: #FFFFFF;
 
 	.wrap {
@@ -470,7 +451,7 @@ MAIN CONTENT AREA
 
 }
 
-.cta {
+#cta {
 	text-align: center;
 	padding: 6rem 0;
 
@@ -483,7 +464,8 @@ MAIN CONTENT AREA
 	}
 }
 
-.accreditation {
+#accreditation {
+  background-color: #EBEBEB;
 
 	@include mobilefirst($bp-med) {
 		.wrap {
@@ -515,6 +497,12 @@ MAIN CONTENT AREA
 		flex-direction: row;
 		justify-content: space-around;
 		align-items: center;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
 		img {
 			max-width: 280px;
