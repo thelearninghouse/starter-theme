@@ -93,107 +93,6 @@
         "description": ""
     },
     {
-        "key": "group_5a2e925b7ae92",
-        "title": "Features",
-        "fields": [
-            {
-                "key": "field_5a2e9263629bf",
-                "label": "Section Title",
-                "name": "section_title",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "Title",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_5a2e927bb4ecf",
-                "label": "Boxes",
-                "name": "boxes",
-                "type": "repeater",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "collapsed": "",
-                "min": 0,
-                "max": 0,
-                "layout": "table",
-                "button_label": "Add Box",
-                "sub_fields": [
-                    {
-                        "key": "field_5a2ee448b4ed0",
-                        "label": "Title",
-                        "name": "title",
-                        "type": "text",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "30",
-                            "class": "",
-                            "id": ""
-                        },
-                        "default_value": "",
-                        "placeholder": "",
-                        "prepend": "",
-                        "append": "",
-                        "maxlength": ""
-                    },
-                    {
-                        "key": "field_5a2ee44fb4ed1",
-                        "label": "Description",
-                        "name": "description",
-                        "type": "textarea",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "70",
-                            "class": "",
-                            "id": ""
-                        },
-                        "default_value": "",
-                        "placeholder": "",
-                        "maxlength": "",
-                        "rows": "",
-                        "new_lines": "wpautop"
-                    }
-                ]
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "post"
-                }
-            ]
-        ],
-        "menu_order": 0,
-        "position": "normal",
-        "style": "default",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": 0,
-        "description": ""
-    },
-    {
         "key": "group_5930ccfeb5901",
         "title": "Launch LP Content",
         "fields": [
@@ -428,7 +327,7 @@
             },
             {
                 "key": "field_593782ef83e61",
-                "label": "Features",
+                "label": "Values",
                 "name": "",
                 "type": "tab",
                 "instructions": "",
@@ -443,11 +342,11 @@
                 "endpoint": 0
             },
             {
-                "key": "field_5a2ac55b38aa4",
-                "label": "Enter Custom Features?",
-                "name": "use_custom_boxes",
-                "type": "true_false",
-                "instructions": "By default this launch landing page will use the features entered into the site options. If you would like to add custom boxes for this page, enable this.",
+                "key": "field_5a3293ed438f9",
+                "label": "Values Title",
+                "name": "lp_values_title",
+                "type": "text",
+                "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -455,35 +354,161 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "",
-                "default_value": 0,
-                "ui": 1,
-                "ui_on_text": "Custom",
-                "ui_off_text": "Default"
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             },
             {
-                "key": "field_5a2acaad617e8",
-                "label": "Custom Features",
-                "name": "lp_features_custom",
+                "key": "field_5a32940db3172",
+                "label": "Values",
+                "name": "lp_values",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_5a329419b3173",
+                        "label": "Title",
+                        "name": "title",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "30",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5a32941eb3174",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "70",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": "wpautop"
+                    }
+                ]
+            },
+            {
+                "key": "field_5a329451b3175",
+                "label": "Background Color",
+                "name": "lp_values_color",
                 "type": "clone",
                 "instructions": "",
-                "required": 1,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_5a2ac55b38aa4",
-                            "operator": "==",
-                            "value": "1"
-                        }
-                    ]
-                ],
+                "required": 0,
+                "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
                     "class": "",
                     "id": ""
                 },
                 "clone": [
-                    "group_5a2e925b7ae92"
+                    "group_5a2e9029bdbc0"
+                ],
+                "display": "group",
+                "layout": "block",
+                "prefix_label": 0,
+                "prefix_name": 1
+            },
+            {
+                "key": "field_5a32949b1ee41",
+                "label": "About",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5a3294dbec6e8",
+                "label": "About Title",
+                "name": "lp_about_title",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5a3294e9ec6e9",
+                "label": "About Paragraph",
+                "name": "lp_about_paragraph",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5a3294fbec6ea",
+                "label": "Background Color",
+                "name": "lp_about_color",
+                "type": "clone",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "clone": [
+                    "group_5a2e9029bdbc0"
                 ],
                 "display": "group",
                 "layout": "block",
@@ -564,6 +589,85 @@
                 "layout": "block",
                 "prefix_label": 0,
                 "prefix_name": 1
+            },
+            {
+                "key": "field_5a3294a41ee42",
+                "label": "Accreditation",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5a32953a0c1f0",
+                "label": "Accreditation Title",
+                "name": "lp_accreditation_title",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5a3295490c1f1",
+                "label": "Accreditation Paragraph",
+                "name": "lp_accreditation_paragraph",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": "wpautop"
+            },
+            {
+                "key": "field_5a3295660c1f2",
+                "label": "Accreditation Logos",
+                "name": "lp_accreditation_logos",
+                "type": "gallery",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "min": "",
+                "max": "",
+                "insert": "append",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
             }
         ],
         "location": [
@@ -871,6 +975,60 @@
                     "id": ""
                 },
                 "default_value": ""
+            },
+            {
+                "key": "field_5a32b52ad36e7",
+                "label": "Headings Font",
+                "name": "headings_font",
+                "type": "select",
+                "instructions": "This font choice only applies to the Launch LPs",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "'Open Sans', Arial, sans-serif": "Open Sans",
+                    "'Open Sans Condensed', Arial, sans-serif": "Open Sans Condensed",
+                    "'Merriweather', Times New Roman, serif": "Merriweather",
+                    "'PT Serif', Times New Roman, serif": "PT Serif"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "array",
+                "placeholder": ""
+            },
+            {
+                "key": "field_5a32b55fd36e8",
+                "label": "Body Font",
+                "name": "body_font",
+                "type": "select",
+                "instructions": "This font choice only applies to the Launch LPs",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "'Open Sans', Arial, sans-serif": "Open Sans",
+                    "'Open Sans Condensed', Arial, sans-serif": "Open Sans Condensed",
+                    "'Merriweather', Times New Roman, serif": "Merriweather",
+                    "'PT Serif', Times New Roman, serif": "PT Serif"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "array",
+                "placeholder": ""
             }
         ],
         "location": [
@@ -953,328 +1111,6 @@
         "menu_order": 1,
         "position": "normal",
         "style": "seamless",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": 1,
-        "description": ""
-    },
-    {
-        "key": "group_5930b5924086d",
-        "title": "Launch LPs Settings",
-        "fields": [
-            {
-                "key": "field_5a2ac3ab32f40",
-                "label": "Launch LP Instructions",
-                "name": "",
-                "type": "message",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "message": "Settings for the Launch LPs. For site-wide settings like brand colors, logo, contact info, etc. see the Site Settings section.",
-                "new_lines": "wpautop",
-                "esc_html": 0
-            },
-            {
-                "key": "field_5a2b0fff4f391",
-                "label": "Fonts",
-                "name": "",
-                "type": "tab",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "placement": "left",
-                "endpoint": 0
-            },
-            {
-                "key": "field_593965708e1b1",
-                "label": "Headings Font",
-                "name": "headings_font",
-                "type": "select",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "choices": {
-                    "'Open Sans Condensed', Arial, sans-serif": "Open Sans Condensed",
-                    "'Open Sans', Arial, sans-serif": "Open Sans",
-                    "'Merriweather', Times New Roman, serif": "Merriweather",
-                    "'PT Serif', Times New Roman, serif": "PT Serif"
-                },
-                "default_value": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "ui": 0,
-                "ajax": 0,
-                "return_format": "array",
-                "placeholder": ""
-            },
-            {
-                "key": "field_593966488e1b2",
-                "label": "Body Font",
-                "name": "body_font",
-                "type": "select",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "choices": {
-                    "'Open Sans Condensed', Arial, sans-serif": "Open Sans Condensed",
-                    "'Open Sans', Arial, sans-serif": "Open Sans",
-                    "'Merriweather', Times New Roman, serif": "Merriweather",
-                    "'PT Serif', Times New Roman, serif": "PT Serif"
-                },
-                "default_value": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "ui": 0,
-                "ajax": 0,
-                "return_format": "array",
-                "placeholder": ""
-            },
-            {
-                "key": "field_5a2aca3957b82",
-                "label": "Features",
-                "name": "",
-                "type": "tab",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "placement": "left",
-                "endpoint": 0
-            },
-            {
-                "key": "field_5a2ac9d957b81",
-                "label": "Features",
-                "name": "lp_features",
-                "type": "clone",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "clone": [
-                    "group_5a2e925b7ae92"
-                ],
-                "display": "seamless",
-                "layout": "block",
-                "prefix_label": 0,
-                "prefix_name": 1
-            },
-            {
-                "key": "field_5a2ee8b160772",
-                "label": "Background Color",
-                "name": "lp_features_color",
-                "type": "clone",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "clone": [
-                    "group_5a2e9029bdbc0"
-                ],
-                "display": "group",
-                "layout": "block",
-                "prefix_label": 0,
-                "prefix_name": 0
-            },
-            {
-                "key": "field_5930b750d656d",
-                "label": "About",
-                "name": "",
-                "type": "tab",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "placement": "left",
-                "endpoint": 0
-            },
-            {
-                "key": "field_5930b765d656e",
-                "label": "About Section Title",
-                "name": "lp_about_title",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_5930b9f8d656f",
-                "label": "About Paragraph",
-                "name": "lp_about_paragraph",
-                "type": "textarea",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "maxlength": "",
-                "rows": "",
-                "new_lines": ""
-            },
-            {
-                "key": "field_5a2e91316a24c",
-                "label": "Background Color",
-                "name": "lp_about_color",
-                "type": "clone",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "clone": [
-                    "group_5a2e9029bdbc0"
-                ],
-                "display": "group",
-                "layout": "block",
-                "prefix_label": 0,
-                "prefix_name": 0
-            },
-            {
-                "key": "field_5930b63bd6566",
-                "label": "Accreditation",
-                "name": "",
-                "type": "tab",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "placement": "left",
-                "endpoint": 0
-            },
-            {
-                "key": "field_5930b689d6568",
-                "label": "Accreditation Section Title",
-                "name": "lp_accreditation_title",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_5930b6b1d6569",
-                "label": "Accreditation Paragraph",
-                "name": "lp_accreditation_paragraph",
-                "type": "textarea",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "maxlength": "",
-                "rows": "",
-                "new_lines": "wpautop"
-            },
-            {
-                "key": "field_5930b6c0d656a",
-                "label": "Accreditation Logos",
-                "name": "lp_accreditation_images",
-                "type": "gallery",
-                "instructions": "Make sure alt text is filled out in the media gallery for images being included",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "min": "",
-                "max": "",
-                "insert": "append",
-                "library": "all",
-                "min_width": "",
-                "min_height": "",
-                "min_size": "",
-                "max_width": "",
-                "max_height": "",
-                "max_size": "",
-                "mime_types": "jpg,jpeg,png,svg"
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "options_page",
-                    "operator": "==",
-                    "value": "theme-general-settings"
-                }
-            ]
-        ],
-        "menu_order": 1,
-        "position": "acf_after_title",
-        "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
