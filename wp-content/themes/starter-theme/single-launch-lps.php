@@ -167,7 +167,7 @@
 					</div>
 				</section>
 
-				<section id="about">
+				<section id="about"<?php echo $values_style['text_dark'] ? 'class="dark"' : ''; ?>>
 					<div class="wrap">
 						<h2><?php the_field('lp_about_title'); ?></h2>
 						<p><?php the_field('lp_about_paragraph'); ?></p>
@@ -177,7 +177,7 @@
 				<section id="cta">
 					<div class="wrap">
 						<h4><?php the_field('cta_text'); ?></h4>
-						<a class="button<?php echo $cta_button_style['text_dark'] ? ' dark' : ''; ?>" href="#form" style="background-color: <?php the_field('color_2', 'options'); ?>"><?php the_field('cta_button'); ?></a>
+						<a class="button<?php echo $cta_button_style['text_dark'] ? ' dark' : ''; ?>" href="#form"><?php the_field('cta_button'); ?></a>
 					</div>
 				</section>
 

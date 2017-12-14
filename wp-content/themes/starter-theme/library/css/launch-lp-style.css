@@ -458,7 +458,7 @@ ul li {
   color: #FFFFFF;
   transition: all .2s ease-in-out; }
   .button.dark {
-    color: #000000; }
+    color: #222; }
   .button:hover {
     -webkit-transform: scale(1.1);
             transform: scale(1.1); }
@@ -593,7 +593,7 @@ MAIN CONTENT AREA
   margin: 16px auto;
   color: #FFFFFF; }
   #form.dark {
-    color: #333; }
+    color: #222; }
   #form h2 {
     text-align: center;
     margin: 1rem 0; }
@@ -759,7 +759,7 @@ MAIN CONTENT AREA
         color: #BBBBBB;
         font-size: .9rem; }
       #value-props .value-props-container .value-prop .value-prop__inner.dark h3 {
-        color: #000000; }
+        color: #222; }
       #value-props .value-props-container .value-prop .value-prop__inner.dark p {
         color: #555555; }
 
@@ -775,6 +775,11 @@ MAIN CONTENT AREA
     text-align: center; }
   #about p {
     color: #EBEBEB; }
+  #about.dark h2 {
+    color: #222;
+    text-align: center; }
+  #about.dark p {
+    color: #444; }
 
 #cta {
   text-align: center;

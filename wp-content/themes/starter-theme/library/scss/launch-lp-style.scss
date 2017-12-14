@@ -87,7 +87,7 @@ ul {
 	transition: all .2s ease-in-out;
 
 	&.dark {
-		color: #000000;
+		color: #222;
 	}
 
 	&:hover {
@@ -218,7 +218,7 @@ MAIN CONTENT AREA
 	color: #FFFFFF;
 
   &.dark {
-    color: #333;
+    color: #222;
   }
 
 	h2 {
@@ -416,7 +416,7 @@ MAIN CONTENT AREA
 
 				&.dark {
 					h3 {
-						color: #000000;
+						color: #222;
 					}
 
 					p {
@@ -448,6 +448,16 @@ MAIN CONTENT AREA
 		color: #EBEBEB;
 	}
 
+  &.dark {
+    h2 {
+  		color: #222;
+  		text-align: center;
+  	}
+
+  	p {
+  		color: #444;
+  	}
+	}
 
 }
 
