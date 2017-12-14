@@ -107,7 +107,7 @@
 		<div class="container">
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-				<section id="hero">
+				<section id="hero"<?php echo get_field('lp_hero_overlay') ? 'class="overlay"' : ''; ?>>
 					<div class="wrap">
 						<div class="school-info">
 							<p class="logo" itemscope itemtype="http://schema.org/Organization">
