@@ -35,22 +35,64 @@
 
 		<?php wp_head(); ?>
 
-		<link rel="stylesheet" href="/wp-content/themes/tlhstarter-avila/library/css/launch-lp-style.min.css">
+		<?php // Get fonts from Google
+			$headings_font = get_field('headings_font', 'options');
+			$body_font = get_field('body_font', 'options');
 
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+			if ($headings_font['label'] === $body_font['label']) {
+				$font_url = 'https://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $headings_font['label']) . ':400,700';
+			}
+			else {
+				$font_url = 'https://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $headings_font['label']) . ':400,700|' . str_replace(' ', '+', $body_font['label']) . ':400,700';
+			}
+		?>
+		<link href="<?php echo $font_url ?>" rel="stylesheet">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/library/css/launch-lp-style.min.css">
 
+		<?php // Load custom CSS for this page
+			$color_1 = get_field('color_1', 'options'); // String: '#0000000'
+			$color_2 = get_field('color_2', 'options'); // String: '#000000'
+		  $hero_image = get_field('hero_image'); // Array: [url, alt, sizes[...]]
+			$form_style = get_field('lp_form_color'); // Array: [color, color_custom, text_dark]
+			$values_style = get_field('lp_values_color'); // Array: [color, color_custom, text_dark]
+			$about_style = get_field('lp_about_color'); // Array: [color, color_custom, text_dark]
+			$cta_button_style = get_field('lp_cta_button_color'); // Array: [color, color_custom, text_dark]
+		?>
 		<style>
+			body {
+				font-family: <?php echo $body_font['value']; ?>;
+			}
+
 			h1, h2, h3, h4, h5, h6 {
-				font-family: <?php the_field('headings_font', 'options') ?>;
+				font-family: <?php echo $headings_font['value']; ?>;
 			}
-			p, ul, ol, li {
-				font-family: <?php the_field('body_font', 'options') ?>;
+
+			@media screen and (max-width: 767px) {
+				#hero {
+					background-image: url('<?php echo $hero_image['sizes']['medium_large']; ?>');
+				}
 			}
-			#value-props .value-props-container .value-prop {
-				background-color: <?php the_field('vp_bgcolor'); ?>;
+
+			@media screen and (min-width: 768px) {
+				#hero {
+					background-image: url('<?php echo $hero_image['url']; ?>');
+				}
+			}
+
+			#form {
+				background-color: <?php echo ($form_style['color'] === 'custom' ? $form_style['color_custom'] : ($form_style['color'] === 'primary' ? $color_1 : $color_2)); ?>;
+			}
+
+			#value-props .value-prop {
+				background-color: <?php echo ($values_style['color'] === 'custom' ? $values_style['color_custom'] : ($values_style['color'] === 'primary' ? $color_1 : $color_2)); ?>;
+			}
+
+			#about {
+				background-color: <?php echo ($about_style['color'] === 'custom' ? $about_style['color_custom'] : ($about_style['color'] === 'primary' ? $color_1 : $color_2)); ?>;
+			}
+
+			#cta .button {
+				background-color: <?php echo ($cta_button_style['color'] === 'custom' ? $cta_button_style['color_custom'] : ($cta_button_style['color'] === 'primary' ? $color_1 : $color_2)); ?>;
 			}
 		</style>
 
@@ -65,31 +107,22 @@
 		<div class="container">
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-				<section id="hero" style="background-image:url('<?php the_field('hero_image'); ?>');">
+				<section id="hero"<?php echo get_field('lp_hero_overlay') ? 'class="overlay"' : ''; ?>>
 					<div class="wrap">
-						<p class="logo header__logo" itemscope itemtype="http://schema.org/Organization">
-							<?php if (get_field('logo_version')) { ?>
-								<img src="<?php the_field('school_logo_light', 'option'); ?>" alt="<?php the_field('school_name', 'option'); ?> Logo">
-							<?php }
-							else { ?>
-									<img src="<?php the_field('school_logo_dark', 'option'); ?>" alt="<?php the_field('school_name', 'option'); ?> Logo">
-							<?php } ?>
-						</p>
-						<p class="phone-number">
-							<a href="tel:<?php the_field('phone_number', 'options'); ?>" style="color: <?php the_field('color_1', 'options'); ?>;">
-								<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-									 width="35px" height="35px" viewBox="0 0 35 35" xml:space="preserve" fill="<?php the_field('color_1', 'options'); ?>">
-								<g>
-									<path d="M25.302,0H9.698c-1.3,0-2.364,1.063-2.364,2.364v30.271C7.334,33.936,8.398,35,9.698,35h15.604
-										c1.3,0,2.364-1.062,2.364-2.364V2.364C27.666,1.063,26.602,0,25.302,0z M15.004,1.704h4.992c0.158,0,0.286,0.128,0.286,0.287
-										c0,0.158-0.128,0.286-0.286,0.286h-4.992c-0.158,0-0.286-0.128-0.286-0.286C14.718,1.832,14.846,1.704,15.004,1.704z M17.5,33.818
-										c-0.653,0-1.182-0.529-1.182-1.183s0.529-1.182,1.182-1.182s1.182,0.528,1.182,1.182S18.153,33.818,17.5,33.818z M26.021,30.625
-										H8.979V3.749h17.042V30.625z"/>
-								</g>
-								</svg>
-								<?php the_field('phone_number', 'options'); ?>
-							</a>
-						</p>
+						<div class="school-info">
+							<p class="logo" itemscope itemtype="http://schema.org/Organization">
+								<?php // Get correct logo
+									$school_logo = get_field('lp_logo_version') ? get_field('school_logo_alternative', 'options') : get_field('school_logo', 'options');
+								?>
+								<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
+							</p>
+							<p class="phone-number">
+								<a href="tel:<?php the_field('phone_number', 'options'); ?>">
+									<?php tlh_icon('phone'); ?>
+									<?php the_field('phone_number', 'options'); ?>
+								</a>
+							</p>
+						</div>
 					</div>
 				</section>
 			</header>
@@ -97,41 +130,35 @@
 
 			<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 				<div class="wrap">
-					<section id="form" style="background-color: <?php the_field('form_bg'); ?>;">
-						<h2><?php the_field('hero_text'); ?></h2>
+					<section id="form"<?php echo $form_style['text_dark'] ? 'class="dark"' : ''; ?>>
+						<h2><?php the_field('lp_hero_text'); ?></h2>
 						<p>Required fields are marked by an asterisk.</p>
-						<?php the_field('form_code'); ?>
+						<?php the_field('lp_form_code'); ?>
 					</section>
 				</div>
 
 				<div id="program-information" class="wrap cf">
 					<section id="content-area">
-						<h1><?php the_field('main_content_title'); ?></h1>
-						<p><?php the_field('main_content'); ?></p>
+						<h1><?php the_field('lp_main_content_title'); ?></h1>
+						<div><?php the_field('lp_main_content'); ?></div>
 					</section>
 
 					<section id="programs-list">
-						<h3><?php the_field('programs_title', 'options'); ?></h3>
-						<ul class="programs">
-							<?php if(get_field('programs_list', 'options')): ?>
-									<?php while(the_repeater_field('programs_list', 'options')): ?>
-										<li><?php the_sub_field('program_name', 'options'); ?></li>
-									<?php endwhile; ?>
-							 <?php endif; ?>
-						</ul>
+						<h3><?php the_field('lp_main_sidebar_title'); ?></h3>
+						<div class="programs"><?php the_field('lp_main_sidebar'); ?></div>
 					</section>
 				</div>
 
 				<section id="value-props">
 					<div class="wrap">
-						<h2><?php the_field('value_props_title'); ?></h2>
-						<div class="value-props-container">
-							<?php if(get_field('value_propositions')): ?>
-								<?php while(the_repeater_field('value_propositions')): ?>
+						<h2><?php the_field('lp_values_title'); ?></h2>
+						<div class="value-props-container<?php echo $values_style['text_dark'] ? ' text-dark' : ''; ?>">
+							<?php if(get_field('lp_values')): ?>
+								<?php while(the_repeater_field('lp_values')): ?>
 									<div class="value-prop">
-										<div class="value-prop__inner <?php if( get_field('vp_color') ) { echo 'dark'; } ?>">
-											<h3><?php the_sub_field('vp_title'); ?></h3>
-											<p><?php the_sub_field('vp_description'); ?></p>
+										<div class="value-prop__inner<?php echo $values_style['text_dark'] ? ' dark' : ''; ?>">
+											<h3><?php the_sub_field('title'); ?></h3>
+											<div><?php the_sub_field('description'); ?></div>
 										</div>
 									</div>
 								<?php endwhile; ?>
@@ -140,39 +167,45 @@
 					</div>
 				</section>
 
-				<section id="about" style="background-color: <?php the_field('color_1', 'options'); ?>;">
+				<section id="about"<?php echo $values_style['text_dark'] ? 'class="dark"' : ''; ?>>
 					<div class="wrap">
-						<h2><?php the_field('about_title', 'options'); ?></h2>
-						<p><?php the_field('about_paragraph', 'options'); ?></p>
+						<h2><?php the_field('lp_about_title'); ?></h2>
+						<p><?php the_field('lp_about_paragraph'); ?></p>
 					</div>
 				</section>
 
 				<section id="cta">
 					<div class="wrap">
 						<h4><?php the_field('cta_text'); ?></h4>
-						<a class="button <?php if( get_field('cta_color') ) { echo 'dark'; } ?>" href="#form" style="background-color: <?php the_field('color_2', 'options'); ?>"><?php the_field('cta_button'); ?></a>
+						<a class="button<?php echo $cta_button_style['text_dark'] ? ' dark' : ''; ?>" href="#form"><?php the_field('cta_button'); ?></a>
 					</div>
 				</section>
 
-				<section id="accreditation" style="background-color: <?php the_field('color_3', 'options'); ?>">
+				<section id="accreditation">
 					<div class="wrap">
 						<div class="copy">
-							<h3><?php the_field('accreditation_title', 'options'); ?></h3>
-							<p><?php the_field('accreditation_paragraph', 'options'); ?></p>
+							<h3><?php the_field('lp_accreditation_title'); ?></h3>
+							<div><?php the_field('lp_accreditation_paragraph'); ?></div>
 						</div>
-						<?php if(get_field('accreditation_images', 'options')): ?>
-							<div class="accred_images">
-								<?php while(the_repeater_field('accreditation_images', 'options')): ?>
-									<img src="<?php the_sub_field('accreditation_image_url', 'options'); ?>" alt="<?php the_sub_field('accreditation_image_alt', 'options'); ?>">
-								<?php endwhile; ?>
-							 <?php endif; ?>
-						 </div>
+						<?php $images = get_field('lp_accreditation_logos');
+							$size = 'full'; // (thumbnail, medium, large, full or custom size)
+							if( $images ): ?>
+								<div class="accred_images">
+							    <ul>
+						        <?php foreach( $images as $image ): ?>
+					            <li>
+					            	<?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+					            </li>
+						        <?php endforeach; ?>
+							    </ul>
+								</div>
+							<?php endif; ?>
 					</div>
 				</section>
 
 				<footer class="footer cf" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 					<div class="wrap cf">
-						<p class="footer__copyright">&copy; <?php echo date('Y'); ?> <?php the_field('school_name', 'options'); ?> | <?php the_field('school_address', 'options'); ?> | <a href="tel:<?php the_field('phone_number', 'options'); ?>"><?php the_field('phone_number', 'options'); ?></a> | <a href="/privacy-policy/">Privacy Policy</a></p>
+						<p class="footer__copyright">&copy; <?php echo date('Y'); ?> <?php the_field('school_name', 'options'); ?> | <?php the_field('school_address', 'options'); ?> | <a href="tel:<?php the_field('school_phone', 'options'); ?>"><?php the_field('school_phone', 'options'); ?></a> | <a href="/privacy-policy/">Privacy Policy</a></p>
 					</div>
 				</footer>
 

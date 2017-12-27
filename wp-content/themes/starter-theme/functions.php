@@ -143,5 +143,8 @@ function enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
 
+/************* CUSTOM TEMPLATE TAGS *********************/
+require_once( 'library/template-tags.php' );
+
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

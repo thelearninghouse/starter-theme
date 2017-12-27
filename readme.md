@@ -18,6 +18,10 @@ To start watching files use `gulp` from the `library` folder. This will run brow
 
 This theme uses Susy Grid. Documentation can be found [here](http://susydocs.oddbird.net/en/latest/)
 
+### Custom Fields
+
+This theme relies on [Advanced Custom Fields](https://www.advancedcustomfields.com/) to help handle much of the content and settings on the site. To set up all the fields on a new install, navigate to the Tools section in the WP Admin and import the `acf-export-latest.json` from the theme's `library` folder.
+
 ## Menus
 
 There are three menus setup for this theme by default:
@@ -83,11 +87,13 @@ starter-theme/
 |    |    ├── lp-style.scss // Landing Page stylesheet
 |    |    └── style.scss // Main stylesheet, this gets compiled into ==> style.css
 |    ├── .sassdocrc // Settings for SassDoc
+|    ├── acf-export-latest.json // Advanced Custom Fields data for new installs
 |    ├── bones.php  // Functions and features for the theme
 |    ├── bower.json  // Bower setup and dependencies
 |    ├── custom-post-types.php  // Where we register our custom post types for Online Degrees and Landing Pages
 |    ├── Gruntfile.js  // Grunt setup file
-|    └── package.json  // Grunt details and dependencies
+|    ├── package.json  // Grunt details and dependencies
+|    └── template-tags.php  // custom php functions to generate html for templates
 ├── 404.php  // Template for 404 page
 ├── archive-degrees.php  // Archive template for Online Degrees
 ├── archive.php  // Archive template for blog posts
@@ -119,6 +125,6 @@ Make sure `style-guide/index.php` is pointing to the main css stylesheet.
 
 Update patterns to include/exclude patterns found on the new site.
 
-# Sassdoc
+## Sassdoc
 
 This documentation is for the front-end team for easy access to variable, mixins, functions, etc. [View SassDoc](http://tlhstarter.wpengine.com/sassdoc)
