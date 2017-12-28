@@ -1,0 +1,29 @@
+/**
+ * acf-extended-color-picker CSS
+ */
+
+.acf-field-extended-color-picker .wp-picker-container .wp-color-result > span {
+	border-radius: 0!important;
+}
+
+.acf-field-extended-color-picker .iris-picker .iris-square,
+.acf-field-extended-color-picker .iris-picker .iris-slider,
+.acf-field-extended-color-picker .iris-picker .iris-square-inner,
+.acf-field-extended-color-picker .iris-picker .iris-palette,
+.acf-field-extended-color-picker .iris-picker .iris-square-horiz,
+.acf-field-extended-color-picker .iris-picker .iris-square-vert,
+.acf-field-extended-color-picker .iris-picker .iris-strip,
+.acf-field-extended-color-picker .iris-picker .iris-slider-offset {
+	border-radius: 0px!important;
+	box-shadow: none!important;
+	box-sizing: border-box;
+}
+
+.acf-field-extended-color-picker .iris-picker.iris-border {
+	width: 260px!important;
+}
+
+.acf-field-extended-color-picker .iris-palette-container a.iris-palette,
+.acf-field-color-picker .iris-palette-container a.iris-palette {
+	border: 1px solid #ccc;
+}

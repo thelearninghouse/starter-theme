@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF RGBA Color Picker\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-15 22:25+0000\n"
+"PO-Revision-Date: 2017-08-15 22:25+0000\n"
+"Last-Translator: thomas <t.meyer@me.com>\n"
+"Language-Team: German (Formal)\n"
+"Language: de-DE-formal\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: fields/acf-rgba-color-picker-v5.php:187
+msgid ""
+"Enter color codes separated by semicolons. You can use HEX or RGBA color "
+"codes and can also mix them (e.g. #2ecc71; rgba(50,40,30,0.5).<br><br>This "
+"can (and is maybe) overwritten by the \"acf/acfrb_color_picker/palette\" "
+"filter."
+msgstr ""
+"Farbcodes müssen durch Semikolons getrennt werden. HEX- oder RGBA-Farbcodes "
+"können verwendet und auch gemischt werden (z.B. #2ecc71; rgba(50,40,30,0.5)."
+"<br><br>Die Palette kann (und ist vielleicht auch) durch den "
+"\"acf/acfrb_color_picker/palette\" Filter überschrieben werden."
+
+#: acf-rgba-color-picker.php:85
+#, php-format
+msgid "%1$s requires ACF PRO v%2$s or higher to be installed and activated."
+msgstr "Für %1$s muss ACF PRO v%2$s oder höher installiert und aktiviert sein."
+
+#: acf-rgba-color-picker.php:121
+msgid "Plugins by dreihochzwo"
+msgstr "Plugins von dreihochzwo"
+
+#: acf-rgba-color-picker.php:141
+msgid "Thank you for using my plugins!"
+msgstr "Danke, dass Sie meine Plugins nutzen!"
+
+#: acf-rgba-color-picker.php:150
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: acf-rgba-color-picker.php:159
+msgid "Please consider making a small donation!"
+msgstr "Ich freue mich über eine kleine Spende!"
+
+#: fields/acf-rgba-color-picker-v5.php:36
+msgid "RGBA Color Picker"
+msgstr "RGBA Farb-Wähler"
+
+#: fields/acf-rgba-color-picker-v5.php:186
+msgid "Color Palette"
+msgstr "Farben-Palette"
+
+#: fields/acf-rgba-color-picker-v5.php:194
+msgid "Hide Color Palette"
+msgstr "Farben-Palette ausblenden"
+
+#: fields/acf-rgba-color-picker-v5.php:195
+msgid "Don't show a color palette in the color picker"
+msgstr "Zeigt keine Farben-Palette im Farb-Wähler an."
+
+#. Name of the plugin
+msgid "ACF RGBA Color Picker"
+msgstr "ACF RGBA Color Picker"
+
+#. Description of the plugin
+msgid ""
+"Adds an Advanced Custom Fields field for an extended color picker with "
+"transparency option."
+msgstr ""
+"Erstellt ein Advanced Custom Fields Feld für einen erweiterten Farb-Wähler "
+"mit Transparenz-Option."
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/acf-rgba-color-picker/"
+msgstr "https://wordpress.org/plugins/acf-rgba-color-picker/"
+
+#. Author of the plugin
+msgid "Thomas Meyer"
+msgstr "Thomas Meyer"
+
+#. Author URI of the plugin
+msgid "https://dreihochzwo.de"
+msgstr "https://dreihochzwo.de"

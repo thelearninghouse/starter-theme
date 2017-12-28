@@ -1,0 +1,82 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-15 22:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: acf-rgba-color-picker.php:85
+#, php-format
+msgid "%1$s requires ACF PRO v%2$s or higher to be installed and activated."
+msgstr ""
+
+#: acf-rgba-color-picker.php:121
+msgid "Plugins by dreihochzwo"
+msgstr ""
+
+#: acf-rgba-color-picker.php:141
+msgid "Thank you for using my plugins!"
+msgstr ""
+
+#: acf-rgba-color-picker.php:150
+msgid "Documentation"
+msgstr ""
+
+#: acf-rgba-color-picker.php:159
+msgid "Please consider making a small donation!"
+msgstr ""
+
+#: fields/acf-rgba-color-picker-v5.php:36
+msgid "RGBA Color Picker"
+msgstr ""
+
+#: fields/acf-rgba-color-picker-v5.php:186
+msgid "Color Palette"
+msgstr ""
+
+#: fields/acf-rgba-color-picker-v5.php:187
+msgid ""
+"Enter color codes separated by semicolons. You can use HEX or RGBA color "
+"codes and can also mix them (e.g. #2ecc71; rgba(50,40,30,0.5).<br><br>This "
+"can (and is maybe) overwritten by the \"acf/acfrb_color_picker/palette\" "
+"filter."
+msgstr ""
+
+#: fields/acf-rgba-color-picker-v5.php:194
+msgid "Hide Color Palette"
+msgstr ""
+
+#: fields/acf-rgba-color-picker-v5.php:195
+msgid "Don't show a color palette in the color picker"
+msgstr ""
+
+#. Name of the plugin
+msgid "ACF RGBA Color Picker"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Adds an Advanced Custom Fields field for an extended color picker with "
+"transparency option."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/acf-rgba-color-picker/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Thomas Meyer"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://dreihochzwo.de"
+msgstr ""
