@@ -52,7 +52,7 @@
 		<?php // Load custom CSS for this page
 			$color_1 = get_field('color_1', 'options'); // String: '#0000000'
 			$color_2 = get_field('color_2', 'options'); // String: '#000000'
-		  $hero_image = get_field('hero_image'); // Array: [url, alt, sizes[...]]
+		  $hero_image = get_field('lp_hero_image'); // Array: [url, alt, sizes[...]]
 			$form_style = get_field('lp_form_color'); // Array: [color, color_custom, text_dark]
 			$values_style = get_field('lp_values_color'); // Array: [color, color_custom, text_dark]
 			$about_style = get_field('lp_about_color'); // Array: [color, color_custom, text_dark]
@@ -117,9 +117,9 @@
 								<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
 							</p>
 							<p class="phone-number">
-								<a href="tel:<?php the_field('phone_number', 'options'); ?>">
+								<a href="tel:<?php the_field('school_phone', 'options'); ?>">
 									<?php tlh_icon('phone'); ?>
-									<?php the_field('phone_number', 'options'); ?>
+									<?php the_field('school_phone', 'options'); ?>
 								</a>
 							</p>
 						</div>
@@ -176,8 +176,8 @@
 
 				<section id="cta">
 					<div class="wrap">
-						<h4><?php the_field('cta_text'); ?></h4>
-						<a class="button<?php echo $cta_button_style['text_dark'] ? ' dark' : ''; ?>" href="#form"><?php the_field('cta_button'); ?></a>
+						<h4><?php the_field('lp_cta_text'); ?></h4>
+						<a class="button<?php echo $cta_button_style['text_dark'] ? ' dark' : ''; ?>" href="#form"><?php the_field('lp_cta_button'); ?></a>
 					</div>
 				</section>
 
