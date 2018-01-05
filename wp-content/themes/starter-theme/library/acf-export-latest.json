@@ -198,7 +198,7 @@
                 "label": "Form Code",
                 "name": "lp_form_code",
                 "type": "textarea",
-                "instructions": "",
+                "instructions": "Example: &lt;script src=\"https:\/\/requestforms.learninghouse.com\/form\/show\/[school]\/ppc-form-multi-new\/[000]\/[0000]\/[school-url]:thank-you:request_id\" type=\"text\/javascript\"&gt;&lt;\/script&gt;",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -479,7 +479,7 @@
                 "key": "field_5a3294e9ec6e9",
                 "label": "About Paragraph",
                 "name": "lp_about_paragraph",
-                "type": "text",
+                "type": "textarea",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -490,9 +490,9 @@
                 },
                 "default_value": "",
                 "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
+                "maxlength": "",
+                "rows": "",
+                "new_lines": "wpautop"
             },
             {
                 "key": "field_5a3294fbec6ea",
