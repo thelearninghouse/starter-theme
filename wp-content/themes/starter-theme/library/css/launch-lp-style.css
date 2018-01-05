@@ -833,6 +833,7 @@ MAIN CONTENT AREA
       padding: 0; }
     #accreditation .accred_images img {
       max-width: 280px;
+      height: auto;
       padding: 1rem; }
 
 .footer {
