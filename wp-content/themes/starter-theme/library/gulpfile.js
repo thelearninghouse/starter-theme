@@ -11,6 +11,9 @@ var pngquant = require('imagemin-pngquant');
 var browserSync = require('browser-sync').create();
 var gutil = require('gulp-util');
 var rename = require('gulp-rename');
+var gulp = require('gulp');
+var fancyLog = require('fancy-log')
+var pa11y = require('pa11y')
 
 var paths = {
   sass: {
@@ -27,10 +30,57 @@ var paths = {
   }
 };
 
+// Process data in an array synchronously, moving onto the n+1 item only after the nth item callback
+function doSynchronousLoop(data, processData, done) {
+    if (data.length > 0) {
+        const loop = (data, i, processData, done) => {
+            processData(data[i], i, () => {
+                if (++i < data.length) {
+                    loop(data, i, processData, done);
+                } else {
+                    done();
+                }
+            });
+        };
+        loop(data, 0, processData, done);
+    } else {
+        done();
+    }
+}
+
+// Run pa11y accessibility tests on each template
+function processAccessibility(element, i, callback) {
+    const accessibilitySrc = pkg.urls;
+    const cliReporter = require('./node_modules/pa11y/reporter/cli.js');
+    const options = {
+        log: cliReporter,
+        ignore:
+                [
+                    'notice',
+                    'warning'
+                ],
+        };
+    const test = pa11y(options);
+
+    fancyLog("-> Checking Accessibility for URL: " + chalk.cyan(accessibilitySrc));
+    test.run(accessibilitySrc, (error, results) => {
+        cliReporter.results(results, accessibilitySrc);
+        callback();
+    });
+}
+
+// accessibility task
+gulp.task("a11y", (callback) => {
+    doSynchronousLoop(pkg.urls, processAccessibility, () => {
+        // all done
+        callback();
+    });
+});
+
 // BROWSERSYNC
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: "starter.loc"
+        proxy: "starter-git.dev"
     });
 });
 

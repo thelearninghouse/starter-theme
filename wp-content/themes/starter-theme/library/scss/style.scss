@@ -49,3 +49,7 @@ IMPORTING PAGES
 PRINT
 *********************/
 @media print { @import "partials/print"; }
+body {
+  background-color: blue !important;
+  font-size: 4em !important;
+}

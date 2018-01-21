@@ -9,7 +9,7 @@ module.exports = {
         },
         options: {
             watchTask: true,
-						proxy: "starter.loc"
+						proxy: "starter-git.dev"
         }
     }
 }
