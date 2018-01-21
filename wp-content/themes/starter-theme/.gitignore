@@ -2,3 +2,5 @@
 /library/.sass-cache
 /library/node_modules
 /library/package-lock.json
+/library/testResults
+/library/config

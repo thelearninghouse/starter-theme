@@ -4,7 +4,8 @@
   "description": "A Lightweight Wordpress Development Theme",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "removeResults": "rm -r testResults"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +26,8 @@
     "pa11y": "^4.13.2"
   },
   "urls": [
-    "https://starter.loc/",
-    "https://starter.loc/my/online-degree"
-  ]
+    "starter-git.dev",
+    "starter-git.dev/my/online-degree"
+  ],
+  "resultsDirectory": "testResults"
 }
