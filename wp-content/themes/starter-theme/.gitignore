@@ -1,3 +1,4 @@
 # build files
 /library/.sass-cache
 /library/node_modules
+/library/package-lock.json
