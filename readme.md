@@ -22,6 +22,8 @@ This theme uses Susy Grid. Documentation can be found [here](http://susydocs.odd
 
 This theme relies on [Advanced Custom Fields](https://www.advancedcustomfields.com/) to help handle much of the content and settings on the site. To set up all the fields on a new install, navigate to the Tools section in the WP Admin and import the `acf-export-latest.json` from the theme's `library` folder.
 
+*Remember to sync the fields in ACF's Admin after pulling field updates!*
+
 ## Menus
 
 There are three menus setup for this theme by default:
