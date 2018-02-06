@@ -33,7 +33,7 @@ function add_degrees() {
             'show_ui' => true,
             'query_var' => true,
             'menu_position' => 12, /* this is what order you want it to appear in on the left hand side menu */
-            'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
+            'menu_icon' => 'dashicons-screenoptions', /* the icon for the custom post type menu */
             'has_archive' => true,
             'capability_type' => 'post',
             'hierarchical' => false,
@@ -129,7 +129,7 @@ function add_degrees() {
                 'show_ui' => true,
                 'query_var' => true,
                 'menu_position' => 15, /* this is what order you want it to appear in on the left hand side menu */
-                'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
+                'menu_icon' => 'dashicons-align-left', /* the icon for the custom post type menu */
                 'has_archive' => false, /* you can rename the slug here */
                 'capability_type' => 'post',
                 'hierarchical' => false,
@@ -170,7 +170,7 @@ function add_degrees() {
                     'show_ui' => true,
                     'query_var' => true,
                     'menu_position' => 11, /* this is what order you want it to appear in on the left hand side menu */
-                    'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
+                    'menu_icon' => 'dashicons-flag', /* the icon for the custom post type menu */
                     'has_archive' => false, /* you can rename the slug here */
                     'capability_type' => 'post',
                     'hierarchical' => false,
