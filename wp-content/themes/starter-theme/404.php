@@ -10,7 +10,7 @@
 
 							<header class="post-header">
 
-								<h1 class="post-header__title"><?php _e( '404 - Article Not Found', 'bonestheme' ); ?></h1>
+								<h1 class="post-header__title"><?php _e( '404 - Article Not Found', 'tlh_theme' ); ?></h1>
 
 							</header>
 

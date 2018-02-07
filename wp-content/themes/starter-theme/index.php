@@ -14,11 +14,11 @@
 
 									<h1 class="h2 post-header__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 									<p class="post-meta">
-                        <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
+                        <?php printf( __( 'Posted', 'tlh_theme' ).' %1$s %2$s',
                         /* the time the post was published */
                         '<time class="post-meta__time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
                         /* the author of the post */
-                        '<span class="post-meta__by">'.__( 'by', 'bonestheme').'</span> <span class="post-meta__author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+                        '<span class="post-meta__by">'.__( 'by', 'tlh_theme').'</span> <span class="post-meta__author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
                         ); ?>
 									</p>
 
@@ -38,13 +38,13 @@
 
 									<article class="post-not-found hentry cf">
 											<header class="post-header">
-												<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+												<h1><?php _e( 'Oops, Post Not Found!', 'tlh_theme' ); ?></h1>
 										</header>
 											<section class="post-content">
-												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'tlh_theme' ); ?></p>
 										</section>
 										<footer class="post-footer">
-												<p><?php _e( 'This is the error message in the index.php template.', 'bonestheme' ); ?></p>
+												<p><?php _e( 'This is the error message in the index.php template.', 'tlh_theme' ); ?></p>
 										</footer>
 									</article>
 

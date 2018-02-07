@@ -5,7 +5,7 @@
 					<nav role="navigation" class="footer__nav">
 						<?php wp_nav_menu(array(
     					'container' => '',                           // enter '' to remove nav container (just make sure .footer-links in _base.scss isn't wrapping)
-    					'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
+    					'menu' => __( 'Footer Links', 'tlh_theme' ),   // nav name
     					'menu_class' => 'nav footer__menu cf',            // adding custom nav class
     					'theme_location' => 'footer-links',             // where it's located in the theme
     					'before' => '',                                 // before the menu
