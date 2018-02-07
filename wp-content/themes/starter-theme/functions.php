@@ -1,44 +1,46 @@
 <?php
+/**
+ * TLH functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package tlh-starter-theme
+ */
 
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
 
-/*********************
-LAUNCH BONES
-Let's get everything up and running.
-*********************/
+function tlh_setup() {
 
-function bones_ahoy() {
-
-  // Programs Custom Post Type
+  // include custom post type registration
   require_once( 'library/custom-post-types.php' );
   // launching operation cleanup
-  add_action( 'init', 'bones_head_cleanup' );
+  add_action( 'init', 'tlh_head_cleanup' );
   // A better title
   add_filter( 'wp_title', 'rw_title', 10, 3 );
   // remove WP version from RSS
-  add_filter( 'the_generator', 'bones_rss_version' );
+  add_filter( 'the_generator', 'tlh_rss_version' );
   // remove pesky injected css for recent comments widget
-  add_filter( 'wp_head', 'bones_remove_wp_widget_recent_comments_style', 1 );
+  add_filter( 'wp_head', 'tlh_remove_wp_widget_recent_comments_style', 1 );
   // clean up comment styles in the head
-  add_action( 'wp_head', 'bones_remove_recent_comments_style', 1 );
+  add_action( 'wp_head', 'tlh_remove_recent_comments_style', 1 );
   // clean up gallery output in wp
-  add_filter( 'gallery_style', 'bones_gallery_style' );
+  add_filter( 'gallery_style', 'tlh_gallery_style' );
   // enqueue base scripts and styles
-  add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
+  add_action( 'wp_enqueue_scripts', 'tlh_scripts_and_styles', 999 );
   // launching this stuff after theme setup
-  bones_theme_support();
+  tlh_theme_support();
   // adding sidebars to Wordpress (these are created in functions.php)
-  add_action( 'widgets_init', 'bones_register_sidebars' );
+  add_action( 'widgets_init', 'tlh_register_sidebars' );
   // cleaning up random code around images
-  add_filter( 'the_content', 'bones_filter_ptags_on_images' );
+  add_filter( 'the_content', 'tlh_filter_ptags_on_images' );
   // cleaning up excerpt
-  add_filter( 'excerpt_more', 'bones_excerpt_more' );
+  add_filter( 'excerpt_more', 'tlh_excerpt_more' );
 
-} /* end bones ahoy */
+} /* end tlh_setup */
 
 // let's get this party started
-add_action( 'after_setup_theme', 'bones_ahoy' );
+add_action( 'after_setup_theme', 'tlh_setup' );
 
 
 /************* OEMBED SIZE OPTIONS *************/
@@ -50,7 +52,7 @@ if ( ! isset( $content_width ) ) {
 /************* ACTIVE SIDEBARS ********************/
 
 // Sidebars & Widgetizes Areas
-function bones_register_sidebars() {
+function tlh_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar1',
 		'name' => __( 'Sidebar 1' ),
@@ -60,14 +62,13 @@ function bones_register_sidebars() {
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',
 	));
-
 } // don't remove this bracket!
 
 
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
-function bones_comments( $comment, $args, $depth ) {
+function tlh_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
   <div id="comment-<?php comment_ID(); ?>" <?php comment_class('cf'); ?>>
     <article  class="cf">
@@ -96,7 +97,6 @@ function bones_comments( $comment, $args, $depth ) {
   <?php // </li> is added by WordPress automatically ?>
 <?php
 } // don't remove this bracket!
-
 
 /************* SOCIAL SHARING *********************/
 
@@ -136,12 +136,12 @@ add_filter( 'the_content', 'social_sharing_buttons');
 
 /************* JQUERY CONFLICT FIX *********************/
 
-function enqueue_scripts() {
+function enqueue_jquery_version() {
   wp_deregister_script( 'jquery' );
   wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, false, false );
   wp_enqueue_script( 'jquery' );
 }
-add_action('wp_enqueue_scripts', 'enqueue_scripts');
+add_action('wp_enqueue_scripts', 'enqueue_jquery_version');
 
 /************* CUSTOM TEMPLATE TAGS *********************/
 require_once( 'library/template-tags.php' );
