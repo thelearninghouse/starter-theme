@@ -1,40 +1,49 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying all pages by default.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package tlh-starter-theme
+ */
 
-			<div class="content">
+get_header(); ?>
 
-				<div class="wrap cf">
+	<div class="content">
 
-						<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+		<div class="wrap cf">
 
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+				<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-							<article <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-								<header class="page-header">
+					<article <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-									<?php
-										if ( function_exists('yoast_breadcrumb') ) {
-											yoast_breadcrumb('<p class="breadcrumbs">','</p>');
-										}
-									?>
-									<h1 class="page-header__title" itemprop="headline"><?php the_title(); ?></h1>
+						<header class="page-header">
 
-								</header> <?php // end article header ?>
+							<?php
+								if ( function_exists('yoast_breadcrumb') ) {
+									yoast_breadcrumb('<p class="breadcrumbs">','</p>');
+								}
+							?>
+							<h1 class="page-header__title" itemprop="headline"><?php the_title(); ?></h1>
 
-								<section class="page-content cf" itemprop="articleBody">
-									<?php the_content(); ?>
-								</section> <?php // end article section ?>
+						</header> <?php // end article header ?>
 
-							</article>
+						<section class="page-content cf" itemprop="articleBody">
+							<?php the_content(); ?>
+						</section> <?php // end article section ?>
 
-							<?php endwhile; endif; ?>
+					</article>
 
-						</main>
+					<?php endwhile; endif; ?>
 
-						<?php get_sidebar(); ?>
+				</main>
 
-				</div>
+				<?php get_sidebar(); ?>
 
-			</div>
+		</div>
+
+	</div>
 
 <?php get_footer(); ?>
