@@ -11,7 +11,7 @@ get_header(); ?>
 
 	<div class="content">
 
-		<div class="wrap cf">
+		<div class="wrap">
 
 				<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 

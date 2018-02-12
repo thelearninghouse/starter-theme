@@ -1,30 +1,32 @@
-/*********************
-IMPORTING
-*********************/
+/******************************************************************
+Landing Page Stylesheet
+******************************************************************/
 
-@import "base/normalize";
 @import "base/variables";
 @import "base/mixins";
-@import "base/typography";
-@import "base/grid";
-@import "base/base";
+
+@import "generic/base";
+@import "generic/typography";
+@import "generic/links";
+@import "generic/tables";
+
 @import "modules/accordion";
 @import "modules/buttons";
 @import "modules/clearfix";
 @import "modules/forms";
-@import "modules/links";
 @import "modules/media";
-@import "partials/header";
-@import "partials/nav";
-@import "partials/footer";
+@import "modules/progress";
+@import "modules/sidebar";
+@import "modules/social";
+@import "modules/header";
+@import "modules/nav";
+@import "modules/footer";
+@import "modules/layout";
 
-/********************
-LAYOUT & GRID STYLES
-*********************/
+@import "pages/home";
+@import "pages/page";
+@import "pages/post";
 
-.wrap {
-	width: 90%;
-	max-width: 1440px;
-	margin: 0 auto;
+@media print {
+	@import "modules/print";
 }
-

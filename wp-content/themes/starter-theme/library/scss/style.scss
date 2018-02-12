@@ -21,12 +21,12 @@ Main Stylesheet
 @import "modules/header";
 @import "modules/nav";
 @import "modules/footer";
+@import "modules/layout";
 
-@import "pages/layout";
 @import "pages/home";
 @import "pages/page";
 @import "pages/post";
 
 @media print {
-	@import "partials/print";
+	@import "modules/print";
 }
