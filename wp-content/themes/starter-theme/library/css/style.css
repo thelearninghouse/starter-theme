@@ -739,6 +739,42 @@ LAYOUT & GRID STYLES
 /*************************
 HOMEPAGE SPECIFIC STYLES
 *************************/
+.hero-bg {
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+  background-size: cover; }
+  @media screen and (min-width: 768px) {
+    .hero-bg {
+      padding-top: 3.125rem;
+      padding-bottom: 3.125rem; } }
+  @media screen and (max-width: 800px) {
+    .hero-bg {
+      background-image: url("../images/hero-background-sm.jpg"); } }
+  @media screen and (min-width: 801px) and (max-width: 1200px) {
+    .hero-bg {
+      background-image: url("../images/hero-background-md.jpg"); } }
+  @media screen and (min-width: 1200px) {
+    .hero-bg {
+      background-image: url("../images/hero-background-lg.jpg"); } }
+
+.fancy-bg {
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+  background-size: cover; }
+  @media screen and (min-width: 768px) {
+    .fancy-bg {
+      padding-top: 3.125rem;
+      padding-bottom: 3.125rem; } }
+  @media screen and (max-width: 800px) {
+    .fancy-bg {
+      background-image: url("../images/test-sm.jpg"); } }
+  @media screen and (min-width: 801px) and (max-width: 1200px) {
+    .fancy-bg {
+      background-image: url("../images/test-md.jpg"); } }
+  @media screen and (min-width: 1200px) {
+    .fancy-bg {
+      background-image: url("../images/test-lg.jpg"); } }
+
 /*************************
 PAGE SPECIFIC STYLES
 *************************/

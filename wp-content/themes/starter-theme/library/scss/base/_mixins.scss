@@ -22,11 +22,43 @@
       @return #{$pixels/$context}em;
 }
 
+/// Pixels to Rems Function
+/// Return a rem value of the exact amount of pixels that you need
+/// @example
+///     padding: rem(20);
+@function rem($pixels, $context: $browser-context) {
+      @return #{$pixels/$context}rem;
+}
+
 /// Responsive Mixin
 /// @example
 ///     @include mobilefirst($bp-small) { content here }
 @mixin mobilefirst($res) {
   @media screen and (min-width: $res) {
     @content;
+  }
+}
+
+// Standard section spacing
+@mixin sectionspace($pixels-sm: 30, $pixels-lg: 50) {
+  padding-top: rem($pixels-sm);
+  padding-bottom: rem($pixels-sm);
+
+  @include mobilefirst($bp-med) {
+    padding-top: rem($pixels-lg);
+    padding-bottom: rem($pixels-lg);
+  }
+}
+
+// Responsive background images
+@mixin responsivebackground($sm: 'hero-background-sm.jpg', $md: 'hero-background-md.jpg', $lg: 'hero-background-lg.jpg') {
+  @media screen and (max-width: 800px) {
+  	background-image: url('../images/' + $sm);
+  }
+  @media screen and (min-width: 801px) and (max-width: 1200px) {
+    background-image: url('../images/' + $md);
+  }
+  @media screen and (min-width: 1200px) {
+  	background-image: url('../images/' + $lg);
   }
 }

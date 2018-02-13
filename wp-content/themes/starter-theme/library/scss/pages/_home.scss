@@ -1,3 +1,15 @@
 /*************************
 HOMEPAGE SPECIFIC STYLES
 *************************/
+
+.hero-bg {
+	@include sectionspace();
+	background-size: cover;
+	@include responsivebackground();
+}
+
+.fancy-bg {
+	@include sectionspace();
+	background-size: cover;
+	@include responsivebackground('test-sm.jpg', 'test-md.jpg', 'test-lg.jpg');
+}

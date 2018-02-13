@@ -1,26 +1,55 @@
-/// Browser Context
-/// This is needed for the px to em's mixin
+// --- Sizes ---
+// Browser Context (this is needed for the px to em's mixin)
 $browser-context: 16; // Default
 
-/// Responsive Variables
-/// Breakpoint Small
+// Responsive Breakpoints
 $bp-sm: 481px;
-/// Breakpoint Medium
 $bp-med: 768px;
-/// Breakpoint Large
 $bp-lg: 1040px;
 
-////
-/// @group colors
-////
+// Content Wrap
+$wrap-sm: 700px;
+$wrap-md: 940px;
+$wrap-lg: 1400px;
 
-/// Text Color
+
+// --- Colors ---
+$primary-color: 		#C41331;
+$secondary-color: 	#093566;
+$accent-color-1: 		#EA7C01;
+$accent-color-2: 		#55186A;
+$gray-light: 				#F1F1F1;
+$gray-medium: 			#818B91;
+$gray-dark: 				#444444;
+$off-black: 				#36424A;
+$beige: 						#ECE6DA;
+
+// Computed Colors
+$primary-color-dark: 				darken($primary-color, 15%);
+$secondary-color-dark: 			darken($secondary-color, 10%);
+$accent-color-1-dark: 			darken($accent-color-1, 15%);
+$accent-color-2-dark: 			darken($accent-color-2, 10%);
+$gray-medium-transparent: 	transparentize($gray-medium, 0.8);
+
+$text-color: $gray-dark;
+$site-background-color: $gray-light;
+
 $text-color:        #666;
 /// Link Color
 $link-color:        crimson;
 ///Link Hover
 $link-hover:        darken($link-color, 15%);
 
-// Fonts
+
+// --- Fonts ---
 $sans-serif: 'Helvetica Neue', Helvetica, sans-serif;
 $serif: 'PT Serif', Georgia, serif;
+
+
+// --- Images ---
+// place images in library/images
+
+// Default Header Hero Image
+$hero-sm: 'hero-background-sm.jpg'; // width should be 800px
+$hero-md: 'hero-background-md.jpg'; // width should be 1200px
+$hero-lg: 'hero-background-lg.jpg'; // width should be > 1200px
