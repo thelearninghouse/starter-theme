@@ -19,16 +19,7 @@ get_header(); ?>
 
 					<article <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-						<header class="page-header">
-
-							<?php
-								if ( function_exists('yoast_breadcrumb') ) {
-									yoast_breadcrumb('<p class="breadcrumbs">','</p>');
-								}
-							?>
-							<h1 class="page-header__title" itemprop="headline"><?php the_title(); ?></h1>
-
-						</header> <?php // end article header ?>
+						<?php get_template_part( 'template-parts/hero_title' ); ?>
 
 						<section class="page-content cf" itemprop="articleBody">
 							<?php the_content(); ?>

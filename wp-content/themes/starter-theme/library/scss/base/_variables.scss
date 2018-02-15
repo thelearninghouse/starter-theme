@@ -15,9 +15,6 @@ $wrap-lg: 1400px;
 
 // --- Colors ---
 $primary-color: 		#C41331;
-$secondary-color: 	#093566;
-$accent-color-1: 		#EA7C01;
-$accent-color-2: 		#55186A;
 $gray-light: 				#F1F1F1;
 $gray-medium: 			#818B91;
 $gray-dark: 				#444444;
@@ -26,9 +23,6 @@ $beige: 						#ECE6DA;
 
 // Computed Colors
 $primary-color-dark: 				darken($primary-color, 15%);
-$secondary-color-dark: 			darken($secondary-color, 10%);
-$accent-color-1-dark: 			darken($accent-color-1, 15%);
-$accent-color-2-dark: 			darken($accent-color-2, 10%);
 $gray-medium-transparent: 	transparentize($gray-medium, 0.8);
 
 $text-color: $gray-dark;

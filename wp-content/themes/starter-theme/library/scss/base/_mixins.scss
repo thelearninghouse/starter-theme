@@ -51,7 +51,7 @@
 }
 
 // Responsive background images
-@mixin responsivebackground($sm: 'hero-background-sm.jpg', $md: 'hero-background-md.jpg', $lg: 'hero-background-lg.jpg') {
+@mixin responsivebackground($sm: $hero-sm, $md: $hero-md, $lg: $hero-lg) {
   @media screen and (max-width: 800px) {
   	background-image: url('../images/' + $sm);
   }
