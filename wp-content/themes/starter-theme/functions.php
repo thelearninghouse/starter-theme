@@ -42,6 +42,8 @@ function tlh_setup() {
 // let's get this party started
 add_action( 'after_setup_theme', 'tlh_setup' );
 
+/************* MAINTENANCE MODE *****************/
+require_once( 'inc/maintenance-mode.php' );
 
 /************* OEMBED SIZE OPTIONS *************/
 
@@ -64,39 +66,6 @@ function tlh_register_sidebars() {
 	));
 } // don't remove this bracket!
 
-
-/************* COMMENT LAYOUT *********************/
-
-// Comment Layout
-function tlh_comments( $comment, $args, $depth ) {
-   $GLOBALS['comment'] = $comment; ?>
-  <div id="comment-<?php comment_ID(); ?>" <?php comment_class('cf'); ?>>
-    <article  class="cf">
-      <header class="comment-author vcard">
-        <?php // custom gravatar call ?>
-        <?php
-          // create variable
-          $bgauthemail = get_comment_author_email();
-        ?>
-        <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
-        <?php // end custom gravatar call ?>
-        <?php printf(__( '<cite class="fn">%1$s</cite> %2$s' ), get_comment_author_link(), edit_comment_link(__( '(Edit)' ),'  ','') ) ?>
-        <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y' )); ?> </a></time>
-
-      </header>
-      <?php if ($comment->comment_approved == '0') : ?>
-        <div class="alert alert-info">
-          <p><?php _e( 'Your comment is awaiting moderation.' ) ?></p>
-        </div>
-      <?php endif; ?>
-      <section class="comment_content cf">
-        <?php comment_text() ?>
-      </section>
-      <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-    </article>
-  <?php // </li> is added by WordPress automatically ?>
-<?php
-} // don't remove this bracket!
 
 /************* SOCIAL SHARING *********************/
 
@@ -131,7 +100,6 @@ function social_sharing_buttons($content) {
     }
 };
 add_filter( 'the_content', 'social_sharing_buttons');
-
 
 
 /************* JQUERY CONFLICT FIX *********************/
