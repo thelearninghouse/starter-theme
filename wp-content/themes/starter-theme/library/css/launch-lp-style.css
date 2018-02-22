@@ -12,6 +12,9 @@ IMPORTING
 .clearfix:after, .cf:after, .comment-respond:after {
   clear: both; }
 
+body {
+  margin: 0; }
+
 /********************
 LAYOUT & GRID STYLES
 *********************/
