@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset name="Yoast SEO ACF Analysis">
+    <description>Yoast SEO ACF Analysis Coding Standards</description>
+
+    <!-- ##### WordPress sniffs #####-->
+    <rule ref="WordPress">
+        <!-- Catches way too many things, like vars and file headers. -->
+        <exclude name="Generic.Commenting.DocComment.MissingShort" />
+
+        <!-- Namespacing hooks sound reasonable. -->
+        <exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores" />
+    </rule>
+
+    <!-- exclude the 'empty' index files from some documentation checks -->
+    <rule ref="Squiz.Commenting.FileComment">
+        <exclude-pattern>*/index.php</exclude-pattern>
+    </rule>
+
+    <rule ref="Squiz.Commenting">
+        <exclude name="Squiz.Commenting.FileComment.Missing" />
+    </rule>
+
+</ruleset>

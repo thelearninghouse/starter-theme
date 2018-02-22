@@ -13,7 +13,7 @@ echo '<h2>' . esc_html__( 'Website name', 'wordpress-seo' ) . '</h2>';
 ?>
 <p>
 	<?php
-	_e( 'Google shows your website\'s name in the search results, we will default to your site name but you can adapt it here. You can also provide an alternate website name you want Google to consider.', 'wordpress-seo' );
+	esc_html_e( 'Google shows your website\'s name in the search results, we will default to your site name but you can adapt it here. You can also provide an alternate website name you want Google to consider.', 'wordpress-seo' );
 	?>
 </p>
 <?php
@@ -24,8 +24,12 @@ echo '<h2>' . esc_html__( 'Company or person', 'wordpress-seo' ) . '</h2>';
 ?>
 <p>
 	<?php
-	// @todo add KB link - JdV.
-	_e( 'This data is shown as metadata in your site. It is intended to appear in Google\'s Knowledge Graph. You can be either a company, or a person, choose either:', 'wordpress-seo' );
+	printf(
+		/* translators: %1$s opens the link to the Yoast.com article about Google's Knowledge Graph, %2$s closes the link */
+		esc_html__( 'This data is shown as metadata in your site. It is intended to appear in %1$sGoogle\'s Knowledge Graph%2$s. You can be either a company, or a person, choose either:', 'wordpress-seo' ),
+		'<a href="' . esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/1-p' ) ) . '" target="_blank" rel="noopener noreferer">',
+		'</a>'
+	);
 	?>
 </p>
 <?php
@@ -39,8 +43,8 @@ $yform->select( 'company_or_person', __( 'Company or person', 'wordpress-seo' ),
 <div id="knowledge-graph-company">
 	<h3><?php esc_html_e( 'Company', 'wordpress-seo' ); ?></h3>
 	<?php
-	$yform->textinput( 'company_name', __( 'Company Name', 'wordpress-seo' ) );
-	$yform->media_input( 'company_logo', __( 'Company Logo', 'wordpress-seo' ) );
+	$yform->textinput( 'company_name', __( 'Company name', 'wordpress-seo' ) );
+	$yform->media_input( 'company_logo', __( 'Company logo', 'wordpress-seo' ) );
 	?>
 </div>
 

@@ -40,7 +40,7 @@ class dhz_acf_field_extended_color_picker extends acf_field {
 		);
 		
 		$this->settings = array(
-			'version'	=> '1.0.3',
+			'version'	=> '1.2.0',
 			'url'		=> plugin_dir_url( __DIR__ )
 		);		
 		
@@ -72,7 +72,7 @@ class dhz_acf_field_extended_color_picker extends acf_field {
 		if( !isset($wp_scripts->registered['iris']) ) {
 			
 			// styles
-			wp_register_style('wp-color-picker', admin_url('css/color-picker.css'), array(), '', true);
+			wp_register_style('wp-color-picker', admin_url('css/color-picker.css'), array('wp-color-picker'), '', true);
 			
 			// scripts
 			wp_register_script('iris', admin_url('js/iris.min.js'), array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch'), '1.0.7', true);
@@ -95,7 +95,7 @@ class dhz_acf_field_extended_color_picker extends acf_field {
 		wp_enqueue_script( 'wp-color-picker-alpha', "{$url}/assets/js/wp-color-picker-alpha.min.js", array( 'wp-color-picker' ), '2.0.0', true );
 
 		// register Extended Color Picker CSS
-		wp_register_style( 'acf-rgba-color-picker-style', "{$url}assets/css/acf-rgba-color-picker.css", false, $version);
+		wp_register_style( 'acf-rgba-color-picker-style', "{$url}/assets/css/acf-rgba-color-picker.css", false, $version);
 
 		// register Extended Color Picker JS
 		wp_register_script( 'acf-rgba-color-picker-script', "{$url}/assets/js/acf-rgba-color-picker.js", array('wp-color-picker-alpha'), $version, true );
@@ -126,7 +126,6 @@ class dhz_acf_field_extended_color_picker extends acf_field {
 		$text = acf_get_sub_array( $field, array('id', 'class', 'name', 'value') );
 		$hidden = acf_get_sub_array( $field, array('name', 'class', 'value') );
 
-
 		$palettes = apply_filters( "acf/rgba_color_picker/palette", true );
 
 		if ( $palettes == false ) {
@@ -150,7 +149,7 @@ class dhz_acf_field_extended_color_picker extends acf_field {
 		
 		// render
 		?>
-		<div class="acf-color-picker" data-target="target" data-palette="<?php echo $palettes ?>">
+		<div class="acf-color-picker" data-target="target" data-palette='<?php echo $palettes ?>' data-default="<?php echo $field['default_value'] ?>">			
 			<?php acf_hidden_input($hidden); ?>
 			<input type="text" <?php echo acf_esc_attr($text); ?> data-alpha ="true" />
 		</div>

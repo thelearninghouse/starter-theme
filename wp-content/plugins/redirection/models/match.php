@@ -1,51 +1,19 @@
 <?php
 
-class Red_Match {
-	public $url;
-
-	function __construct( $values = '' ) {
+abstract class Red_Match {
+	public function __construct( $values = '' ) {
 		if ( $values ) {
-			$this->url = $values;
-
-			$obj = maybe_unserialize( $values );
-
-			if ( is_array( $obj ) ) {
-				foreach ( $obj as $key => $value ) {
-					$this->$key = $value;
-				}
-			}
+			$this->load( $values );
 		}
 	}
 
-	function data( $details ) {
-		$data = $this->save( $details );
-		if ( count( $data ) === 1 && ! is_array( current( $data ) ) )
-			$data = current( $data );
-		else
-			$data = serialize( $data );
-		return $data;
-	}
+	abstract public function save( array $details, $no_target_url = false );
+	abstract public function name();
+	abstract public function get_target( $url, $matched_url, $regex );
+	abstract public function get_data();
+	abstract public function load( $values );
 
-	function save( $details ) {
-		return array();
-	}
-
-	function name() {
-		return '';
-	}
-
-	function show() {
-	}
-
-	function wants_it() {
-		return true;
-	}
-
-	function get_target( $url, $matched_url, $regex ) {
-		return false;
-	}
-
-	function sanitize_url( $url ) {
+	public function sanitize_url( $url ) {
 		// No new lines
 		$url = preg_replace( "/[\r\n\t].*?$/s", '', $url );
 
@@ -55,13 +23,19 @@ class Red_Match {
 		return $url;
 	}
 
+	protected function get_target_regex_url( $matched_url, $target, $url ) {
+		return preg_replace( '@'.str_replace( '@', '\\@', $matched_url ).'@', $target, $url );
+	}
+
 	static function create( $name, $data = '' ) {
 		$avail = self::available();
 		if ( isset( $avail[ strtolower( $name ) ] ) ) {
 			$classname = $name.'_match';
 
-			if ( ! class_exists( strtolower( $classname ) ) )
+			if ( ! class_exists( strtolower( $classname ) ) ) {
 				include( dirname( __FILE__ ).'/../matches/'.$avail[ strtolower( $name ) ] );
+			}
+
 			return new $classname( $data );
 		}
 
@@ -86,10 +60,9 @@ class Red_Match {
 			'referrer' => 'referrer.php',
 			'agent'    => 'user-agent.php',
 			'login'    => 'login.php',
+			'header'   => 'http-header.php',
+			'custom'   => 'custom-filter.php',
+			'cookie'   => 'cookie.php',
 		 );
-	}
-
-	function match_name() {
-		return '';
 	}
 }

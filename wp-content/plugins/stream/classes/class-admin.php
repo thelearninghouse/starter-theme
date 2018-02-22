@@ -162,8 +162,7 @@ class Admin {
 		add_action( 'wp_ajax_wp_stream_reset', array( $this, 'wp_ajax_reset' ) );
 
 		// Uninstall Streams and Deactivate plugin.
-		$uninstall = new Uninstall( $this->plugin );
-		add_action( 'wp_ajax_wp_stream_uninstall', array( $uninstall, 'uninstall' ) );
+		$uninstall = $this->plugin->db->driver->purge_storage( $this->plugin );
 
 		// Auto purge setup.
 		add_action( 'wp_loaded', array( $this, 'purge_schedule_setup' ) );
@@ -346,8 +345,8 @@ class Admin {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts( $hook ) {
-		wp_register_script( 'wp-stream-select2', $this->plugin->locations['url'] . 'ui/lib/select2/js/select2.js', array( 'jquery' ), '3.5.2', true );
-		wp_register_style( 'wp-stream-select2', $this->plugin->locations['url'] . 'ui/lib/select2/css/select2.css', array(), '3.5.2' );
+		wp_register_script( 'wp-stream-select2', $this->plugin->locations['url'] . 'ui/lib/select2/js/select2.full.min.js', array( 'jquery' ), '3.5.2', true );
+		wp_register_style( 'wp-stream-select2', $this->plugin->locations['url'] . 'ui/lib/select2/css/select2.min.css', array(), '3.5.2' );
 		wp_register_script( 'wp-stream-timeago', $this->plugin->locations['url'] . 'ui/lib/timeago/jquery.timeago.js', array(), '1.4.1', true );
 
 		$locale    = strtolower( substr( get_locale(), 0, 2 ) );
@@ -442,7 +441,7 @@ class Admin {
 		}
 
 		$screen = get_current_screen();
-		if ( is_admin() && 'post' === $screen->base && Alerts::POST_TYPE === $screen->post_type ) {
+		if ( is_admin() && Alerts::POST_TYPE === $screen->post_type ) {
 			return true;
 		}
 
@@ -699,8 +698,8 @@ class Admin {
 		$this->list_table->prepare_items();
 		?>
 		<div class="wrap">
-			<h1><?php echo esc_html( get_admin_page_title() ) ?></h1>
-			<?php $this->list_table->display() ?>
+			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+			<?php $this->list_table->display(); ?>
 		</div>
 	<?php
 	}
@@ -720,29 +719,29 @@ class Admin {
 		wp_enqueue_script( 'wp-stream-settings', $this->plugin->locations['url'] . 'ui/js/settings.js', array( 'jquery' ), $this->plugin->get_version(), true );
 		?>
 		<div class="wrap">
-			<h1><?php echo esc_html( get_admin_page_title() ) ?></h1>
+			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 			<?php if ( ! empty( $page_description ) ) : ?>
-				<p><?php echo esc_html( $page_description ) ?></p>
+				<p><?php echo esc_html( $page_description ); ?></p>
 			<?php endif; ?>
 
-			<?php settings_errors() ?>
+			<?php settings_errors(); ?>
 
 			<?php if ( count( $sections ) > 1 ) : ?>
 				<h2 class="nav-tab-wrapper">
 					<?php $i = 0 ?>
 					<?php foreach ( $sections as $section => $data ) : ?>
 						<?php $i ++ ?>
-						<?php $is_active = ( ( 1 === $i && ! $active_tab ) || $active_tab === $section ) ?>
-						<a href="<?php echo esc_url( add_query_arg( 'tab', $section ) ) ?>" class="nav-tab<?php if ( $is_active ) { echo esc_attr( ' nav-tab-active' ); } ?>">
-							<?php echo esc_html( $data['title'] ) ?>
+						<?php $is_active = ( ( 1 === $i && ! $active_tab ) || $active_tab === $section ); ?>
+						<a href="<?php echo esc_url( add_query_arg( 'tab', $section ) ); ?>" class="nav-tab<?php if ( $is_active ) { echo esc_attr( ' nav-tab-active' ); } ?>">
+							<?php echo esc_html( $data['title'] ); ?>
 						</a>
 					<?php endforeach; ?>
 				</h2>
 			<?php endif; ?>
 
 			<div class="nav-tab-content" id="tab-content-settings">
-				<form method="post" action="<?php echo esc_attr( $form_action ) ?>" enctype="multipart/form-data">
+				<form method="post" action="<?php echo esc_attr( $form_action ); ?>" enctype="multipart/form-data">
 					<div class="settings-sections">
 		<?php
 		$i = 0;
@@ -758,7 +757,7 @@ class Admin {
 		}
 		?>
 					</div>
-					<?php submit_button() ?>
+					<?php submit_button(); ?>
 				</form>
 			</div>
 		</div>

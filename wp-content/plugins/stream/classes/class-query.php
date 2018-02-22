@@ -3,25 +3,11 @@ namespace WP_Stream;
 
 class Query {
 	/**
-	 * @var DB
-	 */
-	public $db;
-
-	/**
 	 * Hold the number of records found
 	 *
 	 * @var int
 	 */
 	public $found_records = 0;
-
-	/**
-	 * Class constructor.
-	 *
-	 * @param DB $db The parent database class.
-	 */
-	public function __construct( $db ) {
-		$this->db = $db;
-	}
 
 	/**
 	 * Query records
@@ -32,70 +18,6 @@ class Query {
 	 */
 	public function query( $args ) {
 		global $wpdb;
-
-		$defaults = array(
-			// Search param
-			'search'           => null,
-			'search_field'     => 'summary',
-			'record_after'     => null, // Deprecated, use date_after instead
-			// Date-based filters
-			'date'             => null, // Ex: 2015-07-01
-			'date_from'        => null, // Ex: 2015-07-01
-			'date_to'          => null, // Ex: 2015-07-01
-			'date_after'       => null, // Ex: 2015-07-01T15:19:21+00:00
-			'date_before'      => null, // Ex: 2015-07-01T15:19:21+00:00
-			// Record ID filters
-			'record'           => null,
-			'record__in'       => array(),
-			'record__not_in'   => array(),
-			// Pagination params
-			'records_per_page' => get_option( 'posts_per_page', 20 ),
-			'paged'            => 1,
-			// Order
-			'order'            => 'desc',
-			'orderby'          => 'date',
-			// Fields selection
-			'fields'           => array(),
-		);
-
-		// Additional property fields
-		$properties = array(
-			'user_id'   => null,
-			'user_role' => null,
-			'ip'        => null,
-			'object_id' => null,
-			'site_id'   => null,
-			'blog_id'   => null,
-			'connector' => null,
-			'context'   => null,
-			'action'    => null,
-		);
-
-		/**
-		 * Filter allows additional query properties to be added
-		 *
-		 * @return array  Array of query properties
-		 */
-		$properties = apply_filters( 'wp_stream_query_properties', $properties );
-
-		// Add property fields to defaults, including their __in/__not_in variations
-		foreach ( $properties as $property => $default ) {
-			if ( ! isset( $defaults[ $property ] ) ) {
-				$defaults[ $property ] = $default;
-			}
-
-			$defaults[ "{$property}__in" ]     = array();
-			$defaults[ "{$property}__not_in" ] = array();
-		}
-
-		$args = wp_parse_args( $args, $defaults );
-
-		/**
-		 * Filter allows additional arguments to query $args
-		 *
-		 * @return array  Array of query arguments
-		 */
-		$args = apply_filters( 'wp_stream_query_args', $args );
 
 		$join  = '';
 		$where = '';
@@ -152,6 +74,11 @@ class Query {
 		/**
 		 * PARSE DATE PARAM FAMILY
 		 */
+		if ( ! empty( $args['date'] ) ) {
+			$args['date_from'] = $args['date'];
+			$args['date_to']   = $args['date'];
+		}
+
 		if ( ! empty( $args['date_from'] ) ) {
 			$date   = get_gmt_from_date( date( 'Y-m-d H:i:s', strtotime( $args['date_from'] . ' 00:00:00' ) ) );
 			$where .= $wpdb->prepare( " AND DATE($wpdb->stream.created) >= %s", $date );
@@ -170,11 +97,6 @@ class Query {
 		if ( ! empty( $args['date_before'] ) ) {
 			$date   = get_gmt_from_date( date( 'Y-m-d H:i:s', strtotime( $args['date_before'] ) ) );
 			$where .= $wpdb->prepare( " AND DATE($wpdb->stream.created) < %s", $date );
-		}
-
-		if ( ! empty( $args['date'] ) ) {
-			$args['date_from'] = date( 'Y-m-d', strtotime( $args['date'] ) ) . ' 00:00:00';
-			$args['date_to']   = date( 'Y-m-d', strtotime( $args['date'] ) ) . ' 23:59:59';
 		}
 
 		/**
@@ -305,50 +227,13 @@ class Query {
 		 */
 		$query = apply_filters( 'wp_stream_db_query', $query, $args );
 
+		$result = array();
 		/**
 		 * QUERY THE DATABASE FOR RESULTS
 		 */
-		$results = $wpdb->get_results( $query ); // @codingStandardsIgnoreLine $query already prepared
+		$result['items'] = $wpdb->get_results( $query ); // @codingStandardsIgnoreLine $query already prepared
+		$result['count'] = $result['items'] ? absint( $wpdb->get_var( 'SELECT FOUND_ROWS()' ) ) : 0;
 
-		// Hold the number of records found
-		$this->found_records = absint( $wpdb->get_var( 'SELECT FOUND_ROWS()' ) );
-
-		// Add meta to the records, when applicable
-		if ( empty( $fields ) || in_array( 'meta', $fields, true ) ) {
-			$results = $this->add_record_meta( $results );
-		}
-
-		return (array) $results;
-	}
-
-	/**
-	 * Add meta to a set of records
-	 *
-	 * @param array $records
-	 *
-	 * @return array
-	 */
-	public function add_record_meta( $records ) {
-		global $wpdb;
-
-		$record_ids = array_map( 'absint', wp_list_pluck( $records, 'ID' ) );
-
-		if ( empty( $record_ids ) ) {
-			return (array) $records;
-		}
-
-		$sql_meta = sprintf(
-			"SELECT * FROM $wpdb->streammeta WHERE record_id IN ( %s )",
-			implode( ',', $record_ids )
-		);
-
-		$meta  = $wpdb->get_results( $sql_meta ); // @codingStandardsIgnoreLine prepare okay
-		$ids_f = array_flip( $record_ids );
-
-		foreach ( $meta as $meta_record ) {
-			$records[ $ids_f[ $meta_record->record_id ] ]->meta[ $meta_record->meta_key ] = maybe_unserialize( $meta_record->meta_value );
-		}
-
-		return (array) $records;
+		return $result;
 	}
 }

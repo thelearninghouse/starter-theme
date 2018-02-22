@@ -31,6 +31,20 @@ abstract class Connector {
 	public $prev_stream = null;
 
 	/**
+	 * Register connector in the WP Admin
+	 *
+	 * @var bool
+	 */
+	public $register_admin = true;
+
+	/**
+	 * Register connector in the WP Frontend
+	 *
+	 * @var bool
+	 */
+	public $register_frontend = true;
+
+	/**
 	 * Register all context hooks
 	 */
 	public function register() {
@@ -167,7 +181,8 @@ abstract class Connector {
 			$old_value,
 			$new_value,
 			function( $value1, $value2 ) {
-				return maybe_serialize( $value1 ) !== maybe_serialize( $value2 );
+				// Compare potentially complex nested arrays
+				return wp_json_encode( $value1 ) !== wp_json_encode( $value2 );
 			}
 		);
 

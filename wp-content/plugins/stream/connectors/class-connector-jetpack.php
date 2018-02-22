@@ -34,6 +34,13 @@ class Connector_Jetpack extends Connector {
 	);
 
 	/**
+	 * Register connector in the WP Frontend
+	 *
+	 * @var bool
+	 */
+	public $register_frontend = false;
+
+	/**
 	 * Tracked option keys
 	 *
 	 * @var array
@@ -532,8 +539,8 @@ class Connector_Jetpack extends Connector {
 
 			$settings['meta'] += array(
 				'option'    => $option,
-				'old_value' => maybe_serialize( $old_value ),
-				'value'     => maybe_serialize( $new_value ),
+				'old_value' => $old_value,
+				'value'     => $new_value,
 			);
 
 			$this->log(

@@ -1,67 +1,92 @@
 === Plugin Name ===
 Contributors: johnny5
-Donate link: http://urbangiraffe.com/about/
-Tags: post, admin, seo, pages, manage, 301, 404, redirect, permalink
-Requires at least: 4.2
-Tested up to: 4.7
-Stable tag: 2.5
+Donate link: https://redirection.me/donation/
+Tags: redirect, htaccess, 301, 404, seo, permalink, apache, nginx, post, admin
+Requires at least: 4.5
+Tested up to: 4.9.4
+Stable tag: 3.2
+Requires PHP: 5.4
+License: GPLv3
 
-Redirection is a WordPress plugin to manage 301 redirections and keep track of 404 errors without requiring knowledge of Apache .htaccess files.
+Manage 301 redirections, keep track of 404 errors, and improve your site, with no knowledge of Apache or Nginx needed.
 
 == Description ==
 
-Redirection is a WordPress plugin to manage 301 redirections, keep track of 404 errors, and generally tidy up any loose ends your site may have.
-This is particularly useful if you are migrating pages from an old website, or are changing the directory of your WordPress installation.
+Redirection is the most popular redirect manager for WordPress. With it you can easily manage 301 redirections, keep track of 404 errors, and generally tidy up any loose ends your site may have. This can help reduce errors and improve your site ranking.
 
-And it's 100% free!
+Redirection is designed to be used on sites with a few redirects to sites with thousands of redirects.
 
-New features include:
+It has been a WordPress plugin for over 10 years and has been recommended countless times. And it's free!
 
-* 404 error monitoring - captures a log of 404 errors and allows you to easily map these to 301 redirects
-* Custom 'pass-through' redirections allowing you to pass a URL through to another page, file, or website.
-* Full logs for all redirected URLs
-* All URLs can be redirected, not just ones that  don't exist
-* Redirection methods - redirect based upon login status, redirect to random pages, redirect based upon the referrer!
+Full documentation can be found at [https://redirection.me](https://redirection.me)
 
-Existing features include:
+= Redirect manager =
 
-* Automatically add a 301 redirection when a post's URL changes
-* Manually add 301, 302, and 307 redirections for a WordPress post, or for any other file
-* Full regular expression support
-* Apache .htaccess is not required - works entirely inside WordPress
-* Redirect index.php, index.html, and index.htm access
-* Redirection statistics telling you how many times a redirection has occurred, when it last happened, who tried to do it, and where they found your URL
-* Fully localized
+Create and manage redirects quickly and easily without needing Apache or Nginx knowledge. If your WordPress supports permalinks then you can use Redirection to redirect any URL.
 
-Redirection is available in:
+There is full support for regular expressions so you can create redirect patterns to match any number of URLs.
 
-* English
-* French by Oncle Tom
-* Hebrew by Rami
-* Spanish by Juan
-* Simplified Chinese by Sha Miao
-* Catalan by Robert Bu
-* Japanese by Naoko McCracken
-* Hindi by Ashish
-* Russian by Grib
-* Bahasa Indonesia by Septian Fujianto
-* German by Fabian Schulz
-* Italian by Raffaello Tesi
-* Ukrainian by WordPress plugins Ukraine
-* Polish by Kuba Majerczyk
-* Arabic by Jerry John
-* Brazilian Portuguese by Pedro Padron
-* Dutch by Marlon Navas, Pieter Carette, and Bart Kummel
-* Hungarian by daSSad and Szépe Viktor
-* Turkish by Fatih Cevik
-* Romanian by InboxTranslations
-* Greek by Stefanos Kofopoulos
-* Belarusian by Alexander Ovsov
-* Czech by Martin Jurica
-* Danish by Rasmus Himmelstrup
-* Persian by Danial Hatami
+The plugin can also be configured to monitor when post or page permalinks are changed and automatically create a redirect to the new URL.
 
-Please submit bugs and patches to https://github.com/johngodley/redirection
+= Conditional redirects =
+
+In addition to straightforward URL matching you can redirect based on other conditions:
+
+- Login status - redirect only if the user is logged in or logged out
+- Browser - redirect if the user is using a certain browser
+- Referrer - redirect if the user visited the link from another page
+- Cookies - redirect if a particular cookie is set
+- HTTP headers - redirect based on a HTTP header
+- Custom filter - redirect based on your own WordPress filter
+
+= Full logging =
+
+A configurable logging option allows to view all redirects occurring on your site, including information about the visitor, the browser used, and the referrer. A 'hit' count is maintained for each redirect so you can see if a URL is being used.
+
+Logs can be exported for external viewing, and can be searched and filtered for more detailed investigation.
+
+Display geographic information about an IP address, as well as a full user agent information, to try and understand who the visitor is.
+
+= Track 404 errors =
+
+Redirection will keep track of all 404 errors that occur on your site, allowing you to track down and fix problems.
+
+= Apache & Nginx support =
+
+By default Redirection will manage all redirects using WordPress. However you can configure it so redirects are automatically saved to a .htaccess file and handled by Apache itself.
+
+If you use Nginx then you can export redirects to an Nginx rewrite rules file.
+
+= Import & Export =
+
+The plugin has a fully-featured import and export system and you can:
+
+- Import and export to Apache .htaccess
+- Export to Nginx rewrite rules
+- Copy redirects between sites using JSON
+- Import and export to CSV for viewing in a spreadsheet
+- Use WP CLI to automate import and export
+
+You can also import from the following plugins:
+
+- Simple 301 Redirects
+- SEO Redirection
+- Safe Redirect Manager
+- WordPress old slug redirects
+
+= Wait, it's free? =
+
+Yes, it's really free. There's no premium version and no need to pay money to get access to features. This is a dedicated redirect management plugin.
+
+== Support ==
+
+Please submit bugs, patches, and feature requests to:
+
+[https://github.com/johngodley/redirection](https://github.com/johngodley/redirection)
+
+Please submit translations to:
+
+[https://translate.wordpress.org/projects/wp-plugins/redirection](https://translate.wordpress.org/projects/wp-plugins/redirection)
 
 == Installation ==
 
@@ -73,9 +98,18 @@ The plugin is simple to install:
 1. Go to the plugin management page and enable the plugin
 1. Configure the options from the `Manage/Redirection` page
 
-You can find full details of installing a plugin on the [plugin installation page](http://urbangiraffe.com/articles/how-to-install-a-wordpress-plugin/).
+You can find full details of installing a plugin on the [plugin installation page](https://redirection.me/support/installation/).
 
-Full documentation can be found on the [Redirection](http://urbangiraffe.com/plugins/redirection/) page.
+Full documentation can be found on the [Redirection](https://redirection.me/support/) page.
+
+== Screenshots ==
+
+1. Redirection management interface
+2. Adding a redirection
+3. Redirect logs
+4. Import/Export
+5. Options
+6. Support
 
 == Frequently Asked Questions ==
 
@@ -95,15 +129,179 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 = 2.4 =
 * Another database change. Please backup your data
 
+= 3.0 =
+* Upgrades the database to support IPv6. Please backup your data and visit the Redirection settings to perform the upgrade
+* Switches to the WordPress REST API
+* Permissions changed from 'administrator' role to 'manage_options' capability
+
 == Changelog ==
+
+= 3.2 - 11th February 2018 =
+* Add cookie match - redirect based on a cookie
+* Add HTTP header match - redirect based on an HTTP header
+* Add custom filter match - redirect based on a custom WordPress filter
+* Add detection of REST API redirect, causing 'fetch error' on some sites
+* Update table responsiveness
+* Allow redirects for canonical WordPress URLs
+* Fix double include error on some sites
+* Fix delete action on some sites
+* Fix trailing slash redirect of API on some sites
+
+= 3.1.1 - 29th January 2018 =
+* Fix problem fetching data on sites without https
+
+= 3.1 - 27th January 2018 =
+* Add alternative REST API routes to help servers that block the API
+* Move DELETE API calls to POST, to help servers that block DELETE
+* Move API nonce to query param, to help servers that don't pass HTTP headers
+* Improve error messaging
+* Preload support page so it can be used when REST API isn't working
+* Fix bug editing Nginx redirects
+* Fix import from JSON not setting status
+
+= 3.0.1 - 21st Jan 2018 =
+* Don't show warning if per page setting is greater than max
+* Don't allow WP REST API to be redirected
+
+= 3.0 - 20th Jan 2018 =
+* Add support for IPv6
+* Add support for disabling or anonymising IP collection
+* Add support for monitoring custom post types
+* Add support for monitoring from quick edit mode
+* Default to last group used when editing
+* Permissions changed from 'administrator' role to 'manage_options' capability
+* Swap to WP REST API
+* Add new IP map service
+* Add new useragent service
+* Add 'add new' button to redirect page
+* Increase 'title' length
+* Fix position not saving on creation
+* Fix log pages not remembering table settings
+* Fix incorrect column used for HTTP code when importing CSV
+* Add support links from inside the plugin
+
+= 2.10.1 - 26th November 2017 =
+* Fix incorrect HTTP code reported in errors
+* Improve management page hook usage
+
+= 2.10 - 18th November 2017 =
+* Add support for WordPress multisite
+* Add new Redirection documentation
+* Add extra actions when creating redirects
+* Fix user agent dropdown not setting agent
+
+= 2.9.2 - 11th November 2017 =
+* Fix regex breaking .htaccess export
+* Fix error when saving Error or No action
+* Restore sortable table headers
+
+= 2.9.1 - 4th November 2017 =
+* Fix const issues with PHP 5
+
+= 2.9 - 4th November 2017 =
+* Add option to set redirect cache expiry, default 1 hour
+* Add a check for unsupported versions of WordPress
+* Add check for database tables before starting the plugin
+* Improve JSON import memory usage
+* Add importers for: Simple 301 Redirects, SEO Redirection, Safe Redirect Manager, and WordPress old post slugs
+* Add responsive admin UI
+
+= 2.8.1 - 22nd October 2017 =
+* Fix redirect edit not closing after save
+* Fix user agent dropdown not auto-selecting regex
+* Fix focus to bottom of page on load
+* Improve error message when failing to start
+* Fix associated redirect appearing at start of URL, not end
+
+= 2.8 - 18th October 2017 =
+* Add a fixer to the support page
+* Ignore case for imported files
+* Fixes for Safari
+* Fix WP CLI importing CSV
+* Fix monitor not setting HTTP code
+* Improve error, random, and pass-through actions
+* Fix bug when saving long title
+* Add user agent dropdown to user agent match
+* Add pages and trashed posts to monitoring
+* Add 'associated redirect' option to monitoring, for AMP
+* Remove 404 after adding
+* Allow search term to apply to deleting logs and 404s
+* Deprecate file pass-through, needs to be enabled with REDIRECTION_SUPPORT_PASS_FILE and will be replaced with WP actions
+* Further sanitize match data against bad serialization
+
+= 2.7.3 - 26th August 2017 =
+* Fix an import regression bug
+
+= 2.7.2 - 25th August 2017 =
+* Better IE11 support
+* Fix Apache importer
+* Show more detailed error messages
+* Refactor match code and fix a problem saving referrer & user agent matches
+* Fix save button not enabling for certain redirect types
+
+= 2.7.1 - 14th August 2017 =
+* Improve display of errors
+* Improve handling of CSV
+* Reset tables when changing menus
+* Change how the page is displayed to reduce change of interference from other plugins
+
+= 2.7 - 6th August 2017 =
+* Finish conversion to React
+* Add WP CLI support for import/export
+* Add a JSON import/export that exports all data
+* Edit redirect position
+* Apache config moved to options page
+* Fix 410 error code
+* Fix page limits
+* Fix problems with IE/Safari
+
+= 2.6.6 =
+* Use React on redirects page
+* Use translate.wordpress.org for language files
+
+= 2.6.5 =
+* Use React on groups page
+
+= 2.6.4 =
+* Add a limit to per page screen options
+* Fix warning in referrer match when referrer doesn't exist
+* Fix 404 page showing options
+* Fix RSS token not regenerating
+* 404 and log filters can now avoid logging
+* Use React on modules page
+
+= 2.6.3 =
+* Use React on log and 404 pages
+* Fix log option not saving 'never'
+* Additional check for auto-redirect from root
+* Fix delete plugin button
+* Improve IP detection for Cloudflare
+
+= 2.6.2 =
+* Set auto_detect_line_endings when importing CSV
+* Replace options page with a fancy React version that looks exactly the same
+
+= 2.6.1 =
+* Fix CSV export merging everything into one line
+* Fix bug with HTTP codes not being imported from CSV
+* Add filters for source and target URLs
+* Add filters for log and 404s
+* Add filters for request data
+* Add filter for monitoring post permalinks
+* Fix export of 404 and logs
+
+= 2.6 =
+* Show example CSV
+* Allow regex and redirect code to be set on import
+* Fix a bunch of database installation problems
 
 = 2.5 =
 * Fix no group created on install
 * Fix missing export key on install
-* Add 408 HTTP code, props to radenui
+* Add 308 HTTP code, props to radenui
 * Fix imported URLs set to regex, props to alpipego
 * Fix sorting of URLs, props to JordanReiter
-* Don't cache 407s, props to rmarchant
+* Don't cache 307s, props to rmarchant
 * Abort redirect exit if no redirection happened, props to junc
 
 = 2.4.5 =
@@ -301,7 +499,7 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 = 2.1.24 =
 * Add Ukrainian translation
 * Add Polish translation
-* Database optimisation
+* Database optimization
 
 = 2.1.23 =
 * Add Bahasa Indonesian translation
@@ -352,7 +550,7 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 * Errors on some sites
 
 = 2.1.10 =
-* Missing localisations
+* Missing localizations
 
 = 2.1.9 =
 * Fix 'you do not permissions' error on some non-English sites
@@ -383,49 +581,19 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 * Force JS cache
 * Fix log deletion
 
-= 2.1 =
+= < 2.1 =
 * Change to jQuery
 * Nonce protection
-* Fix #352, #353, #339, #351
-* Add #358, #316.
-
-= 2.0.12 =
 * Disable category monitor in 2.7
-
-= 2.0.11 =
 * Hebrew translation
-
-= 2.0.10 =
 * Fix small issues in display with WP 2.7
-
-= 2.0.9 =
 * Fix delete redirects
-
-= 2.0.8 =
 * Refix log delete
-
-= 2.0.7 =
 * Fix incorrect automatic redirection with static home pages
-
-= 2.0.6 =
 * Support for wp-load.php
-
-= 2.0.5 =
-* Fix #264
-
-= 2.0.4 =
 * get_home_path seems not be available for some people
-
-= 2.0.3 =
-* Fix #248
 * Update plugin.php to better handle odd directories
-
-= 2.0.2 =
 * Correct DB install
 * Fix IIS problem
-
-= 2.0.1 =
 * Install defaults when no existing redirection setup
-
-= 2.0 =
 * New version

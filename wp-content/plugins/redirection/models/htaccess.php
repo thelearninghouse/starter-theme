@@ -2,16 +2,26 @@
 
 class Red_Htaccess {
 	private $items = array();
-	const INSERT_REGEX = '@\n?# Created by Redirection(.*?)# End of Redirection\n?@sm';
+	const INSERT_REGEX = '@\n?# Created by Redirection(?:.*?)# End of Redirection\n?@sm';
 
 	private function encode_from( $url ) {
-		return '^'.$this->encode( $url ).'$';
+		$url = $this->encode( $url );
+
+		// Apache 2 does not need a leading slashing
+		$url = ltrim( $url, '/' );
+
+		// Exactly match the URL
+		return '^'.$url.'$';
 	}
 
 	private function encode2nd( $url ) {
 		$url = urlencode( $url );
 		$url = str_replace( '%2F', '/', $url );
+		$url = str_replace( '%3F', '?', $url );
 		$url = str_replace( '%3A', ':', $url );
+		$url = str_replace( '%3D', '=', $url );
+		$url = str_replace( '%26', '&', $url );
+		$url = str_replace( '%25', '%', $url );
 		$url = str_replace( '+', '%20', $url );
 		$url = str_replace( '%24', '$', $url );
 		return $url;
@@ -20,25 +30,37 @@ class Red_Htaccess {
 	private function encode( $url ) {
 		$url = urlencode( $url );
 		$url = str_replace( '%2F', '/', $url );
+		$url = str_replace( '%3F', '?', $url );
 		$url = str_replace( '+', '%20', $url );
 		$url = str_replace( '.', '\\.', $url );
 		return $url;
 	}
 
 	private function encode_regex( $url ) {
+		// Remove any newlines
 		$url = preg_replace( "/[\r\n\t].*?$/s", '', $url );
+
+		// Remove invalid characters
 		$url = preg_replace( '/[^\PC\s]/u', '', $url );
+
+		// Make sure spaces are quoted
 		$url = str_replace( ' ', '%20', $url );
-		$url = str_replace( '.', '\\.', $url );
-		$url = str_replace( '\\.*', '.*', $url );
 		$url = str_replace( '%24', '$', $url );
+
+		// No leading slash
+		$url = ltrim( $url, '/' );
+
+		// If pattern has a ^ at the start then ensure we don't have a slash immediatley after
+		$url = preg_replace( '@^\^/@', '^', $url );
+
 		return $url;
 	}
 
 	private function add_referrer( $item, $match ) {
 		$from = $this->encode_from( ltrim( $item->get_url(), '/' ) );
-		if ( $item->is_regex() )
+		if ( $item->is_regex() ) {
 			$from = $this->encode_regex( ltrim( $item->get_url(), '/' ) );
+		}
 
 		if ( ( $match->url_from || $match->url_notfrom ) && $match->referrer ) {
 			$this->items[] = sprintf( 'RewriteCond %%{HTTP_REFERER} %s [NC]', ( $match->regex ? $this->encode_regex( $match->referrer ) : $this->encode_from( $match->referrer ) ) );
@@ -84,14 +106,16 @@ class Red_Htaccess {
 			$this->items[] = sprintf( 'RewriteCond %%{QUERY_STRING} ^%s$', $url_parts['query'] );
 		}
 
-		$to   = $this->target( $item->get_action_type(), $match->url, $item->get_action_code(), $item->is_regex() );
+		$to = $this->target( $item->get_action_type(), $match->url, $item->get_action_code(), $item->is_regex() );
 		$from = $this->encode_from( $url );
 
-		if ( $item->is_regex() )
+		if ( $item->is_regex() ) {
 			$from = $this->encode_regex( $item->get_url() );
+		}
 
-		if ( $to )
+		if ( $to ) {
 			$this->items[] = sprintf( 'RewriteRule %s %s', $from, $to );
+		}
 	}
 
 	private function action_random( $data, $code, $regex ) {
@@ -105,40 +129,45 @@ class Red_Htaccess {
 	}
 
 	private function action_pass( $data, $code, $regex ) {
-		if ( $regex )
+		if ( $regex ) {
 			return sprintf( '%s [L]', $this->encode2nd( $data ), $code );
+		}
 		return sprintf( '%s [L]', $this->encode2nd( $data ), $code );
 	}
 
 	private function action_error( $data, $code, $regex ) {
-		if ( $code === 410 )
+		if ( $code === 410 ) {
 			return '/ [G]';
+		}
 		return '/ [F]';
 	}
 
 	private function action_url( $data, $code, $regex ) {
-		if ( $regex )
+		if ( $regex ) {
 			return sprintf( '%s [R=%d,L]', $this->encode2nd( $data ), $code );
+		}
 		return sprintf( '%s [R=%d,L]', $this->encode2nd( $data ), $code );
 	}
 
 	private function target( $action, $data, $code, $regex ) {
 		$target = 'action_'.$action;
 
-		if ( method_exists( $this, $target ) )
+		if ( method_exists( $this, $target ) ) {
 			return $this->$target( $data, $code, $regex );
+		}
 		return '';
 	}
 
 	private function generate() {
-		if ( count( $this->items ) === 0 )
-			return '';
-
 		$version = get_plugin_data( dirname( dirname( __FILE__ ) ).'/redirection.php' );
+
+		if ( count( $this->items ) === 0 ) {
+			return '';
+		}
 
 		$text[] = '# Created by Redirection';
 		$text[] = '# '.date( 'r' );
-		$text[] = '# Redirection '.trim( $version['Version'] ).' - http://urbangiraffe.com/plugins/redirection/';
+		$text[] = '# Redirection '.trim( $version['Version'] ).' - https://redirection.me';
 		$text[] = '';
 
 		// mod_rewrite section
@@ -169,10 +198,11 @@ class Red_Htaccess {
 		$text = $this->generate();
 
 		if ( $existing ) {
-			if ( preg_match( self::INSERT_REGEX, $existing ) > 0 )
-				$text = preg_replace( self::INSERT_REGEX, $text, $existing );
-			else
+			if ( preg_match( self::INSERT_REGEX, $existing ) > 0 ) {
+				$text = preg_replace( self::INSERT_REGEX, str_replace( '$', '\\$', $text ), $existing );
+			} else {
 				$text = trim( $existing )."\n".$text;
+			}
 		}
 
 		return trim( $text );
@@ -181,9 +211,18 @@ class Red_Htaccess {
 	public function save( $filename, $content_to_save = false ) {
 		$existing = false;
 
-		if ( file_exists( $filename ) )
-			$existing = @file_get_contents( $filename );
+		if ( file_exists( $filename ) ) {
+			$existing = file_get_contents( $filename );
+		}
 
-		return @file_put_contents( $filename, $this->get( $existing ) );
+		$file = @fopen( $filename, 'w' );
+		if ( $file ) {
+			$result = fwrite( $file, $this->get( $existing ) );
+			fclose( $file );
+
+			return $result !== false;
+		}
+
+		return false;
 	}
 }

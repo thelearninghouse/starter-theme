@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XMLKD
 Tags: acf, acfpro, advanced custom fields, color, color picker, rgba, rgba color picker 
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,12 @@ The RGBA Color Picker is a color picker that supports transparency colors in RGB
 = Custom color palette =
 
 The plugin offers the possibility to customize the color palette according to your own wishes. You can define your own custom color palette with the `acf/rgba_color_picker/palette` filter. In addition, you can define an individual color palette for each field in the field settings.
+
+**New in version 1.2.0**
+
+If there are a lot of colors for the color palette, the color fields are getting very tiny. To prevent this, the color fields are now displayed in several rows (with a maximum of 10 colors per row). So it is possible to define a lot of colors for the standard palette.
+
+Furthermore, the color picker is now absolutely positioned and this does not shift other elements of the page every time the color picker is opened.
 
 **This plugin works only with the [ACF PRO](https://www.advancedcustomfields.com/pro/) (version 5.5.0 or higher).**
 
@@ -95,6 +101,11 @@ Setting the color palette to false will disable and hide the "Color Palette" and
 
 
 == Changelog ==
+
+= v1.2.0 =
+* Correct use of standard color
+* Changed position of color picker
+* Better handling for color palettes
 
 = v1.1.0 =
 * Changed class name to prevent future conflicts with ACF

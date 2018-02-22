@@ -11,18 +11,25 @@
 class WPSEO_Import_External {
 
 	/**
-	 * Whether or not to delete old data
+	 * Whether or not to delete old data.
 	 *
 	 * @var boolean
 	 */
 	protected $replace;
 
 	/**
-	 * Message about the import
+	 * Message about the import status.
 	 *
 	 * @var string
 	 */
 	public $msg = '';
+
+	/**
+	 * Whether import has been successful.
+	 *
+	 * @var bool
+	 */
+	public $success = false;
 
 	/**
 	 * Import class constructor.
@@ -87,9 +94,6 @@ class WPSEO_Import_External {
 				if ( isset( $custom['_headspace_noarchive'] ) ) {
 					$robotsmeta_adv .= 'noarchive,';
 				}
-				if ( isset( $custom['_headspace_noodp'] ) ) {
-					$robotsmeta_adv .= 'noodp,';
-				}
 				$robotsmeta_adv = preg_replace( '`,$`', '', $robotsmeta_adv );
 				WPSEO_Meta::set_value( 'meta-robots-adv', $robotsmeta_adv, $post->ID );
 			}
@@ -103,6 +107,7 @@ class WPSEO_Import_External {
 			}
 			unset( $hs_meta, $meta );
 		}
+		$this->success = true;
 		$this->set_msg( __( 'HeadSpace2 data successfully imported', 'wordpress-seo' ) );
 	}
 }
