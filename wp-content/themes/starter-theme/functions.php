@@ -114,5 +114,7 @@ add_action('wp_enqueue_scripts', 'enqueue_jquery_version');
 /************* CUSTOM TEMPLATE TAGS *********************/
 require_once( 'library/template-tags.php' );
 
+require_once( 'inc/components/cta.php' );
+
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

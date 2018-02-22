@@ -272,6 +272,12 @@ Button Styles
 .clearfix:after, .cf:after, .comment-respond:after {
   clear: both; }
 
+.cta-blog {
+  background-color: #ddd;
+  padding: 1.25rem; }
+  .cta-blog__title {
+    margin-top: 0; }
+
 /******************************************************************
 Form Styles
 ******************************************************************/
