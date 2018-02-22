@@ -21,10 +21,18 @@ $bp-lg: 1040px;
   }
 }
 
+// Resets
+
 body {
   margin: 0;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
 
 /********************
 LAYOUT & GRID STYLES
