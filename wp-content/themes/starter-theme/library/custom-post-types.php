@@ -38,7 +38,7 @@ function add_degrees() {
             'hierarchical' => false,
             'rewrite' => array('slug' => 'online-programs', 'with_front' => false ),
             /* the next one is important, it tells what's enabled in the post editor */
-            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'revisions')
+            'supports' => array( 'title', 'author', 'thumbnail', 'revisions')
         ) /* end of options */
     ); /* end of register post type */
 }
@@ -130,7 +130,7 @@ function add_landing_pages() {
             'hierarchical' => false,
             'rewrite' => array('slug' => 'my', 'with_front' => false ),
             /* the next one is important, it tells what's enabled in the post editor */
-            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'revisions')
+            'supports' => array( 'title', 'author', 'thumbnail', 'revisions')
         ) /* end of options */
     ); /* end of register post type */
 }
