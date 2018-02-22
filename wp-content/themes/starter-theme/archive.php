@@ -4,7 +4,7 @@
 
 				<div class="wrap cf">
 
-						<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php
 							the_archive_title( '<h1 class="archive-title">', '</h1>' );

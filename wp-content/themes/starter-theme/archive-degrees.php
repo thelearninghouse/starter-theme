@@ -6,7 +6,7 @@
 
 					<h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
 
-					<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+					<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 						<div class="program-list">
 							<h2>Undergraduate Programs</h2>

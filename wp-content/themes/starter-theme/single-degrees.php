@@ -4,7 +4,7 @@
 
 				<div class="wrap cf">
 
-						<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php if ( function_exists('yoast_breadcrumb') ) {
 									yoast_breadcrumb('<p class="breadcrumbs">','</p>');

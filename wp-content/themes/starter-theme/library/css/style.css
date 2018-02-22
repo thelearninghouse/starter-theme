@@ -513,6 +513,21 @@ SIDEBARS & ASIDES
         margin-top: 0.75em;
         padding-left: 1em; } }
 
+.skip-link {
+  position: absolute;
+  left: 6px;
+  top: -99px; }
+
+.skip-link:focus {
+  z-index: 999;
+  font-size: 14px;
+  font-weight: 700;
+  top: 6px;
+  padding: 15px 23px 14px;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.6);
+  color: #36424A !important; }
+
 /*******************************
 SOCIAL SHARING BUTTONS
 *******************************/
