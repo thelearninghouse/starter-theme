@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
+<html <?php language_attributes(); ?>>
 
 	<head>
 		<meta charset="utf-8">
@@ -27,19 +24,15 @@
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-		<?php // wordpress head functions ?>
 		<?php wp_head(); ?>
-		<?php // end of wordpress head ?>
 
 		<?php if (is_front_page()) { ?>
 				<style><?php include 'library/css/critical-home.min.css'; ?></style>
 		<?php } ?>
 
-		<?php wp_head(); ?>
-
 		<script>!function(a){"use strict";var b=function(b,c,d){function j(a){return e.body?a():void setTimeout(function(){j(a)})}function l(){f.addEventListener&&f.removeEventListener("load",l),f.media=d||"all"}var g,e=a.document,f=e.createElement("link");if(c)g=c;else{var h=(e.body||e.getElementsByTagName("head")[0]).childNodes;g=h[h.length-1]}var i=e.styleSheets;f.rel="stylesheet",f.href=b,f.media="only x",j(function(){g.parentNode.insertBefore(f,c?g:g.nextSibling)});var k=function(a){for(var b=f.href,c=i.length;c--;)if(i[c].href===b)return a();setTimeout(function(){k(a)})};return f.addEventListener&&f.addEventListener("load",l),f.onloadcssdefined=k,k(l),f};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);</script>
-		<script>loadCSS( "/wp-content/themes/starter-theme/library/css/style.min.css" );</script>
-		<noscript><link rel="stylesheet" href="/wp-content/themes/starter-theme/library/css/style.min.css"></noscript>
+		<script>loadCSS( "<?php echo get_template_directory_uri(); ?>/library/css/style.min.css" );</script>
+		<noscript><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/style.min.css"></noscript>
 
 		<?php if ( get_field('gtm_id', 'options') ) { ?>
 			<!-- Google Tag Manager -->
@@ -86,7 +79,7 @@
     					         'container_class' => 'header__menu cf',                 // class of container (should you choose to use it)
     					         'menu' => __( 'The Main Menu', 'tlh_theme' ),  // nav name
     					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
-    					         'theme_location' => 'main-nav',                 // where it's located in the theme
+    					         'theme_location' => 'main',                 // where it's located in the theme
         			         'depth' => 0			                               // limit the depth of the nav
 						)); ?>
 

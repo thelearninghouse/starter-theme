@@ -101,42 +101,22 @@ function tlh_gallery_style($css) {
 SCRIPTS & ENQUEUEING
 *********************/
 
-// loading modernizr and jquery, and reply script
 function tlh_scripts_and_styles() {
 
-  global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
+  // global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 
   if (!is_admin()) {
 
-		// modernizr (without media query polyfill)
-		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
-
 		// form validation and tracking script
-		wp_register_script( 'form-script', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
+		wp_register_script( 'tlh-forms', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
 
-		// ie-only style sheet
-		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
-
-    // comment reply script for threaded comments
-    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-		  wp_enqueue_script( 'comment-reply' );
-    }
-
-		//adding scripts file in the footer
-		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/build/production.min.js', array( 'jquery' ), '', true );
+		// adding scripts file in the footer
+		wp_register_script( 'tlh-js', get_stylesheet_directory_uri() . '/library/js/build/production.min.js', array( 'jquery' ), '', true );
 
 		// enqueue styles and scripts
-		wp_enqueue_script( 'bones-modernizr' );
-		wp_enqueue_script( 'form-script' );
-
-		if ( !is_singular( 'landing-pages') ) {
-			wp_enqueue_style( 'bones-ie-only' );
-		}
-
-		$wp_styles->add_data( 'bones-ie-only', 'conditional', 'lte IE 9' ); // add conditional wrapper around ie stylesheet
-
+		wp_enqueue_script( 'tlh-forms' );
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'bones-js' );
+		wp_enqueue_script( 'tlh-js' );
 
 	}
 }
@@ -163,7 +143,7 @@ function tlh_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu' ),   // main nav in header
+			'main' => __( 'Main Menu' ), // main nav in header
 			'footer-links' => __( 'Footer Links' ), // secondary nav in footer
 			'secondary' => __( 'Secondary Menu' ) // secondary nav in footer
 		)
@@ -171,9 +151,9 @@ function tlh_theme_support() {
 
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
-		'comment-list',
 		'search-form',
-		'comment-form'
+		'gallery',
+		'caption'
 	) );
 
 } /* end bones theme support */
