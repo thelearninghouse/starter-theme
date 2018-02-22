@@ -8,12 +8,12 @@
  */
 
 // LOAD BONES CORE (if you remove this, the theme will break)
-require_once( 'library/bones.php' );
+require_once( 'inc/bones.php' );
 
 function tlh_setup() {
 
   // include custom post type registration
-  require_once( 'library/custom-post-types.php' );
+  require_once( 'inc/custom-post-types.php' );
   // launching operation cleanup
   add_action( 'init', 'tlh_head_cleanup' );
   // A better title
@@ -112,7 +112,7 @@ function enqueue_jquery_version() {
 add_action('wp_enqueue_scripts', 'enqueue_jquery_version');
 
 /************* CUSTOM TEMPLATE TAGS *********************/
-require_once( 'library/template-tags.php' );
+require_once( 'inc/template-tags.php' );
 
 require_once( 'inc/components/cta.php' );
 
