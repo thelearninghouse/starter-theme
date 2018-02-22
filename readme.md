@@ -1,77 +1,66 @@
 # Learning House Wordpress Starter Theme
 
-## Basic Usage
+This is a base theme to speed up development of all marketing sites. It is designed to be duplicated and modified as needed to build a site branded for a particular school. Necessary plugins are bundled, as well as a configuration file for [Advanced Custom Fields](https://www.advancedcustomfields.com/) to set up standard fields to help organize information for the school and programs offered.
 
-### Install Dependencies
+## Features
 
-Install by navigating to the theme's `library` folder and running `npm install` followed by `bower install`
+- Gulp task that compiles Sass, minifies JS, and live-updates the page with BrowserSync
+- Pre-defined templates for standard pages (like MAG sites)
+- Custom post types for Programs, Landing Pages, and Launch Landing Pages
+- General purpose accessible components like accordions and icons
 
-### Critical CSS
+## Getting Started
 
-This theme utilizes inline styling in the head of the document for faster load times. If it seems like your changes are not working there is a chance that these inline styles are overwriting your changes.
-
-### Watch Files
-
-To start watching files use `gulp` from the `library` folder. This will run browsersync and then watch. You can now open any browser and when you make changes the browser(s) will inject the proper files automatically.
-
-### Grid Usage
-
-This theme uses Susy Grid. Documentation can be found [here](http://susydocs.oddbird.net/en/latest/)
-
-### Custom Fields
-
-This theme relies on [Advanced Custom Fields](https://www.advancedcustomfields.com/) to help handle much of the content and settings on the site. To set up all the fields on a new install, navigate to the Tools section in the WP Admin and import the `acf-export-latest.json` from the theme's `library` folder.
-
-*Remember to sync the fields in ACF's Admin after pulling field updates!*
-
-## Menus
-
-There are three menus setup for this theme by default:
-
-1. MAIN MENU - Main Navigation
-2. SECONDARY MENU - Secondary navigation at the top of header with contact information
-3. FOOTER MENU - Footer Navigation
+1. Create a new repository for the new theme and clone this theme into it.
+2. Set up a new local development environment and clone the new repository into it.
+3. Install dependencies by navigating to the theme's `library` folder and running `npm install`.
+4. Edit `gulpfile.js` and change the proxy in the BrowserSync section to match the url you set up for your local development environment.
+5. Run `gulp` from the `library` folder to start BrowserSync and watch for changes on source files.
+6. Log in to the WP Admin.
+7. Under _Appearance > Themes_, make sure that the correct theme is selected if you renamed the theme folder.
+8. Under _Plugins_, make sure that the included plugins are activated.
+9. Under _Custom Fields_, sync all available fields to set up the including starting fields [(see ACF docs for more info)](https://www.advancedcustomfields.com/resources/synchronized-json/).
 
 ## Theme File Structure
 
 ``` bash
 starter-theme/
+├── acf-json // Contains acf field info json files
+├── inc // Additional theme functionality
+|    ├── components // Functions to build and create shortcodes for separate items
+|    ├── components // Functions to build and create shortcodes for separate items
+|    ├── bones.php // Theme functionality from bones
+|    ├── custom-post-types.php
+|    ├── maintenance-mode.php
+|    └── template-tags.php // custom php functions to generate html for templates
 ├── library
-|    ├── bower_components  // Where all our bower components are housed
-|    ├── css  //
-|    |   ├── build // Production Files
-|    |   |   ├── minified  // Contains all minified versions of stylesheets
-|    |   |   ├── prefixed  // Contains style sheets that have been through Autoprefixer
-|    |   |   ├── home-critical.css // Critical CSS for homepage
-|    |   |   ├── ie.css  // IE Stylesheet
-|    |   |   ├── interior-critical.css  // Critical CSS for interior pages
-|    |   |   ├── lp-critical.css  // Critical CSS for Landing Pages
-|    |   |   ├── lp-style.css  // Main stylesheet for Landing Pages
-|    |   |   └── style.css  // Main Stylesheet
+|    ├── css
 |    ├── images  // Images relative to the theme
 |    ├── js  //
 |    |   ├── build // Production Files
-|    |   |   ├── production.js // Concatenated JavaScript file
-|    |   |   └── production.min.js
 |    |   ├── libs // For javascript libraries i.e. Modernizr
-|    |   └──  scripts.js // Main javascript file
-|    ├── plugins  // Zip files of plugins that are critical to the theme
+|    |   └── scripts.js // Main javascript file
+|    ├── plugins // plugin folders that are critical to the theme
 |    ├── scss
 |    |    ├── base
-|    |    |    ├── _base.scss // Base stylesheet for mobile and up
-|    |    |    ├── _grid.scss // Setting up SUSY and grid styling
 |    |    |    ├── _mixins.scss // All mixins
-|    |    |    ├── _normalize.scss // Normalize
-|    |    |    ├── _typography.scss // Typography styling
 |    |    |    └── _variables.scss // Variables (breakpoints, colors, etc.)
+|    |    ├── generic
+|    |    |    ├── _base.scss // general global element styles and resets
+|    |    |    ├── _links.scss
+|    |    |    ├── _tables.scss
+|    |    |    ├── _typography.scss
 |    |    ├── modules
-|    |    |    ├── _buttons.scss // Contains styling that applies to buttons
-|    |    |    ├── _forms.scss // Form styling
-|    |    |    ├── _progress.scss // Styling for the progress bar on blog posts
 |    |    |    ├── _accordion.scss // Styling for accordions
+|    |    |    ├── _buttons.scss // Contains styling that applies to buttons
+|    |    |    ├── _card.scss // Styling for cards
 |    |    |    ├── _clearfix.scss // Clearfix class decleration
+|    |    |    ├── _features.scss // Styling for the common list of icons with paragraphs
+|    |    |    ├── _forms.scss // Form styling
+|    |    |    ├── _icon.scss // Styling for inline svg icons
 |    |    |    ├── _links.scss // Link Styling
 |    |    |    ├── _media.scss // Styling for images, videos, etc.
+|    |    |    ├── _progress.scss // Styling for the progress bar on blog posts
 |    |    |    ├── _sidebar.scss // Sidebar Styling
 |    |    |    ├── _social.scss // Social Sharing Styling
 |    |    |    └── _tables.scss // Table styling
@@ -80,22 +69,15 @@ starter-theme/
 |    |    |    ├── _layout.scss // Layout Styling
 |    |    |    ├── _page.scss // Page Styling
 |    |    |    └── _post.scss // Blog Post Styling
-|    |    ├── partials
-|    |    |    ├── _footer.scss // Footer Styling
-|    |    |    ├── _header.scss // Header Styling
-|    |    |    ├── _nav.scss // Navigation Styling
-|    |    |    └── _print.scss // Print Styling
-|    |    ├── ie.scss // IE stylesheet
+|    |    ├── critical-home.scss // Rendered in <style> tag on home page
 |    |    ├── lp-style.scss // Landing Page stylesheet
+|    |    ├── launch-lp-style.scss // Launch Landing Page stylesheet
 |    |    └── style.scss // Main stylesheet, this gets compiled into ==> style.css
 |    ├── .sassdocrc // Settings for SassDoc
-|    ├── acf-export-latest.json // Advanced Custom Fields data for new installs
-|    ├── bones.php  // Functions and features for the theme
-|    ├── bower.json  // Bower setup and dependencies
-|    ├── custom-post-types.php  // Where we register our custom post types for Online Degrees and Landing Pages
-|    ├── Gruntfile.js  // Grunt setup file
-|    ├── package.json  // Grunt details and dependencies
-|    └── template-tags.php  // custom php functions to generate html for templates
+|    ├── gulpfile.js // gulp build file
+|    ├── package.json // npm details and dependencies
+├── page-templates // custom templates (e.g. MAG site pages)
+├── template-parts // Reusable sections (e.g. about, related posts, etc)
 ├── 404.php  // Template for 404 page
 ├── archive-degrees.php  // Archive template for Online Degrees
 ├── archive.php  // Archive template for blog posts
@@ -117,16 +99,6 @@ starter-theme/
 
 ## Resources
 
-### Style Guide
-
-For common patterns and styles please use this resource. This was mostly created for the inbound when they create blog post. [View Style Guide](http://tlhstarter.wpengine.com/style-guide)
-
-#### Setting up the Style Guide
-
-Make sure `style-guide/index.php` is pointing to the main css stylesheet.
-
-Update patterns to include/exclude patterns found on the new site.
-
-## Sassdoc
-
-This documentation is for the front-end team for easy access to variable, mixins, functions, etc. [View SassDoc](http://tlhstarter.wpengine.com/sassdoc)
+- [Starter Theme Wiki](https://github.com/thelearninghouse/starter-theme/wiki)
+- [Advanced Custom Fields Docs](https://www.advancedcustomfields.com/resources/)
+- [WordPress Developer Reference](https://developer.wordpress.org/reference/)
