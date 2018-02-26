@@ -160,7 +160,7 @@
 					</div>
 				</section>
 
-				<section id="about"<?php echo $values_style['text_dark'] ? 'class="dark"' : ''; ?>>
+				<section id="about"<?php echo $about_style['text_dark'] ? 'class="dark"' : ''; ?>>
 					<div class="wrap">
 						<h2><?php the_field('lp_about_title'); ?></h2>
 						<p><?php the_field('lp_about_paragraph'); ?></p>
