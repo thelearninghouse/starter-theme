@@ -28,10 +28,11 @@ get_header(); ?>
 					</article>
 
 					<?php endwhile; endif; ?>
+					
+					<?php get_sidebar(); ?>
 
 				</main>
 
-				<?php get_sidebar(); ?>
 
 		</div>
 

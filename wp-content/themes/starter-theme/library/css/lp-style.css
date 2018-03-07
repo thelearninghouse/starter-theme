@@ -240,7 +240,7 @@ Button Styles
 .button {
   display: inline-block;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: sans-serif;
   text-decoration: none;
   color: white !important;
   font-size: 1em;
@@ -375,7 +375,7 @@ textarea {
 .requestinfo input[type="submit"] {
   display: inline-block;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: sans-serif;
   text-decoration: none;
   color: white !important;
   font-size: 1em;
@@ -574,16 +574,16 @@ SOCIAL SHARING BUTTONS
   background-color: #2795e9;
   color: white; }
 
-.social-link_facebook {
+.social-link.social-link_facebook {
   background: #3b5998; }
 
-.social-link_facebook:hover {
+.social-link.social-link_facebook:hover {
   background: #2d4373; }
 
-.social-link_linkedin {
+.social-link.social-link_linkedin {
   background: #007bb6; }
 
-.social-link_linkedin:hover {
+.social-link.social-link_linkedin:hover {
   background: #005983; }
 
 /*********************
@@ -739,6 +739,37 @@ LAYOUT & GRID STYLES
   max-width: 1440px;
   margin: 0 auto; }
 
+/***** Basic Layout *****/
+@media screen and (min-width: 768px) {
+  .single .main-content,
+  .page .main-content {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 2rem; }
+    .single .main-content article,
+    .page .main-content article {
+      -ms-grid-column-span: 8;
+      -ms-grid-column: 1;
+          grid-column: 1 / span 8;
+      -webkit-box-ordinal-group: 2;
+          -ms-flex-order: 1;
+              order: 1;
+      margin-right: 2rem; }
+      @supports ((display: -ms-grid) or (display: grid)) {
+        .single .main-content article,
+        .page .main-content article {
+          margin-right: 0; } }
+    .single .main-content .sidebar,
+    .page .main-content .sidebar {
+      -ms-grid-column-span: 4;
+      -ms-grid-column: 9;
+          grid-column: 9 / span 4;
+      -webkit-box-ordinal-group: 3;
+          -ms-flex-order: 2;
+              order: 2; } }
+
 /*************************
 HOMEPAGE SPECIFIC STYLES
 *************************/
@@ -760,16 +791,12 @@ HOMEPAGE SPECIFIC STYLES
     .hero-bg {
       background-image: url("../images/hero-background-lg.jpg"); } }
 
+.home .main-content {
+  display: block; }
+
 /*************************
 PAGE SPECIFIC STYLES
 *************************/
-@media screen and (min-width: 768px) {
-  .page-template-default .content .wrap {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 2fr 1fr;
-        grid-template-columns: 2fr 1fr; } }
-
 .single-header__title,
 .page-header__title,
 .post-header__title {
@@ -782,6 +809,9 @@ POST STYLES
 .post-meta {
   color: gray;
   font-style: italic;
+  margin: 0; }
+
+.entry-meta {
   margin: 0; }
 
 /* entry content */
@@ -815,6 +845,55 @@ POST STYLES
 /* end .entry-content */
 .tags {
   margin: 0; }
+
+/***** Call To Action Box Styling *****/
+.cta-blog {
+  background: lightgray;
+  border-top: 6px solid #C41331;
+  padding: 2em;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  overflow: hidden;
+  text-align: center; }
+  @media screen and (min-width: 768px) {
+    .cta-blog {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto; } }
+  .cta-blog h2 {
+    margin-top: 0;
+    color: white; }
+  .cta-blog img {
+    float: right;
+    max-width: 30%;
+    height: auto;
+    margin-right: 5%;
+    display: none !important; }
+  .cta-blog p {
+    margin-bottom: 0; }
+  .cta-blog .button {
+    display: inline-block;
+    position: relative;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: white !important;
+    font-size: 1em;
+    line-height: 34px;
+    font-weight: normal;
+    padding: .5em 1em;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.14s ease-in-out;
+    background: crimson;
+    margin-top: 1em; }
+    .cta-blog .button:hover, .cta-blog .button:focus {
+      color: white;
+      text-decoration: none;
+      outline: none;
+      background: #960e29; }
+    .cta-blog .button:active {
+      top: 1px; }
 
 @media print {
   /******************************************************************

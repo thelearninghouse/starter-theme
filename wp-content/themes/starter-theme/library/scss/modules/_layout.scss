@@ -7,3 +7,33 @@ LAYOUT & GRID STYLES
 	max-width: 1440px;
 	margin: 0 auto;
 }
+
+
+/***** Basic Layout *****/
+
+.single,
+.page {
+
+	@include mobilefirst($bp-med) {
+		.main-content {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+			grid-column-gap: 2rem;
+
+			article {
+				grid-column: 1 / span 8;
+				order: 1;
+				margin-right: 2rem;
+
+				@supports (display: grid) {
+					margin-right: 0;
+				}
+			}
+
+			.sidebar {
+				grid-column: 9 / span 4;
+				order: 2;
+			}
+		}
+	}
+}

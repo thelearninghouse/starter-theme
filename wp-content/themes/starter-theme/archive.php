@@ -2,65 +2,79 @@
 
 			<div class="content">
 
-				<div class="wrap cf">
+					<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-						<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-							<?php
-							the_archive_title( '<h1 class="archive-title">', '</h1>' );
-							the_archive_description( '<div class="taxonomy-description">', '</div>' );
-							?>
+							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
 
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+								<section class="entry-content cf">
 
-							<article <?php post_class( 'cf' ); ?> role="article">
-
-								<header class="post-header">
-
-									<h3 class="h2 post-header__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-									<p class="post-meta">
-										<?php printf( __( 'Posted', 'tlh_theme' ).' %1$s %2$s',
-    							     /* the time the post was published */
-    							     '<time class="post-meta__time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-         								/* the author of the post */
-         								'<span class="post-meta__by">'.__('by', 'tlh_theme').'</span> <span class="post-meta__author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-      							); ?>
+									<p class="byline entry-meta vcard">
+									<span class="entry-date">Posted <?php echo get_the_date(); ?> by <?php the_author(); ?> | </span>
+										<?php
+										$categories = get_the_category();
+										$separator = ', ';
+										$output = '';
+										if ( ! empty( $categories ) ) {
+												foreach( $categories as $category ) {
+														$output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+												}
+												echo trim( $output, $separator );
+										} ?>
 									</p>
+									<h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
-								</header>
-
-								<section class="post-content cf">
-									<?php the_post_thumbnail( '' ); ?>
-									<?php the_excerpt(); ?>
 								</section>
+
+								<div class="featured-image"></div>
+
+								<?php /* If page has a featured image, use it. Otherwise defaults to image set from main stylesheet */ ?>
+								<?php if( has_post_thumbnail() ) : ?>
+
+									<style>
+									@media screen and (min-width: 1200px) {
+										.featured-image {
+											background-image: url(<?php the_post_thumbnail_url('large'); ?>);
+										}
+									}
+									@media screen and (min-width: 801px) and (max-width: 1200px) {
+										.featured-image {
+											background-image: url(<?php the_post_thumbnail_url('medium_large'); ?>);
+										}
+									}
+									@media screen and (max-width: 800px) {
+										.featured-image {
+											background-image: url(<?php the_post_thumbnail_url('medium'); ?>);
+										}
+									}
+									</style>
+								<?php endif; ?>
+
 
 							</article>
 
-							<?php endwhile; ?>
+						<?php endwhile; ?>
 
-									<?php tlh_page_navi(); ?>
+								<?php bones_page_navi(); ?>
 
-							<?php else : ?>
+						<?php else : ?>
 
-									<article id="post-not-found" class="hentry cf">
-										<header class="post-header">
-											<h1><?php _e( 'Oops, Post Not Found!', 'tlh_theme' ); ?></h1>
-										</header>
-										<section class="post-content">
-											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'tlh_theme' ); ?></p>
-										</section>
-										<footer class="post-footer">
-												<p><?php _e( 'This is the error message in the archive.php template.', 'tlh_theme' ); ?></p>
-										</footer>
-									</article>
+								<article id="post-not-found" class="hentry cf">
+									<header class="post-header">
+										<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+									</header>
+									<section class="post-content">
+										<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+									</section>
+									<footer class="post-footer">
+											<p><?php _e( 'This is the error message in the archive.php template.', 'bonestheme' ); ?></p>
+									</footer>
+								</article>
 
-							<?php endif; ?>
+						<?php endif; ?>
 
-						</main>
-
-					<?php get_sidebar(); ?>
-
-				</div>
+					</main>
 
 			</div>
 

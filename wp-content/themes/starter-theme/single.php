@@ -1,36 +1,37 @@
 <?php get_header(); ?>
 
-			<div class="content">
+			<header class="hero-title">
+			  <div class="wrap-lg">
+			    <h1>
+						<?php the_title(); ?>
+						<span class="entry-date">Posted <?php echo get_the_date(); ?> by <?php the_author(); ?> |
+								<?php
+								$categories = get_the_category();
+								$separator = ', ';
+								$output = '';
+								if ( ! empty( $categories ) ) {
+									foreach( $categories as $category ) {
+										$output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+									}
+									echo trim( $output, $separator );
+								} ?>
+							</span>
+					</h1>
+			  </div>
+			</header>
+			<?php tlh_responsive_bg_style('hero-title'); ?>
 
-				<div class="wrap cf">
+			<div id="content">
 
-					<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+				<div id="inner-content" class="wrap cf">
+
+					<main id="main-content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-							<article <?php post_class('cf'); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+							<article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 
-							  <header class="post-header entry-header">
-	                <?php if ( function_exists('yoast_breadcrumb') ) {
-	                    yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-	                } ?>
-
-							    <h1 class="post-header__title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
-
-							    <p class="post-meta">
-
-							      <?php printf( __( 'Posted', 'tlh_theme' ).' %1$s %2$s',
-							         /* the time the post was published */
-							         '<time class="post-meta__time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-							         /* the author of the post */
-							         '<span class="post-meta__by">'.__( 'by', 'tlh_theme' ).'</span> <span class="post-meta__author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-							      ); ?>
-
-							    </p>
-
-							  </header> <?php // end article header ?>
-
-							  <section class="post-content cf" itemprop="articleBody">
+							  <section class="entry-content cf" itemprop="articleBody">
 							    <?php the_content(); ?>
 							  </section> <?php // end article section ?>
 
@@ -40,49 +41,57 @@
 
 						<?php else : ?>
 
-							<article class="post-not-found hentry cf">
-									<header class="post-header">
-										<h1><?php _e( 'Oops, Post Not Found!', 'tlh_theme' ); ?></h1>
+							<article id="post-not-found" class="hentry cf">
+									<header class="article-header">
+										<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
 									</header>
-									<section class="post-content">
-										<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'tlh_theme' ); ?></p>
+									<section class="entry-content">
+										<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
 									</section>
-									<footer class="post-footer">
-											<p><?php _e( 'This is the error message in the single.php template.', 'tlh_theme' ); ?></p>
+									<footer class="article-footer">
+											<p><?php _e( 'This is the error message in the single.php template.', 'bonestheme' ); ?></p>
 									</footer>
 							</article>
 
 						<?php endif; ?>
 
-					</main>
+						<div id="sidebar_blog" class="sidebar cf" role="complementary">
 
-					<?php get_sidebar(); ?>
+							<div class="sidebar__widget sidebar__widget--request-info">
+								<h2 class="h3">Request Your Free Info Packet</h2>
+								<a href="/get-started/" class="button">Get Started</a>
+							</div>
+
+							<?php dynamic_sidebar( 'sidebar-1' ); ?>
+
+						</div>
+
+					</main>
 
 				</div>
 
 			</div>
 
-            <script>
-					 // Progess Indicator for Blog Posts
-           // Load document before calculating window height
-            $(document).on('ready', function() {
-              var winHeight = $(window).height(),
-                  docHeight = $(document).height(),
-                  progressBar = $('progress'),
-                  max, value;
 
-              /* Set the max scrollable area */
-              max = docHeight - winHeight;
-              progressBar.attr('max', max);
+      <script>
+     	// Load document before calculating window height
+      $(document).on('ready', function() {
+        var winHeight = $(window).height(),
+            docHeight = $(document).height(),
+            progressBar = $('progress'),
+            max, value;
 
-              console.log(docHeight);
-              console.log(winHeight);
+        /* Set the max scrollable area */
+        max = docHeight - winHeight;
+        progressBar.attr('max', max);
 
-              $(document).on('scroll', function(){
-                 value = $(window).scrollTop();
-                 progressBar.attr('value', value);
-              });
-            });
-            </script>
+        console.log(winHeight);
+
+        $(document).on('scroll', function(){
+           value = $(window).scrollTop();
+           progressBar.attr('value', value);
+        });
+      });
+      </script>
 
 <?php get_footer(); ?>

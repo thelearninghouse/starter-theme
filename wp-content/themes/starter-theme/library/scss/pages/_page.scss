@@ -2,13 +2,6 @@
 PAGE SPECIFIC STYLES
 *************************/
 
-@include mobilefirst($bp-med) {
-	.page-template-default .content .wrap {
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-	}
-}
-
 .single-header__title,
 .page-header__title,
 .post-header__title {

@@ -156,7 +156,7 @@ Button Styles
 .button {
   display: inline-block;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: sans-serif;
   text-decoration: none;
   color: white !important;
   font-size: 1em;
@@ -344,16 +344,40 @@ LAYOUT & GRID STYLES
   max-width: 1440px;
   margin: 0 auto; }
 
+/***** Basic Layout *****/
+@media screen and (min-width: 768px) {
+  .single .main-content,
+  .page .main-content {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 2rem; }
+    .single .main-content article,
+    .page .main-content article {
+      -ms-grid-column-span: 8;
+      -ms-grid-column: 1;
+          grid-column: 1 / span 8;
+      -webkit-box-ordinal-group: 2;
+          -ms-flex-order: 1;
+              order: 1;
+      margin-right: 2rem; }
+      @supports ((display: -ms-grid) or (display: grid)) {
+        .single .main-content article,
+        .page .main-content article {
+          margin-right: 0; } }
+    .single .main-content .sidebar,
+    .page .main-content .sidebar {
+      -ms-grid-column-span: 4;
+      -ms-grid-column: 9;
+          grid-column: 9 / span 4;
+      -webkit-box-ordinal-group: 3;
+          -ms-flex-order: 2;
+              order: 2; } }
+
 /*************************
 PAGE SPECIFIC STYLES
 *************************/
-@media screen and (min-width: 768px) {
-  .page-template-default .content .wrap {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 2fr 1fr;
-        grid-template-columns: 2fr 1fr; } }
-
 .single-header__title,
 .page-header__title,
 .post-header__title {

@@ -7,3 +7,9 @@ HOMEPAGE SPECIFIC STYLES
 	background-size: cover;
 	@include responsivebackground();
 }
+
+.home {
+	.main-content {
+		display: block;
+	}
+}

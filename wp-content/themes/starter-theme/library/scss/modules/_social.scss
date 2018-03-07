@@ -67,7 +67,7 @@ SOCIAL SHARING BUTTONS
     color: white;
 }
 
-.social-link_facebook { background: #3b5998; }
-.social-link_facebook:hover { background: darken(#3b5998, 10%); }
-.social-link_linkedin { background: #007bb6; }
-.social-link_linkedin:hover { background: darken(#007bb6, 10%); }
+.social-link.social-link_facebook { background: #3b5998; }  
+.social-link.social-link_facebook:hover { background: darken(#3b5998, 10%); }
+.social-link.social-link_linkedin { background: #007bb6; }
+.social-link.social-link_linkedin:hover { background: darken(#007bb6, 10%); }
