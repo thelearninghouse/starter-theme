@@ -1120,6 +1120,75 @@ POST STYLES
   text-align: center;
   margin-bottom: 1.5rem; }
 
+.page-template-page-get-started .sidebar-well {
+  background: #C41331;
+  color: white; }
+  @media screen and (min-width: 768px) {
+    .page-template-page-get-started .sidebar-well {
+      -ms-grid-column-span: 8;
+      -ms-grid-column: 3;
+          grid-column: 3 / span 8; } }
+  .page-template-page-get-started .sidebar-well h2 {
+    text-align: center; }
+  .page-template-page-get-started .sidebar-well input[type="submit"] {
+    background: #670a1a; }
+
+@media screen and (min-width: 768px) {
+  .page-template-page-get-started .page-content {
+    -ms-grid-column-span: 6;
+    -ms-grid-column: 4;
+        grid-column: 4 / span 6;
+    -ms-grid-row: 2;
+        grid-row: 2; } }
+
+/* BIG CALLOUT BLOCK STYLING */
+.thank-you-cta-container {
+  -ms-grid-column-span: 5;
+  -ms-grid-column: 1;
+      grid-column: 1 / span 5;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.thank-you-cta {
+  padding: 3rem;
+  background: darkgray;
+  color: white;
+  display: block;
+  text-align: center;
+  text-decoration: none; }
+  .thank-you-cta:focus, .thank-you-cta:hover, .thank-you-cta:visited, .thank-you-cta:visited:hover {
+    color: white !important;
+    text-decoration: underline; }
+  .thank-you-cta--call {
+    background: gray; }
+  .thank-you-cta__heading {
+    color: white;
+    display: block;
+    text-decoration: none;
+    margin-top: 0; }
+
+/***** PAGE CONTENT STYLING *****/
+.thank-you-content {
+  -ms-grid-column-span: 8;
+  -ms-grid-column: 5;
+      grid-column: 5 / span 8;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+  @media screen and (min-width: 768px) {
+    .thank-you-content {
+      -ms-grid-column-span: 7;
+      -ms-grid-column: 6;
+          grid-column: 6 / span 7; } }
+  .thank-you-content li {
+    margin-bottom: 1rem; }
+    .thank-you-content li span {
+      color: #C41331;
+      font-weight: bold; }
+  .thank-you-content h2 {
+    margin-top: 0; }
+
 @media print {
   /******************************************************************
 Print Stylesheet
