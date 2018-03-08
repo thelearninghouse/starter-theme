@@ -3,6 +3,25 @@
     "title": "Program Details",
     "fields": [
         {
+            "key": "field_5aa17db0252a6",
+            "label": "Program Shortened Name",
+            "name": "program__short-name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5a8eec064a050",
             "label": "Summary",
             "name": "program_summary",
@@ -199,5 +218,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1519316049
+    "modified": 1520532975
 }

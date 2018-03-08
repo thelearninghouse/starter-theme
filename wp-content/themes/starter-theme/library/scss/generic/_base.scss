@@ -1,6 +1,17 @@
 /*********************
 GENERAL STYLES
 *********************/
+
+// Universal Box Sizing with Inheritance
+html {
+	box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
 body {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 100%;

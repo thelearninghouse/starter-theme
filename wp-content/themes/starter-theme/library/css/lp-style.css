@@ -4,6 +4,14 @@ Landing Page Stylesheet
 /*********************
 GENERAL STYLES
 *********************/
+html {
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
@@ -832,6 +840,27 @@ HOMEPAGE SPECIFIC STYLES
 
 .home .main-content {
   display: block; }
+
+.home .program-list {
+  text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .home .program-list-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; } }
+
+.home .card {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (min-width: 768px) {
+    .home .card {
+      margin: 1.5rem; } }
 
 /*************************
 PAGE SPECIFIC STYLES

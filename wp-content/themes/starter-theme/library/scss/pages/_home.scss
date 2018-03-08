@@ -12,4 +12,26 @@ HOMEPAGE SPECIFIC STYLES
 	.main-content {
 		display: block;
 	}
+
+	.program-list {
+		text-align: center;
+	}
+
+	.program-list-container {
+		@include mobilefirst($bp-med) {
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	.card {
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+		margin-left: auto;
+		margin-right: auto;
+
+		@include mobilefirst($bp-med) {
+			margin: 1.5rem;
+		}
+	}
 }

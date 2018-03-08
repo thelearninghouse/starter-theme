@@ -33,10 +33,10 @@ function add_degrees() {
             'query_var' => true,
             'menu_position' => 12, /* this is what order you want it to appear in on the left hand side menu */
             'menu_icon' => 'dashicons-screenoptions', /* the icon for the custom post type menu */
-            'has_archive' => true,
+            'has_archive' => false,
             'capability_type' => 'post',
             'hierarchical' => false,
-            'rewrite' => array('slug' => 'online-programs', 'with_front' => false ),
+            'rewrite' => array('slug' => 'online-degrees', 'with_front' => false ),
             /* the next one is important, it tells what's enabled in the post editor */
             'supports' => array( 'title', 'author', 'thumbnail', 'revisions')
         ) /* end of options */

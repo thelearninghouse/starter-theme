@@ -117,4 +117,19 @@ require_once( 'inc/template-tags.php' );
 require_once( 'inc/components/cta.php' );
 
 
+/************* FIX FOR ONLINE DEGREES CHILD PAGES *****************/
+add_filter( 'page_rewrite_rules', 'tlh_collect_page_rewrite_rules' );
+function tlh_collect_page_rewrite_rules( $page_rewrite_rules )
+{
+    $GLOBALS['tlh_page_rewrite_rules'] = $page_rewrite_rules;
+    return array();
+}
+
+add_filter( 'rewrite_rules_array', 'tlh_prepend_page_rewrite_rules' );
+function tlh_prepend_page_rewrite_rules( $rewrite_rules )
+{
+    return $GLOBALS['tlh_page_rewrite_rules'] + $rewrite_rules;
+}
+
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>

@@ -4,6 +4,14 @@ Main Stylesheet
 /*********************
 GENERAL STYLES
 *********************/
+html {
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
@@ -266,6 +274,29 @@ Button Styles
 
 button:focus {
   outline: 3px dotted gray; }
+
+.card {
+  background: white;
+  box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
+  max-width: 18.75em;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 4rem; }
+
+.program-card__name, .program-card__excerpt {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+  display: block;
+  margin-bottom: 0.5rem; }
+
+.program-card__button {
+  width: 100%;
+  border-radius: 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0; }
 
 /* Clearfix */
 .clearfix, .cf, .comment-respond {
@@ -836,10 +867,10 @@ LAYOUT & GRID STYLES
   color: white;
   background-size: cover;
   background-position: center;
-  background-color: #C41331; }
+  background-color: darkgray; }
   .hero-title span {
     display: block;
-    font-size: .4em;
+    font-size: 0.4em;
     margin-top: 1rem; }
 
 /*************************
@@ -865,6 +896,27 @@ HOMEPAGE SPECIFIC STYLES
 
 .home .main-content {
   display: block; }
+
+.home .program-list {
+  text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .home .program-list-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; } }
+
+.home .card {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (min-width: 768px) {
+    .home .card {
+      margin: 1.5rem; } }
 
 /*************************
 PAGE SPECIFIC STYLES
@@ -1158,6 +1210,34 @@ POST STYLES
       background: #7e0c20; }
     .cta-blog .button:active {
       top: 1px; }
+
+.page-template-page-online-degrees .main-content {
+  display: block; }
+
+@media screen and (min-width: 768px) {
+  .page-template-page-online-degrees .program-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; } }
+
+.page-template-page-online-degrees .card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem; }
+  @media screen and (min-width: 768px) {
+    .page-template-page-online-degrees .card {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem; } }
+
+/**** ONLINE DEGREE FILTERING *****/
+.program-filters {
+  text-align: center;
+  margin-bottom: 1.5rem; }
 
 @media print {
   /******************************************************************
