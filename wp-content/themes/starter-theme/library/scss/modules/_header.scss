@@ -3,20 +3,23 @@ HEADER STYLES
 *********************/
 
 .header {
-
 	&__logo {
-		margin: 0.75em 0;
+		margin: 0.5rem 0;
+		float: left;
+	}
 
-		@include mobilefirst($bp-med) {
-			float: left;
-		}
+	&__button {
+		float: right;
 	}
 
 	&__nav {
-    visibility: hidden;
-    height: 0;
+		visibility: hidden;
+		height: 0;
+		clear: both;
 
 		@include mobilefirst($bp-med) {
+			clear: none;
+
 			.nav {
 				float: right;
 				visibility: visible;
@@ -24,10 +27,9 @@ HEADER STYLES
 			}
 		}
 
-    &.visible {
-        visibility: visible;
-        height: auto;
-    }
+		&.visible {
+			visibility: visible;
+			height: auto;
+		}
 	}
-
 }

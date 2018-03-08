@@ -5,27 +5,32 @@ NAVIGATION STYLES
 .nav {
 	border-bottom: 0;
 	margin: 0;
-  padding: 0;
-  list-style: none;
+	padding: 0;
+	list-style: none;
 
 	@include mobilefirst($bp-med) {
 		border: 0;
-		ul { margin-top: 0; }
+		ul {
+			margin-top: 0;
+		}
 	}
 
-
 	li {
-        list-style: none;
+		list-style: none;
 
-				@include mobilefirst($bp-med) {
-					float: left;
-					position: relative;
+		@include mobilefirst($bp-med) {
+			float: left;
+			position: relative;
 
-					&:hover > ul.sub-menu {
-						top: auto;
-						visibility: visible;
-					}
-				}
+			&:hover > ul.sub-menu {
+				top: auto;
+				visibility: visible;
+			}
+		}
+
+		&.menu-item-has-children {
+			position: relative;
+		}
 
 		a {
 			display: block;
@@ -55,9 +60,7 @@ NAVIGATION STYLES
 				z-index: 8999;
 			}
 
-
 			li {
-
 				a {
 					padding-left: 30px;
 
@@ -77,18 +80,51 @@ NAVIGATION STYLES
 					}
 				}
 			}
-
 		}
 
-        &:hover {
-            .sub-menu { display: block; }
-        }
+		&:hover {
+			.sub-menu {
+				@include mobilefirst($bp-med) {
+					display: block;
+				}
+			}
+		}
 
+		// Show sub menu on focus for desktop users
+		.sub-menu.active {
+			@include mobilefirst($bp-med) {
+				display: block;
+				visibility: visible;
+			}
+		}
 	} /* end .menu li */
-
 } /* end .nav */
 
+/***** MAIN NAVIGATION *****/
+.top-nav {
+	@include mobilefirst($bp-med) {
+		clear: right;
+	}
+}
 
+/***** SUB MENU TOGGLE BUTTONS *****/
+.sub-menu__toggle {
+	position: absolute;
+	right: 0;
+	top: 0;
+	outline: 0;
+	background: $link-color;
+	border: none;
+	padding: 1rem;
+
+	@include mobilefirst($bp-med) {
+		display: none;
+	}
+
+	&.active {
+		transform: rotate(180deg);
+	}
+}
 
 /**** 768 UP ****/
 
@@ -98,7 +134,6 @@ NAVIGATION STYLES
 	}
 }
 
-
 /******************************************************************
 PAGE NAVI STYLES
 ******************************************************************/
@@ -107,72 +142,70 @@ PAGE NAVI STYLES
 .wp-prev-next {
 	margin: 1.5em 0;
 }
-	.pagination{
-    text-align: center;
+.pagination {
+	text-align: center;
 
-    ul {
-      display: inline-block;
-      background-color: white;
-      white-space: nowrap;
-      padding: 0;
-      clear: both;
-      border-radius: 3px;
-    }
+	ul {
+		display: inline-block;
+		background-color: white;
+		white-space: nowrap;
+		padding: 0;
+		clear: both;
+		border-radius: 3px;
+	}
 
-    li {
-      padding: 0;
-      margin: 0;
-      float: left;
-      display: inline;
-      overflow: hidden;
-      border-right: 1px solid gray;
+	li {
+		padding: 0;
+		margin: 0;
+		float: left;
+		display: inline;
+		overflow: hidden;
+		border-right: 1px solid gray;
 
-			&:last-child {
-				border-right: none;
-			}
-    }
-
-    a, span {
-      margin: 0;
-      text-decoration: none;
-      padding: 0;
-      line-height: 1em;
-      font-size: 1em;
-      font-weight: normal;
-      padding: 0.75em;
-      min-width: 1em;
-      display: block;
-      color: $link-color;
-
-      &:hover, &:focus {
-      	background-color: $link-color;
-      	color: white;
-      }
-    }
-
-    .current{
-    	cursor: default;
-    	color: $text-color;
-
-    	&:hover, &:focus {
-    		background-color: white;
-    		color: $text-color;
-    	}
-    }
-
-  } /* end .tlh_page_navi */
-
-	/* fallback previous & next links */
-	.wp-prev-next {
-
-		.prev-link {
-			float: left;
+		&:last-child {
+			border-right: none;
 		}
+	}
 
-		.next-link {
-			float: right;
+	a,
+	span {
+		margin: 0;
+		text-decoration: none;
+		padding: 0;
+		line-height: 1em;
+		font-size: 1em;
+		font-weight: normal;
+		padding: 0.75em;
+		min-width: 1em;
+		display: block;
+		color: $link-color;
+
+		&:hover,
+		&:focus {
+			background-color: $link-color;
+			color: white;
 		}
+	}
 
-	} /* end .wp-prev-next */
+	.current {
+		cursor: default;
+		color: $text-color;
 
+		&:hover,
+		&:focus {
+			background-color: white;
+			color: $text-color;
+		}
+	}
+} /* end .tlh_page_navi */
 
+/* fallback previous & next links */
+.wp-prev-next {
+	.prev-link {
+		float: left;
+	}
+
+	.next-link {
+		float: right;
+	}
+} /* end .wp-prev-next */

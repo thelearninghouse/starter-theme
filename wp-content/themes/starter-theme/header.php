@@ -63,7 +63,7 @@
 
 					<p class="logo header__logo h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 
-          <a class="button header__button js__menu-trigger" href="#">Menu</a>
+          <button class="button header__button js__menu-trigger" aria-label="Toglle Main Menu">Menu</button>
 
 					<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 						<?php wp_nav_menu(array(

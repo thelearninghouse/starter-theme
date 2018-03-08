@@ -247,7 +247,7 @@ Button Styles
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -256,14 +256,16 @@ Button Styles
   .button:hover, .button:focus {
     color: white;
     text-decoration: none;
-    outline: none;
     background: #7e0c20; }
   .button:active {
     top: 1px; }
 
 .button_sm {
-  font-size: .9em;
-  padding: .3em .8em; }
+  font-size: 0.9em;
+  padding: 0.3em 0.8em; }
+
+button:focus {
+  outline: 3px dotted gray; }
 
 /* Clearfix */
 .clearfix, .cf, .comment-respond {
@@ -388,7 +390,7 @@ textarea {
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -398,7 +400,6 @@ textarea {
   .requestinfo input[type="submit"]:hover, .requestinfo input[type="submit"]:focus {
     color: white;
     text-decoration: none;
-    outline: none;
     background: #7e0c20; }
   .requestinfo input[type="submit"]:active {
     top: 1px; }
@@ -534,17 +535,9 @@ SIDEBARS & ASIDES
 SOCIAL SHARING BUTTONS
 *******************************/
 .social-sharing {
-  margin-bottom: 1em;
   background: #f2f2f2;
   padding: .8em;
   text-align: center; }
-  @media screen and (min-width: 481px) {
-    .social-sharing {
-      float: right;
-      margin-left: 1em; } }
-  @media screen and (min-width: 768px) {
-    .social-sharing {
-      margin-bottom: 0; } }
 
 .social-sharing__label {
   font-size: 0.8125em;
@@ -610,19 +603,23 @@ SOCIAL SHARING BUTTONS
 HEADER STYLES
 *********************/
 .header__logo {
-  margin: 0.75em 0; }
-  @media screen and (min-width: 768px) {
-    .header__logo {
-      float: left; } }
+  margin: 0.5rem 0;
+  float: left; }
+
+.header__button {
+  float: right; }
 
 .header__nav {
   visibility: hidden;
-  height: 0; }
+  height: 0;
+  clear: both; }
   @media screen and (min-width: 768px) {
-    .header__nav .nav {
-      float: right;
-      visibility: visible;
-      height: auto; } }
+    .header__nav {
+      clear: none; }
+      .header__nav .nav {
+        float: right;
+        visibility: visible;
+        height: auto; } }
   .header__nav.visible {
     visibility: visible;
     height: auto; }
@@ -650,6 +647,8 @@ NAVIGATION STYLES
         .nav li:hover > ul.sub-menu {
           top: auto;
           visibility: visible; } }
+    .nav li.menu-item-has-children {
+      position: relative; }
     .nav li a {
       display: block;
       text-decoration: none;
@@ -687,10 +686,36 @@ NAVIGATION STYLES
         .nav li ul.children li ul {
           top: 0;
           left: 100%; } }
-    .nav li:hover .sub-menu {
-      display: block; }
+    @media screen and (min-width: 768px) {
+      .nav li:hover .sub-menu {
+        display: block; } }
+    @media screen and (min-width: 768px) {
+      .nav li .sub-menu.active {
+        display: block;
+        visibility: visible; } }
 
 /* end .nav */
+/***** MAIN NAVIGATION *****/
+@media screen and (min-width: 768px) {
+  .top-nav {
+    clear: right; } }
+
+/***** SUB MENU TOGGLE BUTTONS *****/
+.sub-menu__toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  outline: 0;
+  background: #C41331;
+  border: none;
+  padding: 1rem; }
+  @media screen and (min-width: 768px) {
+    .sub-menu__toggle {
+      display: none; } }
+  .sub-menu__toggle.active {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); }
+
 /**** 768 UP ****/
 @media screen and (min-width: 768px) {
   .js__menu-trigger {
@@ -721,7 +746,8 @@ PAGE NAVI STYLES
     border-right: 1px solid gray; }
     .pagination li:last-child {
       border-right: none; }
-  .pagination a, .pagination span {
+  .pagination a,
+  .pagination span {
     margin: 0;
     text-decoration: none;
     padding: 0;
@@ -732,7 +758,9 @@ PAGE NAVI STYLES
     min-width: 1em;
     display: block;
     color: #C41331; }
-    .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
+    .pagination a:hover, .pagination a:focus,
+    .pagination span:hover,
+    .pagination span:focus {
       background-color: #C41331;
       color: white; }
   .pagination .current {
@@ -951,7 +979,7 @@ SINGLE POST STYLING
   font-size: 1em;
   line-height: 34px;
   font-weight: normal;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
@@ -963,7 +991,6 @@ SINGLE POST STYLING
   .calltoaction a:focus {
     color: white;
     text-decoration: none;
-    outline: none;
     background: #7e0c20; }
   .summary-tldr-btn:active,
   .calltoaction a:active {
@@ -1112,7 +1139,7 @@ POST STYLES
     font-size: 1em;
     line-height: 34px;
     font-weight: normal;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     border-radius: 4px;
     border: 0;
     cursor: pointer;
@@ -1122,7 +1149,6 @@ POST STYLES
     .cta-blog .button:hover, .cta-blog .button:focus {
       color: white;
       text-decoration: none;
-      outline: none;
       background: #7e0c20; }
     .cta-blog .button:active {
       top: 1px; }

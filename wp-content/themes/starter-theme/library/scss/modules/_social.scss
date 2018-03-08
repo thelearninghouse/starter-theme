@@ -3,19 +3,9 @@ SOCIAL SHARING BUTTONS
 *******************************/
 
 .social-sharing {
-    margin-bottom: 1em;
     background: darken(white, 5%);
     padding: .8em;
     text-align: center;
-
-		@include mobilefirst($bp-sm) {
-			float: right;
-			margin-left: 1em;
-		}
-
-		@include mobilefirst($bp-med) {
-			margin-bottom: 0;
-		}
 }
 
 .social-sharing__label {
@@ -67,7 +57,7 @@ SOCIAL SHARING BUTTONS
     color: white;
 }
 
-.social-link.social-link_facebook { background: #3b5998; }  
+.social-link.social-link_facebook { background: #3b5998; }
 .social-link.social-link_facebook:hover { background: darken(#3b5998, 10%); }
 .social-link.social-link_linkedin { background: #007bb6; }
 .social-link.social-link_linkedin:hover { background: darken(#007bb6, 10%); }
