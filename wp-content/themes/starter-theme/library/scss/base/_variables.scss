@@ -13,25 +13,13 @@ $wrap-sm: 700px;
 $wrap-md: 940px;
 $wrap-lg: 1400px;
 
-
 // --- Colors ---
 $primary-color: 		#C41331;
-$gray-light: 				#F1F1F1;
-$gray-medium: 			#818B91;
-$gray-dark: 				#444444;
-$off-black: 				#36424A;
-$beige: 						#ECE6DA;
 
-// Computed Colors
-$primary-color-dark: 				darken($primary-color, 15%);
-$gray-medium-transparent: 	transparentize($gray-medium, 0.8);
-
-$text-color: $gray-dark;
-$site-background-color: $gray-light;
-
+/// Text Color
 $text-color:        #666;
 /// Link Color
-$link-color:        crimson;
+$link-color:        $primary-color;
 ///Link Hover
 $link-hover:        darken($link-color, 15%);
 

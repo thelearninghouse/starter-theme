@@ -9,6 +9,8 @@
 
 get_header(); ?>
 
+	<?php get_template_part( 'template-parts/hero_title' ); ?>
+
 	<div class="content">
 
 		<div class="wrap">
@@ -19,8 +21,6 @@ get_header(); ?>
 
 					<article <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-						<?php get_template_part( 'template-parts/hero_title' ); ?>
-
 						<section class="page-content cf" itemprop="articleBody">
 							<?php the_content(); ?>
 						</section> <?php // end article section ?>
@@ -28,7 +28,7 @@ get_header(); ?>
 					</article>
 
 					<?php endwhile; endif; ?>
-					
+
 					<?php get_sidebar(); ?>
 
 				</main>

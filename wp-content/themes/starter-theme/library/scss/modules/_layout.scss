@@ -14,6 +14,11 @@ LAYOUT & GRID STYLES
 .single,
 .page {
 
+	.main-content {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
 	@include mobilefirst($bp-med) {
 		.main-content {
 			display: grid;

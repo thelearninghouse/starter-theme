@@ -1,5 +1,11 @@
 <?php get_header(); ?>
 
+			<div class="hero-title">
+				<div class="wrap-lg">
+					<h1>Blog</h1>
+				</div>
+			</div>
+
 			<div id="content">
 
 				<div id="inner-content">

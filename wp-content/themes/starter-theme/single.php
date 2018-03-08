@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-			<header class="hero-title">
+			<div class="hero-title">
 			  <div class="wrap-lg">
 			    <h1>
 						<?php the_title(); ?>
@@ -18,7 +18,7 @@
 							</span>
 					</h1>
 			  </div>
-			</header>
+			</div>
 			<?php tlh_responsive_bg_style('hero-title'); ?>
 
 			<div id="content">

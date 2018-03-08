@@ -9,8 +9,9 @@ body {
 	background-color: white;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
 }
 
 :focus {
-	outline: 3px dotted $gray-dark;
+	outline: 3px dotted gray;
 }
