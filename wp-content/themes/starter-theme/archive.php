@@ -1,5 +1,11 @@
 <?php get_header(); ?>
 
+			<div class="hero-title">
+				<div class="wrap-lg">
+					<h1><?php the_archive_title(); ?></h1>
+				</div>
+			</div>
+
 			<div class="content">
 
 					<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
@@ -56,7 +62,7 @@
 
 						<?php endwhile; ?>
 
-								<?php bones_page_navi(); ?>
+								<?php tlh_page_navi(); ?>
 
 						<?php else : ?>
 

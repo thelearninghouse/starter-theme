@@ -51,7 +51,7 @@
 
 							<?php endwhile; ?>
 
-									<?php bones_page_navi(); ?>
+									<?php tlh_page_navi(); ?>
 
 							<?php else : ?>
 
@@ -72,11 +72,11 @@
 
 						</main>
 
-                         <!--<div id="sidebar_blog" class="sidebar cf" role="complementary">
+             <!--<div id="sidebar_blog" class="sidebar cf" role="complementary">
 
-                            <?php dynamic_sidebar( 'Sidebar Blog' ); ?>
+                <?php dynamic_sidebar( 'Sidebar Blog' ); ?>
 
-                        </div>-->
+            </div>-->
 
 				</div>
 

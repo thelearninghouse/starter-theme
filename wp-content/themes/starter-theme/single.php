@@ -72,7 +72,6 @@
 
 			</div>
 
-
       <script>
      	// Load document before calculating window height
       $(document).on('ready', function() {

@@ -6,7 +6,11 @@ Author: Learning House, Inc.
 Author URI: http://www.learninghouse.com
 */
 
-.sticky {}          /* DO NOT EDIT THIS */
-.gallery-caption {} /* THESE ARE USELESS */
-.bypostauthor {}    /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */
-.screen-reader-text {}
+.sticky {
+} /* DO NOT EDIT THIS */
+.gallery-caption {
+} /* THESE ARE USELESS */
+.bypostauthor {
+} /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */
+.screen-reader-text {
+}

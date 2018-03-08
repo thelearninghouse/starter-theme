@@ -1,13 +1,4 @@
-<?php
-/**
- * The template for displaying all pages by default.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package tlh-starter-theme
- */
-
-get_header(); ?>
+<?php get_header(); ?>
 
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 

@@ -2,7 +2,7 @@
 HOMEPAGE SPECIFIC STYLES
 *************************/
 
-.hero-bg {
+.hero-title {
 	@include sectionspace();
 	background-size: cover;
 	@include responsivebackground();

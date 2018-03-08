@@ -1,5 +1,11 @@
 <?php get_header(); ?>
 
+			<div class="hero-title">
+				<div class="wrap-lg">
+					<h1>404 - Article Not Found</h1>
+				</div>
+			</div>
+
 			<div class="content">
 
 				<div class="wrap cf">
@@ -21,6 +27,8 @@
 							</section>
 
 						</article>
+
+						<?php get_sidebar(); ?>
 
 					</main>
 

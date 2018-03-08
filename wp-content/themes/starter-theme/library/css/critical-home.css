@@ -26,6 +26,19 @@ body {
 :focus {
   outline: 3px dotted gray; }
 
+.sr-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important; }
+
 /******************************************************************
 Typography Styles
 ******************************************************************/
@@ -404,12 +417,14 @@ LAYOUT & GRID STYLES
   margin: 0 auto; }
 
 /***** Basic Layout *****/
+.error404 .main-content,
 .single .main-content,
 .page .main-content {
   padding-top: 2rem;
   padding-bottom: 2rem; }
 
 @media screen and (min-width: 768px) {
+  .error404 .main-content,
   .single .main-content,
   .page .main-content {
     display: -ms-grid;
@@ -417,6 +432,7 @@ LAYOUT & GRID STYLES
     -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 2rem; }
+    .error404 .main-content article,
     .single .main-content article,
     .page .main-content article {
       -ms-grid-column-span: 8;
@@ -427,9 +443,11 @@ LAYOUT & GRID STYLES
               order: 1;
       margin-right: 2rem; }
       @supports ((display: -ms-grid) or (display: grid)) {
+        .error404 .main-content article,
         .single .main-content article,
         .page .main-content article {
           margin-right: 0; } }
+    .error404 .main-content .sidebar,
     .single .main-content .sidebar,
     .page .main-content .sidebar {
       -ms-grid-column-span: 4;

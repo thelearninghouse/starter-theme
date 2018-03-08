@@ -17,7 +17,7 @@
 						)); ?>
 					</nav>
 
-					<p class="footer__copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>. <a href="/privacy-policy/">Privacy Policy</a></p>
+					<p class="footer__copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?> | <?php the_field('school_address_1', 'option'); ?> <?php the_field('school_address_2', 'option'); ?> | <a href="tel:<?php the_field('school_phone', 'option'); ?>"><?php the_field('school_phone', 'option'); ?></a> | <a href="<?php the_field('school_email_address', 'option'); ?>"><?php the_field('school_email_address', 'option'); ?></a> | <span id="privacy-link"><a href="/privacy-policy/">Privacy Policy</a></span></p>
 
 				</div>
 
@@ -28,43 +28,9 @@
 		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
 
-		<?php // On the Online Degrees page add MixItUp ?>
-		<?php if ( is_page_template('page-online-degrees.php') ) { ?>
-			<script src="<?php echo get_template_directory_uri(); ?>/library/js/mixitup.min.js"></script>
-			<script>
-				// Setup MixItUp for card filtering
-				 var mixer = mixitup('.mixitup');
+		<?php // Page Specific Scripts ?>
+		<?php get_template_part( 'template-parts/footer-scripts/online-degrees' ); ?>
 
-				 if ($('.mixitup')) {
-					 var container = $('.mixitup')
-					 var mixer = mixitup(container, {
-						 callbacks: {
-							 onMixStart: function(state, futureState) {
-							 },
-							 onMixEnd: function() {
-								 container
-									 .find('.card:visible:first')
-									 .focus();
-							 }
-						 },
-						 "animation": {
-				        "duration": 133,
-				        "nudge": false,
-				        "reverseOut": false,
-				        "effects": "fade stagger(30ms)"
-				    }
-					 });
-					 if (location.hash) {
-						 var hash = location.hash.replace('#', '.')
-						 var oldBtn = $('button.selected');
-						 var newBtn = $("button").find("[data-filter='" + hash + "']");
-						 mixer.filter(hash)
-						 oldBtn.removeClass('selected');
-						 newBtn.addClass('selected');
-					 }
-				 }
-			</script>
-		<?php } ?>
 	</body>
 
 </html> <!-- end of site. what a ride! -->

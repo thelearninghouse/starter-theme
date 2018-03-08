@@ -2,18 +2,18 @@
 LINK STYLES
 *********************/
 
-a, a:visited {
+a,
+a:visited {
 	color: $link-color;
 
 	/* on hover */
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		color: $link-hover;
 	}
 
 	/* mobile tap color */
 	&:link {
-		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
 	}
 }
-
-

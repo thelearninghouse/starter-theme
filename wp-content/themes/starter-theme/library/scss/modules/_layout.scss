@@ -8,12 +8,11 @@ LAYOUT & GRID STYLES
 	margin: 0 auto;
 }
 
-
 /***** Basic Layout *****/
 
+.error404,
 .single,
 .page {
-
 	.main-content {
 		padding-top: 2rem;
 		padding-bottom: 2rem;
@@ -22,7 +21,7 @@ LAYOUT & GRID STYLES
 	@include mobilefirst($bp-med) {
 		.main-content {
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 			grid-column-gap: 2rem;
 
 			article {

@@ -1,12 +1,3 @@
-$(".accordion .accord").on("click", function() {
-	if ($(this).hasClass("active")) {
-		$(this).removeClass("active");
-	} else {
-		$(".accordion .accord").removeClass("active");
-		$(this).addClass("active");
-	}
-});
-
 // MOBILE NAV TRIGGER
 $(".js__menu-trigger").on("click", function(e) {
 	e.preventDefault();
@@ -138,39 +129,3 @@ $(window).on("resize", function() {
 		$(".sub-menu").removeClass("active");
 	}
 });
-
-// Making social share links pop up in new window
-function windowPopup(url, width, height) {
-	// Calculate the position of the popup so it’s centered on the screen.
-	var left = screen.width / 2 - width / 2,
-		top = screen.height / 2 - height / 2;
-
-	window.open(
-		url,
-		"",
-		"menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" +
-			width +
-			",height=" +
-			height +
-			",top=" +
-			top +
-			",left=" +
-			left
-	);
-}
-
-$(".social-link").on("click", function(e) {
-	e.preventDefault();
-
-	windowPopup($(this).attr("href"), 500, 300);
-});
-
-/*
- * Put all your regular jQuery in here.
-*/
-jQuery(document).ready(function($) {
-	// Remove Select menu error classs on load
-	$(window).load(function() {
-		$(".requestinfo select").removeClass("error");
-	});
-}); /* end of as page load scripts */
