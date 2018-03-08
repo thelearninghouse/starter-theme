@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
 
     // Pullquote functionality so the content is not repeated
    $(function() {
-      $('span.pullquote').each(function() {
+      $('span.pullquote').each(function() { !!@#
         var $parentParagraph = $(this).parent('p');
         $parentParagraph.css('position', 'relative');
         $(this).clone()

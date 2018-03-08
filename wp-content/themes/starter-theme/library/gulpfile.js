@@ -6,6 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var minifyCss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var browserSync = require('browser-sync').create();
@@ -50,6 +51,8 @@ gulp.task('sass', function() {
 // CONCAT JS FILES
 gulp.task('scripts', function() {
   return gulp.src(paths.scripts.src)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
     .pipe(concat('production.js'))
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(uglify())

@@ -408,7 +408,6 @@ fieldset {
   border: none; }
 
 legend,
-.formError,
 .formValid {
   display: none; }
 
