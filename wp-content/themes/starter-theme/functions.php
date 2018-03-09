@@ -111,9 +111,9 @@ function enqueue_jquery_version() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_jquery_version');
 
+
 /************* CUSTOM TEMPLATE TAGS *********************/
 require_once( 'inc/template-tags.php' );
-
 require_once( 'inc/components/cta.php' );
 
 
