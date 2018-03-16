@@ -41,12 +41,29 @@ function tlh_shortcode_icon ( $atts ) {
 }
 add_shortcode( 'icon', 'tlh_shortcode_icon' );
 
-function tlh_responsive_bg_style( $selector, $field_name = NULL ) {
-  // If no image can be gotten, no <style> will be echoed
+function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = false ) {
+  // If no image can be found, no <style> will be echoed
   $has_image = false;
 
   if ( $field_name !== NULL ) {
-    $image = get_field( $field_name );
+
+    if ( is_home() ) {
+      // On the blog, we need to explicitly pass the page id used to display posts, since $posts has all the blog posts
+      if ( $sub_field ) {
+        $image = get_sub_field( $field_name, get_option('page_for_posts') );
+      }
+      else {
+        $image = get_field( $field_name, get_option('page_for_posts') );
+      }
+    } else {
+      if ( $sub_field ) {
+        $image = get_sub_field( $field_name );
+      }
+      else {
+        $image = get_field( $field_name );
+      }
+    }
+
     if ( !empty($image) ) {
       // We'll accept an array or ID integer. If ACF is set to return just a url, we can't get multiple sizes.
       if ( is_array($image) ) {
