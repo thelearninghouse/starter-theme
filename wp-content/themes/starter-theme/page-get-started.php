@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Get started
+Template Name: Get Started
 */
 get_header(); ?>
 
