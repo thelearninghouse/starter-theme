@@ -19,7 +19,7 @@ var paths = {
 		dest: "css/"
 	},
 	scripts: {
-		src: ["js/modules/*.js", "js/scripts.js"],
+		src: ["js/components/*.js", "js/scripts.js"],
 		dest: "js/build/"
 	},
 	imagemin: {
