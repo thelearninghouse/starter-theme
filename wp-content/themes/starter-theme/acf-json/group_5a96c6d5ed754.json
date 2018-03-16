@@ -67,14 +67,14 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "default"
+                "value": "page-templates\/faq.php"
             }
         ],
         [
             {
                 "param": "page",
                 "operator": "==",
-                "value": "241"
+                "value": "183"
             }
         ]
     ],
@@ -86,5 +86,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1521220420
+    "modified": 1521230589
 }
