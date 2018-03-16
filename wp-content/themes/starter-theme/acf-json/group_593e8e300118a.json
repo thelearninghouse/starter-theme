@@ -46,14 +46,14 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "launch-lps"
             }
         ],
         [
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "page"
+                "value": "landing-pages"
             }
         ]
     ],
@@ -63,7 +63,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 0,
+    "active": 1,
     "description": "",
-    "modified": 1520518900
+    "modified": 1521220137
 }
