@@ -121,6 +121,12 @@ function tlh_scripts_and_styles() {
 	}
 }
 
+/* Remove WP-EMBED script */
+function my_deregister_scripts(){
+  wp_deregister_script( 'wp-embed' );
+}
+add_action( 'wp_footer', 'my_deregister_scripts' );
+
 /*********************
 THEME SUPPORT
 *********************/
