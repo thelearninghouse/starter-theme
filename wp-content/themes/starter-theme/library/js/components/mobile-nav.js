@@ -1,7 +1,7 @@
 // MOBILE NAV TRIGGER
 $(".js__menu-trigger").on("click", function(e) {
 	e.preventDefault();
-	$(".header__nav").toggleClass("visible");
+	$(".nav-wrapper").toggleClass("visible");
 });
 
 // MOBILE MENU SUBMENU FIX
@@ -30,7 +30,7 @@ $(".js__menu-trigger").on("click", function(e) {
 	}
 
 	// END OF HELPERS
-	var MainMenu = $("#menu-main-menu"),
+	var MainMenu = $(".header__nav > .nav"),
 		MenuItemsWithChildren = MainMenu.find(".menu-item-has-children"),
 		LinksForSubmenus = MenuItemsWithChildren.find("> a"),
 		ButtonHTML =

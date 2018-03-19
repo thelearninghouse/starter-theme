@@ -2,6 +2,59 @@
 NAVIGATION STYLES
 *********************/
 
+// Mobile only
+@media screen and (max-width: 767px) {
+	.nav-wrapper__open {
+		background: rgba(0, 0, 0, 0.1);
+		border: none;
+		padding: rem(10);
+		color: #333;
+		border-radius: rem(3);
+		cursor: pointer;
+	}
+
+	.nav-wrapper__open:hover,
+	.nav-wrapper__open:hover:focus {
+		background: rgba(0, 0, 0, 0.2);
+		color: $primary-color;
+	}
+
+	.nav-wrapper {
+		position: fixed;
+		z-index: 5;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: scroll;
+		background: #ccc;
+		transition: 0.2s all ease-in-out;
+		-webkit-transform: translateY(100vh);
+		transform: translateY(100vh);
+		opacity: 0;
+		visibility: hidden;
+
+		&.visible {
+			-webkit-transform: translateY(0);
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+		}
+
+		&__close {
+			display: block;
+			cursor: pointer;
+			width: 100%;
+			color: $primary-color;
+			background: #fff;
+			font-size: 1.2rem;
+			font-weight: 700;
+			padding: 1rem;
+			border: none;
+		}
+	}
+}
+
 .nav {
 	border-bottom: 0;
 	margin: 0;
@@ -10,11 +63,9 @@ NAVIGATION STYLES
 
 	@include mobilefirst($bp-med) {
 		border: 0;
-		ul {
-			display: flex;
-			flex-flow: row wrap;
-			margin-top: 0;
-		}
+		display: flex;
+		flex-flow: row wrap;
+		margin-top: 0;
 	}
 
 	li {
@@ -104,6 +155,13 @@ NAVIGATION STYLES
 /***** MAIN NAVIGATION *****/
 .top-nav {
 	@include mobilefirst($bp-med) {
+	}
+}
+
+// Secondary Nav
+.header__secondary-nav {
+	@include mobilefirst($bp-med) {
+		display: none;
 	}
 }
 
