@@ -1,5 +1,5 @@
 <?php if ( is_page_template('page-online-degrees.php') ) { ?>
-  <script src="<?php echo get_template_directory_uri(); ?>/library/js/mixitup.min.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/library/js/vendor/mixitup.min.js"></script>
   <script>
     // Setup MixItUp for card filtering
      var mixer = mixitup('.mixitup');
