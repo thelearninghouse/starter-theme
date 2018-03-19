@@ -53,7 +53,6 @@ starter-theme/
 |    |   |     ├── mixitiup.min.js // Filtering and sorting plugin
 |    |   |     └── modaal.min.js // WCAG compliant modaal
 |    |   └── scripts.js // Main javascript file
-|    ├── plugins // plugin folders that are critical to the theme
 |    ├── scss
 |    |    ├── base
 |    |    |    ├── _mixins.scss // All mixins
