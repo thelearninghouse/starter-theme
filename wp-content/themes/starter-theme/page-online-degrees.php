@@ -10,7 +10,7 @@ get_header(); ?>
 
 				<div class="wrap cf">
 
-					<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+					<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 						<div class="program-filters">
 							 <button class="program-filters__button button" data-filter="all">All Degrees</button>

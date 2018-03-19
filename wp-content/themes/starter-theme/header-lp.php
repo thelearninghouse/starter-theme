@@ -56,7 +56,7 @@
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-				<div class="wrap cf">
+				<div class="wrap">
 
 					<p class="logo header__logo" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 

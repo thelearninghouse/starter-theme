@@ -5,26 +5,25 @@ HEADER STYLES
 .header {
 	&__logo {
 		margin: 0.5rem 0;
-		float: left;
+	}
+
+	> .wrap {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	&__button {
-		float: right;
 	}
 
 	&__nav {
 		visibility: hidden;
 		height: 0;
-		clear: both;
 
 		@include mobilefirst($bp-med) {
-			clear: none;
-
-			.nav {
-				float: right;
-				visibility: visible;
-				height: auto;
-			}
+			visibility: visible;
+			height: auto;
 		}
 
 		&.visible {

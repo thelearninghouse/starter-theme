@@ -10,7 +10,7 @@ get_header(); ?>
 
 		<div class="wrap">
 
-				<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+				<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 					<div class="sidebar-well">
 						<h2 class="h3">Get Started</h2>
