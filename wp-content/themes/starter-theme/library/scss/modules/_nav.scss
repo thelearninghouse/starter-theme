@@ -11,6 +11,8 @@ NAVIGATION STYLES
 	@include mobilefirst($bp-med) {
 		border: 0;
 		ul {
+			display: flex;
+			flex-flow: row wrap;
 			margin-top: 0;
 		}
 	}
@@ -19,7 +21,6 @@ NAVIGATION STYLES
 		list-style: none;
 
 		@include mobilefirst($bp-med) {
-			float: left;
 			position: relative;
 
 			&:hover > ul.sub-menu {
@@ -103,7 +104,6 @@ NAVIGATION STYLES
 /***** MAIN NAVIGATION *****/
 .top-nav {
 	@include mobilefirst($bp-med) {
-		clear: right;
 	}
 }
 
@@ -157,7 +157,6 @@ PAGE NAVI STYLES
 	li {
 		padding: 0;
 		margin: 0;
-		float: left;
 		display: inline;
 		overflow: hidden;
 		border-right: 1px solid gray;
@@ -202,10 +201,8 @@ PAGE NAVI STYLES
 /* fallback previous & next links */
 .wp-prev-next {
 	.prev-link {
-		float: left;
 	}
 
 	.next-link {
-		float: right;
 	}
 } /* end .wp-prev-next */

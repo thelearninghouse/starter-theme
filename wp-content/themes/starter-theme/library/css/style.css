@@ -518,15 +518,16 @@ img,
 /**** 768 AND UP ****/
 @media screen and (min-width: 481px) {
   /* at this larger size, we can start to align images */
-  .alignleft, img.alignleft {
+  .alignleft,
+  img.alignleft {
     margin-right: 1.5em;
-    display: inline;
-    float: left; }
-  .alignright, img.alignright {
+    display: inline; }
+  .alignright,
+  img.alignright {
     margin-left: 1.5em;
-    display: inline;
-    float: right; }
-  .aligncenter, img.aligncenter {
+    display: inline; }
+  .aligncenter,
+  img.aligncenter {
     margin-right: auto;
     margin-left: auto;
     display: block;
@@ -671,23 +672,30 @@ SOCIAL SHARING BUTTONS
 HEADER STYLES
 *********************/
 .header__logo {
-  margin: 0.5rem 0;
-  float: left; }
+  margin: 0.5rem 0; }
 
-.header__button {
-  float: right; }
+.header > .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
 .header__nav {
   visibility: hidden;
-  height: 0;
-  clear: both; }
+  height: 0; }
   @media screen and (min-width: 768px) {
     .header__nav {
-      clear: none; }
-      .header__nav .nav {
-        float: right;
-        visibility: visible;
-        height: auto; } }
+      visibility: visible;
+      height: auto; } }
   .header__nav.visible {
     visibility: visible;
     height: auto; }
@@ -705,12 +713,18 @@ NAVIGATION STYLES
     .nav {
       border: 0; }
       .nav ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-flow: row wrap;
+                flex-flow: row wrap;
         margin-top: 0; } }
   .nav li {
     list-style: none; }
     @media screen and (min-width: 768px) {
       .nav li {
-        float: left;
         position: relative; }
         .nav li:hover > ul.sub-menu {
           top: auto;
@@ -764,10 +778,6 @@ NAVIGATION STYLES
 
 /* end .nav */
 /***** MAIN NAVIGATION *****/
-@media screen and (min-width: 768px) {
-  .top-nav {
-    clear: right; } }
-
 /***** SUB MENU TOGGLE BUTTONS *****/
 .sub-menu__toggle {
   position: absolute;
@@ -808,7 +818,6 @@ PAGE NAVI STYLES
   .pagination li {
     padding: 0;
     margin: 0;
-    float: left;
     display: inline;
     overflow: hidden;
     border-right: 1px solid gray; }
@@ -840,12 +849,6 @@ PAGE NAVI STYLES
 
 /* end .tlh_page_navi */
 /* fallback previous & next links */
-.wp-prev-next .prev-link {
-  float: left; }
-
-.wp-prev-next .next-link {
-  float: right; }
-
 /* end .wp-prev-next */
 /********************
 LAYOUT & GRID STYLES
@@ -975,8 +978,7 @@ BLOG INDEX STYLING
   .blog #inner-content #main,
   .category #inner-content #main {
     width: 100%;
-    padding: 0;
-    float: none; }
+    padding: 0; }
 
 .blog .post,
 .category .post {
@@ -1086,7 +1088,6 @@ POST STYLES
     margin-top: 0;
     color: white; }
   .cta-blog img {
-    float: right;
     max-width: 30%;
     height: auto;
     margin-right: 5%;

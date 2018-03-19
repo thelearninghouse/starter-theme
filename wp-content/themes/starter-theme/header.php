@@ -27,11 +27,11 @@
 
 		<?php if (is_front_page()) { ?>
 			<style><?php include 'library/css/critical-home.min.css'; ?></style>
-			<script>!function(a){"use strict";var b=function(b,c,d){function j(a){return e.body?a():void setTimeout(function(){j(a)})}function l(){f.addEventListener&&f.removeEventListener("load",l),f.media=d||"all"}var g,e=a.document,f=e.createElement("link");if(c)g=c;else{var h=(e.body||e.getElementsByTagName("head")[0]).childNodes;g=h[h.length-1]}var i=e.styleSheets;f.rel="stylesheet",f.href=b,f.media="only x",j(function(){g.parentNode.insertBefore(f,c?g:g.nextSibling)});var k=function(a){for(var b=f.href,c=i.length;c--;)if(i[c].href===b)return a();setTimeout(function(){k(a)})};return f.addEventListener&&f.addEventListener("load",l),f.onloadcssdefined=k,k(l),f};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);</script>
+			<!-- <script>!function(a){"use strict";var b=function(b,c,d){function j(a){return e.body?a():void setTimeout(function(){j(a)})}function l(){f.addEventListener&&f.removeEventListener("load",l),f.media=d||"all"}var g,e=a.document,f=e.createElement("link");if(c)g=c;else{var h=(e.body||e.getElementsByTagName("head")[0]).childNodes;g=h[h.length-1]}var i=e.styleSheets;f.rel="stylesheet",f.href=b,f.media="only x",j(function(){g.parentNode.insertBefore(f,c?g:g.nextSibling)});var k=function(a){for(var b=f.href,c=i.length;c--;)if(i[c].href===b)return a();setTimeout(function(){k(a)})};return f.addEventListener&&f.addEventListener("load",l),f.onloadcssdefined=k,k(l),f};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);</script> -->
 			<script>loadCSS( "<?php echo get_template_directory_uri(); ?>/library/css/style.min.css" );</script>
 			<noscript><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/style.min.css"></noscript>
 		<?php } else { ?>
-			<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/style.min.css"> 
+			<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/style.min.css">
 		<?php } ?>
 
 		<?php if ( get_field('gtm_id', 'options') ) { ?>
@@ -58,34 +58,60 @@
 
 		<div id="container" class="container">
 
-			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+		<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-				<div class="wrap cf">
+				<div class="info-bar plain-links">
+					<div class="wrap">
+						<div class="info-bar__info">
+							<?php $school_phone = get_field('school_phone', 'options'); ?>
+							<a class="info-bar__phone" href="tel:<?php echo str_replace( ['-', '(', ')', ' '], '', $school_phone ); ?>"><strong>Call us today!</strong> <?php echo $school_phone; ?></a>
+							<?php $next_start_date = tlh_get_next_date();
+								if ( $next_start_date ) { ?>
+									<span class="info-bar__start-date"><strong>Next Start Date:</strong> <?php echo $next_start_date; ?></span>
+								<?php }
+							?>
+						</div>
+						<nav class="info-bar__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							<?php wp_nav_menu(array(
+												 'container' => false,														// remove nav container
+												 'menu' => __( 'Secondary Menu', 'tlh_theme' ),  // nav name
+												 'theme_location' => 'secondary',                 // where it's located in the theme
+												 'depth' => 0																			// limit the depth of the nav
+							)); ?>
+						</nav>
+					</div>
+				</div>
 
-					<p class="logo header__logo h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-
-          <button class="button header__button js__menu-trigger" aria-label="Toglle Main Menu">Menu</button>
-
-					<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-						<?php wp_nav_menu(array(
-    					         'container' => false,														// remove nav container
-    					         'container_class' => 'header__menu header__menu-secondary cf',		// class of container (should you choose to use it)
-    					         'menu' => __( 'Secondary Menu', 'tlh_theme' ),  // nav name
-    					         'menu_class' => 'nav secondary-nav cf',					// adding custom nav class
-    					         'theme_location' => 'secondary',                 // where it's located in the theme
-											 'depth' => 0																			// limit the depth of the nav
-						)); ?>
-						<?php wp_nav_menu(array(
-    					         'container' => false,                           // remove nav container
-    					         'container_class' => 'header__menu cf',                 // class of container (should you choose to use it)
-    					         'menu' => __( 'The Main Menu', 'tlh_theme' ),  // nav name
-    					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
-    					         'theme_location' => 'main',                 // where it's located in the theme
-        			         'depth' => 0			                               // limit the depth of the nav
-						)); ?>
-
-					</nav>
-
+				<div class="wrap">
+					<a class="header__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">
+						<?php $school_logo = get_field('school_logo', 'options');
+						if ( $school_logo ) { ?>
+							<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
+						<?php } else { ?>
+							<span><?php the_field( 'school_name', 'options' ); ?>
+							<?php } ?>
+					</a>
+					<button class="js__menu-trigger nav-wrapper__open" aria-label="Open Navigation Menu"><?php tlh_icon('menu', '', 'Open Navigation Menu') ?></button>
+					<div class="nav-wrapper">
+						<button class="nav-wrapper__close js__menu-trigger" aria-label="Close Navigation Menu">Close</button>
+						<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							<?php wp_nav_menu(array(
+												 'container' => false,                           // remove nav container
+												 'menu' => __( 'The Main Menu', 'tlh_theme' ),  // nav name
+												 'menu_class' => 'nav',               // adding custom nav class
+												 'theme_location' => 'main',                 // where it's located in the theme
+												 'depth' => 0			                               // limit the depth of the nav
+							)); ?>
+						</nav>
+						<nav class="header__secondary-nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							<?php wp_nav_menu(array(
+												 'container' => false,														// remove nav container
+												 'menu' => __( 'Secondary Menu', 'tlh_theme' ),  // nav name
+												 'menu_class' => 'nav',
+												 'theme_location' => 'secondary',                 // where it's located in the theme
+												 'depth' => 0																			// limit the depth of the nav
+							)); ?>
+						</nav>
 				</div>
 
 			</header>

@@ -4,9 +4,9 @@
 
 	<div class="content">
 
-		<div class="wrap cf">
+		<div class="wrap">
 
-				<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+				<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 					<div class="program-list">
 						<div class="program-list__text">

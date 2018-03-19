@@ -196,8 +196,8 @@
 					</div>
 				</section>
 
-				<footer class="footer cf" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
-					<div class="wrap cf">
+				<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+					<div class="wrap">
 						<p class="footer__copyright">&copy; <?php echo date('Y'); ?> <?php the_field('school_name', 'options'); ?> | <?php the_field('school_address_1', 'options'); ?>, <?php the_field('school_address_2', 'options'); ?> | <a href="tel:<?php the_field('school_phone', 'options'); ?>"><?php the_field('school_phone', 'options'); ?></a> | <a href="/privacy-policy/">Privacy Policy</a></p>
 					</div>
 				</footer>

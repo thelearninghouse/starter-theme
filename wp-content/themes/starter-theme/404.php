@@ -8,11 +8,11 @@
 
 			<div class="content">
 
-				<div class="wrap cf">
+				<div class="wrap">
 
-					<main id="content" class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+					<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-						<article class="post-not-found hentry cf">
+						<article class="post-not-found hentry">
 
 							<header class="post-header">
 

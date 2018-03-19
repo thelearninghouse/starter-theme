@@ -23,13 +23,13 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="wrap cf">
+				<div id="inner-content" class="wrap">
 
 					<main id="main-content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 
 							  <section class="entry-content cf" itemprop="articleBody">
 							    <?php the_content(); ?>
@@ -41,7 +41,7 @@
 
 						<?php else : ?>
 
-							<article id="post-not-found" class="hentry cf">
+							<article id="post-not-found" class="hentry">
 									<header class="article-header">
 										<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
 									</header>
@@ -55,7 +55,7 @@
 
 						<?php endif; ?>
 
-						<div id="sidebar_blog" class="sidebar cf" role="complementary">
+						<div id="sidebar_blog" class="sidebar" role="complementary">
 
 							<div class="sidebar__widget sidebar__widget--request-info">
 								<h2 class="h3">Request Your Free Info Packet</h2>

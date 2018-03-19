@@ -2,13 +2,13 @@
 
 			<div class="content">
 
-				<div class="wrap cf">
+				<div class="wrap">
 
-						<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
               <h1><?php the_title(); ?></h1>
 						</main>
 
-            <div class="sidebar cf" role="complementary">
+            <div class="sidebar" role="complementary">
 
 							<div class="sidebar-well">
 									<h3>Request My Info Packet</h3>

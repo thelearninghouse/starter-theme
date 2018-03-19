@@ -1,17 +1,17 @@
 /* Responsive Videos */
 
 .videoWrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
 
-    iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 }
 
 img,
@@ -27,23 +27,22 @@ img,
 /**** 768 AND UP ****/
 
 @include mobilefirst($bp-sm) {
-
 	/* at this larger size, we can start to align images */
-	.alignleft, img.alignleft {
+	.alignleft,
+	img.alignleft {
 		margin-right: 1.5em;
 		display: inline;
-		float: left;
 	}
-	.alignright, img.alignright {
+	.alignright,
+	img.alignright {
 		margin-left: 1.5em;
 		display: inline;
-		float: right;
 	}
-	.aligncenter, img.aligncenter {
+	.aligncenter,
+	img.aligncenter {
 		margin-right: auto;
 		margin-left: auto;
 		display: block;
 		clear: both;
 	}
-
 }

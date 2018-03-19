@@ -8,13 +8,13 @@
 
 			<div class="content">
 
-					<main class="main-content cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+					<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 
-								<section class="entry-content cf">
+								<section class="entry-content">
 
 									<p class="byline entry-meta vcard">
 									<span class="entry-date">Posted <?php echo get_the_date(); ?> by <?php the_author(); ?> | </span>
