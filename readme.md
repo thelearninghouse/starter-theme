@@ -93,7 +93,6 @@ starter-theme/
 |    |    └── online-degrees.php // Scripts for Online Degrees page (mixitup.js)
 ├── 404.php  // Template for 404 page
 ├── archive.php  // Archive template for blog posts
-├── favicon.png  // Favicon
 ├── footer-lp.php // Landing Page Footer template
 ├── footer.php // Footer template
 ├── front-page.php  // Homepage template
