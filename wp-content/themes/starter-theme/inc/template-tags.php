@@ -69,6 +69,8 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
 }
 
 function tlh_get_next_date( $date_type = 'start-date' ) {
+  $next_date = false;
+
   $loop = new WP_Query( array(
     'post_type' => 'dates',
     'posts_per_page' => 1,
@@ -81,11 +83,10 @@ function tlh_get_next_date( $date_type = 'start-date' ) {
   ) ); // Get next earliest start date
   if ( $loop->have_posts() ) {
     $loop->the_post();
-    return get_field( 'date_date' );
-  } else {
-    return false;
+    $next_date = get_field( 'date_date' );
   }
-  wp_reset_query();
+  wp_reset_postdata();
+  return $next_date;
 }
 
 ?>
