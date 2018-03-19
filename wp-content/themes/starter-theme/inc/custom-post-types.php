@@ -71,7 +71,7 @@
       'rewrite' => array('slug' => 'online-programs/area-of-study', 'with_front' => false )
     );
 
-    register_taxonomy( 'area_of_study', 'degrees', $args );
+    register_taxonomy( 'degree_area', 'degrees', $args );
 
   }
   add_action( 'init', 'taxonomies_area_of_study', 0 );
