@@ -17,16 +17,31 @@
  }
 
 function tlh_enqueue_xverify_scripts() {
-  wp_register_script('tlh-xverify-js', plugins_url( 'tlh-xverify/scripts.js' , dirname(__FILE__) ) );
+  wp_register_script('tlh-xverify-js', plugins_url( 'tlh-xverify/scripts.js' , dirname(__FILE__) ), false, false, true );
   wp_enqueue_script('tlh-xverify-js');
 
-  wp_register_script('tlh-zip-js', plugins_url( 'tlh-xverify/zip.js' , dirname(__FILE__) ) );
+  wp_register_script('tlh-zip-js', plugins_url( 'tlh-xverify/zip.js' , dirname(__FILE__) ), false, false, true );
    wp_enqueue_script('tlh-zip-js');
 
   // wp_register_style('tlh-xverify-css', plugins_url( 'tlh-xverify/form-styles.css' , dirname(__FILE__) ) );
   // wp_enqueue_style('tlh-xverify-css');
 }
 add_action('wp_enqueue_scripts', 'tlh_enqueue_xverify_scripts', 999);
+
+
+// Defer Scripts
+function add_defer_attribute($tag, $handle) {
+   // add script handles to the array below
+   $scripts_to_defer = array('tlh-xverify-js', 'tlh-zip-js');
+
+   foreach($scripts_to_defer as $defer_script) {
+      if ($defer_script === $handle) {
+         return str_replace(' src', ' defer="defer" src', $tag); 
+      }
+   }
+   return $tag;
+}
+add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
 
 
@@ -45,7 +60,6 @@ function inject_styles_into_head() {
     font-size: 15px;
     background: #151515;
     color: #f9f9f9;
-    display: inline-block;
     background-image: url('/wp-content/plugins/tlh-xverify/attention.svg');
     background-position: 5% center;
     background-repeat: no-repeat;
@@ -55,6 +69,10 @@ function inject_styles_into_head() {
     padding-top: 5px;
     padding: 8px 10px 8px 35px;
     position: relative;
+    max-width: 360px;
+    margin-top: -7px;
+    margin-bottom: 7px;
+    display: block;
 	}
 	input[type=text].success {
 	color: #444;
