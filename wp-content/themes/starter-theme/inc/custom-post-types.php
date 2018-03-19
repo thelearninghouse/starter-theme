@@ -25,7 +25,7 @@ function add_degrees() {
             'not_found_in_trash' => __( 'Nothing found in Trash'), /* This displays if there is nothing in the trash */
             'parent_item_colon' => ''
             ), /* end of arrays */
-            'description' => __( 'Online Degrees'), /* Custom Type Description */
+            'description' => __( 'Description'), /* Custom Type Description */
             'public' => true,
             'publicly_queryable' => true,
             'exclude_from_search' => false,
@@ -45,33 +45,33 @@ function add_degrees() {
 add_action( 'init', 'add_degrees');
 
 // Add taxonomies for Online Programs
-function taxonomies_degree_verticals() {
+function taxonomies_area_of_study() {
   $labels = array(
-    'name'              => _x( 'Degree Verticals', 'taxonomy general name' ),
-    'singular_name'     => _x( 'Degree Vertical', 'taxonomy singular name' ),
-    'search_items'      => __( 'Search Degree Verticals' ),
-    'all_items'         => __( 'All Degree Verticals' ),
-    'parent_item'       => __( 'Parent Degree Vertical' ),
-    'parent_item_colon' => __( 'Parent Degree Vertical:' ),
-    'edit_item'         => __( 'Edit Degree Vertical' ),
-    'update_item'       => __( 'Update Degree Vertical' ),
-    'add_new_item'      => __( 'Add New Degree Vertical' ),
-    'new_item_name'     => __( 'New Degree Vertical' ),
-    'menu_name'         => __( 'Degree Verticals' )
+    'name'              => _x( 'Area of Study', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Area of Study', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search Area of Studies' ),
+    'all_items'         => __( 'All Area of Studies' ),
+    'parent_item'       => __( 'Parent Area of Study' ),
+    'parent_item_colon' => __( 'Parent Area of Study:' ),
+    'edit_item'         => __( 'Edit Area of Study' ),
+    'update_item'       => __( 'Update Area of Study' ),
+    'add_new_item'      => __( 'Add New Area of Study' ),
+    'new_item_name'     => __( 'New Area of Study' ),
+    'menu_name'         => __( 'Area of Studies' )
   );
 
   $args = array (
     'labels' => $labels,
     'hierarchical' => true,
-    'rewrite' => array('slug' => 'online-programs/degrees', 'with_front' => false )
+    'rewrite' => array('slug' => 'online-programs/area-of-study', 'with_front' => false )
   );
 
-  register_taxonomy( 'degree_vertical', 'degrees', $args );
+  register_taxonomy( 'area_of_study', 'degrees', $args );
 
 }
-add_action( 'init', 'taxonomies_degree_verticals', 0 );
+add_action( 'init', 'taxonomies_area_of_study', 0 );
 
-function taxonomies_degree_levels() {
+function taxonomies_degree_level() {
   $labels = array(
     'name'              => _x( 'Degree Levels', 'taxonomy general name' ),
     'singular_name'     => _x( 'Degree Level', 'taxonomy singular name' ),
@@ -95,7 +95,7 @@ function taxonomies_degree_levels() {
   register_taxonomy( 'degree_level', 'degrees', $args );
 
 }
-add_action( 'init', 'taxonomies_degree_levels', 0 );
+add_action( 'init', 'taxonomies_degree_level', 0 );
 
 // Landing Page custom post type
 function add_landing_pages() {
