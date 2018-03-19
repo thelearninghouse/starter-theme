@@ -257,10 +257,7 @@ HEADER STYLES
   background-color: #ddd;
   outline-color: white;
   padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  text-transform: uppercase; }
+  padding-bottom: 0.625rem; }
   .info-bar > .wrap {
     display: -webkit-box;
     display: -ms-flexbox;

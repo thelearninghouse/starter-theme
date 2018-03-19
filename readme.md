@@ -4,10 +4,10 @@ This is a base theme to speed up development of all marketing sites. It is desig
 
 ## Features
 
-- Gulp task that compiles Sass, minifies JS, and live-updates the page with BrowserSync
-- Pre-defined templates for standard pages (like MAG sites)
-- Custom post types for Programs, Landing Pages, and Launch Landing Pages
-- General purpose accessible components like accordions and icons
+* Gulp task that compiles Sass, minifies JS, and live-updates the page with BrowserSync
+* Pre-defined templates for standard pages (like MAG sites)
+* Custom post types for Programs, Landing Pages, and Launch Landing Pages
+* General purpose accessible components like accordions and icons
 
 ## Getting Started
 
@@ -23,24 +23,36 @@ This is a base theme to speed up development of all marketing sites. It is desig
 
 ## Theme File Structure
 
-``` bash
+```bash
 starter-theme/
 ├── acf-json // Contains acf field info json files
 ├── inc // Additional theme functionality
 |    ├── components // Functions to build and create shortcodes for separate items
-|    ├── components // Functions to build and create shortcodes for separate items
-|    ├── bones.php // Theme functionality from bones
-|    ├── custom-post-types.php
-|    ├── maintenance-mode.php
-|    └── template-tags.php // custom php functions to generate html for templates
+|    |   ├── accordion.php // Accordion Component
+|    |   ├── cta.php // Blog Post CTA Component
+|    |   ├── page-nav.php // Page Navigation Component
+|    |   └── social-sharing.php // Social Sharing Component
+|    ├── cleanup.php // Theme functionality from bones
+|    ├── custom-post-types.php // Setting up custom post types
+|    ├── enqueue-scripts.php // Enqueueing theme scripts
+|    ├── maintenance-mode.php // Maintenance Alert Setup
+|    ├── setup.php // Theme setup
+|    ├── template-tages.php // custom php functions to generate html for templates
+|    └── theme-support.php // Enable wordpress theme support
 ├── library
 |    ├── css
 |    ├── images  // Images relative to the theme
 |    ├── js  //
 |    |   ├── build // Production Files
-|    |   ├── libs // For javascript libraries i.e. Modernizr
+|    |   ├── components // Modular JS files
+|    |   |     ├── accordion.js
+|    |   |     ├── mobile-nav.js
+|    |   |     └── social-share-buttons.js
+|    |   ├── vendor // Third Party scripts
+|    |   |     ├── fixto.min.js // jQuery plugin for sticky positioning
+|    |   |     ├── mixitiup.min.js // Filtering and sorting plugin
+|    |   |     └── modaal.min.js // WCAG compliant modaal
 |    |   └── scripts.js // Main javascript file
-|    ├── plugins // plugin folders that are critical to the theme
 |    ├── scss
 |    |    ├── base
 |    |    |    ├── _mixins.scss // All mixins
@@ -73,15 +85,14 @@ starter-theme/
 |    |    ├── lp-style.scss // Landing Page stylesheet
 |    |    ├── launch-lp-style.scss // Launch Landing Page stylesheet
 |    |    └── style.scss // Main stylesheet, this gets compiled into ==> style.css
-|    ├── .sassdocrc // Settings for SassDoc
 |    ├── gulpfile.js // gulp build file
-|    ├── package.json // npm details and dependencies
-├── page-templates // custom templates (e.g. MAG site pages)
+|    └── package.json // npm details and dependencies
 ├── template-parts // Reusable sections (e.g. about, related posts, etc)
+|    ├── hero_title.php
+|    └── footer-scrips // Footer scripts for calling libraries on specific pages
+|    |    └── online-degrees.php // Scripts for Online Degrees page (mixitup.js)
 ├── 404.php  // Template for 404 page
-├── archive-degrees.php  // Archive template for Online Degrees
 ├── archive.php  // Archive template for blog posts
-├── favicon.png  // Favicon
 ├── footer-lp.php // Landing Page Footer template
 ├── footer.php // Footer template
 ├── front-page.php  // Homepage template
@@ -89,16 +100,22 @@ starter-theme/
 ├── header-lp.php  // Landing Page Header template
 ├── header.php  // Header template
 ├── index.php  // Blog index template
+├── page-faq.php  // FAQ page template
+├── page-online-degrees.php  // Archive template for Online Degrees
+├── page-get-started.php  // Get Started page template
+├── page-thank-you.php  // Thank You page template
 ├── page.php	  // Page template
 ├── screenshot.png  // Image used for the theme
 ├── sidebar.php  // Sidebar template
 ├── single-degrees.php  // Online Degree page template
+├── single-landing-pages.php  // Landing Page page template
+├── single-lauch-lps.php  // Launch LP's page template
 ├── single.php  // Single blog post template
 └── style.css  // Stylesheet used for theme information
 ```
 
 ## Resources
 
-- [Starter Theme Wiki](https://github.com/thelearninghouse/starter-theme/wiki)
-- [Advanced Custom Fields Docs](https://www.advancedcustomfields.com/resources/)
-- [WordPress Developer Reference](https://developer.wordpress.org/reference/)
+* [Starter Theme Wiki](https://github.com/thelearninghouse/starter-theme/wiki)
+* [Advanced Custom Fields Docs](https://www.advancedcustomfields.com/resources/)
+* [WordPress Developer Reference](https://developer.wordpress.org/reference/)
