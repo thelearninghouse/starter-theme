@@ -1,9 +1,4 @@
 <?php
-/**
- * Enable custom field for mantenance mode flag in the Admin
- *
- * @package _s
- */
 
 // Add Settins Page
 add_action( 'admin_menu', 'mnt_add_admin_menu' );
