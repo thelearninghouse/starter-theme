@@ -32,6 +32,7 @@ require_once( 'inc/enqueue-scripts.php' );
 require_once( 'inc/components/social-sharing.php' );
 require_once( 'inc/components/cta.php' );
 require_once( 'inc/components/accordion.php' );
+require_once( 'inc/components/icon.php' );
 require_once( 'inc/components/page-navi.php' );
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

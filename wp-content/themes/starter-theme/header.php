@@ -64,7 +64,7 @@
 					<div class="wrap">
 						<div class="info-bar__info">
 							<?php $school_phone = get_field('school_phone', 'options'); ?>
-							<a class="info-bar__phone" href="tel:<?php echo str_replace( ['-', '(', ')', ' '], '', $school_phone ); ?>"><strong>Call us today!</strong> <?php echo $school_phone; ?></a>
+							<a class="info-bar__phone" href="tel:<?php echo str_replace( ['-', '(', ')', ' '], '', $school_phone ); ?>"><strong>Call us today!</strong> <?php tlh_icon( 'phone', 'inline', 'Call us today!' ); ?><?php echo $school_phone; ?></a>
 							<?php $next_start_date = tlh_get_next_date();
 								if ( $next_start_date ) { ?>
 									<span class="info-bar__start-date"><strong>Next Start Date:</strong> <?php echo $next_start_date; ?></span>
