@@ -1,21 +1,12 @@
 <?php get_header(); ?>
 
-			<?php get_template_part( 'template-parts/hero_title' ); ?>
+<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
-			<div class="content">
+	<?php if ( function_exists('yoast_breadcrumb') ) {
+			yoast_breadcrumb('<p class="breadcrumbs">','</p>');
+	} ?>
 
-				<div class="wrap">
-
-						<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-
-							<?php if ( function_exists('yoast_breadcrumb') ) {
-									yoast_breadcrumb('<p class="breadcrumbs">','</p>');
-							} ?>
-
-						</main>
-
-				</div>
-
-			</div>
+</main>
 
 <?php get_footer(); ?>

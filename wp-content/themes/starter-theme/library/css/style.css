@@ -1011,6 +1011,22 @@ LAYOUT & GRID STYLES
   max-width: 1440px;
   margin: 0 auto; }
 
+#container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  min-height: 100vh; }
+
+#container > footer {
+  margin-top: auto; }
+
 /***** Basic Layout *****/
 .error404 .main-content,
 .single .main-content,

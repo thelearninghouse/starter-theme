@@ -8,6 +8,18 @@ LAYOUT & GRID STYLES
 	margin: 0 auto;
 }
 
+// anchor footer to bottom on short pages
+#container {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	min-height: 100vh;
+}
+
+#container > footer {
+	margin-top: auto;
+}
+
 /***** Basic Layout *****/
 
 .error404,

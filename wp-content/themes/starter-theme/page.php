@@ -1,32 +1,22 @@
 <?php get_header(); ?>
 
+<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
-	<div class="content">
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<div class="wrap">
+	<article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-				<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+		<section class="page-content" itemprop="articleBody">
+			<?php the_content(); ?>
+		</section> <?php // end article section ?>
 
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+	</article>
 
-					<article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<?php endwhile; endif; ?>
 
-						<section class="page-content" itemprop="articleBody">
-							<?php the_content(); ?>
-						</section> <?php // end article section ?>
+	<?php get_sidebar(); ?>
 
-					</article>
-
-					<?php endwhile; endif; ?>
-
-					<?php get_sidebar(); ?>
-
-				</main>
-
-
-		</div>
-
-	</div>
+</main>
 
 <?php get_footer(); ?>
