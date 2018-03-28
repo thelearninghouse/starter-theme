@@ -11,7 +11,7 @@
   		wp_register_script( 'tlh-forms', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
 
   		// adding scripts file in the footer
-  		wp_register_script( 'tlh-js', get_stylesheet_directory_uri() . '/library/js/build/production.min.js', array( 'jquery' ), '', true );
+  		wp_register_script( 'tlh-js', get_stylesheet_directory_uri() . '/public/js/scripts.min.js', array( 'jquery' ), '', true );
 
   		// enqueue styles and scripts
   		wp_enqueue_script( 'tlh-forms' );
