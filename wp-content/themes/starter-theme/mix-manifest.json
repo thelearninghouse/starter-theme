@@ -1,4 +1,7 @@
 {
     "/public/js/scripts.js": "/public/js/scripts.js",
-    "/public/css/style.css": "/public/css/style.css"
+    "/public/css/style.css": "/public/css/style.css",
+    "/public/css/critical-home.css": "/public/css/critical-home.css",
+    "/public/css/launch-lp-style.css": "/public/css/launch-lp-style.css",
+    "/public/css/lp-style.css": "/public/css/lp-style.css"
 }
