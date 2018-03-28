@@ -1,0 +1,41 @@
+/******************************************************************
+Table Styles
+******************************************************************/
+
+table {
+	width: 100%;
+	margin-bottom: 1.5em;
+
+	caption {
+		margin: 0 0 7px;
+		font-size: 0.75em;
+		color: gray;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+}
+
+th,
+td {
+    padding: 10px 20px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background: #eee;
+}
+
+tr {
+
+	&:nth-child(even) {
+		background-color: lightgray;
+	}
+}
+
+td {
+	color: #666;
+}
+
+th {
+	background-color: lightgray;
+}

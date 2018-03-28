@@ -1,0 +1,30 @@
+/******************************************************************
+READING PROGRESS INDICATOR STYLES
+http://codepen.io/pankajparashar/pen/towxF
+******************************************************************/
+
+progress {
+  width: 100%;
+  position: fixed;
+  height: 8px;
+  top: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+  color: $link-color; 
+  z-index: 999;
+}
+
+progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+progress::-webkit-progress-value {
+  background-color: $link-color;
+}
+
+progress::-moz-progress-bar {
+  background-color: $link-color;
+}

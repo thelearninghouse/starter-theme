@@ -1,0 +1,16 @@
+.hero-title {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	text-align: center;
+	color: white;
+	background-size: cover;
+	background-position: center;
+	background-color: darkgray;
+
+	// meta styling for blog posts
+	span {
+		display: block;
+		font-size: 0.4em;
+		margin-top: 1rem;
+	}
+}
