@@ -232,7 +232,6 @@ button:focus {
 HEADER STYLES
 *********************/
 .header__logo {
-  margin: 0.5rem 0;
   max-width: 12.5rem; }
   @media screen and (min-width: 768px) {
     .header__logo {
@@ -251,7 +250,9 @@ HEADER STYLES
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem; }
 
 .info-bar {
   background-color: #ddd;
@@ -553,24 +554,14 @@ LAYOUT & GRID STYLES
   margin-top: auto; }
 
 /***** Basic Layout *****/
-.error404 .main-content,
-.single .main-content,
-.page .main-content {
-  padding-top: 2rem;
-  padding-bottom: 2rem; }
-
 @media screen and (min-width: 768px) {
-  .error404 .main-content,
-  .single .main-content,
-  .page .main-content {
+  .page-wrapper {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 2rem; }
-    .error404 .main-content article,
-    .single .main-content article,
-    .page .main-content article {
+    .page-wrapper .page-content {
       -ms-grid-column-span: 8;
       -ms-grid-column: 1;
           grid-column: 1 / span 8;
@@ -579,13 +570,9 @@ LAYOUT & GRID STYLES
               order: 1;
       margin-right: 2rem; }
       @supports ((display: -ms-grid) or (display: grid)) {
-        .error404 .main-content article,
-        .single .main-content article,
-        .page .main-content article {
+        .page-wrapper .page-content {
           margin-right: 0; } }
-    .error404 .main-content .sidebar,
-    .single .main-content .sidebar,
-    .page .main-content .sidebar {
+    .page-wrapper .sidebar {
       -ms-grid-column-span: 4;
       -ms-grid-column: 9;
           grid-column: 9 / span 4;

@@ -22,34 +22,25 @@ LAYOUT & GRID STYLES
 
 /***** Basic Layout *****/
 
-.error404,
-.single,
-.page {
-	.main-content {
-		padding-top: 2rem;
-		padding-bottom: 2rem;
-	}
+@include mobilefirst($bp-med) {
+	.page-wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-column-gap: 2rem;
 
-	@include mobilefirst($bp-med) {
-		.main-content {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-			grid-column-gap: 2rem;
+		.page-content {
+			grid-column: 1 / span 8;
+			order: 1;
+			margin-right: 2rem;
 
-			article {
-				grid-column: 1 / span 8;
-				order: 1;
-				margin-right: 2rem;
-
-				@supports (display: grid) {
-					margin-right: 0;
-				}
+			@supports (display: grid) {
+				margin-right: 0;
 			}
+		}
 
-			.sidebar {
-				grid-column: 9 / span 4;
-				order: 2;
-			}
+		.sidebar {
+			grid-column: 9 / span 4;
+			order: 2;
 		}
 	}
 }

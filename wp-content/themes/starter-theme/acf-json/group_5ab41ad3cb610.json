@@ -1,0 +1,226 @@
+{
+    "key": "group_5ab41ad3cb610",
+    "title": "Program Course Information",
+    "fields": [
+        {
+            "key": "field_5ab41ae059a62",
+            "label": "Courses",
+            "name": "program_courses",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "5ab41b10ae861": {
+                    "key": "5ab41b10ae861",
+                    "name": "course_list",
+                    "label": "Course List",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ab41b2959a63",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5ab41b6d59a66",
+                            "label": "Courses",
+                            "name": "courses",
+                            "type": "flexible_content",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layouts": {
+                                "5ab41b812bbd5": {
+                                    "key": "5ab41b812bbd5",
+                                    "name": "course",
+                                    "label": "Course",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ab41b9659a67",
+                                            "label": "Course",
+                                            "name": "course",
+                                            "type": "post_object",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [
+                                                "courses"
+                                            ],
+                                            "taxonomy": [],
+                                            "allow_null": 0,
+                                            "multiple": 0,
+                                            "return_format": "object",
+                                            "ui": 1
+                                        },
+                                        {
+                                            "key": "field_5ab41c6059a68",
+                                            "label": "Notes",
+                                            "name": "notes",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                },
+                                "5ab41c9f59a6a": {
+                                    "key": "5ab41c9f59a6a",
+                                    "name": "elective",
+                                    "label": "Elective",
+                                    "display": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ab41cb759a6b",
+                                            "label": "Course Options",
+                                            "name": "course_options",
+                                            "type": "relationship",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [
+                                                "courses"
+                                            ],
+                                            "taxonomy": [],
+                                            "filters": [
+                                                "search",
+                                                "taxonomy"
+                                            ],
+                                            "elements": "",
+                                            "min": "",
+                                            "max": "",
+                                            "return_format": "object"
+                                        },
+                                        {
+                                            "key": "field_5ab41cfb59a6c",
+                                            "label": "Notes",
+                                            "name": "notes",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        }
+                                    ],
+                                    "min": "",
+                                    "max": ""
+                                }
+                            },
+                            "button_label": "Add Row",
+                            "min": "",
+                            "max": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5ab41b2c59a64": {
+                    "key": "5ab41b2c59a64",
+                    "name": "wysiwyg",
+                    "label": "Wysiwyg",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ab41b3859a65",
+                            "label": "Content",
+                            "name": "content",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add Row",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "degrees"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1521753590
+}

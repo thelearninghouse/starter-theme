@@ -4,7 +4,6 @@ HEADER STYLES
 
 .header {
 	&__logo {
-		margin: 0.5rem 0;
 		max-width: rem(200);
 
 		@include mobilefirst($bp-med) {
@@ -17,6 +16,8 @@ HEADER STYLES
 		flex-flow: row nowrap;
 		justify-content: space-between;
 		align-items: center;
+		padding-top: rem(20);
+		padding-bottom: rem(20);
 	}
 
 	&__button {
