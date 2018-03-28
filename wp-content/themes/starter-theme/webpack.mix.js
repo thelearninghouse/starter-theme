@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 
 mix.js('resources/js/scripts.js', 'public/js')
 	.sass('resources/scss/style.scss', 'public/css')
@@ -13,7 +13,6 @@ mix.js('resources/js/scripts.js', 'public/js')
 
 mix.copyDirectory('resources/images', 'public/images');
 mix.browserSync({
-	// https: true,
 	proxy: 'starter2.dev',
 	files: [
 		'**/*.php',
@@ -21,4 +20,3 @@ mix.browserSync({
 		'public/js/**/*.js'
 	]
 })
-// files: ['./css/*.css', './js/build/production.min.js']
