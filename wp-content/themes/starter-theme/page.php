@@ -7,18 +7,14 @@
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-			<article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-
-				<section class="page-content" itemprop="articleBody">
+				<section class="page-content">
 					<?php the_content(); ?>
 				</section> <?php // end article section ?>
-
-			</article>
 
 			<?php endwhile; endif; ?>
 
 			<?php get_sidebar(); ?>
-			
+
 		</div>
 
 </main>
