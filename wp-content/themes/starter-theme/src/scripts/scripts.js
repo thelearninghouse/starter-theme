@@ -21,8 +21,8 @@ if (VlhAppEl) {
 			showModal: false
 		},
 		components: {
-			AsyncComponent: () => import('./../VlhLibrary/AsyncComponent.vue'),
-	    Modal: () => import('./../VlhLibrary/Modal.vue')
+			AsyncComponent: () => import('@/VlhLibrary/AsyncComponent.vue'),
+	    Modal: () => import('@/VlhLibrary/Modal.vue')
 	  }
 	})
 }

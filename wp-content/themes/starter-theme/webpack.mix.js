@@ -1,6 +1,8 @@
 const mix = require('laravel-mix');
 const path = require('path');
-
+let ImageMinPlugin = require('imagemin-webpack-plugin').default;
+let CopyWebpackPlugin = require('copy-webpack-plugin');
+const Theme = require('./theme.config.js')
 
 /* Files to be compiled and there compiled location
 *****************************/
@@ -42,19 +44,42 @@ mix.extract( ['vue'] );
 
 /* Copies images to correct folder for dev and building for production
 *****************************/
-mix.copyDirectory('src/images', 'public/images');
+// mix.copyDirectory('src/images', 'public/images');
 
 
 /* Copies images to correct folder for dev and building for production
 *****************************/
 mix.copy("src/fonts","public/fonts")
 
+
 /* This puts files in correct directory
 *****************************/
 mix.webpackConfig({
-    output: {
-				path: path.resolve(__dirname, 'public'),
-				publicPath: '/wp-content/themes/starter-theme/public/',
-        chunkFilename: 'js/[name].[chunkhash].js',
-    },
+	resolve: {
+    extensions: ['.js', '.styl'],
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
+  },
+	output: {
+			path: path.resolve(__dirname, 'public'),
+			publicPath: `/wp-content/themes/${Theme.directoryName}/public/`,
+	    chunkFilename: 'js/[name].[chunkhash].js',
+	},
+	plugins: [
+	    new CopyWebpackPlugin([{
+	        from: 'src/images',
+	        to: 'images'
+	    }]),
+	    new ImageMinPlugin([{
+	        test: /\.(jpe?g|png|gif|svg)$/i
+	    }])
+	]
+});
+
+
+/* Allows dynamic loading of JS files
+*****************************/
+mix.babelConfig({
+	"plugins": [ "syntax-dynamic-import" ]
 });
