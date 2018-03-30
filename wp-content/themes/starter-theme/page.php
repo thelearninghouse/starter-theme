@@ -3,19 +3,23 @@
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<div class="wrap page-wrapper">
 
-	<article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<section class="page-content" itemprop="articleBody">
-			<?php the_content(); ?>
-		</section> <?php // end article section ?>
+			<article <?php post_class(); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-	</article>
+				<section class="page-content" itemprop="articleBody">
+					<?php the_content(); ?>
+				</section> <?php // end article section ?>
 
-	<?php endwhile; endif; ?>
+			</article>
 
-	<?php get_sidebar(); ?>
+			<?php endwhile; endif; ?>
+
+			<?php get_sidebar(); ?>
+			
+		</div>
 
 </main>
 
