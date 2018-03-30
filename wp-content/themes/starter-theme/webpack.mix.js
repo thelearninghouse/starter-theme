@@ -18,7 +18,7 @@ mix.js('src/scripts/scripts.js', 'js')
 /* Sets up development environment
 *****************************/
 mix.browserSync({
-	proxy: 'starter2.dev',
+	proxy: process.env.DEV_URL,
 	files: [
 		'**/*.php',
 		'public/css/*.css',
@@ -44,6 +44,10 @@ mix.extract( ['vue'] );
 *****************************/
 mix.copyDirectory('src/images', 'public/images');
 
+
+/* Copies images to correct folder for dev and building for production
+*****************************/
+mix.copy("src/fonts","public/fonts")
 
 /* This puts files in correct directory
 *****************************/
