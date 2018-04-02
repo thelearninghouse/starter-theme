@@ -91,11 +91,20 @@
 			<?php the_field('custom_css'); ?>
 		</style>
 
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-<?php the_field('gtm_id', 'options'); ?>');</script>
+		<?php $gtm_id = get_field('gtm_id', 'options');
+		if ( $gtm_id ) { ?>
+			<!-- Google Tag Manager -->
+			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-<?php the_field('gtm_id', 'options'); ?>');</script>
+			<!-- End Google Tag Manager -->
+		<?php } ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
-	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<?php the_field('gtm_id', 'options'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		<?php if ( $gtm_id ) { ?>
+			<!-- Google Tag Manager (noscript) -->
+			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<?php the_field('gtm_id', 'options'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+			<!-- End Google Tag Manager (noscript) -->
+		<?php } ?>
 
 		<div class="container">
 
@@ -211,29 +220,6 @@
 </script>
 
 <?php wp_footer(); ?>
-
-<script>
-	// Scroll to specific values
-	// scrollTo is the same
-	window.scroll({
-	  top: 2500,
-	  left: 0,
-	  behavior: 'smooth'
-	});
-
-	// Scroll certain amounts from current position
-	window.scrollBy({
-	  top: 100, // could be negative value
-	  left: 0,
-	  behavior: 'smooth'
-	});
-
-	// Scroll to a certain element
-	document.querySelector('.hello').scrollIntoView({
-	  behavior: 'smooth'
-	});
-</script>
-
 
 </body>
 

@@ -16,22 +16,22 @@ $bp-lg: 1040px;
 /// @example
 ///     @include mobilefirst($bp-small) { content here }
 @mixin mobilefirst($res) {
-  @media screen and (min-width: $res) {
-    @content;
-  }
+	@media screen and (min-width: $res) {
+		@content;
+	}
 }
 
 // Resets
 
 body {
-  margin: 0;
+	margin: 0;
 }
 
 button,
 input,
 select,
 textarea {
-  font: inherit;
+	font: inherit;
 }
 
 /********************
@@ -45,7 +45,15 @@ LAYOUT & GRID STYLES
 }
 
 section {
-	padding: 5rem 0;
+	padding: 2rem 0;
+
+	@include mobilefirst($bp-med) {
+		padding: 5rem 0;
+	}
+}
+
+#content-area h1 {
+	margin-top: 0;
 }
 
 /********************
@@ -93,8 +101,8 @@ ul {
 	font-size: 1.2rem;
 	padding: 1.2rem 3.6rem;
 	text-decoration: none;
-	color: #FFFFFF;
-	transition: all .2s ease-in-out;
+	color: #ffffff;
+	transition: all 0.2s ease-in-out;
 
 	&.dark {
 		color: #222;
@@ -106,8 +114,8 @@ ul {
 }
 
 .icon {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 	fill: currentColor;
 }
 
@@ -116,14 +124,14 @@ ul {
 	align-items: center;
 	justify-content: center;
 	align-self: center;
-  position: relative;
-  height: 1em;
-  width: 1em;
+	position: relative;
+	height: 1em;
+	width: 1em;
 }
 
 .icon.inline > svg {
 	height: 1em;
-  width: 1em;
+	width: 1em;
 }
 
 .icon.inline > svg {
@@ -156,29 +164,34 @@ HEADER
 	left: 0;
 	bottom: 0;
 	right: 0;
-	background-image: linear-gradient(0deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.00) 67%, rgba(0,0,0,0.35) 100%);
+	background-image: linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(0, 0, 0, 0) 67%,
+		rgba(0, 0, 0, 0.35) 100%
+	);
 }
 
 .school-info {
-  position: relative;
+	position: relative;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
 
-  @include mobilefirst($bp-med) {
+	@include mobilefirst($bp-med) {
 		flex-flow: row nowrap;
 		justify-content: space-between;
 	}
 
-  p {
+	p {
 		margin-bottom: 0;
 	}
 }
 
 .logo {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 .logo img {
@@ -190,9 +203,9 @@ HEADER
 	font-weight: bold;
 	font-size: 1.2rem;
 
-  @include mobilefirst($bp-med) {
+	@include mobilefirst($bp-med) {
 		margin-top: 0;
-    font-size: 1.8rem;
+		font-size: 1.8rem;
 	}
 
 	a {
@@ -221,15 +234,15 @@ MAIN CONTENT AREA
 }
 
 #form {
-	background-color: rgba(0,0,0,.6);
+	background-color: rgba(0, 0, 0, 0.6);
 	border-radius: 10px;
 	padding: 32px;
 	margin: 16px auto;
-	color: #FFFFFF;
+	color: #ffffff;
 
-  &.dark {
-    color: #222;
-  }
+	&.dark {
+		color: #222;
+	}
 
 	h2 {
 		text-align: center;
@@ -237,62 +250,64 @@ MAIN CONTENT AREA
 	}
 
 	h2 + p {
-		font-size: .9rem;
+		font-size: 0.9rem;
 		opacity: 0.9;
 		text-align: center;
-		margin: .5rem 0 1rem;
-    color: #fff;
+		margin: 0.5rem 0 1rem;
+		color: #fff;
 
-    &.dark {
-      color: #333;
-    }
+		&.dark {
+			color: #333;
+		}
 	}
 
-	ol, ul {
+	ol,
+	ul {
 		list-style-type: none;
 		margin: 0 auto;
 		padding: 0;
-    overflow: hidden;
+		overflow: hidden;
 	}
 
 	fieldset {
 		border: none;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
+		padding: 0;
+		margin: 0;
+		overflow-x: hidden;
 	}
 
 	label {
 		display: block;
-		font-size: .7rem;
-		margin-left: .7rem;
+		font-size: 0.7rem;
+		margin-left: 0.7rem;
 	}
 
-	input, select {
+	input,
+	select {
 		display: block;
-		margin: .3rem 0 .75rem;
+		margin: 0.3rem 0 0.75rem;
 		padding: 10px;
 		width: 100%;
-		border: #FFFFFF 3px solid;
+		border: #ffffff 3px solid;
 	}
 
-  input.error {
-    border-color: tomato;
-  }
+	input.error {
+		border-color: tomato;
+	}
 
 	select {
 		width: 98%;
 	}
 
 	input[type="submit"] {
-		margin: 1rem auto .5rem;
+		margin: 1rem auto 0.5rem;
 		width: 300px;
 		font-weight: bold;
-		background: #FFFFFF;
+		background: #ffffff;
 		color: #000000;
-		transition: all .2s ease-in-out;
-    cursor: pointer;
-    border: none;
+		transition: all 0.2s ease-in-out;
+		cursor: pointer;
+		border: none;
 
 		&:hover {
 			transform: scale(1.1);
@@ -301,14 +316,14 @@ MAIN CONTENT AREA
 
 	input[type="hidden"],
 	.elp_hidden,
-  .formError,
+	.formError,
 	.formValid,
 	legend {
 		display: none;
 	}
 
 	.legal-text {
-    color: inherit;
+		color: inherit;
 		opacity: 0.9;
 		width: 70%;
 		max-width: 700px;
@@ -317,7 +332,8 @@ MAIN CONTENT AREA
 	}
 
 	@include mobilefirst($bp-med) {
-		ol, ul {
+		ol,
+		ul {
 			max-width: 800px;
 			display: flex;
 			flex-wrap: wrap;
@@ -328,14 +344,14 @@ MAIN CONTENT AREA
 				width: 50%;
 			}
 
-      input, select {
-        margin: .3rem .5rem .75rem;
-        width: 85%;
-      }
+			input,
+			select {
+				margin: 0.3rem 0.5rem 0.75rem;
+				width: 85%;
+			}
 		}
 	}
 }
-
 
 #program-information {
 	padding: 3rem 0 0;
@@ -350,21 +366,21 @@ MAIN CONTENT AREA
 	@include mobilefirst($bp-med) {
 		flex: 2;
 		padding: 0 1rem 0 0;
-		}
+	}
 }
 
 #programs-list {
-	background-color: #EBEBEB;
+	background-color: #ebebeb;
 	padding: 24px;
 
 	@include mobilefirst($bp-med) {
 		flex: 1;
-		}
+	}
 
 	h3 {
 		padding-bottom: 1.4rem;
 		margin-top: 0;
-		border-bottom: 1px solid #8A8D8F;
+		border-bottom: 1px solid #8a8d8f;
 		margin-bottom: 2rem;
 	}
 
@@ -394,34 +410,33 @@ MAIN CONTENT AREA
 			flex-direction: row;
 			justify-content: space-between;
 			flex-wrap: wrap;
-			}
+		}
 
 		.value-prop {
-
 			@include mobilefirst($bp-med) {
 				width: 48%;
 				flex-grow: 1;
-        margin: 1%;
+				margin: 1%;
 			}
 
 			@include mobilefirst($bp-lg) {
-        width: auto;
+				width: auto;
 				flex: 1;
 			}
 
 			.value-prop__inner {
 				padding: 1rem;
-        margin: .5rem;
+				margin: 0.5rem;
 				text-align: center;
 
 				h3 {
 					font-size: 1.3rem;
-					color: #FFFFFF;
+					color: #ffffff;
 				}
 
 				p {
-				color: #BBBBBB;
-				font-size: .9rem;
+					color: #bbbbbb;
+					font-size: 0.9rem;
 				}
 
 				&.dark {
@@ -439,7 +454,7 @@ MAIN CONTENT AREA
 }
 
 #about {
-	color: #FFFFFF;
+	color: #ffffff;
 
 	.wrap {
 		@include mobilefirst($bp-med) {
@@ -450,25 +465,24 @@ MAIN CONTENT AREA
 	}
 
 	h2 {
-		color: #EAEAEA;
+		color: #eaeaea;
 		text-align: center;
 	}
 
 	p {
-		color: #EBEBEB;
+		color: #ebebeb;
 	}
 
-  &.dark {
-    h2 {
-  		color: #222;
-  		text-align: center;
-  	}
+	&.dark {
+		h2 {
+			color: #222;
+			text-align: center;
+		}
 
-  	p {
-  		color: #444;
-  	}
+		p {
+			color: #444;
+		}
 	}
-
 }
 
 #cta {
@@ -485,7 +499,7 @@ MAIN CONTENT AREA
 }
 
 #accreditation {
-  background-color: #EBEBEB;
+	background-color: #ebebeb;
 
 	@include mobilefirst($bp-med) {
 		.wrap {
@@ -504,12 +518,11 @@ MAIN CONTENT AREA
 		.accred_images {
 			flex: 1;
 		}
-
 	}
 
 	h3 {
 		padding-bottom: 1.2rem;
-		border-bottom: 1px solid #A8ABAC;
+		border-bottom: 1px solid #a8abac;
 	}
 
 	.accred_images {
@@ -518,15 +531,15 @@ MAIN CONTENT AREA
 		justify-content: space-around;
 		align-items: center;
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
 
 		img {
 			max-width: 280px;
-      height: auto;
+			height: auto;
 			padding: 1rem;
 		}
 	}
@@ -534,18 +547,18 @@ MAIN CONTENT AREA
 
 .footer {
 	background-color: #444444;
-	padding: .8rem 0;
+	padding: 0.8rem 0;
 
 	p {
 		text-align: center;
-		font-size: .8rem;
+		font-size: 0.8rem;
 		line-height: 1.4;
-		margin: .4rem 0;
-		color: #AAAAAA;
+		margin: 0.4rem 0;
+		color: #aaaaaa;
 	}
 
 	a {
 		text-decoration: none;
-		color: #CCCCCC;
+		color: #cccccc;
 	}
 }

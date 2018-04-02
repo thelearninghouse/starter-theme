@@ -1,0 +1,143 @@
+/*********************
+HEADER STYLES
+*********************/
+
+.header-mag {
+	background-color: $blue--dark;
+	color: white;
+	padding-top: rem(20);
+	padding-bottom: rem(10);
+
+	@include mobilefirst($bp-med) {
+		padding-top: rem(30);
+		padding-bottom: rem(30);
+	}
+
+	:focus {
+		outline-color: white;
+	}
+
+	a,
+	a:hover,
+	a:active,
+	a:focus {
+		color: inherit;
+	}
+
+	> .wrap-lg {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: center;
+
+		@include mobilefirst($bp-med) {
+			flex-flow: row nowrap;
+		}
+	}
+
+	&__logo {
+		max-width: rem(300);
+		display: block;
+
+		@include mobilefirst($bp-med) {
+			max-width: rem(400);
+		}
+
+		img {
+			display: block;
+		}
+	}
+
+	&__nav {
+		width: 100%;
+		margin-top: rem(20);
+
+		@include mobilefirst($bp-med) {
+			width: auto;
+			margin-top: 0;
+			margin-left: rem(20);
+		}
+
+		.nav {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-flow: row nowrap;
+
+			li {
+				display: block;
+				text-align: center;
+				width: 100%;
+
+				@include mobilefirst($bp-med) {
+					width: auto;
+				}
+
+				&:not(:first-of-type) {
+					margin-left: rem(10);
+
+					@include mobilefirst($bp-med) {
+						margin-left: rem(20);
+					}
+				}
+
+				a {
+					position: relative;
+					font-weight: 600;
+					letter-spacing: 1.6px;
+					font-size: rem(13);
+					display: block;
+					background-color: rgba(255, 255, 255, 0.05);
+					text-decoration: none;
+					padding: rem($menu-item-padding) rem(5);
+
+					@include mobilefirst($bp-med) {
+						background: none;
+						font-size: inherit;
+						padding: rem($menu-item-padding);
+					}
+
+					&:hover {
+						@include menu-underline();
+					}
+				}
+			}
+
+			li.current-menu-item a {
+				@include menu-underline();
+				&::after {
+					background-color: white;
+				}
+			}
+		}
+	}
+
+	&__phone {
+		font-family: $serif;
+		text-decoration: none;
+		font-size: rem(24);
+		margin-top: rem(10);
+
+		@include mobilefirst($bp-med) {
+			margin-top: 0;
+			margin-left: rem(20);
+		}
+	}
+
+	.get-started-button {
+		position: fixed;
+		z-index: 10;
+		bottom: rem(15);
+		right: rem(15);
+		text-align: center;
+
+		@include mobilefirst($bp-med) {
+			display: none;
+		}
+
+		.icon {
+			margin-left: rem(5);
+		}
+	}
+}

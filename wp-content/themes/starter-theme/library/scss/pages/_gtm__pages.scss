@@ -1,0 +1,47 @@
+.header-gtm {
+	margin-top: rem(30);
+	margin-bottom: rem(30);
+}
+
+.header-gtm__logo {
+	display: block;
+	max-width: 300px;
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.page-template-gtm__thank-you {
+	@include responsivebackground("banner_bg-night-1-768x513.jpg", "banner_bg-night-1-1024x683.jpg", "banner_bg-night-1.jpg");
+	background-size: cover;
+	background-blend-mode: multiply;
+	background-color: #67768d;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+	color: white;
+
+	main {
+		max-width: 700px;
+	}
+
+	.content {
+		margin-top: 5rem;
+		margin-bottom: 5rem;
+	}
+
+	.header__nav,
+	.header__button {
+		display: none;
+	}
+
+	.footer-gtm a {
+		color: white;
+
+		&:hover {
+			color: white;
+			text-decoration: none;
+		}
+	}
+}

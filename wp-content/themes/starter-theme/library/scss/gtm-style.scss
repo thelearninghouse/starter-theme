@@ -1,0 +1,18 @@
+/******************************************************************
+GTM Pages Stylesheet
+******************************************************************/
+
+@import "base/variables";
+@import "base/mixins";
+
+@import "generic/base";
+@import "generic/typography";
+@import "generic/links";
+
+@import "modules/layout";
+
+@import "pages/gtm__pages";
+
+@media print {
+	@import "modules/print";
+}
