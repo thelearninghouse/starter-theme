@@ -15,11 +15,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
-		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/public/images/apple-touch-icon.png">
 		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
 		<?php // or, set /favicon.ico for IE10 win ?>
 		<meta name="msapplication-TileColor" content="<?php the_field('color_1', 'options'); ?>">
-		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
+		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/public/images/win8-tile-icon.png">
     <meta name="theme-color" content="<?php the_field('color_1', 'options'); ?>">
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
@@ -38,7 +38,7 @@
 			}
 		?>
 		<link href="<?php echo $font_url ?>" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/library/css/launch-lp-style.min.css">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/public/css/launch-lp-style.css">
 
 		<?php // Load custom CSS for this page
 			$color_1 = get_field('color_1', 'options'); // String: '#0000000'

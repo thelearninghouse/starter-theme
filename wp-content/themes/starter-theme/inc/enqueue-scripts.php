@@ -10,8 +10,12 @@
   		// form validation and tracking script
   		wp_register_script( 'tlh-forms', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
 
+
+        // adding scripts file in the footer
+      wp_register_script( 'manifest', get_stylesheet_directory_uri() . '/public/js/manifest.js', array( 'jquery' ), '', true );
+      wp_register_script( 'vendor', get_stylesheet_directory_uri() . '/public/js/vendor.js', array( 'manifest', 'jquery' ), '', true );
   		// adding scripts file in the footer
-  		wp_register_script( 'tlh-js', get_stylesheet_directory_uri() . '/library/js/build/production.min.js', array( 'jquery' ), '', true );
+  		wp_register_script( 'tlh-js', get_stylesheet_directory_uri() . '/public/js/scripts.js', array( 'manifest', 'vendor', 'jquery' ), '', true );
 
   		// enqueue styles and scripts
   		wp_enqueue_script( 'tlh-forms' );
@@ -30,7 +34,7 @@
   // jQuery Conflict Fix
   function enqueue_jquery_version() {
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, false, false );
+    wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js', false, false, false );
     wp_enqueue_script( 'jquery' );
   }
   add_action('wp_enqueue_scripts', 'enqueue_jquery_version');

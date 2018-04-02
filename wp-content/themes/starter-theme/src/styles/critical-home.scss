@@ -1,0 +1,16 @@
+/******************************************************************
+Critical CSS for the Homepage
+Only include styles for above the fold.
+******************************************************************/
+
+@import "base/variables";
+@import "base/mixins";
+@import "generic/base";
+@import "generic/typography";
+@import "modules/buttons";
+@import "modules/hero-title";
+@import "modules/clearfix";
+@import "modules/header";
+@import "modules/nav";
+@import "modules/layout";
+@import "pages/page";

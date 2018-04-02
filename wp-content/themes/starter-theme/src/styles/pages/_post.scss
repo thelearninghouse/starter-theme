@@ -1,0 +1,97 @@
+/*********************
+POST STYLES
+*********************/
+
+/* post meta */
+.post-meta {
+	color: gray;
+	font-style: italic;
+	margin: 0;
+}
+
+.entry-meta {
+	margin: 0;
+}
+
+/* entry content */
+.post-content {
+	padding: 1.5em 0;
+
+	p {
+		margin: 0 0 1.5em;
+	}
+
+	blockquote {
+		margin: 0 0 1.5em 0.75em;
+		padding: 0 0 0 0.75em;
+		border-left: 3px solid tomato;
+		font-style: italic;
+		color: gray;
+	}
+
+	dd {
+		margin-left: 0;
+		font-size: 0.9em;
+		color: #787878;
+		margin-bottom: 1.5em;
+	}
+
+	img {
+		margin: 0 0 1.5em 0;
+		max-width: 100%;
+		height: auto;
+	}
+
+	pre {
+		background: black;
+		color: lightgray;
+		font-size: 0.9em;
+		padding: 1.5em;
+		margin: 0 0 1.5em;
+		border-radius: 3px;
+	}
+} /* end .entry-content */
+
+// the tag output
+.tags {
+	margin: 0;
+}
+
+/***** Call To Action Box Styling *****/
+
+.cta-blog {
+	background: lightgray;
+	border-top: 6px solid $primary-color;
+	padding: 2em;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+	overflow: hidden;
+	text-align: center;
+
+	@include mobilefirst($bp-med) {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	h2 {
+		margin-top: 0;
+		color: white;
+	}
+
+	img {
+		max-width: 30%;
+		height: auto;
+		margin-right: 5%;
+		display: none !important;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	.button {
+		@include button();
+		margin-top: 1em;
+	}
+}
