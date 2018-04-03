@@ -44,11 +44,6 @@ mix.extract( ['vue'] );
 
 /* Copies images to correct folder for dev and building for production
 *****************************/
-// mix.copyDirectory('src/images', 'public/images');
-
-
-/* Copies images to correct folder for dev and building for production
-*****************************/
 mix.copy("src/fonts","public/fonts")
 
 
