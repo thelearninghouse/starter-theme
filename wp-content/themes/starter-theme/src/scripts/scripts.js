@@ -1,3 +1,6 @@
+import initializeAccordions from '@/scripts/components/accordion'
+initializeAccordions();
+
 jQuery(document).ready(function($) {
 	// Remove Select menu error classs on load
 	$(window).load(function() {

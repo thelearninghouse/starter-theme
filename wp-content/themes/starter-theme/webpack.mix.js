@@ -66,9 +66,9 @@ mix.webpackConfig({
 	        from: 'src/images',
 	        to: 'images'
 	    }]),
-	    new ImageMinPlugin([{
-	        test: /\.(jpe?g|png|gif|svg)$/i
-	    }])
+	    // new ImageMinPlugin([{
+	    //     test: /\.(jpe?g|png|gif|svg)$/i
+	    // }])
 	]
 });
 
