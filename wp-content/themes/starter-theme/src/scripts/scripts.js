@@ -1,5 +1,13 @@
-import initializeAccordions from '@/scripts/components/accordion'
-initializeAccordions();
+function handleAccordions() {
+	if ( document.querySelector(".accordion") !== null ) {
+		return import(/* webpackChunkName: "accordion" */ '@/scripts/components/accordion')
+		.then(initializeAccordions => {
+			initializeAccordions.default();
+		})
+	}
+}
+
+handleAccordions();
 
 jQuery(document).ready(function($) {
 	// Remove Select menu error classs on load
