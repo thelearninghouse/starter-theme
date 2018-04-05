@@ -265,7 +265,6 @@ MAIN CONTENT AREA
               transform: scale(1.1); }
   #form input[type="hidden"],
   #form .elp_hidden,
-  #form .formError,
   #form .formValid,
   #form legend {
     display: none; }
