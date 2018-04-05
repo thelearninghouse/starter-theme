@@ -1,0 +1,36 @@
+{
+  "name": "starter-theme",
+  "version": "1.0.1",
+  "description": "A Lightweight Wordpress Development Theme",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run run:dev",
+    "build": "npm run production",
+    "predev": "rm -rf ./public/js/*.js",
+    "prebuild": "rm -rf ./public/js/*.js",
+    "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --config=$npm_package_config_mix",
+    "production": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "run:dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=$npm_package_config_mix"
+  },
+  "config": {
+    "mix": "node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "browser-sync": "^2.23.6",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "copy-webpack-plugin": "^4.5.1",
+    "cross-env": "^5.1.4",
+    "glob-all": "^3.1.0",
+    "imagemin-webpack-plugin": "^2.1.1",
+    "laravel-mix": "^2.1.11",
+    "laravel-mix-purgecss": "^2.0.0"
+  },
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
+}

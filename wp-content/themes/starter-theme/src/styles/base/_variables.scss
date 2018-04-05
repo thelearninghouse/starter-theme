@@ -1,0 +1,38 @@
+// --- Sizes ---
+// Browser Context (this is needed for the px to em's mixin)
+$browser-context: 16; // Default
+
+// Responsive Breakpoints
+$bp-sm: 481px;
+$bp-med: 768px;
+$bp-lg: 1040px;
+$bp-wrap: 1440px;
+
+// Content Wrap
+$wrap-sm: 700px;
+$wrap-md: 940px;
+$wrap-lg: 1400px;
+
+// --- Colors ---
+$primary-color: 		#C41331;
+
+/// Text Color
+$text-color:        #666;
+/// Link Color
+$link-color:        $primary-color;
+///Link Hover
+$link-hover:        darken($link-color, 15%);
+
+
+// --- Fonts ---
+$sans-serif: sans-serif;
+$serif: serif;
+
+
+// --- Images ---
+// place images in public/images
+
+// Default Header Hero Image
+$hero-sm: 'hero-background-sm.jpg'; // width should be 800px
+$hero-md: 'hero-background-md.jpg'; // width should be 1200px
+$hero-lg: 'hero-background-lg.jpg'; // width should be > 1200px
