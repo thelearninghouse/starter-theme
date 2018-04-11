@@ -10,8 +10,8 @@ get_header(); ?>
 
 		<div class="program-filters">
 			 <button class="program-filters__button button" data-filter="all">All Degrees</button>
-			 <button class="program-filters__button program-filters__button--undergraduate button" data-filter=".undergraduate">Undergraduate</button>
-			 <button class="program-filters__button program-filters__button--graduate button" data-filter=".graduate">Graduate</button>
+			 <button class="program-filters__button program-filters__button--undergraduate button" data-filter=".bachelors">Bachelor's</button>
+			 <button class="program-filters__button program-filters__button--graduate button" data-filter=".masters">Master's</button>
 		</div>
 
 		<?php /* Call in Program Custom Post Type */ ?>

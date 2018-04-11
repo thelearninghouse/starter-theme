@@ -78,3 +78,17 @@ mix.webpackConfig({
 mix.babelConfig({
 	"plugins": [ "syntax-dynamic-import" ]
 });
+
+
+/* Versioning and Sourcemaps
+// *****************************/
+// if (mix.config.production) {
+//     // Enable cache busting in production
+//     mix.version();
+//
+//     // Code Splitting Example - More info on this in the README.md file
+//     // mix.extract(['vue']);
+// } else {
+//     // Enable sourcemap for development
+//     mix.sourceMaps();
+// }

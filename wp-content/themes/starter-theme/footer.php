@@ -29,7 +29,6 @@
 		<?php wp_footer(); ?>
 
 		<?php // Page Specific Scripts ?>
-		<?php get_template_part( 'template-parts/footer-scripts/online-degrees' ); ?>
 
 	</body>
 
