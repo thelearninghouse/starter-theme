@@ -4,6 +4,7 @@ let ImageMinPlugin = require('imagemin-webpack-plugin').default;
 let CopyWebpackPlugin = require('copy-webpack-plugin');
 const Theme = require('./theme.config.js')
 
+mix.setPublicPath('./public')
 /* Files to be compiled and there compiled location
 *****************************/
 mix.js('src/scripts/scripts.js', 'js')
@@ -15,6 +16,7 @@ mix.js('src/scripts/scripts.js', 'js')
   .options({
      processCssUrls: false
   });
+
 
 
 /* Sets up development environment
@@ -81,14 +83,17 @@ mix.babelConfig({
 
 
 /* Versioning and Sourcemaps
-// *****************************/
-// if (mix.config.production) {
-//     // Enable cache busting in production
-//     mix.version();
-//
-//     // Code Splitting Example - More info on this in the README.md file
-//     // mix.extract(['vue']);
-// } else {
-//     // Enable sourcemap for development
-//     mix.sourceMaps();
-// }
+*****************************/
+if (mix.config.production) {
+    // Enable cache busting in production
+    mix.version();
+
+} else {
+	// Enable sourcemap for development
+
+	mix.webpackConfig({
+		devtool: 'inline-source-map'
+	})
+	mix.sourceMaps();
+
+}

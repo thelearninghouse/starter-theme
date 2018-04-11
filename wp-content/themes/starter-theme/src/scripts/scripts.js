@@ -4,7 +4,7 @@ import '@/scripts/helpers/utilities'
 import '@/scripts/components/main-navigation'
 import '@/scripts/components/social-share-buttons'
 
-
+console.log('NEWW using cache3');
 
 /* Dynamic Imports - Loading based on conditions
 *****************************/
