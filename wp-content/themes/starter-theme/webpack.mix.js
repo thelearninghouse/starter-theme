@@ -61,7 +61,7 @@ mix.webpackConfig({
 	output: {
 			path: path.resolve(__dirname, 'public'),
 			publicPath: `/wp-content/themes/${Theme.directoryName}/public/`,
-	    chunkFilename: 'js/[name].[chunkhash].js',
+	    chunkFilename: 'js/[name].js',
 	},
 	plugins: [
 	    new CopyWebpackPlugin([{

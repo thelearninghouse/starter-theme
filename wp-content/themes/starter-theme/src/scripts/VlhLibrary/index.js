@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import ButtonCounter from './ButtonCounter'
+
 export default () => {
+
+  // Global Components
   Vue.component('button-counter', ButtonCounter)
+
 
   const VlhAppEl = document.getElementById('vlh-app');
 
@@ -13,8 +17,8 @@ export default () => {
   			showModal: false
   		},
   		components: {
-  			AsyncComponent: () => import('@/scripts/VlhLibrary/AsyncComponent.vue'),
-  	    Modal: () => import('@/scripts/VlhLibrary/Modal.vue')
+  			AsyncComponent: () => import(/* webpackChunkName: "async-component" */ '@/scripts/VlhLibrary/AsyncComponent.vue'),
+  	    Modal: () => import(/* webpackChunkName: "modal" */ '@/scripts/VlhLibrary/Modal.vue')
   	  }
   	})
   }

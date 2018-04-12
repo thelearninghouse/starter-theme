@@ -1,13 +1,11 @@
 <?php get_header(); ?>
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<h2>Super Title</h2>
-	<p>Awesome Text</p>
-	<div class="php"><?php echo wp_title(); ?></div>
-<?php require_once('Component/index.php'); ?>
+
 <div id="vlh-app">
 	<button-counter></button-counter>
 </div>
+
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
 	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">
