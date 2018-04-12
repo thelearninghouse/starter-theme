@@ -53,7 +53,7 @@ mix.copy("src/fonts","public/fonts")
 *****************************/
 mix.webpackConfig({
 	resolve: {
-    extensions: ['.js', '.styl'],
+    extensions: ['.js', '.vue'],
     alias: {
       '@': path.resolve(__dirname, './src')
     }

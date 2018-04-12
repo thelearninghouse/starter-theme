@@ -1,31 +1,25 @@
 import mixitup from 'mixitup'
+const Container = $('.mixitup')
 
-var mixer = mixitup('.mixitup');
-
-if ($('.mixitup')) {
-	var container = $('.mixitup')
-	var mixer = mixitup(container, {
-		callbacks: {
-			onMixStart: function(state, futureState) {},
-			onMixEnd: function() {
-				container
-					.find('.card:visible:first')
-					.focus();
-			}
-		},
-		"animation": {
-			"duration": 133,
-			"nudge": false,
-			"reverseOut": false,
-			"effects": "fade stagger(30ms)"
+const mixer = mixitup(Container, {
+	callbacks: {
+		onMixStart: function(state, futureState) {},
+		onMixEnd: function(mixEvent) {
+			// Focus code still doesn't seem to work
+			/* JUST HAD A THOUGHT: You might need to wait with timeout for DOM */
+			Container
+				.find('.card:visible:first')
+				.focus();
 		}
-	});
+	}
+});
+handleUrlFilters();
+
+
+function handleUrlFilters() {
 	if (location.hash) {
-		var hash = location.hash.replace('#', '.')
-		var oldBtn = $('button.selected');
-		var newBtn = $("button").find("[data-filter='" + hash + "']");
-		mixer.filter(hash)
-		oldBtn.removeClass('selected');
-		newBtn.addClass('selected');
+		const FilterID = location.hash.replace('#', '.')
+		const NewActive = $("button[data-filter='" + FilterID + "']");
+		NewActive.trigger('click')
 	}
 }

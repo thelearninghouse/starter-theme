@@ -2,6 +2,9 @@
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
+<div id="vlh-app">
+	<button-coutner></button-coutner>
+</div>
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
 	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">

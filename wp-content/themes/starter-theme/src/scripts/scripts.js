@@ -3,6 +3,7 @@
 import '@/scripts/helpers/utilities'
 import '@/scripts/components/main-navigation'
 import '@/scripts/components/social-share-buttons'
+import '@/scripts/VlhLibrary'
 
 console.log('NEWW using cache3');
 
