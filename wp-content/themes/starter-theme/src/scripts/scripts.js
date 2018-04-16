@@ -42,12 +42,6 @@ function handleStickyElements() {
 	}
 }
 
-// EXAMPLE
-	// function handleComponent() {
-	// 	if ((document.querySelector(Config.selectors.componentSelector) !== null ) {
-	// 		return import(/* webpackChunkName: "component" */ "@/scripts/components/component");
-	// 	}
-	// }
 
 /* Calling Dynamic Import Functions
 *****************************/
