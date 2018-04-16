@@ -49,7 +49,7 @@ mix.webpackConfig({
 		extensions: [".js", ".vue"],
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
-			themeConfig: path.resolve(__dirname, "./theme.config.js")
+			"themeConfig": path.resolve(__dirname, "./theme.config.js")
 		}
 	},
 	output: {

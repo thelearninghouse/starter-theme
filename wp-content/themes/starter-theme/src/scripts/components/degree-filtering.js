@@ -1,7 +1,7 @@
 import Config from "themeConfig";
 import mixitup from "mixitup";
 
-const Container = $(Config.mixItUpSelector);
+const Container = $(Config.selectors.mixItUp);
 
 const mixer = mixitup(Container, {
 	callbacks: {

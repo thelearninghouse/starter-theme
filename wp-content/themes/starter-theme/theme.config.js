@@ -1,5 +1,9 @@
 module.exports = {
 	directoryName: "starter-theme",
-	useVue: true,
-	mixItUpSelector: ".mixitup"
+	selectors: {
+		accordion: ".accordion",
+		mixItUp: ".mixitup",
+		socialShare: ".social-link"
+	},
+	useVue: true
 };
