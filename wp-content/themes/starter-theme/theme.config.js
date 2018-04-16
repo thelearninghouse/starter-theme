@@ -3,7 +3,8 @@ module.exports = {
 	selectors: {
 		accordion: ".accordion",
 		mixItUp: ".mixitup",
-		socialShare: ".social-link"
+		socialShare: ".social-link",
+		sticky: ".sticky"
 	},
 	useVue: true
 };

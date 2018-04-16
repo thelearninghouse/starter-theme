@@ -36,6 +36,12 @@ function handleSocialShare() {
 	}
 }
 
+function handleStickyElements() {
+	if (document.querySelector(Config.selectors.sticky) !== null) {
+		return import(/* webpackChunkName: "sticky" */ "@/scripts/components/sticky");
+	}
+}
+
 // EXAMPLE
 	// function handleComponent() {
 	// 	if ((document.querySelector(Config.selectors.componentSelector) !== null ) {
@@ -48,3 +54,4 @@ function handleSocialShare() {
 handleAccordions();
 handleDegreeFiltering();
 handleSocialShare();
+handleStickyElements();
