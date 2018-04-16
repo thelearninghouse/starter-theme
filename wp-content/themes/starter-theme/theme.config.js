@@ -1,6 +1,5 @@
 module.exports = {
-
-  directoryName: 'starter-theme'
-
-
-}
+	directoryName: "starter-theme",
+	useVue: true,
+	mixItUpSelector: ".mixitup"
+};

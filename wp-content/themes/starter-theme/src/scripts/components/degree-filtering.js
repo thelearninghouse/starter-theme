@@ -1,5 +1,7 @@
-import mixitup from 'mixitup'
-const Container = $('.mixitup')
+import Config from "themeConfig";
+import mixitup from "mixitup";
+
+const Container = $(Config.mixItUpSelector);
 
 const mixer = mixitup(Container, {
 	callbacks: {
@@ -7,19 +9,16 @@ const mixer = mixitup(Container, {
 		onMixEnd: function(mixEvent) {
 			// Focus code still doesn't seem to work
 			/* JUST HAD A THOUGHT: You might need to wait with timeout for DOM */
-			Container
-				.find('.card:visible:first')
-				.focus();
+			Container.find(".card:visible:first").focus();
 		}
 	}
 });
 handleUrlFilters();
 
-
 function handleUrlFilters() {
 	if (location.hash) {
-		const FilterID = location.hash.replace('#', '.')
+		const FilterID = location.hash.replace("#", ".");
 		const NewActive = $("button[data-filter='" + FilterID + "']");
-		NewActive.trigger('click')
+		NewActive.trigger("click");
 	}
 }
