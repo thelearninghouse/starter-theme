@@ -13,7 +13,7 @@ const path = require("path");
 
 const ThemePathsArray = [
 	path.join(__dirname, '**/*.php'),
-	path.join(__dirname, 'src/scrips/*.js')
+	path.join(__dirname, 'src/scrips/**/*.js')
 ];
 
 mix.setPublicPath("./public");
