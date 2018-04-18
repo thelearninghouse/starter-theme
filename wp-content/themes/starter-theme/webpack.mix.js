@@ -1,8 +1,23 @@
 const mix = require("laravel-mix");
+
 const path = require("path");
-let ImageMinPlugin = require("imagemin-webpack-plugin").default;
-let CopyWebpackPlugin = require("copy-webpack-plugin");
+
+const ImageMinPlugin = require("imagemin-webpack-plugin").default;
+
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
 const Config = require("./theme.config.js");
+
+const glob = require('glob-all');
+
+const ThemePathsArray = [
+	path.join(__dirname, '*.php'),
+	path.join(__dirname, 'inc/*.php'),
+	path.join(__dirname, 'inc/components/*.php'),
+	path.join(__dirname, 'src/scrips/*.js')
+];
+
+
 
 mix.setPublicPath("./public");
 /* Files to be compiled and there compiled location
@@ -15,8 +30,19 @@ mix
 	.sass("src/styles/lp-style.scss", "css")
 	.disableNotifications()
 	.options({
-		processCssUrls: false
+		processCssUrls: false,
+		purifyCss: {
+			paths: glob.sync(ThemePathsArray),
+			purifyOptions: {
+          minify:   true,
+          info:     true,
+					whitelist: []		
+      }
+    }
 	});
+
+
+
 
 /* Sets up development environment
 *****************************/
