@@ -5,8 +5,7 @@
 <div id="vlh-app">
 	<button-counter></button-counter>
 </div>
-<a class="button is-light">Light</a>
-<a class="button is-dark">Dark</a>
+
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
 	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">
