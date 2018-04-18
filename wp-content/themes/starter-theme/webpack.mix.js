@@ -1,3 +1,5 @@
+require('laravel-mix-tailwind');
+require('laravel-mix-purgecss');
 const Config = require("./theme.config.js");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -12,7 +14,7 @@ const path = require("path");
 
 const ThemePathsArray = [
 	path.join(__dirname, '**/*.php'),
-	path.join(__dirname, 'src/scrips/*.js')
+	path.join(__dirname, 'src/scrips/**/*.js')
 ];
 
 
@@ -31,25 +33,26 @@ glob.sync('src/scripts/*.js').map(function(file) {
 
 mix.disableNotifications()
 
-mix.options({
-	processCssUrls: false
-});
+mix.tailwind()
+	.purgeCss({
+		paths: glob.sync(ThemePathsArray)
+	});
 
 
 /* Sets up development environment
  *****************************/
 mix.browserSync({
 	proxy: process.env.DEV_URL,
-	files: ["**/*.php", "public/css/*.css", "public/js/**/*.js"]
+	files: ["**/*.php", "public/css/*.css", "public/js/*.js"]
 });
 
 /* Only add Vue as a vendor &
 	make it available during development if being used
  *****************************/
 mix.extract(["vue"])
-	.autoload(
-		{ vue: ["Vue", "window.Vue"] }
-	)
+	.autoload({
+		vue: ["Vue", "window.Vue"]
+	})
 
 
 /* Copies images to correct folder for dev and building for production
@@ -94,22 +97,10 @@ mix.babelConfig({
 /* Versioning and Sourcemaps
  *****************************/
 if (mix.config.production) {
-
 	mix.version()
-		.options({
-			purifyCss: {
-				paths: glob.sync(ThemePathsArray),
-				purifyOptions: {
-					minify: true,
-					info: true,
-					whitelist: []
-				}
-			}
-		});
 }
 
-if ( !mix.config.production ) {
-
+if (!mix.config.production) {
 	// Enable sourcemap for development
 	mix.sourceMaps()
 		.webpackConfig({

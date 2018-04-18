@@ -7,7 +7,6 @@ import Config from "themeConfig";
 import "@/scripts/helpers/utilities";
 import "@/scripts/components/main-navigation";
 
-
 /* Importing Vue Components
 *****************************/
 import initializeVlhLibrary from "@/scripts/VlhLibrary";
