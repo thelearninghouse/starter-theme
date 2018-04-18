@@ -36,8 +36,17 @@ Main Stylesheet
 @import "pages/get-started";
 @import "pages/thank-you";
 
+@import "node_modules/bulma/bulma";
+
 @media print {
 	@import "modules/print";
+}
+
+.example {
+	margin: .5em 2em .5em 2em;
+	border-bottom: 2px solid lightgray;
+	padding: 1.5em .5em 1.5em .5em;
+	min-height: 150px;
 }
 
 // FOR TESTING

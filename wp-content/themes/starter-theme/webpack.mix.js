@@ -1,3 +1,4 @@
+require('laravel-mix-purgecss');
 const Config = require("./theme.config.js");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -15,7 +16,6 @@ const ThemePathsArray = [
 	path.join(__dirname, 'src/scrips/*.js')
 ];
 
-
 mix.setPublicPath("./public");
 
 /* ALL SCSS & JS Files in the root of their respective directories
@@ -31,9 +31,13 @@ glob.sync('src/scripts/*.js').map(function(file) {
 
 mix.disableNotifications()
 
-mix.options({
-	processCssUrls: false
-});
+mix
+	.purgeCss({
+		paths: glob.sync(ThemePathsArray)
+	})
+	.options({
+		processCssUrls: false
+	});
 
 
 /* Sets up development environment
@@ -94,18 +98,7 @@ mix.babelConfig({
 /* Versioning and Sourcemaps
  *****************************/
 if (mix.config.production) {
-
 	mix.version()
-		.options({
-			purifyCss: {
-				paths: glob.sync(ThemePathsArray),
-				purifyOptions: {
-					minify: true,
-					info: true,
-					whitelist: []
-				}
-			}
-		});
 }
 
 if ( !mix.config.production ) {
