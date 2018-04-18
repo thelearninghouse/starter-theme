@@ -6,5 +6,5 @@ module.exports = {
 		socialShare: ".social-link",
 		sticky: ".sticky"
 	},
-	useVue: false
+	useVue: true
 };

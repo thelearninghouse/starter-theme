@@ -32,15 +32,7 @@ glob.sync('src/scripts/*.js').map(function(file) {
 mix.disableNotifications()
 
 mix.options({
-	processCssUrls: false,
-	purifyCss: {
-		paths: glob.sync(ThemePathsArray),
-		purifyOptions: {
-			minify: true,
-			info: true,
-			whitelist: []
-		}
-	}
+	processCssUrls: false
 });
 
 
@@ -102,13 +94,25 @@ mix.babelConfig({
 /* Versioning and Sourcemaps
  *****************************/
 if (mix.config.production) {
-	// Enable cache busting in production
-	mix.version();
-} else {
-	// Enable sourcemap for development
 
-	mix.webpackConfig({
-		devtool: "inline-source-map"
-	});
-	mix.sourceMaps();
+	mix.version()
+		.options({
+			purifyCss: {
+				paths: glob.sync(ThemePathsArray),
+				purifyOptions: {
+					minify: true,
+					info: true,
+					whitelist: []
+				}
+			}
+		});
+}
+
+if ( !mix.config.production ) {
+
+	// Enable sourcemap for development
+	mix.sourceMaps()
+		.webpackConfig({
+			devtool: "inline-source-map"
+		});
 }
