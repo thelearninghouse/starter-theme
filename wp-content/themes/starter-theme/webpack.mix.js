@@ -1,75 +1,72 @@
+const Config = require("./theme.config.js");
+
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+const glob = require('glob-all');
+
+const ImageMinPlugin = require("imagemin-webpack-plugin").default;
+
 const mix = require("laravel-mix");
 
 const path = require("path");
 
-const ImageMinPlugin = require("imagemin-webpack-plugin").default;
-
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-
-const Config = require("./theme.config.js");
-
-const glob = require('glob-all');
-
 const ThemePathsArray = [
-	path.join(__dirname, '*.php'),
-	path.join(__dirname, 'inc/*.php'),
-	path.join(__dirname, 'inc/components/*.php'),
+	path.join(__dirname, '**/*.php'),
 	path.join(__dirname, 'src/scrips/*.js')
 ];
 
 
-
 mix.setPublicPath("./public");
-/* Files to be compiled and there compiled location
-*****************************/
-mix
-	.js("src/scripts/scripts.js", "js")
-	.sass("src/styles/style.scss", "css")
-	.sass("src/styles/critical-home.scss", "css")
-	.sass("src/styles/launch-lp-style.scss", "css")
-	.sass("src/styles/lp-style.scss", "css")
-	.disableNotifications()
-	.options({
-		processCssUrls: false,
-		purifyCss: {
-			paths: glob.sync(ThemePathsArray),
-			purifyOptions: {
-          minify:   true,
-          info:     true,
-					whitelist: []		
-      }
-    }
-	});
 
+/* ALL SCSS & JS Files in the root of their respective directories
+will be outputted as individual files for dev and building for production
+ *****************************/
+glob.sync('src/styles/*.scss').map(function(file) {
+	mix.sass(file, 'css');
+});
 
+glob.sync('src/scripts/*.js').map(function(file) {
+	mix.js(file, 'js');
+});
+
+mix.disableNotifications()
+
+mix.options({
+	processCssUrls: false,
+	purifyCss: {
+		paths: glob.sync(ThemePathsArray),
+		purifyOptions: {
+			minify: true,
+			info: true,
+			whitelist: []
+		}
+	}
+});
 
 
 /* Sets up development environment
-*****************************/
+ *****************************/
 mix.browserSync({
 	proxy: process.env.DEV_URL,
 	files: ["**/*.php", "public/css/*.css", "public/js/**/*.js"]
 });
 
-/* Makes Vue available globally
-*****************************/
-mix.autoload({
-	vue: ["Vue", "window.Vue"]
-	// 'jquery': ['$', 'window.jQuery', 'jQuery']
-});
+/* Only add Vue as a vendor &
+	make it available during development if being used
+ *****************************/
+mix.extract(["vue"])
+	.autoload(
+		{ vue: ["Vue", "window.Vue"] }
+	)
 
-/* Vendor libraries go here
-*****************************/
-if (Config.useVue) {
-	mix.extract(["vue"]);
-}
 
 /* Copies images to correct folder for dev and building for production
-*****************************/
+ *****************************/
 mix.copy("src/fonts", "public/fonts");
 
+
 /* This puts files in correct directory
-*****************************/
+ *****************************/
 mix.webpackConfig({
 	resolve: {
 		extensions: [".js", ".vue"],
@@ -84,26 +81,26 @@ mix.webpackConfig({
 		chunkFilename: "js/[name].js"
 	},
 	plugins: [
-		new CopyWebpackPlugin([
-			{
-				from: "src/images",
-				to: "images"
-			}
-		])
+		new CopyWebpackPlugin([{
+			from: "src/images",
+			to: "images"
+		}])
 		// new ImageMinPlugin([{
 		//     test: /\.(jpe?g|png|gif|svg)$/i
 		// }])
 	]
 });
 
+
 /* Allows dynamic loading of JS files
-*****************************/
+ *****************************/
 mix.babelConfig({
 	plugins: ["syntax-dynamic-import"]
 });
 
+
 /* Versioning and Sourcemaps
-*****************************/
+ *****************************/
 if (mix.config.production) {
 	// Enable cache busting in production
 	mix.version();
