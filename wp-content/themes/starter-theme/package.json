@@ -1,6 +1,6 @@
 {
   "name": "starter-theme",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Lightweight Wordpress Development Theme",
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "posthtml": "^0.11.3",
     "posthtml-custom-elements": "^1.1.1",
     "posthtml-loader": "^1.0.1",
+    "purgecss-with-wordpress": "^1.0.0",
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0"
   },

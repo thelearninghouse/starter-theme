@@ -6,5 +6,8 @@ module.exports = {
 		socialShare: ".social-link",
 		sticky: ".sticky"
 	},
-	useVue: true
+	useVue: true,
+	purgecssWhitelist: [
+		// 'selector-in-css-but-not-theme-files-content'
+	]
 };

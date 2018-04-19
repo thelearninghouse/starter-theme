@@ -1,4 +1,7 @@
 require('laravel-mix-purgecss');
+
+const purgecssWordpress = require('purgecss-with-wordpress');
+
 const Config = require("./theme.config.js");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -13,7 +16,7 @@ const path = require("path");
 
 const ThemePathsArray = [
 	path.join(__dirname, '**/*.php'),
-	path.join(__dirname, 'src/scrips/**/*.js')
+	path.join(__dirname, 'src/scripts/**/*.js')
 ];
 
 mix.setPublicPath("./public");
@@ -29,11 +32,13 @@ glob.sync('src/scripts/*.js').map(function(file) {
 	mix.js(file, 'js');
 });
 
-mix.disableNotifications()
+mix.disableNotifications();
 
 mix
 	.purgeCss({
-		paths: glob.sync(ThemePathsArray)
+		paths: glob.sync(ThemePathsArray),
+		whitelist: [...purgecssWordpress.whitelist, ...Config.purgecssWhitelist],
+	  whitelistPatterns: purgecssWordpress.whitelistPatterns
 	})
 	.options({
 		processCssUrls: false

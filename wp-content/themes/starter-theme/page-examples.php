@@ -2,6 +2,39 @@
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
+<div id="vlh-app">
+	<button-counter></button-counter>
+</div>
+
+<div class="example">
+	<section class="hero is-primary">
+	  <div class="hero-body">
+	    <div class="container">
+	      <h1 class="title">
+	        Primary title
+	      </h1>
+	      <h2 class="subtitle">
+	        Primary subtitle
+	      </h2>
+	    </div>
+	  </div>
+	</section>
+</div>
+
+<div class="example">
+	<button class="button is-primary">Primary</button>
+	<button class="button is-link">Link</button>
+	<button class="button is-info">Info</button>
+</div>
+
+<div class="example">
+	<h1 class="title">This Is a Title With a Tag</h1>
+	<h2 class="subtitle">Subtitle</h2>
+</div>
+
+<div class="example">
+	<span class="tag is-dark">Dark</span>
+</div>
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
 	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">

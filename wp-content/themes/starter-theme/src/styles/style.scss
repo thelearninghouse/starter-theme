@@ -1,6 +1,7 @@
 /******************************************************************
 Main Stylesheet
 ******************************************************************/
+@import "node_modules/bulma/bulma";
 
 @import "base/variables";
 @import "base/mixins";
@@ -36,12 +37,16 @@ Main Stylesheet
 @import "pages/get-started";
 @import "pages/thank-you";
 
-@import "node_modules/bulma/bulma";
 
 @media print {
 	@import "modules/print";
 }
 
+// Button Fix
+
+.button {
+	background: $primary-color !important;
+}
 .example {
 	margin: .5em 2em .5em 2em;
 	border-bottom: 2px solid lightgray;
