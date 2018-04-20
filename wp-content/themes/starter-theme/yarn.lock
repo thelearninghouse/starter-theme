@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@glidejs/glide@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.0.1.tgz#a41703eabd7c8196932bbe2ac567889d32ffd8e0"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

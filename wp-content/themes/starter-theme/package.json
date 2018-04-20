@@ -38,6 +38,7 @@
     "purifycss-webpack": "^0.7.0"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.0.1",
     "bulma": "^0.7.0",
     "mixitup": "^3.2.2",
     "modaal": "^0.3.1",

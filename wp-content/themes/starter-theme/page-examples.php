@@ -7,6 +7,44 @@
 </div>
 
 <div class="example">
+	<h2>Slider with Glide.js</h2>
+	<div class="glide">
+	  <div class="glide__track" data-glide-el="track">
+	    <ul class="glide__slides">
+	      <li class="glide__slide">
+	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      </li>
+	      <li class="glide__slide">
+	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      </li>
+	      <li class="glide__slide">
+	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      </li>
+				<li class="glide__slide">
+	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      </li>
+	      <li class="glide__slide">
+	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      </li>
+	      <li class="glide__slide">
+	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      </li>
+	    </ul>
+	  </div>
+		<div class="glide__bullets" data-glide-el="controls[nav]">
+	    <button class="glide__bullet" data-glide-dir="=0"></button>
+	    <button class="glide__bullet" data-glide-dir="=1"></button>
+	    <button class="glide__bullet" data-glide-dir="=2"></button>
+	  </div>
+		<div class="glide__arrows" data-glide-el="controls">
+	    <button class="glide__arrow glide__arrow--prev" data-glide-dir="<">prev</button>
+	    <button class="glide__arrow glide__arrow--next" data-glide-dir=">">next</button>
+	  </div>
+	</div>
+</div>
+<div class="example">
+	<h2>Using Bulma CSS Library</h2>
+
 	<section class="hero is-primary">
 	  <div class="hero-body">
 	    <div class="container">

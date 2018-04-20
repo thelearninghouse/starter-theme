@@ -7,7 +7,6 @@ import Config from "themeConfig";
 import "@/scripts/helpers/utilities";
 import "@/scripts/components/main-navigation";
 
-
 /* Importing Vue Components
 *****************************/
 import initializeVlhLibrary from "@/scripts/VlhLibrary";
@@ -42,6 +41,11 @@ function handleStickyElements() {
 	}
 }
 
+function handleSlider() {
+	if (document.querySelector(Config.selectors.slider) !== null) {
+		return import(/* webpackChunkName: "slider" */ "@/scripts/components/slider");
+	}
+}
 
 /* Calling Dynamic Import Functions
 *****************************/
@@ -49,3 +53,4 @@ handleAccordions();
 handleDegreeFiltering();
 handleSocialShare();
 handleStickyElements();
+handleSlider();
