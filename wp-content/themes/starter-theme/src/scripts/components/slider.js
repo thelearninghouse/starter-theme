@@ -1,5 +1,4 @@
 import Glide from '@glidejs/glide'
-// Required Core Stylesheet
 
 const Slider = new Glide('.glide', {
   type: 'carousel',
@@ -14,4 +13,3 @@ const Slider = new Glide('.glide', {
     }
   }
 }).mount()
-console.log(Slider);
