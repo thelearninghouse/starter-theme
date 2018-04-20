@@ -8,6 +8,7 @@ module.exports = {
 	},
 	useVue: true,
 	purgecssWhitelist: [
-		// 'selector-in-css-but-not-theme-files-content'
-	]
+		/* 'selector-in-css-but-not-theme-files-content' */
+	],
+	purgecssWhitelistPatterns: []
 };

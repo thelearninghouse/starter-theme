@@ -1,83 +1,54 @@
 require('laravel-mix-purgecss');
 
-const purgecssWordpress = require('purgecss-with-wordpress');
-
+const PurgecssWordpress = require('purgecss-with-wordpress');
 const Config = require("./theme.config.js");
-
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-
-const glob = require('glob-all');
-
+const Glob = require('glob-all');
 const ImageMinPlugin = require("imagemin-webpack-plugin").default;
-
-const mix = require("laravel-mix");
-
-const path = require("path");
-
+const Mix = require("laravel-mix");
+const Path = require("path");
 const ThemePathsArray = [
-	path.join(__dirname, '**/*.php'),
-	path.join(__dirname, 'src/scripts/**/*.js')
+	Path.join(__dirname, '**/*.php'),
+	Path.join(__dirname, 'src/scripts/**/*.js')
 ];
-
-mix.setPublicPath("./public");
 
 /* ALL SCSS & JS Files in the root of their respective directories
 will be outputted as individual files for dev and building for production
  *****************************/
-glob.sync('src/styles/*.scss').map(function(file) {
-	mix.sass(file, 'css');
+Glob.sync('src/styles/*.scss').map(function(file) {
+	Mix.sass(file, 'css');
 });
 
-glob.sync('src/scripts/*.js').map(function(file) {
-	mix.js(file, 'js');
+Glob.sync('src/scripts/*.js').map(function(file) {
+	Mix.js(file, 'js');
 });
 
-mix.disableNotifications();
-
-mix
-	.purgeCss({
-		paths: glob.sync(ThemePathsArray),
-		whitelist: [...purgecssWordpress.whitelist, ...Config.purgecssWhitelist],
-	  whitelistPatterns: purgecssWordpress.whitelistPatterns
-	})
-	.options({
-		processCssUrls: false
-	});
-
-
-/* Sets up development environment
- *****************************/
-mix.browserSync({
-	proxy: process.env.DEV_URL,
-	files: ["**/*.php", "public/css/*.css", "public/js/**/*.js"]
+Mix.setPublicPath("public");
+Mix.disableNotifications();
+Mix.options({
+	processCssUrls: false
 });
+Mix.copy("src/fonts", "public/fonts");
 
-/* Only add Vue as a vendor &
-	make it available during development if being used
+/* Allows dynamic loading of JS files
  *****************************/
-mix.extract(["vue"])
-	.autoload(
-		{ vue: ["Vue", "window.Vue"] }
-	)
-
-
-/* Copies images to correct folder for dev and building for production
- *****************************/
-mix.copy("src/fonts", "public/fonts");
+Mix.babelConfig({
+	plugins: ["syntax-dynamic-import"]
+});
 
 
 /* This puts files in correct directory
  *****************************/
-mix.webpackConfig({
+Mix.webpackConfig({
 	resolve: {
 		extensions: [".js", ".vue"],
 		alias: {
-			"@": path.resolve(__dirname, "./src"),
-			"themeConfig": path.resolve(__dirname, "./theme.config.js")
+			"@": Path.resolve(__dirname, "./src"),
+			"themeConfig": Path.resolve(__dirname, "./theme.config.js")
 		}
 	},
 	output: {
-		path: path.resolve(__dirname, "public"),
+		path: Path.resolve(__dirname, "public"),
 		publicPath: `/wp-content/themes/${Config.directoryName}/public/`,
 		chunkFilename: "js/[name].js"
 	},
@@ -86,31 +57,47 @@ mix.webpackConfig({
 			from: "src/images",
 			to: "images"
 		}])
-		// new ImageMinPlugin([{
-		//     test: /\.(jpe?g|png|gif|svg)$/i
-		// }])
 	]
 });
 
 
-/* Allows dynamic loading of JS files
+/* Sets up development environment
  *****************************/
-mix.babelConfig({
-	plugins: ["syntax-dynamic-import"]
+Mix.browserSync({
+	proxy: process.env.DEV_URL,
+	files: ["**/*.php", "public/css/*.css", "public/js/**/*.js"]
+});
+
+
+/* Removes unused CSS
+ *****************************/
+Mix.purgeCss({
+	paths: Glob.sync(ThemePathsArray),
+	whitelist: [...PurgecssWordpress.whitelist, ...Config.purgecssWhitelist],
+	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns]
+});
+
+
+/* Only add Vue as a vendor &
+	make it available during development if being used
+ *****************************/
+Mix.extract(["vue"])
+Mix.autoload({
+	vue: ["Vue", "window.Vue"]
 });
 
 
 /* Versioning and Sourcemaps
  *****************************/
-if (mix.config.production) {
-	mix.version()
-}
+if (Mix.config.production) {
+	/* Building For Prodcution */
+	Mix.version();
 
-if ( !mix.config.production ) {
+} else {
+	/* In Development */
+	Mix.sourceMaps();
+	Mix.webpackConfig({
+		devtool: "inline-source-map"
+	});
 
-	// Enable sourcemap for development
-	mix.sourceMaps()
-		.webpackConfig({
-			devtool: "inline-source-map"
-		});
 }
