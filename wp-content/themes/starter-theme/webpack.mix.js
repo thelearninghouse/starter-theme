@@ -37,6 +37,7 @@ Mix.babelConfig({
 });
 
 
+
 /* This puts files in correct directory
  *****************************/
 Mix.webpackConfig({
@@ -65,8 +66,9 @@ Mix.webpackConfig({
  *****************************/
 Mix.browserSync({
 	proxy: process.env.DEV_URL,
-	files: ["**/*.php", "public/css/*.css", "public/js/**/*.js"]
+	files: ["**/*.php", "public/css/*.css", "public/js/*.js"]
 });
+Mix.version();
 
 
 /* Removes unused CSS
@@ -91,7 +93,7 @@ Mix.autoload({
  *****************************/
 if (Mix.config.production) {
 	/* Building For Prodcution */
-	Mix.version();
+	// Mix.version();
 
 } else {
 	/* In Development */

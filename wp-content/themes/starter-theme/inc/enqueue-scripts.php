@@ -1,8 +1,7 @@
 <?php
-
+  require_once(get_template_directory() . '/mix.php');
   // Main Enqueue Scripts function
   function tlh_scripts_and_styles() {
-
     // global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 
     if (!is_admin()) {
@@ -12,10 +11,10 @@
 
 
         // adding scripts file in the footer
-      wp_register_script( 'manifest', get_stylesheet_directory_uri() . '/public/js/manifest.js', array( 'jquery' ), '', true );
-      wp_register_script( 'vendor', get_stylesheet_directory_uri() . '/public/js/vendor.js', array( 'manifest', 'jquery' ), '', true );
+      wp_register_script( 'manifest', mix('/js/manifest.js'), array( 'jquery' ), '', true );
+      wp_register_script( 'vendor', mix('/js/vendor.js'), array( 'manifest' ), '', true );
   		// adding scripts file in the footer
-  		wp_register_script( 'tlh-js', get_stylesheet_directory_uri() . '/public/js/scripts.js', array( 'manifest', 'vendor', 'jquery' ), '', true );
+  		wp_register_script( 'tlh-js',  mix('/js/scripts.js'), array( 'manifest', 'vendor' ), '', true );
 
   		// enqueue styles and scripts
   		wp_enqueue_script( 'tlh-forms' );
