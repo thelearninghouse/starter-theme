@@ -12,22 +12,22 @@
 	  <div class="glide__track" data-glide-el="track">
 	    <ul class="glide__slides">
 	      <li class="glide__slide">
-	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      	<img src="https://via.placeholder.com/350x150" alt="">
 	      </li>
 	      <li class="glide__slide">
-	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      	<img src="https://via.placeholder.com/350x150" alt="">
 	      </li>
 	      <li class="glide__slide">
-	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      	<img src="https://via.placeholder.com/350x150" alt="">
 	      </li>
 				<li class="glide__slide">
-	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      	<img src="https://via.placeholder.com/350x150" alt="">
 	      </li>
 	      <li class="glide__slide">
-	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      	<img src="https://via.placeholder.com/350x150" alt="">
 	      </li>
 	      <li class="glide__slide">
-	      	<img src="http://via.placeholder.com/350x150" alt="">
+	      	<img src="https://via.placeholder.com/350x150" alt="">
 	      </li>
 	    </ul>
 	  </div>
