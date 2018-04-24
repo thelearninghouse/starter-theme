@@ -12,6 +12,10 @@ const ThemePathsArray = [
 	Path.join(__dirname, 'src/scripts/**/*.js')
 ];
 
+
+Mix.setPublicPath("public");
+
+
 /* ALL SCSS & JS Files in the root of their respective directories
 will be outputted as individual files for dev and building for production
  *****************************/
@@ -23,7 +27,7 @@ Glob.sync('src/scripts/*.js').map(function(file) {
 	Mix.js(file, 'js');
 });
 
-Mix.setPublicPath("public");
+
 Mix.disableNotifications();
 Mix.options({
 	processCssUrls: false
@@ -35,7 +39,6 @@ Mix.copy("src/fonts", "public/fonts");
 Mix.babelConfig({
 	plugins: ["syntax-dynamic-import"]
 });
-
 
 
 /* This puts files in correct directory
@@ -84,9 +87,9 @@ Mix.purgeCss({
 	make it available during development if being used
  *****************************/
 Mix.extract(["vue"])
-Mix.autoload({
-	vue: ["Vue", "window.Vue"]
-});
+// Mix.autoload({
+// 	vue: ["Vue", "window.Vue"]
+// });
 
 
 /* Versioning and Sourcemaps
