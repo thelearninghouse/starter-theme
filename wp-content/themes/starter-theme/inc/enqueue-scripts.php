@@ -19,6 +19,9 @@
   		// enqueue styles and scripts
   		wp_enqueue_script( 'tlh-forms' );
   		wp_enqueue_script( 'jquery' );
+
+      // wp_enqueue_script( 'manifest' );
+      // wp_enqueue_script( 'vendor' );
   		wp_enqueue_script( 'tlh-js' );
 
   	}

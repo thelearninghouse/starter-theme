@@ -5,10 +5,12 @@ import Config from "themeConfig";
 *
 *   Simple accordion pattern example
 */
+console.log('accordion');
 
 Array.prototype.slice
 	.call(document.querySelectorAll(Config.selectors.accordion))
 	.forEach(function(accordion) {
+		accordion.classList.add("mystylenew2");
 		// Allow for multiple accordion sections to be expanded at the same time
 		var allowMultiple = accordion.hasAttribute("data-allow-multiple");
 		// Allow for each toggle to both open and close individually

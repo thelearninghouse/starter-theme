@@ -12,16 +12,26 @@ const ThemePathsArray = [
 	Path.join(__dirname, 'src/scripts/**/*.js')
 ];
 
-
+console.log(Mix);
 Mix.setPublicPath("public");
 
 
-/* ALL SCSS & JS Files in the root of their respective directories
+/* ALL JS Files in the root of their respective directories
 will be outputted as individual files for dev and building for production
  *****************************/
-Glob.sync('src/styles/*.scss').map(function(file) {
-	Mix.sass(file, 'css');
-});
+if ( !Mix.config.hmr && !Mix.config.production) {
+
+	Glob.sync('src/styles/*.scss').map(function(file) {
+		Mix.sass(file, 'css');
+	});
+
+	Mix.options({
+		processCssUrls: false
+	});
+
+	Mix.version();
+
+}
 
 Glob.sync('src/scripts/*.js').map(function(file) {
 	Mix.js(file, 'js');
@@ -29,10 +39,8 @@ Glob.sync('src/scripts/*.js').map(function(file) {
 
 
 Mix.disableNotifications();
-Mix.options({
-	processCssUrls: false
-});
 Mix.copy("src/fonts", "public/fonts");
+
 
 /* Allows dynamic loading of JS files
  *****************************/
@@ -51,11 +59,16 @@ Mix.webpackConfig({
 			"themeConfig": Path.resolve(__dirname, "./theme.config.js")
 		}
 	},
-	output: {
-		path: Path.resolve(__dirname, "public"),
-		publicPath: `/wp-content/themes/${Config.directoryName}/public/`,
-		chunkFilename: "js/[name].js"
-	},
+	// devServer: {
+	// 		disableHostCheck: true,
+	// 		headers: {
+	// 				'Access-Control-Allow-Origin': '*',
+	// 		}
+	// 		// watchOptions: {
+	// 		//     poll: false,
+	// 		// },
+	// },
+	stats: "verbose",
 	plugins: [
 		new CopyWebpackPlugin([{
 			from: "src/images",
@@ -71,7 +84,6 @@ Mix.browserSync({
 	proxy: process.env.DEV_URL,
 	files: ["**/*.php", "public/css/*.css", "public/js/*.js"]
 });
-Mix.version();
 
 
 /* Removes unused CSS
@@ -83,26 +95,59 @@ Mix.purgeCss({
 });
 
 
-/* Only add Vue as a vendor &
-	make it available during development if being used
+/* Only add Vue as a vendor & make it available during development if being used
  *****************************/
 Mix.extract(["vue"])
-// Mix.autoload({
-// 	vue: ["Vue", "window.Vue"]
-// });
 
-
-/* Versioning and Sourcemaps
+/* Building For Prodcution
  *****************************/
 if (Mix.config.production) {
-	/* Building For Prodcution */
-	// Mix.version();
 
-} else {
-	/* In Development */
-	Mix.sourceMaps();
-	Mix.webpackConfig({
-		devtool: "inline-source-map"
+	Glob.sync('src/styles/*.scss').map(function(file) {
+		Mix.sass(file, 'css');
 	});
 
+	Mix.options({
+		processCssUrls: false
+	});
+
+	Mix.webpackConfig({
+		output:{
+			chunkFilename: "js/[name].js",
+			path: path.resolve(__dirname, 'public/'),
+			publicPath: `/wp-content/themes/${Config.directoryName}/public/`,
+		}
+	});
+
+	// Versioning for handling cache busting
+	Mix.version();
+}
+
+if (!Mix.config.production) {
+	Mix.sourceMaps();
+
+	if ( Mix.config.hmr ) {
+		console.log('Running Hot Reload');
+
+		// Needed for images to work with HRM so they paths are refenced correctly
+		Mix.setResourceRoot('http://localhost:8080/');
+
+		// Set publicPath to localhost:8080 because thats where Webpack's HMR resides
+		Mix.webpackConfig({
+			devtool: "inline-source-map",
+			output:{
+				publicPath: 'http://localhost:8080/'
+			}
+		});
+	}	else {
+
+		Mix.webpackConfig({
+			devtool: "inline-source-map",
+			output:{
+				chunkFilename: "js/[name].js",
+				path: path.resolve(__dirname, 'public/'),
+				publicPath: `/wp-content/themes/${Config.directoryName}/public/`,
+			}
+		});
+	}
 }

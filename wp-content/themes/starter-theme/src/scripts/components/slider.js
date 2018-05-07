@@ -2,7 +2,7 @@ import Glide from '@glidejs/glide'
 
 const Slider = new Glide('.glide', {
   type: 'carousel',
-  focusAt: 'center',
+  focusAt: 'left',
   perView: 3,
   breakpoints: {
     1024: {
