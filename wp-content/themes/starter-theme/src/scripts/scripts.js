@@ -24,7 +24,7 @@ if (Config.useVue) {
 	initializeVlhLibrary();
 }
 console.log('hi2');
-// alert('newwws')
+// alert('newwws2')
 
 /* Dynamic Imports - Loading based on conditions
 *****************************/
