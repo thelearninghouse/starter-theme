@@ -6,11 +6,32 @@ if (module.hot) {
 *****************************/
 import Config from "themeConfig";
 
+
+
+/* Example of using ES6 Import/Export
+*****************************/
+
+// Importing The Files
+import exampleDefaultExport from "@/scripts/examples/example-default-export";
+import { exampleVariable1, exampleFunc1, exampleVariable2, exampleFunc2 } from "@/scripts/examples/example-named-export";
+
+
+// Using Imported Components By Calling Functions Or logging the values of the variables
+exampleDefaultExport();
+exampleFunc1();
+exampleFunc2();
+console.log(exampleVariable1);
+console.log(exampleVariable2);
+
+
+/*** End Of Example ***/
+
+
 /* Regular Imports - Include accross all pages
 *****************************/
 import "@/scripts/helpers/utilities";
 import "@/scripts/components/main-navigation";
-// import "@/scripts/components/slider";
+
 
 /* Importing Vue Components
 *****************************/
