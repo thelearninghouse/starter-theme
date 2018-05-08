@@ -3,7 +3,7 @@
 <?php if ( !isHMR() ): ?>
 
   <?php if ( is_front_page() ): ?>
-    <?php require_once('css/front-page.php'); ?>
+    <?php require_once('css/olc-css.php'); ?>
   <?php else: ?>
     <link rel="stylesheet" href="<?php echo mix('/css/style.css'); ?>">
   <?php endif; ?>

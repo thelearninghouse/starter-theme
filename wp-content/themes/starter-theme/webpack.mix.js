@@ -93,6 +93,7 @@ Mix.purgeCss({
 
 
 if (!Mix.config.production) {
+
 	Mix.sourceMaps();
 	Mix.webpackConfig({
 		devtool: "inline-source-map",

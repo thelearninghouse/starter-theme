@@ -26,7 +26,7 @@
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 		<?php wp_head(); ?>
-		<?php require_once('css-loader/index.php'); ?>
+		<?php require_once('css-injector/olc.php'); ?>
 
 		<?php if ( get_field('gtm_id', 'options') ) { ?>
 			<!-- Google Tag Manager -->
