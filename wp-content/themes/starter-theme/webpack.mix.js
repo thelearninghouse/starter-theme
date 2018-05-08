@@ -16,7 +16,6 @@ const ThemePathsArray = [
 Mix.setPublicPath("public");
 
 
-
 /* Handles styles for HMR it's not necessary to import them into JS file(s)
  *****************************/
 if (Mix.config.hmr) {
@@ -24,7 +23,6 @@ if (Mix.config.hmr) {
 		Mix.js(file, 'js');
 	});
 }
-
 
 
 /* ALL JS Files in the root of their respective directories
@@ -50,7 +48,6 @@ if (!Mix.config.hmr || Mix.config.production) {
 	});
 
 	Mix.version();
-
 }
 
 
@@ -93,7 +90,6 @@ Mix.purgeCss({
 	whitelist: [...PurgecssWordpress.whitelist, ...Config.purgecssWhitelist],
 	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns]
 });
-
 
 
 if (!Mix.config.production) {
