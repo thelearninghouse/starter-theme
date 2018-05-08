@@ -1,28 +1,25 @@
 import Vue from 'vue'
+import ButtonCounter from './ButtonCounter'
 
-Vue.component('button-counter', {
-  data: function () {
-    return {
-      count: 0
-    }
-  },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-})
+export default () => {
+
+  // Global Components
+  Vue.component('button-counter', ButtonCounter)
 
 
+  const VlhAppEl = document.getElementById('vlh-app');
 
-const VlhAppEl = document.getElementById('vlh-app');
-
-if (VlhAppEl) {
-	var vlhApp = new Vue({
-		el: VlhAppEl,
-		data: {
-			msg: 'A Message New 5',
-			showModal: false
-		},
-		components: {
-			AsyncComponent: () => import('@/VlhLibrary/AsyncComponent.vue'),
-	    Modal: () => import('@/VlhLibrary/Modal.vue')
-	  }
-	})
+  if (VlhAppEl) {
+  	var vlhApp = new Vue({
+  		el: VlhAppEl,
+  		data: {
+  			msg: 'A Message New 5',
+  			showModal: false
+  		},
+  		components: {
+  			AsyncComponent: () => import(/* webpackChunkName: "async-component" */ '@/scripts/VlhLibrary/AsyncComponent.vue'),
+  	    Modal: () => import(/* webpackChunkName: "modal" */ '@/scripts/VlhLibrary/Modal.vue')
+  	  }
+  	})
+  }
 }

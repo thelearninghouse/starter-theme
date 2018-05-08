@@ -1,6 +1,6 @@
-jQuery(document).ready(function($) {
-	// Remove Select menu error classs on load
-	$(window).load(function() {
-		$(".requestinfo select").removeClass("error");
-	});
-}); /* end of as page load scripts */
+document.addEventListener("DOMContentLoaded", function() {
+	const FormSelects = document.querySelectorAll('.requestinfo select')
+	for (var select of FormSelects) {
+		select.classList.remove('error')
+	}
+});

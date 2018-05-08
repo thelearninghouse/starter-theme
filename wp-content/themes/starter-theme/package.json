@@ -1,6 +1,6 @@
 {
   "name": "starter-theme",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Lightweight Wordpress Development Theme",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "prebuild": "rm -rf ./public/js/*.js",
     "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch-poll": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --config=$npm_package_config_mix",
+    "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline  --hot --config=$npm_package_config_mix",
     "production": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "run:dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=$npm_package_config_mix"
   },
@@ -26,11 +26,23 @@
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.1.4",
     "glob-all": "^3.1.0",
+    "html-loader": "^0.5.5",
     "imagemin-webpack-plugin": "^2.1.1",
     "laravel-mix": "^2.1.11",
-    "laravel-mix-purgecss": "^2.0.0"
+    "laravel-mix-purgecss": "^2.0.0",
+    "posthtml": "^0.11.3",
+    "posthtml-custom-elements": "^1.1.1",
+    "posthtml-loader": "^1.0.1",
+    "purgecss-with-wordpress": "^1.0.0",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.0.1",
+    "bulma": "^0.7.0",
+    "mixitup": "^3.2.2",
+    "modaal": "^0.3.1",
+    "stickybits": "^3.2.3",
     "vue": "^2.5.16"
   }
 }

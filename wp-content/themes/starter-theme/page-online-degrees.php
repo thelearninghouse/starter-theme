@@ -3,6 +3,15 @@
 Template Name: Online Degrees
 */
 get_header(); ?>
+
+<style media="screen">
+	button:focus {
+		/* border: 7px solid #ff6f6f; */
+	}
+	button.mixitup-control-active {
+	    background: darkred;
+	}
+</style>
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
@@ -10,8 +19,8 @@ get_header(); ?>
 
 		<div class="program-filters">
 			 <button class="program-filters__button button" data-filter="all">All Degrees</button>
-			 <button class="program-filters__button program-filters__button--undergraduate button" data-filter=".undergraduate">Undergraduate</button>
-			 <button class="program-filters__button program-filters__button--graduate button" data-filter=".graduate">Graduate</button>
+			 <button class="program-filters__button program-filters__button--undergraduate button" data-filter=".bachelors">Bachelor's</button>
+			 <button class="program-filters__button program-filters__button--graduate button" data-filter=".masters">Master's</button>
 		</div>
 
 		<?php /* Call in Program Custom Post Type */ ?>
@@ -22,7 +31,7 @@ get_header(); ?>
 				'order'   => 'ASC'
 		) );
 		$program_count = $loop->post_count; ?>
-		<div class="program-list<?php echo $program_count > 5 ? ' program-list--grid' : ''; ?> mixitup">
+		<div id="mix-container" class="program-list<?php echo $program_count > 5 ? ' program-list--grid' : ''; ?> mixitup">
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<?php $tax_terms = get_the_terms($post->ID, 'degree_level'); ?>
 			<?php $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>

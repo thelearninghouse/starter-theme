@@ -1,7 +1,6 @@
 /******************************************************************
 Main Stylesheet
 ******************************************************************/
-
 @import "base/variables";
 @import "base/mixins";
 
@@ -20,6 +19,7 @@ Main Stylesheet
 @import "modules/media";
 @import "modules/progress";
 @import "modules/sidebar";
+@import "modules/slider";
 @import "modules/skip-link";
 @import "modules/social";
 @import "modules/header";
@@ -36,10 +36,7 @@ Main Stylesheet
 @import "pages/get-started";
 @import "pages/thank-you";
 
+
 @media print {
 	@import "modules/print";
-}
-
-body {
-	// background: red;
 }

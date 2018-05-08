@@ -1,3 +1,5 @@
+import Config from "themeConfig";
+
 // Making social share links pop up in new window
 function windowPopup(url, width, height) {
 	// Calculate the position of the popup so it’s centered on the screen.
@@ -18,7 +20,7 @@ function windowPopup(url, width, height) {
 	);
 }
 
-$(".social-link").on("click", function(e) {
+$(Config.selectors.socialShare).on("click", function(e) {
 	e.preventDefault();
 
 	windowPopup($(this).attr("href"), 500, 300);

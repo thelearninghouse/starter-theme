@@ -1,80 +1,108 @@
-const mix = require('laravel-mix');
-const path = require('path');
-let ImageMinPlugin = require('imagemin-webpack-plugin').default;
-let CopyWebpackPlugin = require('copy-webpack-plugin');
-const Theme = require('./theme.config.js')
+require('laravel-mix-purgecss');
 
-/* Files to be compiled and there compiled location
-*****************************/
-mix.js('src/scripts/scripts.js', 'js')
-	.sass('src/styles/style.scss', 'css')
-	.sass('src/styles/critical-home.scss', 'css')
-	.sass('src/styles/launch-lp-style.scss', 'css')
-	.sass('src/styles/lp-style.scss', 'css')
-  .disableNotifications()
-  .options({
-     processCssUrls: false
-  });
+const PurgecssWordpress = require('purgecss-with-wordpress');
+const Config = require("./theme.config.js");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const Glob = require('glob-all');
+const ImageMinPlugin = require("imagemin-webpack-plugin").default;
+const Mix = require("laravel-mix");
+const Path = require("path");
+const ThemePathsArray = [
+	Path.join(__dirname, '**/*.php'),
+	Path.join(__dirname, 'src/scripts/**/*.js')
+];
 
 
-/* Sets up development environment
-*****************************/
-mix.browserSync({
-	proxy: process.env.DEV_URL,
-	files: [
-		'**/*.php',
-		'public/css/*.css',
-		'public/js/**/*.js'
-	]
-})
+Mix.setPublicPath("public");
 
 
-/* Makes Vue available globally
-*****************************/
-mix.autoload({
-	vue: ["Vue", "window.Vue"],
-	// 'jquery': ['$', 'window.jQuery', 'jQuery']
+/* ALL SCSS & JS Files in the root of their respective directories
+will be outputted as individual files for dev and building for production
+ *****************************/
+Glob.sync('src/styles/*.scss').map(function(file) {
+	Mix.sass(file, 'css');
+});
+
+Glob.sync('src/scripts/*.js').map(function(file) {
+	Mix.js(file, 'js');
 });
 
 
-/* Vendor libraries go here
-*****************************/
-mix.extract( ['vue'] );
+Mix.disableNotifications();
+Mix.options({
+	processCssUrls: false
+});
+Mix.copy("src/fonts", "public/fonts");
 
-
-/* Copies images to correct folder for dev and building for production
-*****************************/
-mix.copy("src/fonts","public/fonts")
+/* Allows dynamic loading of JS files
+ *****************************/
+Mix.babelConfig({
+	plugins: ["syntax-dynamic-import"]
+});
 
 
 /* This puts files in correct directory
-*****************************/
-mix.webpackConfig({
+ *****************************/
+Mix.webpackConfig({
 	resolve: {
-    extensions: ['.js', '.styl'],
-    alias: {
-      '@': path.resolve(__dirname, './src')
-    }
-  },
+		extensions: [".js", ".vue"],
+		alias: {
+			"@": Path.resolve(__dirname, "./src"),
+			"themeConfig": Path.resolve(__dirname, "./theme.config.js")
+		}
+	},
 	output: {
-			path: path.resolve(__dirname, 'public'),
-			publicPath: `/wp-content/themes/${Theme.directoryName}/public/`,
-	    chunkFilename: 'js/[name].[chunkhash].js',
+		path: Path.resolve(__dirname, "public"),
+		publicPath: `/wp-content/themes/${Config.directoryName}/public/`,
+		chunkFilename: "js/[name].js"
 	},
 	plugins: [
-	    new CopyWebpackPlugin([{
-	        from: 'src/images',
-	        to: 'images'
-	    }]),
-	    // new ImageMinPlugin([{
-	    //     test: /\.(jpe?g|png|gif|svg)$/i
-	    // }])
+		new CopyWebpackPlugin([{
+			from: "src/images",
+			to: "images"
+		}])
 	]
 });
 
 
-/* Allows dynamic loading of JS files
-*****************************/
-mix.babelConfig({
-	"plugins": [ "syntax-dynamic-import" ]
+/* Sets up development environment
+ *****************************/
+Mix.browserSync({
+	proxy: process.env.DEV_URL,
+	files: ["**/*.php", "public/css/*.css", "public/js/*.js"]
 });
+Mix.version();
+
+
+/* Removes unused CSS
+ *****************************/
+Mix.purgeCss({
+	paths: Glob.sync(ThemePathsArray),
+	whitelist: [...PurgecssWordpress.whitelist, ...Config.purgecssWhitelist],
+	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns]
+});
+
+
+/* Only add Vue as a vendor &
+	make it available during development if being used
+ *****************************/
+Mix.extract(["vue"])
+// Mix.autoload({
+// 	vue: ["Vue", "window.Vue"]
+// });
+
+
+/* Versioning and Sourcemaps
+ *****************************/
+if (Mix.config.production) {
+	/* Building For Prodcution */
+	// Mix.version();
+
+} else {
+	/* In Development */
+	Mix.sourceMaps();
+	Mix.webpackConfig({
+		devtool: "inline-source-map"
+	});
+
+}

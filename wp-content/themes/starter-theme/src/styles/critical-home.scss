@@ -14,3 +14,7 @@ Only include styles for above the fold.
 @import "modules/nav";
 @import "modules/layout";
 @import "pages/page";
+
+.critical-home {
+  background: blue;
+}
