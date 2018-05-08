@@ -7,6 +7,12 @@
  * @package tlh-starter-theme
  */
 
+ function is_post_type($type){
+     global $wp_query;
+     if($type == get_post_type($wp_query->post->ID)) return true;
+     return false;
+ }
+ 
 // LOAD SETUP
 require_once( 'inc/setup.php' );
 
@@ -34,5 +40,6 @@ require_once( 'inc/components/cta.php' );
 require_once( 'inc/components/accordion.php' );
 require_once( 'inc/components/icon.php' );
 require_once( 'inc/components/page-navi.php' );
+
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

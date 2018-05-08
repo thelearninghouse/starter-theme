@@ -9,7 +9,7 @@
 	<div class="sidebar-well">
 			<h3>Request My Info Packet</h3>
 			<div class="step-form">
-					<script src="http://requestforms.learninghouse.com/form/show/west-virginia-state-university/multi-step/686/3496/online.wvstateu.edu:thank-you:request_id" type="text/javascript"></script>
+					<script src="//requestforms.learninghouse.com/form/show/west-virginia-state-university/multi-step/686/3496/online.wvstateu.edu:thank-you:request_id" type="text/javascript"></script>
 			</div>
 	</div>
 

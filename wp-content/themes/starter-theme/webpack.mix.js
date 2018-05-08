@@ -16,9 +16,21 @@ const ThemePathsArray = [
 Mix.setPublicPath("public");
 
 
+
+/* Handles styles for HMR it's not necessary to import them into JS file(s)
+ *****************************/
+if (Mix.config.hmr) {
+	Glob.sync('src/hmr-helpers/*.js').map(function(file) {
+		Mix.js(file, 'js');
+	});
+}
+
+
+
 /* ALL JS Files in the root of their respective directories
 will be outputted as individual files for dev and building for production
  *****************************/
+
 if (!Mix.config.hmr || Mix.config.production) {
 
 	Glob.sync('src/styles/*.scss').map(function(file) {
@@ -83,20 +95,13 @@ Mix.purgeCss({
 });
 
 
-/* Only add Vue as a vendor & make it available during development if being used
- *****************************/
-
-
 
 if (!Mix.config.production) {
-
 	Mix.sourceMaps();
 	Mix.webpackConfig({
 		devtool: "inline-source-map",
 	});
-
 }
-
 
 Mix.disableNotifications();
 

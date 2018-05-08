@@ -8,21 +8,30 @@
 
   		// form validation and tracking script
   		wp_register_script( 'tlh-forms', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
-
-
-        // adding scripts file in the footer
       wp_register_script( 'manifest', mix('/js/manifest.js'), array( 'jquery' ), '', true );
       wp_register_script( 'vendor', mix('/js/vendor.js'), array( 'manifest' ), '', true );
-  		// adding scripts file in the footer
-  		wp_register_script( 'tlh-js',  mix('/js/scripts.js'), array( 'manifest', 'vendor' ), '', true );
+      wp_register_script( 'tlh-js',  mix('/js/scripts.js'), array( 'manifest', 'vendor' ), '', true );
 
   		// enqueue styles and scripts
   		wp_enqueue_script( 'tlh-forms' );
   		wp_enqueue_script( 'jquery' );
+      wp_enqueue_script( 'manifest' );
+      wp_enqueue_script( 'vendor' );
+      wp_enqueue_script( 'tlh-js' );
 
-      // wp_enqueue_script( 'manifest' );
-      // wp_enqueue_script( 'vendor' );
-  		wp_enqueue_script( 'tlh-js' );
+
+      if (isHMR()) {
+        wp_register_script( 'hmr-olc',  mix('/js/hmr-olc.js'), array( 'manifest', 'vendor' ), '', true );
+    		wp_register_script( 'hmr-lp',  mix('/js/hmr-lp.js'), array( 'manifest', 'vendor' ), '', true );
+
+        if ( !is_post_type('landing-pages') ) {
+          wp_enqueue_script( 'hmr-olc' );
+        }
+
+        if ( is_post_type('landing-pages') ) {
+          wp_enqueue_script( 'hmr-lp' );
+        }
+      }
 
   	}
   }

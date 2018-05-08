@@ -5,8 +5,6 @@ if (module.hot) {
 /* Get Theme Config File
 *****************************/
 import Config from "themeConfig";
-import '@/styles/style.scss'
-
 
 /* Regular Imports - Include accross all pages
 *****************************/
@@ -18,13 +16,10 @@ import "@/scripts/components/main-navigation";
 *****************************/
 import initializeVlhLibrary from "@/scripts/VlhLibrary";
 
-
-
 if (Config.useVue) {
 	initializeVlhLibrary();
 }
-console.log('hi2');
-// alert('newwws2')
+
 
 /* Dynamic Imports - Loading based on conditions
 *****************************/
