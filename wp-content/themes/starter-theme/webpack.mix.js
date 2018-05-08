@@ -89,6 +89,7 @@ Mix.purgeCss({
 	paths: Glob.sync(ThemePathsArray),
 	whitelist: [...PurgecssWordpress.whitelist, ...Config.purgecssWhitelist],
 	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns]
+	// whitelistPatternsChildren: [/requestinfo$/, /form$/]
 });
 
 
