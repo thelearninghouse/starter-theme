@@ -13,7 +13,12 @@ const ThemePathsArray = [
 	Path.join(__dirname, 'src/scripts/**/*.js')
 ];
 
+
 Mix.setPublicPath("public");
+
+Glob.sync('src/scripts/*.js').map(function(file) {
+	Mix.js(file, 'js');
+});
 
 
 /* Handles styles for HMR it's not necessary to import them into JS file(s)
@@ -49,11 +54,6 @@ if (!Mix.config.hmr || Mix.config.production) {
 
 	Mix.version();
 }
-
-
-Glob.sync('src/scripts/*.js').map(function(file) {
-	Mix.js(file, 'js');
-});
 
 
 /* This puts files in correct directory
