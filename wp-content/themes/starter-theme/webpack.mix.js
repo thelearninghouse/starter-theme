@@ -41,19 +41,9 @@ if (!Mix.config.hmr || Mix.config.production) {
 
 }
 
+
 Glob.sync('src/scripts/*.js').map(function(file) {
 	Mix.js(file, 'js');
-});
-
-
-Mix.disableNotifications();
-Mix.copy("src/fonts", "public/fonts");
-
-
-/* Allows dynamic loading of JS files
- *****************************/
-Mix.babelConfig({
-	plugins: ["syntax-dynamic-import"]
 });
 
 
@@ -95,17 +85,27 @@ Mix.purgeCss({
 
 /* Only add Vue as a vendor & make it available during development if being used
  *****************************/
-Mix.extract(["vue"])
+
 
 
 if (!Mix.config.production) {
 
 	Mix.sourceMaps();
-
 	Mix.webpackConfig({
 		devtool: "inline-source-map",
 	});
+
 }
 
+
+Mix.disableNotifications();
+
+Mix.copy("src/fonts", "public/fonts");
+
+Mix.babelConfig({
+	plugins: ["syntax-dynamic-import"]
+});
+
+Mix.extract(["vue"])
 
 Mix.wpHot();
