@@ -9,7 +9,13 @@ module.exports = {
 	},
 	useVue: true,
 	purgecssWhitelist: [
-		/* 'selector-in-css-but-not-theme-files-content' */
+		"requestinfo",
+		"menu-main-menu",
+		"current_page_item",
+		"fieldset",
+		"legend",
+		"elp_submit",
+		"formError"
 	],
 	purgecssWhitelistPatterns: []
 };
