@@ -1,5 +1,5 @@
 require('laravel-mix-purgecss');
-require('./mix-extensions/wp-hot.js');
+require('./.MIX_EXTENSIONS/wp-hot.js');
 
 const PurgecssWordpress = require('purgecss-with-wordpress');
 const Config = require("./theme.config.js");
@@ -12,7 +12,6 @@ const ThemePathsArray = [
 	Path.join(__dirname, '**/*.php'),
 	Path.join(__dirname, 'src/scripts/**/*.js')
 ];
-
 
 Mix.setPublicPath("public");
 
@@ -60,16 +59,6 @@ Mix.webpackConfig({
 			"themeConfig": Path.resolve(__dirname, "./theme.config.js")
 		}
 	},
-	// devServer: {
-	// 		disableHostCheck: true,
-	// 		headers: {
-	// 				'Access-Control-Allow-Origin': '*',
-	// 		}
-	// 		// watchOptions: {
-	// 		//     poll: false,
-	// 		// },
-	// },
-	// stats: "verbose",
 	plugins: [
 		new CopyWebpackPlugin([{
 			from: "src/images",
