@@ -2,29 +2,16 @@
 if (module.hot) {
 	module.hot.accept();
 }
+
 /* Get Theme Config File
 *****************************/
 import Config from "themeConfig";
 
 
-
-/* Example of using ES6 Import/Export
+/* ES6 import/export examples
 *****************************/
-
-// Importing The Files
-import exampleDefaultExport from "@/scripts/examples/example-default-export";
-import { exampleVariable1, exampleFunc1, exampleVariable2, exampleFunc2 } from "@/scripts/examples/example-named-export";
-
-
-// Using Imported Components By Calling Functions Or logging the values of the variables
-exampleDefaultExport();
-exampleFunc1();
-exampleFunc2();
-console.log(exampleVariable1);
-console.log(exampleVariable2);
-
-
-/*** End Of Example ***/
+import examples from "@/scripts/examples";
+examples();
 
 
 /* Regular Imports - Include accross all pages

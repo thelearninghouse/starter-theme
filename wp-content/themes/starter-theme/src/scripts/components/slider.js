@@ -1,15 +1,18 @@
+import Config from "themeConfig";
 import Glide from '@glidejs/glide'
 
-const Slider = new Glide('.glide', {
+const Slider = new Glide(Config.selectors.slider, {
   type: 'carousel',
-  focusAt: 'left',
+  focusAt: 'center',
   perView: 3,
   breakpoints: {
     1024: {
       perView: 2
     },
-    600: {
+    450: {
       perView: 1
     }
   }
-}).mount()
+})
+
+Slider.mount()

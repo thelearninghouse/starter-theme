@@ -13,9 +13,10 @@
 	<button-counter></button-counter>
 </div>
 
+
 <div class="example">
 	<h2>Slider with Glide.js</h2>
-	<div class="glide">
+	<div id="glide-example" class="glide">
 	  <div class="glide__track" data-glide-el="track">
 	    <ul class="glide__slides">
 	      <li class="glide__slide">
@@ -38,48 +39,18 @@
 	      </li>
 	    </ul>
 	  </div>
-		<div class="glide__bullets" data-glide-el="controls[nav]">
-	    <button class="glide__bullet" data-glide-dir="=0"></button>
-	    <button class="glide__bullet" data-glide-dir="=1"></button>
-	    <button class="glide__bullet" data-glide-dir="=2"></button>
-	  </div>
 		<div class="glide__arrows" data-glide-el="controls">
 	    <button class="glide__arrow glide__arrow--prev" data-glide-dir="<">prev</button>
 	    <button class="glide__arrow glide__arrow--next" data-glide-dir=">">next</button>
 	  </div>
+		<!-- <div class="glide__bullets" data-glide-el="controls">
+	    <button class="glide__bullet" data-glide-dir="=0"></button>
+	    <button class="glide__bullet" data-glide-dir="=1"></button>
+	    <button class="glide__bullet" data-glide-dir="=2"></button>
+	  </div> -->
 	</div>
 </div>
-<!-- <div class="example">
-	<h2>Using Bulma CSS Library</h2>
 
-	<section class="hero is-primary">
-	  <div class="hero-body">
-	    <div class="container">
-	      <h1 class="title">
-	        Primary title
-	      </h1>
-	      <h2 class="subtitle">
-	        Primary subtitle
-	      </h2>
-	    </div>
-	  </div>
-	</section>
-</div> -->
-
-<!-- <div class="example">
-	<button class="button is-primary">Primary</button>
-	<button class="button is-link">Link</button>
-	<button class="button is-info">Info</button>
-</div>
-
-<div class="example">
-	<h1 class="title">This Is a Title With a Tag</h1>
-	<h2 class="subtitle">Subtitle</h2>
-</div>
-
-<div class="example">
-	<span class="tag is-dark">Dark</span>
-</div> -->
 
 <div class="example accordions-example">
 	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">
@@ -189,7 +160,7 @@
 	        </dd>
 	              </dl>
 
-	
+
 </div>
 
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
