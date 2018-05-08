@@ -23,8 +23,8 @@ import initializeVlhLibrary from "@/scripts/VlhLibrary";
 if (Config.useVue) {
 	initializeVlhLibrary();
 }
-// console.log('hi2');
-// alert('newww')
+console.log('hi2');
+// alert('newwws')
 
 /* Dynamic Imports - Loading based on conditions
 *****************************/

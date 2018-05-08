@@ -1,4 +1,5 @@
 require('laravel-mix-purgecss');
+require('./mix-extensions/wp-hot.js');
 
 const PurgecssWordpress = require('purgecss-with-wordpress');
 const Config = require("./theme.config.js");
@@ -12,14 +13,14 @@ const ThemePathsArray = [
 	Path.join(__dirname, 'src/scripts/**/*.js')
 ];
 
-console.log(Mix);
+
 Mix.setPublicPath("public");
 
 
 /* ALL JS Files in the root of their respective directories
 will be outputted as individual files for dev and building for production
  *****************************/
-if ( !Mix.config.hmr && !Mix.config.production) {
+if (!Mix.config.hmr && !Mix.config.production) {
 
 	Glob.sync('src/styles/*.scss').map(function(file) {
 		Mix.sass(file, 'css');
@@ -68,7 +69,7 @@ Mix.webpackConfig({
 	// 		//     poll: false,
 	// 		// },
 	// },
-	stats: "verbose",
+	// stats: "verbose",
 	plugins: [
 		new CopyWebpackPlugin([{
 			from: "src/images",
@@ -112,7 +113,7 @@ if (Mix.config.production) {
 	});
 
 	Mix.webpackConfig({
-		output:{
+		output: {
 			chunkFilename: "js/[name].js",
 			path: path.resolve(__dirname, 'public/'),
 			publicPath: `/wp-content/themes/${Config.directoryName}/public/`,
@@ -126,24 +127,10 @@ if (Mix.config.production) {
 if (!Mix.config.production) {
 	Mix.sourceMaps();
 
-	if ( Mix.config.hmr ) {
-		console.log('Running Hot Reload');
-
-		// Needed for images to work with HRM so they paths are refenced correctly
-		Mix.setResourceRoot('http://localhost:8080/');
-
-		// Set publicPath to localhost:8080 because thats where Webpack's HMR resides
+	if (!Mix.config.hmr) {
 		Mix.webpackConfig({
 			devtool: "inline-source-map",
-			output:{
-				publicPath: 'http://localhost:8080/'
-			}
-		});
-	}	else {
-
-		Mix.webpackConfig({
-			devtool: "inline-source-map",
-			output:{
+			output: {
 				chunkFilename: "js/[name].js",
 				path: path.resolve(__dirname, 'public/'),
 				publicPath: `/wp-content/themes/${Config.directoryName}/public/`,
@@ -151,3 +138,5 @@ if (!Mix.config.production) {
 		});
 	}
 }
+
+Mix.wpHot();
