@@ -1,10 +1,10 @@
 <?php
-  require_once(get_template_directory() . '/mix.php');
+  require_once(get_template_directory() . '/mix-helpers.php');
   // Main Enqueue Scripts function
   function tlh_scripts_and_styles() {
     // global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 
-    if (!is_admin()) {
+    if ( !is_admin() ) {
 
   		// form validation and tracking script
   		wp_register_script( 'tlh-forms', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
@@ -20,17 +20,8 @@
       wp_enqueue_script( 'tlh-js' );
 
 
-      if (isHMR()) {
-        wp_register_script( 'hmr-olc',  mix('/js/hmr-olc.js'), array( 'manifest', 'vendor' ), '', true );
-    		wp_register_script( 'hmr-lp',  mix('/js/hmr-lp.js'), array( 'manifest', 'vendor' ), '', true );
-
-        if ( !is_post_type('landing-pages') ) {
-          wp_enqueue_script( 'hmr-olc' );
-        }
-
-        if ( is_post_type('landing-pages') ) {
-          wp_enqueue_script( 'hmr-lp' );
-        }
+      if ( isHMR() ) {
+        enqueue_hmr_helpers();
       }
 
   	}

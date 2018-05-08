@@ -1,4 +1,4 @@
-<?php require_once(get_template_directory() . '/mix.php'); ?>
+<?php require_once(get_template_directory() . '/mix-helpers.php'); ?>
 
 <?php if ( !isHMR() ): ?>
 
