@@ -54,223 +54,122 @@
 
 <div class="example accordions-example">
 	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">
-	                <dt role="heading" aria-level="3">
-	          <button aria-expanded="false" class="accordion__trigger" aria-controls="sect1" id="accordion-1-header-1" type="button">
-	            <span class="accordion__title">Faculty of Theology</span>
-	            <span class="accordion__icon"></span>
-	          </button>
-	        </dt>
-	        <dd id="sect1" role="region" aria-labelledby="accordion-1-header-1" class="accordion__panel" hidden="">
-	          <div>
-	            <ul>
-	<li>Biblical Studies (BA)
-	<ul>
-	<li>Archaeology</li>
-	</ul>
-	</li>
-	</ul>
-	<h4>Minors</h4>
-	<ul>
-	<li>Bible and Theology</li>
-	</ul>
-	          </div>
-	        </dd>
-	                <dt role="heading" aria-level="3">
-	          <button aria-expanded="false" class="accordion__trigger" aria-controls="sect2" id="accordion-1-header-2" type="button">
-	            <span class="accordion__title">School of Christian Leadership</span>
-	            <span class="accordion__icon"></span>
-	          </button>
-	        </dt>
-	        <dd id="sect2" role="region" aria-labelledby="accordion-1-header-2" class="accordion__panel">
-	          <div>
-	            <ul>
-	<li>Christian Leadership (BA)
-	<ul>
-	<li>Family &amp; Children's Ministry</li>
-	<li>Intercultural Studies</li>
-	<li>Pastoral Ministry</li>
-	<li>Youth Ministry</li>
-	<li>Interdisciplinary</li>
-	</ul>
-	</li>
-	<li>Youth Ministry (BA)
-	<ul>
-	<li>General</li>
-	<li>Ministering to Families</li>
-	<li>Counseling Youth</li>
-	<li>Intercultural Studies</li>
-	</ul>
-	</li>
-	</ul>
-	<h4>Minors</h4>
-	<ul>
-	<li>Family &amp; Children's Ministry</li>
-	<li>Intercultural Studies</li>
-	<li>Pastoral Ministry</li>
-	<li>Youth Ministry</li>
-	<li>Interdisciplinary</li>
-	</ul>
-	          </div>
-	        </dd>
-	                <dt role="heading" aria-level="3">
-	          <button aria-expanded="false" class="accordion__trigger" aria-controls="sect3" id="accordion-1-header-3" type="button">
-	            <span class="accordion__title">Faculty of Natural &amp; Applied Sciences</span>
-	            <span class="accordion__icon"></span>
-	          </button>
-	        </dt>
-	        <dd id="sect3" role="region" aria-labelledby="accordion-1-header-3" class="accordion__panel">
-	          <div>
-	            <ul>
-	<li>Biology (BS)
-	<ul>
-	<li>Gen biology</li>
-	<li>Pre-Allied Health</li>
-	<li>Human Biology</li>
-	</ul>
-	</li>
-	<li>Computer Science (BS)
-	<ul>
-	<li>Web Systems and Applications</li>
-	</ul>
-	</li>
-	<li>Environmental Science (BA)</li>
-	<li>Environmental Science (BS)
-	<ul>
-	<li>Ecological Research</li>
-	<li>Ecology and Field Biology</li>
-	</ul>
-	</li>
-	<li>Environmental Science (BS – Honors)</li>
-	<li>Kinesiology (BS)
-	<ul>
-	<li>Exercise Science</li>
-	<li>Health &amp; Wellness</li>
-	<li>Sports Management</li>
-	<li>General Kinesiology</li>
-	</ul>
-	</li>
-	<li>Mathematics (BA)</li>
-	</ul>
-	<h4>Minors</h4>
-	<ul>
-	<li>Environmental Science</li>
-	<li>Mathematics</li>
-	</ul>
-	          </div>
-	        </dd>
-	              </dl>
+		<dt role="heading" aria-level="3">
+			<button aria-expanded="false" class="accordion__trigger" aria-controls="sect1" id="accordion-1-header-1" type="button">
+				<span class="accordion__title">Faculty of Theology</span>
+				<span class="accordion__icon"></span>
+			</button>
+		</dt>
+		<dd id="sect1" role="region" aria-labelledby="accordion-1-header-1" class="accordion__panel">
+			<div>
+				<ul>
+					<li>Biblical Studies (BA)
 
+						<ul>
+							<li>Archaeology</li>
+						</ul>
+					</li>
+				</ul>
+				<h4>Minors</h4>
+				<ul>
+					<li>Bible and Theology</li>
+				</ul>
+			</div>
+		</dd>
+		<dt role="heading" aria-level="3">
+			<button aria-expanded="false" class="accordion__trigger" aria-controls="sect2" id="accordion-1-header-2" type="button">
+				<span class="accordion__title">School of Christian Leadership</span>
+				<span class="accordion__icon"></span>
+			</button>
+		</dt>
+		<dd id="sect2" role="region" aria-labelledby="accordion-1-header-2" class="accordion__panel">
+			<div>
+				<ul>
+					<li>Christian Leadership (BA)
 
+						<ul>
+							<li>Family &amp; Children's Ministry</li>
+							<li>Intercultural Studies</li>
+							<li>Pastoral Ministry</li>
+							<li>Youth Ministry</li>
+							<li>Interdisciplinary</li>
+						</ul>
+					</li>
+					<li>Youth Ministry (BA)
+
+						<ul>
+							<li>General</li>
+							<li>Ministering to Families</li>
+							<li>Counseling Youth</li>
+							<li>Intercultural Studies</li>
+						</ul>
+					</li>
+				</ul>
+				<h4>Minors</h4>
+				<ul>
+					<li>Family &amp; Children's Ministry</li>
+					<li>Intercultural Studies</li>
+					<li>Pastoral Ministry</li>
+					<li>Youth Ministry</li>
+					<li>Interdisciplinary</li>
+				</ul>
+			</div>
+		</dd>
+		<dt role="heading" aria-level="3">
+			<button aria-expanded="false" class="accordion__trigger" aria-controls="sect3" id="accordion-1-header-3" type="button">
+				<span class="accordion__title">Faculty of Natural &amp; Applied Sciences</span>
+				<span class="accordion__icon"></span>
+			</button>
+		</dt>
+		<dd id="sect3" role="region" aria-labelledby="accordion-1-header-3" class="accordion__panel">
+			<div>
+				<ul>
+					<li>Biology (BS)
+
+						<ul>
+							<li>Gen biology</li>
+							<li>Pre-Allied Health</li>
+							<li>Human Biology</li>
+						</ul>
+					</li>
+					<li>Computer Science (BS)
+
+						<ul>
+							<li>Web Systems and Applications</li>
+						</ul>
+					</li>
+					<li>Environmental Science (BA)</li>
+					<li>Environmental Science (BS)
+
+						<ul>
+							<li>Ecological Research</li>
+							<li>Ecology and Field Biology</li>
+						</ul>
+					</li>
+					<li>Environmental Science (BS – Honors)</li>
+					<li>Kinesiology (BS)
+
+						<ul>
+							<li>Exercise Science</li>
+							<li>Health &amp; Wellness</li>
+							<li>Sports Management</li>
+							<li>General Kinesiology</li>
+						</ul>
+					</li>
+					<li>Mathematics (BA)</li>
+				</ul>
+				<h4>Minors</h4>
+				<ul>
+					<li>Environmental Science</li>
+					<li>Mathematics</li>
+				</ul>
+			</div>
+		</dd>
+	</dl>
 </div>
 
 	<?php get_template_part( 'template-parts/hero_title' ); ?>
 
-	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">
-	                <dt role="heading" aria-level="3">
-	          <button aria-expanded="false" class="accordion__trigger" aria-controls="sect1" id="accordion-1-header-1" type="button">
-	            <span class="accordion__title">Faculty of Theology</span>
-	            <span class="accordion__icon"></span>
-	          </button>
-	        </dt>
-	        <dd id="sect1" role="region" aria-labelledby="accordion-1-header-1" class="accordion__panel" hidden="">
-	          <div>
-	            <ul>
-	<li>Biblical Studies (BA)
-	<ul>
-	<li>Archaeology</li>
-	</ul>
-	</li>
-	</ul>
-	<h4>Minors</h4>
-	<ul>
-	<li>Bible and Theology</li>
-	</ul>
-	          </div>
-	        </dd>
-	                <dt role="heading" aria-level="3">
-	          <button aria-expanded="false" class="accordion__trigger" aria-controls="sect2" id="accordion-1-header-2" type="button">
-	            <span class="accordion__title">School of Christian Leadership</span>
-	            <span class="accordion__icon"></span>
-	          </button>
-	        </dt>
-	        <dd id="sect2" role="region" aria-labelledby="accordion-1-header-2" class="accordion__panel">
-	          <div>
-	            <ul>
-	<li>Christian Leadership (BA)
-	<ul>
-	<li>Family &amp; Children's Ministry</li>
-	<li>Intercultural Studies</li>
-	<li>Pastoral Ministry</li>
-	<li>Youth Ministry</li>
-	<li>Interdisciplinary</li>
-	</ul>
-	</li>
-	<li>Youth Ministry (BA)
-	<ul>
-	<li>General</li>
-	<li>Ministering to Families</li>
-	<li>Counseling Youth</li>
-	<li>Intercultural Studies</li>
-	</ul>
-	</li>
-	</ul>
-	<h4>Minors</h4>
-	<ul>
-	<li>Family &amp; Children's Ministry</li>
-	<li>Intercultural Studies</li>
-	<li>Pastoral Ministry</li>
-	<li>Youth Ministry</li>
-	<li>Interdisciplinary</li>
-	</ul>
-	          </div>
-	        </dd>
-	                <dt role="heading" aria-level="3">
-	          <button aria-expanded="false" class="accordion__trigger" aria-controls="sect3" id="accordion-1-header-3" type="button">
-	            <span class="accordion__title">Faculty of Natural &amp; Applied Sciences</span>
-	            <span class="accordion__icon"></span>
-	          </button>
-	        </dt>
-	        <dd id="sect3" role="region" aria-labelledby="accordion-1-header-3" class="accordion__panel">
-	          <div>
-	            <ul>
-	<li>Biology (BS)
-	<ul>
-	<li>Gen biology</li>
-	<li>Pre-Allied Health</li>
-	<li>Human Biology</li>
-	</ul>
-	</li>
-	<li>Computer Science (BS)
-	<ul>
-	<li>Web Systems and Applications</li>
-	</ul>
-	</li>
-	<li>Environmental Science (BA)</li>
-	<li>Environmental Science (BS)
-	<ul>
-	<li>Ecological Research</li>
-	<li>Ecology and Field Biology</li>
-	</ul>
-	</li>
-	<li>Environmental Science (BS – Honors)</li>
-	<li>Kinesiology (BS)
-	<ul>
-	<li>Exercise Science</li>
-	<li>Health &amp; Wellness</li>
-	<li>Sports Management</li>
-	<li>General Kinesiology</li>
-	</ul>
-	</li>
-	<li>Mathematics (BA)</li>
-	</ul>
-	<h4>Minors</h4>
-	<ul>
-	<li>Environmental Science</li>
-	<li>Mathematics</li>
-	</ul>
-	          </div>
-	        </dd>
-	              </dl>
 
 
 	<div class="program-list">

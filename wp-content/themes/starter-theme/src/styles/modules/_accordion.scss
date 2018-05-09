@@ -56,11 +56,17 @@ ACCORDION STYLES
 .accordion__panel {
 	display: block;
 	margin: 0;
-	padding: rem(10);
 	background-color: #e8e8e8;
+	max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s ease-in-out;
+	padding: 0;
 
-	@include mobilefirst($bp-med) {
-		padding: rem(20);
+	& > div:first-child {
+		padding: rem(10);
+		@include mobilefirst($bp-med) {
+			padding: rem(20);
+		}
 	}
 }
 
