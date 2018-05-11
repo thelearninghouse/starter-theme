@@ -14,8 +14,10 @@ module.exports = {
 		"current_page_item",
 		"fieldset",
 		"legend",
-		"elp_submit",
-		"formError"
+		"label",
 	],
-	purgecssWhitelistPatterns: []
+	purgecssWhitelistPatterns: [
+		/^elp(_.*)?$/,
+		/^keep-nested-children/
+	]
 };

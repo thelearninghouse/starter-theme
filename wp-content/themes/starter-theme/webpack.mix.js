@@ -87,8 +87,9 @@ Mix.browserSync({
  *****************************/
 Mix.purgeCss({
 	paths: Glob.sync(ThemePathsArray),
-	whitelist: [...PurgecssWordpress.whitelist, ...Config.purgecssWhitelist],
-	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns]
+	whitelist: Config.purgecssWhitelist,
+	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns],
+	whitelistPatternsChildren: Config.purgeCSSWhitelistPatternsChildren
 });
 
 

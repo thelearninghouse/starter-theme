@@ -41,3 +41,22 @@ Main Stylesheet
 @media print {
 	@import 'modules/print';
 }
+
+
+/*
+Example of how styles for anything under this selector will not be removed by purgeCSS on build.
+This is done white the purgecssWhitelistPatterns property in theme.config.js
+
+.keep-nested-children {
+	& h1 {
+		background: purple;
+	}
+
+	& ul {
+		background: purple;
+	}
+	& li {
+		background: purple;
+	}
+}
+ */
