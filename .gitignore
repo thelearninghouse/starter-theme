@@ -55,7 +55,3 @@ Thumbs.db
 *.asf
 *.wmv
 *.avi
-
-# New dev setup build files
-/library/.sass-cache
-/library/node_modules
