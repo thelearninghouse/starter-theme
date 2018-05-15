@@ -1,5 +1,6 @@
 <?php
   require_once(get_template_directory() . '/mix-helpers.php');
+  require_once(get_template_directory() . '/inc/degree-filter-helpers.php');
   // Main Enqueue Scripts function
   function tlh_scripts_and_styles() {
     // global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
@@ -17,6 +18,11 @@
       wp_enqueue_script( 'manifest' );
       wp_enqueue_script( 'vendor' );
       wp_enqueue_script( 'tlh-js' );
+      setupDegreeFilteringData();
+
+      if ( is_page( 'online-degrees' ) ) {
+        wp_localize_script( 'tlh-js', 'wpData', setupDegreeFilteringData() );
+      }
 
 
       if ( isHMR() ) {
