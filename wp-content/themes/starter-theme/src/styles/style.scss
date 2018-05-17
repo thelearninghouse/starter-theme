@@ -41,7 +41,7 @@ Main Stylesheet
 @media print {
 	@import 'modules/print';
 }
-
+@import '~vlh-library/dist/vlh-library.css';
 
 /*
 Example of how styles for anything under this selector will not be removed by purgeCSS on build.

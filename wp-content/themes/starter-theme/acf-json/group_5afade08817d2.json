@@ -1,0 +1,52 @@
+{
+    "key": "group_5afade08817d2",
+    "title": "Degree Filtering",
+    "fields": [
+        {
+            "key": "field_5afae014e098b",
+            "label": "Display Order",
+            "name": "display_order",
+            "type": "number",
+            "instructions": "This allows for customization of the order of the filters for the degree filtering.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "degree_area"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "degree_level"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1526391328
+}

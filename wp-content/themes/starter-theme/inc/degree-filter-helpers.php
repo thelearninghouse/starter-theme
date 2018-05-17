@@ -28,7 +28,11 @@
           'hide_empty' => false,
       ]);
       $sub_areas = $term_children ? $term_children : array();
+      $acf_term_id = 'term_' . $term_id;
+      $displayOrder = get_field('display_order', $acf_term_id) ?  get_field('display_order', $acf_term_id) : '0';
+
       $term->sub_areas = $sub_areas;
+      $term->display_order = $displayOrder;
     }
     return $degreeFilterArray;
   }
@@ -39,9 +43,12 @@
       $array = array();
       $degreeAreas = get_the_terms( $post->ID, 'degree_area') ? get_the_terms( $post->ID, 'degree_area') : $array;
       $degreeLevels = get_the_terms( $post->ID, 'degree_level') ? get_the_terms( $post->ID, 'degree_level') : $array;
+      $programSummary = get_field('program_summary', $post->ID) ? get_field('program_summary', $post->ID) : ''; 
 
       $post->degree_areas = $degreeAreas;
       $post->degree_levels = $degreeLevels;
+      $post->summary = $programSummary;
+
     }
     return $degrees;
   }
@@ -50,8 +57,8 @@
     foreach ( $degreeLevels as $term ) {
       $array = array();
       $term_id = $term->term_id;
-      $id = 'term_' . $term_id;
-      $displayOrder = get_field('menu_order', $id) ?  get_field('menu_order', $id) : '0';
+      $acf_term_id = 'term_' . $term_id;
+      $displayOrder = get_field('display_order', $acf_term_id) ?  get_field('display_order', $acf_term_id) : '0';
       $term->display_order = $displayOrder;
     }
     return $degreeLevels;
@@ -72,9 +79,9 @@
     $degree_levels = get_field('degree_level_filters', 'option') ? get_field('degree_level_filters', 'option') : array();
 
     $data = array(
-    'degrees' => buildDegressArray($allDegrees),
-    'degreeAreas' => buildDegreeAreas($degree_areas),
-    'degreeLevels' => buildDegreeLevels($degree_levels)
+      'degrees' => buildDegressArray($allDegrees),
+      'degreeAreas' => buildDegreeAreas($degree_areas),
+      'degreeLevels' => buildDegreeLevels($degree_levels)
     );
 
     return $data;

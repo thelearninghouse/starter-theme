@@ -45,6 +45,7 @@
     "mixitup": "^3.2.2",
     "modaal": "^0.3.1",
     "stickybits": "^3.2.3",
+    "vlh-library": "thelearninghouse/vlh-library#master",
     "vue": "^2.5.16"
   }
 }

@@ -85,12 +85,12 @@ Mix.browserSync({
 
 /* Removes unused CSS
  *****************************/
-Mix.purgeCss({
-	paths: Glob.sync(ThemePathsArray),
-	whitelist: Config.purgecssWhitelist,
-	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns],
-	whitelistPatternsChildren: Config.purgeCSSWhitelistPatternsChildren
-});
+// Mix.purgeCss({
+// 	paths: Glob.sync(ThemePathsArray),
+// 	whitelist: Config.purgecssWhitelist,
+// 	whitelistPatterns: [...PurgecssWordpress.whitelistPatterns, ...Config.purgecssWhitelistPatterns],
+// 	whitelistPatternsChildren: Config.purgeCSSWhitelistPatternsChildren
+// });
 
 
 if (!Mix.config.production) {
