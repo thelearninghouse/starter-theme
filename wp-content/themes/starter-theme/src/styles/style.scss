@@ -1,15 +1,12 @@
 /******************************************************************
 Main Stylesheet
 ******************************************************************/
-
 @import 'base/variables';
 @import 'base/mixins';
-
 @import 'generic/base';
 @import 'generic/typography';
 @import 'generic/links';
 @import 'generic/tables';
-
 @import 'modules/accordion';
 @import 'modules/buttons';
 @import 'modules/cards';
@@ -28,7 +25,6 @@ Main Stylesheet
 @import 'modules/footer';
 @import 'modules/layout';
 @import 'modules/hero-title';
-
 @import 'pages/home';
 @import 'pages/page';
 @import 'pages/blog';
@@ -36,13 +32,10 @@ Main Stylesheet
 @import 'pages/online-degrees';
 @import 'pages/get-started';
 @import 'pages/thank-you';
-
-
 @media print {
 	@import 'modules/print';
 }
 @import '~vlh-library/dist/vlh-library.css';
-
 /*
 Example of how styles for anything under this selector will not be removed by purgeCSS on build.
 This is done white the purgecssWhitelistPatterns property in theme.config.js
@@ -60,3 +53,44 @@ This is done white the purgecssWhitelistPatterns property in theme.config.js
 	}
 }
  */
+#vlh-filtering {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1440px;
+	display: flex;
+	justify-content: space-between;
+	margin: 1em auto;
+	max-width: 100%;
+	padding: 1.25em;
+	flex-flow: row wrap;
+}
+
+.degree-filters {
+	flex: 0 1 320px;
+}
+
+.degree-list {
+	flex: 0 1 calc(100% - 420px);
+}
+
+.degree-item-header {
+	.text {
+		font-size: 1em;
+	}
+}
+
+.degree-filters {
+	flex: 1 1 320px;
+	@media (min-width: 800px) {
+		max-width: 320px;
+	}
+}
+
+.filter-clear {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}

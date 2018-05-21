@@ -1,25 +1,13 @@
-<?php
-/*
-Template Name: Online Degrees
-*/
-get_header(); ?>
-
-<style media="screen">
-
-</style>
-<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/hero_title' ); ?>
-
-	<!-- <div id="vlh-filtering"></div> -->
-	<div id="vlh-filtering">
-		<div class="degree-filters">
+<template>
+  <main id="app" class="content">
+    <div class="degree-filters">
 
       <search-filter v-model="currentDegreeSearchFilter"></search-filter>
 
       <div class="filter-list-wrapper">
         <filter-list-heading
           @toggle-filter-visibility="handleFilterHeadingClick('showDegreeLevelFilter', 'showDegreeAreaFilter')"
-          :selected-filter.sync="currentDegreeLevelFilter"
+          :selectedFilter.sync="currentDegreeLevelFilter"
           icon-dropdown-color="#cc1f1b"
           icon-reset-color="gray"
           heading="Degree Levels">
@@ -45,7 +33,7 @@ get_header(); ?>
       <div class="filter-list-wrapper">
         <filter-list-heading
           @toggle-filter-visibility="handleFilterHeadingClick('showDegreeAreaFilter', 'showDegreeLevelFilter')"
-          :selected-filter.sync="currentDegreeAreaFilter"
+          :selectedFilter.sync="currentDegreeAreaFilter"
           icon-dropdown-color="#cc1f1b"
           icon-reset-color="gray"
           heading="Degree Areas">
@@ -60,11 +48,11 @@ get_header(); ?>
           :visible.sync="showDegreeAreaFilter"
           :selected-filter.sync="currentDegreeAreaFilter">
           <filter-reset label="All Levels"></filter-reset>
-          <filter-item
+          <FilterItem
             v-for="item in degreeAreas"
             :item="item"
             :key="item.term_id">
-          </filter-item>
+          </FilterItem>
         </filter-list>
       </div>
     </div>
@@ -72,8 +60,51 @@ get_header(); ?>
     <degree-list>
       <degree-item v-for="degree in degreeList" :item="degree" :key="degree.ID" />
     </degree-list>
-	</div>
 
-</main>
+    <h1 class="no-results" v-if="!degreeList.length">No Matches</h1>
+  </main>
+</template>
 
-<?php get_footer(); ?>
+<script>
+import {degreeMixin} from 'vlh-library'
+import {buildDegreeList} from '@/scripts/helpers/buildDegreeList'
+
+export default {
+  mixins: [degreeMixin],
+  mounted() {
+    this.degrees = buildDegreeList(wpData.degrees);
+    this.degreeLevels = wpData.degreeLevels
+    this.degreeAreas = wpData.degreeAreas
+  }
+}
+</script>
+
+
+<style lang="scss">
+  /* Temporary */
+  // .degree-filters {
+  //   flex: 1 1 320px;
+  //   @media (min-width: 800px) {
+  //     max-width: 320px;
+  //   }
+  // }
+  // .degree-list {
+  //   flex: 1 1 calc(100% - 360px);
+  // }
+  // main.content {
+  //   width: 1440px;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   margin: 4em auto;
+  //   max-width: 100%;
+  //   padding: 1.25em;
+  // }
+  //
+  // .filter-clear {
+  //   display: flex;
+  //   align-items: center;
+  //   cursor: pointer;
+  // }
+
+
+</style>

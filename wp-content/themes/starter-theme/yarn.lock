@@ -8840,8 +8840,8 @@ vinyl@^1.0.0:
     replace-ext "0.0.1"
 
 vlh-library@thelearninghouse/vlh-library#master:
-  version "0.0.3"
-  resolved "https://codeload.github.com/thelearninghouse/vlh-library/tar.gz/11134efeb9b97cd82b95ef1ccf43a80251879840"
+  version "0.0.4"
+  resolved "https://codeload.github.com/thelearninghouse/vlh-library/tar.gz/91911a7a761f0e5ab013517b719fdb271c7fa8ac"
   dependencies:
     poi "^9.6.13"
     vue-stash "^2.0.1-beta"
