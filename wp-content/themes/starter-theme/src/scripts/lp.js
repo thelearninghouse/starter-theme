@@ -13,7 +13,6 @@ import Config from "themeConfig";
 *****************************/
 import "@/scripts/helpers/utilities";
 
-
 /* Dynamic Imports - Loading based on conditions
 *****************************/
 function handleAccordions() {

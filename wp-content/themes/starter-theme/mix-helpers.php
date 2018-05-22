@@ -9,7 +9,7 @@
     $mix_manifest = json_decode(file_get_contents($mix_manifest_location), true);
     $style = $mix_manifest[$file];
     $assets_base_url = get_stylesheet_directory_uri() . '/public';
-    $dev_asset_base_url = 'http://localhost:8080';
+    $dev_asset_base_url = 'http://localhost:8080/';
 
     if ( isHMR() ) {
       return $dev_asset_base_url . $style;
