@@ -21,15 +21,6 @@ Glob.sync('src/scripts/*.js').map(function(file) {
 });
 
 
-/* Handles styles for HMR it's not necessary to import them into JS file(s)
- *****************************/
-if (Mix.config.hmr) {
-	Glob.sync('src/hmr-helpers/*.js').map(function(file) {
-		Mix.js(file, 'js');
-	});
-}
-
-
 /* ALL JS Files in the root of their respective directories
 will be outputted as individual files for dev and building for production
  *****************************/
