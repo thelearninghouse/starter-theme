@@ -1,5 +1,6 @@
 // Enable HMR
 if (module.hot) {
+	require('@/styles/style.scss')
 	module.hot.accept();
 }
 

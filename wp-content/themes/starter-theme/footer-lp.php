@@ -12,6 +12,7 @@
 
 		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
+		<script src="<?php echo mix('/js/lp.js'); ?>" charset="utf-8"></script>		
 	</body>
 
 </html> <!-- end of site. what a ride! -->

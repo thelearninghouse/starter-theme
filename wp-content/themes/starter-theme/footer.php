@@ -25,10 +25,8 @@
 
 		</div>
 
-		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
-
-		<?php // Page Specific Scripts ?>
+		<script src="<?php echo mix('/js/scripts.js'); ?>" charset="utf-8"></script>
 
 	</body>
 

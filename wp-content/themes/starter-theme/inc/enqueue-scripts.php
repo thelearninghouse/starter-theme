@@ -10,19 +10,11 @@
   		wp_register_script( 'tlh-forms', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
       wp_register_script( 'manifest', mix('/js/manifest.js'), array(), '', true );
       wp_register_script( 'vendor', mix('/js/vendor.js'), array( 'manifest' ), '', true );
-      wp_register_script( 'tlh-js',  mix('/js/scripts.js'), array( 'manifest', 'vendor' ), '', true );
 
   		// enqueue styles and scripts
   		wp_enqueue_script( 'tlh-forms' );
       wp_enqueue_script( 'manifest' );
       wp_enqueue_script( 'vendor' );
-      wp_enqueue_script( 'tlh-js' );
-
-
-      if ( isHMR() ) {
-        enqueue_hmr_helpers();
-      }
-
   	}
   }
 

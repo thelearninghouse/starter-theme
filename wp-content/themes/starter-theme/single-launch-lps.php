@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php require_once('mix-helpers.php'); ?>
+
 <html <?php language_attributes(); ?>>
 
 	<head>
@@ -215,11 +217,13 @@
 
 </div>
 
-<script type="text/javascript">
-	<?php the_field('custom_js'); ?>
-</script>
+	<script type="text/javascript">
+		<?php the_field('custom_js'); ?>
+	</script>
 
-<?php wp_footer(); ?>
+	<?php wp_footer(); ?>
+
+	<script src="<?php echo mix('/js/launch-lp.js'); ?>" type="text/javascript"></script>
 
 </body>
 
