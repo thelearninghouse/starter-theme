@@ -4,16 +4,16 @@ This is a base theme to speed up development of all marketing sites. It is desig
 
 ## Features
 
-- Gulp task that compiles Sass, minifies JS, and live-updates the page with BrowserSync
-- Pre-defined templates for standard pages (like MAG sites)
-- Custom post types for Programs, Landing Pages, and Launch Landing Pages
-- General purpose accessible components like accordions and icons
+* Gulp task that compiles Sass, minifies JS, and live-updates the page with BrowserSync
+* Pre-defined templates for standard pages (like MAG sites)
+* Custom post types for Programs, Landing Pages, and Launch Landing Pages
+* General purpose accessible components like accordions and icons
 
 ## Getting Started
 
 1. Create a new repository for the new theme and clone this theme into it.
 2. Set up a new local development environment and clone the new repository into it.
-3. Install dependencies by navigating to the theme's `library` folder and running `npm install`.
+3. Install dependencies by navigating to the theme folder and running `npm install`.
 4. Edit `gulpfile.js` and change the proxy in the BrowserSync section to match the url you set up for your local development environment.
 5. Run `gulp` from the `library` folder to start BrowserSync and watch for changes on source files.
 6. Log in to the WP Admin.
@@ -116,6 +116,6 @@ starter-theme/
 
 ## Resources
 
-- [Starter Theme Wiki](https://github.com/thelearninghouse/starter-theme/wiki)
-- [Advanced Custom Fields Docs](https://www.advancedcustomfields.com/resources/)
-- [WordPress Developer Reference](https://developer.wordpress.org/reference/)
+* [Starter Theme Wiki](https://github.com/thelearninghouse/starter-theme/wiki)
+* [Advanced Custom Fields Docs](https://www.advancedcustomfields.com/resources/)
+* [WordPress Developer Reference](https://developer.wordpress.org/reference/)

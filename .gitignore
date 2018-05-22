@@ -1,18 +1,31 @@
 # Ignore everything in the root except the "wp-content" directory.
 /*
-!.gitignore
 !wp-content/
-
-# Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories.
-wp-content/themes/*
-wp-content/uploads/*
-!wp-content/themes/starter-theme
-!sassdoc
-!style-guide
+!.gitignore
 !readme.md
 !robots.txt
 !humans.txt
 
+# Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories.
+wp-content/themes/*
+wp-content/uploads/*
+wp-content/upgrade
+!wp-content/themes/starter-theme
+wp-content/themes/starter-theme/public
+
+
+# Favicons in root
+!android-chrome-192x192.png
+!android-chrome-256x256.png
+!apple-touch-icon.png
+!browserconfig.xml
+!favicon-16x16.png
+!favicon-32x32.png
+!favicon.ico
+!manifest.json
+!mstile-150x150.png
+
+# Ignore trash and miscellaneous files
 *~
 .DS_Store
 .svn
