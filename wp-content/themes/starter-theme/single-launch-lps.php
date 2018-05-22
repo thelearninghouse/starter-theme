@@ -38,7 +38,7 @@
 			}
 		?>
 		<link href="<?php echo $font_url ?>" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/public/css/launch-lp-style.css">
+		<?php require_once('css-injector/launch-lp.php'); ?>
 
 		<?php // Load custom CSS for this page
 			$color_1 = get_field('color_1', 'options'); // String: '#0000000'

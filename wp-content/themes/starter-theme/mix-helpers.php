@@ -20,14 +20,22 @@
 
   function enqueue_hmr_helpers() {
     wp_register_script( 'hmr-olc',  mix('/js/hmr-olc.js'), array( 'manifest', 'vendor' ), '', true );
+    wp_register_script( 'hmr-mag',  mix('/js/hmr-mag.js'), array( 'manifest', 'vendor' ), '', true );
     wp_register_script( 'hmr-lp',  mix('/js/hmr-lp.js'), array( 'manifest', 'vendor' ), '', true );
+    wp_register_script( 'hmr-launch-lps',  mix('/js/hmr-launch-lps.js'), array( 'manifest', 'vendor' ), '', true );
 
-    if ( !is_post_type('landing-pages') ) {
+    if ( !is_post_type('landing-pages') || !is_post_type('launch-lps') ) {
+      wp_enqueue_script( 'hmr-mag' );
       wp_enqueue_script( 'hmr-olc' );
+
     }
 
     if ( is_post_type('landing-pages') ) {
       wp_enqueue_script( 'hmr-lp' );
+    }
+
+    if ( is_post_type('launch-lps') ) {
+      wp_enqueue_script( 'hmr-launch-lps' );
     }
   }
 
