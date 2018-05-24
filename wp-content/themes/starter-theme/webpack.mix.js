@@ -41,7 +41,12 @@ if (!Mix.config.hmr || Mix.config.production) {
 	});
 
 	Mix.options({
-		processCssUrls: false
+		processCssUrls: false,
+		autoprefixer: {
+				options: {
+						grid: true,
+				}
+		}		
 	});
 
 	Mix.webpackConfig({
