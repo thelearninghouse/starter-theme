@@ -43,11 +43,12 @@
       $array = array();
       $degreeAreas = get_the_terms( $post->ID, 'degree_area') ? get_the_terms( $post->ID, 'degree_area') : $array;
       $degreeLevels = get_the_terms( $post->ID, 'degree_level') ? get_the_terms( $post->ID, 'degree_level') : $array;
-      $programSummary = get_field('program_summary', $post->ID) ? get_field('program_summary', $post->ID) : ''; 
+      $programSummary = get_field('program_summary', $post->ID) ? get_field('program_summary', $post->ID) : '';
 
       $post->degree_areas = $degreeAreas;
       $post->degree_levels = $degreeLevels;
       $post->summary = $programSummary;
+      $post->url = get_permalink( $post->ID );
 
     }
     return $degrees;
