@@ -46,7 +46,7 @@ if (!Mix.config.hmr || Mix.config.production) {
 				options: {
 						grid: true,
 				}
-		}		
+		}
 	});
 
 	Mix.webpackConfig({
@@ -70,13 +70,7 @@ Mix.webpackConfig({
 			"@": Path.resolve(__dirname, "./src"),
 			"themeConfig": Path.resolve(__dirname, "./theme.config.js")
 		}
-	},
-	plugins: [
-		new CopyWebpackPlugin([{
-			from: "src/images",
-			to: "images"
-		}])
-	]
+	}
 });
 
 
@@ -109,6 +103,7 @@ if (!Mix.config.production) {
 Mix.disableNotifications();
 
 Mix.copy("src/fonts", "public/fonts");
+Mix.copy("src/images", "public/images");
 
 Mix.babelConfig({
 	plugins: ["syntax-dynamic-import"]

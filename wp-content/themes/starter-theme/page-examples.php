@@ -62,18 +62,7 @@
 		</dt>
 		<dd id="sect1" role="region" aria-labelledby="accordion-1-header-1" class="accordion__panel">
 			<div>
-				<ul>
-					<li>Biblical Studies (BA)
-
-						<ul>
-							<li>Archaeology</li>
-						</ul>
-					</li>
-				</ul>
-				<h4>Minors</h4>
-				<ul>
-					<li>Bible and Theology</li>
-				</ul>
+				<h3>Accordion Content 1</h3>
 			</div>
 		</dd>
 		<dt role="heading" aria-level="3">
@@ -84,35 +73,7 @@
 		</dt>
 		<dd id="sect2" role="region" aria-labelledby="accordion-1-header-2" class="accordion__panel">
 			<div>
-				<ul>
-					<li>Christian Leadership (BA)
-
-						<ul>
-							<li>Family &amp; Children's Ministry</li>
-							<li>Intercultural Studies</li>
-							<li>Pastoral Ministry</li>
-							<li>Youth Ministry</li>
-							<li>Interdisciplinary</li>
-						</ul>
-					</li>
-					<li>Youth Ministry (BA)
-
-						<ul>
-							<li>General</li>
-							<li>Ministering to Families</li>
-							<li>Counseling Youth</li>
-							<li>Intercultural Studies</li>
-						</ul>
-					</li>
-				</ul>
-				<h4>Minors</h4>
-				<ul>
-					<li>Family &amp; Children's Ministry</li>
-					<li>Intercultural Studies</li>
-					<li>Pastoral Ministry</li>
-					<li>Youth Ministry</li>
-					<li>Interdisciplinary</li>
-				</ul>
+				<h3>Accordion Content 2</h3>
 			</div>
 		</dd>
 		<dt role="heading" aria-level="3">
@@ -123,46 +84,7 @@
 		</dt>
 		<dd id="sect3" role="region" aria-labelledby="accordion-1-header-3" class="accordion__panel">
 			<div>
-				<ul>
-					<li>Biology (BS)
-
-						<ul>
-							<li>Gen biology</li>
-							<li>Pre-Allied Health</li>
-							<li>Human Biology</li>
-						</ul>
-					</li>
-					<li>Computer Science (BS)
-
-						<ul>
-							<li>Web Systems and Applications</li>
-						</ul>
-					</li>
-					<li>Environmental Science (BA)</li>
-					<li>Environmental Science (BS)
-
-						<ul>
-							<li>Ecological Research</li>
-							<li>Ecology and Field Biology</li>
-						</ul>
-					</li>
-					<li>Environmental Science (BS – Honors)</li>
-					<li>Kinesiology (BS)
-
-						<ul>
-							<li>Exercise Science</li>
-							<li>Health &amp; Wellness</li>
-							<li>Sports Management</li>
-							<li>General Kinesiology</li>
-						</ul>
-					</li>
-					<li>Mathematics (BA)</li>
-				</ul>
-				<h4>Minors</h4>
-				<ul>
-					<li>Environmental Science</li>
-					<li>Mathematics</li>
-				</ul>
+				<h3>Accordion Content 3</h3>
 			</div>
 		</dd>
 	</dl>
