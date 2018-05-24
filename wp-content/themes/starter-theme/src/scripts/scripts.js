@@ -7,7 +7,7 @@ if (module.hot) {
 /* Get Theme Config File
 *****************************/
 import Config from "themeConfig";
-
+alert('hi2')
 
 /* ES6 import/export examples
 *****************************/
