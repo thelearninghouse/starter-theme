@@ -19,10 +19,6 @@
       wp_enqueue_script( 'tlh-js' );
 
 
-      if ( isHMR() ) {
-        enqueue_hmr_helpers();
-      }
-
   	}
   }
 

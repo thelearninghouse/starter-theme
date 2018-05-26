@@ -1,18 +1,9 @@
-// Enable HMR
-if (module.hot) {
-	module.hot.accept();
-}
+import {hotHelper} from './helpers/hotHelper.js'
+hotHelper(module);
 
 /* Get Theme Config File
 *****************************/
-import Config from "themeConfig";
-
-
-/* ES6 import/export examples
-*****************************/
-import examples from "@/scripts/examples";
-examples();
-
+import themeConfig from "themeConfig";
 
 /* Regular Imports - Include accross all pages
 *****************************/
@@ -24,7 +15,7 @@ import "@/scripts/components/main-navigation";
 *****************************/
 import initializeVlhLibrary from "@/scripts/VlhLibrary";
 
-if (Config.useVue) {
+if (themeConfig.useVue) {
 	initializeVlhLibrary();
 }
 
@@ -32,31 +23,31 @@ if (Config.useVue) {
 /* Dynamic Imports - Loading based on conditions
 *****************************/
 function handleAccordions() {
-	if (document.querySelector(Config.selectors.accordion) !== null) {
+	if (document.querySelector(themeConfig.selectors.accordion) !== null) {
 		return import(/* webpackChunkName: "accordion" */ "@/scripts/components/accordion");
 	}
 }
 
 function handleDegreeFiltering() {
-	if (document.querySelector(Config.selectors.mixItUp) !== null) {
+	if (document.querySelector(themeConfig.selectors.mixItUp) !== null) {
 		return import(/* webpackChunkName: "degree-filtering" */ "@/scripts/components/degree-filtering");
 	}
 }
 
 function handleSocialShare() {
-	if (document.querySelector(Config.selectors.socialShare) !== null) {
+	if (document.querySelector(themeConfig.selectors.socialShare) !== null) {
 		return import(/* webpackChunkName: "social-share" */ "@/scripts/components/social-share-buttons");
 	}
 }
 
 function handleStickyElements() {
-	if (document.querySelector(Config.selectors.sticky) !== null) {
+	if (document.querySelector(themeConfig.selectors.sticky) !== null) {
 		return import(/* webpackChunkName: "sticky" */ "@/scripts/components/sticky");
 	}
 }
 
 function handleSlider() {
-	if (document.querySelector(Config.selectors.slider) !== null) {
+	if (document.querySelector(themeConfig.selectors.slider) !== null) {
 		return import(/* webpackChunkName: "slider" */ "@/scripts/components/slider");
 	}
 }
