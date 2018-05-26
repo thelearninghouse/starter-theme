@@ -31,7 +31,7 @@ mix.disableNotifications()
 		files: ["**/*.php", "public/css/*.css", "public/js/*.js"]
 	})
 	.copy("src/fonts", "public/fonts")
-	.copy("src/images", "public/images");
+	.copy("src/images", "public/images")
 	.extract(['vue']);
 
 
