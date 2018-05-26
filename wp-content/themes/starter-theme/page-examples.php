@@ -10,7 +10,7 @@
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 <div id="vlh-app">
-	<button-counter></button-counter>
+	{{msg}}
 </div>
 
 
