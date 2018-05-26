@@ -1,8 +1,6 @@
 import {hotHelper} from './helpers/hotHelper.js'
 
-if (module.hot) {
-	hotHelper(module);
-};
+if (module.hot) { hotHelper(module); }
 
 /* Get Theme Config File
 *****************************/
@@ -18,9 +16,7 @@ import "@/scripts/components/main-navigation";
 *****************************/
 import initializeVlhLibrary from "@/scripts/VlhLibrary";
 
-if (themeConfig.useVue) {
-	initializeVlhLibrary();
-}
+if (themeConfig.useVue) { initializeVlhLibrary(); }
 
 /* Dynamic Imports - Loading based on conditions
 *****************************/
