@@ -1,15 +1,15 @@
 {
-    "/js/sticky.js": "/js/sticky.js",
-    "/js/degree-filtering.js": "/js/degree-filtering.js",
-    "/js/slider.js": "/js/slider.js",
-    "/js/social-share.js": "/js/social-share.js",
-    "/js/accordion.js": "/js/accordion.js",
-    "/js/scripts.js": "/js/scripts.js",
-    "/css/critical-home.css": "/css/critical-home.css",
-    "/css/launch-lp-style.css": "/css/launch-lp-style.css",
-    "/css/lp-critical.css": "/css/lp-critical.css",
-    "/css/lp-style.css": "/css/lp-style.css",
-    "/css/style.css": "/css/style.css",
-    "/js/vendor.js": "/js/vendor.js",
-    "/js/manifest.js": "/js/manifest.js"
+    "/js/degree-filtering.js": "/js/degree-filtering.js?id=13b383ac65db05724060",
+    "/js/sticky.js": "/js/sticky.js?id=6e7cce6372a377f01eec",
+    "/js/social-share.js": "/js/social-share.js?id=241afbb953c6c57f7478",
+    "/js/slider.js": "/js/slider.js?id=ebc5417c9c0e915a0520",
+    "/js/accordion.js": "/js/accordion.js?id=094bc097debaea840750",
+    "/js/scripts.js": "/js/scripts.js?id=29d9bfd2c68d8321c575",
+    "/css/critical-home.css": "/css/critical-home.css?id=c30f7f05bd7e7bffd64c",
+    "/css/launch-lp-style.css": "/css/launch-lp-style.css?id=f9af6ebbd613a59e9626",
+    "/css/lp-critical.css": "/css/lp-critical.css?id=d41d8cd98f00b204e980",
+    "/css/lp-style.css": "/css/lp-style.css?id=df2543c044cac17ce039",
+    "/css/style.css": "/css/style.css?id=e97d2cccdf976307300e",
+    "/js/vendor.js": "/js/vendor.js?id=4338d308da181840c488",
+    "/js/manifest.js": "/js/manifest.js?id=fabf392e765c9fe6d249"
 }
