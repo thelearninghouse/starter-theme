@@ -1,5 +1,5 @@
 import {hotHelper} from './helpers/hotHelper.js'
-if (module.hot) { hotHelper(module); }å
+if (module.hot) { hotHelper(module); }
 
 
 /* Get Theme Config File
