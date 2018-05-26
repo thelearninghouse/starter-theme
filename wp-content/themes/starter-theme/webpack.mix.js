@@ -1,11 +1,11 @@
 const mix = require('laravel-mix');
-const themeConfig = require('./theme.config.js');
+const config = require('./theme.config.js');
 const path = require('path');
 const glob = require('glob-all');
 const purgecssWordpress = require('purgecss-with-wordpress');
 require('laravel-mix-purgecss');
 
-let assetsProductionDirectory = `/wp-content/themes/${themeConfig.directoryName}/public/`;
+let assetsProductionDirectory = `/wp-content/themes/${config.directoryName}/public/`;
 let resourceRoot = mix.config.hmr ? 'http://localhost:8080/' : assetsProductionDirectory;
 let themePathsArray = [
 	path.join(__dirname, '**/*.php'),
@@ -31,7 +31,7 @@ mix.disableNotifications()
 		files: ["**/*.php", "public/css/*.css", "public/js/*.js"]
 	})
 	.copy("src/fonts", "public/fonts")
-	.copy("src/images", "public/images")
+	.copy("src/images", "public/images");
 	.extract(['vue']);
 
 
@@ -65,7 +65,7 @@ mix.webpackConfig({
 mix.purgeCss({
 	paths: glob.sync(themePathsArray),
 	whitelist: Config.purgecssWhitelist,
-	whitelistPatterns: [...purgecssWordpress.whitelistPatterns, ...themeConfig.purgecssWhitelistPatterns],
+	whitelistPatterns: [...purgecssWordpress.whitelistPatterns, ...config.purgecssWhitelistPatterns],
 	whitelistPatternsChildren: Config.purgeCSSWhitelistPatternsChildren
 });
 
