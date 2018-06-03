@@ -64,9 +64,9 @@ mix.webpackConfig({
  *****************************/
 mix.purgeCss({
 	paths: glob.sync(themePathsArray),
-	whitelist: Config.purgecssWhitelist,
+	whitelist: config.purgecssWhitelist,
 	whitelistPatterns: [...purgecssWordpress.whitelistPatterns, ...config.purgecssWhitelistPatterns],
-	whitelistPatternsChildren: Config.purgeCSSWhitelistPatternsChildren
+	whitelistPatternsChildren: config.purgeCSSWhitelistPatternsChildren
 });
 
 
