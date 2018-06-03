@@ -1,6 +1,6 @@
 module.exports = {
   base: "/starter-theme/",
-  title: "Starter Theme",
+  title: "Starter Theme 2b",
   docsDir: 'docs',
   description: "Wordpress Theme for TLH Marketing Sites",
   themeConfig: {
@@ -16,7 +16,6 @@ module.exports = {
     // if your docs are in a specific branch (defaults to 'master'):
     docsBranch: 'master',
     editLinks: true,
-    docsDir: ".DOCUMENTATION",
     nav: [
       { text: "Home", link: "/" },
       { text: "Getting Started", link: "/getting-started/" },
