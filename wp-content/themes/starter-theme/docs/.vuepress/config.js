@@ -1,13 +1,13 @@
 module.exports = {
   base: "/starter-theme/",
-  title: "Starter Theme 3b - docsDir update for edit",
+  title: "Starter Theme",
   docsDir: 'docs',
   description: "Wordpress Theme for TLH Marketing Sites",
   themeConfig: {
     repo: 'thelearninghouse/starter-theme',
     // Customising the header label
     // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
-    repoLabel: 'Contribute!',
+    repoLabel: 'Github Repo',
     // Optional options for generating "Edit this page" link
     // if your docs are in a different repo from your main project:
     docsRepo: 'thelearninghouse/starter-theme',

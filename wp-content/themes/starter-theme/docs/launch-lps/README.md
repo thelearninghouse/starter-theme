@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # Launch LP's
 
 The starter theme includes a pre-built template to get pages up as quickly as possible so there are endpoints to drive traffic to and start getting leads.
