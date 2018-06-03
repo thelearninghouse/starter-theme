@@ -4,19 +4,16 @@ heroImage: /tlh-logo.svg
 actionText: Get Started →
 actionLink: /getting-started/
 features:
-  - title: Simplicity First
+  - title: Modern
     details: >-
-      Minimal setup with markdown-centered project structure helps you focus on
-      writing.
-  - title: Vue-Powered
+      Uses Webpack, ES6, and modern front-end development practices
+  - title: Lightweight
     details: >-
-      Enjoy the dev experience of Vue + webpack, use Vue components in markdown,
-      and develop custom themes with Vue.
+      Provides ability to only include what you need
   - title: Performant
     details: >-
-      VuePress generates pre-rendered static HTML for each page, and runs as an
-      SPA once a page is loaded.
-footer: MIT Licensed | Copyright © 2018-present David Royer
+      Great performance for all browsers
+footer: MIT Licensed | Copyright © 2018-present Learning House Web Design & Development Team
 ---
 
 # Our theme using Laravel Mix for development
