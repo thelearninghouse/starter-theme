@@ -1,6 +1,6 @@
 module.exports = {
   base: "/starter-theme/",
-  title: "Starter Theme 2b",
+  title: "Starter Theme 3b - docsDir update for edit",
   docsDir: 'docs',
   description: "Wordpress Theme for TLH Marketing Sites",
   themeConfig: {
@@ -12,14 +12,17 @@ module.exports = {
     // if your docs are in a different repo from your main project:
     docsRepo: 'thelearninghouse/starter-theme',
     // if your docs are not at the root of the repo:
-    docsDir: 'docs',
+    docsDir: 'wp-content/themes/starter-theme/docs',
     // if your docs are in a specific branch (defaults to 'master'):
     docsBranch: 'master',
     editLinks: true,
     nav: [
       { text: "Home", link: "/" },
       { text: "Getting Started", link: "/getting-started/" },
+      { text: "Theme Features", link: "/theme-features/" },
+      { text: "Launch LP's", link: "/launch-lps/" },
       { text: "FAQ", link: "/faq/" }
+
     ]
   },
   // dest: '../../../docs'
