@@ -1,4 +1,5 @@
 module.exports = {
+  base: "/starter-theme/",
   title: "Starter Theme",
   description: "Wordpress Theme for TLH Marketing Sites",
   themeConfig: {
