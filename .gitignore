@@ -1,6 +1,7 @@
 # Ignore everything in the root except the "wp-content" directory.
 /*
 !wp-content/
+!docs/
 !.gitignore
 !readme.md
 !robots.txt
