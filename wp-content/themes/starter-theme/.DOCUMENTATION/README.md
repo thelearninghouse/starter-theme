@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /tlh-logo.svg
+heroImage: '/tlh-logo.svg'
 actionText: Get Started →
 actionLink: /getting-started/
 features:

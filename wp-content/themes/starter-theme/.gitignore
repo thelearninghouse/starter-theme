@@ -8,3 +8,5 @@ test
 .BACKUP
 mix-extend-config.js
 public
+!.DOCUMENTATION/
+!.DOCUMENTATION/public
