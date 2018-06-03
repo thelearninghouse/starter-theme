@@ -11,5 +11,5 @@ module.exports = {
       { text: "FAQ", link: "/faq/" }
     ]
   },
-  dest: '../../../docs'
+  // dest: '../../../docs'
 };
