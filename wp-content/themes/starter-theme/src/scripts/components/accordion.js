@@ -22,9 +22,11 @@ function animateAccordion(trigger) {
 	var panelID = trigger.getAttribute("aria-controls")
 	var panel = document.getElementById(panelID)
 
-	if (panel.style.maxHeight) {
+	if (panel.classList.contains('open-accordion-panel')) {
+		delayedClassRemoval(panel, 'open-accordion-panel')
 		panel.style.maxHeight = null;
 	} else {
+		panel.classList.add('open-accordion-panel')
 		panel.style.maxHeight = panel.scrollHeight + "px";
 	}
 }
@@ -32,10 +34,19 @@ function animateAccordion(trigger) {
 function closeAccordion(trigger) {
 	var openPanelID = trigger.getAttribute("aria-controls");
 	var openPanel = document.getElementById(openPanelID);
+
+	delayedClassRemoval(openPanel, 'open-accordion-panel')
 	openPanel.style.maxHeight = null;
 }
-// End of Helper Functions
 
+
+function delayedClassRemoval(el, classToRemove) {
+	setTimeout(() => {
+		el.classList.remove(classToRemove)
+	}, 350)
+}
+
+// End of Helper Functions
 
 
 // Begin Main Functionality

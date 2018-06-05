@@ -4,19 +4,18 @@
   "description": "A Modern Lightweight Wordpress Development Theme",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run run:dev",
-    "build": "npm run production",
-    "predev": "rm -rf ./public/js/**/*",
-    "prebuild": "rm -rf ./public/**/*",
-    "prehot": "rm -rf ./public/**/*",
+    "dev": "npm run clean && npm run run:dev",
+    "hot": "npm run clean && npm run run:hot",
+    "build": "npm run clean && npm run production",
+    "clean": "rm -rf ./public/**/*",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "sh deploy-docs.sh",
     "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch-poll": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=$npm_package_config_mix",
     "production": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "run:dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=$npm_package_config_mix"
+    "run:dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=$npm_package_config_mix",
+    "run:hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=$npm_package_config_mix"
   },
   "config": {
     "mix": "node_modules/laravel-mix/setup/webpack.config.js"

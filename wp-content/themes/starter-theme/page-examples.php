@@ -63,6 +63,7 @@
 		<dd id="sect1" role="region" aria-labelledby="accordion-1-header-1" class="accordion__panel">
 			<div>
 				<h3>Accordion Content 1</h3>
+				<a href="#">A tabable element</a>
 			</div>
 		</dd>
 		<dt role="heading" aria-level="3">
