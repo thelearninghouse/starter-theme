@@ -18,11 +18,12 @@ module.exports = {
     editLinks: true,
     nav: [
       { text: "Home", link: "/" },
+      { text: "Overview", link: "/overview/" },
       { text: "Getting Started", link: "/getting-started/" },
       { text: "Theme Features", link: "/theme-features/" },
       { text: "Launch LP's", link: "/launch-lps/" },
+      { text: "Docs", link: "/documentation/" },
       { text: "FAQ", link: "/faq/" }
-
     ]
   },
   // dest: '../../../docs'
