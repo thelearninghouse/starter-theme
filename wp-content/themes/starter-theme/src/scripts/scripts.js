@@ -2,6 +2,11 @@ import {hotHelper} from './helpers/hotHelper.js'
 if (module.hot) { hotHelper(module); }
 
 
+/* Browser support for older browsers (ie11, ect...)
+*****************************/
+import "babel-polyfill";
+
+
 /* Get Theme Config File
 *****************************/
 import themeConfig from "themeConfig";

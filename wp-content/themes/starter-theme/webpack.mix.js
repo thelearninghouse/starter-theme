@@ -32,8 +32,10 @@ mix.disableNotifications()
 	})
 	.copy("src/fonts", "public/fonts")
 	.copy("src/images", "public/images")
-	.extract(['vue']);
-
+	.extract([
+		'babel-polyfill',
+		'vue'
+	]);
 
 mix.options({
 	processCssUrls: false,
