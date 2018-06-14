@@ -3,10 +3,8 @@ Contributors: Flector
 Donate link: http://goo.gl/CcxWYg
 Tags: checkbox, insert, link, links, meta, nofollow, popup, rel nofollow, seo, editor, link, TinyMCE, title
 Requires at least: 4.2
-Tested up to: 4.9.2
+Tested up to: 4.9.6
 Stable tag: trunk 
-License: GPLv2
-License URI: http://www.opensource.org/licenses/GPL-2.0
 
 The plugin adds a title and a rel="nofollow" checkbox to the insert link popup box.
 
@@ -14,7 +12,6 @@ The plugin adds a title and a rel="nofollow" checkbox to the insert link popup b
 
 The plugin restores the `Title` field (that was removed from WordPress 4.2) in the insert link popup box and adds a new `Add rel="nofollow" to link` checkbox to it. 
 
-The plugin is based on two other plugins, [Restore Link Title Field](https://wordpress.org/plugins/restore-link-title-field/) and [WPRes - nofollow link](https://wordpress.org/plugins/wpres-nofollow-link/), so kudos to their authors!
 
 If you liked my plugin, please `rate` it.
  
@@ -30,7 +27,7 @@ If you liked my plugin, please `rate` it.
 
 = Does the plugin support localization? =
 
-Yes, please send your localization files (.mo и .po) to rlector@gmail.com.
+Yes, please use [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/title-and-nofollow-for-links).
 
 
 == Screenshots ==
@@ -39,6 +36,12 @@ Yes, please send your localization files (.mo и .po) to rlector@gmail.com.
 2. The source code of the added link.
 
 == Changelog ==
+
+= 1.04 =
+* update wplink.js to last version. 
+
+= 1.03 =
+* fixed js-bug (thanks to @themagnifico). 
 
 = 1.01 =
 * fixed js-bug in Text editor.

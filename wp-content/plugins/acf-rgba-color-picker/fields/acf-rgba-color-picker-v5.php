@@ -36,7 +36,8 @@ class dhz_acf_field_extended_color_picker extends acf_field {
 		$this->label = __("RGBA Color Picker",'acf-extended-color-picker');
 		$this->category = 'jquery';
 		$this->defaults = array(
-			'default_value'	=> '',
+			'hide_palette'	=> '',
+			'color_palette'	=> '',
 		);
 		
 		$this->settings = array(
