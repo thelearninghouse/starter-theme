@@ -1,0 +1,34 @@
+.mag-degrees {
+	> .wrap-lg {
+		padding-top: rem(20);
+		padding-bottom: rem(30);
+
+		@include mobilefirst($bp-med) {
+			padding-top: rem(30);
+			padding-bottom: rem(60);
+		}
+
+		.page-content {
+			margin-bottom: rem(20);
+		}
+
+		.page-content > *:first-child {
+			margin-top: 0;
+		}
+
+		@include mobilefirst($bp-med) {
+			display: flex;
+			flex-flow: row nowrap;
+
+			.page-content {
+				flex: 2;
+				margin-bottom: 0;
+				margin-right: rem(40);
+			}
+
+			.sidebar {
+				flex: 1;
+			}
+		}
+	}
+}

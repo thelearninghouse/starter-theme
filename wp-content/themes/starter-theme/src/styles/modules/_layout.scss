@@ -8,6 +8,26 @@ LAYOUT & GRID STYLES
 	margin: 0 auto;
 }
 
+[class*="wrap-"] {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: rem(15);
+	padding-right: rem(15);
+
+	@include mobilefirst($bp-med) {
+		padding-left: rem(20);
+		padding-right: rem(20);
+	}
+}
+
+.wrap-lg {
+	max-width: $wrap-lg;
+}
+
+.wrap-md {
+	max-width: $wrap-md;
+}
+
 // anchor footer to bottom on short pages
 #container {
 	display: flex;

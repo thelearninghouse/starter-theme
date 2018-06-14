@@ -2,12 +2,6 @@
 HOMEPAGE SPECIFIC STYLES
 *************************/
 
-.hero-title {
-	@include sectionspace();
-	background-size: cover;
-	@include responsivebackground();
-}
-
 .home {
 	.main-content {
 		display: block;

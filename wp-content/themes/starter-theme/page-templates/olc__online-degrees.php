@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Online Degrees
+Template Name: OLC Online Degrees List
 */
 get_header(); ?>
 
@@ -55,5 +55,7 @@ get_header(); ?>
 	</div>
 
 </main>
+
+<?php get_template_part( 'template-parts/cta-footer' ); ?>
 
 <?php get_footer(); ?>

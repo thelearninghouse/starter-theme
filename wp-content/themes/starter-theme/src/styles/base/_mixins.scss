@@ -39,6 +39,13 @@
   }
 }
 
+// Apply styling on mobile only
+@mixin mobileonly($res) {
+	@media screen and (max-width: $res - 1) {
+		@content;
+	}
+}
+
 // Standard section spacing
 @mixin sectionspace($pixels-sm: 30, $pixels-lg: 50) {
   padding-top: rem($pixels-sm);

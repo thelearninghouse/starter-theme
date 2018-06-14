@@ -14,7 +14,12 @@ $wrap-md: 940px;
 $wrap-lg: 1400px;
 
 // --- Colors ---
-$primary-color: 		#C41331;
+$primary-color: #C41331;
+$gray--light: #e6e5e5;
+$gray--medium: #9e9f9e;
+$gray--medium-dark: #6b6b6b;
+$gray--dark: #404040;
+$off-black: #252525;
 
 /// Text Color
 $text-color:        #666;
@@ -25,7 +30,7 @@ $link-hover:        darken($link-color, 15%);
 
 
 // --- Fonts ---
-$sans-serif: sans-serif;
+$sans-serif: "Open Sans", Arial, sans-serif;
 $serif: serif;
 
 

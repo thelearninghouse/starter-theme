@@ -1,0 +1,65 @@
+{
+    "key": "group_5b06e51fb3648",
+    "title": "FAQ Options",
+    "fields": [
+        {
+            "key": "field_5b06e525735a0",
+            "label": "Exclude from main FAQ page?",
+            "name": "faq_exclude_from_list",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b06e56c735a1",
+            "label": "FAQ Category",
+            "name": "faq_category",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "faq_category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "faq"
+            }
+        ]
+    ],
+    "menu_order": 15,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Options for individual FAQ posts",
+    "modified": 1528997606
+}

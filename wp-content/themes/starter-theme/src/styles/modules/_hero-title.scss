@@ -1,11 +1,12 @@
 .hero-title {
-	padding-top: 4rem;
-	padding-bottom: 4rem;
+	@include sectionspace();
 	text-align: center;
 	color: white;
 	background-size: cover;
 	background-position: center;
 	background-color: darkgray;
+
+	@include responsivebackground();
 
 	// meta styling for blog posts
 	span {

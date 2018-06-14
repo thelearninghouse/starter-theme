@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
+<html <?php language_attributes(); ?>>
 
 	<head>
 		<meta charset="utf-8">
@@ -13,23 +10,24 @@
 		<title><?php wp_title(''); ?></title>
 
 		<?php // mobile meta (hooray!) ?>
-		<meta name="HandheldFriendly" content="True">
+		<meta name="HandheedFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
-		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/public/images/apple-touch-icon.png">
-		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
-		<?php // or, set /favicon.ico for IE10 win ?>
-		<meta name="msapplication-TileColor" content="#f01d4f">
-		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/public/images/win8-tile-icon.png">
-    <meta name="theme-color" content="#121212">
+		<?php // icons & favicons (generate here: https://realfavicongenerator.net/) (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<meta name="msapplication-TileColor" content="#2b5797">
+		<meta name="theme-color" content="#ffffff">
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-
 		<?php wp_head(); ?>
-		<?php require_once('css-injector/lp.php'); ?>
+		<link rel="stylesheet" href="https://use.typekit.net/fgs0bil.css">
+
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/public/css/lp-style.css">
 
 		<?php if ( get_field('gtm_id', 'options') ) { ?>
 			<!-- Google Tag Manager -->
@@ -43,20 +41,100 @@
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+		<a class="skip-link" href="#content">Skip to content</a>
 		<?php if ( get_field('gtm_id', 'options') ) { ?>
 			<!-- Google Tag Manager (noscript) -->
 			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<?php the_field('gtm_id', 'options'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<!-- End Google Tag Manager (noscript) -->
 		<?php } ?>
 
-		<div class="container">
+		<div id="container" class="container">
 
-			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+		<header class="header-mag" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-				<div class="wrap">
+				<div class="wrap header-mag__nav-container">
+					<span class="header-mag__logo">
+						<?php $school_logo = get_field('school_logo_alternative', 'options');
+						if ( $school_logo ) { ?>
+							<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
+						<?php } else { ?>
+							<span><?php the_field( 'school_name', 'options' ); ?></span>
+							<?php } ?>
+					</span>
 
-					<p class="logo header__logo" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<a class="header-mag__phone" title="Give us a call!" href="tel:<?php the_field('school_phone', 'option'); ?>"><?php the_field('school_phone', 'option'); ?></a>
 
 				</div>
 
+				<?php // Get proper title
+				  $heading_field = get_field('hero_heading');
+				  $subheading_field = get_field('hero_subheading');
+
+					$page_subtitle = $subheading_field;
+
+				  switch(true)
+				  {
+				    case $heading_field:
+				      $page_title = $heading_field;
+				      break;
+				    case is_home():
+				      $page_title = get_the_title(get_option('page_for_posts'));
+				      break;
+				    case is_archive():
+				      $page_title = get_the_archive_title();
+				      break;
+				    case is_404():
+				      $page_title = '404: Page Not Found';
+							$page_subtitle = 'Error';
+				      break;
+				    default:
+				      $page_title = get_the_title();
+				      break;
+				  }
+
+				  if ( is_singular( 'post' ) ) {
+				    $page_subtitle = tlh_build_byline();
+				  }
+				  else {
+				    $page_subtitle = $subheading_field;
+				  }
+				?>
+				<div class="wrap-lg header-mag__heading-container">
+			    <h1 class="header-mag__page-heading">
+						<?php if ( $page_subtitle ) { ?>
+				      <span class="header-mag__page-subheading"><?php echo $page_subtitle; ?></span>
+				    <?php } ?>
+						<?php echo $page_title ?>
+					</h1>
+				</div>
+
+				<?php if ( is_page_template( 'page-templates/mag__home.php' ) ) { ?>
+					<?php
+
+					// check if the repeater field has rows of data
+					if( have_rows('mag_home_cards') ) { ?>
+						<section class="wrap-md" aria-label="Learn more about our degree programs">
+							<div class="cta-boxed">
+						 		<?php while ( have_rows('mag_home_cards') ) : the_row(); ?>
+									<div class="cta-boxed__item">
+										<div class="cta-boxed__card">
+											<h3 class="cta-boxed__card-title"><?php the_sub_field('title'); ?></h3>
+											<p class="cta-boxed__card-summary"><?php the_sub_field('summary'); ?></p>
+											<a class="cta-boxed__card-action button <?php echo get_row_index() % 2 == 1 ? 'button--teal' : 'button--gold'; ?> button--angle button--wide" href="<?php the_sub_field('button_link'); ?>"><?php the_sub_field('button_label'); ?></a>
+										</div>
+									</div>
+						    <?php endwhile; ?>
+							</div>
+						</section>
+					<?php } ?>
+				<? } ?>
+
 			</header>
+			<?php
+				if ( is_singular( 'post' ) ) {
+					tlh_responsive_bg_style( 'header-mag' );
+				}
+				else {
+					tlh_responsive_bg_style( 'header-mag', 'hero_background_image' );
+				}
+			?>
