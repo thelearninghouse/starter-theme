@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Child Page Listing
+Template Name: OLC Child Page Listing
 */
 get_header(); ?>
 
@@ -8,8 +8,8 @@ get_header(); ?>
 
 	<?php get_template_part( 'template-parts/page_title' ); ?>
 
-	<div class="wrap-lg page-wrapper">
-		<div class="page-wrapper__content page-wrapper__content--content">
+	<div class="wrap page-wrapper">
+		<section class="page-content" aria-label="Page Content">
 			<?php if (have_posts()) : while (have_posts()) : the_post();
 				the_content();
 			endwhile; endif; ?>
@@ -49,15 +49,15 @@ get_header(); ?>
 					<?php } ?>
 				</ul>
 			<?php } ?>
-		</div>
+		</section>
 
-		<?php get_template_part( 'template-parts/sidebar' ); ?>
+		<?php get_sidebar(); ?>
 
 	</div>
 
 </main>
 
-<?php get_template_part( 'template-parts/cta-footer' ); ?>
+<?php get_template_part( 'template-parts/cta_footer' ); ?>
 
 
 <?php get_footer(); ?>

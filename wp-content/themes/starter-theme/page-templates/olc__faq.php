@@ -1,9 +1,9 @@
-<?php /* Template Name: FAQ List */ ?>
+<?php /* Template Name: OLC FAQ List */ ?>
 
 <?php get_header(); ?>
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/hero_title' ); ?>
+	<?php get_template_part( 'template-parts/page_title' ); ?>
 
 		<div class="wrap page-wrapper">
 			<section class="page-content" aria-label="Page Content">
@@ -101,7 +101,7 @@
 
 </main>
 
-<?php get_template_part( 'template-parts/cta-footer' ); ?>
+<?php get_template_part( 'template-parts/cta_footer' ); ?>
 
 
 <?php get_footer(); ?>

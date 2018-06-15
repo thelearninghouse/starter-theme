@@ -1,28 +1,215 @@
+// .card {
+// 	background: white;
+// 	box-shadow: 0 0 em(10) rgba(0, 0, 0, 0.1);
+// 	max-width: em(300);
+// 	overflow: hidden;
+// 	position: relative;
+// 	padding-bottom: 4rem;
+// }
+//
+// .program-card {
+// 	&__name,
+// 	&__excerpt {
+// 		padding-right: 1rem;
+// 		padding-left: 1rem;
+// 		text-align: left;
+// 		display: block;
+// 		margin-bottom: 0.5rem;
+// 	}
+//
+// 	&__button {
+// 		width: 100%;
+// 		border-radius: 0;
+// 		text-align: center;
+// 		position: absolute;
+// 		bottom: 0;
+// 		left: 0;
+// 	}
+// }
+
 .card {
+	$self: &;
+
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	width: 100%;
 	background: white;
-	box-shadow: 0 0 em(10) rgba(0, 0, 0, 0.1);
-	max-width: em(300);
+	box-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.2);
 	overflow: hidden;
 	position: relative;
-	padding-bottom: 4rem;
-}
 
-.program-card {
-	&__name,
-	&__excerpt {
-		padding-right: 1rem;
-		padding-left: 1rem;
-		text-align: left;
-		display: block;
-		margin-bottom: 0.5rem;
+	&__image {
+		> img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
 	}
 
-	&__button {
-		width: 100%;
-		border-radius: 0;
-		text-align: center;
+	&__copy {
+		padding: rem(15);
+
+		@include mobilefirst($bp-med) {
+			padding: rem(20);
+		}
+	}
+
+	&__label {
+		display: block;
+		font-style: italic;
+		font-size: rem(16);
+		color: transparentize($tlh-red, 0.3);
+		margin-bottom: rem(10);
+
+		@include mobilefirst($bp-med) {
+			font-size: rem(18);
+		}
+	}
+
+	&__icon {
+		display: block;
+		width: rem(80);
+		height: rem(80);
+		margin-bottom: rem(10);
+	}
+
+	&__heading {
+		margin: 0;
+		color: $tlh-red;
+		font-weight: 700;
+		font-family: $sans-serif;
+		font-style: normal;
+	}
+
+	&__description {
+		margin: rem(10) 0 0;
+	}
+
+	&__action {
+		padding: 0 rem(15) rem(15);
+
+		@include mobilefirst($bp-med) {
+			padding: 0 rem(20) rem(20);
+		}
+
+		&--right {
+			text-align: right;
+		}
+	}
+
+	&--wide-image {
+		display: flex;
+		flex-flow: row nowrap;
+
+		#{$self}__image {
+			display: none;
+
+			@include mobilefirst($bp-lg) {
+				display: block;
+				max-width: rem(230);
+				flex: 1;
+			}
+		}
+
+		> div:nth-of-type(2) {
+			flex: 1 0;
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: space-between;
+		}
+
+		#{$self}__copy {
+			flex: 3;
+		}
+	}
+}
+
+.image-card {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	background-color: $gray--medium;
+	color: white;
+	padding: rem(35) rem(15);
+
+	*:focus {
+		outline-color: white;
+	}
+
+	@include mobilefirst($bp-med) {
+		padding: rem(35) rem(20);
+		min-height: rem(320);
+	}
+
+	&__image {
 		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 0;
 		bottom: 0;
 		left: 0;
+		filter: grayscale(1);
+		background-size: cover;
+		background-position: center center;
+		opacity: 0.9;
+	}
+
+	&__image-overlay {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: $tlh-red;
+		mix-blend-mode: darken;
+		opacity: 0.75;
+	}
+
+	&__copy {
+		position: relative;
+		z-index: 3;
+	}
+
+	&__heading {
+		display: none;
+
+		@include mobilefirst($bp-med) {
+			display: block;
+			color: inherit;
+			font-weight: 700;
+			margin: 0;
+		}
+	}
+
+	&__description {
+		display: none;
+
+		@include mobilefirst($bp-med) {
+			display: block;
+			margin-top: rem(15);
+		}
+	}
+}
+
+// Formatting and override default link styling
+a.card {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		color: inherit;
+	}
+}
+
+.card-list {
+	list-style: none;
+	padding: 0;
+	margin: rem(20) 0;
+
+	.card + .card {
+		margin-top: rem(20);
 	}
 }

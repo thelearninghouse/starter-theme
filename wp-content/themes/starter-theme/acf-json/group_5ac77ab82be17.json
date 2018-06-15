@@ -1,24 +1,6 @@
 {
     "key": "group_5ac77ab82be17",
     "title": "Semester Information",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "semesters"
-            }
-        ]
-    ],
-    "menu_order": 12,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": "",
-    "modified": 1527259727,
     "fields": [
         {
             "key": "field_5ac77ad292d94",
@@ -86,5 +68,23 @@
             "allow_quickedit": 1,
             "allow_bulkedit": 0
         }
-    ]
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "semesters"
+            }
+        ]
+    ],
+    "menu_order": 12,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Start, drop, end dates for Semesters. These power the next start date and the academic calendar.",
+    "modified": 1529002281
 }

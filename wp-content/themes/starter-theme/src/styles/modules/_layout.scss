@@ -64,3 +64,77 @@ LAYOUT & GRID STYLES
 		}
 	}
 }
+
+// Flex-based grid, since IE can't andle auto-flow grids
+.flex-grid {
+	$self: &;
+
+	// border: red 1px solid !important;
+	margin: 0;
+	padding: rem(10);
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+
+	&__item {
+		// border: red 1px solid !important;
+		width: 100%;
+		padding: rem(10);
+
+		@include mobilefirst($bp-sm) {
+			width: 50%;
+		}
+
+		@include mobilefirst($bp-med) {
+			width: 33.3%;
+		}
+
+		@include mobilefirst($bp-lg) {
+			width: 25%;
+		}
+	}
+
+	&--nowrap {
+		flex-flow: column nowrap;
+
+		@include mobilefirst($bp-med) {
+			flex-flow: row nowrap;
+		}
+
+		#{$self}__item {
+			width: 100%;
+			flex: 1;
+		}
+	}
+
+	&--large-gap {
+		#{$self}__item {
+			padding: rem(10);
+		}
+
+		@include mobilefirst($bp-lg) {
+			padding: rem(20);
+		}
+	}
+
+	&--thin-gap {
+		padding: rem(2);
+
+		#{$self}__item {
+			padding: rem(2);
+		}
+	}
+
+	&--stretch {
+		align-items: stretch;
+
+		#{$self}__item {
+			display: flex;
+			align-items: stretch;
+		}
+	}
+
+	&--left {
+		justify-content: flex-start;
+	}
+}

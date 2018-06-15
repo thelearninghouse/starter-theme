@@ -1,76 +1,30 @@
 <?php get_header(); ?>
 
-			<div class="hero-title">
-			  <div class="wrap-lg">
-			    <h1>
-						<?php the_title(); ?>
-						<span class="entry-date">Posted <?php echo get_the_date(); ?> by <?php the_author(); ?> |
-								<?php
-								$categories = get_the_category();
-								$separator = ', ';
-								$output = '';
-								if ( ! empty( $categories ) ) {
-									foreach( $categories as $category ) {
-										$output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
-									}
-									echo trim( $output, $separator );
-								} ?>
-							</span>
-					</h1>
-			  </div>
-			</div>
-			<?php tlh_responsive_bg_style('hero-title'); ?>
 
-			<div id="content">
+<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<?php get_template_part( 'template-parts/page_title' ); ?>
 
-				<div id="inner-content" class="wrap">
+	<div class="wrap page-wrapper">
 
-					<main id="main-content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<section class="page-content">
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+				  <section class="entry-content cf" itemprop="articleBody">
+				    <?php the_content(); ?>
+				  </section> <?php // end article section ?>
 
-							  <section class="entry-content cf" itemprop="articleBody">
-							    <?php the_content(); ?>
-							  </section> <?php // end article section ?>
+				</article> <?php // end article ?>
+			</section> <?php // end article section ?>
 
-							</article> <?php // end article ?>
+		<?php endwhile; endif; ?>
 
-						<?php endwhile; ?>
+		<?php get_sidebar(); ?>
 
-						<?php else : ?>
+	</div>
 
-							<article id="post-not-found" class="hentry">
-									<header class="article-header">
-										<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-									</header>
-									<section class="entry-content">
-										<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-									</section>
-									<footer class="article-footer">
-											<p><?php _e( 'This is the error message in the single.php template.', 'bonestheme' ); ?></p>
-									</footer>
-							</article>
-
-						<?php endif; ?>
-
-						<div id="sidebar_blog" class="sidebar" role="complementary">
-
-							<div class="sidebar__widget sidebar__widget--request-info">
-								<h2 class="h3">Request Your Free Info Packet</h2>
-								<a href="/get-started/" class="button">Get Started</a>
-							</div>
-
-							<?php dynamic_sidebar( 'sidebar-1' ); ?>
-
-						</div>
-
-					</main>
-
-				</div>
-
-			</div>
+</main>
 
       <script>
      	// Load document before calculating window height
@@ -83,8 +37,6 @@
         /* Set the max scrollable area */
         max = docHeight - winHeight;
         progressBar.attr('max', max);
-
-        console.log(winHeight);
 
         $(document).on('scroll', function(){
            value = $(window).scrollTop();

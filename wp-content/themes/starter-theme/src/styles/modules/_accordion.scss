@@ -8,7 +8,7 @@ ACCORDION STYLES
 
 .accordion__trigger {
 	background-color: #e8e8e8;
-	color: $primary-color;
+	color: $tlh-red;
 	border: 0;
 	display: flex;
 	justify-content: space-between;
@@ -45,7 +45,7 @@ ACCORDION STYLES
 }
 
 .accordion__trigger[aria-expanded="true"] {
-	background-color: $primary-color;
+	background-color: $tlh-red;
 	color: white;
 }
 

@@ -14,36 +14,20 @@
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<?php // icons & favicons (generate here: https://realfavicongenerator.net/) (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-
+		<?php get_template_part( 'template-parts/header/favicons' ); ?>
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 		<?php wp_head(); ?>
 
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
-
 		<?php require_once('css-injector/mag.php'); ?>
 
-		<?php if ( get_field('gtm_id', 'options') ) { ?>
-			<!-- Google Tag Manager -->
-			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-<?php the_field('gtm_id', 'options'); ?>');</script>
-			<!-- End Google Tag Manager -->
-		<?php } ?>
+		<?php get_template_part( 'template-parts/header/tag_manager_script' ); ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 		<a class="skip-link" href="#content">Skip to content</a>
-		<?php if ( get_field('gtm_id', 'options') ) { ?>
-			<!-- Google Tag Manager (noscript) -->
-			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<?php the_field('gtm_id', 'options'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			<!-- End Google Tag Manager (noscript) -->
-		<?php } ?>
+		<?php get_template_part( 'template-parts/header/tag_manager_iframe' ); ?>
 
 		<div id="container" class="container">
 
@@ -61,7 +45,7 @@
 				<nav class="header-mag__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 					<?php wp_nav_menu(array(
 										 'container' => false,                           // remove nav container
-										 'menu' => __( 'Mag Menu', 'tlh_theme' ),  // nav name
+										 'menu' => __( 'MAG Menu', 'tlh_theme' ),  // nav name
 										 'menu_class' => 'nav',               // adding custom nav class
 										 'theme_location' => 'mag',                 // where it's located in the theme
 										 'depth' => 0			                               // limit the depth of the nav

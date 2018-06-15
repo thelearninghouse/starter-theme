@@ -71,7 +71,7 @@
       'rewrite' => array('slug' => 'online-programs/area-of-study', 'with_front' => false )
     );
 
-    register_taxonomy( 'degree_area', 'degrees', $args );
+    register_taxonomy( 'degree_area', array('degrees', 'career-outcome', 'program-resource'), $args );
 
   }
   add_action( 'init', 'taxonomies_area_of_study', 0 );
@@ -385,6 +385,7 @@
     $args = array (
       'labels' => $labels,
       'hierarchical' => false,
+			'meta_box_cb' => false,
       'rewrite' => array('slug' => 'faq/category/', 'with_front' => false )
     );
 

@@ -4,15 +4,7 @@
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-	<?php $heading_field = get_field('hero_heading');
-		$page_title = $heading_field ? $heading_field : get_the_title();
-	?>
-	<header class="hero-title hero-title--banner">
-		<div class="wrap-lg hero-title__heading-wrapper">
-			<h1 class="hero-title__heading"><?php echo $page_title ?></h1>
-		</div>
-	</header>
-	<?php tlh_responsive_bg_style( 'hero-title', 'hero_background_image' ); ?>
+	<?php get_template_part( 'template-parts/page_title' ); ?>
 
 	<?php get_template_part( 'template-parts/cta-boxed' ); ?>
 

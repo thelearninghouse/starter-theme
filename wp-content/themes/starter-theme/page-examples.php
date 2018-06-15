@@ -91,7 +91,7 @@
 	</dl>
 </div>
 
-	<?php get_template_part( 'template-parts/hero_title' ); ?>
+	<?php get_template_part( 'template-parts/page_title' ); ?>
 
 
 

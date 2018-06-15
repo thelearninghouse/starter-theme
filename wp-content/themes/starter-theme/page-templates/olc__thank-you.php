@@ -32,7 +32,7 @@
 
 </main>
 
-<?php get_template_part( 'template-parts/cta-footer' ); ?>
+<?php get_template_part( 'template-parts/cta_footer' ); ?>
 
 
 <?php get_footer(); ?>

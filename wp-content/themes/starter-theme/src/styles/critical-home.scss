@@ -8,7 +8,7 @@ Only include styles for above the fold.
 @import "generic/base";
 @import "generic/typography";
 @import "modules/buttons";
-@import "modules/hero-title";
+@import "modules/page-title";
 @import "modules/clearfix";
 @import "modules/header";
 @import "modules/nav";
@@ -16,5 +16,5 @@ Only include styles for above the fold.
 @import "pages/page";
 
 .critical-home {
-  background: blue;
+	background: blue;
 }

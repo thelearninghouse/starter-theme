@@ -1,0 +1,138 @@
+.page-title {
+	$self: &;
+
+	position: relative;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	color: white;
+	background-color: $gray--dark;
+	@include sectionspace();
+
+	&__wrapper {
+		position: relative;
+		z-index: 3;
+	}
+
+	&__heading {
+		color: white;
+		margin: 0;
+	}
+
+	&__subheading {
+		text-align: left;
+
+		a,
+		a:hover,
+		a:focus {
+			color: inherit;
+		}
+	}
+
+	&__subheading--top {
+		font-size: rem(16);
+		font-style: italic;
+
+		@include mobilefirst($bp-med) {
+			font-size: rem(24);
+		}
+	}
+
+	&__badge {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		z-index: 5;
+		display: flex;
+		align-items: center;
+		// padding: rem(10);
+		// background-color: rgba(0, 0, 0, 0.3);
+		color: white;
+		font-size: rem(14);
+
+		@include mobilefirst($bp-med) {
+			position: relative;
+			max-width: rem(450);
+			margin-bottom: rem(10);
+			font-size: rem(16);
+		}
+	}
+
+	&__badge-image {
+		max-width: rem(60);
+
+		@include mobilefirst($bp-med) {
+			max-width: rem(100);
+		}
+	}
+
+	&__badge-text {
+		margin-left: rem(12);
+	}
+
+	&--image {
+		@include responsivebackground();
+		background-position: center;
+		background-size: cover;
+
+		@include mobilefirst($bp-med) {
+			padding-top: rem(100);
+			padding-bottom: rem(100);
+		}
+
+		&:not(#{$self}--clear-image)::before {
+			content: "";
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			display: block;
+			background-color: rgba(25, 25, 25, 0.2);
+			background-image: linear-gradient(
+				0deg,
+				transparentize($tlh-red, 0.5) 0%,
+				transparentize($tlh-red, 0.5) 100%
+			);
+		}
+	}
+
+	// &--clear-image {
+	// 	&::before {
+	// 		content: unset;
+	// 	}
+	// }
+
+	&--center {
+		text-align: center;
+	}
+
+	&--degree {
+		min-height: rem(375);
+		display: flex;
+		align-items: flex-end;
+
+		> div {
+			width: 100%;
+		}
+
+		@include mobilefirst($bp-med) {
+			padding-top: rem(40);
+			padding-bottom: rem(40);
+		}
+
+		&:not(#{$self}--clear-image)::before {
+			background-color: rgba(25, 25, 25, 0.4);
+			background-image: linear-gradient(
+				-89deg,
+				rgba(0, 0, 0, 0) 0%,
+				rgba(0, 0, 0, 0) 66%,
+				rgba(0, 0, 0, 0) 70%,
+				rgba(0, 0, 0, 0.02) 72%,
+				rgba(0, 0, 0, 0.04) 74%,
+				rgba(0, 0, 0, 0.3) 100%
+			);
+		}
+	}
+}

@@ -4,7 +4,7 @@
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-	<?php get_template_part( 'template-parts/hero_title' ); ?>
+	<?php get_template_part( 'template-parts/page_title' ); ?>
 
 	<div class="program-list">
 		<div class="program-list__text">
@@ -74,7 +74,7 @@
 			</div>
 	</div>
 
-	<?php get_template_part( 'template-parts/cta-footer' ); ?>
+	<?php get_template_part( 'template-parts/cta_footer' ); ?>
 
 </main>
 

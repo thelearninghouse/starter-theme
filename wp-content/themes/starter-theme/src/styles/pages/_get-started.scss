@@ -1,6 +1,6 @@
 .page-template-page-get-started {
 	.sidebar-well {
-		background: $primary-color;
+		background: $tlh-red;
 		color: white;
 
 		@include mobilefirst($bp-med) {
@@ -12,7 +12,7 @@
 		}
 
 		input[type="submit"] {
-			background: darken($primary-color, 20%);
+			background: darken($tlh-red, 20%);
 		}
 	}
 	.page-content {

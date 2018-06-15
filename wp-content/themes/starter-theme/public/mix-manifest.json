@@ -7,11 +7,11 @@
     "/js/vendor.js": "/js/vendor.js",
     "/js/scripts.js": "/js/scripts.js",
     "/css/critical-home.css": "/css/critical-home.css",
+    "/css/gtm-page-style.css": "/css/gtm-page-style.css",
     "/css/launch-lp-style.css": "/css/launch-lp-style.css",
     "/css/lp-critical.css": "/css/lp-critical.css",
     "/css/lp-style.css": "/css/lp-style.css",
+    "/css/mag-style.css": "/css/mag-style.css",
     "/css/style.css": "/css/style.css",
-    "/js/manifest.js": "/js/manifest.js",
-    "/6.0a9be7f6fdd1fc038a11.hot-update.js": "/6.0a9be7f6fdd1fc038a11.hot-update.js",
-    "/css/mag-style.css": "/css/mag-style.css"
+    "/js/manifest.js": "/js/manifest.js"
 }

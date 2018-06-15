@@ -3,7 +3,7 @@
 <?php get_header( 'mag' ); ?>
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/hero_title' ); ?>
+	<?php get_template_part( 'template-parts/page_title' ); ?>
 
 	<section class="mag-degrees" aria-label="Degree Information">
 		<div class="wrap-lg">
