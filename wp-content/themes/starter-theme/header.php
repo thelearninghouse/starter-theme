@@ -14,38 +14,19 @@
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<?php // icons & favicons (generate here: https://realfavicongenerator.net/) (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-		<link rel="manifest" href="/favicons/site.webmanifest">
-		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#b12028">
-		<meta name="msapplication-TileColor" content="#b12028">
-		<meta name="theme-color" content="#ffffff">
+		<?php get_template_part( 'template-parts/header/favicons' ); ?>
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 		<?php wp_head(); ?>
 		<?php require_once('css-injector/olc.php'); ?>
 
-		<?php if ( get_field('gtm_id', 'options') ) { ?>
-			<!-- Google Tag Manager -->
-			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-<?php the_field('gtm_id', 'options'); ?>');</script>
-			<!-- End Google Tag Manager -->
-		<?php } ?>
+		<?php get_template_part( 'template-parts/header/tag_manager_script' ); ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 		<a class="skip-link" href="#content">Skip to content</a>
-		<?php if ( get_field('gtm_id', 'options') ) { ?>
-			<!-- Google Tag Manager (noscript) -->
-			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<?php the_field('gtm_id', 'options'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			<!-- End Google Tag Manager (noscript) -->
-		<?php } ?>
+		<?php get_template_part( 'template-parts/header/tag_manager_iframe' ); ?>
 
 		<?php // If is blog page show the progress bar ?>
 		<?php if ( is_singular( 'post' ) ) { ?><progress value="0"></progress><?php } ?>
@@ -59,7 +40,7 @@
 						<div class="info-bar__info">
 							<?php $school_phone = get_field('school_phone', 'options'); ?>
 							<a class="info-bar__phone" href="tel:<?php echo str_replace( ['-', '(', ')', ' '], '', $school_phone ); ?>"><strong>Call us today!</strong> <?php tlh_icon( 'phone', 'inline', 'Call us today!' ); ?><?php echo $school_phone; ?></a>
-							<?php $next_start_date = tlh_get_next_date();
+							<?php $next_start_date = tlh_get_next_start_date();
 								if ( $next_start_date ) { ?>
 									<span class="info-bar__start-date"><strong>Next Start Date:</strong> <?php echo $next_start_date; ?></span>
 								<?php }

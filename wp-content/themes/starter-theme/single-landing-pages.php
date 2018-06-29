@@ -1,18 +1,21 @@
 <?php get_header( 'lp' ); ?>
 
-<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-  <h1><?php the_title(); ?></h1>
-</main>
+<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<?php get_template_part( 'template-parts/page_title' ); ?>
 
-<div class="sidebar" role="complementary">
-
-	<div class="sidebar-well">
-			<h3>Request My Info Packet</h3>
-			<div class="step-form">
-					<script src="//requestforms.learninghouse.com/form/show/west-virginia-state-university/multi-step/686/3496/online.wvstateu.edu:thank-you:request_id" type="text/javascript"></script>
+	<section class="mag-degrees" aria-label="Degree Information">
+		<div class="wrap-lg">
+			<div class="page-content">
+				<?php get_template_part( 'template-parts/flex_page_content' ); ?>
 			</div>
-	</div>
+			<div class="sidebar">
+				<?php get_template_part( 'template-parts/get_started_form' ); ?>
+			</div>
+		</div>
+	</section>
 
-</div>
+	<?php get_template_part( 'template-parts/school_benefits_list' ); ?>
+
+</main>
 
 <?php get_footer( 'lp' ); ?>

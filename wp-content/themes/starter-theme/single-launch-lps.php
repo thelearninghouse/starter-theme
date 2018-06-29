@@ -14,13 +14,7 @@
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
-		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/public/images/apple-touch-icon.png">
-		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
-		<?php // or, set /favicon.ico for IE10 win ?>
-		<meta name="msapplication-TileColor" content="<?php the_field('color_1', 'options'); ?>">
-		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/public/images/win8-tile-icon.png">
-    <meta name="theme-color" content="<?php the_field('color_1', 'options'); ?>">
+		<?php get_template_part( 'template-parts/favicons' ); ?>
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
@@ -91,20 +85,11 @@
 			<?php the_field('custom_css'); ?>
 		</style>
 
-		<?php $gtm_id = get_field('gtm_id', 'options');
-		if ( $gtm_id ) { ?>
-			<!-- Google Tag Manager -->
-			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-<?php the_field('gtm_id', 'options'); ?>');</script>
-			<!-- End Google Tag Manager -->
-		<?php } ?>
+		<?php get_template_part( 'template-parts/tag_manager_script' ); ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
-		<?php if ( $gtm_id ) { ?>
-			<!-- Google Tag Manager (noscript) -->
-			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<?php the_field('gtm_id', 'options'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			<!-- End Google Tag Manager (noscript) -->
-		<?php } ?>
+		<?php get_template_part( 'template-parts/tag_manager_iframe' ); ?>
 
 		<div class="container">
 

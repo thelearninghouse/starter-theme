@@ -1,39 +1,12 @@
-<?php get_header(); ?>
+<?php get_header( 'gtm' ); ?>
 
-			<div class="hero-title">
-				<div class="wrap-lg">
-					<h1>404 - Article Not Found</h1>
-				</div>
-			</div>
+<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<div class="wrap-lg">
+		<section class="page-content" aria-labelledby="page-heading">
+			<h1 class="error-heading" id="page-heading"><span class="error-heading__number">404</span><br>Page Not Found</h1>
+			<p><a href="/">Try returning to the homepage.</a></p>
+		</section>
+	</div>
+</main>
 
-			<div class="content">
-
-				<div class="wrap">
-
-					<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-
-						<article class="post-not-found hentry">
-
-							<header class="post-header">
-
-								<h1 class="post-header__title"><?php _e( '404 - Article Not Found', 'tlh_theme' ); ?></h1>
-
-							</header>
-
-							<section class="post-content">
-
-								<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!'); ?></p>
-
-							</section>
-
-						</article>
-
-						<?php get_sidebar(); ?>
-
-					</main>
-
-				</div>
-
-			</div>
-
-<?php get_footer(); ?>
+<?php get_footer( 'gtm' ); ?>

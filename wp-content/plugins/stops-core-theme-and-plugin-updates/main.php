@@ -1,18 +1,18 @@
 <?php
 /*
 Plugin Name: Easy Updates Manager
-Plugin URI: https://wordpress.org/plugins/stops-core-theme-and-plugin-updates/
+Plugin URI: https://easyupdatesmanager.com
 Description: Manage and disable WordPress updates, including core, plugin, theme, and automatic updates - Works with Multisite and has built-in logging features.
 Author: Easy Updates Manager Team
-Version: 6.3.0
-Requires at least: 4.4
-Author URI: https://wordpress.org/plugins/stops-core-theme-and-plugin-updates/
+Version: 7.0.1
+Requires at least: 4.7
+Author URI: https://easyupdatesmanager.com
 Contributors: kidsguide, ronalfy
 Text Domain: stops-core-theme-and-plugin-updates
 Domain Path: /languages
 Updates: true
 Network: true
-*/ 
+*/
 
 /**
  * Main plugin class
@@ -24,7 +24,7 @@ Network: true
  * @package WordPress
  */
 class MPSUM_Updates_Manager {
-	
+
 	/**
 	* Holds the class instance.
 	*
@@ -33,7 +33,7 @@ class MPSUM_Updates_Manager {
 	* @var MPSUM_Updates_Manager $instance
 	*/
 	private static $instance = null;
-	
+
 	/**
 	* Stores the plugin's options
 	*
@@ -42,13 +42,13 @@ class MPSUM_Updates_Manager {
 	* @var array $options
 	*/
 	private static $options = false;
-	
+
 	/**
 	* Retrieve a class instance.
 	*
 	* Retrieve a class instance.
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access static
 	*
 	* @return MPSUM_Updates_Manager Instance of the class.
@@ -59,21 +59,21 @@ class MPSUM_Updates_Manager {
 		}
 		return self::$instance;
 	} //end get_instance
-	
+
 	/**
 	* Retrieve the plugin basename.
 	*
 	* Retrieve the plugin basename.
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access static
 	*
 	* @return string plugin basename
 	*/
 	public static function get_plugin_basename() {
-		return plugin_basename( __FILE__ );	
+		return plugin_basename( __FILE__ );
 	}
-	
+
 	/**
 	* Class constructor.
 	*
@@ -86,15 +86,10 @@ class MPSUM_Updates_Manager {
 	private function __construct() {
 
 		spl_autoload_register( array( $this, 'loader' ) );
-		
-		// Logging
-		$options = MPSUM_Updates_Manager::get_options( 'core' );
-		if ( isset( $options[ 'logs' ] ) && 'on' == $options[ 'logs' ] ) {
-			MPSUM_Logs::run();
-		}
 
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
+
 	} //end constructor
 
 	/**
@@ -102,13 +97,21 @@ class MPSUM_Updates_Manager {
 	 *
 	 * Run code during the init action.
 	 *
-	 * @since 6.2.5 
+	 * @since 6.2.5
 	 * @access public
 	 *
 	 */
 	public function init() {
 		/* Localization Code */
 		load_plugin_textdomain( 'stops-core-theme-and-plugin-updates', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+		// Logging
+		$options = MPSUM_Updates_Manager::get_options( 'core' );
+		if ( isset( $options[ 'logs' ] ) && 'on' == $options[ 'logs' ] ) {
+			MPSUM_Logs::run();
+		}
+
+		MPSUM_Admin_Ajax::run();
 	}
 
 	/**
@@ -116,7 +119,7 @@ class MPSUM_Updates_Manager {
 	*
 	* Return the absolute path to an asset based on a relative argument.
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access static
 	*
 	* @param string  $path Relative path to the asset.
@@ -126,15 +129,15 @@ class MPSUM_Updates_Manager {
 		$dir = rtrim( plugin_dir_path(__FILE__), '/' );
 		if ( !empty( $path ) && is_string( $path) )
 			$dir .= '/' . ltrim( $path, '/' );
-		return $dir;		
+		return $dir;
 	}
-	
+
 	/**
 	* Return the web path to an asset.
 	*
 	* Return the web path to an asset based on a relative argument.
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access static
 	*
 	* @param string  $path Relative path to the asset.
@@ -144,15 +147,15 @@ class MPSUM_Updates_Manager {
 		$dir = rtrim( plugin_dir_url(__FILE__), '/' );
 		if ( !empty( $path ) && is_string( $path) )
 			$dir .= '/' . ltrim( $path, '/' );
-		return $dir;	
+		return $dir;
 	}
-	
+
 	/**
 	* Retrieve the plugin's options
 	*
 	* Retrieve the plugin's options based on context
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access static
 	*
 	* @param string  $context Context to retrieve options for.	 This is used as an array key.
@@ -165,36 +168,35 @@ class MPSUM_Updates_Manager {
 		if ( false === $options || true === $force_reload ) {
 			$options = get_site_option( 'MPSUM', false, false );
 		}
-		
+
 		if ( false === $options ) {
-			$options = self::maybe_migrate_options();		
+			$options = self::maybe_migrate_options();
 		}
-		
+
 		//Store options
 		if ( !is_array( $options ) ) {
-			$options = array();	
+			$options = array();
 		}
 		self::$options = $options;
-		
+
 		//Attempt to get context
 		if ( !empty( $context ) && is_string( $context ) ) {
 			if ( array_key_exists( $context, $options ) ) {
-				return (array)$options[ $context ];	
+				return (array)$options[ $context ];
 			} else {
-				return array();	
+				return array();
 			}
 		}
-		
-		
+
 		return $options;
 	} //get_options
-	
+
 	/**
 	* Auto-loads classes.
 	*
 	* Auto-load classes that belong to this plugin.
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access private
 	*
 	* @param string  $class_name The name of the class.
@@ -206,15 +208,15 @@ class MPSUM_Updates_Manager {
 		$file = MPSUM_Updates_Manager::get_plugin_dir( "includes/{$class_name}.php" );
 		if ( file_exists( $file ) ) {
 			include_once( $file );
-		}	
+		}
 	}
-	
+
 	/**
 	* Determine whether to migrate options from an older version of the plugin.
 	*
 	* Migrate old options to new plugin format.
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access private
 	*
 	* @return bool|array  false if no migration, associative array of options if migration successful
@@ -222,7 +224,7 @@ class MPSUM_Updates_Manager {
 	public static	function maybe_migrate_options() {
 		$options = false;
 		$original_options = get_option( '_disable_updates', false );
-		
+
 		if ( false !== $original_options && is_array( $original_options ) ) {
 			$options = array(
 				'core' => array(),
@@ -280,27 +282,28 @@ class MPSUM_Updates_Manager {
 				$options[ 'core' ][ 'automatic_plugin_updates' ] = 'off';
 				$options[ 'core' ][ 'automatic_theme_updates' ] = 'off';
 			}
-			
+
 			delete_option( '_disable_updates' );
 			delete_site_option( '_disable_updates' );
 			update_site_option( 'MPSUM', $options );
-			
+
 		}
-		return $options;		
+		return $options;
 	}
-	
+
 	/**
 	* Initialize the plugin and its dependencies.
 	*
 	* Initialize the plugin and its dependencies.
 	*
-	* @since 5.0.0 
+	* @since 5.0.0
 	* @access public
 	* @see __construct
 	* @internal Uses plugins_loaded action
 	*
 	*/
 	public function plugins_loaded() {
+
 		//Skip disable updates if a user is excluded
 		$disable_updates_skip = false;
 		if ( current_user_can( 'install_plugins' ) ) {
@@ -314,91 +317,14 @@ class MPSUM_Updates_Manager {
 		if ( false === $disable_updates_skip ) {
 			MPSUM_Disable_Updates::run();
 		}
-		
-		add_action( 'wp_ajax_mpsum_ajax_action', array( $this, 'ajax_update_option' ) );
-		add_action( 'wp_ajax_mpsum_ajax_get_json', array( $this, 'ajax_get_json' ) );
-		add_action( 'wp_ajax_mpsum_ajax_remove_ratings_nag', array( $this, 'ajax_remove_ratings_nag' ) );
-		
-		
+
 		$not_doing_ajax = ( !defined( 'DOING_AJAX' ) || !DOING_AJAX );
 		$not_admin_disabled = ( !defined( 'MPSUM_DISABLE_ADMIN' ) || !MPSUM_DISABLE_ADMIN );
-		if ( is_admin() && $not_doing_ajax && $not_admin_disabled ) {
-			MPSUM_Admin::run();	
-		}	
+		if ( is_admin() && $not_doing_ajax && $not_admin_disabled && !$disable_updates_skip ) {
+			MPSUM_Admin::run();
+		}
 	}
-	
-	public function ajax_remove_ratings_nag() {
-		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
-			die( 'Cheating, huh' );
-		}
-		$options = MPSUM_Updates_Manager::get_options( 'core' );
-		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
-		$options[ 'ratings_nag' ] = false;
-		MPSUM_Updates_Manager::update_options( $options, 'core' );
-		die( '' );
-	}
-	
-	public function ajax_get_json() {
-		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
-			die( 'Cheating, huh' );
-		}
-		die( json_encode( MPSUM_Admin::run()->get_json_options() ) );
-	}
-	
-	public function ajax_update_option() {
-		
-		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
-			die( 'Cheating, huh' );
-		}
-		if ( !isset( $_POST[ 'context' ] ) || !isset( $_POST[ 'data_action' ] ) ) {
-			die('');
-		}
-		/* Get Ajax Options */
-		$context = sanitize_text_field( $_POST[ 'context' ] );
-		$option = sanitize_text_field( $_POST[ 'data_action' ] );	
-		$option_value = sanitize_text_field( $_POST[ 'value' ] );
-		$id = sanitize_text_field( $_POST[ 'id' ] );
-				
-		$options = MPSUM_Updates_Manager::get_options( $context );
-		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
-		if ( 'core' == $context ) {
-			$options[ $option ] = $option_value;
-			MPSUM_Updates_Manager::update_options( $options, $context );
-		} else if ( 'plugins' == $context || 'themes' == $context	 ) {
-			$plugin_options = MPSUM_Updates_Manager::get_options( $context );
-			if ( 'on' == $option_value ) {
-				foreach( $plugin_options as $plugin ) {
-					if ( ( $plugin_index = array_search( $id, $plugin_options ) ) !== false ) {
-						unset( $plugin_options[ $plugin_index ] );
-					}
-				}
-			} else {
-				$plugin_options[] = $id;
-				$plugin_options = array_values( array_unique( $plugin_options ) );
-			}
-						
-			MPSUM_Updates_Manager::update_options( $plugin_options, $context );
-		} elseif( 'plugins_automatic' == $context || 'themes_automatic' == $context ) {
-			$plugin_options = MPSUM_Updates_Manager::get_options( $context );
-			if ( 'off' == $option_value ) {
-				foreach( $plugin_options as $plugin ) {
-					if ( ( $theme_index = array_search( $id, $plugin_options ) ) !== false ) {
-						unset( $plugin_options[ $theme_index ] );
-					}
-				}
-			} else {
-				$options = MPSUM_Updates_Manager::get_options( $context );
-				$options[] = $id;
-				$plugin_options = array_values( array_unique( $options ) );
-			}
-			
-			MPSUM_Updates_Manager::update_options( $plugin_options, $context );
-		}
-		
-		die( json_encode( MPSUM_Admin::run()->get_json_options() ) );
-			
-	}
-	
+
 	/**
 	* Save plugin options.
 	*
@@ -412,17 +338,17 @@ class MPSUM_Updates_Manager {
 	*/
 	public static function update_options( $options = array(), $context = '' ) {
 		$options_to_save = self::get_options();
-		
+
 		if ( !empty( $context ) && is_string( $context ) ) {
 			$options_to_save[ $context ] = $options;
 		} else {
-			$options_to_save = $options;	
+			$options_to_save = $options;
 		}
-		
+
 		self::$options = $options_to_save;
 		update_site_option( 'MPSUM', $options_to_save );
 	}
-		
+
 } //end class MPSUM_Updates_Manager
 
 MPSUM_Updates_Manager::get_instance();

@@ -78,7 +78,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "wp_stream_alerts"
+                "value": "post"
             }
         ]
     ],
@@ -89,6 +89,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
-    "description": "",
-    "modified": 1520460655
+    "description": "This group is included in the Launch LP builder fields",
+    "modified": 1528997558
 }

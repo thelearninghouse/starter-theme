@@ -14,25 +14,30 @@ $wrap-md: 940px;
 $wrap-lg: 1400px;
 
 // --- Colors ---
-$primary-color: 		#C41331;
+// $tlh-red: #c41331;
+// $tlh-red: #24c435;
+$tlh-red: #b21f2a;
+$gray--light: #e6e5e5;
+$gray--medium: #9e9f9e;
+$gray--medium-dark: #6b6b6b;
+$gray--dark: #404040;
+$off-black: #252525;
 
 /// Text Color
-$text-color:        #666;
+$text-color: #666;
 /// Link Color
-$link-color:        $primary-color;
+$link-color: $tlh-red;
 ///Link Hover
-$link-hover:        darken($link-color, 15%);
-
+$link-hover: darken($link-color, 15%);
 
 // --- Fonts ---
-$sans-serif: sans-serif;
+$sans-serif: "Open Sans", Arial, sans-serif;
 $serif: serif;
-
 
 // --- Images ---
 // place images in public/images
 
 // Default Header Hero Image
-$hero-sm: 'hero-background-sm.jpg'; // width should be 800px
-$hero-md: 'hero-background-md.jpg'; // width should be 1200px
-$hero-lg: 'hero-background-lg.jpg'; // width should be > 1200px
+$hero-sm: "hero-background-sm.jpg"; // width should be 800px
+$hero-md: "hero-background-md.jpg"; // width should be 1200px
+$hero-lg: "hero-background-lg.jpg"; // width should be > 1200px

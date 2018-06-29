@@ -1,0 +1,12 @@
+.mag-page-content {
+	@include sectionspace(15, 30);
+}
+
+.page-template-mag__page,
+.error404 {
+	.hero-title {
+		&__heading-wrapper {
+			justify-content: center;
+		}
+	}
+}

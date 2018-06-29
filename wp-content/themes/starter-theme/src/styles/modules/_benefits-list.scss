@@ -1,0 +1,112 @@
+.school-benefits {
+	background-color: $tlh-red;
+	color: white;
+	@include sectionspace();
+
+	&__title {
+		color: inherit;
+		padding-bottom: rem(20);
+		text-align: center;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	&__wheel {
+		margin-bottom: rem(20);
+
+		svg {
+			display: block;
+			fill: $gray--light;
+			transform: scaleY(-1);
+			margin-left: auto;
+			margin-right: auto;
+			width: rem(120);
+			height: auto;
+		}
+	}
+}
+
+.benefits-list {
+	display: flex;
+	align-items: stretch;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.benefits-list > li {
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+	padding: rem(20) rem(10);
+
+	@include mobilefirst($bp-med) {
+		width: 50%;
+		padding: rem(30);
+	}
+
+	// @include mobilefirst($bp-lg) {
+	// 	width: 33.33%;
+	// 	padding: rem(20);
+	// }
+}
+
+.benefits-list {
+	&__item {
+		width: 100%;
+
+		@include mobileonly($bp-med) {
+			text-align: center;
+		}
+
+		@include mobilefirst($bp-med) {
+			display: flex;
+			flex-flow: row nowrap;
+		}
+	}
+
+	&__icon {
+		display: inline-block;
+		margin-bottom: rem(10);
+		width: 60px;
+		height: 60px;
+
+		@include mobilefirst($bp-med) {
+			display: block;
+			flex: 0 0 60px;
+			margin-right: rem(20);
+			margin-bottom: 0;
+		}
+
+		svg {
+			width: 100%;
+			height: auto;
+			fill: white;
+		}
+	}
+
+	&__title {
+		margin-top: 0;
+		font-weight: 500;
+		font-size: rem(24);
+		margin-bottom: rem(15);
+		max-width: 100%;
+		color: inherit;
+	}
+
+	&__copy {
+		@include mobilefirst($bp-med) {
+			$pixels: calc(60px + #{rem(20)});
+			width: calc(100% - #{$pixels});
+		}
+	}
+
+	&__copy p {
+		margin-top: 0;
+	}
+
+	&__copy p:last-of-type {
+		margin-bottom: 0;
+	}
+}

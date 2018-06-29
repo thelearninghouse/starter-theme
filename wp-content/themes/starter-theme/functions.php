@@ -12,12 +12,15 @@
      if($type == get_post_type($wp_query->post->ID)) return true;
      return false;
  }
- 
+
 // LOAD SETUP
 require_once( 'inc/setup.php' );
 
 // LOAD SETUP
 require_once( 'inc/cleanup.php' );
+
+// ADD CUSTOM MENU PAGE TO HOUSE RESOURCES
+require_once( 'inc/resources_admin_page.php' );
 
 // LOAD CUSTOM POST TYPES
 require_once( 'inc/custom-post-types.php' );

@@ -1,0 +1,33 @@
+/******************************************************************
+Main Stylesheet
+******************************************************************/
+
+@import "base/variables";
+@import "base/mixins";
+
+@import "generic/base";
+@import "generic/typography";
+@import "generic/links";
+@import "generic/tables";
+
+@import "modules/accordion";
+@import "modules/benefits-list";
+@import "modules/buttons";
+@import "modules/cards";
+@import "modules/forms";
+@import "modules/page-title";
+// @import "modules/get-started-form";
+@import "modules/icon";
+@import "modules/media";
+@import "modules/skip-link";
+@import "modules/header-mag";
+@import "modules/footer-mag";
+@import "modules/layout";
+
+@import "pages/mag__home";
+@import "pages/mag__page";
+@import "pages/mag__degrees";
+
+@media print {
+	@import "modules/print";
+}

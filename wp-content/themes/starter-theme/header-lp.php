@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
+<html <?php language_attributes(); ?>>
 
 	<head>
 		<meta charset="utf-8">
@@ -13,50 +10,39 @@
 		<title><?php wp_title(''); ?></title>
 
 		<?php // mobile meta (hooray!) ?>
-		<meta name="HandheldFriendly" content="True">
+		<meta name="HandheedFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
-		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/public/images/apple-touch-icon.png">
-		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
-		<?php // or, set /favicon.ico for IE10 win ?>
-		<meta name="msapplication-TileColor" content="#f01d4f">
-		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/public/images/win8-tile-icon.png">
-    <meta name="theme-color" content="#121212">
+		<?php get_template_part( 'template-parts/header/favicons' ); ?>
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-
 		<?php wp_head(); ?>
+
 		<?php require_once('css-injector/lp.php'); ?>
 
-		<?php if ( get_field('gtm_id', 'options') ) { ?>
-			<!-- Google Tag Manager -->
-			<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-<?php the_field('gtm_id', 'options'); ?>');</script>
-			<!-- End Google Tag Manager -->
-		<?php } ?>
+		<?php get_template_part( 'template-parts/header/tag_manager_script' ); ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
-		<?php if ( get_field('gtm_id', 'options') ) { ?>
-			<!-- Google Tag Manager (noscript) -->
-			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<?php the_field('gtm_id', 'options'); ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			<!-- End Google Tag Manager (noscript) -->
-		<?php } ?>
+		<a class="skip-link" href="#content">Skip to content</a>
+		<?php get_template_part( 'template-parts/header/tag_manager_iframe' ); ?>
 
-		<div class="container">
+		<div id="container" class="container">
 
-			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+		<header class="header-mag" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-				<div class="wrap">
+			<div class="wrap header-mag__nav-container">
+				<span class="header-mag__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">
+					<?php $school_logo = get_field('school_logo', 'options');
+					if ( $school_logo ) { ?>
+						<img src="<?php echo $school_logo['url']; ?>" width="240" height="80" alt="<?php echo $school_logo['alt']; ?>">
+					<?php } else { ?>
+						<span><?php the_field( 'school_name', 'options' ); ?></span>
+						<?php } ?>
+				</span>
+				<a class="header-mag__phone" aria-label="Give us a call at <?php the_field('school_phone', 'option'); ?>!" href="tel:<?php the_field('school_phone', 'option'); ?>"><?php the_field('school_phone', 'option'); ?></a>
+			</div>
 
-					<p class="logo header__logo" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-
-				</div>
-
-			</header>
+		</header>

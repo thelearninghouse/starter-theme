@@ -68,25 +68,53 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
   }
 }
 
-function tlh_get_next_date( $date_type = 'start-date' ) {
+function tlh_build_byline() {
+  $output = '<span class="byline"><span class="entry-date">Posted ' . get_the_date() . '</span>';
+
+  $categories = get_the_category();
+  $separator = ', ';
+  if ( ! empty( $categories ) ) {
+    $output .= ' | <span class="entry-categories">';
+    foreach( $categories as $category ) {
+        $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+    }
+    $output = trim( $output, $separator );
+		$output .= '</span>';
+  }
+
+	$output .= '</span>';
+
+  return $output;
+}
+
+function tlh_byline() {
+  echo tlh_build_byline();
+}
+
+function tlh_get_next_start_date( $date_format = 'F j' ) {
   $next_date = false;
 
-  $loop = new WP_Query( array(
-    'post_type' => 'dates',
-    'posts_per_page' => 1,
-    'date_type' => $date_type,
-    'meta_key' => 'date_date',
-    'meta_value' => date('Ymd'), // Get today's date in the format that ACF saves dates in
-    'meta_compare' => '>',
-    'orderby' => 'meta_value_num',
-    'order'   => 'ASC'
+  $next_semester = new WP_Query( array(
+		'post_type' => 'semesters',
+		'posts_per_page' => 1,
+		'meta_key' => 'semester_start_date',
+		'meta_value' => date('Ymd'), // Get today's date in the format that ACF saves dates in
+		'meta_compare' => '>=',
+		'orderby' => 'meta_value_num',
+		'order'   => 'ASC'
   ) ); // Get next earliest start date
-  if ( $loop->have_posts() ) {
-    $loop->the_post();
-    $next_date = get_field( 'date_date' );
+
+  if ( $next_semester->have_posts() ) {
+    $next_semester->the_post();
+		$next_date = date( $date_format, strtotime( get_field( 'semester_start_date' ) ) );
   }
   wp_reset_postdata();
+
   return $next_date;
+}
+
+function tlh_next_start_date( $date_format = 'F j' ) {
+	echo tlh_get_next_start_date( $date_format );
 }
 
 ?>

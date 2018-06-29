@@ -1,0 +1,186 @@
+/*********************
+HEADER STYLES
+*********************/
+
+.header-mag {
+	position: relative;
+	background-color: white;
+
+	@include sectionspace(15, 30);
+
+	&__nav-container {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: center;
+
+		@include mobilefirst($bp-med) {
+			flex-flow: row nowrap;
+		}
+	}
+
+	&__logo {
+		display: block;
+		width: rem(180);
+		height: auto;
+
+		@include mobilefirst($bp-med) {
+			width: rem(240);
+		}
+
+		img {
+			display: block;
+		}
+	}
+
+	&__nav {
+		width: 100%;
+		padding: 0;
+
+		@include mobilefirst($bp-med) {
+			width: auto;
+			margin-top: 0;
+			margin-left: rem(20);
+			padding: 0;
+		}
+
+		.nav {
+			margin: rem(15) 0 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-flow: row nowrap;
+
+			@include mobilefirst($bp-med) {
+				margin-top: 0;
+				margin-left: rem(20);
+			}
+
+			li {
+				position: relative;
+				display: block;
+				text-align: center;
+				width: 100%;
+
+				&:not(:first-of-type) {
+					margin-left: rem(15);
+				}
+
+				@include mobilefirst($bp-med) {
+					width: auto;
+
+					&:not(:first-of-type) {
+						margin-left: rem(20);
+					}
+				}
+
+				a {
+					@include button($gray--light);
+					width: 100%;
+				}
+
+				&.current-menu-item {
+					display: flex;
+					flex-flow: column nowrap;
+					align-items: center;
+
+					a {
+						border-color: blue;
+
+						&:hover,
+						&:focus {
+							border-color: blue;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__phone {
+		font-family: $sans-serif;
+		font-weight: 700;
+		text-decoration: none;
+		font-size: rem(24);
+		margin-top: rem(10);
+
+		@include mobilefirst($bp-med) {
+			margin-top: 0;
+			margin-left: rem(20);
+		}
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		.icon {
+			margin-right: rem(5);
+		}
+	}
+
+	.get-started-button {
+		position: fixed;
+		z-index: 10;
+		bottom: rem(15);
+		right: rem(15);
+		text-align: center;
+
+		@include mobilefirst($bp-med) {
+			display: none;
+		}
+
+		&:active {
+			top: unset;
+		}
+
+		.icon {
+			margin-left: rem(5);
+		}
+	}
+
+	&__page-heading {
+		position: relative;
+		font-weight: 600;
+		font-style: italic;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: rem(50);
+		margin-bottom: 0;
+
+		@include mobilefirst($bp-med) {
+			margin-top: rem(80);
+		}
+	}
+
+	&__page-subheading {
+		display: block;
+		font-size: rem(16);
+		font-weight: 400;
+		font-style: normal;
+
+		@include mobilefirst($bp-med) {
+			font-size: rem(22);
+		}
+
+		@include mobilefirst($bp-lg) {
+			font-size: rem(34);
+		}
+	}
+}
+
+.header-mag__phone {
+	font-size: rem(30);
+	margin-top: rem(20);
+	text-decoration: underline;
+	color: inherit;
+
+	&:hover,
+	&:focus {
+		color: inherit;
+	}
+
+	@include mobilefirst($bp-med) {
+		margin-top: 0;
+		margin-left: rem(20);
+	}
+}
