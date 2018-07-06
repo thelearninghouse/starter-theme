@@ -61,14 +61,14 @@ POST STYLES
 
 .cta-blog {
 	background: lightgray;
-	border-top: 6px solid $tlh-red;
+	border-top: 6px solid red;
 	padding: 2em;
 	margin-bottom: 2rem;
 	margin-top: 2rem;
 	overflow: hidden;
 	text-align: center;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		width: 90%;
 		margin-left: auto;
 		margin-right: auto;

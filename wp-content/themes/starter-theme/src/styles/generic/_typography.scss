@@ -1,17 +1,6 @@
 /******************************************************************
 Typography Styles
 ******************************************************************/
-@font-face {
-	font-family: 'Trade Gothic LT Std';
-	src: url('../fonts/TradeGothicLTStd-Bd2.eot');
-	src: url('../fonts/TradeGothicLTStd-Bd2.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/TradeGothicLTStd-Bd2.woff') format('woff'),
-		url('../fonts/TradeGothicLTStd-Bd2.ttf') format('truetype');
-	font-weight: bold;
-	font-style: normal;
-}
-
-
 
 blockquote {
 	font-size: em(16);
@@ -20,7 +9,7 @@ blockquote {
 	border-left: 4px solid gray;
 	padding-left: 1em;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		font-size: em(24);
 		line-height: 1.45833333;
 	}
@@ -33,25 +22,6 @@ figcaption {
 	font-size: 0.9em;
 	color: gray;
 	text-align: center;
-}
-
-.quote {
-	padding: 1.5em;
-	background: gray;
-	position: relative;
-	border-radius: 0.5em;
-
-	&:before {
-		position: absolute;
-		top: 99.8%;
-		right: 2em;
-		content: "";
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 0 30px 30px 0;
-		border-color: transparent gray transparent transparent;
-	}
 }
 
 /******************************************************************
@@ -81,12 +51,12 @@ h1,
 	font-size: em(32);
 	line-height: 1.25;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		font-size: em(40);
 		line-height: 1.125;
 	}
 
-	@include mobilefirst($bp-lg) {
+	@include mobilefirst(lg) {
 		font-size: em(48);
 		line-height: 1.05;
 	}
@@ -98,12 +68,12 @@ h2,
 	line-height: 1.15384615;
 	margin-bottom: 0.375em;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		font-size: em(32);
 		line-height: 1.25;
 	}
 
-	@include mobilefirst($bp-lg) {
+	@include mobilefirst(lg) {
 		font-size: em(36);
 		line-height: 1.25;
 	}
@@ -114,12 +84,12 @@ h3,
 	font-size: em(22);
 	line-height: 1.13636364;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		font-size: em(24);
 		line-height: 1.25;
 	}
 
-	@include mobilefirst($bp-lg) {
+	@include mobilefirst(lg) {
 		font-size: em(28);
 		line-height: 1.25;
 	}
@@ -131,7 +101,7 @@ h4,
 	font-size: em(18);
 	line-height: 1.11111111;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		line-height: 1.222222222;
 	}
 }

@@ -12,7 +12,7 @@ HOMEPAGE SPECIFIC STYLES
 	}
 
 	.program-list-container {
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			display: flex;
 			justify-content: center;
 		}
@@ -24,7 +24,7 @@ HOMEPAGE SPECIFIC STYLES
 		margin-left: auto;
 		margin-right: auto;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			margin: 1.5rem;
 		}
 	}

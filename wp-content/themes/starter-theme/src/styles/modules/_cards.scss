@@ -50,7 +50,7 @@
 	&__copy {
 		padding: rem(15);
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			padding: rem(20);
 		}
 	}
@@ -59,10 +59,10 @@
 		display: block;
 		font-style: italic;
 		font-size: rem(16);
-		color: transparentize($tlh-red, 0.3);
+		color: transparentize(red, 0.3);
 		margin-bottom: rem(10);
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			font-size: rem(18);
 		}
 	}
@@ -76,7 +76,7 @@
 
 	&__heading {
 		margin: 0;
-		color: $tlh-red;
+		color: red;
 		font-weight: 700;
 		font-family: $sans-serif;
 		font-style: normal;
@@ -89,7 +89,7 @@
 	&__action {
 		padding: 0 rem(15) rem(15);
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			padding: 0 rem(20) rem(20);
 		}
 
@@ -105,7 +105,7 @@
 		#{$self}__image {
 			display: none;
 
-			@include mobilefirst($bp-lg) {
+			@include mobilefirst(lg) {
 				display: block;
 				max-width: rem(230);
 				flex: 1;
@@ -129,7 +129,7 @@
 	position: relative;
 	display: flex;
 	align-items: flex-end;
-	background-color: $gray--medium;
+	background-color: gray;
 	color: white;
 	padding: rem(35) rem(15);
 
@@ -137,7 +137,7 @@
 		outline-color: white;
 	}
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		padding: rem(35) rem(20);
 		min-height: rem(320);
 	}
@@ -162,7 +162,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-color: $tlh-red;
+		background-color: red;
 		mix-blend-mode: darken;
 		opacity: 0.75;
 	}
@@ -175,7 +175,7 @@
 	&__heading {
 		display: none;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			display: block;
 			color: inherit;
 			font-weight: 700;
@@ -186,7 +186,7 @@
 	&__description {
 		display: none;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			display: block;
 			margin-top: rem(15);
 		}

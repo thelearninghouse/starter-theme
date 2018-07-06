@@ -14,18 +14,18 @@ LAYOUT & GRID STYLES
 	padding-left: rem(15);
 	padding-right: rem(15);
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		padding-left: rem(20);
 		padding-right: rem(20);
 	}
 }
 
 .wrap-lg {
-	max-width: $wrap-lg;
+	max-width: map-get($wrap, lg);
 }
 
 .wrap-md {
-	max-width: $wrap-md;
+	max-width: map-get($wrap, med);
 }
 
 // anchor footer to bottom on short pages
@@ -42,7 +42,7 @@ LAYOUT & GRID STYLES
 
 /***** Basic Layout *****/
 
-@include mobilefirst($bp-med) {
+@include mobilefirst(md) {
 	.page-wrapper {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -81,15 +81,15 @@ LAYOUT & GRID STYLES
 		width: 100%;
 		padding: rem(10);
 
-		@include mobilefirst($bp-sm) {
+		@include mobilefirst(sm) {
 			width: 50%;
 		}
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			width: 33.3%;
 		}
 
-		@include mobilefirst($bp-lg) {
+		@include mobilefirst(lg) {
 			width: 25%;
 		}
 	}
@@ -97,7 +97,7 @@ LAYOUT & GRID STYLES
 	&--nowrap {
 		flex-flow: column nowrap;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			flex-flow: row nowrap;
 		}
 
@@ -112,7 +112,7 @@ LAYOUT & GRID STYLES
 			padding: rem(10);
 		}
 
-		@include mobilefirst($bp-lg) {
+		@include mobilefirst(lg) {
 			padding: rem(20);
 		}
 	}

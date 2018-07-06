@@ -1,15 +1,15 @@
 {
-    "/js/degree-filtering.js": "/js/degree-filtering.js?id=66982fdb0de65f6fb39e",
-    "/js/sticky.js": "/js/sticky.js?id=81d5e6b58b7b620278fb",
-    "/js/social-share.js": "/js/social-share.js?id=241afbb953c6c57f7478",
-    "/js/slider.js": "/js/slider.js?id=9bc4a00f3fccf21b687d",
-    "/js/accordion.js": "/js/accordion.js?id=197452e531cd7cc9b1a1",
-    "/js/vendor.js": "/js/vendor.js?id=bab1794b3a739ff719f8",
-    "/js/scripts.js": "/js/scripts.js?id=5a3d5dfe94d0cd0fe4e2",
-    "/css/critical-home.css": "/css/critical-home.css?id=52376bf6e54bef1bcb89",
-    "/css/lp-critical.css": "/css/lp-critical.css?id=d41d8cd98f00b204e980",
-    "/css/lp-style.css": "/css/lp-style.css?id=1ccdd5939e722c6464f2",
-    "/css/mag-style.css": "/css/mag-style.css?id=8a20e227b4ca3c69d81c",
-    "/css/style.css": "/css/style.css?id=5750b9132fa13f6fb447",
-    "/js/manifest.js": "/js/manifest.js?id=fabf392e765c9fe6d249"
+    "/js/sticky.js": "/js/sticky.js",
+    "/js/degree-filtering.js": "/js/degree-filtering.js",
+    "/js/slider.js": "/js/slider.js",
+    "/js/social-share.js": "/js/social-share.js",
+    "/js/accordion.js": "/js/accordion.js",
+    "/js/vendor.js": "/js/vendor.js",
+    "/js/scripts.js": "/js/scripts.js",
+    "/css/lp-critical.css": "/css/lp-critical.css",
+    "/js/manifest.js": "/js/manifest.js",
+    "/css/critical-home.css": "/css/critical-home.css",
+    "/css/lp-style.css": "/css/lp-style.css",
+    "/css/mag-style.css": "/css/mag-style.css",
+    "/css/style.css": "/css/style.css"
 }

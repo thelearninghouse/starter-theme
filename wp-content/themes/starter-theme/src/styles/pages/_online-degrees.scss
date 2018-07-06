@@ -4,7 +4,7 @@
 	}
 
 	.program-list {
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
@@ -16,7 +16,7 @@
 		margin-right: auto;
 		margin-bottom: 1.5rem;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			margin-left: 1.5rem;
 			margin-right: 1.5rem;
 		}

@@ -16,7 +16,7 @@ NAVIGATION STYLES
 	.nav-wrapper__open:hover,
 	.nav-wrapper__open:hover:focus {
 		background: rgba(0, 0, 0, 0.2);
-		color: $tlh-red;
+		color: red;
 	}
 
 	.nav-wrapper {
@@ -45,7 +45,7 @@ NAVIGATION STYLES
 			display: block;
 			cursor: pointer;
 			width: 100%;
-			color: $tlh-red;
+			color: red;
 			background: #fff;
 			font-size: 1.2rem;
 			font-weight: 700;
@@ -61,7 +61,7 @@ NAVIGATION STYLES
 	padding: 0;
 	list-style: none;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		border: 0;
 		display: flex;
 		flex-flow: row wrap;
@@ -71,7 +71,7 @@ NAVIGATION STYLES
 	li {
 		list-style: none;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			position: relative;
 
 			&:hover > ul.sub-menu {
@@ -89,7 +89,7 @@ NAVIGATION STYLES
 			text-decoration: none;
 			padding: 0.75em;
 
-			@include mobilefirst($bp-med) {
+			@include mobilefirst(md) {
 				border-bottom: 0;
 
 				&:hover,
@@ -104,7 +104,7 @@ NAVIGATION STYLES
 			padding: 0;
 			display: none;
 
-			@include mobilefirst($bp-med) {
+			@include mobilefirst(md) {
 				background: $link-color;
 				margin-top: 0;
 				position: absolute;
@@ -116,7 +116,7 @@ NAVIGATION STYLES
 				a {
 					padding-left: 30px;
 
-					@include mobilefirst($bp-med) {
+					@include mobilefirst(md) {
 						color: white;
 						padding-left: 10px;
 						border-right: 0;
@@ -125,7 +125,7 @@ NAVIGATION STYLES
 					}
 				}
 
-				@include mobilefirst($bp-med) {
+				@include mobilefirst(md) {
 					ul {
 						top: 0;
 						left: 100%;
@@ -136,7 +136,7 @@ NAVIGATION STYLES
 
 		&:hover {
 			.sub-menu {
-				@include mobilefirst($bp-med) {
+				@include mobilefirst(md) {
 					display: block;
 				}
 			}
@@ -144,7 +144,7 @@ NAVIGATION STYLES
 
 		// Show sub menu on focus for desktop users
 		.sub-menu.active {
-			@include mobilefirst($bp-med) {
+			@include mobilefirst(md) {
 				display: block;
 				visibility: visible;
 			}
@@ -154,13 +154,13 @@ NAVIGATION STYLES
 
 /***** MAIN NAVIGATION *****/
 .top-nav {
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 	}
 }
 
 // Secondary Nav
 .header__secondary-nav {
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		display: none;
 	}
 }
@@ -175,7 +175,7 @@ NAVIGATION STYLES
 	border: none;
 	padding: 1rem;
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		display: none;
 	}
 
@@ -186,7 +186,7 @@ NAVIGATION STYLES
 
 /**** 768 UP ****/
 
-@include mobilefirst($bp-med) {
+@include mobilefirst(md) {
 	.js__menu-trigger {
 		display: none;
 	}

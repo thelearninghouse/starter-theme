@@ -15,7 +15,7 @@ SOCIAL SHARING BUTTONS
     display: block;
     margin-bottom: .5em;
 
-	@include mobilefirst($bp-sm) {
+	@include mobilefirst(sm) {
 		display: inline;
 		margin-bottom: 0;
 	}
