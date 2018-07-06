@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.0.4",
+    "babel-polyfill": "^6.26.0",
     "mixitup": "^3.3.0",
     "modaal": "^0.3.1",
     "stickybits": "^3.2.3",

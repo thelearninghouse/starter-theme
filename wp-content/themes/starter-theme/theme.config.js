@@ -16,7 +16,8 @@ module.exports = {
 		"legend",
 		"label",
 		"current-menu-item",
-		"ol"
+		"ol",
+		"columns-2"
 	],
 	purgecssWhitelistPatterns: [
 		/^elp(_.*)?$/,

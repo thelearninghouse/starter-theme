@@ -132,6 +132,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_5b3f7a37a3d2e",
+            "label": "OLC URL",
+            "name": "olc_url",
+            "type": "text",
+            "instructions": "For MAG sites: live URL of the related OLC to pull information from",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5a2b0a3af47c3",
             "label": "Social Links",
             "name": "",
@@ -425,5 +444,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1517950107
+    "modified": 1530889506
 }

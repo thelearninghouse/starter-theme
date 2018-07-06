@@ -201,6 +201,98 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "5b3e60fc79e74": {
+                    "key": "5b3e60fc79e74",
+                    "name": "online_degrees_list",
+                    "label": "Online Degrees List",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b3e610d79e75",
+                            "label": "Online Degrees",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "It will get a list of degrees from the OLC, so make sure to set the appropriate OLC URL in the site settings.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5b3e77237b1bb",
+                            "label": "List Columns",
+                            "name": "list_columns",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_5b3e767b7b1b9",
+                            "label": "Organize by Taxonomy",
+                            "name": "organize_by_taxonomy",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_5b3e76e27b1ba",
+                            "label": "Display Style",
+                            "name": "taxonomy_display_style",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5b3e767b7b1b9",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "Accordion",
+                            "ui_off_text": "List"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Content",
@@ -234,5 +326,5 @@
     ],
     "active": 1,
     "description": "Simple flexible page builder. Used on MAG Degrees pages",
-    "modified": 1529002332
+    "modified": 1530889595
 }
