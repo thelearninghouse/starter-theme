@@ -1,0 +1,53 @@
+/*********************
+UTILITY CLASSES
+*********************/
+
+/* For each color create utility classes */
+@each $name, $value in $colors {
+  .u-bg--#{$name} {
+    background-color: $value;
+  }
+  .u-text--#{$name} {
+    color: $value;
+  }
+  a.u-text--#{$name}:hover {
+    color: darken($value, 10%);
+  }
+}
+
+
+// Typography
+
+.u-bold {
+  font-weight: bold;
+}
+
+.u-italic {
+  font-style: italic;
+}
+
+.u-caps {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+.u-noWrap {
+  white-space: nowrap;
+}
+
+.u-underline {
+  text-decoration: underline
+}
+
+
+// Lists
+.u-listReset {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+// Margin
+.u-mt0 {
+  margin-top: 0;
+}

@@ -5,7 +5,7 @@
 	padding-top: 4rem;
 	padding-bottom: 4rem;
 	color: white;
-	background-color: $gray--dark;
+	background-color: darkgray;
 	@include sectionspace();
 
 	&__wrapper {
@@ -32,7 +32,7 @@
 		font-size: rem(16);
 		font-style: italic;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			font-size: rem(24);
 		}
 	}
@@ -50,7 +50,7 @@
 		color: white;
 		font-size: rem(14);
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			position: relative;
 			max-width: rem(450);
 			margin-bottom: rem(10);
@@ -61,7 +61,7 @@
 	&__badge-image {
 		max-width: rem(60);
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			max-width: rem(100);
 		}
 	}
@@ -75,7 +75,7 @@
 		background-position: center;
 		background-size: cover;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			padding-top: rem(100);
 			padding-bottom: rem(100);
 		}
@@ -92,8 +92,8 @@
 			background-color: rgba(25, 25, 25, 0.2);
 			background-image: linear-gradient(
 				0deg,
-				transparentize($tlh-red, 0.5) 0%,
-				transparentize($tlh-red, 0.5) 100%
+				transparentize(red, 0.5) 0%,
+				transparentize(red, 0.5) 100%
 			);
 		}
 	}
@@ -117,7 +117,7 @@
 			width: 100%;
 		}
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			padding-top: rem(40);
 			padding-bottom: rem(40);
 		}

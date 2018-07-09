@@ -1,6 +1,6 @@
 {
     "key": "group_5930ccfeb5901",
-    "title": "Launch LP Content",
+    "title": "GTM - Launch LP Content",
     "fields": [
         {
             "key": "field_593782c983e5f",
@@ -581,7 +581,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "launch-lps"
+                "value": "post"
             }
         ]
     ],
@@ -592,6 +592,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
-    "description": "Launch LP page builder",
-    "modified": 1529002206
+    "description": "",
+    "modified": 1530884317
 }

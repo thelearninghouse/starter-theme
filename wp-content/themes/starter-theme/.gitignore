@@ -7,6 +7,6 @@ yarn-error.log
 test
 .BACKUP
 mix-extend-config.js
-./public
+public
 !.DOCUMENTATION/
 !docs/.vuepress/public

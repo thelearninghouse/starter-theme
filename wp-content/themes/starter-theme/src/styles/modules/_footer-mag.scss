@@ -1,5 +1,5 @@
 .footer-mag {
-	background-color: $gray--dark;
+	background-color: darkgray;
 	color: white;
 	text-align: center;
 
@@ -29,7 +29,7 @@
 		flex-flow: column nowrap;
 		align-items: center;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			display: block;
 		}
 	}
@@ -58,7 +58,7 @@
 
 	&__phone,
 	&__privacy {
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			margin-left: rem(30);
 		}
 	}
@@ -68,7 +68,7 @@
 	.footer-mag__copyright {
 		padding-bottom: rem(80);
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			padding-bottom: rem(20);
 		}
 	}

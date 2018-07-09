@@ -14,14 +14,6 @@
   position: absolute;
 }
 
-/// Pixels to Ems Function
-/// @example
-///     font-size: em(24);
-
-@function em($pixels, $context: $browser-context) {
-      @return #{$pixels/$context}em;
-}
-
 /// Pixels to Rems Function
 /// Return a rem value of the exact amount of pixels that you need
 /// @example
@@ -30,20 +22,32 @@
       @return #{$pixels/$context}rem;
 }
 
-/// Responsive Mixin
-/// @example
-///     @include mobilefirst($bp-small) { content here }
-@mixin mobilefirst($res) {
-  @media screen and (min-width: $res) {
-    @content;
-  }
+// Responsive Mixin Mobile First
+// @include mobilefirst(md);
+@mixin mobilefirst($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+
+        @media screen and (min-width: $value) {
+            @content;
+        }
+    }
+
+    // @warn "Unknown `#{$breakpoint}` in $breakpoints";
 }
 
-// Apply styling on mobile only
-@mixin mobileonly($res) {
-	@media screen and (max-width: $res - 1) {
-		@content;
-	}
+// Responsive Mixin
+// @include responsive(md);
+@mixin responsive($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+
+        @media screen and (max-width: $value) {
+            @content;
+        }
+    }
+
+    // @warn "Unknown `#{$breakpoint}` in $breakpoints";
 }
 
 // Standard section spacing
@@ -51,7 +55,7 @@
   padding-top: rem($pixels-sm);
   padding-bottom: rem($pixels-sm);
 
-  @include mobilefirst($bp-med) {
+  @include mobilefirst(md) {
     padding-top: rem($pixels-lg);
     padding-bottom: rem($pixels-lg);
   }

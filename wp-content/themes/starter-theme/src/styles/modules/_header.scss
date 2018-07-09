@@ -6,7 +6,7 @@ HEADER STYLES
 	&__logo {
 		max-width: rem(200);
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			max-width: rem(300);
 		}
 	}
@@ -46,12 +46,12 @@ HEADER STYLES
 		justify-content: center;
 		width: 100%;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			width: auto;
 			text-align: left;
 		}
 
-		@include mobilefirst($bp-lg) {
+		@include mobilefirst(lg) {
 			width: auto;
 			flex-flow: row nowrap;
 		}
@@ -67,12 +67,12 @@ HEADER STYLES
 		text-align: center;
 		display: block;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			display: inline;
 			text-align: left;
 		}
 
-		@include mobilefirst($bp-lg) {
+		@include mobilefirst(lg) {
 			margin-left: rem(20);
 		}
 	}
@@ -80,7 +80,7 @@ HEADER STYLES
 	&__nav {
 		display: none;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			display: block;
 		}
 

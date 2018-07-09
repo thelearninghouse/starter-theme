@@ -1,5 +1,5 @@
-.school-benefits {
-	background-color: $tlh-red;
+.schoolBenefits {
+	background-color: red;
 	color: white;
 	@include sectionspace();
 
@@ -16,7 +16,7 @@
 
 		svg {
 			display: block;
-			fill: $gray--light;
+			fill: lightgray;
 			transform: scaleY(-1);
 			margin-left: auto;
 			margin-right: auto;
@@ -26,7 +26,7 @@
 	}
 }
 
-.benefits-list {
+.benefitsList {
 	display: flex;
 	align-items: stretch;
 	flex-wrap: wrap;
@@ -35,32 +35,28 @@
 	margin: 0;
 }
 
-.benefits-list > li {
+.benefitsList > li {
 	width: 100%;
 	display: flex;
 	align-items: stretch;
 	padding: rem(20) rem(10);
 
-	@include mobilefirst($bp-med) {
+	@include mobilefirst(md) {
 		width: 50%;
 		padding: rem(30);
 	}
 
-	// @include mobilefirst($bp-lg) {
-	// 	width: 33.33%;
-	// 	padding: rem(20);
-	// }
 }
 
-.benefits-list {
+.benefitsList {
 	&__item {
 		width: 100%;
 
-		@include mobileonly($bp-med) {
+		@include responsive(md) {
 			text-align: center;
 		}
 
-		@include mobilefirst($bp-med) {
+		@include responsive(md) {
 			display: flex;
 			flex-flow: row nowrap;
 		}
@@ -72,7 +68,7 @@
 		width: 60px;
 		height: 60px;
 
-		@include mobilefirst($bp-med) {
+		@include responsive(md) {
 			display: block;
 			flex: 0 0 60px;
 			margin-right: rem(20);
@@ -96,7 +92,7 @@
 	}
 
 	&__copy {
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			$pixels: calc(60px + #{rem(20)});
 			width: calc(100% - #{$pixels});
 		}

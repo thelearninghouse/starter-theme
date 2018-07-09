@@ -26,7 +26,7 @@ img,
 
 /**** 768 AND UP ****/
 
-@include mobilefirst($bp-sm) {
+@include mobilefirst(sm) {
 	/* at this larger size, we can start to align images */
 	.alignleft,
 	img.alignleft {

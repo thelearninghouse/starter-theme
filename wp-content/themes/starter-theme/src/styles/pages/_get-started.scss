@@ -1,9 +1,9 @@
 .page-template-page-get-started {
 	.sidebar-well {
-		background: $tlh-red;
+		background: red;
 		color: white;
 
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			grid-column: 3 / span 8;
 		}
 
@@ -12,11 +12,11 @@
 		}
 
 		input[type="submit"] {
-			background: darken($tlh-red, 20%);
+			background: darken(red, 20%);
 		}
 	}
 	.page-content {
-		@include mobilefirst($bp-med) {
+		@include mobilefirst(md) {
 			grid-column: 4 / span 6;
 			grid-row: 2;
 		}

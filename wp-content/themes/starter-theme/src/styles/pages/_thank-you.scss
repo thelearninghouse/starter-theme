@@ -39,7 +39,7 @@
 	grid-column: 5 / span 8;
 	order: 2;
 
-	@include mobilefirst($bp-med ) {
+	@include mobilefirst(med ) {
 		grid-column: 6 / span 7;
 	}
 
@@ -47,7 +47,7 @@
 		margin-bottom: 1rem;
 
 		span {
-			color: $tlh-red;
+			color: red;
 			font-weight: bold;
 		}
 	}
