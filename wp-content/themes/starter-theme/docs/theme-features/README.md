@@ -4,26 +4,30 @@ sidebar: auto
 
 # Theme Features
 
-> **Note:** We're currently taking inventory and cleaning up some stuff from Bones. This page will be updated as it's reorganized.
-## WordPress Features
-WIP
-### Menu
-### Sidebar
+## Built-in WordPress Features
+This theme tries to take advantage of native WordPress behavior wherever possible.
+
+### Menus
+By default there are four menus registered, three of which are for OLCs and the final one just for MAG site templates.
+
+- Secondary Menu
+- Main Menu
+- Footer Links
+- MAG Menu
+
+Menus are registered in `inc/theme-support.php`.
+
 ### Custom Post Types
+Custom post types are set up in `inc/custom-post-types.php`.
+
 ### Maintenance Mode
-> Maintenance Mode is a simple feature to indicate that a site is actively being worked on either locally, on staging, on live, or some combination and to check before making changes. Make sure to enable it on the live and staging sites when needed, and make a note of it in the Web Team Google sheet. The code to add this to the admin is located in `inc/maintenance-mode.php`.
+Maintenance Mode is a simple admin page feature to indicate that a site is actively being worked on either locally, on staging, on live, or some combination and to check before making changes in the database that might get overwritten. The code to add this to the admin is located in `inc/maintenance-mode.php`.
+
+**Make sure to enable it on both live and staging sites when needed and update the [Master Project Status](https://docs.google.com/spreadsheets/d/1mNxjH_2hFouJVJ_iSnYfGuba7PKRkFvcNp4KV73npE8/edit#gid=662048833) sheet accordingly.**
 
 ## Templates
 
-The theme includes templates for the blog, online degrees, and landing pages. To create other custom templates where needed, refer to [HP Hierarchy](https://wphierarchy.com/) to see a cheatsheet of WordPress's naming convention for template files.
-
-For MAG sites, several page templates are included by default that correspond to standard pages:
-
--   `front-page.php` - Home page
--   `page-online-degrees.php` - Online Degrees
--   `page-campus-degrees.php` - Campus Degrees
--   `page.php` - Default page template, used for the Privacy Policy and Thank You page
--   `404.php` - 404 page template, used when a page cannot be found
+Basic templates are included for the homepage, blog, custom post types, internal pages and special page layouts. Custom page templates are located in `page-templates` and are prefixed with the site that they are used on (such as `olc__` for OLC templates). To create other custom templates where needed, refer to [WP Hierarchy](https://wphierarchy.com/) to see a cheatsheet of WordPress's naming convention for template files.
 
 ### Template Parts
 
@@ -49,13 +53,9 @@ For use in blog posts to insert a custom Call to Action box in the post content.
 
 Functions that generate standard HTML in templates. Located in `inc/components` and `inc/template-tags.php`
 
-* * *
-
 ### Accordion
 
-> **Note:** I'm updating this to also accept the name of a repeater field and get the title and content more automatically than it does now.
-
-Set of panels that can be opened and closed. Styling for accordions can be found in `library/scss/modules/accordion.scss`, and the JavaScript can be found in `library/js/components/accordion.js`.
+Set of panels that can be opened and closed. Styling for accordions can be found in `src/scss/modules/_accordion.scss`, and the JavaScript can be found in `src/scripts/components/accordion.js`.
 
 ```php
 function tlh_accordion( $data, $allow_multiple = false, $first_open = false, $class = false )
@@ -86,11 +86,27 @@ function tlh_accordion( $data, $allow_multiple = false, $first_open = false, $cl
 </div>
 ```
 
-* * *
+### Byline
+
+Prints a span containing the author, date, and list of categories for the current post. Use `tlh_get_byline()` to return a string for use in PHP instead of printing it.
+
+```php
+function tlh_byline();
+```
+
+#### Examples
+
+```php
+<div class="post">
+<h1><?php the_title(); ?>
+<?php tlh_byline(); ?>
+<?php the_content(); ?>
+</div>
+```
 
 ### Icons
 
-A simple wrapper to cleanly insert inline SVG icons with additional CSS classes if needed. Be sure to add the SVGs that you need into `library/images/icons`. Styling for icons can be found in `library/scss/modules/icon.scss`
+A simple wrapper to cleanly insert inline SVG icons with additional CSS classes if needed. Be sure to add the SVGs that you need into `src/images/icons`. Styling for icons can be found in `src/scss/modules/_icon.scss`
 
 ```php
 function tlh_icon( $name, $class = NULL, $title = NULL )
@@ -108,11 +124,29 @@ function tlh_icon( $name, $class = NULL, $title = NULL )
 <a href="tel:1234567890"><?php tlh_icon('phone', 'large', 'Call us at'); ?> 123-456-7890</a>
 ```
 
-* * *
+### Next Start Date
+
+Prints the start date for the next closest upcoming semester. Use `tlh_get_next_start_date()` to return a string for use in PHP instead of printing it.
+
+```php
+function tlh_next_start_date( $date_format = 'F j' )
+```
+
+#### Parameters
+
+- **$date_format** \| _string (Optional)_ String format of the date that's returned. Refer to [PHP's official manual on the date function](https://secure.php.net/manual/en/function.date.php) for the possible components that can be used.
+
+#### Examples
+
+```php
+<strong>Next start date:</strong> <?php echo tlh_next_start_date(); ?>
+
+<strong>Next start date:</strong> <?php echo tlh_next_start_date('F jS, Y'); ?>
+```
 
 ### Responsive Background Image
 
-Generates a `<style>` tag to add a background image with different sizes for the specified selector. If you're making a static responsive background (like a section on the homepage or other template) that won't be loaded from a field or featured image, use the `responsivebackground()` Sass mixin in the appropriate file and place your images in `library/images`.
+Generates a `<style>` tag to add a background image with different sizes for the specified selector. If you're making a static responsive background (like a section on the homepage or other template) that won't be loaded from a field or featured image, use the `responsivebackground()` Sass mixin in the appropriate file and place your images in `src/images`.
 
 ```php
 function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = false )
@@ -120,6 +154,9 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
 
 #### Parameters
 
+- **$selector** \| _string (Required)_ Class name of the element to apply the generated styles to.
+- **$field_name** \| _string (Optional)_ Custom Field to get the image from. If not supplied, the function will look for a featured image by default.
+- **$sub_field** \| _boolean (Optional)_ Set to true if your image is a subfield in a repeater.
 
 #### Examples
 
@@ -160,26 +197,4 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
 		<?php tlh_responsive_bg_style( $blog_class_name ); ?>
 	</article>
 <?php endwhile; ?><?php endif; ?>
-```
-
-### Get Next Date (Post Type)
-
-Gets the next closest date in the future for the specified type from the dates post type. The output format of the date is specified in ACF, which uses a PHP date format string. Refer to [the official docs](https://secure.php.net/manual/en/function.date.php) for a cheatsheet.
-
-```php
-function tlh_get_next_date( $date_type = 'start-date' )
-```
-
-#### Parameters
-
--   **$date_type** \| _string (Optional)_ Slug of the `date_type` taxonomy term. Defaults to 'start-date'.
-
-#### Examples
-
-```php
-// Get next start date
-<strong>Next start date:</strong> <?php echo tlh_get_next_date(); ?>
-
-// Get next drop day
-<p class="alert">Be sure to drop any classes before <?php echo tlh_get_next_date( 'drop-day' ); ?>!</p>
 ```
