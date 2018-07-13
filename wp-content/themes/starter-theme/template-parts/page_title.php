@@ -28,7 +28,7 @@
   }
 
   if ( is_singular( 'post' ) ) {
-    $page_subtitle = tlh_build_byline();
+    $page_subtitle = tlh_get_byline();
   }
   else {
     $page_subtitle = $subheading_field;

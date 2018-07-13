@@ -68,7 +68,7 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
   }
 }
 
-function tlh_build_byline() {
+function tlh_get_byline() {
   $output = '<span class="byline"><span class="entry-date">Posted ' . get_the_date() . '</span>';
 
   $categories = get_the_category();
@@ -88,7 +88,7 @@ function tlh_build_byline() {
 }
 
 function tlh_byline() {
-  echo tlh_build_byline();
+  echo tlh_get_byline();
 }
 
 function tlh_get_next_start_date( $date_format = 'F j' ) {
