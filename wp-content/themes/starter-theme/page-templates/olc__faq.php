@@ -67,7 +67,7 @@
 
 					foreach ($faq_list as $key => $faq_cat_list) {
 						echo '<h2>' . $faq_cat_list['title'] . '</h2>';
-						tlh_accordion( $faq_cat_list['questions'] );
+						tlh_accordion( $faq_cat_list['questions'], true );
 					}
 				} else {
 
@@ -79,7 +79,7 @@
 						);
 					}
 
-					tlh_accordion( $faq_list );
+					tlh_accordion( $faq_list, true );
 				}
 
 				wp_reset_postdata();
