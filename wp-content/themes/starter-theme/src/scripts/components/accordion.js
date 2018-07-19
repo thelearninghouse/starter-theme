@@ -6,14 +6,32 @@ import Config from "themeConfig";
  *   Simple accordion pattern example
  */
 
+ // .closest() polyfill for IE
+ if (!Element.prototype.matches)
+ 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
+ 		Element.prototype.webkitMatchesSelector;
+
+ if (!Element.prototype.closest)
+ 	Element.prototype.closest = function(s) {
+ 		var el = this;
+ 		if (!document.documentElement.contains(el)) return null;
+ 		do {
+ 			if (el.matches(s)) return el;
+ 			el = el.parentElement || el.parentNode;
+ 		} while (el !== null && el.nodeType === 1);
+ 		return null;
+ 	};
+
 
 // Helper Functions
 function handleOpenAccordion(newTrigger) {
-	var triggerForOpen = document.querySelector('.accordion__trigger[aria-expanded="true"]');
+	var accordion = newTrigger.closest(Config.selectors.accordion);
+	var triggerForOpen = accordion.querySelector('.accordion__trigger[aria-expanded="true"]');
 	var newTriggerID = newTrigger.getAttribute("aria-controls")
 	var needToCloseOpenAccordion = triggerForOpen !== null ? newTriggerID !== triggerForOpen.getAttribute("aria-controls") : false;
+	var allowMultiple = accordion.hasAttribute("data-allow-multiple");
 
-	if (needToCloseOpenAccordion) {
+	if (needToCloseOpenAccordion && !allowMultiple) {
 		closeAccordion(triggerForOpen)
 	}
 }
