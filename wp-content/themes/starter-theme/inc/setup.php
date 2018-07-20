@@ -58,19 +58,53 @@
   add_shortcode( 'privacy', 'privacy_policy' );
 
   // Restrict Image Size and Dimensions
-  function tlh_max_image_size( $file ) {
-    $size = $file['size'];
-    $size = $size / 1024;
-    $type = $file['type'];
-    $is_image = strpos( $type, 'image' ) !== false;
-    $limit = 300;
-    $limit_output = '300kb';
-    if ( $is_image && $size > $limit ) {
-      $file['error'] = 'Image files must be smaller than ' . $limit_output;
-    }//end if
-    return $file;
-  }//end tlh_max_image_size()
+	function tlh_max_image_size( $file ) {
+	  $size = $file['size'];
+	  $size = $size / 1024;
+	  $type = $file['type'];
 
-  add_filter( 'wp_handle_upload_prefilter', array('tlh_max_image_size') );
+		// Requirements
+		$max_width = '1600';
+		$max_size = 300;
+
+	  $is_image = strpos( $type, 'image' ) !== false;
+
+	  if ( $is_image ) {
+			$image = getimagesize($file['tmp_name']);
+			$image_width = $image[0];
+	    $image_height = $image[1];
+
+			$errors = array();
+
+			if ( $size > $max_size ) {
+				$errors[] = ' smaller than 300 KB';
+			}
+			if ( $image_width > $max_width ) {
+				$errors[] = ' no larger than 1600px in width';
+			}
+
+			$error_str = 'Image files must be';
+
+			foreach ($errors as $key => $error) {
+				$error_str .= $error;
+				if ( $key < (count($errors) - 2) ) {
+					$error_str .= ',';
+				} else if ( $key === (count($errors) - 2) ) {
+					$error_str .= ' and';
+				} else if ( $key === (count($errors) - 1) ) {
+					$error_str .= '.';
+				}
+			}
+
+			if ( !empty($errors) ) {
+				$file['error'] = $error_str;
+			}
+
+		}
+
+		return $file;
+
+	}
+	add_filter( 'wp_handle_upload_prefilter', 'tlh_max_image_size' );
 
  ?>
