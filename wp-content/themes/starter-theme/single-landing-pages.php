@@ -6,7 +6,7 @@
 	<section class="mag-degrees" aria-label="Degree Information">
 		<div class="wrap-lg">
 			<div class="page-content">
-				<?php get_template_part( 'template-parts/flex_page_content' ); ?>
+				<?php get_template_part( 'template-parts/content/flex_page_content' ); ?>
 			</div>
 			<div class="sidebar">
 				<?php get_template_part( 'template-parts/get_started_form' ); ?>
