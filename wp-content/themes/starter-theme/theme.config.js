@@ -5,7 +5,9 @@ module.exports = {
 		mixItUp: ".mixitup",
 		socialShare: ".social-link",
 		sticky: ".sticky",
-		slider: '.glide'
+		slider: ".glide",
+		dialog: ".dialog",
+		smoothScroll: ".smooth-scroll"
 	},
 	useVue: true,
 	purgecssWhitelist: [
@@ -19,8 +21,5 @@ module.exports = {
 		"ol",
 		"columns-2"
 	],
-	purgecssWhitelistPatterns: [
-		/^elp(_.*)?$/,
-		/^keep-nested-children/
-	]
+	purgecssWhitelistPatterns: [/^elp(_.*)?$/, /^keep-nested-children/]
 };

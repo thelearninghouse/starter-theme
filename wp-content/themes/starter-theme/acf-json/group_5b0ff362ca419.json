@@ -11,7 +11,34 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b5b72d830ef4",
+            "label": "Show Navigation",
+            "name": "faq_list_show_nav",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0ff57facfa7",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -30,7 +57,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -58,5 +85,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Options for the main FAQ list template",
-    "modified": 1529002152
+    "modified": 1532719892
 }
