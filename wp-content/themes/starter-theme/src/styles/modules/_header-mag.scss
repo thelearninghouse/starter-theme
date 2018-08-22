@@ -2,13 +2,13 @@
 HEADER STYLES
 *********************/
 
-.header-mag {
+.headerMag {
 	position: relative;
 	background-color: white;
 
 	@include sectionspace(15, 30);
 
-	&__nav-container {
+	&__navContainer {
 		display: flex;
 		flex-flow: column nowrap;
 		justify-content: space-between;
@@ -118,7 +118,7 @@ HEADER STYLES
 		}
 	}
 
-	.get-started-button {
+	.getStartedButton {
 		position: fixed;
 		z-index: 10;
 		bottom: rem(15);
@@ -138,7 +138,7 @@ HEADER STYLES
 		}
 	}
 
-	&__page-heading {
+	&__pageHeading {
 		position: relative;
 		font-weight: 600;
 		font-style: italic;
@@ -152,7 +152,7 @@ HEADER STYLES
 		}
 	}
 
-	&__page-subheading {
+	&__pageSubheading {
 		display: block;
 		font-size: rem(16);
 		font-weight: 400;
@@ -168,7 +168,7 @@ HEADER STYLES
 	}
 }
 
-.header-mag__phone {
+.headerMag__phone {
 	font-size: rem(30);
 	margin-top: rem(20);
 	text-decoration: underline;

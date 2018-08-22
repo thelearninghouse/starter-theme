@@ -98,7 +98,7 @@
 		}
 	}
 
-	&--wide-image {
+	&--wideImage {
 		display: flex;
 		flex-flow: row nowrap;
 
@@ -125,7 +125,7 @@
 	}
 }
 
-.image-card {
+.imageCard {
 	position: relative;
 	display: flex;
 	align-items: flex-end;
@@ -204,7 +204,7 @@ a.card {
 	}
 }
 
-.card-list {
+.cardList {
 	list-style: none;
 	padding: 0;
 	margin: rem(20) 0;

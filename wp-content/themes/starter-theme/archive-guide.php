@@ -1,16 +1,16 @@
 <?php get_header(); ?>
 
 <main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-	<div class="wrap">
+	<div class="wrapLg">
 
 		<?php if (have_posts()) { ?>
-			<ul class="flex-grid flex-grid--stretch">
+			<ul class="flexGrid flexGrid--stretch">
 
 			<?php while (have_posts()) {
 				the_post(); ?>
-				<li class="flex-grid__item">
+				<li class="flexGrid__item">
 					<a class="card" href="<?php the_permalink(); ?>" title="View infographic: <?php the_title(); ?>, including a transcript.">
 						<div>
 							<div class="card__image">
@@ -43,7 +43,7 @@
 			<p>There are currently no resources listed here.</p>
 
 		<?php } ?>
-		
+
 	</div>
 
 </main>

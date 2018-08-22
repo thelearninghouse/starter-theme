@@ -6,9 +6,9 @@ get_header(); ?>
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-	<div class="wrap page-wrapper">
+	<div class="wrapLg page-wrapper">
 		<section class="page-content" aria-label="Page Content">
 			<?php if (have_posts()) : while (have_posts()) : the_post();
 				the_content();
@@ -57,7 +57,7 @@ get_header(); ?>
 
 </main>
 
-<?php get_template_part( 'template-parts/cta_footer' ); ?>
+<?php get_template_part( 'template-parts/cta-footer' ); ?>
 
 
 <?php get_footer(); ?>

@@ -2,13 +2,13 @@
 SOCIAL SHARING BUTTONS
 *******************************/
 
-.social-sharing {
+.socialSharing {
     background: darken(white, 5%);
     padding: .8em;
     text-align: center;
 }
 
-.social-sharing__label {
+.socialSharing__label {
     font-size: em(13);
     font-weight: bold;
     text-transform: uppercase;
@@ -21,7 +21,7 @@ SOCIAL SHARING BUTTONS
 	}
 }
 
-.social-link {
+.socialLink {
   color: #fff;
   background-color: #55acee;
   padding: .4em .6em;
@@ -36,28 +36,28 @@ SOCIAL SHARING BUTTONS
 
   &:focus { color: white; }
 }
-.social-link__icon,
-.social-link__label {
+.socialLink__icon,
+.socialLink__label {
   display: inline-block;
   vertical-align: middle;
   color: white;
 }
-.social-link__icon {
+.socialLink__icon {
   width: 1.5em;
   height: 1.5em;
   margin-right: .2em;
 }
-.social-link__icon path { fill: #fff; }
-.social-link__label {
+.socialLink__icon path { fill: #fff; }
+.socialLink__label {
   font-size: .9em;
   font-weight: 500;
 }
-.social-link:hover {
+.socialLink:hover {
     background-color:  darken(#55acee, 10%);
     color: white;
 }
 
-.social-link.social-link_facebook { background: #3b5998; }
-.social-link.social-link_facebook:hover { background: darken(#3b5998, 10%); }
-.social-link.social-link_linkedin { background: #007bb6; }
-.social-link.social-link_linkedin:hover { background: darken(#007bb6, 10%); }
+.socialLink.social-link_facebook { background: #3b5998; }
+.socialLink.social-link_facebook:hover { background: darken(#3b5998, 10%); }
+.socialLink.social-link_linkedin { background: #007bb6; }
+.socialLink.social-link_linkedin:hover { background: darken(#007bb6, 10%); }

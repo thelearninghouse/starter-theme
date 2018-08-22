@@ -21,12 +21,12 @@
 		<?php wp_head(); ?>
 		<?php require_once('css-injector/olc.php'); ?>
 
-		<?php get_template_part( 'template-parts/header/tag_manager_script' ); ?>
+		<?php get_template_part( 'template-parts/header/tag-manager-script' ); ?>
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
-		<a class="skip-link" href="#content">Skip to content</a>
-		<?php get_template_part( 'template-parts/header/tag_manager_iframe' ); ?>
+		<a class="skipLink" href="#content">Skip to content</a>
+		<?php get_template_part( 'template-parts/header/tag-manager-iframe' ); ?>
 
 		<?php // If is blog page show the progress bar ?>
 		<?php if ( is_singular( 'post' ) ) { ?><progress value="0"></progress><?php } ?>
@@ -35,18 +35,18 @@
 
 		<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-				<div class="info-bar plain-links">
-					<div class="wrap">
-						<div class="info-bar__info">
+				<div class="infoBar">
+					<div class="wrapLg">
+						<div class="infoBar__info">
 							<?php $school_phone = get_field('school_phone', 'options'); ?>
-							<a class="info-bar__phone" href="tel:<?php echo str_replace( ['-', '(', ')', ' '], '', $school_phone ); ?>"><strong>Call us today!</strong> <?php tlh_icon( 'phone', 'inline', 'Call us today!' ); ?><?php echo $school_phone; ?></a>
+							<a class="infoBar__phone" href="tel:<?php echo str_replace( ['-', '(', ')', ' '], '', $school_phone ); ?>"><strong>Call us today!</strong> <?php tlh_icon( 'phone', 'inline', 'Call us today!' ); ?><?php echo $school_phone; ?></a>
 							<?php $next_start_date = tlh_get_next_start_date();
 								if ( $next_start_date ) { ?>
-									<span class="info-bar__start-date"><strong>Next Start Date:</strong> <?php echo $next_start_date; ?></span>
+									<span class="infoBar__start-date"><strong>Next Start Date:</strong> <?php echo $next_start_date; ?></span>
 								<?php }
 							?>
 						</div>
-						<nav class="info-bar__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<nav class="infoBar__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 							<?php wp_nav_menu(array(
 												 'container' => false,														// remove nav container
 												 'menu' => __( 'Secondary Menu', 'tlh_theme' ),  // nav name
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 
-				<div class="wrap">
+				<div class="wrapLg">
 					<a class="header__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">
 						<?php $school_logo = get_field('school_logo', 'options');
 						if ( $school_logo ) { ?>
@@ -66,9 +66,9 @@
 							<span><?php the_field( 'school_name', 'options' ); ?>
 							<?php } ?>
 					</a>
-					<button class="js__menu-trigger nav-wrapper__open" aria-label="Open Navigation Menu"><?php tlh_icon('menu', '', 'Open Navigation Menu') ?></button>
-					<div class="nav-wrapper">
-						<button class="nav-wrapper__close js__menu-trigger" aria-label="Close Navigation Menu">Close</button>
+					<button class="js__menu-trigger navWrapper__open" aria-label="Open Navigation Menu"><?php tlh_icon('menu', '', 'Open Navigation Menu') ?></button>
+					<div class="navWrapper">
+						<button class="navWrapper__close js__menu-trigger" aria-label="Close Navigation Menu">Close</button>
 						<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 							<?php wp_nav_menu(array(
 												 'container' => false,                           // remove nav container
@@ -78,7 +78,7 @@
 												 'depth' => 0			                               // limit the depth of the nav
 							)); ?>
 						</nav>
-						<nav class="header__secondary-nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<nav class="header__secondaryNav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 							<?php wp_nav_menu(array(
 												 'container' => false,														// remove nav container
 												 'menu' => __( 'Secondary Menu', 'tlh_theme' ),  // nav name

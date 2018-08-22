@@ -36,30 +36,30 @@
 
 	$page_title_modifiers = '';
 	if ( get_field( 'hero_background_image' ) || is_singular( 'post' ) || is_archive() ) {
-		$page_title_modifiers .= ' page-title--image';
+		$page_title_modifiers .= ' pageTitle--image';
 	}
 	if ( is_home() && get_field( 'hero_background_image', get_option('page_for_posts') ) ) {
-		$page_title_modifiers .= ' page-title--image';
+		$page_title_modifiers .= ' pageTitle--image';
 	}
 	if ( get_field( 'hero_center' ) ) {
-		$page_title_modifiers .= ' page-title--center';
+		$page_title_modifiers .= ' pageTitle--center';
 	}
 
 
 ?>
 
-<header class="page-title<?php echo $page_title_modifiers; ?>">
-  <div class="page-title__wrapper wrap">
-    <h1 class="page-title__heading"><?php echo $page_title ?></h1>
+<header class="pageTitle<?php echo $page_title_modifiers; ?>">
+  <div class="pageTitle__wrapper wrapLg">
+    <h1 class="pageTitle__heading"><?php echo $page_title ?></h1>
 		<?php if ( $page_subtitle ) { ?>
-			<span class="page-title__subheading"><?php echo $page_subtitle; ?></span>
+			<span class="pageTitle__subheading"><?php echo $page_subtitle; ?></span>
 		<?php } ?>
   </div>
 </header>
 <?php
   if ( is_singular( 'post' ) ) {
-    tlh_responsive_bg_style( 'page-title--image' );
+    tlh_responsive_bg_style( 'pageTitle--image' );
   }
   else {
-    tlh_responsive_bg_style( 'page-title--image', 'hero_background_image' );
+    tlh_responsive_bg_style( 'pageTitle--image', 'hero_background_image' );
   } ?>

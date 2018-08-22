@@ -13,9 +13,9 @@ get_header(); ?>
 	}
 </style>
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-	<div class="wrap">
+	<div class="wrapLg">
 
 		<div class="program-filters">
 			 <button class="program-filters__button button" data-filter="all">All Degrees</button>
@@ -56,6 +56,6 @@ get_header(); ?>
 
 </main>
 
-<?php get_template_part( 'template-parts/cta_footer' ); ?>
+<?php get_template_part( 'template-parts/cta-footer' ); ?>
 
 <?php get_footer(); ?>

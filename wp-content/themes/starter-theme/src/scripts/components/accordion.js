@@ -40,11 +40,11 @@ function animateAccordion(trigger) {
 	var panelID = trigger.getAttribute("aria-controls")
 	var panel = document.getElementById(panelID)
 
-	if (panel.classList.contains('open-accordion-panel')) {
-		delayedClassRemoval(panel, 'open-accordion-panel')
+	if (panel.classList.contains('accordion__panel--open')) {
+		delayedClassRemoval(panel, 'accordion__panel--open')
 		panel.style.maxHeight = null;
 	} else {
-		panel.classList.add('open-accordion-panel')
+		panel.classList.add('accordion__panel--open')
 		panel.style.maxHeight = panel.scrollHeight + "px";
 	}
 }
@@ -53,7 +53,7 @@ function closeAccordion(trigger) {
 	var openPanelID = trigger.getAttribute("aria-controls");
 	var openPanel = document.getElementById(openPanelID);
 
-	delayedClassRemoval(openPanel, 'open-accordion-panel')
+	delayedClassRemoval(openPanel, 'accordion__panel--open')
 	openPanel.style.maxHeight = null;
 }
 
@@ -105,6 +105,7 @@ Array.prototype.slice
 		for (var i = 0; i < panels.length; i++) {
 			if (firstOpen && i == 0) {
 				triggers[i].setAttribute("aria-expanded", "true");
+				animateAccordion(triggers[i]);
 				document.getElementById(triggers[i].getAttribute("aria-controls"));
 
 			} else {

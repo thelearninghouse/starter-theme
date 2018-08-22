@@ -3,9 +3,9 @@
 <?php get_header(); ?>
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-		<div class="wrap page-wrapper">
+		<div class="wrapLg page-wrapper">
 
 				<section class="page-content">
 					<div class="resources-wrapper">
@@ -36,7 +36,7 @@
 
 												$card_link = get_the_permalink( $resource_post_id );
 												$card_link_label = 'View ' . get_post_type_object( $resource_post_type )->labels->singular_name;
-												
+
 											} else {
 												$card_title = $resource_item['title'] ? $resource_item['title'] : $resource_item['type']['label'];
 												$card_description = $resource_item['description'];

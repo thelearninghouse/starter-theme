@@ -2,13 +2,7 @@
 LAYOUT & GRID STYLES
 *********************/
 
-.wrap {
-	width: 90%;
-	max-width: 1440px;
-	margin: 0 auto;
-}
-
-[class*="wrap-"] {
+[class*="wrap"] {
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: rem(15);
@@ -20,12 +14,16 @@ LAYOUT & GRID STYLES
 	}
 }
 
-.wrap-lg {
+.wrapLg {
 	max-width: map-get($wrap, lg);
 }
 
-.wrap-md {
-	max-width: map-get($wrap, med);
+.wrapMd {
+	max-width: map-get($wrap, md);
+}
+
+.wrapSm {
+	max-width: map-get($wrap, sm);
 }
 
 // anchor footer to bottom on short pages
@@ -43,12 +41,12 @@ LAYOUT & GRID STYLES
 /***** Basic Layout *****/
 
 @include mobilefirst(md) {
-	.page-wrapper {
+	.pageWrapper {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 		grid-column-gap: 2rem;
 
-		.page-content {
+		.pageContent {
 			grid-column: 1 / span 8;
 			order: 1;
 			margin-right: 2rem;
@@ -66,7 +64,7 @@ LAYOUT & GRID STYLES
 }
 
 // Flex-based grid, since IE can't andle auto-flow grids
-.flex-grid {
+.flexGrid {
 	$self: &;
 
 	// border: red 1px solid !important;
@@ -107,7 +105,7 @@ LAYOUT & GRID STYLES
 		}
 	}
 
-	&--large-gap {
+	&--largeGap {
 		#{$self}__item {
 			padding: rem(10);
 		}
@@ -117,7 +115,7 @@ LAYOUT & GRID STYLES
 		}
 	}
 
-	&--thin-gap {
+	&--thinGap {
 		padding: rem(2);
 
 		#{$self}__item {

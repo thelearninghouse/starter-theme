@@ -3,9 +3,9 @@
 <?php get_header(); ?>
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-	<div class="wrap page-wrapper">
+	<div class="wrapLg page-wrapper">
 		<section class="page-content" aria-label="Page Content">
 			<?php	$loop = new WP_Query( array(
 				'post_type' => 'semesters',
