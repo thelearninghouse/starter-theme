@@ -57,20 +57,4 @@
                 }
   add_shortcode( 'privacy', 'privacy_policy' );
 
-  // Restrict Image Size and Dimensions
-  function tlh_max_image_size( $file ) {
-    $size = $file['size'];
-    $size = $size / 1024;
-    $type = $file['type'];
-    $is_image = strpos( $type, 'image' ) !== false;
-    $limit = 300;
-    $limit_output = '300kb';
-    if ( $is_image && $size > $limit ) {
-      $file['error'] = 'Image files must be smaller than ' . $limit_output;
-    }//end if
-    return $file;
-  }//end tlh_max_image_size()
-
-  add_filter( 'wp_handle_upload_prefilter', array('tlh_max_image_size') );
-
  ?>
