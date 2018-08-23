@@ -1,7 +1,7 @@
 <?php // check if the repeater field has rows of data
 if( have_rows('school_benefits_list') ): ?>
   <section class="schoolBenefits" aria-labelledby="schoolBenefitsHeading">
-		<div class="wrap-lg">
+		<div class="wrapLg">
     	<h2 class="schoolBenefits__title" id="schoolBenefitsHeading"><?php the_field('school_benefits_list_title'); ?></h2>
 	    <ul class="benefitsList">
 	   	<?php // loop through the rows of data

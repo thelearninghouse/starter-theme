@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 
-<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+<main id="content" class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-		<div class="wrap page-wrapper">
+		<div class="wrapLg pageWrapper">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-				<section class="page-content">
+				<section class="pageContent">
 					<?php the_content(); ?>
 				</section> <?php // end article section ?>
 

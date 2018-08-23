@@ -4,9 +4,9 @@
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-	<div class="wrap-lg page-wrapper">
+	<div class="wrapLg page-wrapper">
 		<div class="page-content">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post();
@@ -32,7 +32,7 @@
 
 </main>
 
-<?php get_template_part( 'template-parts/cta_footer' ); ?>
+<?php get_template_part( 'template-parts/cta-footer' ); ?>
 
 
 <?php get_footer(); ?>

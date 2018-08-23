@@ -1,4 +1,4 @@
-.footer-mag {
+.footerMag {
 	background-color: darkgray;
 	color: white;
 	text-align: center;
@@ -48,7 +48,7 @@
 		padding-bottom: rem(20);
 	}
 
-	// > .wrap-lg:first-of-type {
+	// > .wrapLg:first-of-type {
 	// 	font-weight: 600;
 	// }
 
@@ -65,7 +65,7 @@
 }
 
 .page-template-page-templatesmag__degrees-php {
-	.footer-mag__copyright {
+	.footerMag__copyright {
 		padding-bottom: rem(80);
 
 		@include mobilefirst(md) {

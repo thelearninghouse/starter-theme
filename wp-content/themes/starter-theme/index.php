@@ -1,25 +1,25 @@
 <?php get_header(); ?>
 
 <main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
 
-		<section class="entry-content cf">
+		<section class="entryContent cf">
 
-			<p class="byline entry-meta vcard">
+			<p class="byline entryMeta vcard">
       	<?php tlh_byline(); ?>
 			</p>
-      <h2 class="entry-title">
+      <h2 class="entryTitle">
 				<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 			</h2>
 
 		</section>
 
-		<?php $blog_class_name = 'featured-image-' . get_the_ID(); ?>
-    <div class="featured-image <?php echo $blog_class_name; ?>"></div>
+		<?php $blog_class_name = 'featuredImage-' . get_the_ID(); ?>
+    <div class="featuredImage <?php echo $blog_class_name; ?>"></div>
 
 		<?php /* If page has a featured image, use it. Otherwise defaults to image set from main stylesheet */ ?>
 		<?php if( has_post_thumbnail() ) : ?>
@@ -35,13 +35,13 @@
 	<?php else : ?>
 
 			<article id="post-not-found" class="hentry cf">
-					<header class="article-header">
+					<header class="articleHeader">
 						<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
 				</header>
-					<section class="entry-content">
+					<section class="entryContent">
 						<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
 				</section>
-				<footer class="article-footer">
+				<footer class="articleFooter">
 						<p><?php _e( 'This is the error message in the index.php template.', 'bonestheme' ); ?></p>
 				</footer>
 			</article>

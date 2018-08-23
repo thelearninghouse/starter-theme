@@ -4,12 +4,12 @@
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
 	<?php get_template_part( 'template-parts/cta-boxed' ); ?>
 
 	<section class="welcome" aria-labelledby="welcome-heading">
-		<div class="wrap-md">
+		<div class="wrapMd">
 			<h2 class="welcome__heading text-center" id="welcome-heading"><?php the_field( 'mag_home_welcome_heading' ); ?></h2>
 			<?php the_field( 'mag_home_welcome_copy' ); ?>
 		</div>

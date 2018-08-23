@@ -1,9 +1,9 @@
 <?php get_header( 'gtm' ); ?>
 
-<main class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<div class="wrap-lg">
-		<section class="page-content" aria-labelledby="page-heading">
-			<h1 class="error-heading" id="page-heading"><span class="error-heading__number">404</span><br>Page Not Found</h1>
+<main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<div class="wrapLg">
+		<section class="pageContent" aria-labelledby="pageHeading">
+			<h1 class="errorHeading" id="pageHeading"><span class="errorHeading__number">404</span><br>Page Not Found</h1>
 			<p><a href="/">Try returning to the homepage.</a></p>
 		</section>
 	</div>

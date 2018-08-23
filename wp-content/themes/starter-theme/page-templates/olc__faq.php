@@ -3,9 +3,9 @@
 <?php get_header(); ?>
 
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-		<div class="wrap page-wrapper">
+		<div class="wrapLg page-wrapper">
 			<section class="page-content" aria-label="Page Content">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post();
@@ -49,6 +49,8 @@
 
 				if ( get_field( 'faq_list_group_by_faq_category' ) ) {
 
+					$faq_posts_show_nav = get_field( 'faq_list_group_by_faq_category' );
+
 					foreach( $faq_posts as $post) { // variable must be called $post (IMPORTANT)
 						setup_postdata($post);
 						$current_faq_category = get_the_terms( $post->ID , 'faq_category' );
@@ -65,8 +67,16 @@
 
 					ksort($faq_list);
 
+					if ( $faq_posts_show_nav ) {
+						echo '<nav role="navigation" aria-label="Frequently Asked Question Categories"><ul>';
+						foreach ($faq_list as $key => $faq_cat_list) {
+							echo '<li><a class="smooth-scroll" href="#faq-' . $key . '">' . $faq_cat_list['title'] . '</a></li>';
+						}
+						echo '</ul></nav>';
+					}
+
 					foreach ($faq_list as $key => $faq_cat_list) {
-						echo '<h2>' . $faq_cat_list['title'] . '</h2>';
+						echo '<h2 id="faq-' . $key . '">' . $faq_cat_list['title'] . '</h2>';
 						tlh_accordion( $faq_cat_list['questions'], true );
 					}
 				} else {
@@ -93,7 +103,7 @@
 
 	<?php if ( have_rows( 'page_read_more_items' ) ): ?>
 		<section aria-label="Read More" class="related-pages">
-			<div class="wrap-lg">
+			<div class="wrapLg">
 				<?php get_template_part( 'template-parts/read_more' ); ?>
 			</div>
 		</section>
@@ -101,7 +111,7 @@
 
 </main>
 
-<?php get_template_part( 'template-parts/cta_footer' ); ?>
+<?php get_template_part( 'template-parts/cta-footer' ); ?>
 
 
 <?php get_footer(); ?>

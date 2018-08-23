@@ -4,7 +4,7 @@ NAVIGATION STYLES
 
 // Mobile only
 @media screen and (max-width: 767px) {
-	.nav-wrapper__open {
+	.navWrapper__open {
 		background: rgba(0, 0, 0, 0.1);
 		border: none;
 		padding: rem(10);
@@ -13,13 +13,13 @@ NAVIGATION STYLES
 		cursor: pointer;
 	}
 
-	.nav-wrapper__open:hover,
-	.nav-wrapper__open:hover:focus {
+	.navWrapper__open:hover,
+	.navWrapper__open:hover:focus {
 		background: rgba(0, 0, 0, 0.2);
 		color: red;
 	}
 
-	.nav-wrapper {
+	.navWrapper {
 		position: fixed;
 		z-index: 5;
 		top: 0;
@@ -153,20 +153,20 @@ NAVIGATION STYLES
 } /* end .nav */
 
 /***** MAIN NAVIGATION *****/
-.top-nav {
+.topNav {
 	@include mobilefirst(md) {
 	}
 }
 
 // Secondary Nav
-.header__secondary-nav {
+.header__secondaryNav {
 	@include mobilefirst(md) {
 		display: none;
 	}
 }
 
 /***** SUB MENU TOGGLE BUTTONS *****/
-.sub-menu__toggle {
+.subMenu__toggle {
 	position: absolute;
 	right: 0;
 	top: 0;

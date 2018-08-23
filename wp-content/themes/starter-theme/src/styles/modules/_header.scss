@@ -11,7 +11,7 @@ HEADER STYLES
 		}
 	}
 
-	> .wrap {
+	> .wrapLg {
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: space-between;
@@ -24,7 +24,7 @@ HEADER STYLES
 	}
 }
 
-.info-bar {
+.infoBar {
 	background-color: #ddd;
 	outline-color: white;
 	padding-top: rem(10);
@@ -33,7 +33,7 @@ HEADER STYLES
 	// letter-spacing: 0.5px;
 	// text-transform: uppercase;
 
-	> .wrap {
+	> .wrapLg {
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: space-between;
@@ -63,7 +63,7 @@ HEADER STYLES
 		text-align: center;
 	}
 
-	&__start-date {
+	&__startDate {
 		text-align: center;
 		display: block;
 

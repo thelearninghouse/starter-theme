@@ -7,7 +7,7 @@
 		min-height: 150px;
 	}
 </style>
-<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main id="content" class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 <div id="vlh-app">
 	{{msg}}
@@ -91,16 +91,16 @@
 	</dl>
 </div>
 
-	<?php get_template_part( 'template-parts/page_title' ); ?>
+	<?php get_template_part( 'template-parts/page-title' ); ?>
 
 
 
-	<div class="program-list">
-		<div class="program-list__text">
+	<div class="programList">
+		<div class="programList__text">
 			<h2>Undergraduate Programs</h2>
 			<p><?php echo term_description( '4', 'degree_level' ) ?>
 		</div>
-		<div class="program-list-container">
+		<div class="programListContainer">
 			<?php $loop = new WP_Query( array(
 					'post_type' => 'degrees',
 					'posts_per_page' => -1,
@@ -110,9 +110,9 @@
 			) ); ?>
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<?php $tax_terms = get_the_terms($post->ID, 'degree_level'); ?>
-				<article class="card program-card mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+				<article class="card programCard mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
 						<a href="<?php the_permalink(); ?>">
-							<span class="program-card__image">
+							<span class="programCard__image">
 								<?php
 									$image = get_field('hero_background_image');
 									$card = $image['sizes'][ 'medium' ];
@@ -120,21 +120,21 @@
 								?>
 								<img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
 							</span>
-							<span class="h4 program-card__name"><?php the_field('program__short-name'); ?></span>
-							<span class="program-card__excerpt"><?php the_field('program_summary'); ?></span>
-							<span class="program-card__button button">View Program Information</span>
+							<span class="h4 programCard__name"><?php the_field('program__short-name'); ?></span>
+							<span class="programCard__excerpt"><?php the_field('program_summary'); ?></span>
+							<span class="programCard__button button">View Program Information</span>
 						</a>
 				</article>
 			<?php endwhile; wp_reset_query(); ?>
 		</div>
 	</div>
 
-	<div class="program-list">
-		<div class="program-list__text">
+	<div class="programList">
+		<div class="programList__text">
 			<h2>Graduate Programs</h2>
 			<p><?php echo term_description( '3', 'degree_level' ) ?>
 		</div>
-		<div class="program-list-container">
+		<div class="programListContainer">
 			<?php $loop = new WP_Query( array(
 					'post_type' => 'degrees',
 					'posts_per_page' => -1,
@@ -144,9 +144,9 @@
 			) ); ?>
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 				<?php $tax_terms = get_the_terms($post->ID, 'degree_level'); ?>
-					<article class="card program-card mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+					<article class="card programCard mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
 							<a href="<?php the_permalink(); ?>">
-								<span class="program-card__image">
+								<span class="programCard__image">
 									<?php
 										$image = get_field('hero_background_image');
 										$card = $image['sizes'][ 'medium' ];
@@ -154,9 +154,9 @@
 									?>
 									<img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
 								</span>
-								<span class="h4 program-card__name"><?php the_field('program__short-name'); ?></span>
-								<span class="program-card__excerpt"><?php the_field('program_summary'); ?></span>
-								<span class="program-card__button button">View Program Information</span>
+								<span class="h4 programCard__name"><?php the_field('program__short-name'); ?></span>
+								<span class="programCard__excerpt"><?php the_field('program_summary'); ?></span>
+								<span class="programCard__button button">View Program Information</span>
 							</a>
 					</article>
 				<?php endwhile; wp_reset_query(); ?>
