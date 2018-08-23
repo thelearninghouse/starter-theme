@@ -57,8 +57,6 @@
                 }
   add_shortcode( 'privacy', 'privacy_policy' );
 
-<<<<<<< HEAD
-=======
   // Restrict Image Size and Dimensions
 	function tlh_max_image_size( $file ) {
 	  $size = $file['size'];
@@ -108,6 +106,3 @@
 
 	}
 	add_filter( 'wp_handle_upload_prefilter', 'tlh_max_image_size' );
-
->>>>>>> e435b85db2611291012a286529e940d481e17f11
- ?>
