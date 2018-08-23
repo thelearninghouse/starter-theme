@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# Overview
+# Important Files
 
 This is an overview of the most important things to know to understand how to work with our theme.
 
