@@ -15,6 +15,7 @@ import themeConfig from "themeConfig";
 *****************************/
 import "@/scripts/helpers/utilities";
 import "@/scripts/components/main-navigation";
+import "@/scripts/components/lazyLoad";
 
 /* Importing Vue Components
 *****************************/

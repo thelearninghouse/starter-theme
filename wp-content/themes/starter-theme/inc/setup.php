@@ -106,5 +106,3 @@
 
 	}
 	add_filter( 'wp_handle_upload_prefilter', 'tlh_max_image_size' );
-
- ?>
