@@ -8,7 +8,7 @@
 
 	&__trigger {
 		background-color: #e8e8e8;
-		color: red;
+		color: color(red);
 		border: 0;
 		display: flex;
 		justify-content: space-between;
@@ -56,18 +56,16 @@
 		}
 	}
 
-
 	// DEFAULT STYLES (applied only if no other theme is applied) ****************
 	&:not(.plain) {
 		#{$self}__trigger {
-
 			&:focus,
 			&:hover {
 				background-color: #d5d5d5;
 			}
 
 			&[aria-expanded="true"] {
-				background-color: red;
+				background-color: color(red);
 				color: white;
 			}
 		}
@@ -92,7 +90,7 @@
 
 			& > div:first-child {
 				padding: rem(10);
-				@include mobilefirst(md) {
+				@include min(md) {
 					padding: rem(20);
 				}
 			}

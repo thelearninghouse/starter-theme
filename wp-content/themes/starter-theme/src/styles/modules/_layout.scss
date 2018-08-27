@@ -8,7 +8,7 @@ LAYOUT & GRID STYLES
 	padding-left: rem(15);
 	padding-right: rem(15);
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		padding-left: rem(20);
 		padding-right: rem(20);
 	}
@@ -40,7 +40,7 @@ LAYOUT & GRID STYLES
 
 /***** Basic Layout *****/
 
-@include mobilefirst(md) {
+@include min(md) {
 	.pageWrapper {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -63,11 +63,12 @@ LAYOUT & GRID STYLES
 	}
 }
 
-// Flex-based grid, since IE can't andle auto-flow grids
+// Flex-based grid, since IE can't handle auto-flow grids
 .flexGrid {
 	$self: &;
 
 	// border: red 1px solid !important;
+	list-style: none;
 	margin: 0;
 	padding: rem(10);
 	display: flex;
@@ -79,15 +80,15 @@ LAYOUT & GRID STYLES
 		width: 100%;
 		padding: rem(10);
 
-		@include mobilefirst(sm) {
+		@include min(sm) {
 			width: 50%;
 		}
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			width: 33.3%;
 		}
 
-		@include mobilefirst(lg) {
+		@include min(lg) {
 			width: 25%;
 		}
 	}
@@ -95,7 +96,7 @@ LAYOUT & GRID STYLES
 	&--nowrap {
 		flex-flow: column nowrap;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			flex-flow: row nowrap;
 		}
 
@@ -110,7 +111,7 @@ LAYOUT & GRID STYLES
 			padding: rem(10);
 		}
 
-		@include mobilefirst(lg) {
+		@include min(lg) {
 			padding: rem(20);
 		}
 	}

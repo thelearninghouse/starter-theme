@@ -14,7 +14,7 @@ HEADER STYLES
 		justify-content: space-between;
 		align-items: center;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			flex-flow: row nowrap;
 		}
 	}
@@ -24,7 +24,7 @@ HEADER STYLES
 		width: rem(180);
 		height: auto;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			width: rem(240);
 		}
 
@@ -37,7 +37,7 @@ HEADER STYLES
 		width: 100%;
 		padding: 0;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			width: auto;
 			margin-top: 0;
 			margin-left: rem(20);
@@ -51,7 +51,7 @@ HEADER STYLES
 			display: flex;
 			flex-flow: row nowrap;
 
-			@include mobilefirst(md) {
+			@include min(md) {
 				margin-top: 0;
 				margin-left: rem(20);
 			}
@@ -66,7 +66,7 @@ HEADER STYLES
 					margin-left: rem(15);
 				}
 
-				@include mobilefirst(md) {
+				@include min(md) {
 					width: auto;
 
 					&:not(:first-of-type) {
@@ -104,7 +104,7 @@ HEADER STYLES
 		font-size: rem(24);
 		margin-top: rem(10);
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			margin-top: 0;
 			margin-left: rem(20);
 		}
@@ -125,7 +125,7 @@ HEADER STYLES
 		right: rem(15);
 		text-align: center;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			display: none;
 		}
 
@@ -147,7 +147,7 @@ HEADER STYLES
 		margin-top: rem(50);
 		margin-bottom: 0;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			margin-top: rem(80);
 		}
 	}
@@ -158,11 +158,11 @@ HEADER STYLES
 		font-weight: 400;
 		font-style: normal;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			font-size: rem(22);
 		}
 
-		@include mobilefirst(lg) {
+		@include min(lg) {
 			font-size: rem(34);
 		}
 	}
@@ -179,7 +179,7 @@ HEADER STYLES
 		color: inherit;
 	}
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		margin-top: 0;
 		margin-left: rem(20);
 	}

@@ -61,7 +61,7 @@ NAVIGATION STYLES
 	padding: 0;
 	list-style: none;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		border: 0;
 		display: flex;
 		flex-flow: row wrap;
@@ -71,7 +71,7 @@ NAVIGATION STYLES
 	li {
 		list-style: none;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			position: relative;
 
 			&:hover > ul.sub-menu {
@@ -89,7 +89,7 @@ NAVIGATION STYLES
 			text-decoration: none;
 			padding: 0.75em;
 
-			@include mobilefirst(md) {
+			@include min(md) {
 				border-bottom: 0;
 
 				&:hover,
@@ -104,7 +104,7 @@ NAVIGATION STYLES
 			padding: 0;
 			display: none;
 
-			@include mobilefirst(md) {
+			@include min(md) {
 				background: $link-color;
 				margin-top: 0;
 				position: absolute;
@@ -116,7 +116,7 @@ NAVIGATION STYLES
 				a {
 					padding-left: 30px;
 
-					@include mobilefirst(md) {
+					@include min(md) {
 						color: white;
 						padding-left: 10px;
 						border-right: 0;
@@ -125,7 +125,7 @@ NAVIGATION STYLES
 					}
 				}
 
-				@include mobilefirst(md) {
+				@include min(md) {
 					ul {
 						top: 0;
 						left: 100%;
@@ -136,7 +136,7 @@ NAVIGATION STYLES
 
 		&:hover {
 			.sub-menu {
-				@include mobilefirst(md) {
+				@include min(md) {
 					display: block;
 				}
 			}
@@ -144,7 +144,7 @@ NAVIGATION STYLES
 
 		// Show sub menu on focus for desktop users
 		.sub-menu.active {
-			@include mobilefirst(md) {
+			@include min(md) {
 				display: block;
 				visibility: visible;
 			}
@@ -154,13 +154,13 @@ NAVIGATION STYLES
 
 /***** MAIN NAVIGATION *****/
 .topNav {
-	@include mobilefirst(md) {
+	@include min(md) {
 	}
 }
 
 // Secondary Nav
 .header__secondaryNav {
-	@include mobilefirst(md) {
+	@include min(md) {
 		display: none;
 	}
 }
@@ -175,7 +175,7 @@ NAVIGATION STYLES
 	border: none;
 	padding: 1rem;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		display: none;
 	}
 
@@ -186,7 +186,7 @@ NAVIGATION STYLES
 
 /**** 768 UP ****/
 
-@include mobilefirst(md) {
+@include min(md) {
 	.js__menu-trigger {
 		display: none;
 	}

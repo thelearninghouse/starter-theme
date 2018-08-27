@@ -58,11 +58,3 @@ This is done white the purgecssWhitelistPatterns property in theme.config.js
 	}
 }
  */
-
-.accordion__panel {
-	display: none;
-
-	&.open-accordion-panel {
-		display: block;
-	}
-}

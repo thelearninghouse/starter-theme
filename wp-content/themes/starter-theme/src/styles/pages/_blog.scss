@@ -21,13 +21,14 @@ BLOG INDEX STYLING
 		padding: 1rem rem(15);
 		border-bottom: 1px solid gray;
 		position: relative;
+		transition: 0.6s background-color ease-in-out;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			padding-top: 4rem;
 			padding-bottom: 4rem;
 		}
 
-		.entry-content {
+		.entryContent {
 			padding: 1em 0;
 			max-width: 800px;
 			margin: 0 auto;
@@ -37,7 +38,7 @@ BLOG INDEX STYLING
 	}
 }
 
-.featured-image {
+.featuredImage {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -49,7 +50,7 @@ BLOG INDEX STYLING
 	background-size: cover;
 	background-position: center 53%;
 
-	&:before {
+	&::before {
 		content: "";
 		position: absolute;
 		top: 0;
@@ -66,14 +67,20 @@ BLOG INDEX STYLING
 .category .post:hover,
 .blog .post:focus-within,
 .category .post:focus-within {
-	.featured-image {
+	background-color: color(grayDark);
+
+	:focus {
+		outline-color: white;
+	}
+
+	.featuredImage {
 		opacity: 1;
 		background-position: center 50%;
 	}
-	
-	.entry-title a,
-	.entry-meta,
-	.entry-meta a {
+
+	.entryTitle a,
+	.entryMeta,
+	.entryMeta a {
 		color: white;
 	}
 }

@@ -9,7 +9,7 @@ blockquote {
 	border-left: 4px solid gray;
 	padding-left: 1em;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		font-size: em(24);
 		line-height: 1.45833333;
 	}
@@ -51,12 +51,12 @@ h1,
 	font-size: em(32);
 	line-height: 1.25;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		font-size: em(40);
 		line-height: 1.125;
 	}
 
-	@include mobilefirst(lg) {
+	@include min(lg) {
 		font-size: em(48);
 		line-height: 1.05;
 	}
@@ -68,12 +68,12 @@ h2,
 	line-height: 1.15384615;
 	margin-bottom: 0.375em;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		font-size: em(32);
 		line-height: 1.25;
 	}
 
-	@include mobilefirst(lg) {
+	@include min(lg) {
 		font-size: em(36);
 		line-height: 1.25;
 	}
@@ -84,12 +84,12 @@ h3,
 	font-size: em(22);
 	line-height: 1.13636364;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		font-size: em(24);
 		line-height: 1.25;
 	}
 
-	@include mobilefirst(lg) {
+	@include min(lg) {
 		font-size: em(28);
 		line-height: 1.25;
 	}
@@ -101,7 +101,7 @@ h4,
 	font-size: em(18);
 	line-height: 1.11111111;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		line-height: 1.222222222;
 	}
 }

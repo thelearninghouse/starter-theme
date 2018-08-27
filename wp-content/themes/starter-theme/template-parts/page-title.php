@@ -60,6 +60,8 @@
   if ( is_singular( 'post' ) ) {
     tlh_responsive_bg_style( 'pageTitle--image' );
   }
-  else {
-    tlh_responsive_bg_style( 'pageTitle--image', 'hero_background_image' );
-  } ?>
+  elseif ( is_home() ) {
+    tlh_responsive_bg_style( 'pageTitle--image', 'hero_background_image', false, true );
+  } else {
+		tlh_responsive_bg_style( 'pageTitle--image', 'hero_background_image' );
+	} ?>

@@ -39,7 +39,7 @@
 	grid-column: 5 / span 8;
 	order: 2;
 
-	@include mobilefirst(med ) {
+	@include min(med ) {
 		grid-column: 6 / span 7;
 	}
 

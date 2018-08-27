@@ -1,9 +1,6 @@
-<div class="program-list">
-  <div class="program-list__text">
-    <h2>Undergraduate Programs</h2>
-    <p><?php echo term_description( '4', 'degree_level' ) ?>
-  </div>
-  <div class="program-list-container">
+<div class="programListing">
+  <h2 class="programListing__heading">Undergraduate Programs</h2>
+  <ul class="flexGrid flexGrid--stretch cardList">
     <?php $loop = new WP_Query( array(
         'post_type' => 'degrees',
         'posts_per_page' => -1,
@@ -13,31 +10,29 @@
     ) ); ?>
     <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
     <?php $tax_terms = get_the_terms($post->ID, 'degree_level'); ?>
-      <article class="card program-card mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
-          <a href="<?php the_permalink(); ?>">
-            <span class="program-card__image">
-              <?php
-                $image = get_field('hero_background_image');
-                $card = $image['sizes'][ 'medium' ];
-                $alt = $image['alt'];
-              ?>
-              <img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
-            </span>
-            <span class="h4 program-card__name"><?php the_field('program__short-name'); ?></span>
-            <span class="program-card__excerpt"><?php the_field('program_summary'); ?></span>
-            <span class="program-card__button button">View Program Information</span>
+      <li class=" flexGrid__item mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+          <a class="card programCard" href="<?php the_permalink(); ?>">
+						<div>
+	            <div class="card__image">
+	              <?php
+	                $image = get_field('hero_background_image');
+	                $card = $image['sizes'][ 'medium' ];
+	                $alt = $image['alt'];
+	              ?>
+	              <img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
+	            </div>
+							<div class="card__copy">
+		            <h3 class="h4 card__heading"><?php the_title(); ?></h3>
+		            <p class="card__description"><?php the_field('program_summary'); ?></p>
+							</div>
+						</div>
+            <div class="card__action"><span class="button">View Program Information</span></div>
           </a>
-      </article>
+      </li>
     <?php endwhile; wp_reset_query(); ?>
-  </div>
-</div>
-
-<div class="program-list">
-  <div class="program-list__text">
-    <h2>Graduate Programs</h2>
-    <p><?php echo term_description( '3', 'degree_level' ) ?>
-  </div>
-  <div class="program-list-container">
+  </ul>
+	<h2 class="programListing__heading">Undergraduate Programs</h2>
+	<ul class="flexGrid flexGrid--stretch cardList">
     <?php $loop = new WP_Query( array(
         'post_type' => 'degrees',
         'posts_per_page' => -1,
@@ -46,22 +41,26 @@
         'order'   => 'ASC'
     ) ); ?>
     <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-      <?php $tax_terms = get_the_terms($post->ID, 'degree_level'); ?>
-        <article class="card program-card mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
-            <a href="<?php the_permalink(); ?>">
-              <span class="program-card__image">
-                <?php
-                  $image = get_field('hero_background_image');
-                  $card = $image['sizes'][ 'medium' ];
-                  $alt = $image['alt'];
-                ?>
-                <img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
-              </span>
-              <span class="h4 program-card__name"><?php the_field('program__short-name'); ?></span>
-              <span class="program-card__excerpt"><?php the_field('program_summary'); ?></span>
-              <span class="program-card__button button">View Program Information</span>
-            </a>
-        </article>
-      <?php endwhile; wp_reset_query(); ?>
-    </div>
+    <?php $tax_terms = get_the_terms($post->ID, 'degree_level'); ?>
+      <li class=" flexGrid__item mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+          <a class="card programCard" href="<?php the_permalink(); ?>">
+						<div>
+	            <div class="card__image">
+	              <?php
+	                $image = get_field('hero_background_image');
+	                $card = $image['sizes'][ 'medium' ];
+	                $alt = $image['alt'];
+	              ?>
+	              <img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
+	            </div>
+							<div class="card__copy">
+		            <h3 class="h4 card__heading"><?php the_title(); ?></h3>
+		            <p class="card__description"><?php the_field('program_summary'); ?></p>
+							</div>
+						</div>
+            <div class="card__action"><span class="button">View Program Information</span></div>
+          </a>
+      </li>
+    <?php endwhile; wp_reset_query(); ?>
+  </ul>
 </div>

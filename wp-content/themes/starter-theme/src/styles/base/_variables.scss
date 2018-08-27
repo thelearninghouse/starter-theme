@@ -4,30 +4,35 @@ $browser-context: 16; // Default
 
 // --- Responsive Breakpoints ---
 $breakpoints: (
-  sm: 481px,
-  md: 768px,
-  lg: 1040px,
-  wrap: 1440px
+	sm: 481px,
+	md: 768px,
+	lg: 1040px,
+	wrap: 1440px
 );
 
 // --- Content Wrap ---
 $wrap: (
-  sm: 700px,
-  md: 940px,
-  lg: 1400px
+	sm: 700px,
+	md: 940px,
+	lg: 1400px
 );
 
 // --- Colors ---
 $colors: (
-  red: red,
-  blue: blue,
-  green: green
+	red: firebrick,
+	redDark: maroon,
+	blue: blue,
+	green: green,
+	orange: darkorange,
+	grayLight: #ddd,
+	grayMedium: #747281,
+	grayDark: #333
 );
 
 /// Text Color
-$text-color: #666;
+$text-color: color(grayDark);
 /// Link Color
-$link-color: firebrick; // Change this!
+$link-color: map-get($colors, red);
 /// Link Hover
 $link-hover: darken($link-color, 15%);
 

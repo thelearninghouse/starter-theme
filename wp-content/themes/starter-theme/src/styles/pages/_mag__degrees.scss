@@ -3,7 +3,7 @@
 		padding-top: rem(20);
 		padding-bottom: rem(30);
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			padding-top: rem(30);
 			padding-bottom: rem(60);
 		}
@@ -16,7 +16,7 @@
 			margin-top: 0;
 		}
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			display: flex;
 			flex-flow: row nowrap;
 

@@ -11,7 +11,7 @@
 	&__heading {
 		margin-top: 0;
 
-		@include mobilefirst(lg) {
+		@include min(lg) {
 			font-size: rem(42);
 		}
 	}
@@ -44,7 +44,7 @@
 	.right {
 		display: none;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			display: block;
 			background-image: url("../images/grace-mount-memorial-hall.jpg");
 			background-size: cover;
@@ -60,7 +60,7 @@
 	}
 
 	.left .content {
-		@include mobilefirst(md) {
+		@include min(md) {
 			padding: rem(50) rem(40) rem(50) rem(10);
 			margin-left: auto;
 			margin-right: 0;

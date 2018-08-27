@@ -14,7 +14,7 @@ SIDEBARS & ASIDES
 
 /**** 768 UP ****/
 
-@include mobilefirst(md) {
+@include min(md) {
 
 	.widgettitle {
 		border-bottom: 2px solid #444;

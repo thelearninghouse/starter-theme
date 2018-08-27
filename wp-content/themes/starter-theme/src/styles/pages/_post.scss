@@ -68,7 +68,7 @@ POST STYLES
 	overflow: hidden;
 	text-align: center;
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		width: 90%;
 		margin-left: auto;
 		margin-right: auto;

@@ -6,26 +6,4 @@ HOMEPAGE SPECIFIC STYLES
 	.main-content {
 		display: block;
 	}
-
-	.program-list {
-		text-align: center;
-	}
-
-	.program-list-container {
-		@include mobilefirst(md) {
-			display: flex;
-			justify-content: center;
-		}
-	}
-
-	.card {
-		margin-top: 1.5rem;
-		margin-bottom: 1.5rem;
-		margin-left: auto;
-		margin-right: auto;
-
-		@include mobilefirst(md) {
-			margin: 1.5rem;
-		}
-	}
 }

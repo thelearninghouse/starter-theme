@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 
-<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main id="content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 
-		<section class="entryContent cf">
+		<section class="entryContent wrapLg">
 
 			<p class="byline entryMeta vcard">
       	<?php tlh_byline(); ?>

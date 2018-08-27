@@ -6,7 +6,7 @@ HEADER STYLES
 	&__logo {
 		max-width: rem(200);
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			max-width: rem(300);
 		}
 	}
@@ -25,8 +25,7 @@ HEADER STYLES
 }
 
 .infoBar {
-	background-color: #ddd;
-	outline-color: white;
+	background-color: color(grayLight);
 	padding-top: rem(10);
 	padding-bottom: rem(10);
 	// font-size: rem(12);
@@ -46,12 +45,12 @@ HEADER STYLES
 		justify-content: center;
 		width: 100%;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			width: auto;
 			text-align: left;
 		}
 
-		@include mobilefirst(lg) {
+		@include min(lg) {
 			width: auto;
 			flex-flow: row nowrap;
 		}
@@ -67,12 +66,12 @@ HEADER STYLES
 		text-align: center;
 		display: block;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			display: inline;
 			text-align: left;
 		}
 
-		@include mobilefirst(lg) {
+		@include min(lg) {
 			margin-left: rem(20);
 		}
 	}
@@ -80,7 +79,7 @@ HEADER STYLES
 	&__nav {
 		display: none;
 
-		@include mobilefirst(md) {
+		@include min(md) {
 			display: block;
 		}
 

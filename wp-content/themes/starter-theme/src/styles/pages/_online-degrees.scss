@@ -4,21 +4,10 @@
 	}
 
 	.program-list {
-		@include mobilefirst(md) {
+		@include min(md) {
 			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
-		}
-	}
-
-	.card {
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 1.5rem;
-
-		@include mobilefirst(md) {
-			margin-left: 1.5rem;
-			margin-right: 1.5rem;
 		}
 	}
 }

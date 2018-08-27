@@ -41,7 +41,7 @@
 	align-items: stretch;
 	padding: rem(20) rem(10);
 
-	@include mobilefirst(md) {
+	@include min(md) {
 		width: 50%;
 		padding: rem(30);
 	}
@@ -52,11 +52,11 @@
 	&__item {
 		width: 100%;
 
-		@include responsive(md) {
+		@include max(md) {
 			text-align: center;
 		}
 
-		@include responsive(md) {
+		@include max(md) {
 			display: flex;
 			flex-flow: row nowrap;
 		}
@@ -68,7 +68,7 @@
 		width: 60px;
 		height: 60px;
 
-		@include responsive(md) {
+		@include max(md) {
 			display: block;
 			flex: 0 0 60px;
 			margin-right: rem(20);
@@ -92,7 +92,7 @@
 	}
 
 	&__copy {
-		@include mobilefirst(md) {
+		@include min(md) {
 			$pixels: calc(60px + #{rem(20)});
 			width: calc(100% - #{$pixels});
 		}

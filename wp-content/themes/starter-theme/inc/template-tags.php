@@ -1,12 +1,12 @@
 <?php
 
-function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = false ) {
+function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = false, $blog = false ) {
   // If no image can be found, no <style> will be echoed
   $has_image = false;
 
   if ( $field_name !== NULL ) {
 
-    if ( is_home() ) {
+    if ( $blog ) {
       // On the blog, we need to explicitly pass the page id used to display posts, since $posts has all the blog posts
       if ( $sub_field ) {
         $image = get_sub_field( $field_name, get_option('page_for_posts') );
@@ -115,6 +115,28 @@ function tlh_get_next_start_date( $date_format = 'F j' ) {
 
 function tlh_next_start_date( $date_format = 'F j' ) {
 	echo tlh_get_next_start_date( $date_format );
+}
+
+function tlh_get_phone_link( $class = '', $custom_label = false, $field = 'school_phone' ) {
+	$phone = get_field('school_phone', 'options');
+	$phone_link = str_replace( ['-', '(', ')', ' ', '.'], '', $phone );
+	$link_str = '<a';
+	if ( $class != '' ) {
+		$link_str .= ' class=" ' . $class . '"';
+	}
+	$link_str .= ' href="tel:' . $phone_link . '">';
+	if ( $custom_label ) {
+		$link_str .= $custom_label;
+	} else {
+		$link_str .= $phone;
+	}
+	$link_str .= '</a>';
+
+	return $link_str;
+}
+
+function tlh_phone_link( $class = '', $custom_label = false, $field = 'school_phone' ) {
+	echo tlh_get_phone_link( $class, $custom_label, $field );
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-function tlh_icon ( $name, $class = NULL, $title = NULL ) {
+function tlh_get_icon ( $name, $class = NULL, $title = NULL ) {
   $icon_file = get_stylesheet_directory() . '/public/images/icons/' . $name . '.svg';
 
   if ( ! file_exists( $icon_file ) ) {
@@ -11,7 +11,11 @@ function tlh_icon ( $name, $class = NULL, $title = NULL ) {
   $output .= file_get_contents($icon_file);
   $output .= '</span>';
 
-  echo $output;
+  return $output;
+}
+
+function tlh_icon ( $name, $class = NULL, $title = NULL ) {
+	echo tlh_get_icon( $name, $class, $title );
 }
 
 ?>
