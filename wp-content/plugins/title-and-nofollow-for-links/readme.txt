@@ -1,6 +1,5 @@
 === Title and Nofollow For Links ===
-Contributors: Flector
-Donate link: http://goo.gl/CcxWYg
+Contributors: WPKube
 Tags: checkbox, insert, link, links, meta, nofollow, popup, rel nofollow, seo, editor, link, TinyMCE, title
 Requires at least: 4.2
 Tested up to: 4.9.6
@@ -36,6 +35,9 @@ Yes, please use [translate.wordpress.org](https://translate.wordpress.org/projec
 2. The source code of the added link.
 
 == Changelog ==
+
+= 1.05 =
+* minor tweaks
 
 = 1.04 =
 * update wplink.js to last version. 
