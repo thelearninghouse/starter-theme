@@ -29,8 +29,14 @@ $colors: (
 	grayDark: #333
 );
 
+$z: (
+	sectionBg: 1,
+	sectionContent: 2,
+	form: 10
+);
+
 /// Text Color
-$text-color: color(grayDark);
+$text-color: map-get($colors, grayDark);
 /// Link Color
 $link-color: map-get($colors, red);
 /// Link Hover

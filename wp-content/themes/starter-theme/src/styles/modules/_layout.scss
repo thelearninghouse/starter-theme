@@ -39,27 +39,27 @@ LAYOUT & GRID STYLES
 }
 
 /***** Basic Layout *****/
+.pageContent {
+	@include min(md) {
+		display: flex;
+		flex-flow: row nowrap;
+	}
 
-@include min(md) {
-	.pageWrapper {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-		grid-column-gap: 2rem;
+	> :not(:last-child) {
+		margin-top: rem(20);
 
-		.pageContent {
-			grid-column: 1 / span 8;
-			order: 1;
-			margin-right: 2rem;
-
-			@supports (display: grid) {
-				margin-right: 0;
-			}
+		@include min(md) {
+			margin-top: 0;
+			margin-right: rem(40);
 		}
+	}
 
-		.sidebar {
-			grid-column: 9 / span 4;
-			order: 2;
-		}
+	&__main {
+		flex: 2;
+	}
+
+	&__sidebar {
+		flex: 1;
 	}
 }
 
@@ -103,6 +103,14 @@ LAYOUT & GRID STYLES
 		#{$self}__item {
 			width: 100%;
 			flex: 1;
+		}
+	}
+
+	&--large {
+		#{$self}__item {
+			@include min(lg) {
+				width: 33.3%;
+			}
 		}
 	}
 

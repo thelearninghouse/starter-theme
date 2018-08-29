@@ -133,7 +133,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 20,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -141,5 +141,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "List of cards that link to custom post archives or highlighted single posts",
-    "modified": 1529002000
+    "modified": 1535475896
 }

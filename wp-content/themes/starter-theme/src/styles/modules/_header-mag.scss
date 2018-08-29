@@ -75,22 +75,18 @@ HEADER STYLES
 				}
 
 				a {
-					@include button(lightgray);
-					width: 100%;
+					display: block;
+					background-color: rgba(0, 0, 0, 0.1);
+					padding: rem(10);
 				}
 
 				&.current-menu-item {
-					display: flex;
-					flex-flow: column nowrap;
-					align-items: center;
-
-					a {
-						border-color: blue;
-
-						&:hover,
-						&:focus {
-							border-color: blue;
-						}
+					a,
+					a:hover,
+					a:focus,
+					a:active {
+						background-color: color(red);
+						color: white;
 					}
 				}
 			}

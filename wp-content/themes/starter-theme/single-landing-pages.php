@@ -7,9 +7,6 @@
 		<div class="wrapLg">
 			<div class="pageContent">
 				<?php get_template_part( 'template-parts/content/flex-page-content' ); ?>
-				<?php tlh_accordion(array(array('title' => 'Test 1', 'content' => 'haha.<br>test.'), array('title' => 'Test 2', 'content' => 'lol.')), true, true, 'plain'); ?>
-				<?php tlh_accordion(array(array('title' => 'Test 1', 'content' => 'haha.')), false, false, 'plain accordion--dropdown'); ?>
-			</div>
 			<div class="sidebar">
 				<?php get_template_part( 'template-parts/get-started-form' ); ?>
 			</div>

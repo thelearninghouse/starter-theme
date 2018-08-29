@@ -117,12 +117,16 @@ function tlh_next_start_date( $date_format = 'F j' ) {
 	echo tlh_get_next_start_date( $date_format );
 }
 
-function tlh_get_phone_link( $class = '', $custom_label = false, $field = 'school_phone' ) {
-	$phone = get_field('school_phone', 'options');
+function tlh_get_phone_link( $class = false, $custom_label = false, $field = 'school_phone', $options = true ) {
+	if ( $options ) {
+		$phone = get_field( $field, 'options' );
+	} else {
+		$phone = get_field( $field );
+	}
 	$phone_link = str_replace( ['-', '(', ')', ' ', '.'], '', $phone );
 	$link_str = '<a';
-	if ( $class != '' ) {
-		$link_str .= ' class=" ' . $class . '"';
+	if ( $class ) {
+		$link_str .= ' class="' . $class . '"';
 	}
 	$link_str .= ' href="tel:' . $phone_link . '">';
 	if ( $custom_label ) {
@@ -135,8 +139,26 @@ function tlh_get_phone_link( $class = '', $custom_label = false, $field = 'schoo
 	return $link_str;
 }
 
-function tlh_phone_link( $class = '', $custom_label = false, $field = 'school_phone' ) {
-	echo tlh_get_phone_link( $class, $custom_label, $field );
+function tlh_phone_link( $class = false, $custom_label = false, $field = 'school_phone', $options = true ) {
+	echo tlh_get_phone_link( $class, $custom_label, $field, $options );
+}
+
+function tlh_get_field( $field_name, $default_value = false ) {
+	// $field_data = get_field_object( $field_name );
+	$field_post_value = get_field( $field_name );
+	$field_default_value = false != $default_value ? $default_value : get_field( $field_name, 'options' );
+
+	if ( current_user_can('editor') || current_user_can('administrator') ) {
+		$missing_default = '<span title="Either set a default in the Admin or pass a default to the function" class="u-missingValue">Missing default! [<code>' . $field_name . '</code>]</span>';
+	} else {
+		$missing_default = false;
+	}
+
+	return $field_post_value ? $field_post_value : ( $field_default_value ? $field_default_value : $missing_default );
+}
+
+function tlh_field( $field_name, $default_value = false ) {
+	echo tlh_get_field( $field_name, $default_value );
 }
 
 ?>

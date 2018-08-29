@@ -1,0 +1,125 @@
+/******************************************************************
+404, Basic Page Stylesheet
+******************************************************************/
+
+@import "base/variables";
+@import "base/mixins";
+
+@import "generic/base";
+@import "generic/typography";
+@import "generic/links";
+@import "generic/tables";
+@import "generic/utility";
+
+@import "modules/layout";
+@import "modules/widget";
+
+@import "pages/basic";
+
+@media print {
+	@import "modules/print";
+}
+
+.container {
+	position: relative;
+	background-color: color(grayDark);
+	color: white;
+
+	:focus {
+		outline-color: white;
+	}
+
+	&__background {
+		position: absolute;
+		z-index: z(sectionBg);
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		@include responsivebackground();
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		background-attachment: fixed;
+		mix-blend-mode: multiply;
+		opacity: 0.8;
+	}
+
+	&__content {
+		position: relative;
+		z-index: z(sectionContent);
+		min-height: 100vh;
+		display: flex;
+		flex-flow: column nowrap;
+
+		> footer {
+			margin-top: auto;
+		}
+	}
+}
+
+.headerBasic {
+	@include sectionspace();
+
+	&__logo {
+		display: block;
+		height: rem(60);
+		width: auto;
+
+		@include min(md) {
+			height: rem(100);
+			width: auto;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			height: auto;
+		}
+	}
+}
+
+.mainContent {
+	padding-bottom: rem(30);
+	@include min(md) {
+		padding-bottom: rem(70);
+	}
+
+	&__heading {
+	}
+
+	&__subheading {
+		font-size: rem(23);
+	}
+
+	&__copy {
+		// margin-top: rem(80);
+
+		a,
+		a:hover,
+		a:focus,
+		a:active {
+			color: white;
+		}
+
+		li:not(:first-of-type) {
+			margin-top: rem(15);
+		}
+	}
+}
+
+.footerBasic {
+	a,
+	a:hover,
+	a:focus,
+	a:active {
+		color: white;
+	}
+}
+
+.errorHeading {
+	&__number {
+		font-weight: 700;
+		font-size: rem(70);
+	}
+}

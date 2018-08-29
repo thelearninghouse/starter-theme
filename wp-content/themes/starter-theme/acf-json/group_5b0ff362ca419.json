@@ -77,7 +77,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 15,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -85,5 +85,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Options for the main FAQ list template",
-    "modified": 1532719892
+    "modified": 1535479284
 }

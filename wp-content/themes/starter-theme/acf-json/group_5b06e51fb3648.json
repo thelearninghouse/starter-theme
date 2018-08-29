@@ -53,7 +53,7 @@
             }
         ]
     ],
-    "menu_order": 15,
+    "menu_order": 20,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -61,5 +61,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Options for individual FAQ posts",
-    "modified": 1528997606
+    "modified": 1535476672
 }

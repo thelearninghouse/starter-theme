@@ -9,7 +9,7 @@
 	<?php } ?>
 
 	<div class="wrapLg footerMag__contact">
-		<p><span class="footerMag__address1"><?php the_field('school_address_1', 'option'); ?>, </span><span class="footerMag__address2"><?php the_field('school_address_2', 'option'); ?></span> <a class="footerMag__phone" title="Give us a call!" href="tel:<?php the_field('school_phone', 'option'); ?>"><?php the_field('school_phone', 'option'); ?></a></p>
+		<p><span class="footerMag__address1"><?php the_field('school_address_1', 'option'); ?>, </span><span class="footerMag__address2"><?php the_field('school_address_2', 'option'); ?></span> <?php tlh_phone_link( 'footerMag__phone' ); ?></p>
 	</div>
 
 	<div class="footerMag__copyright">

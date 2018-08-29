@@ -7,7 +7,7 @@
 	}
 
 	&__trigger {
-		background-color: #e8e8e8;
+		background-color: color(grayLight);
 		color: color(red);
 		border: 0;
 		display: flex;
@@ -86,7 +86,7 @@
 		}
 
 		#{$self}__panel {
-			background-color: #e8e8e8;
+			background-color: color(grayLight);
 
 			& > div:first-child {
 				padding: rem(10);

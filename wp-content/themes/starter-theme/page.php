@@ -3,19 +3,18 @@
 <main id="content" class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-		<div class="wrapLg pageWrapper">
-
-			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-				<section class="pageContent">
-					<?php the_content(); ?>
-				</section> <?php // end article section ?>
-
-			<?php endwhile; endif; ?>
-
-			<?php get_sidebar(); ?>
-
+	<section aria-label="Page Content">
+		<div class="pageContent wrapLg">
+			<div class="pageContent__main">
+				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+						<?php the_content(); ?>
+				<?php endwhile; endif; ?>
+			</div>
+			<div class="pageContent__sidebar">
+				<?php get_sidebar(); ?>
+			</div>
 		</div>
+	</section>
 
 </main>
 

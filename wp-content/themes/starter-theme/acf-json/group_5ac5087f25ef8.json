@@ -3,9 +3,28 @@
     "title": "Request Info Form",
     "fields": [
         {
+            "key": "field_5b85879731258",
+            "label": "Form Heading",
+            "name": "form_heading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5ac508846c1c9",
             "label": "Form Code",
-            "name": "request_info_form",
+            "name": "form_code",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -53,5 +72,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1528998046
+    "modified": 1535477625
 }

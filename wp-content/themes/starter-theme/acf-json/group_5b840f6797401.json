@@ -1,0 +1,50 @@
+{
+    "key": "group_5b840f6797401",
+    "title": "Call to Action Options",
+    "fields": [
+        {
+            "key": "field_5b840fa3cb509",
+            "label": "Show Call to Action Boxes",
+            "name": "show_bottom_cta_boxes",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "page-templates\/mag__page.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/basic__page.php"
+            }
+        ]
+    ],
+    "menu_order": 50,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Used on basic fullscreen pages",
+    "modified": 1535576372
+}

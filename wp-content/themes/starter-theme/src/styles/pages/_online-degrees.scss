@@ -1,15 +1,4 @@
 .page-template-page-online-degrees {
-	.main-content {
-		display: block;
-	}
-
-	.program-list {
-		@include min(md) {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-		}
-	}
 }
 
 /**** ONLINE DEGREE FILTERING *****/

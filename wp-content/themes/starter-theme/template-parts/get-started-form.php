@@ -1,4 +1,4 @@
-<div id="get-started" class="get-started-form">
-  <h2 class="get-started-form__title">Get Started</h2>
-  <?php the_field('request_info_form'); ?>
+<div id="getStarted" class="getStartedForm">
+  <h2 class="getStartedForm__title"><?php tlh_field('form_heading'); ?></h2>
+  <?php the_field('form_code'); ?>
 </div>

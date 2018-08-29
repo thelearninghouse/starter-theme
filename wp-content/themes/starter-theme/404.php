@@ -1,12 +1,12 @@
-<?php get_header( 'gtm' ); ?>
+<?php get_header( 'basic' ); ?>
 
 <main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<div class="wrapLg">
-		<section class="pageContent" aria-labelledby="pageHeading">
-			<h1 class="errorHeading" id="pageHeading"><span class="errorHeading__number">404</span><br>Page Not Found</h1>
+	<div class="wrapMd">
+		<h1 class="mainContent__heading errorHeading" id="pageHeading"><span class="errorHeading__number">404</span><br>Page Not Found</h1>
+		<div class="mainContent__copy">
 			<p><a href="/">Try returning to the homepage.</a></p>
-		</section>
+		</div>
 	</div>
 </main>
 
-<?php get_footer( 'gtm' ); ?>
+<?php get_footer( 'basic' ); ?>

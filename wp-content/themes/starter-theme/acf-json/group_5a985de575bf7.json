@@ -107,7 +107,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 20,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -115,5 +115,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Details attached to each Course post type",
-    "modified": 1534954326
+    "modified": 1535479030
 }

@@ -5,19 +5,19 @@
 <main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-		<div class="wrapLg page-wrapper">
+		<div class="page-wrapper">
 
-				<section class="page-content">
+				<section class="page-content" aria-label="Page Content">
 					<div class="resources-wrapper">
-							<div class="resources-overview">
+							<div class="wrapMd resources-overview">
 								<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 									<?php the_content(); ?>
 								<?php endwhile; endif; ?>
 							</div>
 							<?php $resources_items = get_field( 'resources_items' );
 							if ( $resources_items ) { ?>
-								<div class="resources-list">
-									<ul class="tile-list tile-list--large">
+								<div class="wrapLg resources-list">
+									<ul class="flexGrid flexGrid--large">
 										<?php foreach ( $resources_items as $resource_item ) {
 											if ( $resource_item['type']['value'] == 'single-resource' ) {
 												$resource_post_id = $resource_item['spotlight_post']->ID;
@@ -44,13 +44,15 @@
 												$card_link_label = 'View ' . $resource_item['type']['label'];
 											}
 										?>
-											<li>
-												<div class="resource-card">
-													<div class="resource-card__copy">
-														<h2 class="resource-card__title"><?php echo $card_title; ?></h2>
-														<p><?php echo $card_description; ?></p>
+											<li class="flexGrid__item">
+												<div class="card">
+													<div class="card__copy">
+														<h2 class="card__heading"><?php echo $card_title; ?></h2>
+														<p class="card__description"><?php echo $card_description; ?></p>
 													</div>
-													<a class="resource-card__action btn" href="<?php echo $card_link; ?>"><?php echo $card_link_label; ?></a>
+													<div class="card__action">
+														<a class="button" href="<?php echo $card_link; ?>"><?php echo $card_link_label; ?></a>
+													</div>
 												</div>
 											</li>
 										<?php } ?>
@@ -59,8 +61,6 @@
 							<?php } ?>
 						</div>
 				</section> <?php // end article section ?>
-
-			<?php get_sidebar(); ?>
 
 		</div>
 

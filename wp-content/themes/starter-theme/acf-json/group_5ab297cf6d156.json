@@ -1,11 +1,11 @@
 {
     "key": "group_5ab297cf6d156",
-    "title": "School Benefits",
+    "title": "Values",
     "fields": [
         {
             "key": "field_5ab297e352819",
-            "label": "Section Title",
-            "name": "school_benefits_list_title",
+            "label": "Heading",
+            "name": "values_heading",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -23,8 +23,8 @@
         },
         {
             "key": "field_5ab2980b5281a",
-            "label": "Benefits",
-            "name": "school_benefits_list",
+            "label": "Values",
+            "name": "values_list",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -38,14 +38,14 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "Add Benefit",
+            "button_label": "Add Value",
             "sub_fields": [
                 {
                     "key": "field_5ab2981b5281b",
                     "label": "Icon",
                     "name": "icon",
                     "type": "image",
-                    "instructions": "File should be an SVG with no fill specified for the coloring to work correctly.",
+                    "instructions": "File should be an SVG with no fill specified for the coloring to work correctly",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -121,7 +121,7 @@
             }
         ]
     ],
-    "menu_order": 28,
+    "menu_order": 40,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -129,5 +129,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1524593267
+    "modified": 1535485671
 }

@@ -30,28 +30,34 @@ get_header(); ?>
 				'orderby' => 'name',
 				'order'   => 'ASC'
 		) );
-		$program_count = $loop->post_count; ?>
-		<div id="mix-container" class="program-list<?php echo $program_count > 5 ? ' program-list--grid' : ''; ?> mixitup">
+		$program_count = $loop->post_count;
+		// if ( $program_count > 5) {} ?>
+
+		<ul id="mix-container" class="programList cardList flexGrid mixitup">
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<?php $tax_terms = get_the_terms($post->ID, 'degree_level'); ?>
 			<?php $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
-			<article class="card program-card mix<?php if ( is_array( $tax_terms ) ) { foreach ( $tax_terms as $tax_term ) { echo ' ' . $tax_term->slug; } } ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
-					<a href="<?php the_permalink(); ?>">
-	          <span class="program-card__image">
-	            <?php
-	              $image = get_field('hero_background_image');
-	              $card = $image['sizes'][ 'medium' ];
-	              $alt = $image['alt'];
-	            ?>
-	            <img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
-	          </span>
-	          <span class="h4 program-card__name"><?php the_field('program__short-name'); ?></span>
-	          <span class="program-card__excerpt"><?php the_field('program_summary'); ?></span>
-	          <span class="program-card__button button">View Program Information</span>
-	        </a>
-			</article>
+				<li class="programList__item flexGrid__item">
+					<a class="card programCard" href="<?php the_permalink(); ?>">
+						<div>
+							<div class="card__image">
+								<?php
+									$image = get_field('hero_background_image');
+									$card = $image['sizes'][ 'medium' ];
+									$alt = $image['alt'];
+								?>
+								<img src="<?php echo $card; ?>" alt="<?php echo $alt; ?>">
+							</div>
+							<div class="card__copy">
+								<h3 class="h4 card__heading"><?php the_title(); ?></h3>
+								<p class="card__description"><?php the_field('program_summary'); ?></p>
+							</div>
+						</div>
+						<div class="card__action"><span class="button">View Program Information</span></div>
+					</a>
+				</li>
 			<?php endwhile; wp_reset_query(); ?>
-		</div>
+		</ul>
 	</div>
 
 </main>

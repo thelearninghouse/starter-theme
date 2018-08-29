@@ -1,0 +1,15 @@
+.widget {
+	background-color: color(grayLight);
+	padding: rem(20);
+
+	@include min(md) {
+		padding: rem(30);
+	}
+
+	&__heading {
+		margin-top: 0;
+	}
+
+	&__description {
+	}
+}

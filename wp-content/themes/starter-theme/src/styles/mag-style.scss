@@ -1,5 +1,5 @@
 /******************************************************************
-Main Stylesheet
+MAG Stylesheet
 ******************************************************************/
 
 @import "base/variables";
@@ -9,6 +9,7 @@ Main Stylesheet
 @import "generic/typography";
 @import "generic/links";
 @import "generic/tables";
+@import "generic/utility";
 
 @import "modules/accordion";
 @import "modules/benefits-list";
@@ -23,6 +24,8 @@ Main Stylesheet
 @import "modules/header-mag";
 @import "modules/footer-mag";
 @import "modules/layout";
+@import "modules/values";
+@import "modules/widget";
 
 @import "pages/mag__home";
 @import "pages/mag__page";

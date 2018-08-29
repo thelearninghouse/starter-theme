@@ -6,28 +6,15 @@
 
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-	<div class="wrapLg page-wrapper">
-		<div class="page-content">
-
+	<div class="pageContent wrapLg">
+		<div class="pageContent__main">
 			<?php if (have_posts()) : while (have_posts()) : the_post();
 				the_content();
 			endwhile; endif; ?>
-
 		</div>
-
-		<div class="sidebar page-wrapper__sidebar page-wrapper__sidebar--content">
-			<div class="widget widget--navy">
-				<h3 class="widget__heading">Ready to Apply?</h3>
-				<p class="widget__description">If you’re ready, you don’t have to wait for us.</p>
-				<a class="widget__action button button--teal" href="https://jessup.edu/appy-now/">Apply Now</a>
-			</div>
-			<div class="widget">
-				<h3 class="widget__heading">Ready to Talk?</h3>
-				<?php $school_phone = get_field('school_phone', 'options'); ?>
-				<p class="widget__description">If you have any more questions, feel free to give us a call at <a href="tel:<?php echo str_replace( ['-', '(', ')', ' '], '', $school_phone ); ?>"><?php echo $school_phone; ?></a>. We’ll be glad to answer them for you.</p>
-			</div>
+		<div class="pageContent__sidebar">
+			<?php get_sidebar(); ?>
 		</div>
-
 	</div>
 
 </main>

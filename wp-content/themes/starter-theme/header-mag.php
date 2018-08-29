@@ -52,7 +52,7 @@
 					)); ?>
 				</nav>
 				<?php if ( is_page_template( 'page-templates/mag__degrees.php' ) ) { ?>
-					<a class="button button--shadow get-started-button" href="#get-started">Get Started <?php tlh_icon( 'angle-right', 'inline' ); ?></a>
+					<a class="button button--shadow getStartedButton" href="#get-started">Get Started</a>
 				<?php } ?>
 			</div>
 

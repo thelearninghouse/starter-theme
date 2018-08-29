@@ -1,30 +1,11 @@
 {
-    "key": "group_5a7a14d0e9a09",
-    "title": "Page Header",
+    "key": "group_5b0da62f12cc0",
+    "title": "Page Teaser Information",
     "fields": [
         {
-            "key": "field_5a7a14de270da",
-            "label": "Heading",
-            "name": "hero_heading",
-            "type": "text",
-            "instructions": "If left blank, the Page Title will be used",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5a7a1525270db",
-            "label": "Subheading",
-            "name": "hero_subheading",
+            "key": "field_5b0da66f9897d",
+            "label": "Description",
+            "name": "page_teaser_description",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -41,11 +22,11 @@
             "maxlength": ""
         },
         {
-            "key": "field_5a7a1532270dc",
-            "label": "Background Image",
-            "name": "hero_background_image",
-            "type": "image",
-            "instructions": "If left blank, it will fall back to the default specified in the theme.",
+            "key": "field_5b0da67a9897e",
+            "label": "Link Label",
+            "name": "page_teaser_link_label",
+            "type": "text",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -53,7 +34,26 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b0da6d39897f",
+            "label": "Image",
+            "name": "page_teaser_image",
+            "type": "image",
+            "instructions": "Image should be square if possible",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
             "preview_size": "thumbnail",
             "library": "all",
             "min_width": "",
@@ -77,23 +77,9 @@
                 "operator": "!=",
                 "value": "page-templates\/olc__home.php"
             }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "degrees"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "landing-pages"
-            }
         ]
     ],
-    "menu_order": 10,
+    "menu_order": 11,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -101,5 +87,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1535476264
+    "modified": 1527708459
 }
