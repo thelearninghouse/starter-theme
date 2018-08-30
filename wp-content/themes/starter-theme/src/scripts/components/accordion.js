@@ -6,99 +6,192 @@ import Config from "themeConfig";
  *   Simple accordion pattern example
  */
 
- // .closest() polyfill for IE
- if (!Element.prototype.matches)
- 	Element.prototype.matches = Element.prototype.msMatchesSelector ||
- 		Element.prototype.webkitMatchesSelector;
+Element.prototype.parents = function(selector) {
+	var elements = [];
+	var elem = this;
+	var ishaveselector = selector !== undefined;
 
- if (!Element.prototype.closest)
- 	Element.prototype.closest = function(s) {
- 		var el = this;
- 		if (!document.documentElement.contains(el)) return null;
- 		do {
- 			if (el.matches(s)) return el;
- 			el = el.parentElement || el.parentNode;
- 		} while (el !== null && el.nodeType === 1);
- 		return null;
- 	};
+	while ((elem = elem.parentElement) !== null) {
+		if (elem.nodeType !== Node.ELEMENT_NODE) {
+			continue;
+		}
 
+		if (!ishaveselector || elem.matches(selector)) {
+			elements.push(elem);
+		}
+	}
+
+	return elements;
+};
+
+// .closest() polyfill for IE
+if (!Element.prototype.matches)
+	Element.prototype.matches =
+		Element.prototype.msMatchesSelector ||
+		Element.prototype.webkitMatchesSelector;
+
+if (!Element.prototype.closest)
+	Element.prototype.closest = function(s) {
+		var el = this;
+		if (!document.documentElement.contains(el)) return null;
+		do {
+			if (el.matches(s)) return el;
+			el = el.parentElement || el.parentNode;
+		} while (el !== null && el.nodeType === 1);
+		return null;
+	};
 
 // Helper Functions
 function handleOpenAccordion(newTrigger) {
 	var accordion = newTrigger.closest(Config.selectors.accordion);
-	var triggerForOpen = accordion.querySelector('.accordion__trigger[aria-expanded="true"]');
-	var newTriggerID = newTrigger.getAttribute("aria-controls")
-	var needToCloseOpenAccordion = triggerForOpen !== null ? newTriggerID !== triggerForOpen.getAttribute("aria-controls") : false;
 	var allowMultiple = accordion.hasAttribute("data-allow-multiple");
+	var allowToggle = accordion.hasAttribute("data-allow-toggle");
 
-	if (needToCloseOpenAccordion && !allowMultiple) {
-		closeAccordion(triggerForOpen)
+	var currentTrigger = accordion.querySelector(
+		':scope > dt > .accordion__trigger[aria-expanded="true"]'
+	);
+
+	if (currentTrigger) {
+		var sameCurrentAndNew = currentTrigger.id === newTrigger.id;
+		console.log("current: " + currentTrigger.id + ", new: " + newTrigger.id);
+	}
+
+	if (newTrigger.getAttribute("aria-expanded") === "true") {
+		closeAccordion(newTrigger);
+	} else {
+		openAccordion(newTrigger);
 	}
 }
 
 function animateAccordion(trigger) {
-	var panelID = trigger.getAttribute("aria-controls")
-	var panel = document.getElementById(panelID)
+	var panelID = trigger.getAttribute("aria-controls");
+	var panel = document.getElementById(panelID);
 
-	if (panel.classList.contains('accordion__panel--open')) {
-		delayedClassRemoval(panel, 'accordion__panel--open')
+	if (panel.classList.contains("accordion__panel--open")) {
+		delayedClassRemoval(panel, "accordion__panel--open");
 		panel.style.maxHeight = null;
 	} else {
-		panel.classList.add('accordion__panel--open')
+		panel.classList.add("accordion__panel--open");
 		panel.style.maxHeight = panel.scrollHeight + "px";
+		panel.parents(".accordion__panel").forEach(function(parentPanel) {
+			console.log(parentPanel.scrollHeight);
+			parentPanel.style.maxHeight = parentPanel.scrollHeight + "px";
+		});
 	}
 }
 
-function closeAccordion(trigger) {
-	var openPanelID = trigger.getAttribute("aria-controls");
-	var openPanel = document.getElementById(openPanelID);
-
-	delayedClassRemoval(openPanel, 'accordion__panel--open')
-	openPanel.style.maxHeight = null;
+function openAccordion(trigger) {
+	console.log("opening: " + trigger.id);
+	trigger.setAttribute("aria-expanded", "true");
+	animateAccordion(trigger);
 }
 
+function closeAccordion(trigger) {
+	console.log("closing: " + trigger.id);
+	trigger.setAttribute("aria-expanded", "false");
+	animateAccordion(trigger);
+}
 
 function delayedClassRemoval(el, classToRemove) {
 	setTimeout(() => {
-		el.classList.remove(classToRemove)
-	}, 350)
+		el.classList.remove(classToRemove);
+	}, 350);
 }
 
 // End of Helper Functions
-
 
 // Begin Main Functionality
 var accordionTriggers = document.getElementsByClassName("accordion__trigger");
 var accordionPanels = document.getElementsByClassName("accordion__panel");
 var i;
 
-
 for (i = 0; i < accordionTriggers.length; i++) {
 	accordionTriggers[i].addEventListener("click", function() {
 		handleOpenAccordion(this);
-		animateAccordion(this);
+		// animateAccordion(this);
 	});
 }
 
 Array.prototype.slice
 	.call(document.querySelectorAll(Config.selectors.accordion))
 	.forEach(function(accordion) {
+		var triggers = Array.prototype.slice.call(
+			accordion.querySelectorAll(":scope > dt > .accordion__trigger")
+		);
+		var panels = Array.prototype.slice.call(
+			accordion.querySelectorAll(":scope > .accordion__panel")
+		);
 
+		// Bind keyboard behaviors on the main accordion container
+		accordion.addEventListener("keydown", function(event) {
+			var target = event.target;
+			var key = event.which.toString();
+			// 33 = Page Up, 34 = Page Down
+			var ctrlModifier = event.ctrlKey && key.match(/33|34/);
+
+			// Is this coming from an accordion header?
+			if (
+				target.classList.contains("accordion__trigger") &&
+				accordion.id === target.closest(Config.selectors.accordion).id
+			) {
+				// Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
+				// 38 = Up, 40 = Down
+				if (key.match(/38|40/) || ctrlModifier) {
+					var index = triggers.indexOf(target);
+					var direction = key.match(/34|40/) ? 1 : -1;
+					var length = triggers.length;
+					var newIndex = (index + length + direction) % length;
+
+					triggers[newIndex].focus();
+
+					event.preventDefault();
+				} else if (key.match(/35|36/)) {
+					// 35 = End, 36 = Home keyboard operations
+					switch (key) {
+						// Go to first accordion
+						case "36":
+							triggers[0].focus();
+							break;
+						// Go to last accordion
+						case "35":
+							triggers[triggers.length - 1].focus();
+							break;
+					}
+
+					event.preventDefault();
+				}
+			} else if (ctrlModifier) {
+				// Control + Page Up/ Page Down keyboard operations
+				// Catches events that happen inside of panels
+				panels.forEach(function(panel, index) {
+					if (panel.contains(target)) {
+						triggers[index].focus();
+
+						event.preventDefault();
+					}
+				});
+			}
+		});
+	});
+
+/*Array.prototype.slice
+	.call(document.querySelectorAll(Config.selectors.accordion))
+	.forEach(function(accordion) {
 		// Allow for multiple accordion sections to be expanded at the same time
 		var allowMultiple = accordion.hasAttribute("data-allow-multiple");
 		// Allow for each toggle to both open and close individually
-		var allowToggle = allowMultiple ?
-			allowMultiple :
-			accordion.hasAttribute("data-allow-toggle");
+		var allowToggle = allowMultiple
+			? allowMultiple
+			: accordion.hasAttribute("data-allow-toggle");
 		// Determine if the first section should be open by default
 		var firstOpen = accordion.hasAttribute("data-first-open");
 
 		// Create the array of toggle elements for the accordion group
 		var triggers = Array.prototype.slice.call(
-			accordion.querySelectorAll(".accordion__trigger")
+			accordion.querySelectorAll(":scope > dt > .accordion__trigger")
 		);
 		var panels = Array.prototype.slice.call(
-			accordion.querySelectorAll(".accordion__panel")
+			accordion.querySelectorAll(":scope > .accordion__panel")
 		);
 
 		// Close all panels to begin, optionally leaving first one open
@@ -107,11 +200,9 @@ Array.prototype.slice
 				triggers[i].setAttribute("aria-expanded", "true");
 				animateAccordion(triggers[i]);
 				document.getElementById(triggers[i].getAttribute("aria-controls"));
-
 			} else {
 				triggers[i].setAttribute("aria-expanded", "false");
 				document.getElementById(triggers[i].getAttribute("aria-controls"));
-
 			}
 		}
 
@@ -120,8 +211,8 @@ Array.prototype.slice
 
 			if (target.classList.contains("accordion__trigger")) {
 				// Check if the current toggle is expanded.
-				var isExpanded = target.getAttribute("aria-expanded") == "true";
-				var active = accordion.querySelector('[aria-expanded="true"]');
+				let isExpanded = target.getAttribute("aria-expanded") == "true";
+				let active = accordion.querySelector('[aria-expanded="true"]');
 
 				// without allowMultiple, close the open accordion
 				if (!allowMultiple && active && active !== target) {
@@ -137,6 +228,7 @@ Array.prototype.slice
 				}
 
 				if (!isExpanded) {
+					console.log("opening " + target.id + " -- expanded: " + isExpanded);
 					// Set the expanded state on the triggering element
 					target.setAttribute("aria-expanded", "true");
 					// Hide the accordion sections, using aria-controls to specify the desired section
@@ -147,6 +239,7 @@ Array.prototype.slice
 						target.setAttribute("aria-disabled", "true");
 					}
 				} else if (allowToggle && isExpanded) {
+					console.log("closing " + target.id + " -- expanded: " + isExpanded);
 					// Set the expanded state on the triggering element
 					target.setAttribute("aria-expanded", "false");
 					// Hide the accordion sections, using aria-controls to specify the desired section
@@ -183,7 +276,7 @@ Array.prototype.slice
 						case "36":
 							triggers[0].focus();
 							break;
-							// Go to last accordion
+						// Go to last accordion
 						case "35":
 							triggers[triggers.length - 1].focus();
 							break;
@@ -215,4 +308,4 @@ Array.prototype.slice
 				expanded.setAttribute("aria-disabled", "true");
 			}
 		}
-	});
+	});*/

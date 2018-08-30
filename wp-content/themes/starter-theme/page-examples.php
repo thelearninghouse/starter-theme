@@ -51,7 +51,6 @@
 	</div>
 </div>
 
-
 <div class="example accordions-example">
 	<dl id="accordion-1" role="presentation" class="accordion" data-allow-toggle="">
 		<dt role="heading" aria-level="3">
@@ -89,6 +88,72 @@
 			</div>
 		</dd>
 	</dl>
+</div>
+
+<div class="accordions-nested wrapLg">
+	<h2>Nested Accordions</h2>
+	<?php
+		$phobos_accordion_data = array(
+			array(
+				'title' => 'Mission 1',
+				'content' => 'Diameter: 1,470km'
+			),
+			array(
+				'title' => 'Mission 2',
+				'content' => 'Diameter: 1,123km'
+			),
+			array(
+				'title' => 'Mission 3',
+				'content' => 'Diameter: 1,123km'
+			),
+			array(
+				'title' => 'Mission 4',
+				'content' => 'Diameter: 1,123km'
+			),
+			array(
+				'title' => 'Mission 5',
+				'content' => 'Diameter: 1,123km'
+			)
+		);
+		$saturn_accordion_data = array(
+			array(
+				'title' => 'Iapetus',
+				'content' => 'Diameter: 1,470km'
+			),
+			array(
+				'title' => 'Dione',
+				'content' => 'Diameter: 1,123km'
+			)
+		);
+
+		$mars_accordion_data = array(
+			array(
+				'title' => 'Phobos',
+				'content' => '<p>Diameter: 22.2km</p>' . tlh_get_accordion( $phobos_accordion_data )
+			),
+			array(
+				'title' => 'Deimos',
+				'content' => 'Diameter: 12.6km'
+			)
+		);
+
+		$accordion_data = array(
+			array(
+				'title' => 'Saturn',
+				'content' => '<p>Here are moons of Saturn:</p>' . tlh_get_accordion( $saturn_accordion_data )
+			),
+			array(
+				'title' => 'Mars',
+				'content' => '<ul><li>List 1</li><li>List 2</li></ul><p>Here are moons of Mars:</p>' . tlh_get_accordion( $mars_accordion_data )
+			),
+			array(
+				'title' => 'Jupiter',
+				'content' => 'content.'
+			)
+		);
+
+		tlh_accordion( $accordion_data );
+	?>
 </div>
 
 	<?php get_template_part( 'template-parts/page-title' ); ?>
