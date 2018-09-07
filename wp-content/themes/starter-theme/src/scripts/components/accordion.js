@@ -6,6 +6,7 @@ import Config from "themeConfig";
  *   Simple accordion pattern example
  */
 
+// .parents() polyfill
 Element.prototype.parents = function(selector) {
 	var elements = [];
 	var elem = this;

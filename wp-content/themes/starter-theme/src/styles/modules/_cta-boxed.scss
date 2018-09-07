@@ -1,0 +1,55 @@
+.cta-boxed {
+	// position: relative;
+	// z-index: 3;
+	display: flex;
+	flex-flow: column nowrap;
+	// padding-top: rem(15);
+	// margin-top: rem(-80);
+
+	@include min(md) {
+		flex-flow: row nowrap;
+		align-items: stretch;
+		// margin-top: rem(-170);
+	}
+
+	&__item {
+		width: 100%;
+		flex: 1;
+
+		&:not(:first-of-type) {
+			margin-top: rem(20);
+
+			@include min(md) {
+				margin-top: 0;
+				margin-left: rem(40);
+			}
+		}
+	}
+
+	&__card {
+		height: 100%;
+		padding: rem(25) rem(10);
+		background-color: lightgray;
+		text-align: center;
+		// box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+
+		@include min(md) {
+			display: flex;
+			flex-flow: column nowrap;
+			align-items: center;
+		}
+
+		> * {
+			max-width: 100%;
+		}
+	}
+
+	&__card-title {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	&__card-action {
+		margin-top: auto;
+	}
+}

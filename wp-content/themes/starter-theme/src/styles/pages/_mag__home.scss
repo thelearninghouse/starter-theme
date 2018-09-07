@@ -1,9 +1,4 @@
 .page-template-mag__home {
-	.main-content {
-		background-image: url("../images/triangle-pattern.svg");
-		background-position: center center;
-		background-size: 500px;
-	}
 }
 
 .welcome,
@@ -46,9 +41,7 @@
 
 		@include min(md) {
 			display: block;
-			background-image: url("../images/grace-mount-memorial-hall.jpg");
-			background-size: cover;
-			background-position: left center;
+			// background-image?
 		}
 	}
 

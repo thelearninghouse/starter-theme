@@ -6,7 +6,9 @@
 
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 
-	<?php get_template_part( 'template-parts/cta-boxed' ); ?>
+	<div class="wrapMd">
+		<?php get_template_part( 'template-parts/cta-boxed' ); ?>
+	</div>
 
 	<section class="welcome" aria-labelledby="welcome-heading">
 		<div class="wrapMd">
