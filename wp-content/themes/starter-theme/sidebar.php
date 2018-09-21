@@ -1,4 +1,4 @@
-				<div class="sidebar" role="complementary">
+				<div class="sidebar">
 
 					<div class="sidebarWell">
 						<h2 class="h3">Get Started</h2>

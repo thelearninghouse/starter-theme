@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main id="content" class="main-content" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<header class="pageTitle pageTitle--image pageTitle--degree">
 		<div>
 			<div class="wrapLg">

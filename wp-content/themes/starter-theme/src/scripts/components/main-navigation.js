@@ -1,6 +1,6 @@
 $(".js__menu-trigger").on("click", function(e) {
 	e.preventDefault();
-	$(".nav-wrapper").toggleClass("visible");
+	$(".navWrapper").toggleClass("visible");
 });
 
 // MOBILE MENU SUBMENU FIX
@@ -33,7 +33,7 @@ $(".js__menu-trigger").on("click", function(e) {
 		MenuItemsWithChildren = MainMenu.find(".menu-item-has-children"),
 		LinksForSubmenus = MenuItemsWithChildren.find("> a"),
 		ButtonHTML =
-		'<button class="sub-menu__toggle" aria-hidden="true"><img src="/wp-content/themes/starter-theme/public/images/icons/dropdown.svg" alt="Toggle Sub Menu"></button>',
+			'<button class="sub-menu__toggle" aria-hidden="true"><img src="/wp-content/themes/starter-theme/public/images/icons/dropdown.svg" alt="Toggle Sub Menu"></button>',
 		Submenus = MenuItemsWithChildren.children(".sub-menu"),
 		ChildrenSubmenus = Submenus.find(".menu-item-has-children .sub-menu"),
 		SubmenuButtons,
