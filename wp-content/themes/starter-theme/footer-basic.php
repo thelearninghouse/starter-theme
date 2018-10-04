@@ -1,4 +1,4 @@
-				<footer class="footerBasic" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+				<footer class="footerBasic" itemscope itemtype="http://schema.org/WPFooter">
 
 					<div class="wrapMd">
 						<p><span><?php the_field('school_address_1', 'option'); ?>, <?php the_field('school_address_2', 'option'); ?> | <?php tlh_phone_link(); ?></p>

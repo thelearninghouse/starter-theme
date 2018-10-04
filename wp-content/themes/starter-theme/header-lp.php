@@ -31,7 +31,7 @@
 
 		<div id="container" class="container">
 
-		<header class="headerMag" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+		<header class="headerMag" itemscope itemtype="http://schema.org/WPHeader">
 
 			<div class="wrapLg headerMag__nav-container">
 				<span class="headerMag__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">

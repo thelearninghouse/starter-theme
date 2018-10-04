@@ -5,6 +5,7 @@ GENERAL STYLES
 // Universal Box Sizing with Inheritance
 html {
 	box-sizing: border-box;
+	font-size: 100%; // 16px
 }
 *,
 *:before,
@@ -14,7 +15,6 @@ html {
 
 body {
 	font-family: $sans-serif;
-	font-size: 100%;
 	line-height: 1.5;
 	color: $text-color;
 	background-color: white;

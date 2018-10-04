@@ -2,6 +2,8 @@
 HEADER STYLES
 *********************/
 
+$infoBar-bg: color(grayLight);
+
 .header {
 	&__logo {
 		max-width: rem(200);
@@ -25,7 +27,7 @@ HEADER STYLES
 }
 
 .infoBar {
-	background-color: color(grayLight);
+	background-color: $infoBar-bg;
 	padding-top: rem(10);
 	padding-bottom: rem(10);
 	// font-size: rem(12);

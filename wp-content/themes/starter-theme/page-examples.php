@@ -7,7 +7,7 @@
 		min-height: 150px;
 	}
 </style>
-<main id="content" class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main id="content" class="mainContent" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 <div id="vlh-app">
 	{{msg}}

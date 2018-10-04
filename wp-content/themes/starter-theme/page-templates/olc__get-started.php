@@ -5,7 +5,7 @@ Template Name: OLC Get Started
 
 get_header(); ?>
 
-<main id="content" class="main-content" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main id="content" class="main-content" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 

@@ -3,7 +3,7 @@
 
 get_header( 'basic' ); ?>
 
-<main class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main class="mainContent" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<div class="wrapMd">
 		<?php
 			$heading_field = get_field('hero_heading');

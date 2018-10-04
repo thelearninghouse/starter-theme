@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 
-<main id="content" class="mainContent" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main id="content" class="mainContent" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 
 	<div class="wrapLg pageWrapper">

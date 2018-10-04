@@ -1,4 +1,4 @@
-<footer class="footerMag" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+<footer class="footerMag" itemscope itemtype="http://schema.org/WPFooter">
 
 	<?php $school_logo = get_field('school_logo_alternative', 'options');
 	if ( $school_logo ) { ?>

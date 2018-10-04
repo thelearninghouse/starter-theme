@@ -33,7 +33,7 @@
 
 		<div id="container" class="container">
 
-		<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+		<header class="header" itemscope itemtype="http://schema.org/WPHeader">
 
 				<div class="infoBar">
 					<div class="wrapLg">

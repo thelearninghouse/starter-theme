@@ -1,11 +1,13 @@
+**/node_modules
+**/bower_components
+**/style-guide
+**/sassdoc
+.sass-cache
+
 # Ignore everything in the root except the "wp-content" directory.
 /*
-!wp-content/
-!docs/
 !.gitignore
-!readme.md
-!robots.txt
-!humans.txt
+!wp-content/
 
 # Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories.
 wp-content/themes/*
@@ -33,6 +35,9 @@ wp-content/themes/starter-theme/public
 .cvs
 *.bak
 *.swp
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # large/disallowed file types
