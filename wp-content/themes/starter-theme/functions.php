@@ -44,5 +44,7 @@ require_once( 'inc/components/accordion.php' );
 require_once( 'inc/components/icon.php' );
 require_once( 'inc/components/page-navi.php' );
 
+define( 'WP_MEMORY_LIMIT', '256M' );
+
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

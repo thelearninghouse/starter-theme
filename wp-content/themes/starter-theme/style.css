@@ -4,6 +4,10 @@ Theme URI: tlhstarter.wpengine.com
 Description: Starter Theme for our On Line Schools
 Author: Learning House, Inc.
 Author URI: http://www.learninghouse.com
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: starter
+Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 */
 
 .sticky {
@@ -13,4 +17,8 @@ Author URI: http://www.learninghouse.com
 .bypostauthor {
 } /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */
 .screen-reader-text {
+}
+.wp-caption-text {
+}
+.wp-caption {
 }
