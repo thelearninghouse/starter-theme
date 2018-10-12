@@ -7,11 +7,13 @@ sidebar: auto
 ## Development
 
 ### Dev: Option 1
+
 ```bash
 npm run dev
 ```
 
 ### Dev: Option 2
+
 ```bash
 npm run hot
 ```
@@ -21,8 +23,6 @@ npm run hot
 ::: tip For Better Development Experience use:
 `npm run hot`
 :::
-
-
 
 ## Building For Production
 
@@ -48,8 +48,9 @@ Use `theme.config.js` to set the directory name of the theme at `directoryName`
 
 ### Env Config
 
-1. Take `.env.sample` and change the file name to to `.env`.
-2. Set `DEV_URL` to your local development URL
+1.  Take `.env.sample` and copy the file
+2.  Change the file name to to `.env`
+3.  Set `DEV_URL` to your local development URL
 
 ## Our Tooling
 
