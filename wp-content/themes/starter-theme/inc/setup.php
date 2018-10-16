@@ -64,7 +64,9 @@
 	  $type = $file['type'];
 
 		// Requirements
+		// pixels
 		$max_width = '1600';
+		// KB
 		$max_size = 300;
 
 	  $is_image = strpos( $type, 'image' ) !== false;

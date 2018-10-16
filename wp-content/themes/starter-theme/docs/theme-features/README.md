@@ -23,11 +23,15 @@ Menus are registered in `inc/theme-support.php`.
 
 Custom post types are set up in `inc/custom-post-types.php`.
 
-### Maintenance Mode
+## Maintenance Mode
 
 Maintenance Mode is a simple admin page feature to indicate that a site is actively being worked on either locally, on staging, on live, or some combination and to check before making changes in the database that might get overwritten. The code to add this to the admin is located in `inc/maintenance-mode.php`.
 
 **Make sure to enable it on both live and staging sites when needed and update the [Master Project Status](https://docs.google.com/spreadsheets/d/1mNxjH_2hFouJVJ_iSnYfGuba7PKRkFvcNp4KV73npE8/edit#gid=662048833) sheet accordingly.**
+
+## Limit Image Upload Size
+
+In order to maintain performant page speed, this theme limits image upload file size to 300 KB and dimensions to 1600px width. In order to change these limits, modify `tlh_max_image_size` in `/inc/setup.php`.
 
 ## Templates
 
