@@ -4,27 +4,20 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
   // If no image can be found, no <style> will be echoed
   $has_image = false;
 
+	// Get correct post ID on blog page, otherwise use global $post
+	$current_post_id = $blog ? get_option('page_for_posts') : get_the_ID();
+
   if ( $field_name !== NULL ) {
 
-    if ( $blog ) {
-      // On the blog, we need to explicitly pass the page id used to display posts, since $posts has all the blog posts
-      if ( $sub_field ) {
-        $image = get_sub_field( $field_name, get_option('page_for_posts') );
-      }
-      else {
-        $image = get_field( $field_name, get_option('page_for_posts') );
-      }
-    } else {
-      if ( $sub_field ) {
-        $image = get_sub_field( $field_name );
-      }
-      else {
-        $image = get_field( $field_name );
-      }
+    if ( $sub_field ) {
+      $image = get_sub_field( $field_name, $current_post_id );
+    }
+    else {
+      $image = get_field( $field_name, $current_post_id );
     }
 
     if ( !empty($image) ) {
-      // We'll accept an array or ID integer. If ACF is set to return just a url, we can't get multiple sizes.
+      // As of 4.0 we can use attachment_url_to_postid(), so we will accept an array, id, or url from an ACF field.
       if ( is_array($image) ) {
         $image_medium = $image['sizes']['medium_large'];
         $image_large = $image['sizes']['large'];
@@ -37,13 +30,20 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
         $image_full = wp_get_attachment_image_url( $image, 'full' );
         $has_image = true;
       }
+			else if ( is_string($image) ) {
+				$image_gallery_id = attachment_url_to_postid( $image );
+        $image_medium = wp_get_attachment_image_url( $image_gallery_id, 'medium_large' );
+        $image_large = wp_get_attachment_image_url( $image_gallery_id, 'large' );
+        $image_full = wp_get_attachment_image_url( $image_gallery_id, 'full' );
+        $has_image = true;
+      }
     }
   }
-  else if ( has_post_thumbnail() ) {
+  else if ( has_post_thumbnail($current_post_id) ) {
     // Use the featured image if no field is specified
-    $image_medium = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
-    $image_large = get_the_post_thumbnail_url(get_the_ID(), 'large');
-    $image_full = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    $image_medium = get_the_post_thumbnail_url($current_post_id, 'medium_large');
+    $image_large = get_the_post_thumbnail_url($current_post_id, 'large');
+    $image_full = get_the_post_thumbnail_url($current_post_id, 'full');
     $has_image = true;
   }
 
