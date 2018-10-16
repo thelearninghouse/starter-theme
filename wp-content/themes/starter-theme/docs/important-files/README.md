@@ -22,7 +22,7 @@ File for `laravel-mix` configuration
 
 Set variables that can be used throughout theme
 
-### `.env.sample`
+### `.env.sample`, `.env`
 
 Set local variables such as your dev url
 
@@ -65,3 +65,5 @@ Designed to work with WordPress-generated menus, with support for submenus.
 Enable smooth scrolling for anchors. By default adding a class of `smooth-scroll` to an anchor tag enables the effect, but can be changed in `theme.config.js` if needed.
 
 ### SocialSharing Widget
+
+Fast social sharing that utilizes share URL's and pulls dynamically from the current page. This widget uses inline svg's for the icons and allows for easy styling.

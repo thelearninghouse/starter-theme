@@ -161,7 +161,7 @@ function tlh_next_start_date( $date_format = 'F j' )
 
 ### Responsive Background Image
 
-Generates a `<style>` tag to add a background image with different sizes for the specified selector. If you're making a static responsive background (like a section on the homepage or other template) that won't be loaded from a field or featured image, use the `responsivebackground()` Sass mixin in the appropriate file and place your images in `src/images`.
+Generates a `<style>` tag to add a background image with different sizes for the specified selector. If you're making a static responsive background (like a section on the homepage or other template) that won't be loaded from a field or featured image, use the `responsivebackground()` Sass mixin in the appropriate file and place your images in `src/images`. Place the function directly after the div that will use the background image.
 
 ```php
 function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = false )
