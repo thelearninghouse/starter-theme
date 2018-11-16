@@ -21,12 +21,13 @@ module.exports = {
 			{
 				text: "Overview",
 				items: [
+					{ text: "Getting Started", link: "/getting-started/" },
 					{ text: "Important Files", link: "/important-files/" },
 					{ text: "Naming Conventions", link: "/naming-conventions/" }
 				]
 			},
-			{ text: "Getting Started", link: "/getting-started/" },
 			{ text: "Theme Features", link: "/theme-features/" },
+			{ text: "Migrating Data", link: "/migrating-data/" },
 			{ text: "Launch LP's", link: "/launch-lps/" },
 			{ text: "Docs", link: "/documentation/" },
 			{ text: "FAQ", link: "/faq/" }
