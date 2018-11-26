@@ -119,3 +119,5 @@ h6,
 .h6 {
 	color: $link-color;
 }
+
+@include largecopy();

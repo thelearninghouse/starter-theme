@@ -31,7 +31,7 @@ Maintenance Mode is a simple admin page feature to indicate that a site is activ
 
 ## Limit Image Upload Size
 
-In order to maintain performant page speed, this theme limits image upload file size to 300 KB and dimensions to 1600px width. In order to change these limits, modify `tlh_max_image_size` in `/inc/setup.php`.
+In order to maintain performant page speed, this theme limits image upload file size to 300 KB and dimensions to 1600px width. To change these limits, modify `tlh_max_image_size` in `/inc/setup.php`.
 
 ## Templates
 
@@ -46,6 +46,16 @@ _Example section included on a page:_
 ```php
 get_template_part( 'template-parts/about_facts' );
 ```
+
+## Editor Styles
+
+To make use of the built-in style selector in TinyMCE, find the commented block in `inc/setup.php` containing `tlh_mce_before_init_insert_formats()` and uncomment the whole block. Add your formats as arrays to `$style_formats`, referring to [the WordPress TinyMCE docs](https://codex.wordpress.org/TinyMCE_Custom_Styles) as needed.
+
+For further details, refer to [TinyMCE's documentation](https://www.tiny.cloud/docs/configure/content-formatting/#style_formats)
+
+::: tip Note
+To make sure the style preview shows correctly in the admin editor, include any necessary partials and mixins in `src/styles/admin-style.scss`.
+:::
 
 ## Shortcodes
 
@@ -222,7 +232,7 @@ function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = fa
 <?php endwhile; ?><?php endif; ?>
 ```
 
-### Get Phone Link
+### Phone Link
 
 Gets a meta value and wraps it in an `<a>` tag with a properly escaped tel href attribute. Use `tlh_get_phone_link()` to return a string for use in PHP instead of printing it.
 
@@ -285,4 +295,29 @@ $default_values = array(
 	),
 );
 tlh_field( 'values_list', $default_values );
+```
+
+### Social Buttons
+
+Generates share buttons for a post. Also includes a function that appends it to the end of single blog post content automatically. Use `tlh_get_social_share_buttons()` to return a string for use in PHP instead of printing it.
+
+```php
+function tlh_social_share_buttons( $post_id = null )
+```
+
+#### Parameters
+
+- **$post_id** \| _integer (Optional)_ post ID to get information from. Defaults to current post.
+
+#### Example
+
+```php
+// Show share buttons for current post
+tlh_social_share_buttons();
+
+// Show a list of posts and share buttons for each
+foreach ($related_posts as $related_post) {
+	the_title( $related_post->ID );
+	tlh_social_share_buttons( $related_post->ID );
+}
 ```

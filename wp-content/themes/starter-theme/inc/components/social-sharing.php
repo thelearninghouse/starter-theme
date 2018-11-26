@@ -1,12 +1,12 @@
 <?php
 
 // Social Share Buttons
-function tlh_get_social_share_buttons( $post = null ) {
+function tlh_get_social_share_buttons( $post_id = null ) {
 	$output = '';
 
-	if ( $post ) {
-		$socialURL = urlencode( get_permalink( $post ) );
-		$socialTitle = str_replace( ' ', '%20', get_the_title( $post ) );
+	if ( $post_id ) {
+		$socialURL = urlencode( get_permalink( $post_id ) );
+		$socialTitle = str_replace( ' ', '%20', get_the_title( $post_id ) );
 	} else {
 		$socialURL = urlencode( get_permalink() );
 		$socialTitle = str_replace( ' ', '%20', get_the_title() );
@@ -26,8 +26,8 @@ function tlh_get_social_share_buttons( $post = null ) {
 	return $output;
 }
 
-function tlh_social_share_buttons( $post = null ) {
-	echo tlh_get_social_share_buttons( $post );
+function tlh_social_share_buttons( $post_id = null ) {
+	echo tlh_get_social_share_buttons( $post_id );
 }
 
 // Automatically add buttons to end of single blog post content

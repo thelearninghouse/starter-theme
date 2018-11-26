@@ -21,5 +21,10 @@ module.exports = {
 		"ol",
 		"columns-2"
 	],
-	purgecssWhitelistPatterns: [/^elp(_.*)?$/, /^keep-nested-children/]
+	purgecssWhitelistPatterns: [
+		/^elp(_.*)?$/,
+		/^keep-nested-children/,
+		/^largeCopy/,
+		/^fancyNumbers/
+	]
 };
