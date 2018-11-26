@@ -49,7 +49,7 @@
 
 					if ( get_field( 'faq_list_group_by_faq_category' ) ) {
 
-						$faq_posts_show_nav = get_field( 'faq_list_group_by_faq_category' );
+						$faq_posts_show_nav = get_field( 'faq_list_show_nav' );
 
 						foreach( $faq_posts as $post) { // variable must be called $post (IMPORTANT)
 							setup_postdata($post);

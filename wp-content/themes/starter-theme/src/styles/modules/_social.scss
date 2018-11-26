@@ -3,17 +3,21 @@ SOCIAL SHARING BUTTONS
 *******************************/
 
 .socialSharing {
-    background: darken(white, 5%);
-    padding: .8em;
-    text-align: center;
+	background: darken(white, 5%);
+	padding: 0.8em;
+	text-align: center;
+
+	> * {
+		margin: rem(4);
+	}
 }
 
 .socialSharing__label {
-    font-size: em(13);
-    font-weight: bold;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: .5em;
+	font-size: rem(13);
+	font-weight: bold;
+	text-transform: uppercase;
+	display: block;
+	margin-bottom: 0.5em;
 
 	@include min(sm) {
 		display: inline;
@@ -22,42 +26,52 @@ SOCIAL SHARING BUTTONS
 }
 
 .socialLink {
-  color: #fff;
-  background-color: #55acee;
-  padding: .4em .6em;
-  border-radius: 3px;
-  display: inline-block;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: em(12);
-  font-weight: bold;
-  margin-left: em(10);
-  transition: .2s all ease-in-out;
+	color: #fff;
+	background-color: #55acee;
+	padding: 0.4em 0.6em;
+	border-radius: 3px;
+	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: rem(12);
+	font-weight: bold;
+	transition: 0.2s all ease-in-out;
 
-  &:focus { color: white; }
+	&:focus {
+		color: white;
+	}
 }
 .socialLink__icon,
 .socialLink__label {
-  display: inline-block;
-  vertical-align: middle;
-  color: white;
+	display: inline-block;
+	vertical-align: middle;
+	color: white;
 }
 .socialLink__icon {
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: .2em;
+	width: 1.5em;
+	height: 1.5em;
+	margin-right: rem(3);
 }
-.socialLink__icon path { fill: #fff; }
+.socialLink__icon path {
+	fill: #fff;
+}
 .socialLink__label {
-  font-size: .9em;
-  font-weight: 500;
+	font-weight: 700;
 }
 .socialLink:hover {
-    background-color:  darken(#55acee, 10%);
-    color: white;
+	background-color: darken(#55acee, 10%);
+	color: white;
 }
 
-.socialLink.social-link_facebook { background: #3b5998; }
-.socialLink.social-link_facebook:hover { background: darken(#3b5998, 10%); }
-.socialLink.social-link_linkedin { background: #007bb6; }
-.socialLink.social-link_linkedin:hover { background: darken(#007bb6, 10%); }
+.socialLink.socialLink--facebook {
+	background: #3b5998;
+}
+.socialLink.socialLink--facebook:hover {
+	background: darken(#3b5998, 10%);
+}
+.socialLink.socialLink--linkedin {
+	background: #007bb6;
+}
+.socialLink.socialLink--linkedin:hover {
+	background: darken(#007bb6, 10%);
+}
