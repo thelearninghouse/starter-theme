@@ -1,7 +1,14 @@
 <?php
 
-// Accordion
-// $data = [['title' => 'Panel 1', 'content' => 'Panel 1 content'], ... ]
+/**
+ * Generate HTML for an accordion
+ *
+ * @param array $data Array of arrays with inner arrays having title and content keys. Example: [['title' => 'Panel 1', 'content' => 'Panel 1 content'], ... ]
+ * @param bool $allow_multiple When true, allow panels to be open simultaneously.
+ * @param bool $first_open Set the first panel to show by default.
+ * @param string $class Additional class to apply.
+ * @return string Accordion HTML.
+ */
 function tlh_get_accordion ( $data, $allow_multiple = true, $first_open = false, $class = false ) {
   static $accord_id = 1;
   $i = 1;
