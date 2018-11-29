@@ -44,5 +44,4 @@ require_once( 'inc/components/accordion.php' );
 require_once( 'inc/components/icon.php' );
 require_once( 'inc/components/page-navi.php' );
 
-
 /* DON'T DELETE THIS CLOSING TAG */ ?>
