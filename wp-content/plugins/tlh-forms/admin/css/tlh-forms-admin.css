@@ -1,0 +1,96 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+# forms_script {}
+.show-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  flex-flow: row wrap;
+  align-content: center;
+  padding: .25em 0 0.75em;
+  border-bottom: 2px solid rgba(37, 37, 37, 0.2);
+  /*3px solid rgba(37, 37, 37, 0.5)*/
+}
+
+.show-form-wrapper>label {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.show-form-wrapper input {
+  width: 20px;
+  height: 20px;
+  margin-top: auto;
+  margin-bottom: 3px;
+}
+
+.show-form-wrapper label {
+  width: calc(100% - 24px);
+}
+
+.show-form-wrapper input[type=radio]:checked:before, input[type=checkbox]:checked:before {
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  font: 900 24px/1 dashicons;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+# forms_script label {
+  cursor: pointer;
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 3px;
+  margin-top: 10px;
+}
+
+
+
+.helperText {
+  font-style: italic;
+  margin-bottom: 0.25em;
+  display: block;
+  color: rgba(102, 102, 102, 0.9);
+}
+
+.helperTextBasic {
+  font-style: italic;
+  margin-bottom: 0.75em;
+  display: block;
+}
+
+.form-details-wrapper label {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 1.25em 0 .2em;
+}
+.form-details-wrapper input {
+  width: 100%;
+  margin-bottom: 5px;
+  height: 30px;
+}
+.form-details-wrapper select {
+  width: 100%;
+}
+
+.show-form-wrapper input:checked {
+    color: white;
+    background: #0085ba;
+    /*background-color: #005e84;*/
+}
+.show-form-wrapper input:checked + .helperText {
+    color: #3485b9;
+    /*color: #005e84;*/
+    font-weight: 600;
+}
+.show-form-wrapper  input[type=checkbox]:checked:before {
+  color: white;
+}
