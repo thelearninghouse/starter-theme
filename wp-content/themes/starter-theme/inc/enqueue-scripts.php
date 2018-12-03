@@ -7,7 +7,6 @@
     if ( !is_admin() ) {
 
   		// form validation and tracking script
-  		wp_register_script( 'tlh-forms', 'https://requestforms.learninghouse.com/form/affiliate/568', array(), '', false );
       wp_register_script( 'manifest', mix('/js/manifest.js'), array(), '', true );
       wp_register_script( 'vendor', mix('/js/vendor.js'), array( 'manifest' ), '', true );
       wp_register_script( 'tlh-js',  mix('/js/scripts.js'), array( 'manifest', 'vendor' ), '', true );
