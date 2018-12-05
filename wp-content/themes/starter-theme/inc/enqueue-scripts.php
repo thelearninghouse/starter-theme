@@ -33,4 +33,9 @@
   }
   add_action('wp_enqueue_scripts', 'enqueue_jquery_version');
 
+
+  function extend_admin_js() {
+    wp_enqueue_script('wp-admin-extender', get_template_directory_uri().'/inc/admin.js', array('media-upload', 'swfupload', 'plupload'), false, true);
+  }
+  add_action('admin_enqueue_scripts', 'extend_admin_js'); 
 ?>
