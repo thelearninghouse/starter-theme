@@ -15,6 +15,7 @@ This process can also be used on the same site as a way of efficiently bulk-edit
 - [WP All Export (free)](https://wordpress.org/plugins/wp-all-export/)
 - Spreadsheet editor and/or plain text editor
 - [Really Simple CSV Importer](https://github.com/hissy/rs-csv-importer)
+- [Search and Replace](https://wordpress.org/plugins/search-and-replace/)
 - [Import External Images](https://wordpress.org/plugins/import-external-images/)
 
 ## Quick Checklist
@@ -26,6 +27,7 @@ This process can also be used on the same site as a way of efficiently bulk-edit
 5.  Run importer
 6.  _Optional:_ Import external images in post content
 7.  Make sure any missing plugins are installed
+8.  _Optional:_ Run search and replace
 
 ## Detailed Steps
 
@@ -62,11 +64,13 @@ post_title,post_type,post_status,tax_degree_area,main_heading_field
 "MBA","degrees","publish","Business","Start your MBA today."
 ```
 
-::: warning
-If you are moving posts to a separate install as new posts, I recommend not including an ID column at all. If it has an ID column with values it will try to find that post and update it, which could cause issues with other posts already on the site.
-:::
-
 If you are importing posts with images embedded in the main post content and are planning on moving the images over, image files with relative urls won't be able to be found. Make sure they are all pointing to the old site by opening your CSV in a text editor and running a find and replace on `src=""/wp-content` and replace with full url of the live site that you exported the posts from.
+
+Be careful about modifying serialized data saved to custom fields, especially when running a find and replace. Serialized data is different data types that are all converted to a string, and if it is not updated properly it won't import correctly. WP Garage has a good [article discussing its use in WordPress](https://www.wpgarage.com/tips/data-portability-and-data-serialization-in-wordpress/). If you need to modify serialized data, add a function to modify the data as it's being processed for import or run a [search and replace](https://wordpress.org/plugins/search-and-replace/) after everything has been imported to make sure that it's updated correctly.
+
+::: warning
+If you are moving posts to a separate install as new posts, I recommend not including an ID column at all. If it has an ID column with values it will try to find that post and update it if it already exists, which could cause issues with other posts already on the site.
+:::
 
 ### Importing
 
@@ -92,7 +96,7 @@ If you need to process your data before it's saved to the database (like handlin
 ```php
 <?php
 /*
-Plugin Name: Divide Meta Fields with Comma (Really Simple CSV Importer add-on)
+Plugin Name: Really Simple CSV - Divide Meta Fields with Comma (add-on)
 */
 add_filter('really_simple_csv_importer_save_meta', function($meta, $post, $is_update) {
     foreach ($meta as $key => $value) {
@@ -100,6 +104,22 @@ add_filter('really_simple_csv_importer_save_meta', function($meta, $post, $is_up
             $_value = preg_split("/,+/", $value);
             $meta[$key] = $_value;
         }
+    }
+    return $meta;
+}, 10, 3);
+?>
+```
+
+```php
+<?php
+/*
+Plugin Name: Really Simple CSV - Handle Serialized Data Fields (add-on)
+*/
+add_filter('really_simple_csv_importer_save_meta', function($meta, $post, $is_update) {
+    foreach ($meta as $key => $value) {
+			if ($key == 'field_name') {
+				$meta[$key] = unserialize($value);
+			}
     }
     return $meta;
 }, 10, 3);
