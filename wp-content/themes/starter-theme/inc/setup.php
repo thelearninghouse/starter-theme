@@ -58,56 +58,56 @@ function privacy_policy() {
 add_shortcode( 'privacy', 'privacy_policy' );
 
 // Restrict Image Size and Dimensions
-function tlh_max_image_size( $file ) {
-  $size = $file['size'];
-  $size = $size / 1024;
-  $type = $file['type'];
-
-	// Requirements
-	// pixels
-	$max_width = '1600';
-	// KB
-	$max_size = 300;
-
-  $is_image = strpos( $type, 'image' ) !== false;
-
-  if ( $is_image ) {
-		$image = getimagesize($file['tmp_name']);
-		$image_width = $image[0];
-    $image_height = $image[1];
-
-		$errors = array();
-
-		if ( $size > $max_size ) {
-			$errors[] = ' smaller than 300 KB';
-		}
-		if ( $image_width > $max_width ) {
-			$errors[] = ' no larger than 1600px in width';
-		}
-
-		$error_str = 'Image files must be';
-
-		foreach ($errors as $key => $error) {
-			$error_str .= $error;
-			if ( $key < (count($errors) - 2) ) {
-				$error_str .= ',';
-			} else if ( $key === (count($errors) - 2) ) {
-				$error_str .= ' and';
-			} else if ( $key === (count($errors) - 1) ) {
-				$error_str .= '.';
-			}
-		}
-
-		if ( !empty($errors) ) {
-			$file['error'] = $error_str;
-		}
-
-	}
-
-	return $file;
-
-}
-add_filter( 'wp_handle_upload_prefilter', 'tlh_max_image_size' );
+// function tlh_max_image_size( $file ) {
+//   $size = $file['size'];
+//   $size = $size / 1024;
+//   $type = $file['type'];
+//
+// 	// Requirements
+// 	// pixels
+// 	$max_width = '1600';
+// 	// KB
+// 	$max_size = 300;
+//
+//   $is_image = strpos( $type, 'image' ) !== false;
+//
+//   if ( $is_image ) {
+// 		$image = getimagesize($file['tmp_name']);
+// 		$image_width = $image[0];
+//     $image_height = $image[1];
+//
+// 		$errors = array();
+//
+// 		if ( $size > $max_size ) {
+// 			$errors[] = ' smaller than 300 KB';
+// 		}
+// 		if ( $image_width > $max_width ) {
+// 			$errors[] = ' no larger than 1600px in width';
+// 		}
+//
+// 		$error_str = 'Image files must be';
+//
+// 		foreach ($errors as $key => $error) {
+// 			$error_str .= $error;
+// 			if ( $key < (count($errors) - 2) ) {
+// 				$error_str .= ',';
+// 			} else if ( $key === (count($errors) - 2) ) {
+// 				$error_str .= ' and';
+// 			} else if ( $key === (count($errors) - 1) ) {
+// 				$error_str .= '.';
+// 			}
+// 		}
+//
+// 		if ( !empty($errors) ) {
+// 			$file['error'] = $error_str;
+// 		}
+//
+// 	}
+//
+// 	return $file;
+//
+// }
+// add_filter( 'wp_handle_upload_prefilter', 'tlh_max_image_size' );
 
 // Show current template in admin bar
 function tlh_add_toolbar_items($admin_bar) {
