@@ -1,5 +1,8 @@
 # School Name
 
+## [Starter Theme Wiki](https://thelearninghouse.github.io/starter-theme/)
+
+
 ## Basic Info
 * Theme Name: starter-theme
 * Local Site URL: starter.loc
