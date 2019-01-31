@@ -1,11 +1,12 @@
 import { hotHelper } from "./helpers/hotHelper.js";
 if (module.hot) {
-	hotHelper(module);
+  hotHelper(module);
 }
 
 /* Browser support for older browsers (ie11, ect...)
 *****************************/
 import "babel-polyfill";
+import "element-qsa-scope";
 
 /* Get Theme Config File
 *****************************/
@@ -21,45 +22,45 @@ import "@/scripts/components/lazyLoad";
 *****************************/
 import initializeVlhLibrary from "@/scripts/VlhLibrary";
 if (themeConfig.useVue) {
-	initializeVlhLibrary();
+  initializeVlhLibrary();
 }
 
 /* Dynamic Imports - Loading based on conditions
 *****************************/
 function handleAccordions() {
-	if (document.querySelector(themeConfig.selectors.accordion) !== null) {
-		return import(/* webpackChunkName: "accordion" */ "@/scripts/components/accordion");
-	}
+  if (document.querySelector(themeConfig.selectors.accordion) !== null) {
+    return import(/* webpackChunkName: "accordion" */ "@/scripts/components/accordion");
+  }
 }
 
 function handleDegreeFiltering() {
-	if (document.querySelector(themeConfig.selectors.mixItUp) !== null) {
-		return import(/* webpackChunkName: "degree-filtering" */ "@/scripts/components/degree-filtering");
-	}
+  if (document.querySelector(themeConfig.selectors.mixItUp) !== null) {
+    return import(/* webpackChunkName: "degree-filtering" */ "@/scripts/components/degree-filtering");
+  }
 }
 
 function handleSocialShare() {
-	if (document.querySelector(themeConfig.selectors.socialShare) !== null) {
-		return import(/* webpackChunkName: "social-share" */ "@/scripts/components/social-share-buttons");
-	}
+  if (document.querySelector(themeConfig.selectors.socialShare) !== null) {
+    return import(/* webpackChunkName: "social-share" */ "@/scripts/components/social-share-buttons");
+  }
 }
 
 function handleStickyElements() {
-	if (document.querySelector(themeConfig.selectors.sticky) !== null) {
-		return import(/* webpackChunkName: "sticky" */ "@/scripts/components/sticky");
-	}
+  if (document.querySelector(themeConfig.selectors.sticky) !== null) {
+    return import(/* webpackChunkName: "sticky" */ "@/scripts/components/sticky");
+  }
 }
 
 function handleSlider() {
-	if (document.querySelector(themeConfig.selectors.slider) !== null) {
-		return import(/* webpackChunkName: "slider" */ "@/scripts/components/slider");
-	}
+  if (document.querySelector(themeConfig.selectors.slider) !== null) {
+    return import(/* webpackChunkName: "slider" */ "@/scripts/components/slider");
+  }
 }
 
 function handleSmoothScroll() {
-	if (document.querySelector(themeConfig.selectors.smoothScroll) !== null) {
-		return import(/* webpackChunkName: "smooth-scroll" */ "@/scripts/components/smooth-scroll");
-	}
+  if (document.querySelector(themeConfig.selectors.smoothScroll) !== null) {
+    return import(/* webpackChunkName: "smooth-scroll" */ "@/scripts/components/smooth-scroll");
+  }
 }
 
 /* Calling Dynamic Import Functions
