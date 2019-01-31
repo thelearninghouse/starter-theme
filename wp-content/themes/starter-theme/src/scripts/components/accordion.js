@@ -6,97 +6,139 @@ import Config from "themeConfig";
  *   Simple accordion pattern example
  */
 
-// .parents() polyfill
-Element.prototype.parents = function(selector) {
-	var elements = [];
-	var elem = this;
-	var ishaveselector = selector !== undefined;
+// Element.matches() polyfill
+if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.matchesSelector ||
+    Element.prototype.mozMatchesSelector ||
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.oMatchesSelector ||
+    Element.prototype.webkitMatchesSelector ||
+    function(s) {
+      var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+        i = matches.length;
+      while (--i >= 0 && matches.item(i) !== this) {}
+      return i > -1;
+    };
+}
 
-	while ((elem = elem.parentElement) !== null) {
-		if (elem.nodeType !== Node.ELEMENT_NODE) {
-			continue;
-		}
+// Element.parents() polyfill
+if (!Element.prototype.parents)
+  Element.prototype.parents = function(selector) {
+    var elements = [];
+    var elem = this;
+    var ishaveselector = selector !== undefined;
 
-		if (!ishaveselector || elem.matches(selector)) {
-			elements.push(elem);
-		}
-	}
+    while ((elem = elem.parentElement) !== null) {
+      if (elem.nodeType !== Node.ELEMENT_NODE) {
+        continue;
+      }
 
-	return elements;
-};
+      if (!ishaveselector || elem.matches(selector)) {
+        elements.push(elem);
+      }
+    }
 
-// .closest() polyfill for IE
-if (!Element.prototype.matches)
-	Element.prototype.matches =
-		Element.prototype.msMatchesSelector ||
-		Element.prototype.webkitMatchesSelector;
+    return elements;
+  };
 
+// Element.closest() polyfill
 if (!Element.prototype.closest)
-	Element.prototype.closest = function(s) {
-		var el = this;
-		if (!document.documentElement.contains(el)) return null;
-		do {
-			if (el.matches(s)) return el;
-			el = el.parentElement || el.parentNode;
-		} while (el !== null && el.nodeType === 1);
-		return null;
-	};
+  Element.prototype.closest = function(s) {
+    var el = this;
+    if (!document.documentElement.contains(el)) return null;
+    do {
+      if (el.matches(s)) return el;
+      el = el.parentElement || el.parentNode;
+    } while (el !== null && el.nodeType === 1);
+    return null;
+  };
+
+// Element.closestParent() polyfill
+if (!Element.prototype.closestParent)
+  Element.prototype.closestParent = function(selector) {
+    var elem = this.parentNode;
+    if (selector) {
+      for (; elem && elem !== document; elem = elem.parentNode) {
+        if (elem.matches(selector)) return elem;
+      }
+      return null;
+    } else {
+      return elem;
+    }
+  };
 
 // Helper Functions
 function handleOpenAccordion(newTrigger) {
-	var accordion = newTrigger.closest(Config.selectors.accordion);
-	var allowMultiple = accordion.hasAttribute("data-allow-multiple");
-	var allowToggle = accordion.hasAttribute("data-allow-toggle");
+  var accordion = newTrigger.closest(Config.selectors.accordion);
+  var allowMultiple = accordion.hasAttribute("data-allow-multiple");
+  var allowToggle = accordion.hasAttribute("data-allow-toggle");
 
-	var currentTrigger = accordion.querySelector(
-		':scope > dt > .accordion__trigger[aria-expanded="true"]'
-	);
+  var currentTrigger = accordion.querySelector(
+    ':scope > dt > .accordion__trigger[aria-expanded="true"]'
+  );
 
-	if (currentTrigger) {
-		var sameCurrentAndNew = currentTrigger.id === newTrigger.id;
-		console.log("current: " + currentTrigger.id + ", new: " + newTrigger.id);
-	}
+  if (currentTrigger) {
+    var sameCurrentAndNew = currentTrigger.id === newTrigger.id;
+    // console.log("current: " + currentTrigger.id + ", new: " + newTrigger.id);
+  }
 
-	if (newTrigger.getAttribute("aria-expanded") === "true") {
-		closeAccordion(newTrigger);
-	} else {
-		openAccordion(newTrigger);
-	}
+  if (newTrigger.getAttribute("aria-expanded") === "true") {
+    closeAccordion(newTrigger);
+  } else {
+    openAccordion(newTrigger);
+  }
 }
 
-function animateAccordion(trigger) {
-	var panelID = trigger.getAttribute("aria-controls");
-	var panel = document.getElementById(panelID);
+function resizeParent(panel) {}
 
-	if (panel.classList.contains("accordion__panel--open")) {
-		delayedClassRemoval(panel, "accordion__panel--open");
-		panel.style.maxHeight = null;
-	} else {
-		panel.classList.add("accordion__panel--open");
-		panel.style.maxHeight = panel.scrollHeight + "px";
-		panel.parents(".accordion__panel").forEach(function(parentPanel) {
-			console.log(parentPanel.scrollHeight);
-			parentPanel.style.maxHeight = parentPanel.scrollHeight + "px";
-		});
-	}
+function animateAccordion(trigger) {
+  var panelID = trigger.getAttribute("aria-controls");
+  var panel = document.getElementById(panelID);
+
+  if (panel.classList.contains("accordion__panel--open")) {
+    panel.classList.add("accordion__panel--closing");
+    delayedClassRemoval(panel, "accordion__panel--open");
+    delayedClassRemoval(panel, "accordion__panel--closing");
+    panel.style.maxHeight = null;
+  } else {
+    panel.classList.add("accordion__panel--open");
+    panel.classList.add("accordion__panel--opening");
+    delayedClassRemoval(panel, "accordion__panel--opening");
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+
+  // resize parent accordion panels
+  var parentAccordionPanels = panel.parents(".accordion__panel");
+  if (parentAccordionPanels.length) {
+    var childrenHeight = panel.scrollHeight;
+    parentAccordionPanels.forEach(function(parentPanel, index) {
+      var parentHeight = parentPanel.scrollHeight;
+      if (panel.classList.contains("accordion__panel--closing") && index == 0) {
+        parentHeight -= childrenHeight;
+      } else {
+        parentHeight += childrenHeight;
+      }
+      parentPanel.style.maxHeight = parentHeight + "px";
+    });
+  }
 }
 
 function openAccordion(trigger) {
-	console.log("opening: " + trigger.id);
-	trigger.setAttribute("aria-expanded", "true");
-	animateAccordion(trigger);
+  // console.log("opening: " + trigger.id);
+  trigger.setAttribute("aria-expanded", "true");
+  animateAccordion(trigger);
 }
 
 function closeAccordion(trigger) {
-	console.log("closing: " + trigger.id);
-	trigger.setAttribute("aria-expanded", "false");
-	animateAccordion(trigger);
+  trigger.setAttribute("aria-expanded", "false");
+  animateAccordion(trigger);
 }
 
 function delayedClassRemoval(el, classToRemove) {
-	setTimeout(() => {
-		el.classList.remove(classToRemove);
-	}, 350);
+  setTimeout(() => {
+    el.classList.remove(classToRemove);
+  }, 350);
 }
 
 // End of Helper Functions
@@ -107,73 +149,73 @@ var accordionPanels = document.getElementsByClassName("accordion__panel");
 var i;
 
 for (i = 0; i < accordionTriggers.length; i++) {
-	accordionTriggers[i].addEventListener("click", function() {
-		handleOpenAccordion(this);
-		// animateAccordion(this);
-	});
+  accordionTriggers[i].addEventListener("click", function() {
+    handleOpenAccordion(this);
+    // animateAccordion(this);
+  });
 }
 
 Array.prototype.slice
-	.call(document.querySelectorAll(Config.selectors.accordion))
-	.forEach(function(accordion) {
-		var triggers = Array.prototype.slice.call(
-			accordion.querySelectorAll(":scope > dt > .accordion__trigger")
-		);
-		var panels = Array.prototype.slice.call(
-			accordion.querySelectorAll(":scope > .accordion__panel")
-		);
+  .call(document.querySelectorAll(Config.selectors.accordion))
+  .forEach(function(accordion) {
+    var triggers = Array.prototype.slice.call(
+      accordion.querySelectorAll(":scope > dt > .accordion__trigger")
+    );
+    var panels = Array.prototype.slice.call(
+      accordion.querySelectorAll(":scope > .accordion__panel")
+    );
 
-		// Bind keyboard behaviors on the main accordion container
-		accordion.addEventListener("keydown", function(event) {
-			var target = event.target;
-			var key = event.which.toString();
-			// 33 = Page Up, 34 = Page Down
-			var ctrlModifier = event.ctrlKey && key.match(/33|34/);
+    // Bind keyboard behaviors on the main accordion container
+    accordion.addEventListener("keydown", function(event) {
+      var target = event.target;
+      var key = event.which.toString();
+      // 33 = Page Up, 34 = Page Down
+      var ctrlModifier = event.ctrlKey && key.match(/33|34/);
 
-			// Is this coming from an accordion header?
-			if (
-				target.classList.contains("accordion__trigger") &&
-				accordion.id === target.closest(Config.selectors.accordion).id
-			) {
-				// Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
-				// 38 = Up, 40 = Down
-				if (key.match(/38|40/) || ctrlModifier) {
-					var index = triggers.indexOf(target);
-					var direction = key.match(/34|40/) ? 1 : -1;
-					var length = triggers.length;
-					var newIndex = (index + length + direction) % length;
+      // Is this coming from an accordion header?
+      if (
+        target.classList.contains("accordion__trigger") &&
+        accordion.id === target.closest(Config.selectors.accordion).id
+      ) {
+        // Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
+        // 38 = Up, 40 = Down
+        if (key.match(/38|40/) || ctrlModifier) {
+          var index = triggers.indexOf(target);
+          var direction = key.match(/34|40/) ? 1 : -1;
+          var length = triggers.length;
+          var newIndex = (index + length + direction) % length;
 
-					triggers[newIndex].focus();
+          triggers[newIndex].focus();
 
-					event.preventDefault();
-				} else if (key.match(/35|36/)) {
-					// 35 = End, 36 = Home keyboard operations
-					switch (key) {
-						// Go to first accordion
-						case "36":
-							triggers[0].focus();
-							break;
-						// Go to last accordion
-						case "35":
-							triggers[triggers.length - 1].focus();
-							break;
-					}
+          event.preventDefault();
+        } else if (key.match(/35|36/)) {
+          // 35 = End, 36 = Home keyboard operations
+          switch (key) {
+            // Go to first accordion
+            case "36":
+              triggers[0].focus();
+              break;
+            // Go to last accordion
+            case "35":
+              triggers[triggers.length - 1].focus();
+              break;
+          }
 
-					event.preventDefault();
-				}
-			} else if (ctrlModifier) {
-				// Control + Page Up/ Page Down keyboard operations
-				// Catches events that happen inside of panels
-				panels.forEach(function(panel, index) {
-					if (panel.contains(target)) {
-						triggers[index].focus();
+          event.preventDefault();
+        }
+      } else if (ctrlModifier) {
+        // Control + Page Up/ Page Down keyboard operations
+        // Catches events that happen inside of panels
+        panels.forEach(function(panel, index) {
+          if (panel.contains(target)) {
+            triggers[index].focus();
 
-						event.preventDefault();
-					}
-				});
-			}
-		});
-	});
+            event.preventDefault();
+          }
+        });
+      }
+    });
+  });
 
 /*Array.prototype.slice
 	.call(document.querySelectorAll(Config.selectors.accordion))
