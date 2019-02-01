@@ -102,9 +102,9 @@
         {
             "key": "field_5930cd63ae2c5",
             "label": "Form Code",
-            "name": "lp_form_code",
-            "type": "textarea",
-            "instructions": "Example: &lt;script src=\"https:\/\/requestforms.learninghouse.com\/form\/show\/[school]\/ppc-form-multi-new\/[000]\/[0000]\/[school-url]:thank-you:request_id\" type=\"text\/javascript\"&gt;&lt;\/script&gt;",
+            "name": "",
+            "type": "message",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -112,11 +112,9 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 3,
-            "new_lines": ""
+            "message": "Use the Form Script Details metabox in the sidebar to configure the form.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
             "key": "field_593ad4aa0b6c6",
@@ -593,5 +591,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1549048964
+    "modified": 1549055885
 }

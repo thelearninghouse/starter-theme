@@ -126,7 +126,7 @@
 					<section id="form"<?php echo $form_style['text_dark'] ? 'class="dark"' : ''; ?>>
 						<h2><?php the_field('lp_hero_text'); ?></h2>
 						<p>All fields are required.</p>
-						<?php the_field('lp_form_code'); ?>
+						<div id="tlh-form"></div>
 					</section>
 				</div>
 

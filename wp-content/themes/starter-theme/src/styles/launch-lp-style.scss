@@ -149,8 +149,12 @@ HEADER
   background-size: cover;
   padding: 32px 0;
   background-repeat: no-repeat;
-  height: 50vh;
+  height: 350px;
   background-position: center;
+
+  @include mobilefirst($bp-med) {
+    height: 450px;
+  }
 }
 
 #hero.overlay::before {
@@ -194,6 +198,12 @@ HEADER
   max-width: 200px;
 }
 
+@media screen and (min-width: 600px) {
+  .logo img {
+    max-width: 400px;
+  }
+}
+
 .phone-number {
   text-align: right;
   font-weight: bold;
@@ -227,6 +237,10 @@ MAIN CONTENT AREA
   top: 250px;
   left: 0;
   right: 0;
+
+  @include mobilefirst($bp-med) {
+    top: 350px;
+  }
 }
 
 #form {
@@ -257,92 +271,110 @@ MAIN CONTENT AREA
     }
   }
 
-  ol,
-  ul {
-    list-style-type: none;
-    margin: 0 auto;
-    padding: 0;
-    overflow: hidden;
+  // ol,
+  // ul {
+  //   list-style-type: none;
+  //   margin: 0 auto;
+  //   padding: 0;
+  //   overflow: hidden;
+  // }
+  //
+  // fieldset {
+  //   border: none;
+  //   padding: 0;
+  //   margin: 0;
+  //   overflow-x: hidden;
+  // }
+  //
+  // label {
+  //   display: block;
+  //   font-size: 0.7rem;
+  //   margin-left: 0.7rem;
+  // }
+  //
+  // input,
+  // select {
+  //   display: block;
+  //   margin: 0.3rem 0 0.75rem;
+  //   padding: 10px;
+  //   width: 100%;
+  //   border: #ffffff 3px solid;
+  // }
+  //
+  // input.error {
+  //   border-color: tomato;
+  // }
+  //
+  // select {
+  //   width: 98%;
+  // }
+  //
+  // input[type="submit"] {
+  //   margin: 1rem auto 0.5rem;
+  //   width: 300px;
+  //   font-weight: bold;
+  //   background: #ffffff;
+  //   color: #000000;
+  //   transition: all 0.2s ease-in-out;
+  //   cursor: pointer;
+  //   border: none;
+  //
+  //   &:hover {
+  //     transform: scale(1.1);
+  //   }
+  // }
+  //
+  // input[type="hidden"],
+  // .elp_hidden,
+  // .formValid,
+  // legend {
+  //   display: none;
+  // }
+  //
+  // .legal-text {
+  //   color: inherit;
+  //   opacity: 0.9;
+  //   width: 70%;
+  //   max-width: 700px;
+  //   margin: 1rem auto;
+  //   text-align: center;
+  // }
+
+  .form-item {
+    margin: 1rem 0;
   }
 
-  fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-  }
-
-  label {
-    display: block;
-    font-size: 0.7rem;
-    margin-left: 0.7rem;
-  }
-
-  input,
-  select {
-    display: block;
-    margin: 0.3rem 0 0.75rem;
-    padding: 10px;
-    width: 100%;
-    border: #ffffff 3px solid;
-  }
-
-  input.error {
-    border-color: tomato;
-  }
-
-  select {
-    width: 98%;
-  }
-
-  input[type="submit"] {
-    margin: 1rem auto 0.5rem;
-    width: 300px;
-    font-weight: bold;
-    background: #ffffff;
-    color: #000000;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    border: none;
-
-    &:hover {
-      transform: scale(1.1);
+  .form-submit {
+    [type="submit"] {
+      background: #ffffff;
+      color: #000000;
     }
   }
 
-  input[type="hidden"],
-  .elp_hidden,
-  .formValid,
-  legend {
-    display: none;
-  }
-
-  .legal-text {
-    color: inherit;
-    opacity: 0.9;
-    width: 70%;
-    max-width: 700px;
-    margin: 1rem auto;
-    text-align: center;
-  }
-
   @include mobilefirst($bp-med) {
-    ol,
-    ul {
-      max-width: 800px;
+    form {
       display: flex;
-      flex-wrap: wrap;
-      flex-direction: rows;
-      justify-content: space-between;
+      flex-flow: row wrap;
+    }
 
-      li {
-        width: 50%;
+    .form-item {
+      width: calc(50% - 1rem);
+
+      &:nth-child(even) {
+        margin-left: 1rem;
       }
+    }
 
-      input,
-      select {
-        margin: 0.3rem 0.5rem 0.75rem;
-        width: 85%;
+    .form-submit {
+      margin-left: auto;
+      margin-right: auto;
+      min-width: 200px;
+
+      [type="submit"] {
+        &:hover,
+        &:focus {
+          transform: scale(1.1);
+        }
       }
     }
   }
