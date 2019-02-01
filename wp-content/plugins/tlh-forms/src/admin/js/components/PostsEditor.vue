@@ -31,7 +31,7 @@
         </v-layout>
       </v-flex>
 
-      <v-dialog content-class="bulk-edit-dialog" scrollable v-model="bulkEditDialog" max-width="450px">
+      <v-dialog content-class="bulk-edit-dialog" scrollable v-model="bulkEditDialog" max-width="550px">
         <bulk-edit-stepper @stepper-cancel="closeDialog('bulkEditDialog')" @stepper-save="bulkUpdate">
 
           <v-list subheader slot="step1">
@@ -78,9 +78,9 @@
         </bulk-edit-stepper>
       </v-dialog>
 
-      <v-dialog content-class="bulk-edit-dialog" scrollable v-model="dialog" max-width="450px">
+      <v-dialog content-class="bulk-edit-dialog" scrollable v-model="dialog" max-width="550px">
         <v-card flat class="edit-card mt-0 mb-2">
-          <FormListEditor two-line subheader :updatedFormObject="postBeingEdited" />
+          <FormListEditor @save-meta="savePostFormMeta"  two-line subheader :updatedFormObject="postBeingEdited" />
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="blue darken-1" flat @click.native="close">Cancel</v-btn>
@@ -89,19 +89,6 @@
         </v-card>
 
       </v-dialog>
-
-      <!--
-    <v-dialog v-model="dialog" max-width="550px">
-      <v-flex xs12 sm8 md8 v-if="postBeingEdited.title">
-        <span class="headline" v-html="postBeingEdited.title.rendered"></span>
-      </v-flex>
-
-      <FormListEditor
-        two-line
-        subheader
-        :updatedFormObject="postBeingEdited"
-      />
-    </v-dialog> -->
 
       <v-data-table id="post-table" v-model="selectedItems" select-all :headers="headers" :items="editList" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
@@ -131,8 +118,9 @@
 </template>
 
 <script>
-import BulkEditStepper from "./BulkEditStepper";
 import FormListEditor from "./FormListEditor";
+import BulkEditStepper from "./BulkEditStepper";
+
 if (document.getElementById("form-settings")) {
   var WPAPI = require("wpapi");
   var wp = new WPAPI({
@@ -155,8 +143,8 @@ export default {
   name: "posts-editor",
   props: ["wp-data"],
   components: {
-    BulkEditStepper,
-    FormListEditor
+    FormListEditor,
+    BulkEditStepper
   },
   data () {
     return {
@@ -224,8 +212,12 @@ export default {
   },
 
   mounted () {
+    /**
+     * Add this and then load resources
+     * getPostTypes() 
+     */
+
     this.getResources();
-    this.getCustomPostType("degrees");
     this.editList = this.pages;
   },
 

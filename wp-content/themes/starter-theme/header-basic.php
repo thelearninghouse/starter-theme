@@ -14,7 +14,9 @@
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<?php get_template_part( 'template-parts/header/favicons' ); ?>
+		<?php if ( $favicon_image = get_field('favicon', 'options') ) { ?>
+			<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $favicon_image; ?>">
+		<?php } ?>
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 

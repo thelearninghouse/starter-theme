@@ -74,17 +74,20 @@ export default {
 <style lang="scss">
 .stepper {
     width: 100%;
-    overflow: visible;
+    // overflow: visible;
+    overflow-y: visible;
+    overflow-x: hidden;
+    height: 100%;
     &__header {
         .btn {
             position: absolute;
-            right: -20px;
+            right: 0px;
             background: blue;
             // background-color: #565656 !important;
             background-color: #717171 !important;
             color: #fff !important;
             z-index: 9999999999;
-            top: -20px;
+            top: 0px;
             width: 42px;
             height: 42px;
 

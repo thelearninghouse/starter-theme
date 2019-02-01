@@ -110,7 +110,7 @@ export default {
         "account_id",
         "program_id",
         "program_group_id",
-        "tag_group_id"
+        "program_tag_id"
       ],
       originalShowFormValue: CurrentFormData._show_form
     };

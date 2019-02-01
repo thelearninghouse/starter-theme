@@ -2,22 +2,6 @@
 # yarn lockfile v1
 
 
-"@fortawesome/fontawesome-common-types@^0.2.8":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.8.tgz#8cacd1efd1aa956e1ef173f0abcf2ce1b7a0c66f"
-
-"@fortawesome/fontawesome-svg-core@^1.2.0":
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.8.tgz#b802b7f3d5b9d9d92ae92c18e865df468dcdf561"
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.8"
-
-"@fortawesome/free-solid-svg-icons@^5.1.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.5.0.tgz#4d815df4bba076f209eb409bc56d9d830367a7c0"
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.8"
-
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
@@ -3970,10 +3954,6 @@ minipass@^2.2.1, minipass@^2.3.3:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
 
-minireset.css@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/minireset.css/-/minireset.css-0.0.3.tgz#0b112dbbd7809ea0fc965388b79fd29390778fe5"
-
 minizlib@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-1.1.0.tgz#11e13658ce46bc3a70a267aac58359d1e0c29ceb"
@@ -6274,16 +6254,6 @@ unique-filename@^1.1.0:
   dependencies:
     unique-slug "^2.0.0"
 
-unique-random-array@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/unique-random-array/-/unique-random-array-1.0.1.tgz#f29bda2a62be8860a703c4739c8f4fdb4d722cc7"
-  dependencies:
-    unique-random "^1.0.0"
-
-unique-random@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unique-random/-/unique-random-1.0.0.tgz#ce3e224c8242cd33a0e77b0d7180d77e6b62d0c4"
-
 unique-slug@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/unique-slug/-/unique-slug-2.0.0.tgz#db6676e7c7cc0629878ff196097c78855ae9f4ab"
@@ -6406,15 +6376,9 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vlh-forms2@davidroyer/vlh-forms2:
-  version "0.2.4"
-  resolved "https://codeload.github.com/davidroyer/vlh-forms2/tar.gz/23651b0c249240c150240a1fa74b865490b1fc91"
-  dependencies:
-    vue "^2.5.17"
-
 vlh-forms@thelearninghouse/vlh-forms:
-  version "0.7.3"
-  resolved "https://codeload.github.com/thelearninghouse/vlh-forms/tar.gz/bc78cbd5782fc3b38f7574818e5abfa8e0e4a1b1"
+  version "0.10.1"
+  resolved "https://codeload.github.com/thelearninghouse/vlh-forms/tar.gz/83aeee831ecfc0d87d00c3af7136ac326ebdb852"
   dependencies:
     vue "^2.5.17"
 
@@ -6453,12 +6417,6 @@ vue-loader@^13.7.1:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-plugin-starter@^1.2.4:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/vue-plugin-starter/-/vue-plugin-starter-1.2.7.tgz#417425d36c4180ae566f8609552848556c550f7e"
-  dependencies:
-    vue "^2.5.16"
-
 vue-resource@^1.0.3:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.5.1.tgz#0f3d685e3254d21800bebd966edcf56c34b3b6e4"
@@ -6483,23 +6441,13 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue@^2.0.1, vue@^2.5.16, vue@^2.5.17:
+vue@^2.0.1, vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 
 vuetify@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.1.tgz#25404ad7ed3de08f7119c6e3fd719ab74f2cfc37"
-
-vuxi@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/vuxi/-/vuxi-1.1.0.tgz#2da6211c146b51f6fa94b9f4e730f6443efa8f43"
-  dependencies:
-    "@fortawesome/fontawesome-svg-core" "^1.2.0"
-    "@fortawesome/free-solid-svg-icons" "^5.1.0"
-    minireset.css "^0.0.3"
-    unique-random-array "^1.0.1"
-    vue "^2.5.16"
 
 watchpack@^1.4.0:
   version "1.6.0"

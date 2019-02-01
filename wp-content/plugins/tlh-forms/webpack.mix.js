@@ -35,7 +35,9 @@ mix.webpackConfig({
     ],
     extensions: [".js", ".vue"],
     alias: {
-      "@": path.resolve(__dirname, "src/admin/js")
+      "@": path.resolve(__dirname, "src"),
+      "@compontents": path.resolve(__dirname, "src/admin/js/components"),
+      "@styles": path.resolve(__dirname, "src/admin/sass")
     }
   }
 });

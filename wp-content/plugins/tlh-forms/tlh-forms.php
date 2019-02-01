@@ -14,7 +14,7 @@
  * Plugin Name:       TLH Forms
  * Plugin URI:        https://github.com/thelearninghouse/tlh-forms
  * Description:       Works with TLH Forms. View documentation here (link here).
- * Version:           0.3.5
+ * Version:           0.5.3
  * Author:            David Royer
  * Author URI:        https://www.davidroyer.me/
  * License:           GPL-2.0+
@@ -26,7 +26,7 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-define( 'PLUGIN_NAME_VERSION', '0.3.5' );
+define( 'PLUGIN_NAME_VERSION', '0.5.3' );
  /**
 	* CURRENT SETUP BELOW
   */

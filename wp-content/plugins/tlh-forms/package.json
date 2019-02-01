@@ -1,6 +1,6 @@
 {
   "name": "tlh-forms",
-  "version": "0.3.5",
+  "version": "0.5.3",
   "description": "Wordpress Plugin for Marketing Forms using Vue.js",
   "repository": {
     "url": "thelearninghouse/tlh-forms",
@@ -11,7 +11,11 @@
     "dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "build": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "release": "git push --follow-tags"
+    "release": "git push --follow-tags",
+    "vlh:upgrade": "yarn upgrade vlh-forms",
+    "postvlh:upgrade": "yarn build && git commit -am 'Upgrade VlhForms'",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags"
   },
   "author": {
     "name": "David Royer",
@@ -31,12 +35,9 @@
     "github-api": "^3.0.0",
     "vee-validate": "^2.0.0",
     "vlh-forms": "thelearninghouse/vlh-forms",
-    "vlh-forms2": "davidroyer/vlh-forms2",
     "vue": "^2.5.17",
     "vue-github-api": "^0.1.7",
-    "vue-plugin-starter": "^1.2.4",
     "vuetify": "1.0.1",
-    "vuxi": "^1.1.0",
     "wpapi": "^1.1.2"
   }
 }

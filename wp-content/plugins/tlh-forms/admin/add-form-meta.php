@@ -43,9 +43,12 @@ function forms_script_meta_box_callback( $post ) {
       'formTemplates'        => get_option('repo_form_templates')
     );
 
+    $plugin_url = plugin_dir_url( __FILE__ );
 
     wp_enqueue_style('app-css', tlhforms_mix('/css/app.css') );
+    // wp_enqueue_style( 'style1', $plugin_url . 'css/style1.css' );
 
+    // wp_enqueue_style('vuetify-test', $plugin_url  . '/css/vuetify-test.css');
     wp_register_script( 'manifest', tlhforms_mix('/js/manifest.js'), array(), '', true );
     wp_register_script( 'vendor', tlhforms_mix('/js/vendor.js'), array( 'manifest' ), '', true );
     wp_register_script( 'vue-admin',  tlhforms_mix('/js/vue-admin.js'), array( 'manifest', 'vendor' ), '', true );

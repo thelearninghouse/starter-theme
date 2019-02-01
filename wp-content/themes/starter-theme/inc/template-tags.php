@@ -1,11 +1,12 @@
 <?php
 
-function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = false, $blog = false ) {
+function tlh_responsive_bg_style( $selector, $field_name = NULL, $sub_field = false, $blog = false, $options = false ) {
   // If no image can be found, no <style> will be echoed
   $has_image = false;
 
 	// Get correct post ID on blog page, otherwise use global $post
 	$current_post_id = $blog ? get_option('page_for_posts') : get_the_ID();
+	$current_post_id = $options ? 'options' : get_the_ID();
 
   if ( $field_name !== NULL ) {
 

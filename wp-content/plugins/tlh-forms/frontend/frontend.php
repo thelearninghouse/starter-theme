@@ -14,7 +14,7 @@
     $form_styles = '/wp-content/plugins/tlh-forms/dist/frontend/css/form-styles.css';
   	$vendorsURL = $includeVueLibrary ? '/wp-content/plugins/tlh-forms/dist/frontend/js/vendors-bundle.js' : '/wp-content/plugins/tlh-forms/dist/frontend/js/vendors-bundle-without-vue.js';
     $vlh_forms_url =  '/wp-content/plugins/tlh-forms/dist/frontend/js/vlh-forms.js';
-    $vue_plugin_test_url =  '/wp-content/plugins/tlh-forms/dist/frontend/js/vue-plugin-starter.js';
+
     $raven = 'https://cdn.ravenjs.com/3.22.1/vue/raven.min.js';
     $raven_config = 'https://7e13d150a425406da56c2bc4ec87b033@sentry.io/192500';
     $babelPolyfill = 'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js';
@@ -27,8 +27,7 @@
         if ($includePolyfill) {
             wp_enqueue_script( 'polyfill', $babelPolyfill );
             wp_enqueue_script( 'tlh-forms-vendors', $vendorsURL );
-            wp_enqueue_script( 'vue-plugin-test', $vue_plugin_test_url, array('polyfill', 'tlh-forms-vendors') );
-            wp_enqueue_script( 'vlh-forms', $vlh_forms_url, array('polyfill', 'tlh-forms-vendors', 'vue-plugin-test') );
+            wp_enqueue_script( 'vlh-forms', $vlh_forms_url, array('polyfill', 'tlh-forms-vendors') );
             
         } else {
             wp_enqueue_script( 'tlh-forms-vendors', $vendorsURL );

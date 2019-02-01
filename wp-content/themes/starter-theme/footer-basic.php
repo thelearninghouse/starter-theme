@@ -7,7 +7,13 @@
 				</footer>
 			</div>
 		</div>
-		<?php tlh_responsive_bg_style( 'container__background', 'hero_background_image' ); ?>
+		<?php
+			if ( get_field( 'hero_background_image' ) ) {
+				tlh_responsive_bg_style( 'container__background', 'hero_background_image' );
+			} else {
+				tlh_responsive_bg_style( 'container__background', 'default_background_image', false, false, true );
+			}
+		?>
 
 	<?php // all js scripts are loaded in library/bones.php ?>
 	<?php get_template_part( 'template-parts/footer-scripts/lp' ); ?>

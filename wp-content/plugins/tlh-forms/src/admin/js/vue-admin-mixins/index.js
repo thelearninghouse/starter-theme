@@ -20,8 +20,7 @@ export const VueMetaMixin = {
 
 export const VueAdminMixin = {
   components: {
-    FormSettings: () => import('components/FormSettings.vue'),
-    FormViewer: () => import('components/FormViewer.vue')
+    FormSettings: () => import('components/FormSettings.vue')
   },
   data: () => ({
     schoolFormData: SchoolFormData,

@@ -172,8 +172,7 @@ export default {
       editingPrivateKey: false,
       selectedTemplate: "",
       loadingForm: false,
-      privateKeyIsEditable: true,
-      themeOptions: ["default", "dark", "light"],
+      privateKeyIsEditable: true
     };
   },
   computed: {
@@ -425,4 +424,5 @@ input {
   margin-right: 0.75em !important;
   margin-left: 0.75em !important;
 }
+
 </style>

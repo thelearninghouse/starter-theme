@@ -132,25 +132,6 @@
             "maxlength": ""
         },
         {
-            "key": "field_5b3f7a37a3d2e",
-            "label": "OLC URL",
-            "name": "olc_url",
-            "type": "text",
-            "instructions": "For MAG sites: live URL of the related OLC to pull information from",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_5a2b0a3af47c3",
             "label": "Social Links",
             "name": "",
@@ -425,6 +406,54 @@
             "ajax": 0,
             "return_format": "array",
             "placeholder": ""
+        },
+        {
+            "key": "field_5c54a88953939",
+            "label": "Default Background Image",
+            "name": "default_background_image",
+            "type": "image",
+            "instructions": "Default image that shows up on fullscreen background pages. Will be overwritten by a page's header image if set.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": 1600,
+            "max_height": "",
+            "max_size": "0.5",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c54a91d470ee",
+            "label": "Favicon",
+            "name": "favicon",
+            "type": "image",
+            "instructions": "Basic favicon for Launch LPs only. Should be a 32x32 PNG. Full OLCs should have a set of favicons from <a href=\"https:\/\/realfavicongenerator.net\/>https:\/\/realfavicongenerator.net\/<\/a>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": 32,
+            "min_height": 32,
+            "min_size": "",
+            "max_width": 32,
+            "max_height": 32,
+            "max_size": "",
+            "mime_types": "png"
         }
     ],
     "location": [
@@ -444,5 +473,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1530889506
+    "modified": 1549052934
 }
