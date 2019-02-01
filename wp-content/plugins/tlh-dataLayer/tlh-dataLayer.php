@@ -11,15 +11,18 @@
 
 function tlh_add_basic_datalayer_data( $dataLayer ) {
 	global $current_user, $wp_query;
-	
+
 	//User Data
+	if ( !isset( $dataLayer ) || !$dataLayer ) {
+		$dataLayer = array();
+	}
 
 	// Get the page Title
 	$dataLayer["tlh-pageTitle"] = strip_tags( wp_title( "|", false, "right" ) );
-	
+
 	//GET LEADID ONLY FIRES ON /THANK-YOU/ pages
-	$url = $_SERVER['REQUEST_URI']; 
-	$urlString = parse_url($url, PHP_URL_PATH); 
+	$url = $_SERVER['REQUEST_URI'];
+	$urlString = parse_url($url, PHP_URL_PATH);
 
 	if ( preg_match( "/\/thank-you/", $urlString, $matches ) ) {
 		if ( $_GET["lid"] ) { #GETS LEAD ID FROM URL LID VARIABLE
@@ -30,7 +33,7 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 			}
 		}
 	}
-	
+
 	//GET allocadiaID FROM URL TID
 	if ( $_GET["tid"] ) {
 		$dataLayer["allocadiaID"] = $_GET["tid"];
@@ -54,7 +57,7 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 				$dataLayer["pageCategory"][] = $_one_cat->slug;
 			}
 		}
-		
+
 		$_post_tags = get_the_tags();
 		if ( $_post_tags ) {
 			$dataLayer["pageAttributes"] = array();
@@ -62,13 +65,13 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 				$dataLayer["pageAttributes"][] = $_one_tag->slug;
 			}
 		}
-		
-		
+
+
 		$postuser = get_userdata( $GLOBALS["post"]->post_author );
 		if ( false !== $postuser ) {
 			$dataLayer["pagePostAuthor"] = $postuser->display_name;
 		}
-	
+
 		$dataLayer["pagePostDate"] = get_the_date();
 		$dataLayer["pagePostDateYear"] = get_the_date( "Y" );
 		$dataLayer["pagePostDateMonth"] = get_the_date( "m" );
@@ -81,7 +84,7 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 		}
 
 	}
-      
+
 	$_gtm_tag .= '
 	<script type="text/javascript">
 
@@ -97,7 +100,7 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 		$_gtm_tag .= '
 	</script>';
 
-      	echo $_gtm_tag;	
+      	echo $_gtm_tag;
 
 	return $dataLayer;
 }
