@@ -1,0 +1,56 @@
+/* @override 
+	https://neu.stempeline.de/resources/erweiterungen/acf-rgba-color-picker/assets/css/acf-rgba-color-picker.css?ver=1.0.3 */
+
+/**
+ * acf-extended-color-picker CSS
+ */
+ 
+ .acf-color-picker .wp-picker-active {
+ 	z-index: 9999;
+ }
+ 
+ .acf-color-picker .wp-picker-holder {
+ 	position: absolute;
+ 	z-index: 9999;
+ }
+
+.acf-color-picker .iris-picker .iris-square,
+.acf-color-picker .iris-picker .iris-slider,
+.acf-color-picker .iris-picker .iris-square-inner,
+.acf-color-picker .iris-picker .iris-palette,
+.acf-color-picker .iris-picker .iris-square-horiz,
+.acf-color-picker .iris-picker .iris-square-vert,
+.acf-color-picker .iris-picker .iris-strip,
+.acf-color-picker .iris-picker .iris-slider-offset {
+	border-radius: 0px;
+	box-shadow: none;
+	box-sizing: border-box;
+}
+
+.acf-color-picker .iris-palette-container a.iris-palette,
+.acf-field-color-picker .iris-palette-container a.iris-palette {
+	border: 1px solid #ccc;
+}
+
+.acf-color-picker button.button.wp-color-result {
+	height: 30px!important;
+	margin: 0px 6px 0px 0px!important;
+}
+
+.acf-color-picker .wp-color-result-text {
+	line-height: 28px!important;
+}
+
+.acf-color-picker .color-alpha {
+	height: 28px!important;
+	border-radius: 0!important;
+}
+
+.acf-color-picker .wp-color-result:hover {
+	border-color: #ccc!important;
+}
+
+.acf-color-picker .wp-picker-input-wrap .valuetarget.wp-color-picker,
+.acf-color-picker .wp-picker-input-wrap .button.button-small {
+	height: 30px;
+}

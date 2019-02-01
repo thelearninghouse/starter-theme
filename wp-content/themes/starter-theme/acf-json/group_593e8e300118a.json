@@ -6,7 +6,7 @@
             "key": "field_593e8e5a4d763",
             "label": "Custom CSS",
             "name": "custom_css",
-            "type": "textarea",
+            "type": "acf_code_field",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -17,15 +17,14 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "mode": "htmlmixed",
+            "theme": "monokai"
         },
         {
             "key": "field_593e8e704d764",
             "label": "Custom JS",
             "name": "custom_js",
-            "type": "textarea",
+            "type": "acf_code_field",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -36,9 +35,8 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "mode": "htmlmixed",
+            "theme": "monokai"
         }
     ],
     "location": [
@@ -46,7 +44,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "launch-lps"
+                "value": "post"
             }
         ],
         [
@@ -54,6 +52,13 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "landing-pages"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "launch-lp"
             }
         ]
     ],
@@ -65,5 +70,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1521220137
+    "modified": 1549045433
 }
