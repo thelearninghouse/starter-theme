@@ -16,7 +16,7 @@
 // LOAD SETUP
 require_once( 'inc/setup.php' );
 
-// LOAD SETUP
+// LOAD CLEANUP
 require_once( 'inc/cleanup.php' );
 
 // ADD CUSTOM MENU PAGE TO HOUSE RESOURCES
@@ -31,11 +31,17 @@ require_once( 'inc/maintenance-mode.php' );
 // LOAD THEME SUPPORT
 require_once( 'inc/theme-support.php' );
 
-// LOAD TEMPLATE TAGES
+// LOAD TEMPLATE TAGS
 require_once( 'inc/template-tags.php' );
 
-// LOAD TEMPLATE TAGES
+// LOAD SCRIPTS
 require_once( 'inc/enqueue-scripts.php' );
+
+// LOAD FIELD CUSTOMIZATION
+require_once( 'inc/acf-customization.php' );
+
+// LOAD GUTENBERG STUFF
+require_once( 'inc/gutenberg.php' );
 
 // LOAD COMPONENTS
 require_once( 'inc/components/social-sharing.php' );
