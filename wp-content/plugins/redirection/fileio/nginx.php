@@ -4,10 +4,8 @@ class Red_Nginx_File extends Red_FileIO {
 	public function force_download() {
 		parent::force_download();
 
-		$filename = 'redirection-' . date_i18n( get_option( 'date_format' ) ) . '.nginx';
-
 		header( 'Content-Type: application/octet-stream' );
-		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
+		header( 'Content-Disposition: attachment; filename="' . $this->export_filename( 'nginx' ) . '"' );
 	}
 
 	public function get_data( array $items, array $groups ) {
@@ -22,7 +20,9 @@ class Red_Nginx_File extends Red_FileIO {
 
 		$parts = array();
 		foreach ( $items as $item ) {
-			$parts[] = $this->get_nginx_item( $item );
+			if ( $item->is_enabled() ) {
+				$parts[] = $this->get_nginx_item( $item );
+			}
 		}
 
 		$lines = array_merge( $lines, array_filter( $parts ) );
@@ -82,7 +82,7 @@ class Red_Nginx_File extends Red_FileIO {
 		}
 
 		if ( $item->match->url_notfrom ) {
-			$lines[] = 'if ( $http_referer !~* ^' . $item->match->referrer.'$ ) {';
+			$lines[] = 'if ( $http_referer !~* ^' . $item->match->referrer . '$ ) {';
 			$lines[] = '        ' . $this->add_redirect( $item->get_url(), $item->match->url_notfrom, $this->get_redirect_code( $item ) );
 			$lines[] = '    }';
 		}

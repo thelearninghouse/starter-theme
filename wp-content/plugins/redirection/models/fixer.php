@@ -1,6 +1,6 @@
 <?php
 
-include_once dirname( REDIRECTION_FILE ) . '/models/database.php';
+include_once dirname( REDIRECTION_FILE ) . '/database/database.php';
 
 class Red_Fixer {
 	public function get_status() {
@@ -8,7 +8,6 @@ class Red_Fixer {
 
 		$options = red_get_options();
 
-		$database = new RE_Database();
 		$groups = intval( $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}redirection_groups" ), 10 );
 		$bad_group = $this->get_missing();
 		$monitor_group = $options['monitor_post'];
@@ -21,7 +20,7 @@ class Red_Fixer {
 			array_merge( array(
 				'id' => 'db',
 				'name' => __( 'Database tables', 'redirection' ),
-			), $database->get_status() ),
+			), $this->get_database_status( Red_Database::get_latest_database() ) ),
 			array(
 				'name' => __( 'Valid groups', 'redirection' ),
 				'id' => 'groups',
@@ -37,7 +36,7 @@ class Red_Fixer {
 			array(
 				'name' => __( 'Post monitor group', 'redirection' ),
 				'id' => 'monitor',
-				'message' => $valid_monitor === false ? __( 'Post monitor group is invalid', 'redirection' ) : __( 'Post monitor group is valid' ),
+				'message' => $valid_monitor === false ? __( 'Post monitor group is invalid', 'redirection' ) : __( 'Post monitor group is valid', 'redirection' ),
 				'status' => $valid_monitor === false ? 'problem' : 'good',
 			),
 			$this->get_http_settings(),
@@ -46,14 +45,23 @@ class Red_Fixer {
 		return $result;
 	}
 
+	private function get_database_status( $database ) {
+		$missing = $database->get_missing_tables();
+
+		return array(
+			'status' => count( $missing ) === 0 ? 'good' : 'error',
+			'message' => count( $missing ) === 0 ? __( 'All tables present', 'redirection' ) : __( 'The following tables are missing:', 'redirection' ) . ' ' . join( ',', $missing ),
+		);
+	}
+
 	private function get_http_settings() {
-		$site = parse_url( get_site_url(), PHP_URL_SCHEME );
-		$home = parse_url( get_home_url(), PHP_URL_SCHEME );
+		$site = wp_parse_url( get_site_url(), PHP_URL_SCHEME );
+		$home = wp_parse_url( get_home_url(), PHP_URL_SCHEME );
 
 		$message = __( 'Site and home are consistent', 'redirection' );
 		if ( $site !== $home ) {
-			$message = __( 'Site and home URL are inconsistent - please correct from your General settings', 'redirection' );
-			$message .= ' - ' . get_site_url() . ' !== ' . get_home_url();
+			/* translators: 1: Site URL, 2: Home URL */
+			$message = sprintf( __( 'Site and home URL are inconsistent. Please correct from your Settings > General page: %1$1s is not %2$2s', 'redirection' ), get_site_url(), get_home_url() );
 		}
 
 		return array(
@@ -180,7 +188,7 @@ class Red_Fixer {
 
 	private function normalize_url( $url ) {
 		if ( substr( $url, 0, 4 ) !== 'http' ) {
-			$parts = parse_url( get_site_url() );
+			$parts = wp_parse_url( get_site_url() );
 			$url = ( isset( $parts['scheme'] ) ? $parts['scheme'] : 'http' ) . '://' . $parts['host'] . $url;
 		}
 
@@ -213,6 +221,10 @@ class Red_Fixer {
 
 	private function check_api( $url ) {
 		$response = $this->request_from_api( $url );
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
 		$http_code = wp_remote_retrieve_response_code( $response );
 
 		$specific = 'REST API returns an error code';
@@ -228,10 +240,12 @@ class Red_Fixer {
 		} elseif ( $http_code === 301 || $http_code === 302 ) {
 			$specific = 'REST API is being redirected. This indicates it has been disabled or you have a trailing slash redirect.';
 		} elseif ( $http_code === 404 ) {
-			$specific = 'REST API is returning 404 error. This indicates it has been disabled.';
+			$specific = 'REST API is returning a 404 error. This indicates it has been disabled.';
+		} elseif ( $http_code ) {
+			$specific = 'REST API returned a ' . $http_code . ' code.';
 		}
 
-		return new WP_Error( 'redirection', $specific . ' (' . ( $http_code ? $http_code : '40x' ) . ' - ' . $url . ')' );
+		return new WP_Error( 'redirect', $specific . ' (' . ( $http_code ? $http_code : 'unknown' ) . ' - ' . $url . ')' );
 	}
 
 	private function get_json( $body ) {
@@ -243,15 +257,8 @@ class Red_Fixer {
 	}
 
 	private function fix_db() {
-		$database = new RE_Database();
-
-		try {
-			$database->create_tables();
-		} catch ( Exception $e ) {
-			return new WP_Error( __( 'Failed to fix database tables', 'redirection' ) );
-		}
-
-		return true;
+		$database = Red_Database::get_latest_database();
+		return $database->install();
 	}
 
 	private function fix_groups() {

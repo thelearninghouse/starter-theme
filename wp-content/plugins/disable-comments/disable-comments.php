@@ -3,7 +3,7 @@
 Plugin Name: Disable Comments
 Plugin URI: https://wordpress.org/plugins/disable-comments/
 Description: Allows administrators to globally disable comments on their site. Comments can be disabled according to post type.
-Version: 1.7.1
+Version: 1.8.0
 Author: Samir Shah
 Author URI: http://www.rayofsolaris.net/
 License: GPL2
@@ -52,11 +52,11 @@ class Disable_Comments {
 	}
 
 	private function check_compatibility() {
-		if ( version_compare( $GLOBALS['wp_version'], '3.9', '<' ) ) {
+		if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			deactivate_plugins( __FILE__ );
 			if ( isset( $_GET['action'] ) && ( $_GET['action'] == 'activate' || $_GET['action'] == 'error_scrape' ) ) {
-				exit( sprintf( __( 'Disable Comments requires WordPress version %s or greater.', 'disable-comments' ), '3.9' ) );
+				exit( sprintf( __( 'Disable Comments requires WordPress version %s or greater.', 'disable-comments' ), '4.7' ) );
 			}
 		}
 	}
@@ -155,7 +155,11 @@ class Disable_Comments {
 			add_filter( 'comments_open', array( $this, 'filter_comment_status' ), 20, 2 );
 			add_filter( 'pings_open', array( $this, 'filter_comment_status' ), 20, 2 );
 		}
-		elseif( is_admin() ) {
+		elseif( is_admin() && !$this->options['remove_everywhere'] ) {
+			// It is possible that $disabled_post_types is empty if other
+			// plugins have disabled comments. Hence we also check for
+			// remove_everywhere. If you still get a warning you probably
+			// shouldn't be using this plugin.
 			add_action( 'all_admin_notices', array( $this, 'setup_notice' ) );
 		}
 
@@ -174,7 +178,7 @@ class Disable_Comments {
 					register_deactivation_hook( __FILE__, array( $this, 'single_site_deactivate' ) );
 			}
 
-			add_action( 'admin_print_footer_scripts', array( $this, 'discussion_notice' ) );
+			add_action( 'admin_notices', array( $this, 'discussion_notice' ) );
 			add_filter( 'plugin_row_meta', array( $this, 'set_plugin_meta' ), 10, 2 );
 
 			// if only certain types are disabled, remember the original post status
@@ -277,19 +281,14 @@ class Disable_Comments {
 		}
 	}
 
-	public function discussion_notice(){
+	public function discussion_notice() {
 		$disabled_post_types = $this->get_disabled_post_types();
 		if( get_current_screen()->id == 'options-discussion' && !empty( $disabled_post_types ) ) {
 			$names = array();
 			foreach( $disabled_post_types as $type )
 				$names[$type] = get_post_type_object( $type )->labels->name;
-?>
-<script>
-jQuery(document).ready(function($){
-	$(".wrap h2").first().after( <?php echo json_encode( '<div style="color: #900"><p>' . sprintf( __( 'Note: The <em>Disable Comments</em> plugin is currently active, and comments are completely disabled on: %s. Many of the settings below will not be applicable for those post types.', 'disable-comments' ), implode( __( ', ' ), $names ) ) . '</p></div>' );?> );
-});
-</script>
-<?php
+
+			echo '<div class="notice notice-warning"><p>' . sprintf( __( 'Note: The <em>Disable Comments</em> plugin is currently active, and comments are completely disabled on: %s. Many of the settings below will not be applicable for those post types.', 'disable-comments' ), implode( __( ', ' ), $names ) ) . '</p></div>';
 		}
 	}
 
@@ -321,11 +320,17 @@ jQuery(document).ready(function($){
 	public function filter_admin_menu(){
 		global $pagenow;
 
-		if ( $pagenow == 'comment.php' || $pagenow == 'edit-comments.php' || $pagenow == 'options-discussion.php' )
+		if ( $pagenow == 'comment.php' || $pagenow == 'edit-comments.php' )
 			wp_die( __( 'Comments are closed.' ), '', array( 'response' => 403 ) );
 
 		remove_menu_page( 'edit-comments.php' );
-		remove_submenu_page( 'options-general.php', 'options-discussion.php' );
+
+		if ( ! $this->discussion_settings_allowed() ) {
+			if ( $pagenow == 'options-discussion.php' )
+				wp_die( __( 'Comments are closed.' ), '', array( 'response' => 403 ) );
+
+			remove_submenu_page( 'options-general.php', 'options-discussion.php' );
+		}
 	}
 
 	public function filter_dashboard(){
@@ -356,6 +361,9 @@ jQuery(document).ready(function($){
 
 	public function disable_rc_widget() {
 		unregister_widget( 'WP_Widget_Recent_Comments' );
+		// The widget has added a style action when it was constructed - which will
+		// still fire even if we now unregister the widget... so filter that out
+		add_filter( 'show_recent_comments_widget_style', '__return_false');
 	}
 
 	public function set_plugin_meta( $links, $file ) {
@@ -439,6 +447,12 @@ jQuery(document).ready(function($){
 	private function persistent_mode_allowed() {
 		if( defined( 'DISABLE_COMMENTS_ALLOW_PERSISTENT_MODE' ) && DISABLE_COMMENTS_ALLOW_PERSISTENT_MODE == false ) {
 			return false;
+		}
+	}
+
+	private function discussion_settings_allowed() {
+		if( defined( 'DISABLE_COMMENTS_ALLOW_DISCUSSION_SETTINGS' ) && DISABLE_COMMENTS_ALLOW_DISCUSSION_SETTINGS == true ) {
+			return true;
 		}
 	}
 

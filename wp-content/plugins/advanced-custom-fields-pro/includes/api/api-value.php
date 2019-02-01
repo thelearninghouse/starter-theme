@@ -299,12 +299,21 @@ function acf_get_value( $post_id = 0, $field ) {
 		$value = $field['default_value'];
 	}
 	
-	
-	// filter for 3rd party customization
-	$value = apply_filters( "acf/load_value", $value, $post_id, $field );
-	$value = apply_filters( "acf/load_value/type={$field['type']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/load_value/name={$field['_name']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/load_value/key={$field['key']}", $value, $post_id, $field );
+
+	/**
+	*  Filters the $value after it has been loaded.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	mixed $value The value to preview.
+	*  @param	string $post_id The post ID for this value.
+	*  @param	array $field The field array.
+	*/
+	$value = apply_filters( "acf/load_value/type={$field['type']}",		$value, $post_id, $field );
+	$value = apply_filters( "acf/load_value/name={$field['_name']}",	$value, $post_id, $field );
+	$value = apply_filters( "acf/load_value/key={$field['key']}",		$value, $post_id, $field );
+	$value = apply_filters( "acf/load_value",							$value, $post_id, $field );
 	
 	
 	// update cache
@@ -345,12 +354,21 @@ function acf_format_value( $value, $post_id, $field ) {
 		
 	}
 	
-	
-	// apply filters
-	$value = apply_filters( "acf/format_value", $value, $post_id, $field );
-	$value = apply_filters( "acf/format_value/type={$field['type']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/format_value/name={$field['_name']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/format_value/key={$field['key']}", $value, $post_id, $field );
+
+	/**
+	*  Filters the $value for use in a template function.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	mixed $value The value to preview.
+	*  @param	string $post_id The post ID for this value.
+	*  @param	array $field The field array.
+	*/
+	$value = apply_filters( "acf/format_value/type={$field['type']}",	$value, $post_id, $field );
+	$value = apply_filters( "acf/format_value/name={$field['_name']}",	$value, $post_id, $field );
+	$value = apply_filters( "acf/format_value/key={$field['key']}",		$value, $post_id, $field );
+	$value = apply_filters( "acf/format_value",							$value, $post_id, $field );
 	
 	
 	// update cache
@@ -385,18 +403,40 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 	}
 	
 	
-	// allow filter to short-circuit update_value logic
+	/**
+	*  Allows developers to run a custom update function.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	null $check Return a non null value to prevent default.
+	*  @param	mixed $value The value to update.
+	*  @param	string $post_id The post ID for this value.
+	*  @param	array $field The field array.
+	*/
 	$check = apply_filters( "acf/pre_update_value", null, $value, $post_id, $field );
 	if( $check !== null ) {
 		 return $check;
 	}
 	
 	
-	// filter for 3rd party customization
-	$value = apply_filters( "acf/update_value", $value, $post_id, $field );
-	$value = apply_filters( "acf/update_value/type={$field['type']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/update_value/name={$field['_name']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/update_value/key={$field['key']}", $value, $post_id, $field );
+	/**
+	*  Filters the $value before it is saved.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*  @since	5.7.6 Added $_value parameter.
+	*
+	*  @param	mixed $value The value to update.
+	*  @param	string $post_id The post ID for this value.
+	*  @param	array $field The field array.
+	*  @param	mixed $_value The original value before modification.
+	*/
+	$_value = $value;
+	$value = apply_filters( "acf/update_value/type={$field['type']}",	$value, $post_id, $field, $_value );
+	$value = apply_filters( "acf/update_value/name={$field['_name']}",	$value, $post_id, $field, $_value );
+	$value = apply_filters( "acf/update_value/key={$field['key']}",		$value, $post_id, $field, $_value );
+	$value = apply_filters( "acf/update_value",							$value, $post_id, $field, $_value );
 	
 	
 	// allow null to delete
@@ -442,11 +482,20 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 
 function acf_delete_value( $post_id = 0, $field ) {
 	
-	// action for 3rd party customization
-	do_action("acf/delete_value", $post_id, $field['name'], $field);
-	do_action("acf/delete_value/type={$field['type']}", $post_id, $field['name'], $field);
-	do_action("acf/delete_value/name={$field['_name']}", $post_id, $field['name'], $field);
-	do_action("acf/delete_value/key={$field['key']}", $post_id, $field['name'], $field);
+	/**
+	*  Fires before a value is deleted.
+	*
+	*  @date	28/09/13
+	*  @since	5.0.0
+	*
+	*  @param	string $post_id The post ID for this value.
+	*  @param	mixed $name The meta name.
+	*  @param	array $field The field array.
+	*/
+	do_action( "acf/delete_value/type={$field['type']}",	$post_id, $field['name'], $field );
+	do_action( "acf/delete_value/name={$field['_name']}",	$post_id, $field['name'], $field );
+	do_action( "acf/delete_value/key={$field['key']}",		$post_id, $field['name'], $field );
+	do_action( "acf/delete_value",							$post_id, $field['name'], $field );
 	
 	
 	// delete value
@@ -553,16 +602,114 @@ function acf_copy_postmeta( $from_post_id, $to_post_id ) {
 
 function acf_preview_value( $value, $post_id, $field ) {
 	
-	// apply filters
-	$value = apply_filters( "acf/preview_value", $value, $post_id, $field );
-	$value = apply_filters( "acf/preview_value/type={$field['type']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/preview_value/name={$field['_name']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/preview_value/key={$field['key']}", $value, $post_id, $field );
-	
+	/**
+	*  Filters the $value before used in HTML.
+	*
+	*  @date	24/10/16
+	*  @since	5.5.0
+	*
+	*  @param	mixed $value The value to preview.
+	*  @param	string $post_id The post ID for this value.
+	*  @param	array $field The field array.
+	*/
+	$value = apply_filters( "acf/preview_value/type={$field['type']}",	$value, $post_id, $field );
+	$value = apply_filters( "acf/preview_value/name={$field['_name']}",	$value, $post_id, $field );
+	$value = apply_filters( "acf/preview_value/key={$field['key']}",	$value, $post_id, $field );
+	$value = apply_filters( "acf/preview_value",						$value, $post_id, $field );
 	
 	// return
 	return $value;
+}
+
+/**
+*  acf_get_option_meta
+*
+*  Returns an array of meta for the given wp_option name prefix.
+*
+*  @date	9/10/18
+*  @since	5.8.0
+*
+*  @param	string $prefix The wp_option name prefix.
+*  @return	array
+*/
+function acf_get_option_meta( $prefix = '' ) {
 	
-} 
+	// global
+	global $wpdb;
+	
+	// vars
+	$meta = array();
+	$search = "{$prefix}_%";
+	$_search = "_{$prefix}_%";
+	
+	// escape underscores
+	$search = str_replace('_', '\_', $search);
+	$_search = str_replace('_', '\_', $_search);
+	
+	// query
+	$rows = $wpdb->get_results($wpdb->prepare(
+		"SELECT * 
+		FROM $wpdb->options 
+		WHERE option_name LIKE %s 
+		OR option_name LIKE %s",
+		$search,
+		$_search 
+	), ARRAY_A);
+	
+	// loop
+	$len = strlen("{$prefix}_");
+	foreach( $rows as $row ) {
+		$meta[ substr($row['option_name'], $len) ][] = $row['option_value'];
+	}
+	
+	// return unserialized
+	return array_map('maybe_unserialize', $meta);
+}
+
+/**
+*  acf_get_meta
+*
+*  Returns an array of "ACF only" meta for the given post_id.
+*
+*  @date	9/10/18
+*  @since	5.8.0
+*
+*  @param	mixed $post_id The post_id for this data.
+*  @return	array
+*/
+function acf_get_meta( $post_id = 0 ) {
+	
+	// allow filter to short-circuit load_value logic
+	$pre = apply_filters( "acf/pre_load_meta", null, $post_id );
+    if( $pre !== null ) {
+	    return $pre;
+    }
+    
+	// get post_id info
+	extract( acf_get_post_id_info($post_id) );
+	
+	// use get_$type_meta() function when possible
+	if( function_exists("get_{$type}_meta") ) {
+		$allmeta = call_user_func("get_{$type}_meta", $id, '', true);
+	
+	// default to wp_options 
+	} else {
+		$allmeta = acf_get_option_meta( $id );
+	}
+	
+	// loop
+	$meta = array();
+	foreach( $allmeta as $key => $value ) {
+		
+		// if is value
+		if( isset($allmeta["_$key"]) ) {
+			$meta[ $key ] = $allmeta[ $key ][0];
+			$meta[ "_$key" ] = $allmeta[ "_$key" ][0];
+		}
+	}
+	
+	// return
+	return $meta;
+}
 
 ?>
