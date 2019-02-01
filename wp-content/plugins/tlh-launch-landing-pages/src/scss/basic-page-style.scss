@@ -1,0 +1,188 @@
+// Right now there is no build process set up. In the event you actually need to update this, use `sass src/scss/basic-page-style.scss:assets/css/basic-page-style.css`
+
+@import "inc/variables";
+@import "inc/mixins";
+
+html {
+	box-sizing: border-box;
+	font-size: 100%; // 16px
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: $sans-serif;
+	line-height: 1.5;
+	color: $text-color;
+	background-color: white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	@include min(md) {
+		font-size: rem(18);
+	}
+}
+
+:focus {
+	outline: 3px dotted white;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+
+	&:hover,
+	&:focus {
+		color: inherit;
+	}
+}
+
+@import "inc/typography";
+
+.wrapSm,
+.wrapMd,
+.wrapLg,
+.wrapXl {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: rem(15);
+	padding-right: rem(15);
+
+	@include min(md) {
+		padding-left: rem(20);
+		padding-right: rem(20);
+	}
+}
+
+.wrapLg {
+	max-width: map-get($wrap, lg);
+}
+
+.wrapXl {
+	max-width: map-get($wrap, xl);
+}
+
+.wrapMd {
+	max-width: map-get($wrap, md);
+}
+
+.wrapSm {
+	max-width: map-get($wrap, sm);
+}
+
+// Main content
+
+.container {
+	position: relative;
+	background-color: #333;
+	color: white;
+
+	:focus {
+		outline-color: white;
+	}
+
+	&__background {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		background-attachment: fixed;
+		mix-blend-mode: multiply;
+		opacity: 0.8;
+	}
+
+	&__content {
+		position: relative;
+		z-index: 2;
+		min-height: 100vh;
+		display: flex;
+		flex-flow: column nowrap;
+
+		> footer {
+			margin-top: auto;
+		}
+	}
+}
+
+.headerBasic {
+	@include sectionspace();
+
+	&__logo {
+		display: block;
+		height: rem(60);
+		width: auto;
+
+		@include min(md) {
+			height: rem(100);
+			width: auto;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			height: auto;
+		}
+	}
+}
+
+.mainContent {
+	padding-bottom: rem(30);
+	@include min(md) {
+		padding-bottom: rem(70);
+	}
+
+	&__heading {
+	}
+
+	&__subheading {
+		font-size: rem(23);
+	}
+
+	&__copy {
+		// margin-top: rem(80);
+
+		a,
+		a:hover,
+		a:focus,
+		a:active {
+			color: white;
+		}
+
+		li:not(:first-of-type) {
+			margin-top: rem(15);
+		}
+	}
+}
+
+.footerBasic {
+	a,
+	a:hover,
+	a:focus,
+	a:active {
+		color: white;
+	}
+}
+
+.errorHeading {
+	&__number {
+		font-weight: 700;
+		font-size: rem(70);
+	}
+}
+
+.ctaBottom {
+	a,
+	a:hover,
+	a:focus,
+	a:active {
+		color: white;
+	}
+}
