@@ -19,7 +19,6 @@ use YoastSEO_Vendor\ORM;
  * class Widget extends Model {
  * }
  *
- *
  * The methods documented below are magic methods that conform to PSR-1.
  * This documentation exposes these methods to doc generators and IDEs.
  *
@@ -32,7 +31,8 @@ use YoastSEO_Vendor\ORM;
  * @method Array asArray()
  */
 class Yoast_Model {
-	/*
+
+	/**
 	 * Default ID column for all models. Can be overridden by adding
 	 * a public static _id_column property to your model classes.
 	 */
@@ -227,11 +227,20 @@ class Yoast_Model {
 	 * @return string The table name.
 	 */
 	protected static function _class_name_to_table_name( $class_name ) {
-		return \strtolower( \preg_replace( array( '/\\\\/', '/(?<=[a-z])([A-Z])/', '/__/' ), array(
+		$find         = array(
+			'/\\\\/',
+			'/(?<=[a-z])([A-Z])/',
+			'/__/',
+		);
+		$replacements = array(
 			'_',
 			'_$1',
 			'_',
-		), \ltrim( $class_name, '\\' ) ) );
+		);
+
+		$class_name = \ltrim( $class_name, '\\' );
+		$class_name = \preg_replace( $find, $replacements, $class_name );
+		return \strtolower( $class_name );
 	}
 
 	/**
@@ -442,9 +451,9 @@ class Yoast_Model {
 
 		/*
 			"   SELECT {$associated_table_name}.*
-				  FROM {$associated_table_name} JOIN {$join_table_name}
+				FROM {$associated_table_name} JOIN {$join_table_name}
 					ON {$associated_table_name}.{$associated_table_id_column} = {$join_table_name}.{$key_to_associated_table}
-				 WHERE {$join_table_name}.{$key_to_base_table} = {$this->$base_table_id_column} ;"
+				WHERE {$join_table_name}.{$key_to_base_table} = {$this->$base_table_id_column} ;"
 		*/
 		return static::factory( $associated_class_name, $connection_name )
 			->select( "{$associated_table_name}.*" )

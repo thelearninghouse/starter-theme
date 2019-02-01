@@ -183,6 +183,12 @@ function tlh_theme_archive_title( $title ) {
 }
 add_filter( 'get_the_archive_title', 'tlh_theme_archive_title' );
 
+// Move Yoast to bottom
+function tlh_move_yoast() {
+  return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'tlh_move_yoast');
+
 // Customize tinymce editor
 function tlh_tinymce_buttons( $buttons ) {
       // Add style selector to the beginning of the toolbar
