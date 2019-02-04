@@ -4,52 +4,67 @@ UTILITY CLASSES
 
 /* For each color create utility classes */
 @each $name, $value in $colors {
-	.u-bg--#{$name} {
-		background-color: $value;
-	}
-	.u-text--#{$name} {
-		color: $value;
-	}
-	a.u-text--#{$name}:hover {
-		color: darken($value, 10%);
-	}
+  .u-bg--#{$name} {
+    background-color: $value;
+  }
+  .u-text--#{$name} {
+    color: $value;
+  }
+  a.u-text--#{$name}:hover {
+    color: darken($value, 10%);
+  }
 }
 
 // Typography
 
+// Screen Reader Text
+.u-srOnly {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
 .u-bold {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .u-italic {
-	font-style: italic;
+  font-style: italic;
 }
 
 .u-caps {
-	text-transform: uppercase;
-	letter-spacing: 0.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
 
 .u-noWrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .u-underline {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 // Lists
 .u-listReset {
-	list-style: none;
-	padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 // Margin
 .u-mt0 {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 .u-missingValue {
-	color: red;
-	outline: 2px solid red;
+  color: red;
+  outline: 2px solid red;
 }
