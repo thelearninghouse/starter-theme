@@ -14,7 +14,7 @@ wp-content/themes/*
 wp-content/uploads/*
 wp-content/upgrade
 !wp-content/themes/starter-theme
-wp-content/themes/starter-theme/public
+# wp-content/themes/starter-theme/public
 
 
 # Favicons in root
