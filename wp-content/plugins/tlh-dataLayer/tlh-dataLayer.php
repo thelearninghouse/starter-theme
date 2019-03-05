@@ -3,19 +3,17 @@
  * Plugin Name: TLH DataLayer
  * Plugin URI: http://www.learninghouse.com
  * Description: This plugin adds the TLH DataLayer
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: The Learning House - Brent maggard
  * Author URI:
  * License: GPL2
  */
 
-function tlh_add_basic_datalayer_data( $dataLayer ) {
+function tlh_add_basic_datalayer_data() {
 	global $current_user, $wp_query;
 
 	//User Data
-	if ( !isset( $dataLayer ) || !$dataLayer ) {
-		$dataLayer = array();
-	}
+	$dataLayer = array();
 
 	// Get the page Title
 	$dataLayer["tlh-pageTitle"] = strip_tags( wp_title( "|", false, "right" ) );
@@ -35,7 +33,7 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 	}
 
 	//GET allocadiaID FROM URL TID
-	if ( $_GET["tid"] ) {
+	if ( array_key_exists('tid', $_GET ) ) {
 		$dataLayer["allocadiaID"] = $_GET["tid"];
 	}
 
@@ -85,11 +83,12 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 
 	}
 
-	$_gtm_tag .= '
+	$_gtm_tag = '
 	<script type="text/javascript">
 
 	var dataLayer = dataLayer || []
-';
+	';
+
 	$_gtm_tag .= '
 	dataLayer.push(' . str_replace(
 			array( '"-~-', '-~-"' ),
@@ -97,12 +96,10 @@ function tlh_add_basic_datalayer_data( $dataLayer ) {
 			json_encode( $dataLayer )
 		) . ');';
 
-		$_gtm_tag .= '
+	$_gtm_tag .= '
 	</script>';
 
-      	echo $_gtm_tag;
-
-	return $dataLayer;
+	echo $_gtm_tag;
 }
 
 add_action( 'wp_head', 'tlh_add_basic_datalayer_data');
