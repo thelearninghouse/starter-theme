@@ -23,7 +23,7 @@ function tlh_add_basic_datalayer_data() {
 	$urlString = parse_url($url, PHP_URL_PATH);
 
 	if ( preg_match( "/\/thank-you/", $urlString, $matches ) ) {
-		if ( $_GET["lid"] ) { #GETS LEAD ID FROM URL LID VARIABLE
+		if ( isset($_GET['lid'] ) ) { #GETS LEAD ID FROM URL LID VARIABLE
 			$dataLayer["leadID"] = $_GET["lid"];
 		} else { #IF LID NOT PRESENT SEE IF CAN FIND LEAD ID AT END OF URL (LEGACY)
 			if ( preg_match( "/\d{5,100}/", $urlString, $lID ) ) {
@@ -33,7 +33,7 @@ function tlh_add_basic_datalayer_data() {
 	}
 
 	//GET allocadiaID FROM URL TID
-	if ( array_key_exists('tid', $_GET ) ) {
+	if ( isset($_GET['tid'] ) ) {
 		$dataLayer["allocadiaID"] = $_GET["tid"];
 	}
 
