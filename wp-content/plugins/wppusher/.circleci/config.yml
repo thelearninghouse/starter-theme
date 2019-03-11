@@ -1,0 +1,35 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: wordpress:php7.2-apache
+        entrypoint: "docker-entrypoint.sh"
+        command: "apache2-foreground"
+      - image: circleci/mysql:5.7-ram
+
+    steps:
+      - checkout
+
+      - run: apt-get update && apt-get install -y mysql-client
+
+      # Install WP CLI
+      - run: curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+      - run: php wp-cli.phar --info
+      - run: chmod +x wp-cli.phar
+      - run: mv wp-cli.phar /usr/local/bin/wp
+      - run: wp --info
+
+      # Install WordPress
+      - run: wp config create --path="/usr/src/wordpress" --dbname=circle_test --dbuser=root --dbpass="" --dbhost="127.0.0.1" --allow-root
+      - run: wp core install --path="/usr/src/wordpress" --url="127.0.0.1" --title="WP Pusher Test" --admin_user=admin --admin_password=123 --admin_email=admin@example.com --allow-root
+
+      # Install WP Pusher
+      - run: wp plugin install --path="/usr/src/wordpress" https://api.github.com/repos/petersuhm/wppusher-plugin/zipball/master?access_token=$GITHUB_TOKEN --activate --allow-root
+      - run: wp plugin list --path="/usr/src/wordpress" --allow-root
+
+      # run tests with phpunit or codecept
+      - run: curl 127.0.0.1

@@ -78,7 +78,7 @@ class PluginRepository
 
         $model = new PackageModel(array(
             'package' => $file,
-            'repository' => $input['repository'],
+            'repository' => (string) $input['repository'],
             'branch' => $input['branch'],
             'ptd' => $input['ptd'],
             'subdirectory' => $input['subdirectory'],
@@ -165,7 +165,7 @@ class PluginRepository
 
         $model = new PackageModel(array(
             'package' => $plugin->file,
-            'repository' => $plugin->repository,
+            'repository' => (string) $plugin->repository,
             'branch' => $plugin->repository->getBranch(),
             'status' => 1,
             'host' => $plugin->repository->code,
