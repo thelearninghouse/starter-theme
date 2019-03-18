@@ -29,29 +29,29 @@ $colors: (
   grayDark: #333
 );
 
+// --- Global Spacing ---
 $spacing: (
   sm: rem(10),
   md: rem(20),
   lg: rem(30)
 );
 
+// --- Z Index Mapping Map lol ---
 $z: (
   sectionBg: 1,
   sectionContent: 2,
   form: 10
 );
 
-/// Text Color
-$text-color: map-get($colors, grayDark);
-/// Link Color
-$link-color: map-get($colors, red);
-/// Link Hover
-$link-hover: darken($link-color, 15%);
-
 // --- Typography ---
 /// Fonts
 $sans-serif: sans-serif;
 $serif: serif;
+/// Text Colors
+$text-color: map-get($colors, grayDark);
+$link-color: map-get($colors, red);
+$link-hover: darken($link-color, 15%);
+/// Heading Map
 
 // --- Images ---
 // Default Header Hero Image
