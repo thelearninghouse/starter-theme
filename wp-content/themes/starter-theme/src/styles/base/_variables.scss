@@ -4,35 +4,41 @@ $browser-context: 16; // Default
 
 // --- Responsive Breakpoints ---
 $breakpoints: (
-	sm: 481px,
-	md: 768px,
-	lg: 1040px,
-	wrap: 1440px
+  sm: 481px,
+  md: 768px,
+  lg: 1040px,
+  wrap: 1440px
 );
 
 // --- Content Wrap ---
 $wrap: (
-	sm: 700px,
-	md: 940px,
-	lg: 1400px
+  sm: 700px,
+  md: 940px,
+  lg: 1400px
 );
 
 // --- Colors ---
 $colors: (
-	red: firebrick,
-	redDark: maroon,
-	blue: blue,
-	green: green,
-	orange: darkorange,
-	grayLight: #ddd,
-	grayMedium: #747281,
-	grayDark: #333
+  red: firebrick,
+  redDark: maroon,
+  blue: blue,
+  green: green,
+  orange: darkorange,
+  grayLight: #ddd,
+  grayMedium: #747281,
+  grayDark: #333
+);
+
+$spacing: (
+  sm: rem(10),
+  md: rem(20),
+  lg: rem(30)
 );
 
 $z: (
-	sectionBg: 1,
-	sectionContent: 2,
-	form: 10
+  sectionBg: 1,
+  sectionContent: 2,
+  form: 10
 );
 
 /// Text Color

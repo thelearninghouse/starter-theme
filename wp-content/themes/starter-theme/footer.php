@@ -17,7 +17,13 @@
 						)); ?>
 					</nav>
 
-					<p class="footer__copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?> | <?php the_field('school_address_1', 'option'); ?> <?php the_field('school_address_2', 'option'); ?> | <?php tlh_phone_link(); ?> | <a href="<?php the_field('school_email_address', 'option'); ?>"><?php the_field('school_email_address', 'option'); ?></a> | <span id="privacy-link"><a href="/privacy-policy/">Privacy Policy</a></span></p>
+					<p class="footer__copyright">&copy; <?php echo date('Y'); ?><?php bloginfo( 'name' ); ?>
+						<?php $address1 = the_field('school_address_1', 'option') ? ' | ' . $address1 : ''; ?>
+						<?php $address2 = the_field('school_address_2', 'option') ? ' | ' . $address2 : ''; ?>
+						<?php $phone = the_field('school_phone', 'option') ? ' | ' . $phone : '' ?>
+						<?php $email = the_field('school_email_address', 'option') ? ' | <a href="mailto:' . $email . '">' . $email . '</a>' : ''; ?>
+						<span id="privacy-link"> | <a href="/privacy-policy/">Privacy Policy</a></span>
+					</p>
 
 				</div>
 
@@ -25,7 +31,6 @@
 
 		</div>
 
-		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
 
 		<?php // Page Specific Scripts ?>

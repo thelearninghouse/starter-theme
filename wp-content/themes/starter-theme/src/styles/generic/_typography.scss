@@ -3,25 +3,25 @@ Typography Styles
 ******************************************************************/
 
 blockquote {
-	font-size: em(16);
-	line-height: 1.25;
-	/* 25px / 20px */
-	border-left: 4px solid gray;
-	padding-left: 1em;
+  font-size: rem(16);
+  line-height: 1.25;
+  /* 25px / 20px */
+  border-left: 4px solid gray;
+  padding-left: 1em;
 
-	@include min(md) {
-		font-size: em(24);
-		line-height: 1.45833333;
-	}
+  @include min(md) {
+    font-size: rem(24);
+    line-height: 1.45833333;
+  }
 }
 
 figure,
 figcaption {
-	display: block;
-	font-style: italic;
-	font-size: 0.9em;
-	color: gray;
-	text-align: center;
+  display: block;
+  font-style: italic;
+  font-size: 0.9em;
+  color: gray;
+  text-align: center;
 }
 
 /******************************************************************
@@ -38,86 +38,57 @@ h4,
 .h4,
 h5,
 .h5 {
-	text-rendering: optimizelegibility;
-	font-weight: 500;
+  text-rendering: optimizelegibility;
+  line-height: 1.2;
+  margin: 1em 0 1.5rem;
 
-	a {
-		text-decoration: none;
-	}
+  a {
+    text-decoration: none;
+  }
 }
 
 h1,
 .h1 {
-	font-size: em(32);
-	line-height: 1.25;
+  font-size: rem(32);
 
-	@include min(md) {
-		font-size: em(40);
-		line-height: 1.125;
-	}
-
-	@include min(lg) {
-		font-size: em(48);
-		line-height: 1.05;
-	}
+  @include min(md) {
+    font-size: rem(40);
+  }
 }
 
 h2,
 .h2 {
-	font-size: em(26);
-	line-height: 1.15384615;
-	margin-bottom: 0.375em;
+  font-size: rem(26);
 
-	@include min(md) {
-		font-size: em(32);
-		line-height: 1.25;
-	}
-
-	@include min(lg) {
-		font-size: em(36);
-		line-height: 1.25;
-	}
+  @include min(md) {
+    font-size: rem(32);
+  }
 }
 
 h3,
 .h3 {
-	font-size: em(22);
-	line-height: 1.13636364;
+  font-size: rem(22);
 
-	@include min(md) {
-		font-size: em(24);
-		line-height: 1.25;
-	}
-
-	@include min(lg) {
-		font-size: em(28);
-		line-height: 1.25;
-	}
+  @include min(md) {
+    font-size: rem(24);
+  }
 }
 
 h4,
 .h4 {
-	color: $link-color;
-	font-size: em(18);
-	line-height: 1.11111111;
-
-	@include min(md) {
-		line-height: 1.222222222;
-	}
+  color: $link-color;
+  font-size: rem(18);
 }
 
 h5,
 .h5 {
-	font-size: em(13.5);
-	line-height: 1.25;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	color: $link-color;
+  font-size: rem(13.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $link-color;
 }
 
 h6,
 .h6 {
-	color: $link-color;
+  color: $link-color;
 }
-
-@include largecopy();

@@ -64,9 +64,11 @@
 						<?php $school_logo = get_field('school_logo', 'options');
 						if ( $school_logo ) { ?>
 							<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
-						<?php } else { ?>
+						<?php } elseif (get_field('school_name', 'options')) { ?>
 							<span><?php the_field( 'school_name', 'options' ); ?>
-							<?php } ?>
+						<?php } else { ?>
+							<span><?php $blog_title = get_bloginfo( 'name' ); echo $blog_title; ?></span>
+						<?php } ?>
 					</a>
 					<button class="js__menu-trigger navWrapper__open" aria-label="Open Navigation Menu"><?php tlh_icon('menu', '', 'Open Navigation Menu') ?></button>
 					<div class="navWrapper">
