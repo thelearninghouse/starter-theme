@@ -73,7 +73,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/olc__faq.php"
+                "value": "templates\/olc__faq.php"
             }
         ]
     ],

@@ -213,21 +213,21 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/olc__calendar.php"
+                "value": "templates\/olc__calendar.php"
             }
         ],
         [
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/olc__listing.php"
+                "value": "templates\/olc__listing.php"
             }
         ],
         [
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/olc__faq.php"
+                "value": "templates\/olc__faq.php"
             }
         ]
     ],

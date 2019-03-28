@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{{ include( 'partial/page-title.twig' ) }}
+	<div class="wrapMd">
+		{% if posts %}
+			{% for post in posts %}
+				{{ post.content }}
+			{% endfor %}
+		{% endif %}
+		<h2>What</h2>
+		{{ include( 'blocks/button/index.twig', { label: 'Search', url: 'https://google.com/' } ) }}
+	</div>
+{% endblock %}

@@ -305,7 +305,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/mag__degrees.php"
+                "value": "templates\/mag__degrees.php"
             }
         ],
         [

@@ -1,10 +1,10 @@
 <?php
 
 function tlh_allowed_block_types( $allowed_block_types, $post ) {
-  // if ( $post->post_type !== 'post' ) {
+	// if ( $post->post_type !== 'post' ) {
 	//   return $allowed_block_types;
-  // }
-  return array(
+	// }
+	$blocks = array(
 		'core/paragraph',
 		'core/image',
 		'core/heading',
@@ -18,11 +18,18 @@ function tlh_allowed_block_types( $allowed_block_types, $post ) {
 		'core/nextpage',
 		'core/separator',
 		'core/shortcode',
-		'acf/faq',
-		'acf/cta',
 	);
+
+	$theme_blocks = get_block_list();
+
+	foreach ( $theme_blocks as $block ) {
+		// append path
+		$blocks[] = 'acf/' . $block;
+	}
+
+	return $blocks;
 }
 
 add_filter( 'allowed_block_types', 'tlh_allowed_block_types', 10, 2 );
 
-?>
+

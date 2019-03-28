@@ -1,0 +1,11 @@
+{
+  "version": 1.0,
+  "postTypes": [],
+  "display": {
+    "title": "Button",
+    "description": "Basic Button",
+    "category": "formatting",
+    "icon": "external",
+    "keywords": ["button", "action", "cta"]
+  }
+}

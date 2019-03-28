@@ -129,7 +129,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/olc__resources.php"
+                "value": "templates\/olc__resources.php"
             }
         ]
     ],

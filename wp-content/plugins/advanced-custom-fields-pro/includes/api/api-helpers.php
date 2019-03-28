@@ -1085,39 +1085,29 @@ function acf_get_image_size( $s = '' ) {
 		
 }
 
-
-/*
-*  acf_version_compare
-*
-*  This function will compare version left v right
-*
-*  @type	function
-*  @date	21/11/16
-*  @since	5.5.0
-*
-*  @param	$compare (string)
-*  @param	$version (string)
-*  @return	(boolean)
-*/
-
-function acf_version_compare( $left = 'wp', $compare = '>', $right = '1' ) {
+/**
+ * acf_version_compare
+ *
+ * Similar to the version_compare() function but with extra functionality.
+ *
+ * @date	21/11/16
+ * @since	5.5.0
+ *
+ * @param	string $left The left version number.
+ * @param	string $compare The compare operator.
+ * @param	string $right The right version number.
+ * @return	bool
+ */
+function acf_version_compare( $left = '', $compare = '>', $right = '' ) {
 	
-	// global
-	global $wp_version;
+	// Detect 'wp' placeholder.
+	if( $left === 'wp' ) {
+		global $wp_version;
+		$left = $wp_version;
+	}
 	
-	
-	// wp
-	if( $left === 'wp' ) $left = $wp_version;
-	
-	
-	// remove '-beta1' or '-RC1'
-	$left = acf_get_full_version($left);
-	$right = acf_get_full_version($right);
-	
-	
-	// return
+	// Return result.
 	return version_compare( $left, $right, $compare );
-	
 }
 
 
@@ -1483,28 +1473,24 @@ function acf_get_numeric( $value = '' ) {
 }
 
 
-/*
-*  acf_get_posts
-*
-*  This function will return an array of posts making sure the order is correct
-*
-*  @type	function
-*  @date	3/03/2015
-*  @since	5.1.5
-*
-*  @param	$args (array)
-*  @return	(array)
-*/
-
+/**
+ * acf_get_posts
+ *
+ * Similar to the get_posts() function but with extra functionality.
+ *
+ * @date	3/03/15
+ * @since	5.1.5
+ *
+ * @param	array $args The query args.
+ * @return	array
+ */
 function acf_get_posts( $args = array() ) {
 	
-	// vars
+	// Vars.
 	$posts = array();
 	
-	
-	// defaults
-	// leave suppress_filters as true becuase we don't want any plugins to modify the query as we know exactly what 
-	$args = wp_parse_args( $args, array(
+	// Apply default args.
+	$args = wp_parse_args($args, array(
 		'posts_per_page'			=> -1,
 		'post_type'					=> '',
 		'post_status'				=> 'any',
@@ -1512,69 +1498,35 @@ function acf_get_posts( $args = array() ) {
 		'update_post_term_cache' 	=> false
 	));
 	
-
-	// post type
-	if( empty($args['post_type']) ) {
-		
+	// Avoid default 'post' post_type by providing all public types.
+	if( !$args['post_type'] ) {
 		$args['post_type'] = acf_get_post_types();
-		
 	}
 	
-	
-	// validate post__in
+	// Check if specifc post ID's have been provided.
 	if( $args['post__in'] ) {
 		
-		// force value to array
-		$args['post__in'] = acf_get_array( $args['post__in'] );
-		
-		
-		// convert to int
-		$args['post__in'] = array_map('intval', $args['post__in']);
-		
-		
-		// add filter to remove post_type
-		// use 'query' filter so that 'suppress_filters' can remain true
-		//add_filter('query', '_acf_query_remove_post_type');
-		
-		
-		// order by post__in
-		$args['orderby'] = 'post__in';
-		
+		// Clean value into an array of IDs.
+		$args['post__in'] = array_map('intval', acf_array($args['post__in']));
 	}
 	
+	// Query posts.
+	$posts = get_posts(  $args);
 	
-	// load posts in 1 query to save multiple DB calls from following code
-	$posts = get_posts($args);
+	// Remove any potential empty results.
+	$posts = array_filter( $posts );
 	
-	
-	// remove this filter (only once)
-	//remove_filter('query', '_acf_query_remove_post_type');
-	
-	
-	// validate order
+	// Manually order results.
 	if( $posts && $args['post__in'] ) {
-		
-		// vars
 		$order = array();
-		
-		
-		// generate sort order
 		foreach( $posts as $i => $post ) {
-			
-			$order[ $i ] = array_search($post->ID, $args['post__in']);
-			
+			$order[ $i ] = array_search( $post->ID, $args['post__in'] );
 		}
-		
-		
-		// sort
 		array_multisort($order, $posts);
-			
 	}
 	
-	
-	// return
+	// Return posts.
 	return $posts;
-	
 }
 
 

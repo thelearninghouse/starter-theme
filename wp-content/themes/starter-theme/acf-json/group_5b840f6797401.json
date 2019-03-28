@@ -27,14 +27,14 @@
             {
                 "param": "post_template",
                 "operator": "==",
-                "value": "page-templates\/mag__page.php"
+                "value": "templates\/mag__page.php"
             }
         ],
         [
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/basic__page.php"
+                "value": "templates\/basic__page.php"
             }
         ]
     ],

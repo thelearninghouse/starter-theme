@@ -1,0 +1,8 @@
+{
+    "require": {
+        "timber/timber": "^1.9",
+        "hellonico/timber-dump-extension": "^1.0"
+    },
+    "require-dev": {
+    }
+}

@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+
+{% block site_header %}
+	<a class="header__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">
+		{{ wp_image( options.school_logo.id ) }}
+	</a>
+{% endblock %}
+
+{% block content %}
+	{{ include( 'partial/page-title.twig' ) }}
+	<div class="wrapMd">
+		<a href="/">Try returning to the homepage.</a>
+	</div>
+{% endblock %}
+
+{% block site_footer %}
+	404 Footer!
+{% endblock %}

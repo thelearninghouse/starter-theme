@@ -1,0 +1,79 @@
+<!doctype html>
+<html {{ site.language_attributes }}>
+	{% block html_head %}
+		<head>
+			<meta charset="{{ site.charset }}" />
+			<meta name="description" content="{{ site.description }}">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			{{ include( 'partial/favicons.twig' ) }}
+			<link rel="author" href="{{ site.theme.link }}/humans.txt" />
+			<link rel="pingback" href="{{ site.pingback_url }}" />
+			<link rel="profile" href="http://gmpg.org/xfn/11">
+			{{ function( 'wp_head' ) }}
+			{% block head %}
+			{% endblock %}
+			{% block css %}
+				<link rel="stylesheet" href="{{ mix('/css/style.css') }}">
+			{% endblock %}
+			{% include "partial/tag-manager-script.twig" %}
+		</head>
+	{% endblock %}
+	<body class="{{ body_class }}" data-template="base.twig">
+		<a class="skipLink" href="#content">Skip to content</a>
+		{% include "partial/tag-manager-script.twig" %}
+		{% block site_header %}
+			<header class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="infoBar">
+					<div class="wrapLg">
+						<div class="infoBar__info">
+							{{ phone_link( options.school_phone, 'infoBar__phone', 'Call us today! <strong>' ~ options.school_phone ~ '</strong>' ) }}
+							<span class="infoBar__startDate"><strong>Next Start Date:</strong> {{ next_start_date() }}</span>
+						</div>
+						<nav class="infoBar__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							{{ include( 'partial/menu.twig', { menu: secondaryMenu } ) }}
+						</nav>
+					</div>
+				</div>
+				<div class="wrapLg">
+					<a class="header__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">
+						{{ wp_image( options.school_logo.id ) }}
+					</a>
+					<button class="js__menu-trigger navWrapper__open" aria-label="Open Navigation Menu"><?php tlh_icon('menu', '', 'Open Navigation Menu') ?></button>
+					<div class="navWrapper">
+						<button class="navWrapper__close js__menu-trigger" aria-label="Close Navigation Menu">Close</button>
+						<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							{{ include( 'partial/menu.twig', { menu: primaryMenu } ) }}
+						</nav>
+						<nav class="header__secondaryNav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							{{ include( 'partial/menu.twig', { menu: secondaryMenu } ) }}
+						</nav>
+					</div>
+				</div>
+			</header>
+		{% endblock %}
+
+		<main id="content" class="mainContent" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+			{% block content %}
+				Sorry, no content.
+			{% endblock %}
+		</main><!-- #main -->
+
+		{% block site_footer %}
+			<footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+				<div class="wrapLg">
+					<nav class="footer__nav" role="navigation" aria-label="Footer Links">
+						{{ include( 'partial/menu.twig', { 'menu': footerLinks } ) }}
+					</nav>
+					<p class="footer__copyright">&copy; {{ year }} {{ site.name }} | {{ options.school_address_1 }} {{ options.school_address_2 }} | {{ phone_link( options.school_phone ) }} | <a href="mailto:{{ options.school_email_address }}">{{ options.school_email_address }}</a> | <span id="privacy-link"><a href="/privacy-policy/">Privacy Policy</a></span></p>
+				</div>
+			</footer>
+		{% endblock %}
+		{{ function( 'wp_footer' ) }}
+
+		{% block footer_scripts %}
+		{% endblock %}
+
+	</body>
+</html>

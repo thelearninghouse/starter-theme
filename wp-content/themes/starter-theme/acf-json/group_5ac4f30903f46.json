@@ -177,7 +177,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/mag__home.php"
+                "value": "templates\/mag__home.php"
             }
         ]
     ],

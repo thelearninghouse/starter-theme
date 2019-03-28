@@ -1,12 +1,13 @@
-<?php get_header( 'basic' ); ?>
+<?php
+/**
+ * The 404 template file
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since   Timber 0.1
+ */
 
-<main class="mainContent" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-	<div class="wrapMd">
-		<h1 class="mainContent__heading errorHeading" id="pageHeading"><span class="errorHeading__number">404</span><br>Page Not Found</h1>
-		<div class="mainContent__copy">
-			<p><a href="/">Try returning to the homepage.</a></p>
-		</div>
-	</div>
-</main>
+$context               = Timber::get_context();
+$context['page_title'] = 'Error 404: Page Not Found';
 
-<?php get_footer( 'basic' ); ?>
+Timber::render( '404.twig', $context );

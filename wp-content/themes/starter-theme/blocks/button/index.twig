@@ -1,0 +1,3 @@
+{% if label %}
+	<a class="button{{ class ? ' ' ~ class : '' }}" href="{{ url }}"{{ target ? 'target="' ~ target ~ '"' : '' }}>{{ label }}</a>
+{% endif %}

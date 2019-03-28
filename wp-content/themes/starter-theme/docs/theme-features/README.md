@@ -35,7 +35,7 @@ In order to maintain performant page speed, this theme limits image upload file 
 
 ## Templates
 
-Basic templates are included for the homepage, blog, custom post types, internal pages and special page layouts. Custom page templates are located in `page-templates` and are prefixed with the site that they are used on (such as `olc__` for OLC templates). To create other custom templates where needed, refer to [WP Hierarchy](https://wphierarchy.com/) to see a cheatsheet of WordPress's naming convention for template files.
+Basic templates are included for the homepage, blog, custom post types, internal pages and special page layouts. Custom page templates are located in `templates` and are prefixed with the site that they are used on (such as `olc__` for OLC templates). To create other custom templates where needed, refer to [WP Hierarchy](https://wphierarchy.com/) to see a cheatsheet of WordPress's naming convention for template files.
 
 ### Template Parts
 

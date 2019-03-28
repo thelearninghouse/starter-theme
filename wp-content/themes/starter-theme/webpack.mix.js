@@ -6,60 +6,61 @@ const purgecssWordpress = require("purgecss-with-wordpress");
 require("laravel-mix-purgecss");
 
 let assetsProductionDirectory = `/wp-content/themes/${
-  config.directoryName
+	config.directoryName
 }/public/`;
 let resourceRoot = mix.config.hmr
-  ? "http://localhost:8080/"
-  : assetsProductionDirectory;
+	? "http://localhost:8080/"
+	: assetsProductionDirectory;
 let themePathsArray = [
-  path.join(__dirname, "**/*.php"),
-  path.join(__dirname, "src/scripts/**/*.js")
+	path.join(__dirname, "**/*.php"),
+	path.join(__dirname, "**/*.twig"),
+	path.join(__dirname, "src/scripts/**/*.js")
 ];
 
 /** Main Settings - Not dependant on if HMR, dev, or production modes
  ****************************************/
 glob.sync("src/scripts/*.js").map(function(file) {
-  mix.js(file, "js");
+	mix.js(file, "js");
 });
 glob.sync("src/styles/*.scss").map(function(file) {
-  mix.sass(file, "css");
+	mix.sass(file, "css");
 });
 
 mix
-  .disableNotifications()
-  .setPublicPath("public")
-  .setResourceRoot(resourceRoot)
-  .browserSync({
-    proxy: process.env.DEV_URL,
-    files: ["**/*.php", "public/css/*.css", "public/js/*.js"]
-  })
-  .copy("src/fonts", "public/fonts")
-  .copy("src/images", "public/images")
-  .extract(["babel-polyfill", "vue"]);
+	.disableNotifications()
+	.setPublicPath("public")
+	.setResourceRoot(resourceRoot)
+	.browserSync({
+		proxy: process.env.DEV_URL,
+		files: ["**/*.php", "**/*.twig", "public/css/*.css", "public/js/*.js"]
+	})
+	.copy("src/fonts", "public/fonts")
+	.copy("src/images", "public/images")
+	.extract(["babel-polyfill", "vue"]);
 
 mix.options({
-  processCssUrls: false,
-  autoprefixer: {
-    options: {
-      grid: true
-    }
-  }
+	processCssUrls: false,
+	autoprefixer: {
+		options: {
+			grid: true
+		}
+	}
 });
 
 mix.webpackConfig({
-  resolve: {
-    extensions: [".js", ".vue"],
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-      themeConfig: path.resolve(__dirname, "./theme.config.js")
-    }
-  },
-  output: {
-    chunkFilename: "js/[name].js",
-    publicPath: mix.config.hmr
-      ? "http://localhost:8080/"
-      : assetsProductionDirectory
-  }
+	resolve: {
+		extensions: [".js", ".vue"],
+		alias: {
+			"@": path.resolve(__dirname, "./src"),
+			themeConfig: path.resolve(__dirname, "./theme.config.js")
+		}
+	},
+	output: {
+		chunkFilename: "js/[name].js",
+		publicPath: mix.config.hmr
+			? "http://localhost:8080/"
+			: assetsProductionDirectory
+	}
 });
 
 /* Removes unused CSS

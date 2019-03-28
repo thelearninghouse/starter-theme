@@ -46,7 +46,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/mag__degrees.php"
+                "value": "templates\/mag__degrees.php"
             }
         ],
         [
@@ -60,7 +60,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/olc__get-started.php"
+                "value": "templates\/olc__get-started.php"
             }
         ]
     ],

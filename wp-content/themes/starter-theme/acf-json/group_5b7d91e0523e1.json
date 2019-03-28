@@ -48,7 +48,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates\/olc__home.php"
+                "value": "templates\/olc__home.php"
             }
         ]
     ],

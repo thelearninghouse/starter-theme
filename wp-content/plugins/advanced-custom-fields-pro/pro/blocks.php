@@ -376,11 +376,11 @@ function acf_enqueue_block_scripts() {
 	$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 	
 	// Enqueue
-	wp_enqueue_script('acf-blocks', acf_get_url("pro/assets/js/acf-pro-blocks{$min}.js"), array('acf-input', 'wp-blocks'), ACF_VERSION );
+	wp_enqueue_script('acf-blocks', acf_get_url("pro/assets/js/acf-pro-blocks{$min}.js"), array('acf-input', 'wp-blocks'), ACF_VERSION, true );
 }
 
 // Register action.
-add_action( 'enqueue_block_assets', 'acf_enqueue_block_scripts' );
+add_action( 'enqueue_block_editor_assets', 'acf_enqueue_block_scripts' );
 
 /**
  * acf_ajax_fetch_block
@@ -412,33 +412,34 @@ function acf_ajax_fetch_block() {
 		wp_send_json_error();
 	}
 	
-	// Unslash $_POST data.
+	// Unslash and decode $_POST data.
 	$block = wp_unslash($block);
+	$block = json_decode($block, true);
 	
 	// Prepare block ensuring all settings and attributes exist.
 	if( !$block = acf_prepare_block( $block ) ) {
 		wp_send_json_error();
 	}
 	
-	// Handle new block default values
-	$fields = acf_get_block_fields( $block );
-	if( !$block['data'] && $fields ) {
-	   		
-   		// Loop over fields and set default value.
-   		$block['data'] = array();
-   		foreach( $fields as $field ) {
-		   	$block['data'][ $field['key'] ] = acf_get_value( $block['id'], $field );
+	// Load field defaults when first previewing a block.
+	if( !empty($query['preview']) && !$block['data'] ) {
+		$fields = acf_get_block_fields( $block );
+		foreach( $fields as $field ) {
+		   	$block['data'][ "_{$field['name']}" ] = $field['key'];
    		}
 	}
 	
 	// Setup postdata allowing form to load meta.
-	acf_setup_meta( $block['data'], $block['id'], true );	
-   		
+	acf_setup_meta( $block['data'], $block['id'], true );
+   	
 	// Vars.
 	$response = array();
 	
 	// Query form.
 	if( !empty($query['form']) ) {
+		
+		// Load fields for form.
+		$fields = acf_get_block_fields( $block );
 		
 		// Prefix field inputs to avoid multiple blocks using the same name/id attributes.
 		acf_prefix_fields( $fields, "acf-{$block['id']}" );
@@ -481,37 +482,27 @@ function acf_ajax_fetch_block() {
 acf_register_ajax( 'fetch-block', 'acf_ajax_fetch_block' );
 
 /**
- * acf_apply_blocks_insert_post_data
+ * acf_parse_save_blocks
  *
- * Modifies the post_content value before it is saved to the database to change "data" to "meta".
+ * Parse content that may contain HTML block comments and saves ACF block meta.
  *
  * @date	27/2/19
  * @since	5.7.13
  *
- * @param	array $data An array of slashed post data.
- * @param	array $data An array of sanitized, but otherwise unmodified post data.
- * @return	array
+ * @param	string $text Content that may contain HTML block comments.
+ * @return	string
  */
-function acf_apply_blocks_insert_post_data( $data, $postarr ) {
+function acf_parse_save_blocks( $text = '' ) {
 	
-	// Search post_content for dynamic blocks and modify attrs.
-	$post_content = wp_unslash( $data['post_content'] );
-	$post_content = preg_replace_callback( '/<!--\s+wp:(?P<name>[\S]+)\s+(?P<attrs>{[\S\s]+?})\s+\/-->/', 'acf_preg_replace_block_comment', $post_content, -1, $count );
-	
-	// Detect change.
-	if( $count ) {
-		$data['post_content'] = wp_slash( $post_content );
-	}
-	
-	// Return data.
-	return $data;
+	// Search text for dynamic blocks and modify attrs.
+	return preg_replace_callback( '/<!--\s+wp:(?P<name>[\S]+)\s+(?P<attrs>{[\S\s]+?})\s+\/-->/', 'acf_parse_save_blocks_callback', $text );
 }
 
 // Hook into saving process.
-add_filter( 'wp_insert_post_data', 'acf_apply_blocks_insert_post_data', 10, 2 );
+add_filter( 'content_save_pre', 'acf_parse_save_blocks', 5, 1 );
 
 /**
- * acf_preg_replace_block_comment
+ * acf_parse_save_blocks_callback
  *
  * Callback used in preg_replace to modify ACF Block comment.
  *
@@ -521,11 +512,11 @@ add_filter( 'wp_insert_post_data', 'acf_apply_blocks_insert_post_data', 10, 2 );
  * @param	array $matches The preg matches.
  * @return	string
  */
-function acf_preg_replace_block_comment( $matches ) {
+function acf_parse_save_blocks_callback( $matches ) {
 	
 	// Defaults
 	$name = isset($matches['name']) ? $matches['name'] : '';
-	$attrs = isset($matches['attrs']) ? json_decode($matches['attrs'], true) : '';
+	$attrs = isset($matches['attrs']) ? json_decode( wp_unslash($matches['attrs']), true) : '';
 	
 	// Bail early if missing data or not an ACF Block.
 	if( !$name || !$attrs || !acf_has_block_type($name) ) {
@@ -538,7 +529,19 @@ function acf_preg_replace_block_comment( $matches ) {
 		$attrs['data'] = acf_setup_meta( $attrs['data'], $attrs['id'] );
 	}
 	
+	// Prevent wp_targeted_link_rel from corrupting JSON.
+	add_filter('wp_targeted_link_rel', '__return_false');
+	
+	/**
+	 * Filteres the block attributes before saving.
+	 *
+	 * @date	18/3/19
+	 * @since	5.7.14
+	 *
+	 * @param	array $attrs The block attributes.
+	 */
+	$attrs = apply_filters( 'acf/pre_save_block', $attrs );
+	
 	// Return new comment
-	return '<!-- wp:' . $name . ' ' . json_encode( $attrs, JSON_PRETTY_PRINT ) . ' /-->';
+	return '<!-- wp:' . $name . ' ' . wp_slash( json_encode( $attrs, JSON_PRETTY_PRINT ) ) . ' /-->';
 }
-
