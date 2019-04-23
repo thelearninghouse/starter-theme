@@ -39,7 +39,7 @@
 		$page_title_modifiers .= ' pageTitle--image';
 	}
 	if ( is_home() && get_field( 'hero_background_image', get_option('page_for_posts') ) ) {
-		$page_title_modifiers .= ' pageTitle--image';
+		$page_title_modifiers .= ' pageTitle--image page';
 	}
 	if ( get_field( 'hero_center' ) ) {
 		$page_title_modifiers .= ' pageTitle--center';

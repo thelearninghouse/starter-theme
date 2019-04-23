@@ -1,11 +1,11 @@
 .schoolBenefits {
-	@include sectionspace();
+  @include sectionspace();
 
-	background-color: color(red);
-	color: white;
+  background-color: $primaryColor;
+  color: white;
 
-	&__heading {
-		text-align: center;
-		margin-top: 0;
-	}
+  &__heading {
+    text-align: center;
+    margin-top: 0;
+  }
 }

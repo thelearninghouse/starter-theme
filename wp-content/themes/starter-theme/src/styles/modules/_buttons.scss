@@ -5,9 +5,9 @@ Button Styles
 /// BASE BUTTON
 /// @example
 ///     @include buton($color);
-/// @param {variable} $btn-color [$link-color] - Background Button Color
+/// @param {variable} $btn-color [$linkColor] - Background Button Color
 
-@mixin button($btn-color: $link-color) {
+@mixin button($btn-color: $linkColor) {
 	display: inline-block;
 	position: relative;
 	font-family: $sans-serif;
@@ -39,7 +39,7 @@ Button Styles
 
 // Regular Button
 .button {
-	@include button($link-color);
+	@include button($linkColor);
 }
 
 // Small Button

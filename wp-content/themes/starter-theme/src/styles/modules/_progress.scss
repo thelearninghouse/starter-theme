@@ -13,7 +13,7 @@ progress {
           appearance: none;
   background-color: transparent;
   border: none;
-  color: $link-color; 
+  color: $linkColor; 
   z-index: 999;
 }
 
@@ -22,9 +22,9 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: $link-color;
+  background-color: $linkColor;
 }
 
 progress::-moz-progress-bar {
-  background-color: $link-color;
+  background-color: $linkColor;
 }

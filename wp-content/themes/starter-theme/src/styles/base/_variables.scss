@@ -26,7 +26,8 @@ $colors: (
   orange: darkorange,
   grayLight: #ddd,
   grayMedium: #747281,
-  grayDark: #333
+  grayDark: #333,
+  white: white
 );
 
 // --- Global Spacing ---
@@ -44,13 +45,16 @@ $z: (
 );
 
 // --- Typography ---
+/// Text Colors
+
 /// Fonts
 $sans-serif: sans-serif;
 $serif: serif;
 /// Text Colors
-$text-color: map-get($colors, grayDark);
-$link-color: map-get($colors, red);
-$link-hover: darken($link-color, 15%);
+$primaryColor: color(green);
+$textColor: color(grayDark);
+$linkColor: $primaryColor;
+$linkHover: darken($primaryColor, 15%);
 /// Heading Map
 
 // --- Images ---
@@ -58,3 +62,17 @@ $link-hover: darken($link-color, 15%);
 $hero-sm: "hero-background-sm.jpg"; // width should be 800px
 $hero-md: "hero-background-md.jpg"; // width should be 1200px
 $hero-lg: "hero-background-lg.jpg"; // width should be > 1200px
+
+// --- Theming ---
+/// Header
+// $infoBar-bg: color(grayLight);
+// $header-bg: color(white);
+
+/// Mobile Menu
+// $mobileMenu-bg: color(green);
+
+/// Page Title
+// $pageTitle-bg: yellow;
+
+/// Footer
+// $footer-bg: color(green);

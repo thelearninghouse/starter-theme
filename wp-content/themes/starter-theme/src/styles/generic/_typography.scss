@@ -76,7 +76,7 @@ h3,
 
 h4,
 .h4 {
-  color: $link-color;
+  color: $linkColor;
   font-size: rem(18);
 }
 
@@ -85,10 +85,10 @@ h5,
   font-size: rem(13.5);
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: $link-color;
+  color: $linkColor;
 }
 
 h6,
 .h6 {
-  color: $link-color;
+  color: $linkColor;
 }

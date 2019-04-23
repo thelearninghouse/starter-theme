@@ -40,7 +40,7 @@
 						<div class="infoBar__info">
 							<?php $school_phone = get_field('school_phone', 'options'); ?>
 							<?php
-								$phone_label = '<strong>Call us today!</strong> ' . tlh_get_icon( 'phone', 'inline', 'Call us today!' ) . ' ' . $school_phone;
+								$phone_label = ' ' . $school_phone;
 								tlh_phone_link( 'infoBar__phone', $phone_label ); ?>
 							<?php $next_start_date = tlh_get_next_start_date();
 								if ( $next_start_date ) { ?>

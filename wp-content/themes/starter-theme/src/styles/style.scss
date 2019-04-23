@@ -2,8 +2,8 @@
 Main OLC Stylesheet
 ******************************************************************/
 
-@import "base/variables";
 @import "base/mixins";
+@import "base/variables";
 
 @import "generic/base";
 @import "generic/typography";
@@ -39,7 +39,7 @@ Main OLC Stylesheet
 @import "pages/thank-you";
 
 @media print {
-	@import "modules/print";
+  @import "modules/print";
 }
 
 /*
