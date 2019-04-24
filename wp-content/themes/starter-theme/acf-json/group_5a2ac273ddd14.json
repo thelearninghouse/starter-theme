@@ -1,0 +1,477 @@
+{
+    "key": "group_5a2ac273ddd14",
+    "title": "Site Settings",
+    "fields": [
+        {
+            "key": "field_5a2b0ae9f47c7",
+            "label": "School Info",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5a2b0da0452a1",
+            "label": "School Name",
+            "name": "school_name",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a2ac2a7d5e00",
+            "label": "School Address",
+            "name": "school_address_1",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "123 Main Street",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a7a14504ce62",
+            "label": "School Address Line 2",
+            "name": "school_address_2",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Not Chicago, IL 45678",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a2b0dc0452a2",
+            "label": "School Phone Number",
+            "name": "school_phone",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "(555) 555-5555",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a2b0e3f452a3",
+            "label": "School Email Address",
+            "name": "school_email_address",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "email@address.com",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5a2b0f2944292",
+            "label": "Google Tag Manager ID",
+            "name": "gtm_id",
+            "type": "text",
+            "instructions": "Enter the unique ID at the end of the url: https:\/\/www.googletagmanager.com\/ns.html?id=GTM-<strong style=\"background-color: yellow;\">xxxxxx<\/strong>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": 123456,
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a2b0a3af47c3",
+            "label": "Social Links",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5a2b0a4ef47c4",
+            "label": "Social Links",
+            "name": "social_links",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5a2b0a60f47c5",
+                    "label": "Service",
+                    "name": "service",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "Facebook": "Facebook",
+                        "Twitter": "Twitter",
+                        "Google Plus": "Google Plus",
+                        "LinkedIn": "LinkedIn"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5a2b0abcf47c6",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https:\/\/www.twitter.com"
+                }
+            ]
+        },
+        {
+            "key": "field_5a2b0b864656d",
+            "label": "Branding",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5a2b0ba64656e",
+            "label": "School Logo",
+            "name": "school_logo",
+            "type": "image",
+            "instructions": "This is the primary logo, typically the full color version.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a2b0bf84656f",
+            "label": "School Logo Alternative",
+            "name": "school_logo_alternative",
+            "type": "image",
+            "instructions": "Typically a monochrome white logo, used to show up easily on more varied backgrounds.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a7a0e240eb90",
+            "label": "School Logo Compact",
+            "name": "school_logo_compact",
+            "type": "image",
+            "instructions": "This is a compact or simplified version of the primary logo, for when space is a concern.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a7a0e920eb91",
+            "label": "School Logo Compact Alternative",
+            "name": "school_logo_compact_alternative",
+            "type": "image",
+            "instructions": "Typically a monochrome white logo, used to show up easily on more varied backgrounds. This is a compact or simplified version for when space is a concern.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a2b0c5646570",
+            "label": "Primary Color",
+            "name": "color_1",
+            "type": "color_picker",
+            "instructions": "Used primarily for quickly customizing Launch LPs and other content in the WordPress admin",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_5a2b0c6a46571",
+            "label": "Secondary Color",
+            "name": "color_2",
+            "type": "color_picker",
+            "instructions": "Used primarily for quickly customizing Launch LPs and other content in the WordPress admin",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_5a32b52ad36e7",
+            "label": "Headings Font",
+            "name": "headings_font",
+            "type": "select",
+            "instructions": "This font choice only applies to the Launch LPs",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "'Open Sans', Arial, sans-serif": "Open Sans",
+                "'Open Sans Condensed', Arial, sans-serif": "Open Sans Condensed",
+                "'Merriweather', Times New Roman, serif": "Merriweather",
+                "'PT Serif', Times New Roman, serif": "PT Serif"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "array",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5a32b55fd36e8",
+            "label": "Body Font",
+            "name": "body_font",
+            "type": "select",
+            "instructions": "This font choice only applies to the Launch LPs",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "'Open Sans', Arial, sans-serif": "Open Sans",
+                "'Open Sans Condensed', Arial, sans-serif": "Open Sans Condensed",
+                "'Merriweather', Times New Roman, serif": "Merriweather",
+                "'PT Serif', Times New Roman, serif": "PT Serif"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "array",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5c54a88953939",
+            "label": "Default Background Image",
+            "name": "default_background_image",
+            "type": "image",
+            "instructions": "Default image that shows up on fullscreen background pages. Will be overwritten by a page's header image if set.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": 1600,
+            "max_height": "",
+            "max_size": "0.5",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c54a91d470ee",
+            "label": "Favicon",
+            "name": "favicon",
+            "type": "image",
+            "instructions": "Basic favicon for Launch LPs only. Should be a 32x32 PNG. Full OLCs should have a set of favicons from <a href=\"https:\/\/realfavicongenerator.net\/>https:\/\/realfavicongenerator.net\/<\/a>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": 32,
+            "min_height": 32,
+            "min_size": "",
+            "max_width": 32,
+            "max_height": 32,
+            "max_size": "",
+            "mime_types": "png"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1549052934
+}
