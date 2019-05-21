@@ -2,7 +2,7 @@
 ?>
 <?php get_header(); ?>
 
-<main id="content" class="main-content" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main id="content" class="main-content" itemscope itemprop="mainContentOfPage">
 
 	<?php get_template_part( 'template-parts/page-title' ); ?>
 	

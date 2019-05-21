@@ -3,29 +3,29 @@ Typography Styles
 ******************************************************************/
 
 blockquote {
-  font-size: rem(16);
-  line-height: 1.25;
-  /* 25px / 20px */
-  border-left: 4px solid gray;
-  padding-left: 1em;
+	font-size: rem(16);
+	line-height: 1.25;
+	/* 25px / 20px */
+	border-left: 4px solid gray;
+	padding-left: 1em;
 
-  @include min(md) {
-    font-size: rem(24);
-    line-height: 1.45833333;
-  }
+	@include min(md) {
+		font-size: rem(24);
+		line-height: 1.45833333;
+	}
 }
 
 figure,
 figcaption {
-  display: block;
-  font-style: italic;
-  font-size: 0.9em;
-  color: gray;
-  text-align: center;
+	display: block;
+	font-style: italic;
+	font-size: 0.9em;
+	color: gray;
+	text-align: center;
 }
 
 /******************************************************************
-H1, H2, H3, H4, H5 STYLES
+HEADING STYLES
 ******************************************************************/
 
 h1,
@@ -38,57 +38,57 @@ h4,
 .h4,
 h5,
 .h5 {
-  text-rendering: optimizelegibility;
-  line-height: 1.2;
-  margin: 1em 0 1.5rem;
+	text-rendering: optimizelegibility;
+	line-height: 1.2;
+	margin: 1em 0 1.5rem;
 
-  a {
-    text-decoration: none;
-  }
+	a {
+		text-decoration: none;
+	}
 }
 
 h1,
 .h1 {
-  font-size: rem(32);
+	font-size: rem(32);
 
-  @include min(md) {
-    font-size: rem(40);
-  }
+	@include min(md) {
+		font-size: rem(40);
+	}
 }
 
 h2,
 .h2 {
-  font-size: rem(26);
+	font-size: rem(26);
 
-  @include min(md) {
-    font-size: rem(32);
-  }
+	@include min(md) {
+		font-size: rem(32);
+	}
 }
 
 h3,
 .h3 {
-  font-size: rem(22);
+	font-size: rem(22);
 
-  @include min(md) {
-    font-size: rem(24);
-  }
+	@include min(md) {
+		font-size: rem(24);
+	}
 }
 
 h4,
 .h4 {
-  color: $linkColor;
-  font-size: rem(18);
+	color: $linkColor;
+	font-size: rem(18);
 }
 
 h5,
 .h5 {
-  font-size: rem(13.5);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: $linkColor;
+	font-size: rem(13.5);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: $linkColor;
 }
 
 h6,
 .h6 {
-  color: $linkColor;
+	color: $linkColor;
 }

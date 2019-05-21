@@ -25,7 +25,7 @@ $colors: (
 	green: green,
 	orange: darkorange,
 	grayLight: #ddd,
-	grayMedium: #747281,
+	gray: #747281,
 	grayDark: #333,
 	white: white
 );
@@ -51,10 +51,11 @@ $z: (
 $sans-serif: sans-serif;
 $serif: serif;
 /// Text Colors
-$primaryColor: map-get($colors, green);
+$primaryColor: map-get($colors, gray);
 $textColor: map-get($colors, grayDark);
 $linkColor: $primaryColor;
 $linkHover: darken($primaryColor, 15%);
+
 /// Heading Map
 
 // --- Images ---
