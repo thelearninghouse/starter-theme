@@ -45,7 +45,6 @@ require_once( 'inc/gutenberg.php' );
 
 // LOAD COMPONENTS
 require_once( 'inc/components/social-sharing.php' );
-require_once( 'inc/components/cta.php' );
 require_once( 'inc/components/accordion.php' );
 require_once( 'inc/components/icon.php' );
 require_once( 'inc/components/page-navi.php' );
