@@ -3,16 +3,17 @@ Button Styles
 ******************************************************************/
 
 /// BASE BUTTON
-/// @example
-///     @include buton($color);
-/// @param {variable} $btn-color [$linkColor] - Background Button Color
-
-@mixin button($btn-color: $linkColor) {
+@mixin button(
+	$btnColor: $linkColor,
+	$btnHoverColor: darken($linkColor, 10%),
+	$btnTextColor: white,
+	$btnTextHoverColor: white
+) {
 	display: inline-block;
 	position: relative;
 	font-family: $sans-serif;
 	text-decoration: none;
-	color: white !important;
+	color: $btnTextColor;
 	font-size: 1em;
 	line-height: 34px;
 	font-weight: normal;
@@ -21,14 +22,14 @@ Button Styles
 	border: 0;
 	cursor: pointer;
 	transition: background-color 0.14s ease-in-out;
-	background: $btn-color;
+	background: $btnColor;
 
 	// hovering on the btn
 	&:hover,
 	&:focus {
-		color: white;
+		color: $btnTextHoverColor;
 		text-decoration: none;
-		background: darken($btn-color, 15%);
+		background: $btnHoverColor;
 	} // end hover
 
 	// clicking on the button
@@ -39,11 +40,11 @@ Button Styles
 
 // Regular Button
 .button {
-	@include button($linkColor);
+	@include button();
 }
 
 // Small Button
-.button_sm {
+.button--sm {
 	font-size: 0.9em;
 	padding: 0.3em 0.8em;
 }
