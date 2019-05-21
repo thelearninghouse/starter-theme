@@ -30,6 +30,8 @@ $colors: (
 	white: white
 );
 
+$primaryColor: map-get($colors, gray);
+
 // --- Global Spacing ---
 $spacing: (
 	sm: rem(10),
@@ -44,19 +46,16 @@ $z: (
 	form: 10
 );
 
-// --- Typography ---
-/// Text Colors
+// --- Typography ---\
 
 /// Fonts
 $sans-serif: sans-serif;
 $serif: serif;
-/// Text Colors
-$primaryColor: map-get($colors, gray);
+
+/// Colors
 $textColor: map-get($colors, grayDark);
 $linkColor: $primaryColor;
 $linkHover: darken($primaryColor, 15%);
-
-/// Heading Map
 
 // --- Images ---
 // Default Header Hero Image
@@ -66,14 +65,16 @@ $hero-lg: "hero-background-lg.jpg"; // width should be > 1200px
 
 // --- Theming ---
 /// Header
-// $infoBar-bg: color(grayLight);
-// $header-bg: color(white);
+$infoBar-bg: color(red);
+
+$header-bg: color(redDark);
+$header-text: color(white);
 
 /// Mobile Menu
-// $mobileMenu-bg: color(green);
+$mobileMenu-bg: color(green);
 
 /// Page Title
-// $pageTitle-bg: yellow;
+$pageTitle-bg: yellow;
 
 /// Footer
-// $footer-bg: color(green);
+$footer-bg: color(green);
