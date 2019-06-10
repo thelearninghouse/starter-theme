@@ -10,3 +10,4 @@ mix-extend-config.js
 !.DOCUMENTATION/
 !docs/.vuepress/public
 docs/.vuepress/dist
+public/hot
