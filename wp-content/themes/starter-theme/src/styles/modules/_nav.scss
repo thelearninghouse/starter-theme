@@ -13,13 +13,13 @@ NAVIGATION STYLES
 		cursor: pointer;
 	}
 
-	.navWrapper__open:hover,
-	.navWrapper__open:hover:focus {
-		background: rgba(0, 0, 0, 0.2);
-		color: red;
-	}
-
 	.navWrapper {
+		background-color: color(grayLight);
+
+		@if variable-exists("mobileMenu-bg") {
+			background-color: $mobileMenu-bg;
+		}
+
 		position: fixed;
 		z-index: 5;
 		top: 0;
@@ -27,7 +27,6 @@ NAVIGATION STYLES
 		width: 100vw;
 		height: 100vh;
 		overflow: scroll;
-		background: #ccc;
 		transition: 0.2s all ease-in-out;
 		-webkit-transform: translateY(100vh);
 		transform: translateY(100vh);
@@ -45,7 +44,7 @@ NAVIGATION STYLES
 			display: block;
 			cursor: pointer;
 			width: 100%;
-			color: red;
+			color: $primaryColor;
 			background: #fff;
 			font-size: 1.2rem;
 			font-weight: 700;
@@ -105,7 +104,7 @@ NAVIGATION STYLES
 			display: none;
 
 			@include min(md) {
-				background: $link-color;
+				background: $linkColor;
 				margin-top: 0;
 				position: absolute;
 				visibility: hidden;
@@ -166,12 +165,12 @@ NAVIGATION STYLES
 }
 
 /***** SUB MENU TOGGLE BUTTONS *****/
-.subMenu__toggle {
+.sub-menu__toggle {
 	position: absolute;
 	right: 0;
 	top: 0;
 	outline: 0;
-	background: $link-color;
+	background-color: $linkColor;
 	border: none;
 	padding: 1rem;
 
@@ -235,23 +234,23 @@ PAGE NAVI STYLES
 		padding: 0.75em;
 		min-width: 1em;
 		display: block;
-		color: $link-color;
+		color: $linkColor;
 
 		&:hover,
 		&:focus {
-			background-color: $link-color;
+			background-color: $linkColor;
 			color: white;
 		}
 	}
 
 	.current {
 		cursor: default;
-		color: $text-color;
+		color: $textColor;
 
 		&:hover,
 		&:focus {
 			background-color: white;
-			color: $text-color;
+			color: $textColor;
 		}
 	}
 } /* end .tlh_page_navi */

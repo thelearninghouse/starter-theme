@@ -40,7 +40,7 @@
 						<div class="infoBar__info">
 							<?php $school_phone = get_field('school_phone', 'options'); ?>
 							<?php
-								$phone_label = '<strong>Call us today!</strong> ' . tlh_get_icon( 'phone', 'inline', 'Call us today!' ) . ' ' . $school_phone;
+								$phone_label = ' ' . $school_phone;
 								tlh_phone_link( 'infoBar__phone', $phone_label ); ?>
 							<?php $next_start_date = tlh_get_next_start_date();
 								if ( $next_start_date ) { ?>
@@ -64,9 +64,11 @@
 						<?php $school_logo = get_field('school_logo', 'options');
 						if ( $school_logo ) { ?>
 							<img src="<?php echo $school_logo['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">
-						<?php } else { ?>
+						<?php } elseif (get_field('school_name', 'options')) { ?>
 							<span><?php the_field( 'school_name', 'options' ); ?>
-							<?php } ?>
+						<?php } else { ?>
+							<span><?php $blog_title = get_bloginfo( 'name' ); echo $blog_title; ?></span>
+						<?php } ?>
 					</a>
 					<button class="js__menu-trigger navWrapper__open" aria-label="Open Navigation Menu"><?php tlh_icon('menu', '', 'Open Navigation Menu') ?></button>
 					<div class="navWrapper">

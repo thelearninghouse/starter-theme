@@ -33,8 +33,8 @@
 				$font_url = 'https://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $headings_font['label']) . ':400,700|' . str_replace(' ', '+', $body_font['label']) . ':400,700';
 			}
 		?>
-		<link href="<?php echo $font_url ?>" rel="stylesheet">
-		<?php require_once('css-injector/launch-lp.php'); ?>
+		<link href="<?php echo $font_url ?>&font-display=swap" rel="stylesheet">
+		<?php require_once('css-injector/launch-lp.php'); ?> 
 
 		<?php // Load custom CSS for this page
 			$color_1 = get_field('color_1', 'options'); // String: '#0000000'

@@ -3,180 +3,180 @@ HEADER STYLES
 *********************/
 
 .headerMag {
-	position: relative;
-	background-color: white;
+  position: relative;
+  background-color: white;
 
-	@include sectionspace(15, 30);
+  @include sectionspace(15, 30);
 
-	&__navContainer {
-		display: flex;
-		flex-flow: column nowrap;
-		justify-content: space-between;
-		align-items: center;
+  &__navContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
 
-		@include min(md) {
-			flex-flow: row nowrap;
-		}
-	}
+    @include min(md) {
+      flex-flow: row nowrap;
+    }
+  }
 
-	&__logo {
-		display: block;
-		width: rem(180);
-		height: auto;
+  &__logo {
+    display: block;
+    width: rem(180);
+    height: auto;
 
-		@include min(md) {
-			width: rem(240);
-		}
+    @include min(md) {
+      width: rem(240);
+    }
 
-		img {
-			display: block;
-		}
-	}
+    img {
+      display: block;
+    }
+  }
 
-	&__nav {
-		width: 100%;
-		padding: 0;
+  &__nav {
+    width: 100%;
+    padding: 0;
 
-		@include min(md) {
-			width: auto;
-			margin-top: 0;
-			margin-left: rem(20);
-			padding: 0;
-		}
+    @include min(md) {
+      width: auto;
+      margin-top: 0;
+      margin-left: rem(20);
+      padding: 0;
+    }
 
-		.nav {
-			margin: rem(15) 0 0;
-			padding: 0;
-			list-style: none;
-			display: flex;
-			flex-flow: row nowrap;
+    .nav {
+      margin: rem(15) 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-flow: row nowrap;
 
-			@include min(md) {
-				margin-top: 0;
-				margin-left: rem(20);
-			}
+      @include min(md) {
+        margin-top: 0;
+        margin-left: rem(20);
+      }
 
-			li {
-				position: relative;
-				display: block;
-				text-align: center;
-				width: 100%;
+      li {
+        position: relative;
+        display: block;
+        text-align: center;
+        width: 100%;
 
-				&:not(:first-of-type) {
-					margin-left: rem(15);
-				}
+        &:not(:first-of-type) {
+          margin-left: rem(15);
+        }
 
-				@include min(md) {
-					width: auto;
+        @include min(md) {
+          width: auto;
 
-					&:not(:first-of-type) {
-						margin-left: rem(20);
-					}
-				}
+          &:not(:first-of-type) {
+            margin-left: rem(20);
+          }
+        }
 
-				a {
-					display: block;
-					background-color: rgba(0, 0, 0, 0.1);
-					padding: rem(10);
-				}
+        a {
+          display: block;
+          background-color: rgba(0, 0, 0, 0.1);
+          padding: rem(10);
+        }
 
-				&.current-menu-item {
-					a,
-					a:hover,
-					a:focus,
-					a:active {
-						background-color: color(red);
-						color: white;
-					}
-				}
-			}
-		}
-	}
+        &.current-menu-item {
+          a,
+          a:hover,
+          a:focus,
+          a:active {
+            background-color: $primaryColor;
+            color: white;
+          }
+        }
+      }
+    }
+  }
 
-	&__phone {
-		font-family: $sans-serif;
-		font-weight: 700;
-		text-decoration: none;
-		font-size: rem(24);
-		margin-top: rem(10);
+  &__phone {
+    font-family: $sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: rem(24);
+    margin-top: rem(10);
 
-		@include min(md) {
-			margin-top: 0;
-			margin-left: rem(20);
-		}
+    @include min(md) {
+      margin-top: 0;
+      margin-left: rem(20);
+    }
 
-		&:hover {
-			text-decoration: underline;
-		}
+    &:hover {
+      text-decoration: underline;
+    }
 
-		.icon {
-			margin-right: rem(5);
-		}
-	}
+    .icon {
+      margin-right: rem(5);
+    }
+  }
 
-	.getStartedButton {
-		position: fixed;
-		z-index: 10;
-		bottom: rem(15);
-		right: rem(15);
-		text-align: center;
+  .getStartedButton {
+    position: fixed;
+    z-index: 10;
+    bottom: rem(15);
+    right: rem(15);
+    text-align: center;
 
-		@include min(md) {
-			display: none;
-		}
+    @include min(md) {
+      display: none;
+    }
 
-		&:active {
-			top: unset;
-		}
+    &:active {
+      top: unset;
+    }
 
-		.icon {
-			margin-left: rem(5);
-		}
-	}
+    .icon {
+      margin-left: rem(5);
+    }
+  }
 
-	&__pageHeading {
-		position: relative;
-		font-weight: 600;
-		font-style: italic;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: rem(50);
-		margin-bottom: 0;
+  &__pageHeading {
+    position: relative;
+    font-weight: 600;
+    font-style: italic;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: rem(50);
+    margin-bottom: 0;
 
-		@include min(md) {
-			margin-top: rem(80);
-		}
-	}
+    @include min(md) {
+      margin-top: rem(80);
+    }
+  }
 
-	&__pageSubheading {
-		display: block;
-		font-size: rem(16);
-		font-weight: 400;
-		font-style: normal;
+  &__pageSubheading {
+    display: block;
+    font-size: rem(16);
+    font-weight: 400;
+    font-style: normal;
 
-		@include min(md) {
-			font-size: rem(22);
-		}
+    @include min(md) {
+      font-size: rem(22);
+    }
 
-		@include min(lg) {
-			font-size: rem(34);
-		}
-	}
+    @include min(lg) {
+      font-size: rem(34);
+    }
+  }
 }
 
 .headerMag__phone {
-	font-size: rem(30);
-	margin-top: rem(20);
-	text-decoration: underline;
-	color: inherit;
+  font-size: rem(30);
+  margin-top: rem(20);
+  text-decoration: underline;
+  color: inherit;
 
-	&:hover,
-	&:focus {
-		color: inherit;
-	}
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
 
-	@include min(md) {
-		margin-top: 0;
-		margin-left: rem(20);
-	}
+  @include min(md) {
+    margin-top: 0;
+    margin-left: rem(20);
+  }
 }

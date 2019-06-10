@@ -2,9 +2,18 @@
 HEADER STYLES
 *********************/
 
-$infoBar-bg: color(grayLight);
-
 .header {
+	@if variable-exists("header-bg") {
+		background-color: $header-bg;
+	}
+	@if variable-exists("header-text") {
+		color: $header-text;
+
+		a {
+			color: $header-text;
+		}
+	}
+
 	&__logo {
 		max-width: rem(200);
 
@@ -21,13 +30,12 @@ $infoBar-bg: color(grayLight);
 		padding-top: rem(20);
 		padding-bottom: rem(20);
 	}
-
-	&__button {
-	}
 }
 
 .infoBar {
-	background-color: $infoBar-bg;
+	@if variable-exists("infoBar-bg") {
+		background-color: $infoBar-bg;
+	}
 	padding-top: rem(10);
 	padding-bottom: rem(10);
 	// font-size: rem(12);

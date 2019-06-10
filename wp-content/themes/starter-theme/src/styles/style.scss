@@ -2,8 +2,8 @@
 Main OLC Stylesheet
 ******************************************************************/
 
-@import "base/variables";
 @import "base/mixins";
+@import "base/variables";
 
 @import "generic/base";
 @import "generic/typography";
@@ -14,7 +14,6 @@ Main OLC Stylesheet
 @import "modules/accordion";
 @import "modules/buttons";
 @import "modules/cards";
-@import "modules/cta-blog";
 @import "modules/forms";
 @import "modules/fancy-numbers";
 @import "modules/icon";

@@ -3,12 +3,12 @@ LINK STYLES
 *********************/
 
 a {
-	color: $link-color;
+	color: $linkColor;
 
 	/* on hover */
 	&:hover,
 	&:focus {
-		color: $link-hover;
+		color: $linkHover;
 	}
 
 	/* mobile tap color */

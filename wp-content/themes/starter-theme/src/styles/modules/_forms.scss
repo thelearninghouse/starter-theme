@@ -14,7 +14,7 @@ textarea,
 	display: block;
 	line-height: 1em;
 	font-size: 1em;
-	color: $text-color;
+	color: $textColor;
 	border-color: gray;
 	border-width: 2px;
 	border-style: solid;
@@ -103,7 +103,7 @@ legend,
 .formError {
 	background: red;
 	color: white;
-	padding: em(5);
+	padding: rem(5);
 }
 
 .requestinfo ol {
@@ -111,7 +111,7 @@ legend,
 	padding-left: 0;
 
 	li {
-		margin-bottom: em(12);
+		margin-bottom: rem(12);
 	}
 }
 
