@@ -53,9 +53,9 @@ add_filter( 'upload_mimes', 'cc_mime_types' );
 
 // Privacy Policy Shortcode
 function privacy_policy() {
-	  $file       = 'http://www.learninghouse.com/privacy/privacy.txt';
-			$data = file_get_contents( $file );
-			return $data;
+	$file = 'http://www.learninghouse.com/privacy/privacy.txt';
+	$data = file_get_contents( $file );
+	return $data;
 }
 add_shortcode( 'privacy', 'privacy_policy' );
 
@@ -147,30 +147,6 @@ function tlh_add_toolbar_items( $admin_bar ) {
 }
 add_action( 'admin_bar_menu', 'tlh_add_toolbar_items', 9999 );
 
-// Create dynamic select for icons that pulls from icons folder in theme
-// function acf_load_icon_field_choices( $field ) {
-//
-//   // reset choices
-//   $field['choices'] = array();
-//
-// 	$icon_dir = get_stylesheet_directory() . '/public/images/icons/';
-// 	$icon_files = scandir($icon_dir);
-// 	foreach ($icon_files as $icon_file) {
-// 		// append to choices
-//
-// 		$icon_name = str_replace('.svg', '', $icon_file);
-//
-// 		if ( substr( $icon_name, 0, 1 ) !== '.' ) {
-// 	  	$field['choices'][ $icon_name ] = $icon_name;
-// 		}
-// 	}
-//
-//   // return the field
-//   return $field;
-//
-// }
-// add_filter('acf/load_field/name=icon', 'acf_load_icon_field_choices');
-
 // Remove Archive Labels
 function tlh_theme_archive_title( $title ) {
 	if ( is_category() ) {
@@ -195,12 +171,24 @@ function tlh_move_yoast() {
 }
 add_filter( 'wpseo_metabox_prio', 'tlh_move_yoast' );
 
+// add accessibility to external menu links
+function tlh_describe_menu_items( $atts, $item, $args ) {
+	if ( '_blank' === $atts['target'] ) {
+		$link_title         = $item->post_title;
+		$atts['aria-label'] = 'External link to ' . $link_title;
+		$atts['rel']        = 'nofollow';
+	}
+
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'tlh_describe_menu_items', 10, 3 );
+
 // Customize tinymce editor
 function tlh_tinymce_buttons( $buttons ) {
-	  // Add style selector to the beginning of the toolbar
-	  array_unshift( $buttons, 'styleselect' );
+	// Add style selector to the beginning of the toolbar
+	array_unshift( $buttons, 'styleselect' );
 
-	  return $buttons;
+	return $buttons;
 }
 add_filter( 'mce_buttons', 'tlh_tinymce_buttons' );
 
