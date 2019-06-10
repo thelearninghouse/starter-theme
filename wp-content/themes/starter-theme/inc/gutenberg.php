@@ -1,10 +1,10 @@
 <?php
 
 function tlh_allowed_block_types( $allowed_block_types, $post ) {
-  // if ( $post->post_type !== 'post' ) {
+	// if ( $post->post_type !== 'post' ) {
 	//   return $allowed_block_types;
-  // }
-  return array(
+	// }
+	return array(
 		'core/paragraph',
 		'core/image',
 		'core/heading',
@@ -24,5 +24,3 @@ function tlh_allowed_block_types( $allowed_block_types, $post ) {
 }
 
 add_filter( 'allowed_block_types', 'tlh_allowed_block_types', 10, 2 );
-
-?>
