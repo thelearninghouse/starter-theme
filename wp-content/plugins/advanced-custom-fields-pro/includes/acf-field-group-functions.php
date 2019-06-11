@@ -455,7 +455,7 @@ function acf_get_field_group_visibility( $field_group, $args = array() ) {
 			// Loop over rules and determine if all rules match.
 			$match_group = true;
 			foreach( $group as $rule ) {
-				if( !acf_match_location_rule( $rule, $screen ) ) {
+				if( !acf_match_location_rule( $rule, $screen, $field_group ) ) {
 					$match_group = false;
 					break;
 				}
@@ -1038,7 +1038,7 @@ function acf_import_field_group( $field_group ) {
 			
 			// Only add menu order if doesn't already exist.
 			// Allows Flexible Content field to set custom order.
-			if( empty($field['menu_order']) ) {
+			if( !isset($field['menu_order']) ) {
 				$field['menu_order'] = ($count[ $field['parent'] ] - 1);
 			}
 			

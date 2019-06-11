@@ -38,6 +38,9 @@ function acf_register_block_type( $block ) {
 		));
 	}
 	
+	// Register action.
+	add_action( 'enqueue_block_editor_assets', 'acf_enqueue_block_assets' );
+	
 	// Return block.
 	return $block;
 }
@@ -130,18 +133,6 @@ function acf_remove_block_type( $name ) {
  */
 function acf_get_block_type_default_attributes() {
 	return array(
-		'className'	=> array(
-			'type'		=> 'string',
-			'default'	=> '',
-		),
-		'align'		=> array(
-			'type'		=> 'string',
-			'default'	=> '',
-		),
-		'data'		=> array(
-			'type'		=> 'object',
-			'default'	=> array(),
-		),
 		'id'		=> array(
 			'type'		=> 'string',
 			'default'	=> '',
@@ -150,10 +141,18 @@ function acf_get_block_type_default_attributes() {
 			'type'		=> 'string',
 			'default'	=> '',
 		),
-		'mode'		=> array(
-			'type'		=> 'mode',
+		'data'		=> array(
+			'type'		=> 'object',
+			'default'	=> array(),
+		),
+		'align'		=> array(
+			'type'		=> 'string',
 			'default'	=> '',
 		),
+		'mode'		=> array(
+			'type'		=> 'string',
+			'default'	=> '',
+		)
 	);
 }
 
@@ -182,15 +181,18 @@ function acf_validate_block_type( $block ) {
 		'keywords'			=> array(),
 		'supports'			=> array(),
 		'post_types'		=> array(),
-		'render_template'	=> '',
-		'render_callback'	=> false
+		'render_template'	=> false,
+		'render_callback'	=> false,
+		'enqueue_style'		=> false,
+		'enqueue_script'	=> false,
+		'enqueue_assets'	=> false,
 	));
 	
 	// Restrict keywords to 3 max to avoid JS error.
 	$block['keywords'] = array_slice($block['keywords'], 0, 3);
 	
 	// Generate name with prefix.
-	$block['name'] = acf_slugify( 'acf/' . $block['name'] );
+	$block['name'] = 'acf/' . acf_slugify($block['name']);
 	
 	// Add default 'supports' settings.
 	$block['supports'] = wp_parse_args($block['supports'], array(
@@ -290,6 +292,9 @@ function acf_render_block( $block, $content = '', $is_preview = false, $post_id 
 		$post_id = get_the_ID();
 	}
 	
+	// Enqueue block type assets.
+	acf_enqueue_block_type_assets( $block );
+	
 	// Setup postdata allowing get_field() to work.
 	acf_setup_meta( $block['data'], $block['id'], true );
 	
@@ -349,7 +354,7 @@ function acf_get_block_fields( $block ) {
 }
 
 /**
- * acf_enqueue_block_scripts
+ * acf_enqueue_block_assets
  *
  * Enqueues and localizes block scripts and styles.
  *
@@ -359,7 +364,7 @@ function acf_get_block_fields( $block ) {
  * @param	void
  * @return	void
  */
-function acf_enqueue_block_scripts() {
+function acf_enqueue_block_assets() {
 	
 	// Localize text.
 	acf_localize_text(array(
@@ -367,20 +372,52 @@ function acf_enqueue_block_scripts() {
 		'Switch to Preview'		=> __('Switch to Preview', 'acf'),
 	));
 	
+	// Get block types.
+	$block_types = acf_get_block_types();
+	
 	// Localize data.
 	acf_localize_data(array(
-		'blockTypes'	=> array_values( acf_get_block_types() )
+		'blockTypes'	=> array_values( $block_types )
 	));
 	
-	// Vars.
-	$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+	// Enqueue script.
+	wp_enqueue_script('acf-blocks', acf_get_url("pro/assets/js/acf-pro-blocks.min.js"), array('acf-input', 'wp-blocks'), ACF_VERSION, true );
 	
-	// Enqueue
-	wp_enqueue_script('acf-blocks', acf_get_url("pro/assets/js/acf-pro-blocks{$min}.js"), array('acf-input', 'wp-blocks'), ACF_VERSION );
+	// Enqueue block assets.
+	array_map( 'acf_enqueue_block_type_assets', $block_types );
 }
 
-// Register action.
-add_action( 'enqueue_block_assets', 'acf_enqueue_block_scripts' );
+/**
+ * acf_enqueue_block_type_assets
+ *
+ * Enqueues scripts and styles for a specific block type.
+ *
+ * @date	28/2/19
+ * @since	5.7.13
+ *
+ * @param	array $block_type The block type settings.
+ * @return	void
+ */
+function acf_enqueue_block_type_assets( $block_type ) {
+	
+	// Generate handle from name.
+	$handle = 'block-' . acf_slugify($block_type['name']);
+	
+	// Enqueue style.
+	if( $block_type['enqueue_style'] ) {
+		wp_enqueue_style( $handle, $block_type['enqueue_style'], array(), false, 'all' );
+	}
+	
+	// Enqueue script.
+	if( $block_type['enqueue_script'] ) {
+		wp_enqueue_script( $handle, $block_type['enqueue_script'], array(), false, true );
+	}
+	
+	// Enqueue assets callback.
+	if( $block_type['enqueue_assets'] && is_callable($block_type['enqueue_assets']) ) {
+		call_user_func( $block_type['enqueue_assets'] );
+	}
+}
 
 /**
  * acf_ajax_fetch_block
@@ -412,33 +449,34 @@ function acf_ajax_fetch_block() {
 		wp_send_json_error();
 	}
 	
-	// Unslash $_POST data.
+	// Unslash and decode $_POST data.
 	$block = wp_unslash($block);
+	$block = json_decode($block, true);
 	
 	// Prepare block ensuring all settings and attributes exist.
 	if( !$block = acf_prepare_block( $block ) ) {
 		wp_send_json_error();
 	}
 	
-	// Handle new block default values
-	$fields = acf_get_block_fields( $block );
-	if( !$block['data'] && $fields ) {
-	   		
-   		// Loop over fields and set default value.
-   		$block['data'] = array();
-   		foreach( $fields as $field ) {
-		   	$block['data'][ $field['key'] ] = acf_get_value( $block['id'], $field );
+	// Load field defaults when first previewing a block.
+	if( !empty($query['preview']) && !$block['data'] ) {
+		$fields = acf_get_block_fields( $block );
+		foreach( $fields as $field ) {
+		   	$block['data'][ "_{$field['name']}" ] = $field['key'];
    		}
 	}
 	
 	// Setup postdata allowing form to load meta.
-	acf_setup_meta( $block['data'], $block['id'], true );	
-   		
+	acf_setup_meta( $block['data'], $block['id'], true );
+   	
 	// Vars.
 	$response = array();
 	
 	// Query form.
 	if( !empty($query['form']) ) {
+		
+		// Load fields for form.
+		$fields = acf_get_block_fields( $block );
 		
 		// Prefix field inputs to avoid multiple blocks using the same name/id attributes.
 		acf_prefix_fields( $fields, "acf-{$block['id']}" );
@@ -481,37 +519,33 @@ function acf_ajax_fetch_block() {
 acf_register_ajax( 'fetch-block', 'acf_ajax_fetch_block' );
 
 /**
- * acf_apply_blocks_insert_post_data
+ * acf_parse_save_blocks
  *
- * Modifies the post_content value before it is saved to the database to change "data" to "meta".
+ * Parse content that may contain HTML block comments and saves ACF block meta.
  *
  * @date	27/2/19
  * @since	5.7.13
  *
- * @param	array $data An array of slashed post data.
- * @param	array $data An array of sanitized, but otherwise unmodified post data.
- * @return	array
+ * @param	string $text Content that may contain HTML block comments.
+ * @return	string
  */
-function acf_apply_blocks_insert_post_data( $data, $postarr ) {
+function acf_parse_save_blocks( $text = '' ) {
 	
-	// Search post_content for dynamic blocks and modify attrs.
-	$post_content = wp_unslash( $data['post_content'] );
-	$post_content = preg_replace_callback( '/<!--\s+wp:(?P<name>[\S]+)\s+(?P<attrs>{[\S\s]+?})\s+\/-->/', 'acf_preg_replace_block_comment', $post_content, -1, $count );
-	
-	// Detect change.
-	if( $count ) {
-		$data['post_content'] = wp_slash( $post_content );
-	}
-	
-	// Return data.
-	return $data;
+	// Search text for dynamic blocks and modify attrs.
+	return addslashes(
+		preg_replace_callback(
+			'/<!--\s+wp:(?P<name>[\S]+)\s+(?P<attrs>{[\S\s]+?})\s+\/-->/',
+			'acf_parse_save_blocks_callback',
+			stripslashes( $text )
+		)
+	);
 }
 
 // Hook into saving process.
-add_filter( 'wp_insert_post_data', 'acf_apply_blocks_insert_post_data', 10, 2 );
+add_filter( 'content_save_pre', 'acf_parse_save_blocks', 5, 1 );
 
 /**
- * acf_preg_replace_block_comment
+ * acf_parse_save_blocks_callback
  *
  * Callback used in preg_replace to modify ACF Block comment.
  *
@@ -521,11 +555,11 @@ add_filter( 'wp_insert_post_data', 'acf_apply_blocks_insert_post_data', 10, 2 );
  * @param	array $matches The preg matches.
  * @return	string
  */
-function acf_preg_replace_block_comment( $matches ) {
+function acf_parse_save_blocks_callback( $matches ) {
 	
 	// Defaults
 	$name = isset($matches['name']) ? $matches['name'] : '';
-	$attrs = isset($matches['attrs']) ? json_decode($matches['attrs'], true) : '';
+	$attrs = isset($matches['attrs']) ? json_decode( $matches['attrs'], true) : '';
 	
 	// Bail early if missing data or not an ACF Block.
 	if( !$name || !$attrs || !acf_has_block_type($name) ) {
@@ -538,7 +572,21 @@ function acf_preg_replace_block_comment( $matches ) {
 		$attrs['data'] = acf_setup_meta( $attrs['data'], $attrs['id'] );
 	}
 	
+	// Prevent wp_targeted_link_rel from corrupting JSON.
+	remove_filter( 'content_save_pre', 'wp_filter_post_kses' );
+	remove_filter( 'content_save_pre', 'wp_targeted_link_rel' );
+	remove_filter( 'content_save_pre', 'balanceTags', 50 );
+	
+	/**
+	 * Filteres the block attributes before saving.
+	 *
+	 * @date	18/3/19
+	 * @since	5.7.14
+	 *
+	 * @param	array $attrs The block attributes.
+	 */
+	$attrs = apply_filters( 'acf/pre_save_block', $attrs );
+	
 	// Return new comment
-	return '<!-- wp:' . $name . ' ' . json_encode( $attrs, JSON_PRETTY_PRINT ) . ' /-->';
+	return '<!-- wp:' . $name . ' ' . acf_json_encode($attrs) . ' /-->';
 }
-

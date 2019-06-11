@@ -6,12 +6,14 @@
  */
 
 /**
- * This class forces needed methods for the metabox localization
+ * This class forces needed methods for the metabox localization.
  */
 class WPSEO_Metabox_Formatter {
 
 	/**
-	 * @var WPSEO_Metabox_Formatter_Interface Object that provides formatted values.
+	 * Object that provides formatted values.
+	 *
+	 * @var WPSEO_Metabox_Formatter_Interface
 	 */
 	private $formatter;
 
@@ -25,7 +27,7 @@ class WPSEO_Metabox_Formatter {
 	}
 
 	/**
-	 * Returns the values
+	 * Returns the values.
 	 *
 	 * @return array
 	 */
@@ -37,7 +39,7 @@ class WPSEO_Metabox_Formatter {
 	}
 
 	/**
-	 * Returns array with all the values always needed by a scraper object
+	 * Returns array with all the values always needed by a scraper object.
 	 *
 	 * @return array Default settings for the metabox.
 	 */
@@ -65,9 +67,9 @@ class WPSEO_Metabox_Formatter {
 			'cornerstoneActive'         => WPSEO_Options::get( 'enable_cornerstone_content', false ) ? 1 : 0,
 			'intl'                      => $this->get_content_analysis_component_translations(),
 			'isRtl'                     => is_rtl(),
+			'isPremium'                 => WPSEO_Utils::is_yoast_seo_premium(),
 			'addKeywordUpsell'          => $this->get_add_keyword_upsell_translations(),
 			'wordFormRecognitionActive' => ( WPSEO_Language_Utils::get_language( get_locale() ) === 'en' ),
-			'recalibrationBetaActive'   => WPSEO_Recalibration_Beta::is_enabled(),
 
 			/**
 			 * Filter to determine if the markers should be enabled or not.
@@ -79,54 +81,46 @@ class WPSEO_Metabox_Formatter {
 				'labels' => array(
 					'content' => array(
 						'na'   => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'Readability: %1$sNot available%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to readability. */
+							__( 'Readability: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'Not available', 'wordpress-seo' ) . '</strong>'
 						),
 						'bad'  => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'Readability: %1$sNeeds improvement%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to readability. */
+							__( 'Readability: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'Needs improvement', 'wordpress-seo' ) . '</strong>'
 						),
 						'ok'   => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'Readability: %1$sOK%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to readability. */
+							__( 'Readability: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'OK', 'wordpress-seo' ) . '</strong>'
 						),
 						'good' => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'Readability: %1$sGood%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to readability. */
+							__( 'Readability: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'Good', 'wordpress-seo' ) . '</strong>'
 						),
 					),
 					'keyword' => array(
 						'na'   => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'SEO: %1$sNot available%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to SEO. */
+							__( 'SEO: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'Not available', 'wordpress-seo' ) . '</strong>'
 						),
 						'bad'  => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'SEO: %1$sNeeds improvement%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to SEO. */
+							__( 'SEO: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'Needs improvement', 'wordpress-seo' ) . '</strong>'
 						),
 						'ok'   => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'SEO: %1$sOK%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to SEO. */
+							__( 'SEO: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'OK', 'wordpress-seo' ) . '</strong>'
 						),
 						'good' => sprintf(
-							/* translators: %1$s expands to an opening strong tag, %2$s expands to a closing strong tag. */
-							__( 'SEO: %1$sGood%2$s', 'wordpress-seo' ),
-							'<strong>',
-							'</strong>'
+							/* translators: %s expands to SEO. */
+							__( 'SEO: %s', 'wordpress-seo' ),
+							'<strong>' . __( 'Good', 'wordpress-seo' ) . '</strong>'
 						),
 					),
 				),
@@ -186,8 +180,8 @@ class WPSEO_Metabox_Formatter {
 		return array(
 			'title'                    => __( 'Would you like to add more than one keyphrase?', 'wordpress-seo' ),
 			'intro'                    => sprintf(
-				/* translators: %1$s expands to a 'Yoast SEO Premium' text linked to the yoast.com website. */
-				__( 'Great news: you can, with %1$s!', 'wordpress-seo' ),
+				/* translators: %s expands to a 'Yoast SEO Premium' text linked to the yoast.com website. */
+				__( 'Great news: you can, with %s!', 'wordpress-seo' ),
 				'{{link}}Yoast SEO Premium{{/link}}'
 			),
 			'link'                     => WPSEO_Shortlinker::get( 'https://yoa.st/pe-premium-page' ),
@@ -202,7 +196,7 @@ class WPSEO_Metabox_Formatter {
 				__( 'Get %s', 'wordpress-seo' ),
 				'Yoast SEO Premium'
 			),
-			'small'                    => __( '1 year free updates and upgrades included!', 'wordpress-seo' ),
+			'small'                    => __( '1 year free support and updates included!', 'wordpress-seo' ),
 			'a11yNotice.opensInNewTab' => __( '(Opens in a new browser tab)', 'wordpress-seo' ),
 		);
 	}
@@ -233,12 +227,22 @@ class WPSEO_Metabox_Formatter {
 	 * @return boolean
 	 */
 	private function is_markdown_enabled() {
+		$is_markdown = false;
+
 		if ( class_exists( 'Jetpack' ) && method_exists( 'Jetpack', 'get_active_modules' ) ) {
 			$active_modules = Jetpack::get_active_modules();
 
-			return in_array( 'markdown', $active_modules, true );
+			// First at all, check if Jetpack's markdown module is active.
+			$is_markdown  = in_array( 'markdown', $active_modules, true );
 		}
 
-		return false;
+		/**
+		 * Filters whether markdown support is active in the readability- and seo-analysis.
+		 *
+		 * @since 11.3
+		 *
+		 * @param array $is_markdown Is markdown support for Yoast SEO active.
+		 */
+		return apply_filters( 'wpseo_is_markdown_enabled', $is_markdown );
 	}
 }

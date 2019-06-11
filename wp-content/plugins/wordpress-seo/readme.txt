@@ -3,10 +3,10 @@ Contributors: yoast, joostdevalk, tacoverdo, omarreiss, atimmer, jipmoors
 Donate link: https://yoa.st/1up
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: SEO, XML sitemap, Google Search Console, Content analysis, Readability
+Tags: SEO, XML sitemap, Content analysis, Readability
 Requires at least: 4.9
-Tested up to: 5.1
-Stable tag: 9.7
+Tested up to: 5.2.1
+Stable tag: 11.3
 Requires PHP: 5.2.4
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -42,11 +42,10 @@ Yoast SEO does everything in its power to please both visitors and search engine
 
 * Yoast SEO tunes the engine of your site so you can work on creating great content.
 * Our cornerstone content and internal linking features help you optimize your site structure in a breeze.
-* Integrates with Google Search Console: See how your site performs in the search engines and fix crawl errors.
 * Manage SEO roles: Give your colleagues access to specific sections of the Yoast SEO plugin.
 * Bulk editor: Make large-scale edits to your site.
 * **[Premium]** Social previews to manage the way your page is shared on social networks like Facebook and Twitter.
-* **[Premium]** Redirect manager: It keeps your site healthy by easily redirecting errors from Google Search Console, deleted pages and changed URLs.
+* **[Premium]** Redirect manager: It keeps your site healthy by easily redirecting deleted pages and changed URLs.
 
 ### Premium support
 
@@ -106,50 +105,66 @@ You'll find answers to many of your questions on [kb.yoast.com](https://yoa.st/1
 
 == Changelog ==
 
-= 9.7.0 =
-Release Date: February 26th, 2019
+= 11.3.0 =
+Release Date: May 28th, 2019
+
+High-time for another release, namely Yoast SEO 11.3. This release features enhancements and bug fixes aimed at improving the way your favorite SEO plugin performs. Read more about the release in [our 11.3 release post](https://yoa.st/release-11-3).
 
 Enhancements:
 
-* Replaces inch marks by smart quotes in search breadcrumbs.
-* Improves the feedback for the assessment that checks the length of cornerstone articles.
-* Improves accessibility and focus management for the How-To and FAQ structured data blocks.
-* Improves the Internal Links table headers on the post overview for better translations and accessibility.
-* Adds a description of the SEO and Readability score to the posts and taxonomies overview in mobile view.
-* Adds a label element to the Google Search Console authorisation code input field in the configuration wizard.
+* When the site is set to represent a person, a logo/avatar to be used in the knowledge graph can now be selected in the Search Appearance settings.
+* Adds the `wpseo_should_index_links` filter that can be used to disable the link indexation.
+* Enables builtin Taxonomies for the 'Content type archive to show in breadcrumbs for taxonomies' section to allow the Blog archive page be added to the breadcrumbs.
+* Props to [@ramiy](https://profiles.wordpress.org/ramiy/) for making translating the plugin easier by merging near identical strings.
 
 Bugfixes:
 
-* Fixes a bug where a Flesch reading ease score of exactly 90 would trigger incorrect feedback.
-* Fixes a bug where the taxonomy sitemap provider would not handle private taxonomies as expected, resulting in sitemaps not being accessible in specific situations.
-* Fixes a bug where an empty twitter description instead of the term description would be shown.
-* Fixes a bug where 'undefined index' warnings would be given when saving a Facebook image.
-* Fixes a bug where the Recalibration Beta could not be loaded in combination with specific server configurations.
-
-= 9.6.0 =
-Release Date: February 12th, 2019
-
-Content analysis recalibration (beta):
-
-* As there are already a lot of users who are participating in testing, we currently have enough input to start preparing for the release of the improved analysis.
-  * Removes the ability to enable beta testing for new installations.
-  * When the feature is disabled, the ability to re-enable it will disappear.
-
-Enhancements:
-
-* Removes schema (JSON+LD) output from 404 pages.
-* Improves the Google Search Console table accessibility by removing a duplicate button.
-* Improves the code to better comply to the coding standards.
-
-Bugfixes:
-
-* Fixes a bug where an empty feed would be available for non-existing pages. Props [stodorovic](https://github.com/stodorovic).
-* Prevents `vendor_prefix/j4mie/idiorm/demo.php` from being included in the release.
+* Fixes a bug where sitemaps would be shown in the `sitemap_index.xml` but result in a 404 when requested.
+* Fixes a bug where the schema output would include an invalid publisher when the site was set to represent a person.
+* Fixes a bug where a `Person` schema object would be output, when the site was set to represent a person, but no specific person was selected.
+* Fixes a bug where it would no longer be possible to change the user in the Search Appearance settings when the previously selected user had been deleted.
 
 Other:
 
-* Props to [Kingdutch](https://github.com/Kingdutch) for helping improve our open source content analysis library.
-* Improves the redirect upsell when creating redirects in the search console overview.
+* Removes the help center from the metabox.
+* Removes redundant `name` attribute from `author` in `Article` schema markup piece.
+* Increases the MyYoast API request timeout from 1 to 5 seconds, to give servers with a less optimal connection to our services more room to fetch the data.
+
+= 11.2.1 =
+Release Date: May 16th, 2019
+
+Bugfixes:
+
+* Fixes a bug where the metabox would be empty on WordPress versions below 5.0.
+* Fixes a bug where the metabox would be empty when both the classic editor plugin as well as the Gutenberg plugin were installed.
+
+Other:
+
+* Introduces a notification that encourages updating to the latest WordPress version.
+
+= 11.2.0 =
+Release Date: May 15th, 2019
+
+Enhancements:
+
+* Introduces a fallback to the first image in the content for the schema output when no featured image has been set.
+* Adds a `wpseo_schema_person_social_profiles` filter to allow filtering in/out extra social profiles to show.
+* Adds a `wpseo_schema_needs_<class_name>` filter that allows filtering graph pieces in or out.
+* Adds a `wpseo_sitemap_post_statuses` filter to add posts with custom post statuses to the sitemap. Props to [stodorovic](https://github.com/stodorovic) and [tolnem](https://github.com/tolnem).
+* Adds a custom overlay color to the snippet preview modal.
+* Adds the correct focus style to the Configuration Wizard navigation buttons.
+* Props to [@ramiy](https://profiles.wordpress.org/ramiy/) for making translating the plugin easier by merging near identical strings.
+
+Bugfixes:
+
+* Fixes a bug where the URL to Pinterest's claim page was incorrect. Props [@ramiy](https://profiles.wordpress.org/ramiy/).
+* Fixes a bug where notifications about incompatibility would be thrown for inactive add-ons.
+* Fixes a bug where URLs with a non-Yoast SEO related xsl query string parameter would result in a blank page. Props [@stodorovic](https://github.com/stodorovic) and [@yiska](https://github.com/yiska).
+
+Other:
+
+* Removes the `add_opengraph_namespace` filter because the OGP.me HTML namespace is not used anymore.
+* Decouples the sitemap debug information from the general `WP_DEBUG` development flag and introduces the `YOAST_SEO_DEBUG_SITEMAPS` flag to better control this functionality.
 
 = Earlier versions =
 
