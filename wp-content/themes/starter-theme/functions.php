@@ -34,7 +34,11 @@ require_once( 'inc/maintenance-mode.php' );
 require_once( 'inc/theme-support.php' );
 
 // LOAD TEMPLATE TAGS
-require_once( 'inc/template-tags.php' );
+require_once( 'inc/template-tags/byline.php' );
+require_once( 'inc/template-tags/field.php' );
+require_once( 'inc/template-tags/next-start-date.php' );
+require_once( 'inc/template-tags/phone-link.php' );
+require_once( 'inc/template-tags/responsive-bg-style.php' );
 
 // LOAD SCRIPTS
 require_once( 'inc/enqueue-scripts.php' );
