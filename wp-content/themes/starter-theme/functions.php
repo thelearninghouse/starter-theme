@@ -7,11 +7,13 @@
  * @package tlh-starter-theme
  */
 
- function is_post_type($type){
-     global $wp_query;
-     if($type == get_post_type($wp_query->post->ID)) return true;
-     return false;
- }
+function is_post_type( $type ) {
+	global $wp_query;
+	if ( get_post_type( $wp_query->post->ID ) === $type ) {
+		return true;
+	}
+	return false;
+}
 
 // LOAD SETUP
 require_once( 'inc/setup.php' );
@@ -48,5 +50,3 @@ require_once( 'inc/components/social-sharing.php' );
 require_once( 'inc/components/accordion.php' );
 require_once( 'inc/components/icon.php' );
 require_once( 'inc/components/page-navi.php' );
-
-/* DON'T DELETE THIS CLOSING TAG */ ?>

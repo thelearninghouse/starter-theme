@@ -7,22 +7,22 @@
 		<?php // force Internet Explorer to use the latest rendering engine available ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title><?php wp_title(''); ?></title>
+		<title><?php wp_title( '' ); ?></title>
 
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheedFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<?php if ( $favicon_image = get_field('favicon', 'options') ) { ?>
+		<?php if ( $favicon_image = get_field( 'favicon', 'options' ) ) { ?>
 			<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $favicon_image; ?>">
 		<?php } ?>
 
-		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 		<?php wp_head(); ?>
 
-		<?php require_once('css-injector/basic.php'); ?>
+		<?php require_once( 'css-injector/basic.php' ); ?>
 
 		<?php get_template_part( 'template-parts/header/tag-manager-script' ); ?>
 	</head>
@@ -37,9 +37,10 @@
 					<div class="wrapMd">
 						<span class="headerBasic__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">
 							<?php
-								$school_logo = get_field('school_logo_alternative', 'options');
-								$school_logo_compact = get_field('school_logo_compact_alternative', 'options');
-								if ( $school_logo ) { ?>
+								$school_logo         = get_field( 'school_logo_alternative', 'options' );
+								$school_logo_compact = get_field( 'school_logo_compact_alternative', 'options' );
+							if ( $school_logo ) {
+								?>
 									<picture>
 										<source srcset="<?php echo $school_logo['url']; ?>" media="(min-width: 768px)">
 										<img src="<?php echo $school_logo_compact['url']; ?>" alt="<?php echo $school_logo['alt']; ?>">

@@ -6,9 +6,14 @@
 	<section aria-label="Page Content">
 		<div class="pageContent wrapLg">
 			<div class="pageContent__main">
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-						<?php the_content(); ?>
-				<?php endwhile; endif; ?>
+				<?php
+				if ( have_posts() ) {
+					while ( have_posts() ) {
+						the_post();
+						the_content();
+					}
+				}
+				?>
 			</div>
 			<div class="pageContent__sidebar">
 				<?php get_sidebar(); ?>

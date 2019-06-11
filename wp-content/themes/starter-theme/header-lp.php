@@ -7,7 +7,7 @@
 		<?php // force Internet Explorer to use the latest rendering engine available ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title><?php wp_title(''); ?></title>
+		<title><?php wp_title( '' ); ?></title>
 
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheedFriendly" content="True">
@@ -16,11 +16,11 @@
 
 		<?php get_template_part( 'template-parts/header/favicons' ); ?>
 
-		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 		<?php wp_head(); ?>
 
-		<?php require_once('css-injector/lp.php'); ?>
+		<?php require_once( 'css-injector/lp.php' ); ?>
 
 		<?php get_template_part( 'template-parts/header/tag-manager-script' ); ?>
 	</head>
@@ -35,14 +35,16 @@
 
 			<div class="wrapLg headerMag__nav-container">
 				<span class="headerMag__logo" href="<?php echo home_url(); ?>" rel="nofollow" title="Go to the <?php bloginfo( 'name' ); ?> Homepage ">
-					<?php $school_logo = get_field('school_logo', 'options');
-					if ( $school_logo ) { ?>
+					<?php
+					$school_logo = get_field( 'school_logo', 'options' );
+					if ( $school_logo ) {
+						?>
 						<img src="<?php echo $school_logo['url']; ?>" width="240" height="80" alt="<?php echo $school_logo['alt']; ?>">
 					<?php } else { ?>
 						<span><?php the_field( 'school_name', 'options' ); ?></span>
 						<?php } ?>
 				</span>
-				<a class="headerMag__phone" aria-label="Give us a call at <?php the_field('school_phone', 'option'); ?>!" href="tel:<?php the_field('school_phone', 'option'); ?>"><?php the_field('school_phone', 'option'); ?></a>
+				<a class="headerMag__phone" aria-label="Give us a call at <?php the_field( 'school_phone', 'option' ); ?>!" href="tel:<?php the_field( 'school_phone', 'option' ); ?>"><?php the_field( 'school_phone', 'option' ); ?></a>
 			</div>
 
 		</header>
