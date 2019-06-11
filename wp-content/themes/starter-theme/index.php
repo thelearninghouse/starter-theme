@@ -20,7 +20,7 @@
 				<div class="featuredImage <?php echo $blog_class_name; ?>"></div>
 				<?php
 				if ( has_post_thumbnail() ) {
-					tlh_responsive_bg_style( $blog_class_name );
+					tlh_responsive_bg_style( '.' . $blog_class_name, get_post_thumbnail_id( get_the_ID() ) );
 				}
 				?>
 			</article>

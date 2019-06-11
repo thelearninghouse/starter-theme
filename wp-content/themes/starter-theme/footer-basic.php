@@ -8,10 +8,12 @@
 			</div>
 		</div>
 		<?php
-		if ( get_field( 'hero_background_image' ) ) {
-			tlh_responsive_bg_style( 'container__background', 'hero_background_image' );
+		$hero_image = get_field( 'hero_background_image' );
+		if ( $hero_image ) {
+			tlh_responsive_bg_style( '.container__background', $hero_image['ID'] );
 		} else {
-			tlh_responsive_bg_style( 'container__background', 'default_background_image', false, false, true );
+			$default_bg = get_field( 'default_background_image', 'options' );
+			tlh_responsive_bg_style( '.container__background', $default_bg['ID'] );
 		}
 		?>
 
