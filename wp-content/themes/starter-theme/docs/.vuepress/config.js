@@ -13,11 +13,11 @@ module.exports = {
 		docsRepo: "thelearninghouse/starter-theme",
 		// if your docs are not at the root of the repo:
 		docsDir: "wp-content/themes/starter-theme/docs",
+		lastUpdated: true,
 		// if your docs are in a specific branch (defaults to 'master'):
 		docsBranch: "master",
 		editLinks: true,
 		nav: [
-			{ text: "Home", link: "/" },
 			{
 				text: "Overview",
 				items: [
@@ -26,12 +26,37 @@ module.exports = {
 					{ text: "Naming Conventions", link: "/naming-conventions/" }
 				]
 			},
+			{
+				text: "Guides",
+				items: [
+					{ text: "Migrating Data", link: "/migrating-data/" },
+					{ text: "Launch LP's", link: "/launch-lps/" },
+					{ text: "Editing Docs", link: "/documentation/" }
+				]
+			},
 			{ text: "Theme Features", link: "/theme-features/" },
-			{ text: "Migrating Data", link: "/migrating-data/" },
-			{ text: "Launch LP's", link: "/launch-lps/" },
-			{ text: "Docs", link: "/documentation/" },
+			{ text: "Functions", link: "/functions/" },
 			{ text: "FAQ", link: "/faq/" }
-		]
+		],
+		sidebar: {
+			"/functions/": [
+				{
+					title: "Functions",
+					collapsable: false,
+					children: [
+						"accordion",
+						"byline",
+						"field",
+						"icon",
+						"next-start-date",
+						"phone-link",
+						"responsive-bg-style",
+						"social-share-buttons"
+					]
+				}
+			],
+			"/": [""]
+		}
 	}
 	// dest: '../../../docs'
 };

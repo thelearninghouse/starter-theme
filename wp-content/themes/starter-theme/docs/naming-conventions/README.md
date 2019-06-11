@@ -43,7 +43,7 @@ All variables and maps should use camel case. If sizes are needed, stick to two 
 
 ### Custom Templates
 
-These should be prefixed with the site they are used on with two underscores followed by a descriptive name with hyphens instead of spaces.
+These should be prefixed with the site they are used on followed by a descriptive name with hyphens instead of spaces.
 
 #### Prefixes
 
@@ -53,10 +53,10 @@ These should be prefixed with the site they are used on with two underscores fol
 
 #### Examples
 
-- `olc__home.php`
-- `olc__academic-calendar.php`
-- `lp__brand.php`
-- `mag__degrees.php`
+- `olc-home.php`
+- `olc-academic-calendar.php`
+- `lp-brand.php`
+- `mag-degrees.php`
 
 ### Template Parts + Other
 

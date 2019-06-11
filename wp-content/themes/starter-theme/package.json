@@ -22,13 +22,13 @@
   "license": "ISC",
   "devDependencies": {
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.2.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "glob-all": "^3.1.0",
-    "imagemin-webpack-plugin": "^2.4.0",
+    "imagemin-webpack-plugin": "^2.4.2",
     "laravel-mix": "^2.1.14",
     "laravel-mix-purgecss": "^2.2.3",
     "purgecss-with-wordpress": "^1.0.0",
@@ -37,12 +37,12 @@
     "typi": "^3.2.0"
   },
   "dependencies": {
-    "@glidejs/glide": "^3.2.4",
+    "@glidejs/glide": "^3.3.0",
     "babel-polyfill": "^6.26.0",
     "element-qsa-scope": "^1.1.0",
     "mixitup": "^3.3.1",
     "modaal": "^0.3.1",
-    "stickybits": "^3.6.1",
-    "vue": "^2.5.22"
+    "stickybits": "^3.6.6",
+    "vue": "^2.6.10"
   }
 }
