@@ -2,14 +2,3 @@
 
 // Optional Theme Stylesheet
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
-button.glide__arrow {
-	color: black;
-}
-
-button.glide__arrow.glide__arrow--prev {
-	left: 1.5em;
-}
-
-button.glide__arrow.glide__arrow--next {
-	right: 1.5em;
-}
