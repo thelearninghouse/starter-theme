@@ -1,40 +1,40 @@
 .fancyNumbers {
-  list-style: none;
-  counter-reset: fancy-numbers;
-  padding-left: 0;
+	list-style: none;
+	counter-reset: fancy-numbers;
+	padding-left: 0;
 
-  > li {
-    counter-increment: fancy-numbers;
+	> li {
+		counter-increment: fancy-numbers;
 
-    position: relative;
-    margin-top: rem(15);
-    margin-bottom: rem(15);
-    padding-left: rem(60);
+		position: relative;
+		margin-top: rem(15);
+		margin-bottom: rem(15);
+		padding-left: rem(60);
 
-    @include min(md) {
-      padding-left: rem(80);
-    }
+		@include min(md) {
+			padding-left: rem(80);
+		}
 
-    &::before {
-      content: counter(fancy-numbers);
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: rem(40);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-right: 2px solid color(grayLight);
-      font-size: rem(26);
-      padding-top: rem(5);
-      padding-bottom: rem(5);
-      font-weight: 700;
-      color: $primaryColor;
+		&::before {
+			content: counter(fancy-numbers);
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: rem(40);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-right: 2px solid color(black);
+			font-size: rem(26);
+			padding-top: rem(5);
+			padding-bottom: rem(5);
+			font-weight: 700;
+			color: $primaryColor;
 
-      @include min(md) {
-        width: rem(60);
-      }
-    }
-  }
+			@include min(md) {
+				width: rem(60);
+			}
+		}
+	}
 }

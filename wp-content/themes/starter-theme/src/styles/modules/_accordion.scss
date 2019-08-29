@@ -57,7 +57,7 @@
 	// DEFAULT STYLES (applied only if no other theme is applied) ****************
 	&:not(.plain) {
 		#{$self}__trigger {
-			background-color: color(grayLight);
+			background-color: color(black);
 			color: $primaryColor;
 
 			&:focus,
@@ -87,7 +87,7 @@
 		}
 
 		#{$self}__panel {
-			background-color: color(grayLight);
+			background-color: color(black);
 
 			& > div:first-child {
 				padding: rem(10);

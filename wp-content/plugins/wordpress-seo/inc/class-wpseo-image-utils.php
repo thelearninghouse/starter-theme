@@ -24,6 +24,11 @@ class WPSEO_Image_Utils {
 		 */
 		$url = preg_replace( '/(.*)-\d+x\d+\.(jpg|png|gif)$/', '$1.$2', $url );
 
+		// Don't try to do this for external URLs.
+		if ( strpos( $url, get_site_url() ) !== 0 ) {
+			return 0;
+		}
+
 		if ( function_exists( 'wpcom_vip_attachment_url_to_postid' ) ) {
 			// @codeCoverageIgnoreStart -- We can't test this properly.
 			return (int) wpcom_vip_attachment_url_to_postid( $url );
@@ -196,7 +201,7 @@ class WPSEO_Image_Utils {
 		}
 
 		// Add the uploads basedir if the path does not start with it.
-		if ( empty( $uploads['error'] ) && strpos( $path, $uploads['basedir'] . DIRECTORY_SEPARATOR ) !== 0 ) {
+		if ( empty( $uploads['error'] ) && strpos( $path, $uploads['basedir'] ) !== 0 ) {
 			return $uploads['basedir'] . DIRECTORY_SEPARATOR . ltrim( $path, DIRECTORY_SEPARATOR );
 		}
 
@@ -369,6 +374,10 @@ class WPSEO_Image_Utils {
 	public static function get_first_usable_content_image_for_post( $post_id = null ) {
 		$post = get_post( $post_id );
 
+		if ( $post === null ) {
+			return null;
+		}
+
 		$image_finder = new WPSEO_Content_Images();
 		$images       = $image_finder->get_images( $post->ID, $post );
 
@@ -387,9 +396,12 @@ class WPSEO_Image_Utils {
 	/**
 	 * Retrieves an attachment ID for an image uploaded in the settings.
 	 *
+	 * Due to self::get_attachment_by_url returning 0 instead of false.
+	 * 0 is also a possibility when no ID is available.
+	 *
 	 * @param string $setting The setting the image is stored in.
 	 *
-	 * @return int|bool The attachment id, or false if no id is available.
+	 * @return int|bool The attachment id, or false or 0 if no ID is available.
 	 */
 	public static function get_attachment_id_from_settings( $setting ) {
 		$image_id = WPSEO_Options::get( $setting . '_id', false );

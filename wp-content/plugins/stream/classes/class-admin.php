@@ -134,7 +134,7 @@ class Admin {
 		add_filter( 'user_has_cap', array( $this, 'filter_user_caps' ), 10, 4 );
 		add_filter( 'role_has_cap', array( $this, 'filter_role_caps' ), 10, 3 );
 
-		if ( is_multisite() && is_plugin_active_for_network( $this->plugin->locations['plugin'] ) && ! is_network_admin() ) {
+		if ( is_multisite() && $plugin->is_network_activated() && ! is_network_admin() ) {
 			$options = (array) get_site_option( 'wp_stream_network', array() );
 			$option  = isset( $options['general_site_access'] ) ? absint( $options['general_site_access'] ) : 1;
 
@@ -155,15 +155,19 @@ class Admin {
 
 		// Plugin action links.
 		add_filter(
-			'plugin_action_links', array(
+			'plugin_action_links',
+			array(
 				$this,
 				'plugin_action_links',
-			), 10, 2
+			),
+			10,
+			2
 		);
 
 		// Load admin scripts and styles.
 		add_action(
-			'admin_enqueue_scripts', array(
+			'admin_enqueue_scripts',
+			array(
 				$this,
 				'admin_enqueue_scripts',
 			)
@@ -172,7 +176,8 @@ class Admin {
 
 		// Reset Streams database.
 		add_action(
-			'wp_ajax_wp_stream_reset', array(
+			'wp_ajax_wp_stream_reset',
+			array(
 				$this,
 				'wp_ajax_reset',
 			)
@@ -184,7 +189,8 @@ class Admin {
 		// Auto purge setup.
 		add_action( 'wp_loaded', array( $this, 'purge_schedule_setup' ) );
 		add_action(
-			'wp_stream_auto_purge', array(
+			'wp_stream_auto_purge',
+			array(
 				$this,
 				'purge_scheduled_action',
 			)
@@ -192,7 +198,8 @@ class Admin {
 
 		// Ajax users list.
 		add_action(
-			'wp_ajax_wp_stream_filters', array(
+			'wp_ajax_wp_stream_filters',
+			array(
 				$this,
 				'ajax_filters',
 			)
@@ -359,7 +366,8 @@ class Admin {
 
 			// Register the list table early, so it associates the column headers with 'Screen settings'.
 			add_action(
-				'load-' . $this->screen_id['main'], array(
+				'load-' . $this->screen_id['main'],
+				array(
 					$this,
 					'register_list_table',
 				)
@@ -403,22 +411,31 @@ class Admin {
 			wp_enqueue_script( 'wp-stream-timeago-locale' );
 
 			wp_enqueue_script(
-				'wp-stream-admin', $this->plugin->locations['url'] . 'ui/js/admin.' . $min . 'js', array(
+				'wp-stream-admin',
+				$this->plugin->locations['url'] . 'ui/js/admin.' . $min . 'js',
+				array(
 					'jquery',
 					'wp-stream-select2',
-				), $this->plugin->get_version()
+				),
+				$this->plugin->get_version()
 			);
 			wp_enqueue_script(
-				'wp-stream-admin-exclude', $this->plugin->locations['url'] . 'ui/js/exclude.' . $min . 'js', array(
+				'wp-stream-admin-exclude',
+				$this->plugin->locations['url'] . 'ui/js/exclude.' . $min . 'js',
+				array(
 					'jquery',
 					'wp-stream-select2',
-				), $this->plugin->get_version()
+				),
+				$this->plugin->get_version()
 			);
 			wp_enqueue_script(
-				'wp-stream-live-updates', $this->plugin->locations['url'] . 'ui/js/live-updates.' . $min . 'js', array(
+				'wp-stream-live-updates',
+				$this->plugin->locations['url'] . 'ui/js/live-updates.' . $min . 'js',
+				array(
 					'jquery',
 					'heartbeat',
-				), $this->plugin->get_version()
+				),
+				$this->plugin->get_version()
 			);
 
 			wp_localize_script(
@@ -647,7 +664,7 @@ class Admin {
 
 		$where = '';
 
-		if ( is_multisite() && ! is_plugin_active_for_network( $this->plugin->locations['plugin'] ) ) {
+		if ( is_multisite() && ! $this->plugin->is_network_activated() ) {
 			$where .= $wpdb->prepare( ' AND `blog_id` = %d', get_current_blog_id() );
 		}
 
@@ -675,12 +692,12 @@ class Admin {
 			&&
 			is_network_admin()
 			&&
-			! is_plugin_active_for_network( $this->plugin->locations['plugin'] )
+			! $this->plugin->is_network_activated()
 		) {
 			return;
 		}
 
-		if ( is_multisite() && is_plugin_active_for_network( $this->plugin->locations['plugin'] ) ) {
+		if ( is_multisite() && $this->plugin->is_network_activated() ) {
 			$options = (array) get_site_option( 'wp_stream_network', array() );
 		} else {
 			$options = (array) get_option( 'wp_stream', array() );
@@ -699,7 +716,7 @@ class Admin {
 		$where = $wpdb->prepare( ' AND `stream`.`created` < %s', $date->format( 'Y-m-d H:i:s' ) );
 
 		// Multisite but NOT network activated, only purge the current blog
-		if ( is_multisite() && ! is_plugin_active_for_network( $this->plugin->locations['plugin'] ) ) {
+		if ( is_multisite() && ! $this->plugin->is_network_activated() ) {
 			$where .= $wpdb->prepare( ' AND `blog_id` = %d', get_current_blog_id() );
 		}
 
@@ -726,7 +743,7 @@ class Admin {
 		}
 
 		// Also don't show links in Network Admin if Stream isn't network enabled
-		if ( is_network_admin() && is_multisite() && ! is_plugin_active_for_network( $this->plugin->locations['plugin'] ) ) {
+		if ( is_network_admin() && is_multisite() && ! $this->plugin->is_network_activated() ) {
 			return $links;
 		}
 
@@ -734,27 +751,31 @@ class Admin {
 			$admin_page_url = add_query_arg(
 				array(
 					'page' => $this->network->network_settings_page_slug,
-				), network_admin_url( $this->admin_parent_page )
+				),
+				network_admin_url( $this->admin_parent_page )
 			);
 		} else {
 			$admin_page_url = add_query_arg(
 				array(
 					'page' => $this->settings_page_slug,
-				), admin_url( $this->admin_parent_page )
+				),
+				admin_url( $this->admin_parent_page )
 			);
 		}
 
 		$links[] = sprintf( '<a href="%s">%s</a>', esc_url( $admin_page_url ), esc_html__( 'Settings', 'default' ) );
 
-		$url = add_query_arg(
-			array(
-				'action'          => 'wp_stream_uninstall',
-				'wp_stream_nonce' => wp_create_nonce( 'stream_nonce' ),
-			),
-			admin_url( 'admin-ajax.php' )
-		);
+		if ( ! defined( 'DISALLOW_FILE_MODS' ) || false === DISALLOW_FILE_MODS ) {
+			$url = add_query_arg(
+				array(
+					'action'          => 'wp_stream_uninstall',
+					'wp_stream_nonce' => wp_create_nonce( 'stream_nonce' ),
+				),
+				admin_url( 'admin-ajax.php' )
+			);
 
-		$links[] = sprintf( '<span id="wp_stream_uninstall" class="delete"><a href="%s">%s</a></span>', esc_url( $url ), esc_html__( 'Uninstall', 'stream' ) );
+			$links[] = sprintf( '<span id="wp_stream_uninstall" class="delete"><a href="%s">%s</a></span>', esc_url( $url ), esc_html__( 'Uninstall', 'stream' ) );
+		}
 
 		return $links;
 	}
@@ -837,7 +858,8 @@ class Admin {
 	 */
 	public function register_list_table() {
 		$this->list_table = new List_Table(
-			$this->plugin, array(
+			$this->plugin,
+			array(
 				'screen' => $this->screen_id['main'],
 			)
 		);

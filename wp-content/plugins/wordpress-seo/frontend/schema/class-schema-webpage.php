@@ -20,7 +20,7 @@ class WPSEO_Schema_WebPage implements WPSEO_Graph_Piece {
 	private $context;
 
 	/**
-	 * WPSEO_Schema_Breadcrumb constructor.
+	 * WPSEO_Schema_WebPage constructor.
 	 *
 	 * @param WPSEO_Schema_Context $context A value object with context variables.
 	 */
@@ -65,15 +65,19 @@ class WPSEO_Schema_WebPage implements WPSEO_Graph_Piece {
 		}
 
 		if ( is_singular() ) {
-			$data = $this->add_image( $data );
+			$this->add_image( $data );
 
 			$post                  = get_post( $this->context->id );
 			$data['datePublished'] = mysql2date( DATE_W3C, $post->post_date_gmt, false );
 			$data['dateModified']  = mysql2date( DATE_W3C, $post->post_modified_gmt, false );
+
+			if ( get_post_type( $post ) === 'post' ) {
+				$data = $this->add_author( $data, $post );
+			}
 		}
 
 		if ( ! empty( $this->context->description ) ) {
-			$data['description'] = $this->context->description;
+			$data['description'] = strip_tags( $this->context->description, '<h1><h2><h3><h4><h5><h6><br><ol><ul><li><a><p><b><strong><i><em>' );
 		}
 
 		if ( $this->add_breadcrumbs() ) {
@@ -83,6 +87,32 @@ class WPSEO_Schema_WebPage implements WPSEO_Graph_Piece {
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Adds an author property to the $data if the WebPage is not represented.
+	 *
+	 * @param array   $data The WebPage schema.
+	 * @param WP_Post $post The post the context is representing.
+	 *
+	 * @return array The WebPage schema.
+	 */
+	public function add_author( $data, $post ) {
+		if ( $this->context->site_represents === false ) {
+			$data['author'] = array( '@id' => WPSEO_Schema_Utils::get_user_schema_id( $post->post_author, $this->context ) );
+		}
+		return $data;
+	}
+
+	/**
+	 * If we have an image, make it the primary image of the page.
+	 *
+	 * @param array $data WebPage schema data.
+	 */
+	public function add_image( &$data ) {
+		if ( $this->context->has_image ) {
+			$data['primaryImageOfPage'] = array( '@id' => $this->context->canonical . WPSEO_Schema_IDs::PRIMARY_IMAGE_HASH );
+		}
 	}
 
 	/**
@@ -115,6 +145,8 @@ class WPSEO_Schema_WebPage implements WPSEO_Graph_Piece {
 			case is_author():
 				$type = 'ProfilePage';
 				break;
+			case WPSEO_Frontend_Page_Type::is_posts_page():
+			case WPSEO_Frontend_Page_Type::is_home_posts_page():
 			case is_archive():
 				$type = 'CollectionPage';
 				break;
@@ -128,67 +160,5 @@ class WPSEO_Schema_WebPage implements WPSEO_Graph_Piece {
 		 * @api string $type The WebPage type.
 		 */
 		return apply_filters( 'wpseo_schema_webpage_type', $type );
-	}
-
-	/**
-	 * Adds a featured image to the schema if there is one, if not falls back to the first image on the page.
-	 *
-	 * @param array $data WebPage Schema.
-	 *
-	 * @return array $data WebPage Schema.
-	 */
-	private function add_image( $data ) {
-		$image_id = $this->context->canonical . WPSEO_Schema_IDs::PRIMARY_IMAGE_HASH;
-
-		$image_schema = $this->get_featured_image( $this->context->id, $image_id );
-
-		if ( $image_schema === null ) {
-			$image_schema = $this->get_first_content_image( $this->context->id, $image_id );
-		}
-
-		if ( $image_schema === null ) {
-			return $data;
-		}
-
-		$data['image']              = $image_schema;
-		$data['primaryImageOfPage'] = array( '@id' => $image_id );
-
-		return $data;
-	}
-
-	/**
-	 * Gets the image schema for the web page based on the featured image.
-	 *
-	 * @param int    $post_id  The post id.
-	 * @param string $image_id The image schema id.
-	 *
-	 * @return array|null The image schema object and null if there is no featured image.
-	 */
-	private function get_featured_image( $post_id, $image_id ) {
-		if ( ! has_post_thumbnail( $post_id ) ) {
-			return null;
-		}
-
-		$schema_image = new WPSEO_Schema_Image( $image_id );
-		return $schema_image->generate_from_attachment_id( get_post_thumbnail_id() );
-	}
-
-	/**
-	 * Gets the image schema for the web page based on the first content image image.
-	 *
-	 * @param int    $post_id  The post id.
-	 * @param string $image_id The image schema id.
-	 *
-	 * @return array|null The image schema object and null if there is no image in the content.
-	 */
-	private function get_first_content_image( $post_id, $image_id ) {
-		$image_url = WPSEO_Image_Utils::get_first_usable_content_image_for_post( $post_id );
-
-		if ( $image_url === null ) {
-			return null;
-		}
-
-		$schema_image = new WPSEO_Schema_Image( $image_id );
-		return $schema_image->generate_from_url( $image_url );
 	}
 }

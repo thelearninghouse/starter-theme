@@ -186,8 +186,16 @@ class Author {
 			$user_role = $wp_roles->role_names[ $this->meta['user_role'] ];
 		} elseif ( ! empty( $this->meta['user_role_label'] ) ) {
 			$user_role = $this->meta['user_role_label'];
-		} elseif ( isset( $this->user->roles[0] ) && isset( $wp_roles->role_names[ $this->user->roles[0] ] ) ) {
-			$user_role = $wp_roles->role_names[ $this->user->roles[0] ];
+		} elseif ( ! empty( $this->user->roles ) ) {
+			$roles = array_map(
+				function( $role ) use ( $wp_roles ) {
+					return $wp_roles->role_names[ $role ];
+				},
+				$this->user->roles
+			);
+
+			$separator = apply_filters( 'wp_stream_get_role_list_separator', ' - ' );
+			$user_role = implode( $separator, $roles );
 		} elseif ( is_multisite() && is_super_admin( $this->id ) ) {
 			$user_role = $wp_roles->role_names['administrator'];
 		}
@@ -214,22 +222,18 @@ class Author {
 	}
 
 	/**
-	 * True if doing WP Cron, otherwise false
+	 * Check if the current request is part of a WP cron task.
 	 *
-	 * Note: If native WP Cron has been disabled and you are
-	 * hitting the cron endpoint with a system cron job, this
-	 * method will always return false.
+	 * Note: This will return true for all manual or custom
+	 * cron runs even if the default front-end cron is disabled.
+	 *
+	 * We're not using `wp_doing_cron()` since it was introduced
+	 * only in WordPress 4.8.0.
 	 *
 	 * @return bool
 	 */
 	public function is_doing_wp_cron() {
-		return (
-			wp_stream_is_cron_enabled()
-			&&
-			defined( 'DOING_CRON' )
-			&&
-			DOING_CRON
-		);
+		return ( defined( 'DOING_CRON' ) && DOING_CRON );
 	}
 
 	/**

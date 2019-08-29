@@ -5,8 +5,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Content analysis, Readability
 Requires at least: 4.9
-Tested up to: 5.2.1
-Stable tag: 11.3
+Tested up to: 5.2.2
+Stable tag: 11.9
 Requires PHP: 5.2.4
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -105,67 +105,37 @@ You'll find answers to many of your questions on [kb.yoast.com](https://yoa.st/1
 
 == Changelog ==
 
-= 11.3.0 =
-Release Date: May 28th, 2019
+= 11.9.0 =
+Release Date: August 20th, 2019
 
-High-time for another release, namely Yoast SEO 11.3. This release features enhancements and bug fixes aimed at improving the way your favorite SEO plugin performs. Read more about the release in [our 11.3 release post](https://yoa.st/release-11-3).
-
-Enhancements:
-
-* When the site is set to represent a person, a logo/avatar to be used in the knowledge graph can now be selected in the Search Appearance settings.
-* Adds the `wpseo_should_index_links` filter that can be used to disable the link indexation.
-* Enables builtin Taxonomies for the 'Content type archive to show in breadcrumbs for taxonomies' section to allow the Blog archive page be added to the breadcrumbs.
-* Props to [@ramiy](https://profiles.wordpress.org/ramiy/) for making translating the plugin easier by merging near identical strings.
-
-Bugfixes:
-
-* Fixes a bug where sitemaps would be shown in the `sitemap_index.xml` but result in a 404 when requested.
-* Fixes a bug where the schema output would include an invalid publisher when the site was set to represent a person.
-* Fixes a bug where a `Person` schema object would be output, when the site was set to represent a person, but no specific person was selected.
-* Fixes a bug where it would no longer be possible to change the user in the Search Appearance settings when the previously selected user had been deleted.
-
-Other:
-
-* Removes the help center from the metabox.
-* Removes redundant `name` attribute from `author` in `Article` schema markup piece.
-* Increases the MyYoast API request timeout from 1 to 5 seconds, to give servers with a less optimal connection to our services more room to fetch the data.
-
-= 11.2.1 =
-Release Date: May 16th, 2019
-
-Bugfixes:
-
-* Fixes a bug where the metabox would be empty on WordPress versions below 5.0.
-* Fixes a bug where the metabox would be empty when both the classic editor plugin as well as the Gutenberg plugin were installed.
-
-Other:
-
-* Introduces a notification that encourages updating to the latest WordPress version.
-
-= 11.2.0 =
-Release Date: May 15th, 2019
+Are you ready for another exciting release to round up the Yoast SEO 11 cycle? Because we are! In Yoast SEO 11.9 we have improvements for security and accessibility. Read more about Yoast SEO 11.9 in [our 11.9 release post](https://yoa.st/release-11-9)!
 
 Enhancements:
 
-* Introduces a fallback to the first image in the content for the schema output when no featured image has been set.
-* Adds a `wpseo_schema_person_social_profiles` filter to allow filtering in/out extra social profiles to show.
-* Adds a `wpseo_schema_needs_<class_name>` filter that allows filtering graph pieces in or out.
-* Adds a `wpseo_sitemap_post_statuses` filter to add posts with custom post statuses to the sitemap. Props to [stodorovic](https://github.com/stodorovic) and [tolnem](https://github.com/tolnem).
-* Adds a custom overlay color to the snippet preview modal.
-* Adds the correct focus style to the Configuration Wizard navigation buttons.
-* Props to [@ramiy](https://profiles.wordpress.org/ramiy/) for making translating the plugin easier by merging near identical strings.
+* Improves security by adding output escaping.
 
 Bugfixes:
 
-* Fixes a bug where the URL to Pinterest's claim page was incorrect. Props [@ramiy](https://profiles.wordpress.org/ramiy/).
-* Fixes a bug where notifications about incompatibility would be thrown for inactive add-ons.
-* Fixes a bug where URLs with a non-Yoast SEO related xsl query string parameter would result in a blank page. Props [@stodorovic](https://github.com/stodorovic) and [@yiska](https://github.com/yiska).
+* Fixes a bug where the image from the configuration wizard notification was missing an empty alt attribute.
+* Fixes a bug where some translations would be missing in the metabox, sidebar, configuration wizard and the help center.
 
-Other:
+= 11.8.0 =
+Release Date: August 6th, 2019
 
-* Removes the `add_opengraph_namespace` filter because the OGP.me HTML namespace is not used anymore.
-* Decouples the sitemap debug information from the general `WP_DEBUG` development flag and introduces the `YOAST_SEO_DEBUG_SITEMAPS` flag to better control this functionality.
+Release history tells us that the releases in the months of July and August are usually very quiet and not 'that notable'. Due to vacations from team members, the focus is usually on fixing bugs and cleaning up. Not for Yoast SEO 11.8! This new release gives us an enhanced metabox, bug fixes and the help of contributors from outside the company! Find out all about Yoast SEO 11.8 in [our 11.8 release post](https://yoa.st/release-11-8)!
+
+Enhancements:
+
+* Moves advanced SEO settings to a collapsible in the SEO tab.
+* Social settings tab in the metabox now contains collapsibles instead of tabs.
+* Adds style for padding to the metabox menu to avoid it being overwritten by custom editor styles. Props to [@emilyatmobtown](https://github.com/emilyatmobtown).
+* Improves sanitization of the schema output.
+
+Bugfixes:
+
+* Fixes a bug where the `WP_Query::get_posts()` method would be called multiple times when the query includes several taxonomy terms, resulting in different results. Props to [@Chouby](https://github.com/Chouby).
+* Fixes a bug where the checkbox in the customizer about showing the blog page in the breadcrumbs would do exactly the opposite of what it promised. Props to [@garrett-eclipse](https://github.com/garrett-eclipse).
+* Fixes a bug where the snippet title and meta description fields would still be left-to-right when the site was set to a right-to-left language.
 
 = Earlier versions =
-
-For the changelog of earlier versions, please refer to https://yoa.st/yoast-seo-changelog
+For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/yoast-seo-changelog).

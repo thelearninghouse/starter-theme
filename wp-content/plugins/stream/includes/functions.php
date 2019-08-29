@@ -36,7 +36,7 @@ function wp_stream_filter_var( $var, $filter = null, $options = array() ) {
  * Converts a time into an ISO 8601 extended formatted string.
  *
  * @param int|bool $time Seconds since unix epoc
- * @param int $offset Hour offset
+ * @param int      $offset Hour offset
  *
  * @return string an ISO 8601 extended formatted time
  */
@@ -65,8 +65,8 @@ function wp_stream_get_iso_8601_extended_date( $time = false, $offset = 0 ) {
  * Encode to JSON in a way that is also backwards compatible
  *
  * @param mixed $data
- * @param int $options (optional)
- * @param int $depth (optional)
+ * @param int   $options (optional)
+ * @param int   $depth (optional)
  *
  * @return string
  */
@@ -116,7 +116,8 @@ function wp_stream_is_vip() {
 }
 
 /**
- * True if native WP Cron is enabled, otherwise false
+ * Check if the default front-end WP Cron is enabled. It doesn't
+ * mean that the Cron is disabled in general.
  *
  * @return bool
  */
@@ -131,7 +132,9 @@ function wp_stream_is_cron_enabled() {
  */
 function wp_stream_min_suffix() {
 	$min = '';
-	if ( ! defined( 'SCRIPT_DEBUG' ) || false === SCRIPT_DEBUG ) {
+	$is_script_debugging = ! defined( 'SCRIPT_DEBUG' ) || false === SCRIPT_DEBUG;
+
+	if ( apply_filters( 'wp_stream_load_min_assets', $is_script_debugging ) ) {
 		$min = 'min.';
 	}
 

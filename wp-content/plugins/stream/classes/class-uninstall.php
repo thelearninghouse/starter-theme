@@ -4,6 +4,7 @@ namespace WP_Stream;
 class Uninstall {
 	/**
 	 * Hold Plugin class
+	 *
 	 * @var Plugin
 	 */
 	public $plugin;
@@ -37,8 +38,6 @@ class Uninstall {
 	 * Uninstall Stream by deleting its data
 	 */
 	public function uninstall() {
-		//check_ajax_referer( 'stream_nonce', 'wp_stream_nonce' );
-
 		$this->options = array(
 			$this->plugin->install->option_key,
 			$this->plugin->settings->option_key,
@@ -52,6 +51,12 @@ class Uninstall {
 			);
 		}
 
+		if ( defined( 'DISALLOW_FILE_MODS' ) && true === DISALLOW_FILE_MODS ) {
+			wp_die(
+				esc_html__( "You don't have sufficient file permissions to do this action.", 'stream' )
+			);
+		}
+
 		// Prevent this action from firing
 		remove_action( 'deactivate_plugin', array( 'Connector_Installer', 'callback' ), null );
 
@@ -62,7 +67,7 @@ class Uninstall {
 
 		// Drop everything on single site installs or when network activated
 		// Otherwise only delete data relative to the current blog
-		if ( ! is_multisite() || is_plugin_active_for_network( $this->plugin->locations['plugin'] ) ) {
+		if ( ! is_multisite() || $this->plugin->is_network_activated() ) {
 			$this->delete_all_records();
 			$this->delete_all_options();
 			$this->delete_all_user_meta();

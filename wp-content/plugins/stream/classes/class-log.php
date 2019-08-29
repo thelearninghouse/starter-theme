@@ -190,7 +190,7 @@ class Log {
 
 		$exclude_settings = isset( $this->plugin->settings->options['exclude_rules'] ) ? $this->plugin->settings->options['exclude_rules'] : array();
 
-		if ( is_multisite() && is_plugin_active_for_network( $this->plugin->locations['plugin'] ) && ! is_network_admin() ) {
+		if ( is_multisite() && $this->plugin->is_network_activated() && ! is_network_admin() ) {
 			$multisite_options          = (array) get_site_option( 'wp_stream_network', array() );
 			$multisite_exclude_settings = isset( $multisite_options['exclude_rules'] ) ? $multisite_options['exclude_rules'] : array();
 
@@ -291,7 +291,8 @@ class Log {
 
 		if ( $stream_meta ) {
 			array_walk(
-				$stream_meta, function ( &$value, $key ) {
+				$stream_meta,
+				function ( &$value, $key ) {
 					$value = sprintf( '%s: %s', $key, ( '' === $value ) ? 'null' : $value );
 				}
 			);
@@ -303,7 +304,8 @@ class Log {
 
 		if ( $user_meta ) {
 			array_walk(
-				$user_meta, function ( &$value, $key ) {
+				$user_meta,
+				function ( &$value, $key ) {
 					$value = sprintf( '%s: %s', $key, ( '' === $value ) ? 'null' : $value );
 				}
 			);

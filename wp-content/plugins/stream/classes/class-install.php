@@ -4,6 +4,7 @@ namespace WP_Stream;
 class Install {
 	/**
 	 * Hold Plugin class
+	 *
 	 * @var Plugin
 	 */
 	public $plugin;
@@ -97,7 +98,9 @@ class Install {
 		if ( ! $update ) {
 			$this->update_required = true;
 			$this->success_db      = $this->update(
-				$this->db_version, $this->plugin->get_version(), array(
+				$this->db_version,
+				$this->plugin->get_version(),
+				array(
 					'type' => 'auto',
 				)
 			);
@@ -105,7 +108,9 @@ class Install {
 
 		if ( 'update_and_continue' === $update ) {
 			$this->success_db = $this->update(
-				$this->db_version, $this->plugin->get_version(), array(
+				$this->db_version,
+				$this->plugin->get_version(),
+				array(
 					'type' => 'user',
 				)
 			);
@@ -177,7 +182,7 @@ class Install {
 			);
 		}
 
-		if ( is_plugin_active_for_network( $this->plugin->locations['plugin'] ) && current_user_can( 'manage_network_plugins' ) ) {
+		if ( $this->plugin->is_network_activated() && current_user_can( 'manage_network_plugins' ) ) {
 			$uninstall_message = sprintf(
 				// translators: Placeholders refer to HTML Link tags (e.g. "<a href="https://foo.com/wp-admin/">")
 				__( 'Please %1$suninstall%2$s the Stream plugin and activate it again.', 'stream' ),
@@ -219,7 +224,7 @@ class Install {
 
 		$plugin = plugin_basename( $file );
 
-		if ( is_plugin_active_for_network( $plugin ) ) {
+		if ( $this->plugin->is_network_activated() ) {
 			$current_versions = get_site_option( $this->option_key . '_connectors', array() );
 			$network          = true;
 		} elseif ( is_plugin_active( $plugin ) ) {
