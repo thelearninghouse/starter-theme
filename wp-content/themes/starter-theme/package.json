@@ -40,6 +40,7 @@
     "mixitup": "^3.3.1",
     "modaal": "^0.3.1",
     "stickybits": "^3.6.6",
+    "tiny-slider": "^2.9.2",
     "vue": "^2.6.10"
   }
 }
