@@ -1,32 +1,13 @@
-**/node_modules
-**/bower_components
-**/style-guide
-**/sassdoc
+# build files
 .sass-cache
-
-# Ignore everything in the root except the "wp-content" directory.
-/*
-!.gitignore
-!wp-content/
-
-# Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories.
-wp-content/themes/*
-wp-content/uploads/*
-wp-content/upgrade
-!wp-content/themes/starter-theme
-# wp-content/themes/starter-theme/public
-
-
-# Favicons in root
-!android-chrome-192x192.png
-!android-chrome-256x256.png
-!apple-touch-icon.png
-!browserconfig.xml
-!favicon-16x16.png
-!favicon-32x32.png
-!favicon.ico
-!manifest.json
-!mstile-150x150.png
+node_modules
+yarn-error.log
+.env
+test
+.BACKUP
+mix-extend-config.js
+public
+vendor
 
 # Ignore trash and miscellaneous files
 *~

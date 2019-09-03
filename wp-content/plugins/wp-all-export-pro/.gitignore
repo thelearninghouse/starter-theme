@@ -1,6 +1,0 @@
-.idea
-tests/codeception/_output
-tests/codeception/vendor
-frontend/node_modules/
-.DS_Store
-frontend/.sass-cache

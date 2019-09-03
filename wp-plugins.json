@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Advanced Custom Fields Pro",
+    "slug": "advanced-custom-fields-pro",
+    "source": "https://github.com/wp-premium/advanced-custom-fields-pro/archive/master.zip",
+    "is_callable": "acf_init",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "ACF Code Field",
+    "slug": "acf-code-field",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "ACF RGBA Color Picker",
+    "slug": "acf-rgba-color-picker",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "ACF Theme Code Pro",
+    "slug": "acf-theme-code-pro",
+    "source": "acf-theme-code-pro.zip",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Tealium",
+    "slug": "tealium",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Tealium - Wes",
+    "slug": "tealium-wes",
+    "source": "https://github.com/thelearninghouse/tealium-wes/archive/master.zip",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "TLH Forms",
+    "slug": "tlh-forms",
+    "source": "https://github.com/thelearninghouse/tlh-forms/archive/master.zip",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "WP Pusher",
+    "slug": "wppusher",
+    "source": "https://dashboard.wppusher.com/download/latest",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Disable Comments",
+    "slug": "disable-comments",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Safe SVG",
+    "slug": "safe-svg",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Redirection",
+    "slug": "redirection",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Stream",
+    "slug": "stream",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Duplicate Post",
+    "slug": "duplicate-post",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Tealium - Wes",
+    "slug": "tealium-wes",
+    "source": "https://github.com/thelearninghouse/tealium-wes/archive/master.zip",
+    "required": true,
+    "force_activation": true
+  },
+  {
+    "name": "Really Simple CSV Importer",
+    "slug": "really-simple-csv-importer"
+  },
+  {
+    "name": "WP All Export Pro",
+    "slug": "wp-all-export-pro",
+    "source": "wp-all-export-pro_1.5.4.zip"
+  },
+  {
+    "name": "WP All Import Pro",
+    "slug": "wp-all-import-pro",
+    "source": "wp-all-import-pro_4.5.5.zip"
+  },
+  {
+    "name": "WP All Import ACF Add-On",
+    "slug": "wpai-acf-add-on",
+    "source": "wpai-acf-add-on_3.1.9.zip"
+  },
+  {
+    "name": "WordPress SEO by Yoast",
+    "slug": "wordpress-seo",
+    "is_callable": "wpseo_init"
+  }
+]
