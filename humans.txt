@@ -1,0 +1,42 @@
+/* TEAM */
+
+    Web designer: Brian Maier Jr.
+    Website: https://brianmaierjr.com
+    Twitter: @brianmaierjr
+    From: Louisville, Ky
+
+    Web designer: Kurt Rank
+    Website: http://kurtrank.me
+    From: Louisville, Ky
+
+    Web designer: Dustin Cartwright
+    Website: http://dustincartwright.com
+    Twitter: @dustncartwright
+    From: Louisville, Ky
+
+    Web designer: Chelsea Wadsworth
+    Website: http://chelseaw.com
+    From: Louisville, Ky
+
+    Web designer: David Royer
+    Twitter: @DavidRoyer_
+    From: Louisville, Ky
+
+    Creative Director: Michael Leonardo
+    Twitter: @mleonardo
+    From: Louisville, Ky
+
+
+/* COMPANY */
+
+	Name: Wiley Education Services
+	Twitter: @wileyedservices
+    Website: https://edservices.wiley.com/
+
+
+/* SITE */
+
+	Doctype:HTML5
+    Standards: HTML5, CSS3
+	IDE: Visual Studio Code, Transmit, Sketch
+    Components: Modernizr, jQuery, php, vue
