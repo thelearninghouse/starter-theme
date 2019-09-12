@@ -113,6 +113,25 @@
             "append": ""
         },
         {
+            "key": "field_5d7a499a22827",
+            "label": "School Short Name",
+            "name": "school_short_name",
+            "type": "text",
+            "instructions": "School abbreviation from SRP",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "ABC",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5a2b0f2944292",
             "label": "Google Tag Manager ID",
             "name": "gtm_id",
@@ -544,5 +563,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1567109776
+    "modified": 1568295366
 }

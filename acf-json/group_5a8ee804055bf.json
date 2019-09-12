@@ -60,6 +60,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_5d7a4a3810e8c",
+            "label": "Program Short Code",
+            "name": "program_short_code",
+            "type": "text",
+            "instructions": "Program short code or program name from SRP",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5a8ee848353ab",
             "label": "Next Start Date",
             "name": "program_next_start_date",
@@ -218,5 +237,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1520532975
+    "modified": 1568295495
 }
